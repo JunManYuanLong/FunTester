@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+}
+
+group 'tester'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'groovy'
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+//        maven {
+//            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+//        }
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.5'
+    compile group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.5'
+    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.8.0'
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
+    compile group: 'com.sun.jna', name: 'jna', version: '3.0.9'
+//    compile group: 'org.codehaus.groovy', name: 'groovy', version: '2.5.1'
+    compile 'net.sf.json-lib:json-lib:2.4:jdk15'
+    compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.9.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.8.0-beta2'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
+    compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.0'
+    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.5.6'
+}
+
+jar {
+    from {
+        //添加依懒到打包文件
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtime.collect { zipTree(it) }
+    }
+    manifest {
+        attributes 'Main-Class': 'com.fun.main.PerformanceFromFile'
+    }
+}
