@@ -235,7 +235,6 @@ public class FanLibrary extends SourceCode {
         return RequestConfig.custom().setConnectionRequestTimeout(HttpClientConstant.CONNECT_REQUEST_TIMEOUT).setConnectTimeout(HttpClientConstant.CONNECT_TIMEOUT).setSocketTimeout(HttpClientConstant.SOCKET_TIMEOUT).setCookieSpec(CookieSpecs.STANDARD).build();
     }
 
-
     /**
      * 发送请求之前，配置请求管理器，设置IP，user_agent和cookie
      *
@@ -257,7 +256,7 @@ public class FanLibrary extends SourceCode {
         List<Header> headers = Arrays.asList(response.getHeaders("Set-Cookie"));
         if (headers.size() == 0) return cookies;
         headers.forEach(x -> {
-            String[] split = x.getValue().split(";")[0].split("=");
+            String[] split = x.getValue().split(";")[0].split("=", 2);
             cookies.put(split[0], split[1]);
         });
         return cookies;
@@ -318,8 +317,8 @@ public class FanLibrary extends SourceCode {
         long start = Time.getTimeStamp();
         try (CloseableHttpResponse response = ClientManage.httpsClient.execute(request)) {
             long end = Time.getTimeStamp();
-            if (HEADER_KEY) output(response.getAllHeaders());
             long elapsed_time = end - start;
+            if (HEADER_KEY) output(response.getAllHeaders());
             if (response == null) return jsonObject;
             int status = response.getStatusLine().getStatusCode();
             JSONObject setCookies = afterResponse(response);
