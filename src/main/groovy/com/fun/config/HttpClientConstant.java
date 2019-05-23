@@ -82,6 +82,7 @@ public class HttpClientConstant {
 
     public static Header ContentType_TEXT = getHeader("Content-Type", "text/plain");
 
+    public static Header X_Requested_KWith = getHeader("X-Requested-With", "XMLHttpRequest");
 
     /**
      * 重试次数
