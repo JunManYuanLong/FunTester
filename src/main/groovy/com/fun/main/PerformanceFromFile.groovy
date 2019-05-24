@@ -4,16 +4,13 @@ import com.fun.frame.SourceCode
 import com.fun.frame.excute.Concurrent
 import com.fun.frame.httpclient.FanLibrary
 import com.fun.frame.thead.RequestThread
-import com.fun.utils.db.mysql.MySqlTest
 import com.fun.utils.request.RequestFile
 import org.apache.http.client.methods.HttpRequestBase
-
 /**
  * 从文本配置中读取request，进行压测的类
  */
 class PerformanceFromFile extends SourceCode {
     public static void main(String[] args) {
-        MySqlTest.setFlag();
         FanLibrary.setSocketTimeOut(30)
         def size = args.size();
         List<HttpRequestBase> list = new ArrayList<>()
