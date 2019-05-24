@@ -10,10 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.text.DecimalFormat;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 
@@ -163,25 +161,6 @@ public class SourceCode extends Output {
     }
 
     /**
-     * 解析json信息
-     *
-     * @param response json格式的响应实体
-     * @return json每个字段和值，key:value形式
-     */
-    public static List<String> parseJsonLines(JSONObject response) {
-        String jsonStr = response.toString();// 先将json对象转化为string对象
-        jsonStr = jsonStr.replaceAll(",", LINE);
-        jsonStr = jsonStr.replaceAll("\"", EMPTY);
-        jsonStr = jsonStr.replaceAll("\\\\/", OR);
-        jsonStr = jsonStr.replaceAll("\\{", LINE);
-        jsonStr = jsonStr.replaceAll("\\[", LINE);
-        jsonStr = jsonStr.replaceAll("}", LINE);
-        jsonStr = jsonStr.replaceAll("]", LINE);
-        List<String> jsonLines = Arrays.asList(jsonStr.split(LINE));
-        return jsonLines;
-    }
-
-    /**
      * 把string类型转化为int
      *
      * @param text 需要转化的文本
@@ -197,20 +176,9 @@ public class SourceCode extends Output {
     }
 
     public static boolean changeStringToBoolean(String text) {
-        return text == null ? false : text.equalsIgnoreCase("true") ? true : text.equalsIgnoreCase("false") ? false : null;
+        return text == null ? null : text.equalsIgnoreCase("true") ? true : text.equalsIgnoreCase("false") ? false : null;
     }
 
-    /**
-     * 把长字符串转化为list集合
-     *
-     * @param text
-     * @param regex
-     * @return
-     */
-    public static List<String> changeStringToList(String text, String regex) {
-        String[] split = text.split(regex);
-        return Arrays.asList(split);
-    }
 
     /**
      * 把字符串每个字符用分隔器连接起来
@@ -219,8 +187,25 @@ public class SourceCode extends Output {
      * @param separator
      * @return
      */
-    public static String joinStringBySeparator(String text, String separator) {
+    public static String join(String text, String separator) {
         return StringUtils.join(ArrayUtils.toObject(text.toCharArray()), separator);
+    }
+
+    /**
+     * 把list用分隔器连接起来
+     *
+     * @param list
+     * @param separator
+     * @param prefix
+     * @param suffix
+     * @return
+     */
+    public static String join(List list, String separator, String prefix, String suffix) {
+        return list.stream().map(x -> x.toString()).collect(Collectors.joining(separator, prefix, suffix)).toString();
+    }
+
+    public static String join(List list, String separator) {
+        return join(list, separator, "", "");
     }
 
     /**

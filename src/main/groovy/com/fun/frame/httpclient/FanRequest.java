@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 重写FanLibrary，使用面对对象思想
  */
-public class FanRequest {
+public class FanRequest extends FanLibrary {
 
     /**
      * 请求类型，true为get，false为post
@@ -74,8 +74,7 @@ public class FanRequest {
      * @return
      */
     public static FanRequest isGet() {
-        FanRequest FanRequest = new FanRequest(RequestType.GET);
-        return FanRequest;
+        return new FanRequest(RequestType.GET);
     }
 
     /**
@@ -84,8 +83,7 @@ public class FanRequest {
      * @return
      */
     public static FanRequest isPost() {
-        FanRequest FanRequest = new FanRequest(RequestType.POST);
-        return FanRequest;
+        return new FanRequest(RequestType.POST);
     }
 
     /**
@@ -192,6 +190,17 @@ public class FanRequest {
     }
 
     /**
+     * 增加header中cookies
+     *
+     * @param cookies
+     * @return
+     */
+    public FanRequest addCookies(JSONObject cookies) {
+        headers.add(getCookies(cookies));
+        return this;
+    }
+
+    /**
      * 获取请求响应，兼容相关参数方法，不包括file
      *
      * @return
@@ -204,12 +213,13 @@ public class FanRequest {
                 request = FanLibrary.getHttpGet(uri, args);
                 break;
             case POST:
-                request = !params.isEmpty() ? FanLibrary.getHttpPost(uri + FanLibrary.changeJsonToArguments(args), params) : !json.isEmpty() ? FanLibrary.getHttpPost(uri + FanLibrary.changeJsonToArguments(args), json.toString()) : FanLibrary.getHttpPost(uri + FanLibrary.changeJsonToArguments(args));
+                request = !params.isEmpty() ? FanLibrary.getHttpPost(uri + changeJsonToArguments(args), params) : !json.isEmpty() ? getHttpPost(uri + changeJsonToArguments(args), json.toString()) : getHttpPost(uri + changeJsonToArguments(args));
                 break;
         }
         headers.forEach(header -> request.addHeader(header));
         return FanLibrary.getHttpResponse(request);
     }
+
 
     /**
      * 获取请求对象
@@ -222,6 +232,6 @@ public class FanRequest {
 
     @Override
     public String toString() {
-        return "host：" + host + ",api：" + apiName + ",uri:" + uri + ",args:" + args.toString() + ",params:" + params.toString() + ",json:" + json.toString() + "header:" + headers.size();
+        return JSONObject.fromObject(this).toString();
     }
 }

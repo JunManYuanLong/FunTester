@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,14 +16,17 @@ import java.util.List;
 public class Verify extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(Verify.class);
+
     /**
      * 断言的json对象
      */
     private JSONObject verifyJson;
+
     /**
      * 断言的code码
      */
     private int code;
+
     /**
      * 断言的json对象分行解析
      */
@@ -43,7 +47,6 @@ public class Verify extends SourceCode {
             return verifyJson.getInt("code");
         } catch (JSONException e) {
             logger.warn("获取responseCode失败！", e);
-        } finally {
             return TEST_ERROR_CODE;
         }
     }
@@ -200,5 +203,24 @@ public class Verify extends SourceCode {
     public boolean isRegex(String regex) {
         String text = verifyJson.toString();
         return Regex.isRegex(text, regex);
+    }
+
+    /**
+     * 解析json信息
+     *
+     * @param response json格式的响应实体
+     * @return json每个字段和值，key:value形式
+     */
+    public static List<String> parseJsonLines(JSONObject response) {
+        String jsonStr = response.toString();// 先将json对象转化为string对象
+        jsonStr = jsonStr.replaceAll(",", LINE);
+        jsonStr = jsonStr.replaceAll("\"", EMPTY);
+        jsonStr = jsonStr.replaceAll("\\\\/", OR);
+        jsonStr = jsonStr.replaceAll("\\{", LINE);
+        jsonStr = jsonStr.replaceAll("\\[", LINE);
+        jsonStr = jsonStr.replaceAll("}", LINE);
+        jsonStr = jsonStr.replaceAll("]", LINE);
+        List<String> jsonLines = Arrays.asList(jsonStr.split(LINE));
+        return jsonLines;
     }
 }

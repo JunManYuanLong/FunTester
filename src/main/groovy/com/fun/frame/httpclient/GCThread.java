@@ -38,7 +38,7 @@ public class GCThread extends SourceCode implements Runnable {
     /**
      * 结束线程方法
      */
-    public synchronized static void stop() {
-        if (FLAG == true) FLAG = false;
+    public static void stop() {
+        FLAG = false;
     }
 }

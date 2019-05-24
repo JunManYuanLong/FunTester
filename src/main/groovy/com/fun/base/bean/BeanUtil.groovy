@@ -16,7 +16,7 @@ class BeanUtil extends SourceCode {
  * @param source
  * @return
  */
-   def static copy(BaseBean bean, Object source) {
+   def static copyProperties(BaseBean bean, Object source) {
         try {
             BeanUtils.copyProperties(bean, source)
         } catch (Exception e) {

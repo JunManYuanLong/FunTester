@@ -136,7 +136,6 @@ public class Request extends SourceCode {
         code.append(LINE + TAB + TAB + "JSONObject " + type + " = new JSONObject();");
         Set keySet = i == 0 ? args.keySet() : params.keySet();
         keySet.forEach(key -> {
-//			if (!key.toString().equals(LOGINKEY))
             collectArgs(key.toString(), params.getString(key.toString()));
             code.append(LINE + TAB + TAB + type + ".put(\"" + key.toString() + "\", " + key.toString() + ");");
         });

@@ -294,10 +294,8 @@ public class FanLibrary extends SourceCode {
         try {
             content = EntityUtils.toString(entity, DEFAULT_CHARSET);// 用string接收响应实体
             EntityUtils.consume(entity);// 消耗响应实体，并关闭相关资源占用
-        } catch (ParseException e1) {
+        } catch (Exception e1) {
             logger.warn("解析响应实体异常！", e1);
-        } catch (IOException e1) {
-            logger.warn("解析响应实体时IO 异常！", e1);
         }
         return content;
     }
