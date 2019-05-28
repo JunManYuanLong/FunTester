@@ -19,10 +19,12 @@ idea {
 sourceCompatibility = 1.8
 
 repositories {
-//        maven {
-//            url 'http://maven.aliyun.com/nexus/content/groups/public/'
-//        }
-    mavenCentral()
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+    }
+//    http://repo1.maven.apache.org/maven2/
+
+//    mavenCentral()
 }
 
 dependencies {
@@ -32,7 +34,6 @@ dependencies {
     compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.8.0'
     compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
     compile group: 'com.sun.jna', name: 'jna', version: '3.0.9'
-//    compile group: 'org.codehaus.groovy', name: 'groovy', version: '2.5.1'
     compile 'net.sf.json-lib:json-lib:2.4:jdk15'
     compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.9.0'
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.0'
@@ -41,6 +42,7 @@ dependencies {
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
     compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.0'
     compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.5.6'
+    compile group: 'com.github.dreamhead', name: 'moco-core', version: '0.12.0'
 }
 
 jar {
