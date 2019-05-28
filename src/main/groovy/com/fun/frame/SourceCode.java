@@ -49,6 +49,7 @@ public class SourceCode extends Output {
         while (scanner.hasNext()) {
             String next = scanner.next();
             if (next.equals(key.toString())) break;
+            logger.info("输入：{}错误！",next);
         }
         scanner.close();
         long end = Time.getTimeStamp();
