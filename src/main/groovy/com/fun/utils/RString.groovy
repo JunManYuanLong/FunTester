@@ -14,9 +14,9 @@ class RString extends SourceCode {
         String re = EMPTY
         if (i < 1) return re
         for (int j in 1..i) {
-            re = re + getChar()
+            re += getChar()
         }
-        return re
+        re
     }
 
 /**
@@ -24,7 +24,7 @@ class RString extends SourceCode {
  * @return
  */
     static char getChar() {
-        return chars[getRandomInt(62) - 1]
+        chars[getRandomInt(62) - 1]
     }
 
 /**
@@ -43,6 +43,10 @@ class RString extends SourceCode {
      */
     static String getRandomString(String... list) {
         int randomInt = getRandomInt(list.length - 1);
-        return list[randomInt].toString();
+        list[randomInt].toString();
+    }
+
+    public static void main(String[] args) {
+        output(getString(3))
     }
 }

@@ -34,6 +34,6 @@ public class RecordBean extends BaseBean {
 
     @Override
     def print() {
-        logger.info("接口：{}，响应时间{}", api, expend_time)
+        logger.info "接口：{}，响应时间{}", api, expend_time
     }
 }

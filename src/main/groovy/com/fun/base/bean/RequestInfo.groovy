@@ -56,7 +56,7 @@ class RequestInfo extends BaseBean {
      * @param request
      */
     public RequestInfo(HttpRequestBase request) {
-        getRequestInfo(request)
+        getRequestInfo request
     }
 
     /**
@@ -66,7 +66,7 @@ class RequestInfo extends BaseBean {
      * @return 返回一个map，包含api_name,host_name,type，method，params
      */
     private void getRequestInfo(HttpRequestBase request) {
-        method = RequestType.getRequestType(request.getMethod())// 获取method
+        method = RequestType.getRequestType request.getMethod()
         uri = request.getURI().toString()// 获取uri
         getRequestUrl(uri)
         String one = url.substring(url.indexOf("//") + 2)// 删除掉http://
@@ -110,6 +110,6 @@ class RequestInfo extends BaseBean {
 
     @Override
     public String toString() {
-        return "host:" + host + TAB + "apiname:" + apiName + TAB + "请求方法：" + method.getName() + TAB + "参数：" + params
+        this.toJson()
     }
 }

@@ -31,7 +31,7 @@ class TimeWatch extends SourceCode {
     public static TimeWatch create() {
         final TimeWatch timeWatch = new TimeWatch()
         timeWatch.start()
-        return timeWatch
+        timeWatch
     }
 
 /**
@@ -42,7 +42,7 @@ class TimeWatch extends SourceCode {
     public static TimeWatch create(def name) {
         final TimeWatch timeWatch = new TimeWatch()
         timeWatch.start()
-        return timeWatch
+        timeWatch
     }
 
 
@@ -70,7 +70,7 @@ class TimeWatch extends SourceCode {
  * @return
  */
     def mark(def name) {
-        marks.put(name, new Mark(name))
+        marks.put name, new Mark(name)
     }
 
 /**
@@ -78,7 +78,7 @@ class TimeWatch extends SourceCode {
  * @return
  */
     def mark() {
-        marks.put(name, new Mark(name))
+        marks.put name, new Mark(name)
     }
 
 /**
@@ -144,7 +144,7 @@ class TimeWatch extends SourceCode {
     def getTime() {
         def diff = Time.getTimeStamp() - startTimeMillis
         logger.info(LINE + "观察者：{}，记录时间：{} ms", getName(), diff)
-        return diff
+         diff
     }
 
 /**
@@ -154,7 +154,7 @@ class TimeWatch extends SourceCode {
     def getNanoTime() {
         long diff = getNanoMark() - startTime
         logger.info(LINE + "观察者：{}，记录时间：{} ns", getName(), diff)
-        return diff
+        diff
     }
 
 /**
@@ -227,7 +227,7 @@ class TimeWatch extends SourceCode {
         watch.name = getName() + "_c"
         watch.startTime = getStartTime()
         watch.startTimeMillis = getStartTimeMillis()
-        return watch
+        watch
     }
 /**
  * 标记类

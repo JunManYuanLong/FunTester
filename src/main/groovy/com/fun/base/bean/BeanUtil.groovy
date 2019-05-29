@@ -30,6 +30,6 @@ class BeanUtil extends SourceCode {
  * @return
  */
     static JSONObject toJson(BaseBean bean) {
-        JSONObject.fromObject(bean)
+        JSONObject.fromObject bean
     }
 }
