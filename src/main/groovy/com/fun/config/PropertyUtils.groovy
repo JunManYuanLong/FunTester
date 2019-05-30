@@ -36,10 +36,10 @@ class PropertyUtils extends SourceCode {
     static class Property {
         Map<String, String> properties = new HashMap<>()
 
-        def Property(ResourceBundle resourceBundle) {
+        Property(ResourceBundle resourceBundle) {
             def set = resourceBundle.keySet()
             for (def key in set) {
-                properties.put(key, resourceBundle.getString(key))
+                properties.put key, resourceBundle.getString(key)
             }
         }
 
@@ -64,7 +64,7 @@ class PropertyUtils extends SourceCode {
  * @return
  */
         def printAll() {
-            output(properties)
+            output properties
         }
 
 /**
@@ -73,7 +73,7 @@ class PropertyUtils extends SourceCode {
  * @return
  */
         boolean contain(def key) {
-            properties.containsKey(key)
+            properties.containsKey key
         }
     }
 }
