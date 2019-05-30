@@ -9,7 +9,7 @@ import static com.github.dreamhead.moco.Moco.*
 /**
  * requestmatcher获取
  */
-class MocoRequestUtil extends SourceCode {
+class MocoRequest extends SourceCode {
 /**
  * url正则匹配
  * @param regex
