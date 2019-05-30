@@ -1,6 +1,5 @@
 package com.fun.moco
 
-import com.fun.frame.SourceCode
 import com.github.dreamhead.moco.ResponseHandler
 import com.github.dreamhead.moco.procedure.LatencyProcedure
 import com.google.common.collect.FluentIterable
@@ -11,11 +10,10 @@ import java.util.concurrent.TimeUnit
 import static com.github.dreamhead.moco.Moco.*
 import static com.github.dreamhead.moco.internal.ApiUtils.textToResource
 import static com.github.dreamhead.moco.util.Iterables.asIterable
-
 /**
  * responsehandle获取
  */
-class MocoResponse extends SourceCode {
+class MocoResponse {
 
 /**
  * 返回文本信息
@@ -147,9 +145,7 @@ class MocoResponse extends SourceCode {
  * @return
  */
     static ResponseHandler[] setHeader(JSONObject json) {
-        List<ResponseHandler> list = new ArrayList<>()
-        json.each { x -> list << setHeader(x.key, x.value) }
-        list.toArray()
+        json.keySet().stream().map { x -> setHeader(x.toString(), json.getString(x)) }.toArray() as ResponseHandler[]
     }
 
 /**
