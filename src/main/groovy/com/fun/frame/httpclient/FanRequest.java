@@ -156,6 +156,17 @@ public class FanRequest extends FanLibrary {
     }
 
     /**
+     * 批量添加json参数
+     *
+     * @param json
+     * @return
+     */
+    public FanRequest addJson(JSONObject json) {
+        this.json.putAll(json);
+        return this;
+    }
+
+    /**
      * 添加header
      *
      * @param key
@@ -164,6 +175,17 @@ public class FanRequest extends FanLibrary {
      */
     public FanRequest addHeader(Object key, Object value) {
         headers.add(FanLibrary.getHeader(key.toString(), value.toString()));
+        return this;
+    }
+
+    /**
+     * 批量添加header
+     *
+     * @param json
+     * @return
+     */
+    public FanRequest addHeader(JSONObject json) {
+        json.keySet().forEach(x -> headers.add(getHeader(x.toString(), json.getString(x.toString()))));
         return this;
     }
 
