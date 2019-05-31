@@ -1,6 +1,6 @@
 package com.fun.moco
 
-import com.fun.frame.SourceCode
+
 import com.github.dreamhead.moco.HttpServer
 import com.github.dreamhead.moco.MocoMonitor
 import com.github.dreamhead.moco.MocoRequestHit
@@ -8,11 +8,10 @@ import com.github.dreamhead.moco.Runner
 
 import static com.github.dreamhead.moco.Moco.httpServer
 import static com.github.dreamhead.moco.Moco.log
-
 /**
  * 获取server的工具类，提供了计数监视器和日志监视器
  */
-class Server extends SourceCode {
+class MocoServer extends MocoResponse {
 
     def array = new ArrayList()
 
@@ -28,8 +27,12 @@ class Server extends SourceCode {
         httpServer port, getLogMonitor()
     }
 
-    static HttpServer getServer(int port, MocoMonitor... mocoMonitors) {
-        httpServer port, mocoMonitors
+    static HttpServer getServer(MocoMonitor mocoMonitors) {
+        httpServer 12345, mocoMonitors
+    }
+
+    static HttpServer getServer(final int port, String name, MocoMonitor configs) {
+        httpServer port, getLogMonitor(name), configs
     }
 
 /**
@@ -38,7 +41,7 @@ class Server extends SourceCode {
  * @return
  */
     static def getLogMonitor(String name) {
-        log name, DEFAULT_CHARSET
+        log LOG_Path + name, DEFAULT_CHARSET
     }
 
 /**
@@ -62,8 +65,8 @@ class Server extends SourceCode {
  * @param httpServer
  * @return
  */
-    static Server run(HttpServer... httpServer) {
-        def server = new Server()
+    static MocoServer run(HttpServer... httpServer) {
+        def server = new MocoServer()
         httpServer.each { x -> server.array << Runner.runner(x) }
         server.start()
     }

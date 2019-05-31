@@ -1,5 +1,6 @@
 package com.fun.moco
 
+import com.fun.base.bean.Result
 import com.github.dreamhead.moco.ResponseHandler
 import com.github.dreamhead.moco.procedure.LatencyProcedure
 import com.google.common.collect.FluentIterable
@@ -10,10 +11,11 @@ import java.util.concurrent.TimeUnit
 import static com.github.dreamhead.moco.Moco.*
 import static com.github.dreamhead.moco.internal.ApiUtils.textToResource
 import static com.github.dreamhead.moco.util.Iterables.asIterable
+
 /**
  * responsehandle获取
  */
-class MocoResponse {
+class MocoResponse extends MocoRequest {
 
 /**
  * 返回文本信息
@@ -36,6 +38,22 @@ class MocoResponse {
         with json.toString()
     }
 
+/**
+ * 返回对象
+ * @param result
+ * @return
+ */
+    static ResponseHandler obResponse(Result result) {
+        with result.toString()
+    }
+
+    static ResponseHandler success(Object result) {
+        with obResponse(Result.success(result))
+    }
+
+    static ResponseHandler fail(Object result) {
+        with obResponse(Result.fail(result))
+    }
 /**
  * 随机response
  * @param handlers

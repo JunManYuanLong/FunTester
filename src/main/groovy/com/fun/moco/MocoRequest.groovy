@@ -5,11 +5,10 @@ import com.github.dreamhead.moco.RequestMatcher
 
 import static com.fun.moco.JsonRequestExtractor.queryJson
 import static com.github.dreamhead.moco.Moco.*
-
 /**
  * requestmatcher获取
  */
-class MocoRequest extends SourceCode {
+class MocoRequest extends SourceCode{
 /**
  * url正则匹配
  * @param regex
