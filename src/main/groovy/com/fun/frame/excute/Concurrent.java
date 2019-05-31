@@ -36,7 +36,7 @@ public class Concurrent {
     /**
      * 线程数
      */
-    public int num;
+    public int threadNum;
 
     public static Vector<Long> allTimes = new Vector<>();
 
@@ -52,10 +52,10 @@ public class Concurrent {
 
     /**
      * @param thread 线程任务
-     * @param num    线程数
+     * @param threadNum    线程数
      */
-    public Concurrent(ThreadBase thread, int num) {
-        this(num);
+    public Concurrent(ThreadBase thread, int threadNum) {
+        this(threadNum);
         this.thread = thread;
     }
 
@@ -67,10 +67,10 @@ public class Concurrent {
         this.threads = threads;
     }
 
-    private Concurrent(int num) {
-        this.num = num;
-        executorService = Executors.newFixedThreadPool(num);
-        countDownLatch = new CountDownLatch(num);
+    private Concurrent(int threadNum) {
+        this.threadNum = threadNum;
+        executorService = Executors.newFixedThreadPool(threadNum);
+        countDownLatch = new CountDownLatch(threadNum);
     }
 
     /**
@@ -78,14 +78,14 @@ public class Concurrent {
      */
     public PerformanceResultBean start() {
         long start = Time.getTimeStamp();
-        for (int i = 0; i < num; i++) {
+        for (int i = 0; i < threadNum; i++) {
             ThreadBase thread = getThread(i);
             thread.setCountDownLatch(countDownLatch);
             executorService.execute(thread);
         }
         shutdownService(executorService, countDownLatch);
         long end = Time.getTimeStamp();
-        logger.info("总计" + num + "个线程，共用时：" + Time.getTimeDiffer(start, end) + "秒！");
+        logger.info("总计" + threadNum + "个线程，共用时：" + Time.getTimeDiffer(start, end) + "秒！");
         return over();
     }
 
@@ -105,8 +105,8 @@ public class Concurrent {
     }
 
     private PerformanceResultBean over() {
-        Save.saveLongList(allTimes, num);
-        return countQPS(num);
+        Save.saveLongList(allTimes, threadNum);
+        return countQPS(threadNum);
     }
 
     ThreadBase getThread(int i) {
