@@ -14,7 +14,7 @@ class FileUtil extends SourceCode {
  * @param target
  * @return
  */
-    def static copy(String source, String target) {
+    static def copy(String source, String target) {
         def s = new File(source)
         def t = new File(target)
         if (s.exists() && s.isFile()) return t.newOutputStream() << s.newInputStream()
@@ -27,7 +27,7 @@ class FileUtil extends SourceCode {
  * @param newPath
  * @return
  */
-    def static rename(String oldPath, String newPath) {
+    static def rename(String oldPath, String newPath) {
         if (new File(oldPath).renameTo(newPath)) logger.error("rename file error!，old:{},new:{}", oldPath, newPath)
     }
 
@@ -37,7 +37,7 @@ class FileUtil extends SourceCode {
  * @param target
  * @return
  */
-    def static down(String url, String target) {
+    static def down(String url, String target) {
         def s = new URL(url)
         def t = new File(target)
         t << s
@@ -49,7 +49,7 @@ class FileUtil extends SourceCode {
  * @param path
  * @return
  */
-    def static List<String> getAllFile(String path) {
+    static List<String> getAllFile(String path) {
         List<String> list = new ArrayList<>()
         File file = new File(path)
         if (!file.exists() || file.isFile()) return list

@@ -12,7 +12,7 @@ class CountTool extends SourceCode {
      * @param counts 统计的 jsonobject 对象
      * @param object 需要统计的数据
      */
-    static count(JSONObject counts, Object object) {
+    static def count(JSONObject counts, Object object) {
         count(counts, object, 1)
     }
 
@@ -22,7 +22,7 @@ class CountTool extends SourceCode {
      * @param counts 统计的 jsonobject 对象
      * @param object 需要统计的数据
      */
-    def static count(JSONObject counts, Object object, int num) {
+    static def count(JSONObject counts, Object object, int num) {
         if (counts.containsKey(object.toString())) {
             int i = counts.getInt(object.toString()) + num
             counts.put(object.toString(), i)
@@ -37,7 +37,7 @@ class CountTool extends SourceCode {
  * @param str
  * @return
  */
-    def static count(List list, def str) {
+    static def count(List list, def str) {
         list.count { s -> s.toString().equals(str.toString()) }
     }
 
@@ -46,7 +46,7 @@ class CountTool extends SourceCode {
  * @param list
  * @return
  */
-    def static count(List list) {
+    static def count(List list) {
         Map<Integer, List<Object>> collect = list.stream().collect(Collectors.groupingBy { x -> x.toString() })
         collect.keySet().stream().sorted().forEach { x ->
             output("元素：${x}，次数：${collect.get(x).size()}")

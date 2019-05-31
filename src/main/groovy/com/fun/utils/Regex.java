@@ -56,6 +56,7 @@ public class Regex extends SourceCode {
 
     /**
      * 获取匹配项，不包含文字信息，会删除regex的内容
+     * <p>不保证完全正确</p>
      *
      * @param text
      * @param regex

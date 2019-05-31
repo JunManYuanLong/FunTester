@@ -45,8 +45,4 @@ class RString extends SourceCode {
         int randomInt = getRandomInt(list.length - 1);
         list[randomInt].toString();
     }
-
-    public static void main(String[] args) {
-        output(getString(3))
-    }
 }
