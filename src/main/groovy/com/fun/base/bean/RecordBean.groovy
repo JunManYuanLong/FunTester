@@ -6,9 +6,9 @@ import org.slf4j.LoggerFactory
 /**
  * 测试记录的bean
  */
-public class RecordBean extends BaseBean {
+class RecordBean extends BaseBean {
 
-    private static Logger logger = LoggerFactory.getLogger(RecordBean.class)
+    static Logger logger = LoggerFactory.getLogger(RecordBean.class)
 
     String domain;
 
