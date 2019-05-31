@@ -16,6 +16,7 @@ import static com.google.common.collect.ImmutableList.copyOf;
 /**
  * 循环的responsehandle
  */
+@SuppressWarnings("all")
 public class CycleHandle extends AbstractResponseHandler {
 
     private final ImmutableList<ResponseHandler> handlers;

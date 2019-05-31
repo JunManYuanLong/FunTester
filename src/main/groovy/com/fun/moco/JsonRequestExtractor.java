@@ -12,6 +12,7 @@ import static com.google.common.base.Optional.fromNullable;
 /**
  * json数据格式参数值的获取
  */
+@SuppressWarnings("all")
 public class JsonRequestExtractor extends HttpRequestExtractor<String[]> {
 
     private final String param;

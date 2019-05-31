@@ -90,7 +90,7 @@ class MocoRequest extends SourceCode{
  * @return
  */
     static RequestMatcher existUrl(String piece) {
-        exist contain(uri(piece))
+        contain uri(piece)
     }
 
 /**

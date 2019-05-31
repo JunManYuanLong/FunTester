@@ -15,6 +15,7 @@ import static com.github.dreamhead.moco.util.Iterables.asIterable
 /**
  * responsehandle获取
  */
+@SuppressWarnings("all")
 class MocoResponse extends MocoRequest {
 
 /**
@@ -200,7 +201,7 @@ class MocoResponse extends MocoRequest {
  * @return
  */
     static random(String content, String... contents) {
-        return new RandomHandler(FluentIterable.from(asIterable(content, contents)).transform(textToResource()))
+        new RandomHandler(FluentIterable.from(asIterable(content, contents)).transform(textToResource()))
     }
 
 /**
@@ -210,7 +211,7 @@ class MocoResponse extends MocoRequest {
  * @return
  */
     static ResponseHandler random(ResponseHandler handler, ResponseHandler... handlers) {
-        return new RandomHandler(asIterable(handler, handlers))
+        new RandomHandler(asIterable(handler, handlers))
     }
 
 /**
@@ -220,7 +221,7 @@ class MocoResponse extends MocoRequest {
  * @return
  */
     static ResponseHandler cycle(String content, String... contents) {
-        return new CycleHandle(FluentIterable.from(asIterable(content, contents)).transform(textToResource()))
+        new CycleHandle(FluentIterable.from(asIterable(content, contents)).transform(textToResource()))
     }
 
 /**
