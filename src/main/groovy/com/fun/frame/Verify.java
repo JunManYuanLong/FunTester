@@ -98,7 +98,7 @@ public class Verify extends SourceCode {
      * 校验节点值为数字
      *
      * @param value 节点名
-     * @return返回 Boolean 值
+     * @return 返回 Boolean 值
      */
     public boolean isNum(String... value) {
         boolean result = true;
@@ -151,9 +151,7 @@ public class Verify extends SourceCode {
         String json = verifyJson.toString();
         int index = json.indexOf(key);
         char a = json.charAt(index + key.length() + 2);
-        if (a == '[')
-            return true;
-        return false;
+        return a == '[';
     }
 
     /**
