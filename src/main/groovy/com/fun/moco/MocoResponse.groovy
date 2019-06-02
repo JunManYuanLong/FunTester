@@ -49,11 +49,11 @@ class MocoResponse extends MocoRequest {
     }
 
     static ResponseHandler success(Object result) {
-        with obResponse(Result.success(result))
+        with Result.success(result).toString()
     }
 
     static ResponseHandler fail(Object result) {
-        with obResponse(Result.fail(result))
+        with Result.fail(result).toString()
     }
 /**
  * 随机response
