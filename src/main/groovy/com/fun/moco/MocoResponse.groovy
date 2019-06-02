@@ -201,7 +201,7 @@ class MocoResponse extends MocoRequest {
  * @return
  */
     static random(String content, String... contents) {
-        new RandomHandler(FluentIterable.from(asIterable(content, contents)).transform(textToResource()))
+        RandomHandler.newSeq(FluentIterable.from(asIterable(content, contents)).transform(textToResource()))
     }
 
 /**
@@ -211,7 +211,7 @@ class MocoResponse extends MocoRequest {
  * @return
  */
     static ResponseHandler random(ResponseHandler handler, ResponseHandler... handlers) {
-        new RandomHandler(asIterable(handler, handlers))
+        RandomHandler.newSeq(asIterable(handler, handlers))
     }
 
 /**
@@ -221,7 +221,7 @@ class MocoResponse extends MocoRequest {
  * @return
  */
     static ResponseHandler cycle(String content, String... contents) {
-        new CycleHandle(FluentIterable.from(asIterable(content, contents)).transform(textToResource()))
+        CycleHandle.newSeq(FluentIterable.from(asIterable(content, contents)).transform(textToResource()))
     }
 
 /**
@@ -231,6 +231,26 @@ class MocoResponse extends MocoRequest {
  * @return
  */
     static ResponseHandler cycle(final ResponseHandler handler, final ResponseHandler... handlers) {
-        return new CycleHandle(asIterable(handler, handlers))
+        CycleHandle.newSeq(asIterable(handler, handlers))
+    }
+
+/**
+ * 限制请求频次
+ * @param limit
+ * @param unlimit
+ * @return
+ */
+    static ResponseHandler limit(final ResponseHandler limit, final ResponseHandler unlimit) {
+        LimitHandle.newSeq(limit, unlimit, 1)
+    }
+/**
+ * 限制请求频次
+ * @param limit
+ * @param unlimit
+ * @param interval
+ * @return
+ */
+    static ResponseHandler limit(final ResponseHandler limit, final ResponseHandler unlimit, int interval) {
+        LimitHandle.newSeq(limit, unlimit, interval)
     }
 }

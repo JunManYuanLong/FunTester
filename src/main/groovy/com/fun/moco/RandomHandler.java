@@ -9,7 +9,9 @@ import com.github.dreamhead.moco.internal.SessionContext;
 import com.google.common.base.Function;
 import com.google.common.collect.FluentIterable;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 
+import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.collect.FluentIterable.from;
 import static com.google.common.collect.ImmutableList.copyOf;
 
@@ -18,15 +20,21 @@ import static com.google.common.collect.ImmutableList.copyOf;
  * 随机的responsehandle
  */
 public class RandomHandler extends AbstractResponseHandler {
+
     private final ImmutableList<ResponseHandler> handlers;
 
     private RandomHandler(final Iterable<ResponseHandler> handlers) {
         this.handlers = copyOf(handlers);
     }
 
+    public static ResponseHandler newSeq(final Iterable<ResponseHandler> handlers) {
+        checkArgument(Iterables.size(handlers) > 0, "Sequence contents should not be null");
+        return new RandomHandler(handlers);
+    }
+
     @Override
     public void writeToResponse(final SessionContext context) {
-        handlers.get(SourceCode.getRandomInt(handlers.size()-1)).writeToResponse(context);
+        handlers.get(SourceCode.getRandomInt(handlers.size() - 1)).writeToResponse(context);
     }
 
     @Override

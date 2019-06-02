@@ -27,13 +27,14 @@ public class LimitHandle extends AbstractResponseHandler {
 
     private int interval;
 
-    private LimitHandle(final ResponseHandler limit, final ResponseHandler unLimit) {
+    private LimitHandle(final ResponseHandler limit, final ResponseHandler unLimit, int interval) {
         this.limit = limit;
         this.unlimit = unLimit;
+        this.interval = interval;
     }
 
-    public static ResponseHandler newSeq(final ResponseHandler limit, final ResponseHandler unLimit) {
-        return new LimitHandle(limit,unLimit);
+    public static ResponseHandler newSeq(final ResponseHandler limit, final ResponseHandler unLimit, int interval) {
+        return new LimitHandle(limit, unLimit, interval);
     }
 
     @Override
@@ -49,7 +50,7 @@ public class LimitHandle extends AbstractResponseHandler {
         if (config.isFor(MocoConfig.RESPONSE_ID)) {
             return super.apply(config);
         }
-        return new LimitHandle(limit,unlimit);
+        return new LimitHandle(limit, unlimit, interval);
     }
 
     private Function<ResponseHandler, ResponseHandler> applyConfig(final MocoConfig config) {
