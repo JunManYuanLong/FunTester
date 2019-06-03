@@ -16,7 +16,7 @@ class BeanUtil extends SourceCode {
  * @param source
  * @return
  */
-   def static copyProperties(BaseBean bean, Object source) {
+   def static copyProperties(AbstractBean bean, Object source) {
         try {
             BeanUtils.copyProperties(bean, source)
         } catch (Exception e) {
@@ -29,7 +29,7 @@ class BeanUtil extends SourceCode {
  * @param bean
  * @return
  */
-    static JSONObject toJson(BaseBean bean) {
+    static JSONObject toJson(AbstractBean bean) {
         JSONObject.fromObject bean
     }
 }

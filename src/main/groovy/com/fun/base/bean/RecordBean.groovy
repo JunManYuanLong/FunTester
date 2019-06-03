@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory
 /**
  * 测试记录的bean
  */
-class RecordBean extends BaseBean {
+class RecordBean extends AbstractBean {
 
     static Logger logger = LoggerFactory.getLogger(RecordBean.class)
 

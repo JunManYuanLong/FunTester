@@ -3,7 +3,7 @@ package com.fun.base.bean
 /**
  * 性能测试结果集
  */
-class PerformanceResultBean extends BaseBean {
+class PerformanceResultBean extends AbstractBean {
 
     int thrads;
 

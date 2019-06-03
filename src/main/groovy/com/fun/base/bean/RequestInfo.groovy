@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory
 /**
  * 请求信息封装类
  */
-class RequestInfo extends BaseBean {
+class RequestInfo extends AbstractBean {
 
     private static Logger logger = LoggerFactory.getLogger(RequestInfo.class)
 
