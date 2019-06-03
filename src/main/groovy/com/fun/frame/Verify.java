@@ -72,7 +72,7 @@ public class Verify extends SourceCode {
         for (int i = 0; i < size; i++) {
             String line = lines.get(i);
             if (line.startsWith(key + ":"))
-                return deleteCharFromString(key + ":", line);
+                return line.replaceFirst(key + ":", EMPTY);
         }
         return EMPTY;
     }
@@ -110,7 +110,7 @@ public class Verify extends SourceCode {
             for (int k = 0; k < lines.size(); k++) {
                 String line = lines.get(k);
                 if (line.startsWith(key)) {
-                    String lineValue = deleteCharFromString(key, line);
+                    String lineValue = line.replaceFirst(key, EMPTY);
                     result = isNumber(lineValue) & result;
                 }
             }
@@ -133,7 +133,7 @@ public class Verify extends SourceCode {
             for (int k = 0; k < lines.size(); k++) {
                 String line = lines.get(k);
                 if (line.startsWith(key)) {
-                    String lineValue = deleteCharFromString(key, line);
+                    String lineValue = line.replaceFirst(key, EMPTY);
                     result = lineValue != null & !lineValue.isEmpty() & result;
                 }
             }
@@ -184,7 +184,7 @@ public class Verify extends SourceCode {
             for (int k = 0; k < lines.size(); k++) {
                 String line = lines.get(k);
                 if (line.startsWith(key)) {
-                    String lineValue = deleteCharFromString(key, line);
+                    String lineValue = line.replaceFirst(key, EMPTY);
                     result = Regex.isRegex(lineValue, "^(false)|(true)$") & result;
                 }
             }

@@ -1,13 +1,9 @@
 package com.fun.base.bean
-
-import com.fun.frame.SourceCode
-import net.sf.json.JSONObject
-
 /**
  * 通用的返回体
  * @param <T>
  */
-class Result<T> extends SourceCode {
+class Result<T> extends AbstractBean {
 
     int code
 
@@ -35,10 +31,5 @@ class Result<T> extends SourceCode {
 
     boolean success() {
         code == 0
-    }
-
-    @Override
-    public String toString() {
-        return JSONObject.fromObject(this).toString();
     }
 }

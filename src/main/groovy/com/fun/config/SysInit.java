@@ -55,6 +55,7 @@ public class SysInit extends SourceCode {
 
     /**
      * 是否是黑名单的host
+     * <p>先检验fv1314和本地local还有10.10.的地址，然后校验配置文件中的host name</p>
      *
      * @param name
      * @return

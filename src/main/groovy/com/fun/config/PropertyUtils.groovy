@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory
 class PropertyUtils extends SourceCode {
     static Logger logger = LoggerFactory.getLogger(PropertyUtils.class)
 
-
     /**
      * 获取指定.properties配置文件中所以的数据
      * @param propertyName

@@ -52,7 +52,7 @@ public class Time extends SourceCode {
     /**
      * 获取时间戳
      *
-     * @param time 传入时间
+     * @param time 传入时间，纯数字
      * @return 返回时间戳，毫秒
      */
     public static long getUtcTimestamp(String time) {
@@ -61,6 +61,12 @@ public class Time extends SourceCode {
         return utc;
     }
 
+    /**
+     * 获取UTC时间戳
+     *
+     * @param time 纯数字日期
+     * @return
+     */
     public static long getUtcTimestamp(long time) {
         return getUtcTimestamp(time + EMPTY);
     }
@@ -131,7 +137,7 @@ public class Time extends SourceCode {
     /**
      * 获取时间戳
      *
-     * @param time 传入时间
+     * @param time 传入时间，纯数字组成的时间
      * @return 返回时间戳，毫秒
      */
     public static long getTimestamp(String time) {

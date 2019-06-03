@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import java.sql.SQLException;
 
 /**
- * 数据库多线程类
+ * 数据库多线程类，query方法类，区别于updatethread
  */
 public class QuerySqlThread extends ThreadBase {
 

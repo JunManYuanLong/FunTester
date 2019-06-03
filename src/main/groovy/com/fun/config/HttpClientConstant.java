@@ -16,10 +16,14 @@ public class HttpClientConstant {
 
     static PropertyUtils.Property propertyUtils = PropertyUtils.getProperties("http");
 
+    static String getProperty(String name) {
+        return propertyUtils.getProperty(name);
+    }
+
     /**
      * 默认user_agent
      */
-    public static Header USER_AGENT = getHeader("User-Agent", propertyUtils.getProperty("User-Agent"));
+    public static Header USER_AGENT = getHeader("User-Agent", getProperty("User-Agent"));
 
     /**
      * 从连接池中获取可用连接最大超时时间 单位：毫秒
@@ -64,7 +68,7 @@ public class HttpClientConstant {
     /**
      * 连接header设置
      */
-    public static Header CONNECTION = getHeader("Connection", propertyUtils.getProperty("Connection"));
+    public static Header CONNECTION = getHeader("Connection", getProperty("Connection"));
 
     public static Header CLIENT_IP = getHeader("Client-Ip", IP);
 
@@ -78,7 +82,7 @@ public class HttpClientConstant {
 
     public static Header ContentType_JSON = getHeader("Content-Type", "application/json");
 
-    public static Header ContentType_FORM = getHeader("Content-Type", "application/x-www-form-urlencoded; charset="+DEFAULT_CHARSET.toString());
+    public static Header ContentType_FORM = getHeader("Content-Type", "application/x-www-form-urlencoded; charset=" + DEFAULT_CHARSET.toString());
 
     public static Header ContentType_TEXT = getHeader("Content-Type", "text/plain");
 
@@ -112,9 +116,9 @@ public class HttpClientConstant {
     /**
      * SSL版本
      */
-    public static String SSL_VERSION = propertyUtils.getProperty("ssl_v");
+    public static String SSL_VERSION = getProperty("ssl_v");
 
-    public static List<String> BLACK_HOSTS = Arrays.asList(propertyUtils.getProperty("black_host").split(","));
+    public static List<String> BLACK_HOSTS = Arrays.asList(getProperty("black_host").split(","));
 
     /**
      * 公共的header集合

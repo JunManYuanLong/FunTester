@@ -109,6 +109,7 @@ public class AlertOver extends FanLibrary implements IMessage {
         jsonObject.put("url", murl);// 发送标题
         jsonObject.put("sound", "pianobar");// 发送声音
         HttpPost httpPost = getHttpPost(url, jsonObject);
+        /*取消发送*/
 //        getHttpResponse(httpPost);
     }
 

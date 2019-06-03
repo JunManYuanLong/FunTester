@@ -2,6 +2,8 @@ package com.fun.utils;
 
 import com.fun.frame.SourceCode;
 
+import java.util.stream.IntStream;
+
 public class Emoji extends SourceCode {
 //    public static void main(String[] args) {
 //        String aa = "";
@@ -22,17 +24,15 @@ public class Emoji extends SourceCode {
 //    }
 
     /**
-     * 随机获取emoji表情数组
+     * 随机获取emoji表情数
      *
      * @param size
      * @return
      */
-    public static String[] getEmojis(int size) {
-        String[] re = new String[size];
-        for (int i = 0; i < size; i++) {
-            re[i] = RString.getRandomString(EMOJIS);
-        }
-        return re;
+    public static String getEmojis(int size) {
+        StringBuffer buffer = new StringBuffer();
+        IntStream.range(0,size).forEach(x->buffer.append(getEmojis()));
+        return buffer.toString();
     }
 
     /**
@@ -41,7 +41,7 @@ public class Emoji extends SourceCode {
      * @return
      */
     public static String getEmojis() {
-        return RString.getRandomString(EMOJIS);
+        return EMOJIS[getRandomInt(EMOJIS.length - 1)];
     }
 
     /**

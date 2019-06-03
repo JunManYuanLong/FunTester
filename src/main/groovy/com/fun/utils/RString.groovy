@@ -11,10 +11,10 @@ class RString extends SourceCode {
  * @return
  */
     static String getString(int i) {
-        String re = EMPTY
+        def re = new StringBuffer()
         if (i < 1) return re
         for (int j in 1..i) {
-            re += getChar()
+            re.append(getChar())
         }
         re
     }
@@ -33,16 +33,6 @@ class RString extends SourceCode {
  * @return
  */
     static char getWord() {
-        return chars[getRandomInt(52) + 9];
-    }
-    /**
-     * 随机获取给定数组里面的一个元素
-     *
-     * @param list
-     * @return
-     */
-    static String getRandomString(String... list) {
-        int randomInt = getRandomInt(list.length - 1);
-        list[randomInt].toString();
+        chars[getRandomInt(52) + 9];
     }
 }

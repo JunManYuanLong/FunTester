@@ -7,6 +7,10 @@ public class SqlConstant {
 
     static PropertyUtils.Property propertyUtils = PropertyUtils.getProperties("mysql");
 
+    static String getProperty(String name) {
+        return propertyUtils.getProperty(name);
+    }
+
     /**
      * 驱动名称
      */
@@ -20,11 +24,11 @@ public class SqlConstant {
     /**
      * 测试数据库
      */
-    public static final String TEST_SQL_URL = propertyUtils.getProperty("test_mysql_url") + SQLARGS;
+    public static final String TEST_SQL_URL = getProperty("test_mysql_url") + SQLARGS;
 
-    public static final String TEST_USER = propertyUtils.getProperty("user");
+    public static final String TEST_USER = getProperty("user");
 
-    public static final String TEST_PASS_WORD = propertyUtils.getProperty("password");
+    public static final String TEST_PASS_WORD = getProperty("password");
 
     /**
      * 数据库账号
@@ -34,7 +38,7 @@ public class SqlConstant {
     /**
      * 数据库存储服务接口地址
      */
-    public static final String MYSQL_SERVER_PATH = propertyUtils.getProperty("mysql_server_path");
+    public static final String MYSQL_SERVER_PATH = getProperty("mysql_server_path");
 
     /**
      * 数据库连接重连间隔

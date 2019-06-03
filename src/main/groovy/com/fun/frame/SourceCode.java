@@ -3,12 +3,14 @@ package com.fun.frame;
 
 import com.fun.utils.Regex;
 import com.fun.utils.Time;
+import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.sql.rowset.Joinable;
 import java.text.DecimalFormat;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -49,7 +51,7 @@ public class SourceCode extends Output {
         while (scanner.hasNext()) {
             String next = scanner.next();
             if (next.equals(key.toString())) break;
-            logger.info("输入：{}错误！",next);
+            logger.info("输入：{}错误！", next);
         }
         scanner.close();
         long end = Time.getTimeStamp();
@@ -71,9 +73,12 @@ public class SourceCode extends Output {
 
     /**
      * 将数组变成json对象，使用split方法
+     * <p>
+     * split方法默认limit=2
+     * </p>
      *
      * @param objects
-     * @param regex
+     * @param regex   分隔的regex表达式
      * @return
      */
     public static JSONObject changeArraysToJson(Object[] objects, String regex) {
@@ -84,6 +89,9 @@ public class SourceCode extends Output {
 
     /**
      * 获取一个简单的json对象
+     * <p>
+     * 使用“=”号作为分隔符，limit=2
+     * </p>
      *
      * @param content
      * @return
@@ -101,15 +109,11 @@ public class SourceCode extends Output {
      * 获取text复制拼接的string
      *
      * @param text
-     * @param time 重复次数
+     * @param time 次数
      * @return
      */
     public static String getManyString(String text, int time) {
-        String str = text;
-        for (int i = 0; i < time - 1; i++) {
-            str = str + text;
-        }
-        return str;
+        return IntStream.range(0, time).mapToObj(x -> text).collect(Collectors.joining());
     }
 
     /**
@@ -124,21 +128,6 @@ public class SourceCode extends Output {
         int s = (int) (piece * (1.0) / total * 10000);
         double result = s * 1.0 / 100;
         return result;
-    }
-
-    /**
-     * 删除字符，只删除第一个，不匹配正则
-     *
-     * @param delChar 要删除的字符
-     * @param text    被删除的字符串
-     * @return 返回删除后的字符串
-     */
-    public static String deleteCharFromString(String delChar, String text) {
-        int index = text.indexOf(delChar);
-        int length = delChar.length();
-        int total = text.length();
-        text = text.substring(0, index) + text.substring(0 + length, total);
-        return text;
     }
 
     /**
@@ -176,6 +165,12 @@ public class SourceCode extends Output {
         }
     }
 
+    /**
+     * 将string转换成boolean，失败返回null，待修改
+     *
+     * @param text
+     * @return
+     */
     public static boolean changeStringToBoolean(String text) {
         return text == null ? null : text.equalsIgnoreCase("true") ? true : text.equalsIgnoreCase("false") ? false : null;
     }
@@ -202,11 +197,28 @@ public class SourceCode extends Output {
      * @return
      */
     public static String join(List list, String separator, String prefix, String suffix) {
-        return list.stream().map(x -> x.toString()).collect(Collectors.joining(separator, prefix, suffix)).toString();
+        return prefix + StringUtils.join(list, separator) + suffix;
+//        return list.stream().map(x -> x.toString()).collect(Collectors.joining(separator, prefix, suffix)).toString();
     }
 
+    /**
+     * 把list用分隔器连接起来，没有前后缀
+     *
+     * @param list
+     * @param separator
+     * @return
+     */
     public static String join(List list, String separator) {
-        return join(list, separator, "", "");
+        return join(list, separator, EMPTY, EMPTY);
+    }
+
+
+    public static String join(Object[] objects, String separator, String prefix, String suffix) {
+        return prefix + StringUtils.join(objects, separator) + suffix;
+    }
+
+    public static String join(Object[] objects,String separator) {
+        return join(objects, separator, EMPTY, EMPTY);
     }
 
     /**

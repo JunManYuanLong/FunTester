@@ -90,11 +90,7 @@ public class Output extends Constant {
      * @param jsonArray
      */
     public static void output(JSONArray jsonArray) {
-        JSONObject jsonObject = new JSONObject();
-        for (int i = 0; i < jsonArray.size(); i++) {
-            jsonObject.put(i + 1, jsonArray.get(i));
-        }
-        output(jsonObject);
+        jsonArray.forEach(x -> output(x));
     }
 
     /**

@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 数据库多线程类
+ * 数据库多线程类,update方法类，区别于querythread
  */
 public class UpdateSqlThread extends ThreadBase {
 
