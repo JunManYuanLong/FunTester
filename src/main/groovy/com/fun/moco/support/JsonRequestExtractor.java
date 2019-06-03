@@ -1,4 +1,4 @@
-package com.fun.moco;
+package com.fun.moco.support;
 
 import com.github.dreamhead.moco.HttpRequest;
 import com.github.dreamhead.moco.HttpRequestExtractor;

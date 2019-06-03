@@ -3,7 +3,7 @@ package com.fun.moco
 import com.fun.frame.SourceCode
 import com.github.dreamhead.moco.RequestMatcher
 
-import static com.fun.moco.JsonRequestExtractor.queryJson
+import static com.fun.moco.support.JsonRequestExtractor.queryJson
 import static com.github.dreamhead.moco.Moco.*
 /**
  * requestmatcher获取

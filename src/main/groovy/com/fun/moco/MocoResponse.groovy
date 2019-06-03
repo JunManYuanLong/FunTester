@@ -1,6 +1,9 @@
 package com.fun.moco
 
 import com.fun.base.bean.Result
+import com.fun.moco.support.CycleHandle
+import com.fun.moco.support.LimitHandle
+import com.fun.moco.support.RandomHandler
 import com.github.dreamhead.moco.ResponseHandler
 import com.github.dreamhead.moco.procedure.LatencyProcedure
 import com.google.common.collect.FluentIterable

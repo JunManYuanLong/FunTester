@@ -1,7 +1,5 @@
-package com.fun.moco;
+package com.fun.moco.support;
 
-
-import com.fun.frame.SourceCode;
 import com.github.dreamhead.moco.MocoConfig;
 import com.github.dreamhead.moco.ResponseHandler;
 import com.github.dreamhead.moco.handler.AbstractResponseHandler;
@@ -15,26 +13,28 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.collect.FluentIterable.from;
 import static com.google.common.collect.ImmutableList.copyOf;
 
-
 /**
- * 随机的responsehandle
+ * 循环的responsehandle
  */
-public class RandomHandler extends AbstractResponseHandler {
+@SuppressWarnings("all")
+public class CycleHandle extends AbstractResponseHandler {
 
     private final ImmutableList<ResponseHandler> handlers;
 
-    private RandomHandler(final Iterable<ResponseHandler> handlers) {
+    private int index;
+
+    private CycleHandle(final Iterable<ResponseHandler> handlers) {
         this.handlers = copyOf(handlers);
     }
 
     public static ResponseHandler newSeq(final Iterable<ResponseHandler> handlers) {
         checkArgument(Iterables.size(handlers) > 0, "Sequence contents should not be null");
-        return new RandomHandler(handlers);
+        return new CycleHandle(handlers);
     }
 
     @Override
     public void writeToResponse(final SessionContext context) {
-        handlers.get(SourceCode.getRandomInt(handlers.size() - 1)).writeToResponse(context);
+        handlers.get((index++) % handlers.size()).writeToResponse(context);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class RandomHandler extends AbstractResponseHandler {
         }
 
         FluentIterable<ResponseHandler> transformedResources = from(copyOf(handlers)).transform(applyConfig(config));
-        return new RandomHandler(transformedResources.toList());
+        return new CycleHandle(transformedResources.toList());
     }
 
     private Function<ResponseHandler, ResponseHandler> applyConfig(final MocoConfig config) {
