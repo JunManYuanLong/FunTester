@@ -1,6 +1,6 @@
 package com.fun.frame;
 
-import com.fun.base.bean.BaseBean;
+import com.fun.base.bean.AbstractBean;
 import com.fun.config.Constant;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -30,7 +30,7 @@ public class Output extends Constant {
         output(e);
     }
 
-    public static void output(BaseBean bean) {
+    public static void output(AbstractBean bean) {
         output(bean.toJson());
     }
 
