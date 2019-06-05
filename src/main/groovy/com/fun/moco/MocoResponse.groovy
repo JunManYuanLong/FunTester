@@ -208,6 +208,16 @@ class MocoResponse extends MocoRequest {
     }
 
 /**
+ * 随机返回
+ * @param json
+ * @param jsons
+ * @return
+ */
+    static random(JSONObject json, JSONObject... jsons) {
+        random json.toString(), jsons.toList().stream().map { x -> x.toString() }.toArray()
+    }
+
+/**
  * 随机
  * @param handler
  * @param handlers
@@ -229,23 +239,42 @@ class MocoResponse extends MocoRequest {
 
 /**
  * 循环返回
+ * @param json
+ * @param jsons
+ * @return
+ */
+    static ResponseHandler cycle(JSONObject json, JSONObject... jsons) {
+        cycle json.toString(), jsons.toList().stream().map { x -> x.toString() }.toArray()
+    }
+
+/**
+ * 循环返回
  * @param handler
  * @param handlers
  * @return
  */
-    static ResponseHandler cycle(final ResponseHandler handler, final ResponseHandler... handlers) {
+    static ResponseHandler cycle(ResponseHandler handler, ResponseHandler... handlers) {
         CycleHandle.newSeq(asIterable(handler, handlers))
     }
 
 /**
- * 限制请求频次
+ * 限制请求频次，默认1000ms
  * @param limit
  * @param unlimit
  * @return
  */
-    static ResponseHandler limit(final ResponseHandler limit, final ResponseHandler unlimit) {
-        LimitHandle.newSeq(limit, unlimit, 1)
+    static ResponseHandler limit(String limited, String unlimited) {
+        limit contentResponse(limited), contentResponse(unlimited)
     }
+
+    static ResponseHandler limit(JSONObject limited, JSONObject unlimited) {
+        limit jsonResponse(limited), jsonResponse(unlimited)
+    }
+
+    static ResponseHandler limit(ResponseHandler limited, ResponseHandler unlimited) {
+        limit limited, unlimited, 1000
+    }
+
 /**
  * 限制请求频次
  * @param limit
@@ -253,7 +282,15 @@ class MocoResponse extends MocoRequest {
  * @param interval
  * @return
  */
-    static ResponseHandler limit(final ResponseHandler limit, final ResponseHandler unlimit, int interval) {
+    static ResponseHandler limit(String limited, String unlimited, int interval) {
+        limit contentResponse(limited), contentResponse(unlimited), interval
+    }
+
+    static ResponseHandler limit(JSONObject limited, JSONObject unlimited, int interval) {
+        limit limited.toString(), unlimited.toString(), interval
+    }
+
+    static ResponseHandler limit(ResponseHandler limit, ResponseHandler unlimit, int interval) {
         LimitHandle.newSeq(limit, unlimit, interval)
     }
 }
