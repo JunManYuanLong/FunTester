@@ -4,6 +4,8 @@ import com.fun.base.bean.Result
 import com.fun.moco.MocoResponse
 import com.fun.moco.MocoServer
 
+import static com.github.dreamhead.moco.Moco.from
+
 /**
  * moco API的应用
  */
@@ -20,5 +22,9 @@ class HttpServer extends MocoServer {
 
         waitForKey("fan")
         run.stop()
+    }
+
+    public static proxyNetdata(HttpServer server) {
+        server.proxy(from("/").to("http://10.10.6.3:19999"))
     }
 }
