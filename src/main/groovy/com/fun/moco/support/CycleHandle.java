@@ -32,6 +32,11 @@ public class CycleHandle extends AbstractResponseHandler {
         return new CycleHandle(handlers);
     }
 
+    /**
+     * 通过index++取余达到循环的目的，线程不安全
+     *
+     * @param context
+     */
     @Override
     public void writeToResponse(final SessionContext context) {
         handlers.get((index++) % handlers.size()).writeToResponse(context);

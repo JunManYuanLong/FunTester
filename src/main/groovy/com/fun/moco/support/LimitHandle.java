@@ -37,6 +37,11 @@ public class LimitHandle extends AbstractResponseHandler {
         return new LimitHandle(limit, unLimit, interval);
     }
 
+    /**
+     * 返回响应
+     *
+     * @param context
+     */
     @Override
     public void writeToResponse(final SessionContext context) {
         HttpRequest request = (HttpRequest) context.getRequest();
@@ -62,9 +67,18 @@ public class LimitHandle extends AbstractResponseHandler {
         };
     }
 
+    /**
+     * 判断是否被限制
+     * <p>
+     * 通过记录每一次响应的时间戳，判断两次请求间隔达到limit目的
+     * </p>
+     *
+     * @param info
+     * @return
+     */
     public boolean limited(String info) {
         long fresh = Time.getTimeStamp();
-        Long old = tatal.containsKey(info) ? tatal.get(info) : 0L;
+        long old = tatal.containsKey(info) ? tatal.get(info) : 0L;
         tatal.put(info, fresh);
         return fresh - old > interval;
     }

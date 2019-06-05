@@ -32,6 +32,11 @@ public class RandomHandler extends AbstractResponseHandler {
         return new RandomHandler(handlers);
     }
 
+    /**
+     * getrandom随机获取一个响应
+     *
+     * @param context
+     */
     @Override
     public void writeToResponse(final SessionContext context) {
         handlers.get(SourceCode.getRandomInt(handlers.size() - 1)).writeToResponse(context);
