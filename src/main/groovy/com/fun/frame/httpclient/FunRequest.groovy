@@ -5,6 +5,7 @@ import net.sf.json.JSONObject
 import org.apache.commons.lang3.StringUtils
 import org.apache.http.Header
 import org.apache.http.client.methods.HttpRequestBase
+
 /**
  * 重写FanLibrary，使用面对对象思想
  */
@@ -70,7 +71,7 @@ public class FunRequest extends FanLibrary {
      * @return
      */
     public static FanRequest isGet() {
-        return new FunRequest(RequestType.GET)
+        new FunRequest(RequestType.GET)
     }
 
     /**
@@ -79,7 +80,7 @@ public class FunRequest extends FanLibrary {
      * @return
      */
     public static FanRequest isPost() {
-        return new FunRequest(RequestType.POST)
+        new FunRequest(RequestType.POST)
     }
 
     /**
@@ -90,7 +91,7 @@ public class FunRequest extends FanLibrary {
      */
     public FunRequest setHost(String host) {
         this.host = host
-        return this
+        this
     }
 
     /**
@@ -101,7 +102,7 @@ public class FunRequest extends FanLibrary {
      */
     public FunRequest setApiName(String apiName) {
         this.apiName = apiName
-        return this
+        this
     }
 
     /**
@@ -112,7 +113,7 @@ public class FunRequest extends FanLibrary {
      */
     public FunRequest setUri(String uri) {
         this.uri = uri
-        return this
+        this
     }
 
     /**
@@ -124,7 +125,7 @@ public class FunRequest extends FanLibrary {
      */
     public FunRequest addArgs(Object key, Object value) {
         args.put(key, value)
-        return this
+        this
     }
 
     /**
@@ -136,7 +137,7 @@ public class FunRequest extends FanLibrary {
      */
     public FunRequest addParam(Object key, Object value) {
         params.put(key, value)
-        return this
+        this
     }
 
     /**
@@ -148,7 +149,7 @@ public class FunRequest extends FanLibrary {
      */
     public FanRequest addJson(Object key, Object value) {
         json.put(key, value)
-        return this
+        this
     }
 
     /**
@@ -159,8 +160,8 @@ public class FunRequest extends FanLibrary {
      * @return
      */
     public FanRequest addHeader(Object key, Object value) {
-        headers.add(getHeader(key.toString(), value.toString()))
-        return this
+        headers << getHeader(key.toString(), value.toString())
+        this
     }
 
     /**
@@ -171,7 +172,7 @@ public class FunRequest extends FanLibrary {
      */
     public FunRequest addHeader(Header header) {
         headers.add(header)
-        return this
+        this
     }
 
     /**
@@ -181,8 +182,8 @@ public class FunRequest extends FanLibrary {
      * @return
      */
     public FunRequest addHeader(List<Header> header) {
-        header.each { h -> headers.add(h) }
-        return this
+        header.each { h -> headers << h }
+        this
     }
 
     /**
@@ -192,8 +193,8 @@ public class FunRequest extends FanLibrary {
      * @return
      */
     public FunRequest addCookies(JSONObject cookies) {
-        headers.add(getCookies(cookies))
-        return this
+        headers << getCookies(cookies)
+        this
     }
 
     /**
@@ -223,11 +224,11 @@ public class FunRequest extends FanLibrary {
      * @return
      */
     public HttpRequestBase getRequest() {
-        return this.request
+        this.request
     }
 
     @Override
     public String toString() {
-        return JSONObject.fromObject(this).toString()
+        JSONObject.fromObject(this).toString()
     }
 }
