@@ -279,7 +279,7 @@ class MocoResponse extends MocoRequest {
  * 限制请求频次
  * @param limit
  * @param unlimit
- * @param interval
+ * @param interval 单位ms
  * @return
  */
     static ResponseHandler limit(String limited, String unlimited, int interval) {
