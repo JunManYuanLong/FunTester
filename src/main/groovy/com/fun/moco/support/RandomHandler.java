@@ -39,7 +39,7 @@ public class RandomHandler extends AbstractResponseHandler {
      */
     @Override
     public void writeToResponse(final SessionContext context) {
-        handlers.get(SourceCode.getRandomInt(handlers.size() - 1)).writeToResponse(context);
+        handlers.get(SourceCode.getRandomInt(handlers.size()) - 1).writeToResponse(context);
     }
 
     @Override
