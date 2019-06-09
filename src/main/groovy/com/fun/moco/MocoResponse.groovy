@@ -14,7 +14,6 @@ import java.util.concurrent.TimeUnit
 import static com.github.dreamhead.moco.Moco.*
 import static com.github.dreamhead.moco.internal.ApiUtils.textToResource
 import static com.github.dreamhead.moco.util.Iterables.asIterable
-
 /**
  * responsehandle获取
  */
@@ -26,7 +25,7 @@ class MocoResponse extends MocoRequest {
  * @param content
  * @return
  */
-    static ResponseHandler contentResponse(String content) {
+    static ResponseHandler textRes(String content) {
         with content
     }
 
@@ -38,7 +37,7 @@ class MocoResponse extends MocoRequest {
  * @param json
  * @return
  */
-    static ResponseHandler jsonResponse(JSONObject json) {
+    static ResponseHandler jsonRes(JSONObject json) {
         with json.toString()
     }
 
@@ -47,7 +46,7 @@ class MocoResponse extends MocoRequest {
  * @param result
  * @return
  */
-    static ResponseHandler obResponse(Result result) {
+    static ResponseHandler obRes(Result result) {
         with result.toString()
     }
 
@@ -63,7 +62,7 @@ class MocoResponse extends MocoRequest {
  * @param handlers
  * @return
  */
-    static ResponseHandler randownResponse(ResponseHandler handler, ResponseHandler... handlers) {
+    static ResponseHandler randownRes(ResponseHandler handler, ResponseHandler... handlers) {
         random handler, handlers
     }
 
@@ -72,7 +71,7 @@ class MocoResponse extends MocoRequest {
  * @param contents
  * @return
  */
-    static ResponseHandler cycleResponse(String content, String... contents) {
+    static ResponseHandler cycleRes(String content, String... contents) {
         cycle content, contents
     }
 /**
@@ -80,7 +79,7 @@ class MocoResponse extends MocoRequest {
  * @param contents
  * @return
  */
-    static ResponseHandler cycleResponse(JSONObject content, JSONObject... contents) {
+    static ResponseHandler cycleRes(JSONObject content, JSONObject... contents) {
         cycle content.toString(), (String[]) contents.toList().stream().map { x -> x.toString() }.toArray()
     }
 
@@ -90,27 +89,9 @@ class MocoResponse extends MocoRequest {
      * @param handlers
      * @return
      */
-    static ResponseHandler cycleResponse(ResponseHandler handler, ResponseHandler... handlers) {
+    static ResponseHandler cycleRes(ResponseHandler handler, ResponseHandler... handlers) {
         cycle handler, handlers
     }
-
-/**
- * 随机返回闻文本
- * @param contents
- * @return
- */
-    static ResponseHandler randownResponse(String content, String... contents) {
-        random content, contents
-    }
-/**
- * 随机返回闻文本
- * @param contents
- * @return
- */
-    static ResponseHandler randownResponse(JSONObject content, JSONObject... contents) {
-        random content.toString(), (String[]) contents.toList().stream().map { x -> x.toString() }.toArray()
-    }
-
 
 /**
  * 随机返回文本，会停留在最后一个文本内容
@@ -118,7 +99,7 @@ class MocoResponse extends MocoRequest {
  * @param contents
  * @return
  */
-    static ResponseHandler sequenceResponse(String content, String... contents) {
+    static ResponseHandler sequenceRes(String content, String... contents) {
         seq content, contents
     }
 /**
@@ -127,7 +108,7 @@ class MocoResponse extends MocoRequest {
  * @param contents
  * @return
  */
-    static ResponseHandler sequenceResponse(JSONObject content, JSONObject... contents) {
+    static ResponseHandler sequenceRes(JSONObject content, JSONObject... contents) {
         seq content.toString(), (String[]) contents.toList().stream().map { x -> x.toString() }.toArray()
     }
 
@@ -137,7 +118,7 @@ class MocoResponse extends MocoRequest {
  * @param handlers
  * @return
  */
-    static ResponseHandler sequenceResponse(ResponseHandler handler, ResponseHandler... handlers) {
+    static ResponseHandler sequenceRes(ResponseHandler handler, ResponseHandler... handlers) {
         seq handler, handlers
     }
 
@@ -203,7 +184,7 @@ class MocoResponse extends MocoRequest {
  * @param contents
  * @return
  */
-    static random(String content, String... contents) {
+    static ResponseHandler random(String content, String... contents) {
         RandomHandler.newSeq(FluentIterable.from(asIterable(content, contents)).transform(textToResource()))
     }
 
@@ -213,8 +194,8 @@ class MocoResponse extends MocoRequest {
  * @param jsons
  * @return
  */
-    static random(JSONObject json, JSONObject... jsons) {
-        random json.toString(), jsons.toList().stream().map { x -> x.toString() }.toArray()
+    static ResponseHandler random(JSONObject json, JSONObject... jsons) {
+        RandomHandler.newSeq(FluentIterable.from(asIterable(json.toString(), jsons.toList().stream().map { x -> x.toString() }.toArray() as String[])).transform(textToResource()))
     }
 
 /**
@@ -244,7 +225,7 @@ class MocoResponse extends MocoRequest {
  * @return
  */
     static ResponseHandler cycle(JSONObject json, JSONObject... jsons) {
-        cycle json.toString(), jsons.toList().stream().map { x -> x.toString() }.toArray()
+        CycleHandle.newSeq(FluentIterable.from(asIterable(json.toString(), jsons.toList().stream().map { x -> x.toString() }.toArray() as String[])).transform(textToResource()))
     }
 
 /**
