@@ -302,6 +302,7 @@ public class FanLibrary extends SourceCode {
 
     /**
      * 获取响应实体
+     * <p>会自动设置cookie，但是需要各个项目再自行实现cookie管理</p>
      *
      * @param request 请求对象
      * @return 返回json类型的对象
