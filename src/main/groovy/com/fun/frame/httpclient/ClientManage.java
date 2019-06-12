@@ -171,6 +171,9 @@ public class ClientManage extends SourceCode {
 
     /**
      * 通过连接池获取https协议请求对象
+     * <p>
+     * 此处会默认添加一天defaultcookiesstore，会处理响应头中的set-cookie字段
+     * </p>
      *
      * @return
      */
