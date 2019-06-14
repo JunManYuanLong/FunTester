@@ -379,6 +379,28 @@ public class FanLibrary extends SourceCode {
     }
 
     /**
+     * 从响应解析到文件
+     *
+     * @param response
+     * @param file
+     */
+    @Deprecated
+    private static void parseResponeByFile(HttpResponse response, File file) {
+        int bytesum = 0;// 这个用来统计需要写入byte数组的长度
+        int byteread = 0;// 这个用来接收read()方法的返回值，表示读取内容的长度
+        try (InputStream inputStream = response.getEntity().getContent(); FileOutputStream fileOutputStream = new FileOutputStream(file);) {
+            byte[] buffer = new byte[1024];// 新建读取文件所用的数组
+            // 此处用while循环每次按buffer读取文件直到读取完成
+            while ((byteread = inputStream.read(buffer)) != -1) {// 如何读取到文件末尾
+                bytesum += byteread;// 此处计算读取长度，byteread表示每次读取的长度
+                fileOutputStream.write(buffer, 0, byteread);// 此方法第一个参数是byte数组，第二次参数是开始位置，第三个参数是长度
+            }
+        } catch (IOException e) {
+            logger.warn("解析响应实体失败！", e);
+        }
+    }
+
+    /**
      * 把json数据转化为参数，为get请求和post请求stringentity的时候使用
      *
      * @param argument 请求参数，json数据类型，map类型，可转化
