@@ -37,10 +37,8 @@ class FileUtil extends SourceCode {
  * @param target
  * @return
  */
-    static def down(String url, String target) {
-        def s = new URL(url)
-        def t = new File(target)
-        t << s
+    static def down(String url, String name) {
+        new File(name) << new URL(url).openStream()
     }
 
 /**

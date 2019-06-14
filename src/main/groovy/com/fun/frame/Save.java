@@ -98,10 +98,4 @@ public class Save extends SourceCode {
         data.keySet().forEach(x -> buffer.append(LINE + x.toString() + PART + data.getString(x.toString())));
         info(name + FILE_TYPE_LOG, buffer.toString().substring(2));
     }
-
-    public static void main(String[] args) {
-        List list = Arrays.asList(32432, 43242, 4, 2, 3, 4);
-        String fan = StringUtils.join(list, "fan");
-        output(fan);
-    }
 }
