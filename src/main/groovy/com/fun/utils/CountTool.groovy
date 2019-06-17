@@ -43,11 +43,12 @@ class CountTool extends SourceCode {
 
 /**
  * 统计某个list里面各个元素出现的次数
+ * collect,是一个map<object,list>对象
  * @param list
  * @return
  */
     static def count(List list) {
-        Map<Integer, List<Object>> collect = list.stream().collect(Collectors.groupingBy { x -> x.toString() })
+        def collect = list.stream().collect(Collectors.groupingBy { x -> x.toString() })
         collect.keySet().stream().sorted().forEach { x ->
             output("元素：${x}，次数：${collect.get(x).size()}")
         }
