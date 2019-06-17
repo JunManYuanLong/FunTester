@@ -105,16 +105,12 @@ public class WriteRead extends SourceCode {
                 logger.warn("创建文件失败！", e);
             }
         URL downUrl = null;
-        try {
-            downUrl = new URL(url);
-            InputStream is = downUrl.openStream();
-            OutputStream os = new FileOutputStream(file);
+        try (InputStream is = new URL(url).openStream(); OutputStream os = new FileOutputStream(file)) {
             int bytesRead = 0;
             byte[] buffer = new byte[1024];
             while ((bytesRead = is.read(buffer)) != -1) {
                 os.write(buffer, 0, bytesRead);
             }
-            os.close();
         } catch (IOException e) {
             logger.warn("下载文件失败！", e);
         }
