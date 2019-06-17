@@ -34,7 +34,7 @@ class FileUtil extends SourceCode {
 /**
  * 从url下载文件
  * @param url
- * @param target
+ * @param name
  * @return
  */
     static def down(String url, String name) {
