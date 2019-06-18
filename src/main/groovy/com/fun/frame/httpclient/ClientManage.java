@@ -6,6 +6,8 @@ import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpRequest;
 import org.apache.http.NoHttpResponseException;
 import org.apache.http.client.HttpRequestRetryHandler;
+import org.apache.http.client.config.CookieSpecs;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.ConnectionConfig;
 import org.apache.http.config.MessageConstraints;
@@ -40,6 +42,11 @@ import java.util.concurrent.TimeUnit;
 public class ClientManage extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(ClientManage.class);
+
+    /**
+     * 请求超时控制器
+     */
+    public static RequestConfig requestConfig = getRequestConfig();
 
     /**
      * 请求重试管理器
@@ -173,15 +180,25 @@ public class ClientManage extends SourceCode {
      * 通过连接池获取https协议请求对象
      * <p>
      * 此处会默认添加一天defaultcookiesstore，会处理响应头中的set-cookie字段
+     * 增加默认的请求控制器
      * </p>
      *
      * @return
      */
     private static CloseableHttpClient getCloseableHttpsClients() {
         // 创建自定义的httpsclient对象
-        CloseableHttpClient client = HttpClients.custom().setConnectionManager(connManager).setRetryHandler(httpRequestRetryHandler).setDefaultRequestConfig(FanLibrary.requestConfig).build();
+        CloseableHttpClient client = HttpClients.custom().setConnectionManager(connManager).setRetryHandler(httpRequestRetryHandler).setDefaultRequestConfig(requestConfig).build();
 //         CloseableHttpClient client = HttpClients.createDefault();//非连接池创建
         return client;
+    }
+
+    /**
+     * 获取请求超时控制器
+     *
+     * @return
+     */
+    private static RequestConfig getRequestConfig() {
+        return RequestConfig.custom().setConnectionRequestTimeout(HttpClientConstant.CONNECT_REQUEST_TIMEOUT).setConnectTimeout(HttpClientConstant.CONNECT_TIMEOUT).setSocketTimeout(HttpClientConstant.SOCKET_TIMEOUT).setCookieSpec(CookieSpecs.STANDARD).setRedirectsEnabled(false).build();
     }
 
     /**
