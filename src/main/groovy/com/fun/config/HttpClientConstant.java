@@ -123,5 +123,5 @@ public class HttpClientConstant {
     /**
      * 公共的header集合
      */
-    public static List<Header> COMMON_HEADER = Arrays.asList(USER_AGENT, CONNECTION);
+    public static List<Header> COMMON_HEADER = Arrays.asList(X_FORWARDED_FOR, Proxy_Client_IP, WL_Proxy_Client_IP, USER_AGENT, CONNECTION, CLIENT_IP, HTTP_X_FORWARDED_FOR);
 }
