@@ -42,21 +42,6 @@ public class FanLibrary extends SourceCode {
     private static IBase iBase;
 
     /**
-     * 请求超时控制器
-     */
-    public static RequestConfig requestConfig = getRequestConfig();
-
-    /**
-     * 重置响应超时时间
-     *
-     * @param timeOut 单位s
-     */
-    public static void setSocketTimeOut(int timeOut) {
-        HttpClientConstant.SOCKET_TIMEOUT = timeOut * 1000;
-        requestConfig = getRequestConfig();
-    }
-
-    /**
      * 打印请求头和响应头，一次有效，在请求之前使用该方法
      */
     public static void setHeaderKey() {
@@ -227,21 +212,14 @@ public class FanLibrary extends SourceCode {
     }
 
     /**
-     * 获取请求超时控制器
-     *
-     * @return
-     */
-    private static RequestConfig getRequestConfig() {
-        return RequestConfig.custom().setConnectionRequestTimeout(HttpClientConstant.CONNECT_REQUEST_TIMEOUT).setConnectTimeout(HttpClientConstant.CONNECT_TIMEOUT).setSocketTimeout(HttpClientConstant.SOCKET_TIMEOUT).setCookieSpec(CookieSpecs.STANDARD).build();
-    }
-
-    /**
      * 发送请求之前，配置请求管理器，设置IP，user_agent和cookie
      *
      * @param request
      */
     protected static void beforeRequest(HttpRequestBase request) {
-        request.setConfig(requestConfig);//设置请求配置
+        /* 使用统计的默认请求配置
+         * request.setConfig(requestConfig);//设置请求配置
+         * */
         HttpClientConstant.COMMON_HEADER.forEach(header -> request.addHeader(header));
     }
 
@@ -300,6 +278,13 @@ public class FanLibrary extends SourceCode {
         return content;
     }
 
+    public static int getStatus(CloseableHttpResponse response,JSONObject res) {
+        int status = response.getStatusLine().getStatusCode();
+        if (status != HttpStatus.SC_OK) logger.warn("响应状态码错误：{}", status);
+        if (status == HttpStatus.SC_MOVED_TEMPORARILY) res.put("location", response.getFirstHeader("Location").getValue());
+        return status;
+    }
+
     /**
      * 获取响应实体
      * <p>会自动设置cookie，但是需要各个项目再自行实现cookie管理</p>
@@ -311,7 +296,7 @@ public class FanLibrary extends SourceCode {
     public static JSONObject getHttpResponse(HttpRequestBase request) {
         if (!request.getURI().toString().toLowerCase().startsWith("http")) return null;
         beforeRequest(request);
-        JSONObject jsonObject = new JSONObject();
+        JSONObject res = new JSONObject();
         RequestInfo requestInfo = new RequestInfo(request);
         if (HEADER_KEY) output(request.getAllHeaders());
         long start = Time.getTimeStamp();
@@ -319,15 +304,13 @@ public class FanLibrary extends SourceCode {
             long end = Time.getTimeStamp();
             long elapsed_time = end - start;
             if (HEADER_KEY) output(response.getAllHeaders());
-            if (response == null) return jsonObject;
-            int status = response.getStatusLine().getStatusCode();
+            int status = getStatus(response, res);
             JSONObject setCookies = afterResponse(response);
             String content = getContent(response);
             int data_size = content.length();
-            jsonObject = getJsonResponse(content, setCookies);
-            int code = iBase == null ? -2 : iBase.checkCode(jsonObject, requestInfo);
-            if (status != HttpStatus.SC_OK)
-                new AlertOver("响应状态码错误", "状态码错误：" + status, requestInfo.getUrl(), requestInfo).sendSystemMessage();
+            res.putAll(getJsonResponse(content, setCookies));
+            int code = iBase == null ? -2 : iBase.checkCode(res, requestInfo);
+//                new AlertOver("响应状态码错误：" + status, "状态码错误：" + status, requestInfo.getUrl(), requestInfo).sendSystemMessage();
             MySqlTest.saveApiTestDate(requestInfo, data_size, elapsed_time, status, getMark(), code, LOCAL_IP, COMPUTER_USER_NAME);
         } catch (Exception e) {
             logger.warn("获取请求相应失败！", e);
@@ -340,7 +323,7 @@ public class FanLibrary extends SourceCode {
                 boolean add = requests.add(request);
             }
         }
-        return jsonObject;
+        return res;
     }
 
     /**
