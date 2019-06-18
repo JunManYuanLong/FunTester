@@ -36,7 +36,6 @@ public class RequestThread extends ThreadBase {
 
     @Override
     public void before() {
-        request.setConfig(FanLibrary.requestConfig);
         GCThread.starts();
     }
 
