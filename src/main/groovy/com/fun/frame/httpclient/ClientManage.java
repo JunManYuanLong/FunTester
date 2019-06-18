@@ -179,7 +179,7 @@ public class ClientManage extends SourceCode {
      */
     private static CloseableHttpClient getCloseableHttpsClients() {
         // 创建自定义的httpsclient对象
-        CloseableHttpClient client = HttpClients.custom().setConnectionManager(connManager).setRetryHandler(httpRequestRetryHandler).build();
+        CloseableHttpClient client = HttpClients.custom().setConnectionManager(connManager).setRetryHandler(httpRequestRetryHandler).setDefaultRequestConfig(FanLibrary.requestConfig).build();
 //         CloseableHttpClient client = HttpClients.createDefault();//非连接池创建
         return client;
     }
