@@ -149,4 +149,13 @@ public interface IBase {
      * @return
      */
     JSONObject getParams();
+
+    /**
+     * 初始化对象，从json数据中，一般指cookie
+     * <p>
+     *     主要用于new了新的对象之后，然后赋值的操作，场景是从另外一个服务的对象拷贝到现在的对象，区别于clone，因为可能还会涉及其他的验证，所以单独写出一个方法，极少用到
+     * </p>
+     */
+    void init(JSONObject info);
+
 }
