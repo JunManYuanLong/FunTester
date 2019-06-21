@@ -111,7 +111,9 @@ public interface IBase {
 
     /**
      * 校验响应正确性
-     *
+     *<p>
+     *     用于处理响应结果
+     *</p>
      * @param response
      * @return
      */
@@ -119,7 +121,9 @@ public interface IBase {
 
     /**
      * 检查响应是否符合标准
-     *
+     *<p>
+     *     会在fanlibrary类使用，如果没有ibase对象，会默认返回test_error_code
+     *</p>
      * @param response    响应json
      * @param requestInfo 请求info
      * @return
@@ -132,7 +136,7 @@ public interface IBase {
     void login();
 
     /**
-     * 设置cookies
+     * 设置header
      */
     void setHeaders(HttpRequestBase request);
 
