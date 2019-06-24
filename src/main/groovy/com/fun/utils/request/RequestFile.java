@@ -90,7 +90,6 @@ public class RequestFile extends FanLibrary {
                 break;
         }
         headers.keySet().forEach(x -> requestBase.addHeader(getHeader(x.toString(), headers.getString(x.toString()))));
-        setHeaderKey();
         output(getHttpResponse(requestBase));
         return requestBase;
     }

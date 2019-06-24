@@ -10,6 +10,7 @@ import com.fun.utils.Time;
 import com.fun.utils.db.mysql.MySqlTest;
 import com.fun.utils.message.AlertOver;
 import net.sf.json.JSONObject;
+import org.apache.commons.collections.MapUtils;
 import org.apache.http.*;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
@@ -39,12 +40,15 @@ public class FanLibrary extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(FanLibrary.class);
 
+    /**
+     * ibase实现类，需要用来校验响应是否正确的响应体，获取响应的code码，code码默认-2，对于不同的项目ibase的isright方法不一样
+     */
     private static IBase iBase;
 
     /**
      * 打印请求头和响应头，一次有效，在请求之前使用该方法
      */
-    public static void setHeaderKey() {
+    public static void printHeader() {
         HEADER_KEY = true;
     }
 
@@ -67,8 +71,7 @@ public class FanLibrary extends SourceCode {
      * @return 返回get对象
      */
     public static HttpGet getHttpGet(String url, JSONObject args) {
-        if (args == null || args.isEmpty())
-            return getHttpGet(url);
+        if (MapUtils.isEmpty(args)) return getHttpGet(url);
         String uri = url + changeJsonToArguments(args);
         return getHttpGet(uri.replace(" ", ""));
     }
@@ -278,10 +281,11 @@ public class FanLibrary extends SourceCode {
         return content;
     }
 
-    public static int getStatus(CloseableHttpResponse response,JSONObject res) {
+    public static int getStatus(CloseableHttpResponse response, JSONObject res) {
         int status = response.getStatusLine().getStatusCode();
         if (status != HttpStatus.SC_OK) logger.warn("响应状态码错误：{}", status);
-        if (status == HttpStatus.SC_MOVED_TEMPORARILY) res.put("location", response.getFirstHeader("Location").getValue());
+        if (status == HttpStatus.SC_MOVED_TEMPORARILY)
+            res.put("location", response.getFirstHeader("Location").getValue());
         return status;
     }
 
@@ -298,12 +302,12 @@ public class FanLibrary extends SourceCode {
         beforeRequest(request);
         JSONObject res = new JSONObject();
         RequestInfo requestInfo = new RequestInfo(request);
-        if (HEADER_KEY) output(request.getAllHeaders());
+        if (HEADER_KEY) output("===========request header===========", Arrays.asList(request.getAllHeaders()));
         long start = Time.getTimeStamp();
         try (CloseableHttpResponse response = ClientManage.httpsClient.execute(request)) {
             long end = Time.getTimeStamp();
             long elapsed_time = end - start;
-            if (HEADER_KEY) output(response.getAllHeaders());
+            if (HEADER_KEY) output("===========response header===========", Arrays.asList(response.getAllHeaders()));
             int status = getStatus(response, res);
             JSONObject setCookies = afterResponse(response);
             String content = getContent(response);
