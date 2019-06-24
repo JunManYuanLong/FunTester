@@ -4,14 +4,13 @@ import com.fun.base.bean.AbstractBean;
 import com.fun.config.Constant;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.apache.commons.collections.MapUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("all")
@@ -56,28 +55,36 @@ public class Output extends Constant {
     }
 
     /**
-     * 输出
+     * 输出，针对各种不同情况做兼容
+     * <p>
+     * 在处理两个对象，默认情况第一个是说明文字，第二个是list内容
+     * </p>
      *
      * @param object
      */
     public static void output(Object... object) {
-        if (object == null || object.length == 0) {
+        if (ArrayUtils.isEmpty(object)) {
             logger.warn("怎么空了呢！");
         } else if (object.length == 1) {
             if (object[0] instanceof List) {
-                output(((List<Object>) object[0]).toArray());
+                output((List) object[0]);
             } else {
                 output(object[0].toString());
             }
-        } else {
-            for (int i = 0; i < object.length; i++) {
-                output("第" + (i + 1) + "个：" + object[i]);
-            }
+        } else if (object.length == 2) {
+            output(LINE + object[0]);
+            output(object[1]);
+        } else if (object.getClass().isArray()) {
+            output(Arrays.asList(object));
         }
     }
 
+    public static void output(List list) {
+        list.forEach(x -> output("第" + (list.indexOf(x) + 1) + "个：" + x.toString()));
+    }
+
     public static void output(Map map) {
-        if (map == null || map.isEmpty()) {
+        if (MapUtils.isEmpty(map)) {
             logger.warn("怎么空了呢！");
         } else {
             show(map);
@@ -113,7 +120,7 @@ public class Output extends Constant {
      * @param jsonObject json格式响应实体
      */
     public static void output(JSONObject jsonObject) {
-        if (jsonObject == null || jsonObject.isEmpty()) {
+        if (MapUtils.isEmpty(jsonObject)) {
             output("json 对象是空的！");
             return;
         }
