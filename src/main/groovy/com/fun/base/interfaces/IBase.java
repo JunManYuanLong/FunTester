@@ -112,7 +112,7 @@ public interface IBase {
     /**
      * 校验响应正确性
      *<p>
-     *     用于处理响应结果
+     *     用于处理响应结果，一般校验json的必要层级和响应码
      *</p>
      * @param response
      * @return
