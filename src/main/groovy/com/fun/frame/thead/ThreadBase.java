@@ -14,7 +14,7 @@ import static com.fun.utils.Time.getTimeStamp;
 /**
  * 多线程任务基类，可单独使用
  */
-public abstract class ThreadBase extends SourceCode implements Runnable {
+public abstract class ThreadBase<T> extends SourceCode implements Runnable {
 
     private static final Logger logger = LoggerFactory.getLogger(ThreadBase.class);
 
@@ -31,15 +31,16 @@ public abstract class ThreadBase extends SourceCode implements Runnable {
      */
     CountDownLatch countDownLatch;
 
+    public T t;
+
+    public ThreadBase(T t) {
+        this();
+        this.t = t;
+    }
+
     public ThreadBase() {
         super();
     }
-
-    public ThreadBase(int times) {
-        this();
-        this.times = times;
-    }
-
 
     @Override
     public void run() {
