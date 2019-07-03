@@ -119,10 +119,10 @@ public class Output extends Constant {
      *
      * @param jsonObject json格式响应实体
      */
-    public static void output(JSONObject jsonObject) {
+    public static JSONObject output(JSONObject jsonObject) {
         if (MapUtils.isEmpty(jsonObject)) {
             output("json 对象是空的！");
-            return;
+            return jsonObject;
         }
         String start = SourceCode.getManyString(SPACE_1, 4);
         String jsonStr = jsonObject.toString();// 先将json对象转化为string对象
@@ -165,6 +165,7 @@ public class Output extends Constant {
             }
         }
         output(LINE + "↘ ↘ ↘ ↘ ↘ ↘ ↘ ↘ json ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙" + LINE + jsonResultStr.toString().replaceAll(LINE, LINE + "＞  ") + LINE + "↘ ↘ ↘ ↘ ↘ ↘ ↘ ↘ json ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙");
+        return jsonObject;
     }
 
     public static void show(Map map) {
