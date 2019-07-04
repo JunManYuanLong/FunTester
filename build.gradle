@@ -50,6 +50,7 @@ dependencies {
     compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.0'
     compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.5.7'
     compile group: 'com.github.dreamhead', name: 'moco-core', version: '0.12.0'
+    compile group: 'redis.clients', name: 'jedis', version: '3.0.1'
 }
 
 jar {
