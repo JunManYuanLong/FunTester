@@ -1,12 +1,15 @@
 package com.fun.utils.db.redis;
 
+import com.fun.frame.SourceCode;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
-public class RedisPool {
+public class RedisPool extends SourceCode {
 
-    private static JedisPool pool;//jedis连接池
+    private static JedisPool pool = initPool();
+
+    ;//jedis连接池
 
     private static int maxTotal = 10; //最大连接数
 
@@ -28,7 +31,7 @@ public class RedisPool {
     /**
      * 初始化连接池
      */
-    private static void initPool() {
+    private static JedisPool initPool() {
         JedisPoolConfig config = new JedisPoolConfig();
         config.setMaxTotal(maxTotal);
         config.setMaxIdle(maxIdle);
@@ -36,18 +39,21 @@ public class RedisPool {
         config.setTestOnBorrow(testOnBorrow);
         config.setTestOnReturn(testOnReturn);
         config.setBlockWhenExhausted(blockWhenExhausted);
-
-        pool = new JedisPool(config, redisIp, redisPort, 1000 * 2);
+        return pool = new JedisPool(config, redisIp, redisPort, 1000 * 2);
     }
 
-    static {
-        initPool();
-    }
-
+    /**
+     * 获取jedis操作对象，回收资源方法close，3.0以后废弃了其他方法
+     *
+     * @return
+     */
     public static Jedis getJedis() {
         return pool.getResource();
     }
 
+    /**
+     * 关闭连接池资源
+     */
     public static void close() {
         pool.close();
     }

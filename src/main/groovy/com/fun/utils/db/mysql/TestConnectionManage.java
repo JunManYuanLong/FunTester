@@ -8,7 +8,9 @@ import java.sql.SQLException;
 
 /**
  * 测试数据存储数据库连接管理类
+ * <p>放弃使用该方式存储，换成springboot数据库服务</p>
  */
+@Deprecated
 public class TestConnectionManage extends SqlBase {
 
     static Logger logger = LoggerFactory.getLogger(TestConnectionManage.class);
@@ -119,6 +121,7 @@ public class TestConnectionManage extends SqlBase {
 /**
  * 多线程类，用于消耗mysqltest里sqls中的数据库任务
  */
+@Deprecated
 class ExcuteThread extends Thread {
 
     /**

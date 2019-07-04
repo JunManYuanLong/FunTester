@@ -1,14 +1,13 @@
 package com.fun.utils.db.redis;
 
-import com.fun.frame.Output;
+import com.fun.frame.SourceCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
-import sun.dc.pr.PRError;
 
-public class RedisPoolUtil {
+public class RedisUtil extends SourceCode {
 
-    private static Logger logger = LoggerFactory.getLogger(RedisPoolUtil.class);
+    private static Logger logger = LoggerFactory.getLogger(RedisUtil.class);
 
     /**
      * 设置key的有效期，单位是秒
@@ -75,6 +74,8 @@ public class RedisPoolUtil {
     }
 
     /**
+     * 获取value
+     *
      * @param key
      * @return
      */

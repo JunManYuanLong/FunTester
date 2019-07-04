@@ -11,7 +11,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 辅助线程，处理sql任务
+ * <p>不再使用该方式存储数据库数据</p>
  */
+@Deprecated
 public class MySqlObject {
     /**
      * 标记多少辅助线程存活数量

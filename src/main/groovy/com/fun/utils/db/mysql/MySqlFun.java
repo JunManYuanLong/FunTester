@@ -7,6 +7,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+/**
+ * mysql操作的基础类
+ * <p>用于存储数据，多用于爬虫</p>
+ */
+@Deprecated
 public class MySqlFun extends SqlBase implements IMySqlBasic {
 
     String url;

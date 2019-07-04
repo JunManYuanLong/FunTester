@@ -7,7 +7,9 @@ import org.slf4j.LoggerFactory;
 
 /**
  * mysql辅助线程，当任务数太满的时候启用
+ * <p>已经启用，单独写了基于springboot的sql存储服务</p>
  */
+@Deprecated
 public class AidThread extends SourceCode implements Runnable {
 
     private static Logger logger = LoggerFactory.getLogger(AidThread.class);

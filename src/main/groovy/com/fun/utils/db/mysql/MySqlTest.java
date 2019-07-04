@@ -26,12 +26,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 数据库读写类
- *
- * @Author [Vicky]
- * @Description
- * @UpdateRemark
- * @UpdateDate: [2018年1月10日 下午4:05:16]
- * @CreateDate: [2018年1月10日 下午4:05:16]
+ *<p>
+ *     用来存储接口请求信息的mysql数据库类
+ *      打印请求信息的方法写在这里面，数据库服务的队列也在这里（可不用），暂时才用直接抛出sql语句完成记录功能
+ * </p>
  */
 public class MySqlTest extends SqlBase {
 
