@@ -1,4 +1,4 @@
-package com.fun.utils.db.mysql;
+package com.fun.db.mysql;
 
 import com.fun.frame.SourceCode;
 import com.fun.config.SqlConstant;

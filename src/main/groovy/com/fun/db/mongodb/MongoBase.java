@@ -1,4 +1,4 @@
-package com.fun.utils.db.mongodb;
+package com.fun.db.mongodb;
 
 import com.fun.frame.SourceCode;
 import com.mongodb.MongoClient;

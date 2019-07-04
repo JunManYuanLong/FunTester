@@ -1,4 +1,4 @@
-package com.fun.utils.db.redis;
+package com.fun.db.redis;
 
 import com.fun.frame.SourceCode;
 import org.slf4j.Logger;

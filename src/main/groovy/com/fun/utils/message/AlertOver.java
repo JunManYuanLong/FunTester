@@ -3,7 +3,7 @@ package com.fun.utils.message;
 import com.fun.frame.httpclient.FanLibrary;
 import com.fun.base.bean.RequestInfo;
 import com.fun.base.interfaces.IMessage;
-import com.fun.utils.db.mysql.MySqlTest;
+import com.fun.db.mysql.MySqlTest;
 import com.fun.config.SysInit;
 import net.sf.json.JSONObject;
 import org.apache.http.client.methods.HttpPost;

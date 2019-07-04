@@ -1,4 +1,4 @@
-package com.fun.utils.db.mysql;
+package com.fun.db.mysql;
 
 import com.fun.base.interfaces.IMySqlBasic;
 import com.fun.config.SqlConstant;

@@ -1,4 +1,4 @@
-package com.fun.utils.db.redis;
+package com.fun.db.redis;
 
 import com.fun.frame.SourceCode;
 import redis.clients.jedis.Jedis;

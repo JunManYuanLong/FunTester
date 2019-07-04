@@ -1,4 +1,4 @@
-package com.fun.utils.db.mysql;
+package com.fun.db.mysql;
 
 import com.fun.config.SqlConstant;
 import org.slf4j.Logger;
