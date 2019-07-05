@@ -38,12 +38,12 @@ public class RedisUtil extends SourceCode {
      * @param exTime 过期时间，单位s
      * @return
      */
-    public static String setEx(String key, String value, int exTime) {
+    public static String set(String key, String value, int expiredTime) {
         Jedis jedis = null;
         String result = null;
         try {
             jedis = RedisPool.getJedis();
-            result = jedis.setex(key, exTime, value);
+            result = jedis.setex(key, expiredTime, value);
         } catch (Exception e) {
             logger.error("setex key:{} value:{} error", key, value, e);
         } finally {
@@ -90,6 +90,19 @@ public class RedisUtil extends SourceCode {
         } finally {
             jedis.close();
             return result;
+        }
+    }
+
+    public static boolean exists(String key) {
+        Jedis jedis = null;
+        try {
+            jedis = RedisPool.getJedis();
+           return jedis.exists(key);
+        } catch (Exception e) {
+            logger.error("get key:{} error", key, e);
+        } finally {
+            jedis.close();
+            return false;
         }
     }
 
