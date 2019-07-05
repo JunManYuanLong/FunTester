@@ -35,25 +35,53 @@ class PropertyUtils extends SourceCode {
     static class Property {
         Map<String, String> properties = new HashMap<>()
 
-        Property(ResourceBundle resourceBundle) {
+        def Property(ResourceBundle resourceBundle) {
             def set = resourceBundle.keySet()
             for (def key in set) {
                 properties.put key, resourceBundle.getString(key)
             }
         }
 
+/**
+ * 获取string类型
+ * @param name
+ * @return
+ */
         String getProperty(String name) {
             if (contain(name)) properties.get(name)
         }
 
+/**
+ * 获取int值
+ * @param name
+ * @return
+ */
         int getPropertyInt(String name) {
             changeStringToInt(properties.get(name))
         }
 
+/**
+ * 获取boolean值
+ * @param name
+ * @return
+ */
         boolean getPropertyBoolean(String name) {
             changeStringToBoolean(properties.get(name))
         }
 
+/**
+ * 获取数组
+ * @param name
+ * @return
+ */
+        def getArrays(String name) {
+            getProperty(name).split(",")
+        }
+
+/**
+ * 返回配置文件的配置项的大小
+ * @return
+ */
         int size() {
             properties.size()
         }
