@@ -61,15 +61,14 @@ public class RedisUtil extends SourceCode {
      */
     public static String set(String key, String value) {
         Jedis jedis = null;
-        String result = null;
         try {
             jedis = RedisPool.getJedis();
-            result = jedis.set(key, value);
+            return jedis.set(key, value);
         } catch (Exception e) {
             logger.error("set key:{} value:{} error", key, value, e);
         } finally {
             jedis.close();
-            return result;
+            return EMPTY;
         }
     }
 
@@ -93,11 +92,17 @@ public class RedisUtil extends SourceCode {
         }
     }
 
+    /**
+     * 是否存在key
+     *
+     * @param key
+     * @return
+     */
     public static boolean exists(String key) {
         Jedis jedis = null;
         try {
             jedis = RedisPool.getJedis();
-           return jedis.exists(key);
+            return jedis.exists(key);
         } catch (Exception e) {
             logger.error("get key:{} error", key, e);
         } finally {
