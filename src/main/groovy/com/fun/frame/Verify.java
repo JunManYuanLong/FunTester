@@ -1,5 +1,8 @@
 package com.fun.frame;
 
+import com.fun.base.bean.RequestInfo;
+import com.fun.base.interfaces.IBase;
+import com.fun.frame.httpclient.FanLibrary;
 import com.fun.utils.Regex;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
@@ -39,16 +42,12 @@ public class Verify extends SourceCode {
 
     /**
      * 获取 code
+     *<p>这里的requestinfo主要的目的是为了拦截一些不必要的checkcode验证的，主要有black_host名单提供，在使用时，注意requestinfo的非空校验</p>
      *
      * @return
      */
     public int getCode() {
-        try {
-            return verifyJson.getInt("code");
-        } catch (JSONException e) {
-            logger.warn("获取responseCode失败！", e);
-            return TEST_ERROR_CODE;
-        }
+        return FanLibrary.getiBase().checkCode(verifyJson, null);
     }
 
 
