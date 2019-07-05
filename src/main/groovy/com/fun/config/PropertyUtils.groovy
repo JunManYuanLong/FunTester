@@ -59,6 +59,14 @@ class PropertyUtils extends SourceCode {
         int getPropertyInt(String name) {
             changeStringToInt(properties.get(name))
         }
+/**
+ * 获取long值
+ * @param name
+ * @return
+ */
+        int getPropertyLong(String name) {
+            Long.valueOf(properties.get(name))
+        }
 
 /**
  * 获取boolean值
