@@ -5,6 +5,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class RedisUtil extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(RedisUtil.class);
@@ -16,18 +19,17 @@ public class RedisUtil extends SourceCode {
      * @param exTime
      * @return
      */
-    public static Long expire(String key, int exTime) {
+    public static boolean expire(String key, int exTime) {
         Jedis jedis = null;
-        Long result = null;
         try {
             jedis = RedisPool.getJedis();
-            result = jedis.expire(key, exTime);
+            return jedis.expire(key, exTime) == 1;
         } catch (Exception e) {
             logger.error("expire key:{} error", key, e);
         } finally {
             jedis.close();
-            return result;
         }
+        return false;
     }
 
     /**
@@ -40,16 +42,15 @@ public class RedisUtil extends SourceCode {
      */
     public static String set(String key, String value, int expiredTime) {
         Jedis jedis = null;
-        String result = null;
         try {
             jedis = RedisPool.getJedis();
-            result = jedis.setex(key, expiredTime, value);
+            return jedis.setex(key, expiredTime, value);
         } catch (Exception e) {
             logger.error("setex key:{} value:{} error", key, value, e);
         } finally {
             jedis.close();
-            return result;
         }
+        return EMPTY;
     }
 
     /**
@@ -68,8 +69,8 @@ public class RedisUtil extends SourceCode {
             logger.error("set key:{} value:{} error", key, value, e);
         } finally {
             jedis.close();
-            return EMPTY;
         }
+        return EMPTY;
     }
 
     /**
@@ -80,16 +81,15 @@ public class RedisUtil extends SourceCode {
      */
     public static String get(String key) {
         Jedis jedis = null;
-        String result = null;
         try {
             jedis = RedisPool.getJedis();
-            result = jedis.get(key);
+            return jedis.get(key);
         } catch (Exception e) {
             logger.error("get key:{} error", key, e);
         } finally {
             jedis.close();
-            return result;
         }
+        return EMPTY;
     }
 
     /**
@@ -104,11 +104,11 @@ public class RedisUtil extends SourceCode {
             jedis = RedisPool.getJedis();
             return jedis.exists(key);
         } catch (Exception e) {
-            logger.error("get key:{} error", key, e);
+            logger.error("exists key:{} error", key, e);
         } finally {
             jedis.close();
-            return false;
         }
+        return false;
     }
 
     /**
@@ -127,7 +127,33 @@ public class RedisUtil extends SourceCode {
             logger.error("del key:{} error", key, e);
         } finally {
             jedis.close();
-            return result;
         }
+        return result;
+    }
+
+    public static String type(String key) {
+        Jedis jedis = null;
+        try {
+            jedis = RedisPool.getJedis();
+            return jedis.type(key);
+        } catch (Exception e) {
+            logger.error("type key:{} error", key, e);
+        } finally {
+            jedis.close();
+        }
+        return EMPTY;
+    }
+
+    public static Set<String> getKeys(String pattern) {
+        Jedis jedis = null;
+        try {
+            jedis = RedisPool.getJedis();
+            return jedis.keys(pattern);
+        } catch (Exception e) {
+            logger.error("type key:{} error", pattern, e);
+        } finally {
+            jedis.close();
+        }
+        return new HashSet<String>();
     }
 }

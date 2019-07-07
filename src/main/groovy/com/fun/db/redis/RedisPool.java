@@ -69,7 +69,6 @@ public class RedisPool extends SourceCode {
      * 初始化连接池
      */
     private static JedisPool initPool() {
-
         return pool = new JedisPool(config, IP, PORT, TIMEOUT);
     }
 
