@@ -69,7 +69,7 @@ public class RedisPool extends SourceCode {
      * 初始化连接池
      */
     private static JedisPool initPool() {
-        return pool = new JedisPool(config, IP, PORT, TIMEOUT);
+        return new JedisPool(config, IP, PORT, TIMEOUT);
     }
 
     /**
@@ -90,24 +90,12 @@ public class RedisPool extends SourceCode {
     }
 
     /**
-     * 获取jedis操作对象，回收资源方法close，3.0以后废弃了其他方法，默认连接第一个数据库
+     * 获取连接池
      *
      * @return
      */
-    public static Jedis getJedis() {
-        return pool.getResource();
-    }
-
-    /**
-     * 获取某一个database的操作连接
-     *
-     * @param index
-     * @return
-     */
-    public static Jedis getJedis(int index) {
-        Jedis jedis = getJedis();
-        jedis.select(index);
-        return jedis;
+    public static JedisPool getPool() {
+        return pool;
     }
 
     /**
