@@ -6,6 +6,9 @@
 联系地址：Fhaohaizi@163.com
 主页：http://blog.fv1314.xyz/blog/home.html
 
+微信公众号号：
+===
+![](http://blog.fv1314.xyz/blog/pic/1562642848.png)
 
 微信号：
 ===
