@@ -16,7 +16,7 @@ class RString extends SourceCode {
         for (int j in 1..i) {
             re.append(getChar())
         }
-        re
+        re.toString()
     }
 
 /**
@@ -34,5 +34,19 @@ class RString extends SourceCode {
  */
     static char getWord() {
         chars[getRandomInt(52) + 9];
+    }
+
+/**
+ * 获取随机字符串，没有数字
+ * @param i
+ * @return1
+ */
+    static String getStringWithoutNum(int i) {
+        def re = new StringBuffer()
+        if (i < 1) return re
+        for (int j in 1..i) {
+            re.append(getWord())
+        }
+        re.toString()
     }
 }
