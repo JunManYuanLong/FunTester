@@ -39,7 +39,7 @@ class RString extends SourceCode {
 /**
  * 获取随机字符串，没有数字
  * @param i
- * @return1
+ * @return
  */
     static String getStringWithoutNum(int i) {
         def re = new StringBuffer()
