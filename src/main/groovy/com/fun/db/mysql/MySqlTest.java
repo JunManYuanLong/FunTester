@@ -88,8 +88,8 @@ public class MySqlTest extends SqlBase {
      * @param computerName
      */
     public static void saveApiTestDate(RequestInfo requestInfo, int data_size, long expend_time, int status, int mark, int code, String localIP, String computerName) {
-        if (SqlConstant.flag && SysInit.isBlack(requestInfo.getHost())) return;
-        String sql = String.format("INSERT INTO " + SqlConstant.REQUEST_TABLE + " (host_name,api_name,data_size,elapsed_time,status,type,method,code,local_ip,computer_name,create_time) VALUES ('%s','%s',%d,%d,%d,'%s','%s',%d,'%s','%s','%s');", requestInfo.getHost(), requestInfo.getApiName(), data_size, expend_time, status, requestInfo.getType(), requestInfo.getMethod().getName(), code, localIP, computerName, Time.getDate());
+        if (!SqlConstant.flag || SysInit.isBlack(requestInfo.getHost())) return;
+        String sql = String.format("INSERT INTO " + SqlConstant.REQUEST_TABLE + " (domain,api,data_size,expend_time,status,type,method,code,local_ip,local_name,create_time) VALUES ('%s','%s',%d,%d,%d,'%s','%s',%d,'%s','%s','%s');", requestInfo.getHost(), requestInfo.getApiName(), data_size, expend_time, status, requestInfo.getType(), requestInfo.getMethod().getName(), code, localIP, computerName, Time.getDate());
         JSONObject params = new JSONObject();
         RecordBean requestBean = new RecordBean();
         requestBean.setApi(requestInfo.getApiName());
@@ -104,7 +104,7 @@ public class MySqlTest extends SqlBase {
         requestBean.setLocal_name(computerName);
         requestBean.setCreate_time(Time.getDate());
         logger.info("请求uri：{},耗时：{} ms，参数：{}", requestInfo.getUri(), expend_time, requestInfo.getParams());
-        sendWork(requestBean);
+        sendWork(sql);
     }
 
     /**

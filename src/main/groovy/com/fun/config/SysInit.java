@@ -61,6 +61,6 @@ public class SysInit extends SourceCode {
      * @return
      */
     public static boolean isBlack(String name) {
-        return !name.contains("fv1314") && !name.contains("10.10") && name.contains("local") && !HttpClientConstant.BLACK_HOSTS.contains(name);
+        return name.contains("fv1314") || name.contains("10.10") || name.contains("local") || HttpClientConstant.BLACK_HOSTS.contains(name);
     }
 }
