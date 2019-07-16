@@ -31,6 +31,9 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
      */
     CountDownLatch countDownLatch;
 
+    /**
+     * 用于设置访问资源
+     */
     public T t;
 
     public ThreadBase(T t) {
@@ -40,6 +43,15 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
 
     public ThreadBase() {
         super();
+    }
+
+    /**
+     * groovy无法直接访问t，所以写了这个方法
+     *
+     * @return
+     */
+    public String getT() {
+        return t.toString();
     }
 
     @Override
