@@ -3,6 +3,7 @@ package com.fun.config;
 
 import org.apache.http.Header;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -118,10 +119,27 @@ public class HttpClientConstant {
      */
     public static String SSL_VERSION = getProperty("ssl_v");
 
-    public static List<String> BLACK_HOSTS = Arrays.asList(getProperty("black_host").split(","));
+    /**
+     * 域名黑名单
+     */
+    public static List<String> BLACK_HOSTS = new ArrayList<>();
 
     /**
      * 公共的header集合
      */
     public static List<Header> COMMON_HEADER = Arrays.asList(USER_AGENT, CONNECTION);
+
+    /**
+     * 添加黑名单
+     *
+     * @param host
+     */
+    public static void addBlackHost(String host) {
+        BLACK_HOSTS.add(host);
+    }
+
+    static {
+        BLACK_HOSTS.addAll(Arrays.asList(getProperty("black_host").split(",")));
+    }
+
 }
