@@ -10,10 +10,6 @@
 ===
 ![](http://blog.fv1314.xyz/blog/pic/1562642848.png)
 
-微信号：
-===
-![](http://blog.fv1314.xyz/blog/pic/WeChat.png)
-
 QQ群：340964272
 ===
 ![](http://blog.fv1314.xyz/blog/pic/201712120951590031.png)
