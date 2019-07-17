@@ -240,7 +240,7 @@ public class MySqlTest extends SqlBase {
     public static void sendWork(String sql) {
         JSONObject argss = new JSONObject();
         argss.put("sql", DecodeEncode.urlEncoderText(sql));
-        if (SqlConstant.flag) FanLibrary.getHttpResponse(FanLibrary.getHttpPost(SqlConstant.MYSQL_SERVER_PATH, argss));
+        FanLibrary.getHttpResponse(FanLibrary.getHttpPost(SqlConstant.MYSQL_SERVER_PATH, argss));
     }
 
     /**
