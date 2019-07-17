@@ -3,11 +3,16 @@ package com.fun.base.bean
 import com.fun.frame.Save
 import com.fun.frame.SourceCode
 import net.sf.json.JSONObject
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 /**
  * bean的基类
  */
 abstract class AbstractBean extends SourceCode {
+
+    static final Logger logger = LoggerFactory.getLogger(AbstractBean.class)
+
     /**
      * 将bean转化为json，为了进行数据处理和打印
      *
@@ -25,10 +30,10 @@ abstract class AbstractBean extends SourceCode {
     }
 
     /**
-     * 控制台打印
+     * 控制台打印，使用WARN记录，以便查看
      */
     def print() {
-        output(this.getClass().toString() + "：" + this.toString());
+        logger.warn(this.getClass().toString() + "：" + this.toString());
     }
 
     @Override

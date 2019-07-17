@@ -76,6 +76,11 @@ public class SqlConstant {
     public static String CLASS_TABLE;
 
     /**
+     * 默认class表名
+     */
+    public static String PERFORMANCE_TABLE;
+
+    /**
      * 是否保存所有的请求到数据库
      */
     public static boolean flag = propertyUtils.getPropertyBoolean("flag");

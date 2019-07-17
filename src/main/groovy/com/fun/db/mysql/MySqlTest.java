@@ -1,5 +1,6 @@
 package com.fun.db.mysql;
 
+import com.fun.base.bean.PerformanceResultBean;
 import com.fun.base.bean.RecordBean;
 import com.fun.base.bean.RequestInfo;
 import com.fun.frame.Output;
@@ -9,6 +10,7 @@ import com.fun.config.SysInit;
 import com.fun.utils.DecodeEncode;
 import com.fun.utils.Time;
 import com.fun.utils.message.AlertOver;
+import io.netty.util.internal.StringUtil;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,9 +28,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 数据库读写类
- *<p>
- *     用来存储接口请求信息的mysql数据库类
- *      打印请求信息的方法写在这里面，数据库服务的队列也在这里（可不用），暂时才用直接抛出sql语句完成记录功能
+ * <p>
+ * 用来存储接口请求信息的mysql数据库类
+ * 打印请求信息的方法写在这里面，数据库服务的队列也在这里（可不用），暂时才用直接抛出sql语句完成记录功能
  * </p>
  */
 public class MySqlTest extends SqlBase {
@@ -107,6 +109,13 @@ public class MySqlTest extends SqlBase {
         sendWork(sql);
     }
 
+    public static void savePerformanceBean(PerformanceResultBean bean) {
+        if (StringUtil.isNullOrEmpty(SqlConstant.PERFORMANCE_TABLE)) return;
+        String sql = String.format("INSERT INTO " + SqlConstant.PERFORMANCE_TABLE + "(threads,total,rt,qps,des) VALUES (%d,%d,%d,%f,'%s');", bean.getThreads(), bean.getTotal(), bean.getRt(), bean.getQps(), bean.getDesc());
+        logger.info("记录性能测试数据：{}", bean.toJson());
+        sendWork(sql);
+    }
+
     /**
      * 保存测试结果
      *
@@ -140,7 +149,7 @@ public class MySqlTest extends SqlBase {
      */
     public static void saveAlertOverMessage(RequestInfo requestInfo, String type, String title, String localIP, String computerName) {
         String host_name = requestInfo.getHost();
-        if (SysInit.isBlack(host_name) || SqlConstant.REQUEST_TABLE == null) return;
+        if (SysInit.isBlack(host_name) || SqlConstant.PERFORMANCE_TABLE == null) return;
         String sql = String.format("INSERT INTO alertover (type,title,host_name,api_name,local_ip,computer_name,create_time) VALUES('%s','%s','%s','%s','%s','%s','%s');", type, title, host_name, requestInfo.getApiName(), localIP, computerName, Time.getDate());
         sendWork(sql);
     }

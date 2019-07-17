@@ -1,11 +1,16 @@
 package com.fun.base.bean
 
+import com.fun.db.mysql.MySqlTest
+
+
 /**
  * 性能测试结果集
  */
 class PerformanceResultBean extends AbstractBean {
 
-    int thrads;
+    String desc;
+
+    int threads;
 
     int total;
 
@@ -13,10 +18,12 @@ class PerformanceResultBean extends AbstractBean {
 
     double qps;
 
-    PerformanceResultBean(int thrads, int total, int rt, double qps) {
-        this.thrads = thrads;
+    PerformanceResultBean(int threads, int total, int rt, double qps, String desc) {
+        this.threads = threads;
         this.total = total;
         this.rt = rt;
         this.qps = qps;
+        this.desc = desc;
+        MySqlTest.savePerformanceBean(this)
     }
 }

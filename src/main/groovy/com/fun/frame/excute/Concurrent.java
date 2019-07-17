@@ -19,9 +19,14 @@ import java.util.concurrent.Executors;
 /**
  * 并发类，用于启动压力脚本
  */
-public class Concurrent {
+public class Concurrent extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(Concurrent.class);
+
+    /**
+     * 任务描述
+     */
+    public String desc = "fun";
 
     /**
      * 线程任务
@@ -51,8 +56,8 @@ public class Concurrent {
     CountDownLatch countDownLatch;
 
     /**
-     * @param thread 线程任务
-     * @param threadNum    线程数
+     * @param thread    线程任务
+     * @param threadNum 线程数
      */
     public Concurrent(ThreadBase thread, int threadNum) {
         this(threadNum);
@@ -65,6 +70,25 @@ public class Concurrent {
     public Concurrent(List<ThreadBase> threads) {
         this(threads.size());
         this.threads = threads;
+    }
+
+    /**
+     * @param thread    线程任务
+     * @param threadNum 线程数
+     * @param desc      任务描述
+     */
+    public Concurrent(ThreadBase thread, int threadNum, String desc) {
+        this(thread, threadNum);
+        this.desc = desc;
+    }
+
+    /**
+     * @param threads 线程组
+     * @param desc    任务描述
+     */
+    public Concurrent(List<ThreadBase> threads, String desc) {
+        this(threads);
+        this.desc = desc;
     }
 
     private Concurrent(int threadNum) {
@@ -106,7 +130,7 @@ public class Concurrent {
 
     private PerformanceResultBean over() {
         Save.saveLongList(allTimes, threadNum);
-        return countQPS(threadNum);
+        return countQPS(threadNum, desc);
     }
 
     ThreadBase getThread(int i) {
@@ -120,7 +144,7 @@ public class Concurrent {
      *
      * @param name 线程数
      */
-    public static PerformanceResultBean countQPS(int name) {
+    public static PerformanceResultBean countQPS(int name, String desc) {
         List<String> strings = WriteRead.readTxtFileByLine(Constant.LONG_Path + name + Constant.FILE_TYPE_LOG);
         int size = strings.size();
         int sum = 0;
@@ -129,7 +153,7 @@ public class Concurrent {
             sum += time;
         }
         double v = 1000.0 * size * name / sum;
-        PerformanceResultBean performanceResultBean = new PerformanceResultBean(name, size, sum / size, v);
+        PerformanceResultBean performanceResultBean = new PerformanceResultBean(name, size, sum / size, v, desc);
         performanceResultBean.print();
         return performanceResultBean;
     }
