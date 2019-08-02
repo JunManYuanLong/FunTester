@@ -39,10 +39,11 @@ public class Output extends Constant {
      * @param e
      */
     public static void output(Exception e) {
-        StackTraceElement[] stackTrace = e.getStackTrace();
-        for (int i = 0; i < stackTrace.length; i++) {
-            logger.warn(stackTrace[i].toString());
-        }
+        logger.error("error！！！",e);
+//        StackTraceElement[] stackTrace = e.getStackTrace();
+//        for (int i = 0; i < stackTrace.length; i++) {
+//            logger.warn(stackTrace[i].toString());
+//        }
     }
 
     /**
