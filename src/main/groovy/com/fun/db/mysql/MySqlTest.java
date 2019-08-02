@@ -238,6 +238,7 @@ public class MySqlTest extends SqlBase {
      * @return
      */
     public static void sendWork(String sql) {
+        FanLibrary.noHeader();
         JSONObject argss = new JSONObject();
         argss.put("sql", DecodeEncode.urlEncoderText(sql));
         FanLibrary.getHttpResponse(FanLibrary.getHttpPost(SqlConstant.MYSQL_SERVER_PATH, argss));

@@ -50,6 +50,10 @@ public class FanLibrary extends SourceCode {
         HEADER_KEY = true;
     }
 
+    public static void noHeader() {
+        HEADER_KEY = false;
+    }
+
     /**
      * 最近发送的请求
      */
