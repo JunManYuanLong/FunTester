@@ -142,7 +142,11 @@ public class Output extends Constant {
                 case ',':
                     // 如果是“,”，则断行
                     char last = jsonStr.charAt(i - 1);
-                    if ("\"0123456789le]}".contains(last + EMPTY)) jsonResultStr.append(piece + LINE);
+                    if ("\"0123456789le]}".contains(last + EMPTY)) {
+                        jsonResultStr.append(piece + LINE);
+                    } else {
+                        jsonResultStr.append(piece);
+                    }
                     break;
                 case '{':
                 case '[':
