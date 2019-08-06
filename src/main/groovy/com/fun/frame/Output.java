@@ -2,6 +2,7 @@ package com.fun.frame;
 
 import com.fun.base.bean.AbstractBean;
 import com.fun.config.Constant;
+import jdk.nashorn.internal.scripts.JO;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.collections.MapUtils;
@@ -12,11 +13,16 @@ import org.slf4j.LoggerFactory;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @SuppressWarnings("all")
 public class Output extends Constant {
 
     private static Logger logger = LoggerFactory.getLogger(Output.class);
+
+    static final String UP = SourceCode.getManyString("~⇩~", 10);
+
+    static final String DOWN = SourceCode.getManyString("~⇧~", 10);
 
     /**
      * 输出带有信息的异常
@@ -39,7 +45,7 @@ public class Output extends Constant {
      * @param e
      */
     public static void output(Exception e) {
-        logger.error("error！！！",e);
+        logger.error("error！！！", e);
 //        StackTraceElement[] stackTrace = e.getStackTrace();
 //        for (int i = 0; i < stackTrace.length; i++) {
 //            logger.warn(stackTrace[i].toString());
@@ -125,43 +131,42 @@ public class Output extends Constant {
             output("json 对象是空的！");
             return jsonObject;
         }
-        String start = SourceCode.getManyString(SPACE_1, 4);
+//        String start = SourceCode.getManyString(SPACE_1, 4);
+//        String start = " ① ";
+
         String jsonStr = jsonObject.toString();// 先将json对象转化为string对象
         jsonStr = jsonStr.replaceAll("\\\\/", OR);
         int level = 0;// 用户标记层级
         StringBuffer jsonResultStr = new StringBuffer("＞  ");// 新建stringbuffer对象，用户接收转化好的string字符串
-        for (int i = 0; i < jsonStr.length(); i++) {// 循环遍历每一个字符
+        int length = jsonStr.length();
+        for (int i = 0; i < length; i++) {// 循环遍历每一个字符
             char piece = jsonStr.charAt(i);// 获取当前字符
             // 如果上一个字符是断行，则在本行开始按照level数值添加标记符，排除第一行
             if (i != 0 && '\n' == jsonResultStr.charAt(jsonResultStr.length() - 1)) {
-                for (int k = 0; k < level; k++) {
-                    jsonResultStr.append(start);
-                }
+                jsonResultStr.append(level + " . ");
+                IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(". . "));
             }
+            char last = i == 0 ? ' ' : jsonStr.charAt(i - 1);
+            char next = i < length - 1 ? jsonStr.charAt(i + 1) : ' ';
             switch (piece) {
                 case ',':
                     // 如果是“,”，则断行
-                    char last = jsonStr.charAt(i - 1);
-                    if ("\"0123456789le]}".contains(last + EMPTY)) {
-                        jsonResultStr.append(piece + LINE);
-                    } else {
-                        jsonResultStr.append(piece);
-                    }
+                    jsonResultStr.append(piece + ("\"0123456789le]}".contains(last + EMPTY) ? LINE : SPACE_1));
                     break;
                 case '{':
                 case '[':
                     // 如果字符是{或者[，则断行，level加1
                     jsonResultStr.append(piece + LINE);
-                    level++;
+//                    output(last);
+                    if (last != '[') level++;//解决jsonarray
                     break;
                 case '}':
                 case ']':
                     // 如果是}或者]，则断行，level减1
                     jsonResultStr.append(LINE);
-                    level--;
-                    for (int k = 0; k < level; k++) {
-                        jsonResultStr.append(start);
-                    }
+                    if (next != ']') level--;//解决jsonarray
+                    jsonResultStr.append(level == 0 ? "" : level + " . ");
+                    IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(". . "));
                     jsonResultStr.append(piece);
                     break;
                 default:
@@ -169,7 +174,7 @@ public class Output extends Constant {
                     break;
             }
         }
-        output(LINE + "↘ ↘ ↘ ↘ ↘ ↘ ↘ ↘ json ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙" + LINE + jsonResultStr.toString().replaceAll(LINE, LINE + "＞  ") + LINE + "↘ ↘ ↘ ↘ ↘ ↘ ↘ ↘ json ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙ ↙");
+        output(LINE + UP + " JSON " + UP + LINE + jsonResultStr.toString().replaceAll(LINE, LINE + "＞  ") + LINE + DOWN + " JSON " + DOWN);
         return jsonObject;
     }
 
