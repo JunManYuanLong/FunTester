@@ -157,7 +157,6 @@ public class Output extends Constant {
                 case '[':
                     // 如果字符是{或者[，则断行，level加1
                     jsonResultStr.append(piece + LINE);
-//                    output(last);
                     if (last != '[') level++;//解决jsonarray
                     break;
                 case '}':
