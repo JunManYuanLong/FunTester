@@ -21,7 +21,7 @@ class HttpServer extends MocoServer {
         server.response(MocoResponse.textRes("hello word"))
         def run = run(server)
 
-
+        server.get(urlOnly("/test00")).redirectTo("https://mp.weixin.qq.com/s?__biz=MzU4MTE2NDEyMQ==&mid=2247483864&idx=3&sn=8e20005abfe783422e81ee9a9aa606bd&chksm=fd4a8ceeca3d05f894c90f14a418010ac8d36f1ec954c1363a2a9c4233ac92a7e67308bb83b3&token=438960288&lang=zh_CN#rd")
         waitForKey("fan")
         run.stop()
     }

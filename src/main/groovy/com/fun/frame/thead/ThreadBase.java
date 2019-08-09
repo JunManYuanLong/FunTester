@@ -72,9 +72,9 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
         } catch (Exception e) {
             logger.warn("执行任务失败！", e);
         } finally {
-            after();
             if (countDownLatch != null)
                 countDownLatch.countDown();
+            after();
         }
     }
 

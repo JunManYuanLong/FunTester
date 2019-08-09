@@ -31,6 +31,15 @@ public class Verify extends SourceCode {
     private int code;
 
     /**
+     * 获取所有lines
+     *
+     * @return
+     */
+    public List<String> getLines() {
+        return lines;
+    }
+
+    /**
      * 断言的json对象分行解析
      */
     private List<String> lines = new ArrayList<>();
@@ -42,7 +51,7 @@ public class Verify extends SourceCode {
 
     /**
      * 获取 code
-     *<p>这里的requestinfo主要的目的是为了拦截一些不必要的checkcode验证的，主要有black_host名单提供，在使用时，注意requestinfo的非空校验</p>
+     * <p>这里的requestinfo主要的目的是为了拦截一些不必要的checkcode验证的，主要有black_host名单提供，在使用时，注意requestinfo的非空校验</p>
      *
      * @return
      */

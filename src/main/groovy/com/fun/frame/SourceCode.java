@@ -51,7 +51,7 @@ public class SourceCode extends Output {
         while (scanner.hasNext()) {
             String next = scanner.next();
             if (next.equals(key.toString())) break;
-            logger.info("输入：{}错误！", next);
+            logger.warn("输入：{}错误！", next);
         }
         scanner.close();
         long end = Time.getTimeStamp();
@@ -68,6 +68,7 @@ public class SourceCode extends Output {
         Scanner scanner = new Scanner(System.in);
         String next = scanner.next();
         scanner.close();
+        logger.debug("输入内容：{}", next);
         return next;
     }
 
@@ -83,7 +84,11 @@ public class SourceCode extends Output {
      */
     public static JSONObject changeArraysToJson(Object[] objects, String regex) {
         JSONObject args = new JSONObject();
-        Arrays.stream(objects).forEach(x -> args.put(x.toString().split(regex, 2)[0], x.toString().split(regex, 2)[1]));
+        Arrays.stream(objects).forEach(x -> {
+            String[] split = x.toString().split(regex, 2);
+            args.put(split[0], split[1]);
+            logger.debug("key:{},value:{}", split[0], split[1]);
+        });
         return args;
     }
 
@@ -97,12 +102,7 @@ public class SourceCode extends Output {
      * @return
      */
     public static JSONObject getJson(Object... content) {
-        JSONObject json = new JSONObject();
-        for (int i = 0; i < content.length; i++) {
-            String[] split = content[i].toString().split("=", 2);
-            json.put(split[0], split[1]);
-        }
-        return json;
+        return changeArraysToJson(content, "=");
     }
 
     /**
@@ -157,6 +157,7 @@ public class SourceCode extends Output {
      * @return
      */
     public static int changeStringToInt(String text) {
+        logger.debug("需要转化成的文本：{}", text);
         try {
             return Integer.parseInt(text);
         } catch (NumberFormatException e) {
@@ -172,9 +173,25 @@ public class SourceCode extends Output {
      * @return
      */
     public static boolean changeStringToBoolean(String text) {
+        logger.debug("需要转化成的文本：{}", text);
         return text == null ? null : text.equalsIgnoreCase("true") ? true : text.equalsIgnoreCase("false") ? false : null;
     }
 
+    /**
+     * string转化为double
+     *
+     * @param text
+     * @return
+     */
+    public static Double changeStringToDouble(String text) {
+        logger.debug("需要转化成的文本：{}", text);
+        try {
+            return Double.parseDouble(text);
+        } catch (NumberFormatException e) {
+            logger.warn("转化double类型失败！", e);
+            return TEST_ERROR_CODE * 1.0;
+        }
+    }
 
     /**
      * 把字符串每个字符用分隔器连接起来
@@ -217,23 +234,8 @@ public class SourceCode extends Output {
         return prefix + StringUtils.join(objects, separator) + suffix;
     }
 
-    public static String join(Object[] objects,String separator) {
-        return join(objects, separator, EMPTY, EMPTY);
-    }
-
-    /**
-     * string转化为double
-     *
-     * @param text
-     * @return
-     */
-    public static Double changeStringToDouble(String text) {
-        try {
-            return Double.parseDouble(text);
-        } catch (NumberFormatException e) {
-            logger.warn("转化double类型失败！", e);
-            return TEST_ERROR_CODE * 1.0;
-        }
+    public static String join(Object[] objects, String separator) {
+        return StringUtils.join(objects, separator);
     }
 
     /**
@@ -243,6 +245,7 @@ public class SourceCode extends Output {
      * @return
      */
     public static boolean isNumber(String text) {
+        logger.debug("需要判断的文本：{}", text);
         if (StringUtils.isEmpty(text)) return false;
         if (text.equals("0")) return true;
         return Regex.isRegex(text, "^[1-9][0-9]*$");

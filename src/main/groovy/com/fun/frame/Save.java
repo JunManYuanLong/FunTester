@@ -32,7 +32,7 @@ public class Save extends SourceCode {
         File dirFile = new File(LONG_Path + name);
         if (dirFile.exists()) dirFile.delete();
         WriteRead.writeText(dirFile, content);
-        logger.info("数据保存成功！文件名：" + name);
+        logger.info("数据保存成功！文件名：{}", name);
     }
 
     /**
