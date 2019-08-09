@@ -11,6 +11,7 @@ import static com.github.dreamhead.moco.Moco.log
 
 /**
  * 获取server的工具类，提供了计数监视器和日志监视器
+ * 这里的继承关系为了更方便调用mocorequest和mocoresponse的静态方法
  */
 class MocoServer extends MocoResponse {
 

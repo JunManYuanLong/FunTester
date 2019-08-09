@@ -16,6 +16,7 @@ import static com.github.dreamhead.moco.internal.ApiUtils.textToResource
 import static com.github.dreamhead.moco.util.Iterables.asIterable
 /**
  * responsehandle获取
+ * 这里的继承关系为了更方便调用mocorequest和mocoresponse的静态方法
  */
 @SuppressWarnings("all")
 class MocoResponse extends MocoRequest {
