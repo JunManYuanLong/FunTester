@@ -2,19 +2,26 @@ package com.fun.moco
 
 import com.fun.frame.SourceCode
 import com.github.dreamhead.moco.RequestMatcher
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 import static com.fun.moco.support.JsonExtractor.queryJson
 import static com.github.dreamhead.moco.Moco.*
+
 /**
  * requestmatcher获取
  */
-class MocoRequest extends SourceCode{
+class MocoRequest extends SourceCode {
+
+    static Logger logger = LoggerFactory.getLogger(MocoRequest.class)
+
 /**
  * url正则匹配
  * @param regex
  * @return
  */
     static RequestMatcher urlMatcher(String regex) {
+        logger.debug("匹配请求的正则表达式：{}", regex)
         match uri(regex)
     }
 
@@ -24,6 +31,7 @@ class MocoRequest extends SourceCode{
  * @return
  */
     static RequestMatcher urlOnly(String url) {
+        logger.debug("匹配的uri：{}", url)
         by uri(url)
     }
 
@@ -33,6 +41,7 @@ class MocoRequest extends SourceCode{
  * @return
  */
     static RequestMatcher urlStartsWith(String text) {
+        logger.debug("匹配的url起始文本：{}", text)
         startsWith uri(text)
     }
 
@@ -42,6 +51,7 @@ class MocoRequest extends SourceCode{
  * @return
  */
     static RequestMatcher urlEndWith(String text) {
+        logger.debug("匹配的url结束文本：{}", text)
         endsWith uri(text)
     }
 
@@ -51,6 +61,7 @@ class MocoRequest extends SourceCode{
  * @return
  */
     static RequestMatcher urlContain(String piece) {
+        logger.debug("匹配的url包含文本：{}", piece)
         contain uri(piece)
     }
 
@@ -61,6 +72,7 @@ class MocoRequest extends SourceCode{
  * @return
  */
     static RequestMatcher eqArgs(String key, String value) {
+        logger.debug("匹配的get请求参数key：{}，value：{}", key, value)
         eq query(key), value
     }
 
@@ -71,6 +83,7 @@ class MocoRequest extends SourceCode{
  * @return
  */
     static RequestMatcher eqParams(String key, String value) {
+        logger.debug("匹配的post请求json参数key：{}，value：{}", key, value)
         eq queryJson(key), value
     }
 
@@ -81,16 +94,8 @@ class MocoRequest extends SourceCode{
  * @return
  */
     static RequestMatcher eqForm(String key, String value) {
+        logger.debug("匹配的post请求form参数key：{}，value：{}", key, value)
         eq form(key), value
-    }
-
-/**
- * url中是否存在字符串
- * @param url
- * @return
- */
-    static RequestMatcher existUrl(String piece) {
-        contain uri(piece)
     }
 
 /**
@@ -99,6 +104,7 @@ class MocoRequest extends SourceCode{
  * @return
  */
     static RequestMatcher existArgs(String key) {
+        logger.debug("匹配的get请求参数key：{}是否存在", key)
         exist(query(key))
     }
 
@@ -108,6 +114,7 @@ class MocoRequest extends SourceCode{
  * @return
  */
     static RequestMatcher existParams(String key) {
+        logger.debug("匹配的post请求json参数key：{}是否存在", key)
         exist(queryJson(key))
     }
 
@@ -117,6 +124,7 @@ class MocoRequest extends SourceCode{
  * @return
  */
     static RequestMatcher existForm(String key) {
+        logger.debug("匹配的post请求form参数key：{}是否存在", key)
         exist(form(key))
     }
 
@@ -126,6 +134,7 @@ class MocoRequest extends SourceCode{
  * @return
  */
     static RequestMatcher existHeader(String key) {
+        logger.debug("匹配请求header中key：{}是否存在", key)
         exist(header(key))
     }
 
@@ -135,6 +144,7 @@ class MocoRequest extends SourceCode{
  * @return
  */
     static RequestMatcher existCookie(String key) {
+        logger.debug("匹配请求cookie中key：{}是否存在", key)
         exist(cookie(key))
     }
 }
