@@ -90,6 +90,7 @@ public class MySqlTest extends SqlBase {
      * @param computerName
      */
     public static void saveApiTestDate(RequestInfo requestInfo, int data_size, long expend_time, int status, int mark, int code, String localIP, String computerName) {
+        logger.debug("请求信息：{}", requestInfo.toString());
         if (!SqlConstant.flag || SysInit.isBlack(requestInfo.getHost())) return;
         String sql = String.format("INSERT INTO " + SqlConstant.REQUEST_TABLE + " (domain,api,data_size,expend_time,status,type,method,code,local_ip,local_name,create_time) VALUES ('%s','%s',%d,%d,%d,'%s','%s',%d,'%s','%s','%s');", requestInfo.getHost(), requestInfo.getApiName(), data_size, expend_time, status, requestInfo.getType(), requestInfo.getMethod().getName(), code, localIP, computerName, Time.getDate());
 //        RecordBean requestBean = new RecordBean();
@@ -238,6 +239,7 @@ public class MySqlTest extends SqlBase {
      * @return
      */
     public static void sendWork(String sql) {
+        logger.debug("记录SQL：{}", sql);
         FanLibrary.noHeader();
         JSONObject argss = new JSONObject();
         argss.put("sql", DecodeEncode.urlEncoderText(sql));
@@ -250,6 +252,7 @@ public class MySqlTest extends SqlBase {
      * @param requestBean
      */
     public static void sendWork(RecordBean requestBean) {
+        FanLibrary.noHeader();
         if (SqlConstant.flag)
             FanLibrary.getHttpResponse(FanLibrary.getHttpPost(SqlConstant.MYSQL_SERVER_PATH, requestBean.toJson()));
     }
