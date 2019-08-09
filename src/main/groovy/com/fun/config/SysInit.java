@@ -22,6 +22,7 @@ public class SysInit extends SourceCode {
     static {
         new File(Constant.LOG_Path).mkdir();
         new File(Constant.LONG_Path).mkdir();
+        logger.info("当前用户：{}，IP：{}，工作目录：{}", COMPUTER_USER_NAME, LOCAL_IP, WORK_SPACE);
     }
 
     /**
@@ -37,7 +38,6 @@ public class SysInit extends SourceCode {
             logger.warn("获取本机IP失败！", e);
         }
         String ip = inetAddress.getHostAddress();
-        logger.info("本机IP：{}", ip);
         return ip;
     }
 
@@ -49,7 +49,6 @@ public class SysInit extends SourceCode {
     public static String getComputerName() {
         Properties properties = System.getProperties();
         Object name = properties.get("user.name");
-        logger.info("本机电脑名：{}", name);
         return name.toString();
     }
 
