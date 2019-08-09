@@ -10,6 +10,7 @@ import com.fun.utils.Time;
 import com.fun.db.mysql.MySqlTest;
 import com.fun.utils.message.AlertOver;
 import net.sf.json.JSONObject;
+import org.apache.commons.collections.KeyValue;
 import org.apache.commons.collections.MapUtils;
 import org.apache.http.*;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -193,6 +194,7 @@ public class FanLibrary extends SourceCode {
      * @param file     文件
      */
     private static void setMultipartEntityEntity(HttpPost httpPost, JSONObject params, File file) {
+        logger.debug("上传文件名：{}", file.getAbsolutePath());
         String fileName = file.getName();
         InputStream inputStream = null;
         try {
@@ -222,9 +224,6 @@ public class FanLibrary extends SourceCode {
      * @param request
      */
     protected static void beforeRequest(HttpRequestBase request) {
-        /* 使用统计的默认请求配置
-         * request.setConfig(requestConfig);//设置请求配置
-         * */
         HttpClientConstant.COMMON_HEADER.forEach(header -> request.addHeader(header));
     }
 
@@ -283,6 +282,13 @@ public class FanLibrary extends SourceCode {
         return content;
     }
 
+    /**
+     * 获取响应状态，处理重定向的url
+     *
+     * @param response
+     * @param res
+     * @return
+     */
     public static int getStatus(CloseableHttpResponse response, JSONObject res) {
         int status = response.getStatusLine().getStatusCode();
         if (status != HttpStatus.SC_OK) logger.warn("响应状态码错误：{}", status);
@@ -418,6 +424,7 @@ public class FanLibrary extends SourceCode {
      * @return
      */
     public static Header getHeader(String name, String value) {
+        logger.debug("生成header的name：{}，value：{}", name, value);
         return new BasicHeader(name, value);
     }
 
