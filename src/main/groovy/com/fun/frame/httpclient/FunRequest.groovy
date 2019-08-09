@@ -1,15 +1,20 @@
 package com.fun.frame.httpclient
 
+import com.fun.base.bean.RequestInfo
 import com.fun.config.RequestType
 import net.sf.json.JSONObject
 import org.apache.commons.lang3.StringUtils
 import org.apache.http.Header
 import org.apache.http.client.methods.HttpRequestBase
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 /**
  * 重写FanLibrary，使用面对对象思想
  */
 public class FunRequest extends FanLibrary {
+
+    static Logger logger = LoggerFactory.getLogger(FunRequest.class)
 
     /**
      * 请求类型，true为get，false为post
@@ -70,7 +75,7 @@ public class FunRequest extends FanLibrary {
      *
      * @return
      */
-    public static FanRequest isGet() {
+    public static FunRequest isGet() {
         new FunRequest(RequestType.GET)
     }
 
@@ -79,7 +84,7 @@ public class FunRequest extends FanLibrary {
      *
      * @return
      */
-    public static FanRequest isPost() {
+    public static FunRequest isPost() {
         new FunRequest(RequestType.POST)
     }
 
@@ -147,7 +152,7 @@ public class FunRequest extends FanLibrary {
      * @param value
      * @return
      */
-    public FanRequest addJson(Object key, Object value) {
+    public FunRequest addJson(Object key, Object value) {
         json.put(key, value)
         this
     }
@@ -159,7 +164,7 @@ public class FunRequest extends FanLibrary {
      * @param value
      * @return
      */
-    public FanRequest addHeader(Object key, Object value) {
+    public FunRequest addHeader(Object key, Object value) {
         headers << getHeader(key.toString(), value.toString())
         this
     }
@@ -224,6 +229,7 @@ public class FunRequest extends FanLibrary {
      * @return
      */
     public HttpRequestBase getRequest() {
+        logger.debug("请求信息：{}",new RequestInfo(this.request).toString())
         this.request
     }
 
