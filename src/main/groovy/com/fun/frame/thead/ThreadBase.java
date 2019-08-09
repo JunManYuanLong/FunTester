@@ -99,8 +99,4 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
         this.countDownLatch = countDownLatch;
     }
 
-    public void setTimes(int times) {
-        this.times = times;
-    }
-
 }
