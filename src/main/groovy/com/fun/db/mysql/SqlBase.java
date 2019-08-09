@@ -23,18 +23,18 @@ public class SqlBase extends SourceCode {
      * @return
      */
     public static Connection getConnection(String url, String user, String passowrd) {
-        Connection connection = null;
+        logger.debug("连接数据库url：{}，user：{}，password：{}", url, user, passowrd);
         try {
             Class.forName(SqlConstant.DRIVE);
         } catch (ClassNotFoundException e) {
             logger.warn("加载驱动程序失败！", e);
         }
         try {
-            connection = DriverManager.getConnection(url, user, passowrd);
+            Connection connection = DriverManager.getConnection(url, user, passowrd);
         } catch (SQLException e) {
             logger.warn("数据库连接失败！", e);
         }
-        return connection;
+        return null;
     }
 
     /**
@@ -44,15 +44,14 @@ public class SqlBase extends SourceCode {
      * @return
      */
     public static Statement getStatement(Connection connection) {
-        Statement statement = null;
         try {
-            statement = connection.createStatement();
+            Statement statement = connection.createStatement();
         } catch (SQLException e) {
             logger.warn("获取数据库连接失败！", e);
         } catch (ExceptionInInitializerError e) {
             logger.warn("初始化失败!", e);
         }
-        return statement;
+        return null;
     }
 
     /**
@@ -64,6 +63,7 @@ public class SqlBase extends SourceCode {
      * @return
      */
     public static ResultSet excuteQuerySql(Connection connection, Statement statement, String sql) {
+        logger.debug("执行的SQL：{}",sql);
         try {
             if (connection != null && !connection.isClosed()) {
                 ResultSet resultSet = statement.executeQuery(sql);
@@ -83,12 +83,12 @@ public class SqlBase extends SourceCode {
      * @param sql
      */
     public static void excuteUpdateSql(Connection connection, Statement statement, String sql) {
+        logger.debug("执行的SQL：{}",sql);
         try {
             if (!connection.isClosed()) statement.executeUpdate(sql);
         } catch (SQLException e) {
             logger.warn(sql, e);
         }
-
     }
 
     /**
