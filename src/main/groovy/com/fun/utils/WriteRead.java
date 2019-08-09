@@ -3,6 +3,7 @@ package com.fun.utils;
 import com.fun.frame.Output;
 import com.fun.config.Constant;
 import com.fun.frame.SourceCode;
+import com.sun.media.jfxmedia.events.NewFrameEvent;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,7 @@ public class WriteRead extends SourceCode {
      * @return
      */
     public static JSONObject readTxtByJson(String filePath) {
+        logger.debug("读取文件名：{}", filePath);
         List<String> lines = readTxtFileByLine(filePath);
         JSONObject info = new JSONObject();
         lines.forEach(line -> {
@@ -41,6 +43,7 @@ public class WriteRead extends SourceCode {
      * @return
      */
     public static String readTextByString(String filePath) {
+        logger.debug("读取文件名：{}", filePath);
         List<String> list = readTxtFileByLine(filePath);
         StringBuffer all = new StringBuffer();
         list.forEach(line -> all.append(line + Constant.LINE));
@@ -66,6 +69,7 @@ public class WriteRead extends SourceCode {
      * @return 返回list数组
      */
     public static List<String> readTxtFileByLine(String filePath, String content, boolean key) {
+        logger.debug("读取文件名：{}", filePath);
         List<String> lines = new ArrayList<>();
         try {
             String encoding = Constant.UTF_8.toString();
@@ -98,6 +102,7 @@ public class WriteRead extends SourceCode {
      * @param file
      */
     public static void download(String url, File file) {
+        logger.debug("下载链接：{}，存储文件名：{}", url, file.getAbsolutePath());
         if (!file.exists())
             try {
                 file.createNewFile();
@@ -123,6 +128,7 @@ public class WriteRead extends SourceCode {
      * @param newPath 新路径
      */
     public static void copyFile(String oldPath, String newPath) {
+        logger.debug("源文件名：{}，目标文件名：{}", oldPath, newPath);
         try {
             int bytesum = 0;// 这个用来统计需要写入byte数组的长度
             int byteread = 0;// 这个用来接收read()方法的返回值，表示读取内容的长度
@@ -157,11 +163,12 @@ public class WriteRead extends SourceCode {
      * @param text 写入的内容，如果file存在，续写
      */
     public static void writeText(File file, String text) {
+        logger.debug("写入文件名：{}", file);
         if (!file.exists())
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                e.printStackTrace();//此处可能存在递归情况，故为采用output方法
+                logger.error("文件创建失败！", e);
             }
         try {
             FileWriter fileWriter = new FileWriter(file, true);
