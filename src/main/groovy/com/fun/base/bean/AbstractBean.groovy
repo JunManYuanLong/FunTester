@@ -33,7 +33,7 @@ abstract class AbstractBean extends SourceCode {
      * 控制台打印，使用WARN记录，以便查看
      */
     def print() {
-        logger.warn(this.getClass().toString() + "：" + this.toString());
+        logger.info(this.getClass().toString() + "：" + this.toString());
     }
 
     @Override
