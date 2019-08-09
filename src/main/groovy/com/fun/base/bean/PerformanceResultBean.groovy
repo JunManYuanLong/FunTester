@@ -24,6 +24,7 @@ class PerformanceResultBean extends AbstractBean {
         this.rt = rt;
         this.qps = qps;
         this.desc = desc;
+        this.print()
         MySqlTest.savePerformanceBean(this)
     }
 }

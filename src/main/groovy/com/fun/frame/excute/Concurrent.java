@@ -154,7 +154,6 @@ public class Concurrent extends SourceCode {
         }
         double v = 1000.0 * size * name / sum;
         PerformanceResultBean performanceResultBean = new PerformanceResultBean(name, size, sum / size, v, desc);
-        performanceResultBean.print();
         return performanceResultBean;
     }
 }
