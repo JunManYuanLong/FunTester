@@ -1,6 +1,7 @@
 package com.fun.config;
 
 import org.apache.http.Consts;
+import sun.invoke.empty.Empty;
 
 import java.io.File;
 import java.nio.charset.Charset;
@@ -65,7 +66,7 @@ public class Constant {
     /**
      * 当前工作目录
      */
-    public static final String WORK_SPACE = getWorkSpase() + "/";
+    public static final String WORK_SPACE = new File(EMPTY).getAbsolutePath() + "/";
 
     /**
      * 测试数据存储目录
@@ -96,16 +97,5 @@ public class Constant {
      * 本机用户名，程序初始化会赋值
      */
     public static String COMPUTER_USER_NAME = SysInit.getComputerName();
-
-    /**
-     * 获取当前工作路径
-     *
-     * @return 返回当前工作控件的绝对路径
-     */
-    public static String getWorkSpase() {
-        File directory = new File(EMPTY);
-        String abPath = directory.getAbsolutePath();
-        return abPath;
-    }
 
 }
