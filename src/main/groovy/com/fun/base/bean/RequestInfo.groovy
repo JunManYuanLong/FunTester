@@ -110,6 +110,6 @@ class RequestInfo extends AbstractBean {
 
     @Override
     public String toString() {
-        this.toJson()
+        this.toJson().toString()
     }
 }
