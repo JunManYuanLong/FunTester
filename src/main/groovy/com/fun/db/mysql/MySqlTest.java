@@ -106,10 +106,13 @@ public class MySqlTest extends SqlBase {
 //        requestBean.setLocal_name(computerName);
 //        requestBean.setCreate_time(Time.getDate());
 //        RecordBean.get().setApi(requestInfo.getApiName()).setDomain(requestInfo.getHost()).setType(requestInfo.getType()).setExpend_time(expend_time).setData_size(data_size).setStatus(status).setMethod(requestInfo.getMethod().getName()).setCode(code).setLocal_ip(localIP).setLocal_name(computerName).setCreate_time(Time.getDate());
-        logger.info("请求uri：{},耗时：{} ms，参数：{}", requestInfo.getUri(), expend_time, requestInfo.getParams());
+        logger.info("请求uri：{},耗时：{} ms", requestInfo.getUri(), expend_time);
         sendWork(sql);
     }
 
+    /**保存性能测试结果的方法
+     * @param bean
+     */
     public static void savePerformanceBean(PerformanceResultBean bean) {
         if (StringUtil.isNullOrEmpty(SqlConstant.PERFORMANCE_TABLE)) return;
         String sql = String.format("INSERT INTO " + SqlConstant.PERFORMANCE_TABLE + "(threads,total,rt,qps,des) VALUES (%d,%d,%d,%f,'%s');", bean.getThreads(), bean.getTotal(), bean.getRt(), bean.getQps(), bean.getDesc());
@@ -134,7 +137,7 @@ public class MySqlTest extends SqlBase {
             if (value.equals("false")) abc = 2;
         }
         if (abc != 1) new AlertOver("用例失败！", label + "测试结果：" + abc + LINE + data).sendBusinessMessage();
-        Output.output(label + LINE + "测试结果：" + (abc == 1 ? "通过" : "失败") + LINE + data);
+        logger.info(label + LINE + "测试结果：" + (abc == 1 ? "通过" : "失败") + LINE + data);
         String sql = String.format("INSERT INTO " + SqlConstant.RESULT_TABLE + " (result,label,params,local_ip,computer_name,create_time) VALUES (%d,'%s','%s','%s','%s','%s')", abc, label, data, LOCAL_IP, COMPUTER_USER_NAME, Time.getDate());
         sendWork(sql);
     }
