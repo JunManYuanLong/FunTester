@@ -31,14 +31,12 @@ public class SysInit extends SourceCode {
      * @return
      */
     public static String getLocalIp() {
-        InetAddress inetAddress = null;
         try {
-            inetAddress = inetAddress.getLocalHost();
+            return InetAddress.getLocalHost().getHostAddress();
         } catch (UnknownHostException e) {
             logger.warn("获取本机IP失败！", e);
+            return EMPTY;
         }
-        String ip = inetAddress.getHostAddress();
-        return ip;
     }
 
     /**
