@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory
  * 读取配置工具
  */
 class PropertyUtils extends SourceCode {
-    static Logger logger = LoggerFactory.getLogger(PropertyUtils.class)
+    public static Logger logger = LoggerFactory.getLogger(PropertyUtils.class)
 
     /**
      * 获取指定.properties配置文件中所以的数据
@@ -21,6 +21,7 @@ class PropertyUtils extends SourceCode {
      * @return
      */
     static Property getProperties(String propertyName) {
+        logger.debug("读取配置文件：{}", propertyName)
         try {
             new Property(ResourceBundle.getBundle(propertyName.trim()))
         } catch (MissingResourceException e) {
@@ -48,6 +49,7 @@ class PropertyUtils extends SourceCode {
  * @return
  */
         String getProperty(String name) {
+            PropertyUtils.logger.debug("获取配置项：{}", name)
             if (contain(name)) properties.get(name)
         }
 
