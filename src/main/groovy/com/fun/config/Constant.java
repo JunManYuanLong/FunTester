@@ -1,7 +1,6 @@
 package com.fun.config;
 
 import org.apache.http.Consts;
-import sun.invoke.empty.Empty;
 
 import java.io.File;
 import java.nio.charset.Charset;
