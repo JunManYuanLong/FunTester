@@ -2,7 +2,7 @@ package com.fun.frame;
 
 import com.fun.base.bean.AbstractBean;
 import com.fun.config.Constant;
-import jdk.nashorn.internal.scripts.JO;
+import com.fun.utils.Emoji;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.collections.MapUtils;
@@ -140,7 +140,7 @@ public class Output extends Constant {
             char piece = jsonStr.charAt(i);// 获取当前字符
             // 如果上一个字符是断行，则在本行开始按照level数值添加标记符，排除第一行
             if (i != 0 && '\n' == jsonResultStr.charAt(jsonResultStr.length() - 1)) {
-                jsonResultStr.append(level + " . ");
+                jsonResultStr.append(Emoji.getSerialEmoji(level) + " . ");
                 IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(". . "));
             }
             char last = i == 0 ? ' ' : jsonStr.charAt(i - 1);
@@ -161,7 +161,7 @@ public class Output extends Constant {
                     // 如果是}或者]，则断行，level减1
                     jsonResultStr.append(LINE);
                     if (next != ']') level--;//解决jsonarray
-                    jsonResultStr.append(level == 0 ? "" : level + " . ");
+                    jsonResultStr.append(level == 0 ? "" : Emoji.getSerialEmoji(level) + " . ");
                     IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(". . "));
                     jsonResultStr.append(piece);
                     break;
