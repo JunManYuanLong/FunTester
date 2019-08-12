@@ -4,6 +4,7 @@ package com.fun.moco
 import com.github.dreamhead.moco.HttpServer
 import com.github.dreamhead.moco.MocoMonitor
 import com.github.dreamhead.moco.MocoRequestHit
+import com.github.dreamhead.moco.RequestHit
 import com.github.dreamhead.moco.Runner
 
 import static com.github.dreamhead.moco.Moco.httpServer
@@ -75,7 +76,7 @@ class MocoServer extends MocoResponse {
  * 获取计数监视器，计数器在做测试的时候用到，确认服务启动且接口调用正常
  * @return
  */
-    static def getHitMonitor() {
+    static RequestHit getHitMonitor() {
         MocoRequestHit.requestHit()
     }
 
