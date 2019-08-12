@@ -108,9 +108,9 @@ public class Constant {
      * 创建日志文件夹和数据存储文件夹
      */
     static {
-        new File(Constant.LOG_Path).mkdir();
-        new File(Constant.LONG_Path).mkdir();
-        logger.info("当前用户：{}，IP：{}，工作目录：{}", Constant.COMPUTER_USER_NAME, Constant.LOCAL_IP, Constant.WORK_SPACE);
+        new File(LOG_Path).mkdir();
+        new File(LONG_Path).mkdir();
+        logger.info("当前用户：{}，IP：{}，工作目录：{}", COMPUTER_USER_NAME, LOCAL_IP, WORK_SPACE);
     }
 
 
@@ -124,7 +124,7 @@ public class Constant {
             return InetAddress.getLocalHost().getHostAddress();
         } catch (UnknownHostException e) {
             logger.warn("获取本机IP失败！", e);
-            return Constant.EMPTY;
+            return EMPTY;
         }
     }
 
