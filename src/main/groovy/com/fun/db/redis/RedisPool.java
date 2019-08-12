@@ -1,7 +1,9 @@
 package com.fun.db.redis;
 
+import com.fun.base.bean.BeanUtil;
 import com.fun.config.PropertyUtils;
 import com.fun.frame.SourceCode;
+import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
@@ -69,6 +71,7 @@ public class RedisPool extends SourceCode {
      * 初始化连接池
      */
     private static JedisPool initPool() {
+        logger.debug("redis连接池IP：{}，端口：{}，超时设置：{}", IP, PORT, TIMEOUT);
         return new JedisPool(config, IP, PORT, TIMEOUT);
     }
 
@@ -86,6 +89,7 @@ public class RedisPool extends SourceCode {
         config.setTestOnReturn(testOnReturn);
         config.setBlockWhenExhausted(blockWhenExhausted);
         config.setMaxWaitMillis(MAX_WAIT);
+        logger.debug("连接redis配置：{}", JSONObject.fromObject(config).toString());
         return config;
     }
 
