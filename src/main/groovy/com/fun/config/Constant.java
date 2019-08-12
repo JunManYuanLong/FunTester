@@ -1,6 +1,5 @@
 package com.fun.config;
 
-import com.sun.tools.internal.jxc.ap.Const;
 import org.apache.http.Consts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

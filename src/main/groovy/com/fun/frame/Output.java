@@ -131,9 +131,6 @@ public class Output extends Constant {
             output("json 对象是空的！");
             return jsonObject;
         }
-//        String start = SourceCode.getManyString(SPACE_1, 4);
-//        String start = " ① ";
-
         String jsonStr = jsonObject.toString();// 先将json对象转化为string对象
         jsonStr = jsonStr.replaceAll("\\\\/", OR);
         int level = 0;// 用户标记层级
