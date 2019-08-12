@@ -1,14 +1,22 @@
 package com.fun.config;
 
+import com.sun.tools.internal.jxc.ap.Const;
 import org.apache.http.Consts;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.nio.charset.Charset;
+import java.util.Properties;
 
 /**
  * 常量类
  */
 public class Constant {
+
+    private static Logger logger = LoggerFactory.getLogger(Constant.class);
 
     /*常用的常量*/
     public static final String LINE = "\r\n";
@@ -90,11 +98,46 @@ public class Constant {
     /**
      * 本机ip，程序初始化会赋值
      */
-    public static String LOCAL_IP = SysInit.getLocalIp();
+    public static String LOCAL_IP = getLocalIp();
 
     /**
      * 本机用户名，程序初始化会赋值
      */
-    public static String COMPUTER_USER_NAME = SysInit.getComputerName();
+    public static String COMPUTER_USER_NAME = getComputerName();
+
+    /**
+     * 创建日志文件夹和数据存储文件夹
+     */
+    static {
+        new File(Constant.LOG_Path).mkdir();
+        new File(Constant.LONG_Path).mkdir();
+        logger.info("当前用户：{}，IP：{}，工作目录：{}", Constant.COMPUTER_USER_NAME, Constant.LOCAL_IP, Constant.WORK_SPACE);
+    }
+
+
+    /**
+     * 获取本机IP
+     *
+     * @return
+     */
+    public static String getLocalIp() {
+        try {
+            return InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+            logger.warn("获取本机IP失败！", e);
+            return Constant.EMPTY;
+        }
+    }
+
+    /**
+     * 获取本机用户username
+     *
+     * @return
+     */
+    public static String getComputerName() {
+        Properties properties = System.getProperties();
+        Object name = properties.get("user.name");
+        return name.toString();
+    }
 
 }

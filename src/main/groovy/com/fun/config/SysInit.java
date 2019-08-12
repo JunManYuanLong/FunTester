@@ -12,43 +12,9 @@ import java.util.Properties;
 /**
  * 存放一些系统初始化的方法，可被外部调用
  */
-public class SysInit extends SourceCode {
+public class SysInit extends SourceCode{
 
     private static Logger logger = LoggerFactory.getLogger(SysInit.class);
-
-    /**
-     * 创建日志文件夹和数据存储文件夹
-     */
-    static {
-        new File(Constant.LOG_Path).mkdir();
-        new File(Constant.LONG_Path).mkdir();
-        logger.info("当前用户：{}，IP：{}，工作目录：{}", COMPUTER_USER_NAME, LOCAL_IP, WORK_SPACE);
-    }
-
-    /**
-     * 获取本机IP
-     *
-     * @return
-     */
-    public static String getLocalIp() {
-        try {
-            return InetAddress.getLocalHost().getHostAddress();
-        } catch (UnknownHostException e) {
-            logger.warn("获取本机IP失败！", e);
-            return EMPTY;
-        }
-    }
-
-    /**
-     * 获取本机用户username
-     *
-     * @return
-     */
-    public static String getComputerName() {
-        Properties properties = System.getProperties();
-        Object name = properties.get("user.name");
-        return name.toString();
-    }
 
     /**
      * 是否是黑名单的host
