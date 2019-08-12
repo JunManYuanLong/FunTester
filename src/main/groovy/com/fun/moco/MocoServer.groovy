@@ -61,7 +61,7 @@ class MocoServer extends MocoResponse {
  * @return
  */
     static def getLogMonitor(String logName) {
-        log LOG_Path + logName, DEFAULT_CHARSET
+        log LOG_Path + logName + FILE_TYPE_LOG, DEFAULT_CHARSET
     }
 
 /**
