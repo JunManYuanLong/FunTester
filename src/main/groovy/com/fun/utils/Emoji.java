@@ -36,6 +36,15 @@ public class Emoji extends SourceCode {
     }
 
     /**
+     * 获取核表情
+     *
+     * @return
+     */
+    public static String getEmoji() {
+        return EMOJIS[0];
+    }
+
+    /**
      * 获取序号符号
      *
      * @param i
@@ -56,7 +65,7 @@ public class Emoji extends SourceCode {
     }
 
 
-    public static final String[] SERIAL = {"⓪","①","②","③","④","⑤","⑥","⑦","⑧","⑨","⑩","⑪","⑫","⑬","⑭","⑮","⑯","⑰","⑱","⑲","⑳"};
+    public static final String[] SERIAL = {"⓪", "①", "②", "③", "④", "⑤", "⑥", "⑦", "⑧", "⑨", "⑩", "⑪", "⑫", "⑬", "⑭", "⑮", "⑯", "⑰", "⑱", "⑲", "⑳"};
 
     /**
      * emoji表情
