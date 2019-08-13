@@ -73,7 +73,7 @@ public class CMD extends SourceCode {
         if (!file.exists() || file.isDirectory()) return EMPTY;
         StringBuffer stringBuffer = new StringBuffer();
         String command = "tail -n " + num + SPACE_1 + path;
-        logger.info("执行命令：{}", command);
+        logger.debug("执行命令：{}", command);
         try (InputStream input = Runtime.getRuntime().exec(command).getInputStream();
              InputStreamReader inputStreamReader = new InputStreamReader(input, DEFAULT_CHARSET);
              BufferedReader reader = new BufferedReader(inputStreamReader);) {
