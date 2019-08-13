@@ -55,6 +55,16 @@ class MocoServer extends MocoResponse {
         httpServer port, getLogMonitor(logName), configs
     }
 
+    /**
+     * 获取httpserver对象
+     * @param port 端口
+     * @param logName 日志文件名
+     * @return
+     */
+    static HttpServer getServer(final int port, String logName) {
+        httpServer port, getLogMonitor(logName)
+    }
+
 /**
  * 获取日志监视器，在log_path下面
  * @param logName
