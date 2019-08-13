@@ -41,6 +41,7 @@ public class SourceCode extends Output {
 
     /**
      * 等待方法，用sacnner类，控制台输出字符key时会跳出循环
+     * <p>只能用一次</p>
      *
      * @param key
      */
