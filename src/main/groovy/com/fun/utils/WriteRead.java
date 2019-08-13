@@ -1,9 +1,7 @@
 package com.fun.utils;
 
-import com.fun.frame.Output;
 import com.fun.config.Constant;
 import com.fun.frame.SourceCode;
-import com.sun.media.jfxmedia.events.NewFrameEvent;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,10 +26,8 @@ public class WriteRead extends SourceCode {
         List<String> lines = readTxtFileByLine(filePath);
         JSONObject info = new JSONObject();
         lines.forEach(line -> {
-            int index = line.indexOf("=");
-            String key = line.substring(0, index);
-            String value = line.substring(index + 1, line.length());
-            info.put(key, value);
+            String[] split = line.split("=", 2);
+            info.put(split[0], split[1]);
         });
         return info;
     }
@@ -87,7 +83,7 @@ public class WriteRead extends SourceCode {
                 read.close();
                 fileInputStream.close();
             } else {
-                logger.warn("找不到指定的文件：{}}", filePath);
+                logger.warn("找不到指定的文件：{}", filePath);
             }
         } catch (Exception e) {
             logger.warn("读取文件内容出错", e);
