@@ -11,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.sql.rowset.Joinable;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -20,6 +22,8 @@ import java.util.stream.IntStream;
 public class SourceCode extends Output {
 
     private static Logger logger = LoggerFactory.getLogger(SourceCode.class);
+
+    private static Scanner scanner;
 
     /**
      * 获取当前时间戳10位int 类型的数据
@@ -41,20 +45,19 @@ public class SourceCode extends Output {
 
     /**
      * 等待方法，用sacnner类，控制台输出字符key时会跳出循环
-     * <p>只能用一次</p>
+     * <p>如何执行close方法，只能用一次</p>
      *
      * @param key
      */
     public static void waitForKey(Object key) {
         logger.warn("请输入“{}”继续运行！", key.toString());
         long start = Time.getTimeStamp();
-        Scanner scanner = new Scanner(System.in);
+        scanner = new Scanner(System.in);
         while (scanner.hasNext()) {
             String next = scanner.next();
             if (next.equals(key.toString())) break;
             logger.warn("输入：{}错误！", next);
         }
-        scanner.close();
         long end = Time.getTimeStamp();
         double timeDiffer = Time.getTimeDiffer(start, end);
         logger.info("本次共等待：" + timeDiffer + "秒！");
@@ -62,15 +65,22 @@ public class SourceCode extends Output {
 
     /**
      * 获取屏幕输入内容
+     * <p>如何执行close方法，只能用一次</p>
      *
      * @return
      */
     public static String getInput() {
-        Scanner scanner = new Scanner(System.in);
+        scanner = new Scanner(System.in);
         String next = scanner.next();
-        scanner.close();
-        logger.debug("输入内容：{}", next);
+        logger.debug("输、入内容：{}", next);
         return next;
+    }
+
+    /**
+     * 关闭scanner，解决无法多次使用wait的BUG
+     */
+    public static void closeScanner() {
+        scanner.close();
     }
 
     /**
