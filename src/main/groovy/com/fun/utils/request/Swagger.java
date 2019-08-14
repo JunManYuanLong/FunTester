@@ -94,9 +94,9 @@ public class Swagger extends FanLibrary {
 
 
     public String getKey() {
-        key = Regex.regexAll(swaggerPath, "/((?!/).)*/swagger.json").get(0);
-        key = key.replace(OR, EMPTY).replace("swagger.json", EMPTY);
-        if (key.contains(":")) key = EMPTY;
+        this.key = Regex.regexAll(this.swaggerPath, "/((?!/).)*/swagger.json").get(0);
+        this.key = this.key.replace(OR, EMPTY).replace("swagger.json", EMPTY);
+        if (this.key.contains(":")) this.key = EMPTY;
         return this.key;
     }
 
@@ -104,7 +104,7 @@ public class Swagger extends FanLibrary {
      * 获取name下所有接口的request对象
      */
     private void getRequests() {
-        urls.forEach(url -> {
+        this.urls.forEach(url -> {
             Request request = getRequest(url);
             if (request != null) allRequests.add(request);
         });
@@ -114,7 +114,7 @@ public class Swagger extends FanLibrary {
      * 初始化处理方法
      */
     public void build() {
-        swagger = getHttpResponse(getHttpGet(swaggerPath));
+        swagger = getHttpResponse(getHttpGet(this.swaggerPath));
         getKey();
         getNames();
         getPaths();

@@ -58,7 +58,7 @@ public class RequestFile extends FanLibrary {
      * 从配置文件中读取信息，组成一个json对象
      */
     private void getInfo() {
-        String filePath = Constant.WORK_SPACE + name;
+        String filePath = Constant.WORK_SPACE + this.name;
         logger.info("配置文件地址：" + filePath);
         this.info = WriteRead.readTxtByJson(filePath);
     }
@@ -78,7 +78,7 @@ public class RequestFile extends FanLibrary {
      */
     public HttpRequestBase getRequest() {
         HttpRequestBase requestBase;
-        switch (requestType) {
+        switch (this.requestType) {
             case GET:
                 requestBase = getHttpGet(this.url, this.params);
                 break;
@@ -89,7 +89,7 @@ public class RequestFile extends FanLibrary {
                 requestBase = getHttpPost(this.url, this.params.toString());
                 break;
         }
-        headers.keySet().forEach(x -> requestBase.addHeader(getHeader(x.toString(), headers.getString(x.toString()))));
+        this.headers.keySet().forEach(x -> requestBase.addHeader(getHeader(x.toString(), headers.getString(x.toString()))));
         output(getHttpResponse(requestBase));
         return requestBase;
     }

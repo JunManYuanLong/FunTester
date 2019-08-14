@@ -133,11 +133,11 @@ public class Request extends SourceCode {
      */
     private void spliceArgs(int i) {
         String type = i == 1 ? "params" : "args";
-        code.append(LINE + TAB + TAB + "JSONObject " + type + " = new JSONObject();");
+        this.code.append(LINE + TAB + TAB + "JSONObject " + type + " = new JSONObject();");
         Set keySet = i == 0 ? args.keySet() : params.keySet();
         keySet.forEach(key -> {
             collectArgs(key.toString(), params.getString(key.toString()));
-            code.append(LINE + TAB + TAB + type + ".put(\"" + key.toString() + "\", " + key.toString() + ");");
+            this.code.append(LINE + TAB + TAB + type + ".put(\"" + key.toString() + "\", " + key.toString() + ");");
         });
     }
 
@@ -149,19 +149,19 @@ public class Request extends SourceCode {
      * @param value
      */
     private void collectArgs(String key, String value) {
-        if (value.equals("string")) stringBuffer.append("String " + key.toString() + ",");
-        if (value.equals("integer")) stringBuffer.append("int " + key.toString() + ",");
+        if (value.equals("string")) this.stringBuffer.append("String " + key.toString() + ",");
+        if (value.equals("integer")) this.stringBuffer.append("int " + key.toString() + ",");
     }
 
     /**
      * 收集restful参数，处理url
      */
     private void collectRestfulArgs() {
-        if (url.contains("{")) {//restful公参处理，并提取到restfulargs里面
-            List<String> regexAll = Regex.regexAll(url, "\\{[^}]+\\}");
+        if (this.url.contains("{")) {//restful公参处理，并提取到restfulargs里面
+            List<String> regexAll = Regex.regexAll(this.url, "\\{[^}]+\\}");
             regexAll.forEach(regex -> {
                 regex = regex.replace("{", EMPTY).replace("}", EMPTY);
-                restfulArgs.add(regex);
+                this.restfulArgs.add(regex);
             });
         }
     }
@@ -173,44 +173,44 @@ public class Request extends SourceCode {
      */
     private String spliceUrl() {
         collectRestfulArgs();
-        url = url.contains("{") ? url : url + "\"";
-        url = "\"" + url.replace("}/{", "+OR+").replace("{", "\"+").replace("}", EMPTY);
-        return TAB + TAB + "String url = HOST + " + url + ";";
+        this.url = this.url.contains("{") ? this.url : this.url + "\"";
+        this.url = "\"" + this.url.replace("}/{", "+OR+").replace("{", "\"+").replace("}", EMPTY);
+        return TAB + TAB + "String url = HOST + " + this.url + ";";
     }
 
     /**
      * 拼接get请求
      */
     private void spliceGet() {
-        if (!args.isEmpty()) {
+        if (!this.args.isEmpty()) {
             spliceArgs(0);
-            code.append(LINE + TAB + TAB + "HttpGet httpGet = getHttpGet(url, args);");//拼接获取请求方法
+            this.code.append(LINE + TAB + TAB + "HttpGet httpGet = getHttpGet(url, args);");//拼接获取请求方法
         } else {
-            code.append(LINE + TAB + TAB + "HttpGet httpGet = getHttpGet(url);");//拼接获取请求方法
+            this.code.append(LINE + TAB + TAB + "HttpGet httpGet = getHttpGet(url);");//拼接获取请求方法
         }
-        code.append(LINE + TAB + TAB + "JSONObject response = getHttpResponseEntityByJson(httpGet);");//拼接发送请求获取响应的方法
+        this.code.append(LINE + TAB + TAB + "JSONObject response = getHttpResponseEntityByJson(httpGet);");//拼接发送请求获取响应的方法
     }
 
     /**
      * 拼接post请求
      */
     private void splicePost() {
-        if (!args.isEmpty()) spliceArgs(0);
-        if (!params.isEmpty()) spliceArgs(1);
-        if (args.isEmpty()) {//处理为空的情况
-            if (!params.isEmpty()) {
-                code.append(LINE + TAB + TAB + "HttpPost httpPost = getHttpPost(url, params);");
+        if (!this.args.isEmpty()) spliceArgs(0);
+        if (!this.params.isEmpty()) spliceArgs(1);
+        if (this.args.isEmpty()) {//处理为空的情况
+            if (!this.params.isEmpty()) {
+                this.code.append(LINE + TAB + TAB + "HttpPost httpPost = getHttpPost(url, params);");
             } else {
-                code.append(LINE + TAB + TAB + "HttpPost httpPost = getHttpPost(url);");
+                this.code.append(LINE + TAB + TAB + "HttpPost httpPost = getHttpPost(url);");
             }
         } else {
-            if (!params.isEmpty()) {
-                code.append(LINE + TAB + TAB + "HttpPost httpPost = getHttpPost(url, args, params);");
+            if (!this.params.isEmpty()) {
+                this.code.append(LINE + TAB + TAB + "HttpPost httpPost = getHttpPost(url, args, params);");
             } else {
-                postNoParams = true;
+                this.postNoParams = true;
             }
         }
-        code.append(LINE + TAB + TAB + "JSONObject response = getHttpResponseEntityByJson(httpPost);");
+        this.code.append(LINE + TAB + TAB + "JSONObject response = getHttpResponseEntityByJson(httpPost);");
     }
 
     /**
@@ -220,10 +220,10 @@ public class Request extends SourceCode {
      */
     private String spliceEnd() {
         restfulArgs.forEach(key -> stringBuffer.append("int " + key.toString() + ","));//在方法中添加参数类型的名称
-        code.append(LINE + TAB + TAB + "output(response);");//拼接输出响应
-        code.append(LINE + TAB + TAB + "return response;");//返回响应
-        code.append(LINE + TAB + "}");
-        return code.toString().replace("() {", "(" + stringBuffer.toString() + ") {").replace(",)", ")");//替换参数类型和名称
+        this.code.append(LINE + TAB + TAB + "output(response);");//拼接输出响应
+        this.code.append(LINE + TAB + TAB + "return response;");//返回响应
+        this.code.append(LINE + TAB + "}");
+        return this.code.toString().replace("() {", "(" + stringBuffer.toString() + ") {").replace(",)", ")");//替换参数类型和名称
     }
 
     /**
@@ -232,15 +232,15 @@ public class Request extends SourceCode {
      * @return
      */
     public String magic() {
-        code.append(TAB + "/**\n\t * " + desc + "\n\t *\n\t * @return\n\t */" + LINE);
-        code.append(TAB + "public JSONObject " + apiName + "() {" + LINE);//新建方法行
+        this.code.append(TAB + "/**\n\t * " + desc + "\n\t *\n\t * @return\n\t */" + LINE);
+        this.code.append(TAB + "public JSONObject " + apiName + "() {" + LINE);//新建方法行
         String urlLine = spliceUrl();
-        code.append(urlLine);
+        this.code.append(urlLine);
         if (restfulArgs.size() > 0) restfulArgs.forEach(arg -> args.remove(arg));//将公参从args里面删除
-        if (type == RequestType.GET) spliceGet();
-        if (type == RequestType.POST) splicePost();
+        if (this.type == RequestType.GET) spliceGet();
+        if (this.type == RequestType.POST) splicePost();
         String finalCode = spliceEnd();
-        if (postNoParams) finalCode.replace(urlLine, urlLine.replace(";", EMPTY) + " + changeJsonToArguments(args)");
+        if (this.postNoParams) finalCode.replace(urlLine, urlLine.replace(";", EMPTY) + " + changeJsonToArguments(args)");
         return finalCode;
     }
 }
