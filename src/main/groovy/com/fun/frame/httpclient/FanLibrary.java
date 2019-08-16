@@ -4,13 +4,13 @@ import com.fun.base.bean.RequestInfo;
 import com.fun.base.interfaces.IBase;
 import com.fun.config.HttpClientConstant;
 import com.fun.config.SysInit;
+import com.fun.db.mysql.MySqlTest;
 import com.fun.frame.SourceCode;
 import com.fun.utils.DecodeEncode;
 import com.fun.utils.Time;
-import com.fun.db.mysql.MySqlTest;
 import com.fun.utils.message.AlertOver;
+import io.netty.util.internal.StringUtil;
 import net.sf.json.JSONObject;
-import org.apache.commons.collections.KeyValue;
 import org.apache.commons.collections.MapUtils;
 import org.apache.http.*;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -306,7 +306,7 @@ public class FanLibrary extends SourceCode {
      * @return 返回json类型的对象
      */
     public static JSONObject getHttpResponse(HttpRequestBase request) {
-        if (!request.getURI().toString().toLowerCase().startsWith("http")) return null;
+        if (!isRightRequest(request)) return new JSONObject();
         beforeRequest(request);
         JSONObject res = new JSONObject();
         RequestInfo requestInfo = new RequestInfo(request);
@@ -336,6 +336,15 @@ public class FanLibrary extends SourceCode {
             }
         }
         return res;
+    }
+
+    /**判断请求是否是正确的，目前主要过滤一些不完整的请求和超长的url
+     * @param request
+     * @return
+     */
+    private static boolean isRightRequest(HttpRequestBase request) {
+        String url = request.getURI().toString().toLowerCase();
+        return StringUtil.isNullOrEmpty(url) && url.startsWith("http") && url.length() < 1000;
     }
 
     /**
@@ -456,5 +465,6 @@ public class FanLibrary extends SourceCode {
             logger.warn("连接池关闭失败！", e);
         }
     }
+
 
 }
