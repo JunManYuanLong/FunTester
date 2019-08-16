@@ -344,7 +344,7 @@ public class FanLibrary extends SourceCode {
      */
     private static boolean isRightRequest(HttpRequestBase request) {
         String url = request.getURI().toString().toLowerCase();
-        return StringUtil.isNullOrEmpty(url) && url.startsWith("http") && url.length() < 1000;
+        return !StringUtil.isNullOrEmpty(url) && url.startsWith("http") && url.length() < 1000;
     }
 
     /**
