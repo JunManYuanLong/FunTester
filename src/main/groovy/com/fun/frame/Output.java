@@ -20,9 +20,9 @@ public class Output extends Constant {
 
     private static Logger logger = LoggerFactory.getLogger(Output.class);
 
-    static final String UP = SourceCode.getManyString("~⇩~", 10);
+    static final String UP = SourceCode.getManyString("~☢~", 10);
 
-    static final String DOWN = SourceCode.getManyString("~⇧~", 10);
+    static final String DOWN = SourceCode.getManyString("~☢~", 10);
 
     /**
      * 输出带有信息的异常
