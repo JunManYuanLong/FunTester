@@ -24,10 +24,10 @@ class CountTool extends SourceCode {
      *
      * @param counts 统计的 jsonobject 对象
      * @param object 需要统计的数据
-     * @param num 默认值
+     * @param num 增加值
      */
     static def count(JSONObject counts, Object object, int num) {
-        counts.put(object, Integer.valueOf(counts.getOrDefault(object.toString(), num)))
+        counts.put(object, Integer.valueOf(counts.getOrDefault(object.toString(), 0) + num))
     }
 
 /**
