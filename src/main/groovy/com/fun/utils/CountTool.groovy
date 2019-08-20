@@ -5,6 +5,9 @@ import net.sf.json.JSONObject
 
 import java.util.stream.Collectors
 
+/**
+ * 统计出现次数相关类
+ */
 class CountTool extends SourceCode {
     /**
      * 统计数据出现的次数
@@ -21,9 +24,10 @@ class CountTool extends SourceCode {
      *
      * @param counts 统计的 jsonobject 对象
      * @param object 需要统计的数据
+     * @param num 默认值
      */
     static def count(JSONObject counts, Object object, int num) {
-        counts.put(object, Integer.valueOf(counts.getOrDefault(object.toString(), 0)) + num)
+        counts.put(object, Integer.valueOf(counts.getOrDefault(object.toString(), num)))
     }
 
 /**
