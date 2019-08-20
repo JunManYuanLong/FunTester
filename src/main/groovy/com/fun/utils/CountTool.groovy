@@ -23,12 +23,7 @@ class CountTool extends SourceCode {
      * @param object 需要统计的数据
      */
     static def count(JSONObject counts, Object object, int num) {
-        if (counts.containsKey(object.toString())) {
-            int i = counts.getInt(object.toString()) + num
-            counts.put(object.toString(), i)
-        } else {
-            counts.put(object.toString(), num)
-        }
+        counts.put(object, Integer.valueOf(counts.getOrDefault(object.toString(), 0)) + num)
     }
 
 /**
