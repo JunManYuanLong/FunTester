@@ -179,8 +179,7 @@ public class ClientManage extends SourceCode {
     /**
      * 通过连接池获取https协议请求对象
      * <p>
-     * 此处会默认添加一天defaultcookiesstore，会处理响应头中的set-cookie字段
-     * 增加默认的请求控制器
+     * 增加默认的请求控制器，和请求配置，连接控制器，取消了cookiestore，单独解析响应set-cookie和发送请求的header，适配多用户同时在线的情况
      * </p>
      *
      * @return
