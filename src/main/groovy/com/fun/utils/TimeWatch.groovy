@@ -2,27 +2,33 @@ package com.fun.utils
 
 import com.fun.frame.SourceCode
 import org.slf4j.LoggerFactory
+
 /**
  * 时间观察者类，用于简单记录执行时间
  */
 class TimeWatch extends SourceCode {
+
     def static logger = LoggerFactory.getLogger(TimeWatch.class)
 /**
  * 默认的名称
  */
+
     def name = "default"
 /**
  * 纳秒
  */
-    def startTime
+
+    def startNano
     /**
      * 标记集合
      */
+
     def marks = new HashMap<String, Mark>()
     /**
      * 毫秒
      */
-    def startTimeMillis
+
+    def startMillis
 
 /**
  * 无参创建方法，默认名称
@@ -31,7 +37,6 @@ class TimeWatch extends SourceCode {
     public static TimeWatch create() {
         final TimeWatch timeWatch = new TimeWatch()
         timeWatch.start()
-        timeWatch
     }
 
 /**
@@ -42,7 +47,6 @@ class TimeWatch extends SourceCode {
     public static TimeWatch create(def name) {
         final TimeWatch timeWatch = new TimeWatch()
         timeWatch.start()
-        timeWatch
     }
 
 
@@ -61,24 +65,26 @@ class TimeWatch extends SourceCode {
  * 重置
  */
     def reset() {
-        startTime = getNanoMark()
-        startTimeMillis = Time.getTimeStamp()
+        startNano = getNanoMark()
+        startMillis = Time.getTimeStamp()
+        this
     }
 /**
  * 标记
  * @param name
  * @return
  */
-    def mark(def name) {
+    String mark(String name) {
         marks.put name, new Mark(name)
+        name
     }
 
 /**
  * 标记
  * @return
  */
-    def mark() {
-        marks.put name, new Mark(name)
+    String mark() {
+        mark(name)
     }
 
 /**
@@ -87,8 +93,8 @@ class TimeWatch extends SourceCode {
  */
     def getMarkTime() {
         if (marks.containsKey(name)) {
-            def diff = Time.getTimeStamp() - marks.get(name).getStartTimeMillis()
-            logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ms", name, name, diff)
+            def diff = Time.getTimeStamp() - marks.get(name).getStartMillis()
+            logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ms", name, name, getFormatNumber(diff))
         } else {
             logger.warn("没有默认标记！")
         }
@@ -100,8 +106,8 @@ class TimeWatch extends SourceCode {
  */
     def getMarkNanoTime() {
         if (marks.containsKey(name)) {
-            def diff = getNanoMark() - marks.get(name).getStartTime()
-            logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ns", name, name, diff)
+            def diff = getNanoMark() - marks.get(name).getStartNano()
+            logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ns", name, name, getFormatNumber(diff))
         } else {
             logger.warn("没有默认标记！")
         }
@@ -115,8 +121,8 @@ class TimeWatch extends SourceCode {
  */
     def getMarkTime(String name) {
         if (marks.containsKey(name)) {
-            def diff = Time.getTimeStamp() - marks.get(name).getStartTimeMillis()
-            logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ms", name, name, diff)
+            def diff = Time.getTimeStamp() - marks.get(name).getStartMillis()
+            logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ms", name, name, getFormatNumber(diff))
         } else {
             logger.warn("没有{}标记！", name)
         }
@@ -129,8 +135,8 @@ class TimeWatch extends SourceCode {
  */
     def getMarkNanoTime(String name) {
         if (marks.containsKey(name)) {
-            def diff = getNanoMark() - marks.get(name).getStartTime()
-            logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ns", name, name, diff)
+            def diff = getNanoMark() - marks.get(name).getStartNano()
+            logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ns", name, name, getFormatNumber(diff))
         } else {
             logger.warn("没有{}标记！", name)
         }
@@ -142,9 +148,9 @@ class TimeWatch extends SourceCode {
  * @return
  */
     def getTime() {
-        def diff = Time.getTimeStamp() - startTimeMillis
-        logger.info(LINE + "观察者：{}，记录时间：{} ms", getName(), diff)
-         diff
+        def diff = Time.getTimeStamp() - startMillis
+        logger.info(LINE + "观察者：{}，记录时间：{} ms", getName(), getFormatNumber(diff))
+        diff
     }
 
 /**
@@ -152,8 +158,8 @@ class TimeWatch extends SourceCode {
  * @return
  */
     def getNanoTime() {
-        long diff = getNanoMark() - startTime
-        logger.info(LINE + "观察者：{}，记录时间：{} ns", getName(), diff)
+        long diff = getNanoMark() - startNano
+        logger.info(LINE + "观察者：{}，记录时间：{} ns", getName(), getFormatNumber(diff))
         diff
     }
 
@@ -165,7 +171,7 @@ class TimeWatch extends SourceCode {
     def getDiffTime(String name) {
         if (marks.containsKey(name)) {
             def diff = marks.get(name).getStartTimeMillis() - this.getStartTimeMillis()
-            logger.info(LINE + "观察者：{}和标记：{}记录时间差：{} ms", name, name, diff)
+            logger.info(LINE + "观察者：{}和标记：{}记录时间差：{} ms", name, name, getFormatNumber(diff))
         } else {
             logger.warn("没有{}标记！", name)
         }
@@ -178,8 +184,8 @@ class TimeWatch extends SourceCode {
      */
     def getDiffNanoTime(String name) {
         if (marks.containsKey(name)) {
-            def diff = marks.get(name).getStartTime() - this.getStartTime()
-            logger.info(LINE + "观察者：{}和标记：{}记录时间差：{} ns", name, name, diff > 0 ? diff : -diff)
+            def diff = marks.get(name).getStartNano() - this.getStartTime()
+            logger.info(LINE + "观察者：{}和标记：{}记录时间差：{} ns", name, name, getFormatNumber(diff > 0 ? diff : -diff))
         } else {
             logger.warn("没有{}标记！", name)
         }
@@ -193,7 +199,7 @@ class TimeWatch extends SourceCode {
  */
     def getDiffTime(String first, String second) {
         if (marks.containsKey(first) && marks.containsKey(second)) {
-            def diff = marks.get(first).getStartTimeMillis() - marks.get(second).getStartTimeMillis()
+            def diff = marks.get(second).getStartMillis() - marks.get(first).getStartMillis()
             logger.info(LINE + "标记：{}和标记：{}记录时间差：{} ms", first, second, diff)
         } else {
             logger.warn("没有{}标记！", first + TAB + second)
@@ -209,8 +215,8 @@ class TimeWatch extends SourceCode {
  */
     def getDiffNanoTime(String first, String second) {
         if (marks.containsKey(first) && marks.containsKey(second)) {
-            def diff = marks.get(first).getStartTime() - marks.get(second).getStartTime()
-            logger.info(LINE + "标记：{}和标记：{}记录时间差：{} ns", first, second, diff)
+            def diff = marks.get(second).getStartNano() - marks.get(first).getStartNano()
+            logger.info(LINE + "标记：{}和标记：{}记录时间差：{} ns", first, second, getFormatNumber(diff))
         } else {
             logger.warn("没有{}标记！", first + TAB + second)
         }
@@ -241,15 +247,17 @@ class TimeWatch extends SourceCode {
 
         def name
 
-        def startTime
+        def startNano
 
-        def startTimeMillis
-        def lastTime
-        def l
+        def startMillis
+
+        def lastNano
+
+        def lastMills
 
         def reset() {
-            this.startTime = getNanoMark()
-            this.startTimeMillis = Time.getTimeStamp()
+            this.startNano = getNanoMark()
+            this.startMillis = Time.getTimeStamp()
         }
     }
 }
