@@ -113,7 +113,7 @@ public class FanLibrary extends SourceCode {
      * @return
      */
     public static HttpPost getHttpPost(String url) {
-        return new HttpPost(url);
+        return new HttpPost(url.replace(" ", ""));
     }
 
     /**
