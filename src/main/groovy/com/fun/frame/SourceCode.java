@@ -3,6 +3,7 @@ package com.fun.frame;
 
 import com.fun.utils.Regex;
 import com.fun.utils.Time;
+import io.netty.util.internal.StringUtil;
 import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.ArrayUtils;
@@ -24,6 +25,21 @@ public class SourceCode extends Output {
     private static Logger logger = LoggerFactory.getLogger(SourceCode.class);
 
     private static Scanner scanner;
+
+    /**
+     * 获取日志记录的logger
+     *
+     * @param name
+     * @return
+     */
+    public static Logger getLogger(String name) {
+        if (StringUtil.isNullOrEmpty(name)) return logger;
+        return LoggerFactory.getLogger(name);
+    }
+
+    public static Logger getLogger() {
+        return getLogger("default");
+    }
 
     /**
      * 获取当前时间戳10位int 类型的数据
@@ -326,4 +342,6 @@ public class SourceCode extends Output {
     public static IntStream range(int num) {
         return IntStream.range(0, num);
     }
+
+
 }
