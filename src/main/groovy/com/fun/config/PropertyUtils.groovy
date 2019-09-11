@@ -1,6 +1,8 @@
 package com.fun.config
 
 import com.fun.frame.SourceCode
+import com.fun.utils.WriteRead
+import net.sf.json.JSONObject
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -8,6 +10,7 @@ import org.slf4j.LoggerFactory
  * 读取配置工具
  */
 class PropertyUtils extends SourceCode {
+
     public static Logger logger = LoggerFactory.getLogger(PropertyUtils.class)
 
     /**
@@ -30,10 +33,21 @@ class PropertyUtils extends SourceCode {
         }
     }
 
+    static Property getPropertiesByFile(String propertyName) {
+        logger.debug("读取配置文件：{}", propertyName)
+        try {
+            new Property(WriteRead.readTxtByJson(WORK_SPACE + propertyName))
+        } catch (MissingResourceException e) {
+            logger.warn("找不到配置文件", e)
+            new Property()
+        }
+    }
+
 /**
  * 配置项
  */
     static class Property {
+
         Map<String, String> properties = new HashMap<>()
 
         def Property(ResourceBundle resourceBundle) {
@@ -41,6 +55,10 @@ class PropertyUtils extends SourceCode {
             for (def key in set) {
                 properties.put key, resourceBundle.getString(key)
             }
+        }
+
+        def Property(JSONObject json) {
+            properties.putAll(json)
         }
 
 /**
