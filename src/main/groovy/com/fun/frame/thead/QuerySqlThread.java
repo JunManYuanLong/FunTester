@@ -1,5 +1,6 @@
 package com.fun.frame.thead;
 
+import com.fun.base.constaint.ThreadBase;
 import com.fun.base.interfaces.IMySqlBasic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,5 +1,6 @@
 package com.fun.frame.thead;
 
+import com.fun.base.constaint.ThreadBase;
 import com.fun.frame.httpclient.ClientManage;
 import com.fun.frame.httpclient.FanLibrary;
 import com.fun.frame.httpclient.GCThread;

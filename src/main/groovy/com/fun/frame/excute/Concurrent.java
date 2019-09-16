@@ -3,7 +3,7 @@ package com.fun.frame.excute;
 import com.fun.base.bean.PerformanceResultBean;
 import com.fun.frame.Save;
 import com.fun.frame.SourceCode;
-import com.fun.frame.thead.ThreadBase;
+import com.fun.base.constaint.ThreadBase;
 import com.fun.config.Constant;
 import com.fun.utils.Time;
 import com.fun.utils.WriteRead;
