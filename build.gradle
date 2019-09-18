@@ -1,7 +1,10 @@
 buildscript {
     repositories {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        google()
+//        maven { url 'http://repo1.maven.apache.org/maven2/' }
+////        maven { url 'http://repo2.maven.org/maven2/' }
+////        maven { url 'http://maven.oschina.net/content/groups/public/' }
+//        google()
     }
 }
 
@@ -27,11 +30,19 @@ idea {
 sourceCompatibility = 1.8
 
 repositories {
+    mavenLocal()
     maven {
         url 'http://maven.aliyun.com/nexus/content/groups/public/'
     }
-//    http://repo1.maven.apache.org/maven2/
-//    mavenCentral()
+//    maven {
+//        url 'http://repo2.maven.org/maven2/'
+//    }
+//    maven {
+//        url 'http://repo1.maven.apache.org/maven2/'
+//    }
+//    maven { url 'http://maven.oschina.net/content/groups/public/' }
+
+    mavenCentral()
 }
 sourceSets {
     main {
@@ -54,6 +65,7 @@ dependencies {
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.8.0-beta2'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
     compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.0'
+    compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.0'
     compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.5.7'
     compile group: 'com.github.dreamhead', name: 'moco-core', version: '0.12.0'
     compile group: 'redis.clients', name: 'jedis', version: '3.0.1'
