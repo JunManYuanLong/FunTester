@@ -4,18 +4,17 @@ package com.fun.frame;
 import com.fun.utils.Regex;
 import com.fun.utils.Time;
 import io.netty.util.internal.StringUtil;
-import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.sql.rowset.Joinable;
-import java.io.IOException;
-import java.io.InputStream;
 import java.text.DecimalFormat;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -187,6 +186,22 @@ public class SourceCode extends Output {
         logger.debug("需要转化成的文本：{}", text);
         try {
             return Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            logger.warn("转化int类型失败！", e);
+            return TEST_ERROR_CODE;
+        }
+    }
+
+    /**
+     * 把string类型转化为long
+     *
+     * @param text 需要转化的文本
+     * @return
+     */
+    public static long changeStringToLong(String text) {
+        logger.debug("需要转化成的文本：{}", text);
+        try {
+            return Long.parseLong(text);
         } catch (NumberFormatException e) {
             logger.warn("转化int类型失败！", e);
             return TEST_ERROR_CODE;
