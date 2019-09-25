@@ -1,10 +1,10 @@
 package com.fun.frame.excute;
 
 import com.fun.base.bean.PerformanceResultBean;
-import com.fun.frame.Save;
-import com.fun.frame.SourceCode;
 import com.fun.base.constaint.ThreadBase;
 import com.fun.config.Constant;
+import com.fun.frame.Save;
+import com.fun.frame.SourceCode;
 import com.fun.utils.Time;
 import com.fun.utils.WriteRead;
 import org.slf4j.Logger;
@@ -24,9 +24,19 @@ public class Concurrent extends SourceCode {
     private static Logger logger = LoggerFactory.getLogger(Concurrent.class);
 
     /**
+     * 开始时间
+     */
+    public long start;
+
+    /**
+     * 结束时间
+     */
+    public long end;
+
+    /**
      * 任务描述
      */
-    public String desc = "fun";
+    public String desc = "FunTester";
 
     /**
      * 线程任务
@@ -43,6 +53,9 @@ public class Concurrent extends SourceCode {
      */
     public int threadNum;
 
+    /**
+     * 用于记录所有请求时间
+     */
     public static Vector<Long> allTimes = new Vector<>();
 
     /**
@@ -101,14 +114,14 @@ public class Concurrent extends SourceCode {
      * 执行多线程任务
      */
     public PerformanceResultBean start() {
-        long start = Time.getTimeStamp();
+        start = Time.getTimeStamp();
         for (int i = 0; i < threadNum; i++) {
             ThreadBase thread = getThread(i);
             thread.setCountDownLatch(countDownLatch);
             executorService.execute(thread);
         }
         shutdownService(executorService, countDownLatch);
-        long end = Time.getTimeStamp();
+        end = Time.getTimeStamp();
         logger.info("总计" + threadNum + "个线程，共用时：" + Time.getTimeDiffer(start, end) + "秒！");
         return over();
     }
@@ -130,7 +143,7 @@ public class Concurrent extends SourceCode {
 
     private PerformanceResultBean over() {
         Save.saveLongList(allTimes, threadNum);
-        return countQPS(threadNum, desc);
+        return countQPS(threadNum, desc, Time.getTimeByTimestamp(start), Time.getTimeByTimestamp(end));
     }
 
     ThreadBase getThread(int i) {
@@ -144,7 +157,7 @@ public class Concurrent extends SourceCode {
      *
      * @param name 线程数
      */
-    public static PerformanceResultBean countQPS(int name, String desc) {
+    public static PerformanceResultBean countQPS(int name, String desc, String start, String end) {
         List<String> strings = WriteRead.readTxtFileByLine(Constant.LONG_Path + name + Constant.FILE_TYPE_LOG);
         int size = strings.size();
         int sum = 0;
@@ -153,7 +166,15 @@ public class Concurrent extends SourceCode {
             sum += time;
         }
         double v = 1000.0 * size * name / sum;
-        PerformanceResultBean performanceResultBean = new PerformanceResultBean(name, size, sum / size, v, desc);
-        return performanceResultBean;
+        return new PerformanceResultBean(name, size, sum / size, v, desc, start, end);
     }
+
+    public static PerformanceResultBean countQPS(int name, String desc) {
+        return countQPS(name, desc, Time.getDate(), Time.getDate());
+    }
+
+    public static PerformanceResultBean countQPS(int name) {
+      return   countQPS(name, "FunTester", Time.getDate(), Time.getDate());
+    }
+
 }

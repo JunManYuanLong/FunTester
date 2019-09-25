@@ -3,10 +3,9 @@ package com.fun.db.mysql;
 import com.fun.base.bean.PerformanceResultBean;
 import com.fun.base.bean.RecordBean;
 import com.fun.base.bean.RequestInfo;
-import com.fun.frame.Output;
-import com.fun.frame.httpclient.FanLibrary;
 import com.fun.config.SqlConstant;
 import com.fun.config.SysInit;
+import com.fun.frame.httpclient.FanLibrary;
 import com.fun.utils.DecodeEncode;
 import com.fun.utils.Time;
 import com.fun.utils.message.AlertOver;
@@ -110,12 +109,14 @@ public class MySqlTest extends SqlBase {
         sendWork(sql);
     }
 
-    /**保存性能测试结果的方法
+    /**
+     * 保存性能测试结果的方法
+     *
      * @param bean
      */
     public static void savePerformanceBean(PerformanceResultBean bean) {
         if (StringUtil.isNullOrEmpty(SqlConstant.PERFORMANCE_TABLE)) return;
-        String sql = String.format("INSERT INTO " + SqlConstant.PERFORMANCE_TABLE + "(threads,total,rt,qps,des) VALUES (%d,%d,%d,%f,'%s');", bean.getThreads(), bean.getTotal(), bean.getRt(), bean.getQps(), bean.getDesc());
+        String sql = String.format("INSERT INTO " + SqlConstant.PERFORMANCE_TABLE + "(threads,total,rt,qps,des,start_time,end_time) VALUES (%d,%d,%d,%f,'%s','%s','%s');", bean.getThreads(), bean.getTotal(), bean.getRt(), bean.getQps(), bean.getDesc(), bean.getStartTime(), bean.getEndTime());
         logger.info("记录性能测试数据：{}", bean.toJson());
         sendWork(sql);
     }
@@ -335,5 +336,6 @@ public class MySqlTest extends SqlBase {
     public static void mySqlQueryOver() {
         mySqlOver(connection0, statement0);
     }
+
 
 }

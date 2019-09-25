@@ -8,22 +8,28 @@ import com.fun.db.mysql.MySqlTest
  */
 class PerformanceResultBean extends AbstractBean {
 
-    String desc;
+    String desc
 
-    int threads;
+    String startTime
 
-    int total;
+    String endTime
 
-    int rt;
+    int threads
 
-    double qps;
+    int total
 
-    PerformanceResultBean(int threads, int total, int rt, double qps, String desc) {
-        this.threads = threads;
-        this.total = total;
-        this.rt = rt;
-        this.qps = qps;
-        this.desc = desc;
+    int rt
+
+    double qps
+
+    public PerformanceResultBean(int threads, int total, int rt, double qps, String desc, String start, String end) {
+        this.threads = threads
+        this.total = total
+        this.rt = rt
+        this.qps = qps
+        this.desc = desc
+        this.startTime = start
+        this.endTime = end
         this.print()
         MySqlTest.savePerformanceBean(this)
     }
