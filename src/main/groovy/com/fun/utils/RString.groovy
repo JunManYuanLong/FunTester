@@ -7,39 +7,10 @@ class RString extends SourceCode {
 
     static char[] chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', (char) 65, (char) 66, (char) 67, (char) 68, (char) 69, (char) 70, (char) 71, (char) 72, (char) 73, (char) 74, (char) 75, (char) 76, (char) 77, (char) 78, (char) 79, (char) 80, (char) 81, (char) 82, (char) 83, (char) 84, (char) 85, (char) 86, (char) 87, (char) 88, (char) 89, (char) 90, (char) 97, (char) 98, (char) 99, (char) 100, (char) 101, (char) 102, (char) 103, (char) 104, (char) 105, (char) 106, (char) 107, (char) 108, (char) 109, (char) 110, (char) 111, (char) 112, (char) 113, (char) 114, (char) 115, (char) 116, (char) 117, (char) 118, (char) 119, (char) 120, (char) 121, (char) 122]
 
-    static Map<Integer, String> chineses = new HashMap<Integer, String>() {
+    static String[] chineses = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九"]
 
-        {
-            put(0, "零")
-            put(1, "一")
-            put(2, "二")
-            put(3, "三")
-            put(4, "四")
-            put(5, "五")
-            put(6, "六")
-            put(7, "七")
-            put(8, "八")
-            put(9, "九")
+    static String[] capeChineses = ["零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"]
 
-        }
-    }
-
-    static Map<Integer, String> capeChineses = new HashMap<Integer, String>() {
-
-        {
-            put(0, "零")
-            put(1, "壹")
-            put(2, "贰")
-            put(3, "叁")
-            put(4, "肆")
-            put(5, "伍")
-            put(6, "陆")
-            put(7, "柒")
-            put(8, "捌")
-            put(9, "玖")
-
-        }
-    }
 /**
  * 获取随机字符串
  * @param i
@@ -115,8 +86,8 @@ class RString extends SourceCode {
  */
     static String getChinese(int i) {
         if (i <= 0) return "零零零"
-        String num = (i + EMPTY).collect { x -> chineses.get(changeStringToInt(x)) }.join()
-        return num.length() > 2 ? num : getManyString(chineses[0] + EMPTY, 3 - num.length()) + num
+        String num = (i + EMPTY).collect { x -> chineses[changeStringToInt(x)] }.join()
+        num.length() > 2 ? num : getManyString(chineses[0] + EMPTY, 3 - num.length()) + num
     }
 
 /**
@@ -125,6 +96,6 @@ class RString extends SourceCode {
  * @return
  */
     static String getCapeChinese(int i) {
-        String num = (i + EMPTY).collect { x -> capeChineses.get(changeStringToInt(x)) }.join()
+        (i + EMPTY).collect { x -> capeChineses[changeStringToInt(x)] }.join()
     }
 }
