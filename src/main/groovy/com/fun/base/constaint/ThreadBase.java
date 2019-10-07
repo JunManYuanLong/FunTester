@@ -36,12 +36,12 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
      */
     public T t;
 
-    public ThreadBase(T t) {
+    public ThreadBase(T t, int times) {
         this();
         this.t = t;
     }
 
-    public ThreadBase() {
+    protected ThreadBase() {
         super();
     }
 
@@ -98,5 +98,6 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
     public void setCountDownLatch(CountDownLatch countDownLatch) {
         this.countDownLatch = countDownLatch;
     }
+
 
 }
