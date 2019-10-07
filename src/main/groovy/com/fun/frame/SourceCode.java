@@ -5,14 +5,12 @@ import com.fun.utils.Regex;
 import com.fun.utils.Time;
 import io.netty.util.internal.StringUtil;
 import net.sf.json.JSONObject;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -113,7 +111,7 @@ public class SourceCode extends Output {
         Arrays.stream(objects).forEach(x -> {
             String[] split = x.toString().split(regex, 2);
             args.put(split[0], split[1]);
-            logger.debug("key:{},value:{}", split[0], split[1]);
+            logger.debug("key:[{}],value:[{}]", split[0], split[1]);
         });
         return args;
     }
@@ -233,51 +231,6 @@ public class SourceCode extends Output {
             logger.warn("转化double类型失败！", e);
             return TEST_ERROR_CODE * 1.0;
         }
-    }
-
-    /**
-     * 把字符串每个字符用分隔器连接起来
-     *
-     * @param text
-     * @param separator
-     * @return
-     */
-    public static String join(String text, String separator) {
-        return StringUtils.join(ArrayUtils.toObject(text.toCharArray()), separator);
-    }
-
-    /**
-     * 把list用分隔器连接起来
-     *
-     * @param list
-     * @param separator
-     * @param prefix
-     * @param suffix
-     * @return
-     */
-    public static String join(List list, String separator, String prefix, String suffix) {
-        return prefix + StringUtils.join(list, separator) + suffix;
-//        return list.stream().map(x -> x.toString()).collect(Collectors.joining(separator, prefix, suffix)).toString();
-    }
-
-    /**
-     * 把list用分隔器连接起来，没有前后缀
-     *
-     * @param list
-     * @param separator
-     * @return
-     */
-    public static String join(List list, String separator) {
-        return join(list, separator, EMPTY, EMPTY);
-    }
-
-
-    public static String join(Object[] objects, String separator, String prefix, String suffix) {
-        return prefix + StringUtils.join(objects, separator) + suffix;
-    }
-
-    public static String join(Object[] objects, String separator) {
-        return StringUtils.join(objects, separator);
     }
 
     /**
