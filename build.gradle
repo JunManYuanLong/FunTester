@@ -60,8 +60,10 @@ dependencies {
     compile group: 'com.sun.jna', name: 'jna', version: '3.0.9'
     compile 'net.sf.json-lib:json-lib:2.4:jdk15'
     compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.9.0'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.0'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
+//    2.+版本不支持properties
+//    compile group: 'org.ap、ache.logging.log4j', name: 'log4j-api', version: '2.11.0'
+//    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.8.0-beta2'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
     compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.0'
