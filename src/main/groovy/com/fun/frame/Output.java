@@ -112,13 +112,33 @@ public class Output extends Constant {
      *
      * @param arrays
      */
-    public static void output(Number[] arrays) {
-        if (arrays == null)
+    public static void output(Number[] nums) {
+        if (ArrayUtils.isEmpty(nums))
             return;
-        int length = arrays.length;
+        int length = nums.length;
         for (int i = 0; i < length; i++) {
-            output(arrays[i] + "");
+            output(nums[i] + "");
         }
+    }
+
+    public static void output(int[] nums) {
+        output(ArrayUtils.toObject(nums));
+    }
+
+    public static void output(long[] nums) {
+        output(ArrayUtils.toObject(nums));
+    }
+
+    public static void output(double[] nums) {
+        output(ArrayUtils.toObject(nums));
+    }
+
+    public static void output(boolean[] nums) {
+        output(ArrayUtils.toObject(nums));
+    }
+
+    public static void output(char[] nums) {
+        output(ArrayUtils.toObject(nums));
     }
 
     /**
@@ -266,4 +286,6 @@ public class Output extends Constant {
 
 
     }
+
+
 }
