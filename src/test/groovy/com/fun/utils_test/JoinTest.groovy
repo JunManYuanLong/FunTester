@@ -4,7 +4,9 @@ import com.fun.utils.Join
 import org.slf4j.Logger
 import spock.lang.Shared
 import spock.lang.Specification
-import static com.fun.frame.SourceCode.*
+
+import static com.fun.config.Constant.SPACE_1
+import static com.fun.frame.SourceCode.getLogger
 
 class JoinTest extends Specification {
 
@@ -46,5 +48,19 @@ class JoinTest extends Specification {
         def str = "hello"
         expect: "验证测试方法"
         "[h_e_l_l_o]" == Join.join(str, "_", "[", "]")
+    }
+
+    def "测试list"() {
+        given: "准备测试数据"
+        def list = 0..3 as List
+
+        expect: "验证测试方法"
+        str == Join.join(list, sep)
+
+        where:
+        str       || sep
+        "0123"    || ""
+        "0.1.2.3" || "."
+        "0 1 2 3" || " "
     }
 }
