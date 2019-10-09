@@ -5,7 +5,7 @@
 作者QQ：1009329307
 联系地址：Fhaohaizi@163.com
 
-微信公众号号：
+微信公众号：
 ===
 ![微信公众号](https://mmbiz.qpic.cn/mmbiz_png/13eN86FKXzCtFy3k1BTTpYKKPHWFtTzzIqRoFeib0DR4MK2CibyabBHZfnEGrxjX5pbn6lrQytzmaPjbicrx78GHw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
