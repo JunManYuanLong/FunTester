@@ -4,12 +4,11 @@
 
 作者QQ：1009329307
 联系地址：Fhaohaizi@163.com
-主页：http://blog.fv1314.xyz/blog/home.html
 
 微信公众号号：
 ===
-![](http://blog.fv1314.xyz/blog/pic/1562642848.png)
+![微信公众号](https://mmbiz.qpic.cn/mmbiz_png/13eN86FKXzCtFy3k1BTTpYKKPHWFtTzzIqRoFeib0DR4MK2CibyabBHZfnEGrxjX5pbn6lrQytzmaPjbicrx78GHw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 QQ群：340964272
 ===
-![](http://blog.fv1314.xyz/blog/pic/201712120951590031.png)
+![QQ群](https://mmbiz.qpic.cn/mmbiz_png/13eN86FKXzCtFy3k1BTTpYKKPHWFtTzzUnicOefqJic8td62xc9cPMRKTS4wcg31l5OiblTgdph3yFrUIFLzicCyQw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
