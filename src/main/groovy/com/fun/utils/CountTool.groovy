@@ -42,7 +42,7 @@ class CountTool extends SourceCode {
 
 /**
  * 统计某个list里面各个元素出现的次数
- * collect,是一个map<object,list>对象
+ * collect,是一个map<object,integer>对象
  * @param list
  * @return
  */
