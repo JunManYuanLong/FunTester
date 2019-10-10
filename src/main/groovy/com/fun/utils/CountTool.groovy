@@ -1,10 +1,8 @@
 package com.fun.utils
 
 import com.fun.frame.SourceCode
-import net.sf.json.JSONObject
 
 import java.util.stream.Collectors
-
 /**
  * 统计出现次数相关类
  */
@@ -15,7 +13,7 @@ class CountTool extends SourceCode {
      * @param counts 统计的 jsonobject 对象
      * @param object 需要统计的数据
      */
-    static def count(JSONObject counts, Object object) {
+    static def count(Map counts, Object object) {
         count(counts, object, 1)
     }
 
@@ -26,8 +24,8 @@ class CountTool extends SourceCode {
      * @param object 需要统计的数据
      * @param num 增加值
      */
-    static def count(JSONObject counts, Object object, int num) {
-        counts.put(object, Integer.valueOf(counts.getOrDefault(object.toString(), 0) + num))
+    static def count(Map counts, Object object, int num) {
+        counts.put(object, Integer.valueOf(counts.getOrDefault(object, 0) + num))
     }
 
 /**
