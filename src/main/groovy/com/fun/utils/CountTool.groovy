@@ -47,8 +47,7 @@ class CountTool extends SourceCode {
  * @return
  */
     static def count(List list) {
-        def collect = list.stream().collect(Collectors.groupingBy { x -> x })
-        collect.each {
+        list.stream().collect(Collectors.groupingBy { x -> x }).each {
             it.setValue(it.value.size())
             output("元素：${it.key}，次数：${it.value}")
         }
