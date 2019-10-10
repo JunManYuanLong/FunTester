@@ -1,4 +1,4 @@
-package com.fun.pratice
+package com.FunTester.spock.pratice
 
 import org.slf4j.Logger
 import spock.lang.Shared

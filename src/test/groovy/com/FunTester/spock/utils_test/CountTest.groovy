@@ -1,4 +1,4 @@
-package com.FunTester.utils_test
+package com.FunTester.spock.utils_test
 
 import com.fun.utils.CountTool
 import org.slf4j.Logger
