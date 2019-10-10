@@ -1,4 +1,4 @@
-package com.fun.utils_test
+package com.FunTester.utils_test
 
 import com.fun.utils.Join
 import org.slf4j.Logger
