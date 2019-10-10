@@ -121,6 +121,11 @@ public class Output extends Constant {
         }
     }
 
+    public static void output(Object o) {
+        if (o == null) logger.warn("怎么空了呢！");
+        else output(o.toString());
+    }
+
     public static void output(int[] nums) {
         output(ArrayUtils.toObject(nums));
     }
