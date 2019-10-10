@@ -47,9 +47,10 @@ class CountTool extends SourceCode {
  * @return
  */
     static def count(List list) {
-        def collect = list.stream().collect(Collectors.groupingBy { x -> x.toString() })
-        collect.keySet().stream().sorted().forEach { x ->
-            output("元素：${x}，次数：${collect.get(x).size()}")
+        def collect = list.stream().collect(Collectors.groupingBy { x -> x })
+        collect.each {
+            it.setValue(it.value.size())
+            output("元素：${it.key}，次数：${it.value}")
         }
     }
 }
