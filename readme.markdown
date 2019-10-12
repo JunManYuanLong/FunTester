@@ -7,8 +7,8 @@
 
 微信公众号：
 ===
-![微信公众号](https://gitee.com/fanapi/tester/blob/okay/document/1562642848.png)
+![微信公众号](https://oscimg.oschina.net/oscnet/64c3fa99be2ecc594aeb1a426be285aa49b.jpg)
 
 QQ群：340964272
 ===
-![QQ群](https://gitee.com/fanapi/tester/blob/okay/document/WechatIMG1.png)
+![QQ群](https://oscimg.oschina.net/oscnet/2e49545e35e83deb0e2c57079577a629641.jpg)
