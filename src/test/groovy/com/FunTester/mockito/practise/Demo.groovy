@@ -75,4 +75,21 @@ class Demo extends Specification {
         3 == list.get(0)
     }
 
+    def "这是一个测试,抛出异常的测试用例"() {
+        given: "创建测试对象"
+        def object = mock(ArrayList.class)
+        when(object.get(1)).thenThrow(new IndexOutOfBoundsException("我是测试"))//只能抛出可能的抛出的异常
+        def re = 0
+        try {
+            object.get(1)
+        } catch (IndexOutOfBoundsException e) {
+            re = 1
+        }
+
+        expect:
+        re == 1
+    }
+
+
+
 }
