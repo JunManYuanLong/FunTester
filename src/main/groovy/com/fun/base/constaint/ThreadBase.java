@@ -37,8 +37,13 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
     public T t;
 
     public ThreadBase(T t, int times) {
-        this();
+        this(times);
         this.t = t;
+    }
+
+    public ThreadBase(int times) {
+        this();
+        this.times = times;
     }
 
     protected ThreadBase() {
