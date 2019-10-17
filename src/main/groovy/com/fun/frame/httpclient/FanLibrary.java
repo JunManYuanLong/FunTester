@@ -1,6 +1,7 @@
 package com.fun.frame.httpclient;
 
 import com.fun.base.bean.RequestInfo;
+import com.fun.base.exception.RequestException;
 import com.fun.base.interfaces.IBase;
 import com.fun.config.HttpClientConstant;
 import com.fun.config.SysInit;
@@ -306,7 +307,7 @@ public class FanLibrary extends SourceCode {
      * @return 返回json类型的对象
      */
     public static JSONObject getHttpResponse(HttpRequestBase request) {
-        if (!isRightRequest(request)) return new JSONObject();
+        if (!isRightRequest(request)) throw new RequestException(request);
         beforeRequest(request);
         JSONObject res = new JSONObject();
         RequestInfo requestInfo = new RequestInfo(request);
@@ -327,13 +328,13 @@ public class FanLibrary extends SourceCode {
             MySqlTest.saveApiTestDate(requestInfo, data_size, elapsed_time, status, getMark(), code, LOCAL_IP, COMPUTER_USER_NAME);
         } catch (Exception e) {
             logger.warn("获取请求相应失败！", e);
-            if (!SysInit.isBlack(requestInfo.getHost()))
+            if (!requestInfo.isBlack())
                 new AlertOver("接口请求失败", requestInfo.toString(), requestInfo.getUrl(), requestInfo).sendSystemMessage();
         } finally {
             HEADER_KEY = false;
-            if (!SysInit.isBlack(requestInfo.getHost())) {
+            if (!requestInfo.isBlack()) {
                 if (requests.size() > 9) requests.removeFirst();
-                boolean add = requests.add(request);
+                requests.add(request);
             }
         }
         return res;
