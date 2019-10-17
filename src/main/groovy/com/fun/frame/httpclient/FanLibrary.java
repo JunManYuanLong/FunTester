@@ -4,7 +4,6 @@ import com.fun.base.bean.RequestInfo;
 import com.fun.base.exception.RequestException;
 import com.fun.base.interfaces.IBase;
 import com.fun.config.HttpClientConstant;
-import com.fun.config.SysInit;
 import com.fun.db.mysql.MySqlTest;
 import com.fun.frame.SourceCode;
 import com.fun.utils.DecodeEncode;
@@ -333,7 +332,7 @@ public class FanLibrary extends SourceCode {
         } finally {
             HEADER_KEY = false;
             if (!requestInfo.isBlack()) {
-                if (requests.size() > 9) requests.removeFirst();
+                if (requests.size() > 9) requests.removeLast();
                 requests.add(request);
             }
         }
