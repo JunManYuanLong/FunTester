@@ -90,6 +90,7 @@ public class MySqlTest extends SqlBase {
      */
     public static void saveApiTestDate(RequestInfo requestInfo, int data_size, long expend_time, int status, int mark, int code, String localIP, String computerName) {
         logger.debug("请求信息：{}", requestInfo.toString());
+        logger.info("请求uri：{},耗时：{} ms", requestInfo.getUri(), expend_time);
         if (!SqlConstant.flag || SysInit.isBlack(requestInfo.getHost())) return;
         String sql = String.format("INSERT INTO " + SqlConstant.REQUEST_TABLE + " (domain,api,data_size,expend_time,status,type,method,code,local_ip,local_name,create_time) VALUES ('%s','%s',%d,%d,%d,'%s','%s',%d,'%s','%s','%s');", requestInfo.getHost(), requestInfo.getApiName(), data_size, expend_time, status, requestInfo.getType(), requestInfo.getMethod().getName(), code, localIP, computerName, Time.getDate());
 //        RecordBean requestBean = new RecordBean();
@@ -105,7 +106,6 @@ public class MySqlTest extends SqlBase {
 //        requestBean.setLocal_name(computerName);
 //        requestBean.setCreate_time(Time.getDate());
 //        RecordBean.get().setApi(requestInfo.getApiName()).setDomain(requestInfo.getHost()).setType(requestInfo.getType()).setExpend_time(expend_time).setData_size(data_size).setStatus(status).setMethod(requestInfo.getMethod().getName()).setCode(code).setLocal_ip(localIP).setLocal_name(computerName).setCreate_time(Time.getDate());
-        logger.info("请求uri：{},耗时：{} ms", requestInfo.getUri(), expend_time);
         sendWork(sql);
     }
 
