@@ -8,6 +8,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 class BeanUtil extends SourceCode {
+
     private static Logger logger = LoggerFactory.getLogger(BeanUtil.class)
 
 /**
@@ -16,7 +17,7 @@ class BeanUtil extends SourceCode {
  * @param source
  * @return
  */
-   def static copyProperties(AbstractBean bean, Object source) {
+    static def copyProperties(AbstractBean bean, Object source) {
         try {
             BeanUtils.copyProperties(bean, source)
         } catch (Exception e) {
