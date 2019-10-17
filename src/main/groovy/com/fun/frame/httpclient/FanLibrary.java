@@ -332,7 +332,7 @@ public class FanLibrary extends SourceCode {
         } finally {
             HEADER_KEY = false;
             if (!requestInfo.isBlack()) {
-                if (requests.size() > 9) requests.removeLast();
+                if (requests.size() > 9) requests.removeFirst();
                 requests.add(request);
             }
         }
