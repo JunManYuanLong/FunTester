@@ -136,18 +136,15 @@ public class ClientManage extends SourceCode {
                 if (executionCount > HttpClientConstant.TRY_TIMES) return false;
                 if (exception instanceof NoHttpResponseException) {
                     logger.warn("没有响应异常");
-                    sleep(1);
                     return true;
                 } else if (exception instanceof ConnectTimeoutException) {
                     logger.warn("连接超时，重试");
-                    sleep(5);
                     return true;
                 } else if (exception instanceof SSLHandshakeException) {
                     logger.warn("本地证书异常");
                     return false;
                 } else if (exception instanceof InterruptedIOException) {
                     logger.warn("IO中断异常");
-                    sleep(1);
                     return true;
                 } else if (exception instanceof UnknownHostException) {
                     logger.warn("找不到服务器异常");
@@ -168,7 +165,6 @@ public class ClientManage extends SourceCode {
                 HttpRequest request = clientContext.getRequest();
                 // 如果请求是幂等的，则重试
                 if (!(request instanceof HttpEntityEnclosingRequest)) {
-                    sleep(2);
                     return true;
                 }
                 return false;
