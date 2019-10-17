@@ -8,6 +8,7 @@ import org.apache.http.client.methods.HttpRequestBase
 import org.apache.http.util.EntityUtils
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+
 /**
  * 请求信息封装类
  */
@@ -49,6 +50,11 @@ class RequestInfo extends AbstractBean {
      * 参数
      */
     String params
+
+    /**
+     * host是否是黑名单
+     */
+    boolean isBlack;
 
     /**
      * 通过request获取请求的相关信息，并输出部分信息
@@ -106,6 +112,10 @@ class RequestInfo extends AbstractBean {
             logger.warn("获取post请求参数时异常！")
             params = "entity类型：" + entity.getClass()
         }
+    }
+
+    boolean isBlack() {
+        isBlack
     }
 
     @Override
