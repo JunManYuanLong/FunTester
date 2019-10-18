@@ -1,6 +1,7 @@
 package com.fun.frame;
 
 
+import com.fun.base.exception.FailException;
 import com.fun.utils.Regex;
 import com.fun.utils.Time;
 import io.netty.util.internal.StringUtil;
@@ -309,6 +310,13 @@ public class SourceCode extends Output {
      */
     public static IntStream range(int num) {
         return IntStream.range(0, num);
+    }
+
+    /**
+     * 通用的终止运行的方法,用于脚本调试等场景
+     */
+    public static void fail() {
+        throw new FailException();
     }
 
 
