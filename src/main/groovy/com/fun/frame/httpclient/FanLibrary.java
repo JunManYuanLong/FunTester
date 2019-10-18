@@ -461,7 +461,6 @@ public class FanLibrary extends SourceCode {
      * 结束测试，关闭连接池
      */
     public static void testOver() {
-        MySqlTest.mySqlQueryOver();
         try {
             ClientManage.httpsClient.close();
         } catch (IOException e) {
