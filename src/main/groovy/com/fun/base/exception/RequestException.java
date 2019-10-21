@@ -14,9 +14,8 @@ public class RequestException extends FailException {
         super(request.toString());
     }
 
-    @Override
-    public void fail() {
-        throw new RequestException();
+    public RequestException(String message) {
+        super(message);
     }
 
 

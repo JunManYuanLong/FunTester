@@ -12,10 +12,5 @@ public class LoginException extends FailException {
         super(String.format("账号{%s}登录失败!", name));
     }
 
-    @Override
-    public void fail() {
-        throw new LoginException();
-    }
-
 
 }
