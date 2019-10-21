@@ -13,4 +13,8 @@ public class ParamException extends FailException {
 	}
 
 
+	@Override
+	public void fail() {
+		throw new ParamException();
+	}
 }

@@ -6,12 +6,17 @@ public class RequestException extends FailException {
 
     private static final long serialVersionUID = 7916010541762451964L;
 
-    public RequestException(String name) {
+    public RequestException() {
         super("错误的请求!");
     }
 
     public RequestException(HttpRequestBase request) {
         super(request.toString());
+    }
+
+    @Override
+    public void fail() {
+        throw new RequestException();
     }
 
 

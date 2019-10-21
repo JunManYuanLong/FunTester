@@ -1,6 +1,6 @@
 package com.fun.base.exception;
 
-public class FailException extends RuntimeException{
+public class FailException extends RuntimeException {
 
     private static final long serialVersionUID = -7041169491254546905L;
 
@@ -11,4 +11,10 @@ public class FailException extends RuntimeException{
     public FailException(String message) {
         super(message);
     }
+
+    public void fail() {
+        throw new FailException();
+    }
+
+
 }
