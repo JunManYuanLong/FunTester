@@ -71,12 +71,15 @@ dependencies {
     compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.5.7'
     compile group: 'com.github.dreamhead', name: 'moco-core', version: '0.12.0'
     compile group: 'redis.clients', name: 'jedis', version: '3.0.1'
-    compile "org.mockito:mockito-core:2.0.57-beta"
+    testCompile 'org.mockito:mockito-core:2.7.22'
+//    testCompile group: 'org.mockito', name: 'mockito-all', version: '2.0.2-beta'
     testCompile group: 'org.spockframework', name: 'spock-core', version: '1.3-groovy-2.5'
     testCompile group: 'org.spockframework', name: 'spock-spring', version: '1.3-groovy-2.5'
     testCompile group: 'org.springframework', name: 'spring-test', version: '5.1.9.RELEASE'
     testCompile group: 'org.hamcrest', name: 'hamcrest-library', version: '1.3'
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.0'
+    testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: '2.0.2'
 }
 
 jar {
