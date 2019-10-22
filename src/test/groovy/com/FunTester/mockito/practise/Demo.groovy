@@ -1,5 +1,6 @@
 package com.FunTester.mockito.practise
 
+
 import org.apache.http.client.methods.HttpRequestBase
 import org.slf4j.Logger
 import spock.lang.Shared
@@ -7,6 +8,8 @@ import spock.lang.Specification
 
 import static com.fun.config.Constant.SPACE_1
 import static com.fun.frame.SourceCode.getLogger
+import static org.mockito.AdditionalAnswers.returnsFirstArg
+import static org.mockito.Matchers.anyInt
 import static org.mockito.Mockito.*
 
 class Demo extends Specification {
@@ -52,6 +55,7 @@ class Demo extends Specification {
         false == verify(mockedList, atLeastOnce()).add("one")
         false == verify(mockedList, times(3)).add("three times")
         false == verify(mockedList, atMost(4)).add("3")
+        false == verify(mockedList, never()).add("30")
     }
 
     def "这是一个测试的mockito模拟方法返回"() {
@@ -59,7 +63,7 @@ class Demo extends Specification {
         def iterator = mock(Iterator.class)
         when(iterator.next()).thenReturn("hello").thenReturn("world")
 
-        expect:
+        expect:"测试迭代器元素拼接"
         "hello world" == iterator.next() + SPACE_1 + iterator.next()
     }
 
@@ -90,6 +94,17 @@ class Demo extends Specification {
         re == 1
     }
 
+    def "这是一个测试方法返回值的用例"() {
+        given:
+        def j = mock(DemoJ.class)
+        doAnswer(returnsFirstArg()).when(j).ds(anyInt(), anyInt())
 
+//        when(list.add(anyString())).thenAnswer(returnsFirstArg());
+        // with then() alias:
+//        when(list.add(anyString())).then(returnsFirstArg());
+        expect:
+        3 == j.ds(3, 32)
+
+    }
 
 }
