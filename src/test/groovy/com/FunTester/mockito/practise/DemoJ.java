@@ -2,6 +2,7 @@ package com.FunTester.mockito.practise;
 
 import com.fun.frame.Output;
 import com.fun.frame.SourceCode;
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -46,7 +47,7 @@ public class DemoJ extends SourceCode {
         // with then() alias:
 //        when(list.add(anyString())).then(returnsFirstArg());
         int ds = mock.ds(3, 2);
-        Output.output(ds);
+        Assert.assertTrue(ds == 2);
     }
 
     @Test
@@ -71,4 +72,11 @@ public class DemoJ extends SourceCode {
         return SourceCode.getMark();
     }
 
+    @Test
+    public void testsse() {
+        DemoJ mock = mock(DemoJ.class);
+        when(mock.ds(anyInt(), anyInt())).thenReturn(12);
+        int ds = mock.ds(3, 2);
+        Assert.assertTrue(ds == 12);
+    }
 }
