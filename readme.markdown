@@ -7,6 +7,11 @@
 
 # [**文章目录传送门**](https://gitee.com/fanapi/tester/blob/okay/document/directory.markdown)
 
+### [接口测试](https://gitee.com/fanapi/tester/blob/okay/document/api.markdown)
+### [案例分享](https://gitee.com/fanapi/tester/blob/okay/document/case.markdown)
+### [语言学习](https://gitee.com/fanapi/tester/blob/okay/document/language.markdown)
+### [工具集合](https://gitee.com/fanapi/tester/blob/okay/document/tools.markdown)
+### [非技术分享](https://gitee.com/fanapi/tester/blob/okay/document/experience.markdown)
 
 微信公众号：
 ===
