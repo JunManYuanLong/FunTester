@@ -7,6 +7,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
+import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
@@ -26,6 +27,8 @@ public class DemoJ extends SourceCode {
     @Captor
     private ArgumentCaptor<List<String>> captor;
 
+    @Mock
+    List<Integer> listsss;
 
     @Test
     public final void shouldContainCertainListItem() {
@@ -79,4 +82,11 @@ public class DemoJ extends SourceCode {
         int ds = mock.ds(3, 2);
         Assert.assertTrue(ds == 12);
     }
+
+    @Test
+    public void tetees() {
+        when(listsss.get(anyInt())).thenReturn(3);
+        Assert.assertTrue(3 == listsss.get(3));
+    }
+
 }
