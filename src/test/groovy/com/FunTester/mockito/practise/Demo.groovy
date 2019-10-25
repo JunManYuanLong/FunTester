@@ -1,6 +1,5 @@
 package com.FunTester.mockito.practise
 
-
 import org.apache.http.client.methods.HttpRequestBase
 import org.slf4j.Logger
 import spock.lang.Shared
@@ -16,6 +15,9 @@ class Demo extends Specification {
 
     @Shared
     Logger logger = getLogger(this.getClass().getName())
+
+    @Shared
+    List listsss = mock(List)
 
     @Shared
     HttpRequestBase httpRequestBase = mock(HttpRequestBase.class)
@@ -63,7 +65,7 @@ class Demo extends Specification {
         def iterator = mock(Iterator.class)
         when(iterator.next()).thenReturn("hello").thenReturn("world")
 
-        expect:"测试迭代器元素拼接"
+        expect: "测试迭代器元素拼接"
         "hello world" == iterator.next() + SPACE_1 + iterator.next()
     }
 
@@ -105,6 +107,15 @@ class Demo extends Specification {
         expect:
         3 == j.ds(3, 32)
 
+    }
+
+    def "我是测试共享Mock对象的用例"() {
+        given:
+
+        when(listsss.get(anyInt())).thenReturn(3)
+
+        expect:
+        3 == listsss.get(3)
     }
 
 }
