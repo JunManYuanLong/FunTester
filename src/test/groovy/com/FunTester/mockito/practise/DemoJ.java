@@ -2,6 +2,7 @@ package com.FunTester.mockito.practise;
 
 import com.fun.frame.Output;
 import com.fun.frame.SourceCode;
+import com.fun.frame.httpclient.FunRequest;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -12,6 +13,7 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -88,5 +90,29 @@ public class DemoJ extends SourceCode {
         when(listsss.get(anyInt())).thenReturn(3);
         Assert.assertTrue(3 == listsss.get(3));
     }
+
+
+    @Mock
+    HashMap<Object, Object> json;//无法mock  final类
+
+    @Test
+    public void stes() {
+        doReturn(3).when(json).size();
+        doReturn("FunTester").when(json).get(any());
+        Assert.assertTrue(3 == json.size());
+        Assert.assertEquals("FunTester", json.get(3));
+    }
+
+    @Mock
+    FunRequest funRequest;
+
+    @Test
+    public void sdfs() {
+        doReturn("/login").when(funRequest).getApiName();
+        doReturn(null).when(funRequest).getResponse();
+        Assert.assertNull(funRequest.getResponse());
+        Assert.assertEquals("/login", funRequest.getApiName());
+    }
+
 
 }
