@@ -29,7 +29,10 @@
 - [如何在Linux命令行界面愉快进行性能测试](https://mp.weixin.qq.com/s/fwGqBe1SpA2V0lPfAOd04Q)
 - [Mac+httpclient高并发配置实例](https://mp.weixin.qq.com/s/r4a-vGz0pxeZBPPH3phujw)
 - [单点登录性能测试方案](https://mp.weixin.qq.com/s/sv8FnvIq44dFEq63LpOD2A)
-
+- [如何对消息队列做性能测试](https://mp.weixin.qq.com/s/MNt22aW3Op9VQ5OoMzPwBw)
+- [如何对修改密码接口进行压测](https://mp.weixin.qq.com/s/9CL_6-uZOlAh7oeo7NOpag)
+- [如何对单行多次update接口进行压测](https://mp.weixin.qq.com/s/Ly1Y4iPGgL6FNRsbOTv0sg)
+- [如何对多行单次update接口进行压测](https://mp.weixin.qq.com/s/Fsqw7vlw6K9EKa_XJwGIgQ)
 
 
 # 语言合集
@@ -44,7 +47,7 @@
 - [传参传的到底是什么?](https://mp.weixin.qq.com/s/p_pEQwE6h6q7PprkW-kjbg)
 - [json里面put了null会怎么样？](https://mp.weixin.qq.com/s/gQVROe01I3JzIqNdTSHpDQ)
 - [主线程都结束了，为何进程还在执行](https://mp.weixin.qq.com/s/q2v5JU5dtmNEol7I7IVY-Q)
-
+- [java测试框架如何执行groovy脚本文件](https://mp.weixin.qq.com/s/0GYt1l3_z5-1qzBNl6_PzA)
 
 ## Groovy
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)
@@ -93,8 +96,6 @@
 
 ## moco API
 - [解决moco框架API在post请求json参数情况下query失效的问题](https://mp.weixin.qq.com/s/V5lXoepEBtPJrSUHA0Uz5A)
-- [解决moco框架API在cycle方法缺失的问题](https://mp.weixin.qq.com/s/ilzMNwI6YDyqJkoXg5kLfg)
-- [解决moco框架API在cycle方法缺失的问题](https://mp.weixin.qq.com/s/so77Gai7vQZSLvB7rzsxfw)
 - [给moco API添加limit功能](https://mp.weixin.qq.com/s/pXJECi15ieNLmA0uIqEqfA)
 - [给moco API添加random功能](https://mp.weixin.qq.com/s/YTcbFbFaWB5arW_fubgTTQ)
 - [解决moco框架API在cycle方法缺失的问题](https://mp.weixin.qq.com/s/YfsPa7eW8WV65CDbPooBPg)
@@ -130,6 +131,7 @@
 - [利用 python+plotly 制作Contour Plots模拟双波源干涉现象](https://mp.weixin.qq.com/s/vNW80BDeHsyjNQrnaBGk3Q)
 - [利用 python+plotly 制作双波源干涉三维图像](https://mp.weixin.qq.com/s/KSeV8VvQXRIg-bnzYoa5qg)
 - [python plotly制作接口响应耗时的时间序列表（Time Series ）](https://mp.weixin.qq.com/s/U8chcVzCjGTdT3T_X5v4kw)
+- [python使用plotly批量生成图表](https://mp.weixin.qq.com/s/l18WfWz-s6qQ1JKKuh_2AQ)
 
 # 非技术分享
 
@@ -156,6 +158,7 @@
 - [编写测试用例的17个技巧](https://mp.weixin.qq.com/s/2OPKYEQkl3o1M9fenF-uMA)
 - [成为自动化测试的7种技能](https://mp.weixin.qq.com/s/e-HAGMO0JLR7VBBWLvk0dQ)
 - [功能测试与非功能测试](https://mp.weixin.qq.com/s/oJ6PJs1zO0LOQSTRF6M6WA)
+- [自动化和手动测试，保持平衡！](https://mp.weixin.qq.com/s/mMr_4C98W_FOkks2i2TiCg)
 
 
 
@@ -193,7 +196,7 @@
 
 
 ## Selenium
-- [selenium2java 截图保存桌面](https://mp.weixin.qq.com/s/OUfwsIo635coGONRNccYlg)
+- [selenium2java截图保存桌面](https://mp.weixin.qq.com/s/OUfwsIo635coGONRNccYlg)
 - [selenium2java调用JavaScript方法封装](https://mp.weixin.qq.com/s/t-Xs2Hr9TM2bjDiOqQX2mA)
 - [selenium2java利用mysq解决向浏览器插入cookies时token过期问题](https://mp.weixin.qq.com/s/oAAkDKUGytQjxJLFkod-AQ)
 - [selenium2java 遇到有三个窗口用例的处理办法](https://mp.weixin.qq.com/s/6AJBanVKYwlsNcvsu_25QQ)
@@ -207,6 +210,7 @@
 - [selenium2java让浏览器停止加载的方法](https://mp.weixin.qq.com/s/aBQdGYys3Bpyf6yigGOCIA)
 - [selenium2java写一个强制刷新页面的方法](https://mp.weixin.qq.com/s/VWW7cH5WSDmw_eCabUh9LQ)
 - [selenium2java通过接口获取并注入cookies](https://mp.weixin.qq.com/s/luLHWxPWSekuDMbnKsfJvg)
+
 
 
 ## APP性能
