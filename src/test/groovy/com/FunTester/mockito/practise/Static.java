@@ -45,5 +45,11 @@ public class Static {
         Assert.assertTrue(anInt == 20);
     }
 
+    @Test
+    public void stet() {
+        mockStatic(SourceCode.class);
+        when(SourceCode.isNumber(anyString())).thenReturn(true);
+        Assert.assertTrue(SourceCode.isNumber("32"));
+    }
 
 }
