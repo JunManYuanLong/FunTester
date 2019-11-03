@@ -1,6 +1,5 @@
 package com.FunTester.mockito.practise;
 
-import com.fun.frame.Output;
 import com.fun.frame.SourceCode;
 import com.fun.frame.httpclient.FunRequest;
 import org.junit.Assert;
@@ -61,11 +60,15 @@ public class DemoJ extends SourceCode {
         // with doAnswer():
         when(mock.ds(anyInt(), anyInt())).thenAnswer(i -> {
             Object argument = i.getArguments();
-            if (Integer.valueOf(argument.toString()) > 3) return 5;
-            return 2;
+            try {
+                if (Integer.valueOf(argument.toString()) > 3) return 5;
+                return 2;
+            } catch (NumberFormatException e) {
+                return 0;
+            }
         });
         int ds = mock.ds(53, 2);
-        Output.output(ds);
+        Assert.assertTrue(ds == 0);
     }
 
     public int ds(int i, int n) {
