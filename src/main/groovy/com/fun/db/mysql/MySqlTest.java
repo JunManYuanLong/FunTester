@@ -91,7 +91,7 @@ public class MySqlTest extends SqlBase {
     public static void saveApiTestDate(RequestInfo requestInfo, int data_size, long expend_time, int status, int mark, int code, String localIP, String computerName) {
         logger.debug("请求信息：{}", requestInfo.toString());
         logger.info("请求uri：{},耗时：{} ms", requestInfo.getUri(), expend_time);
-        if (!SqlConstant.flag || SysInit.isBlack(requestInfo.getHost())) return;
+        if (SysInit.isBlack(requestInfo.getHost())) return;
         String sql = String.format("INSERT INTO " + SqlConstant.REQUEST_TABLE + " (domain,api,data_size,expend_time,status,type,method,code,local_ip,local_name,create_time) VALUES ('%s','%s',%d,%d,%d,'%s','%s',%d,'%s','%s','%s');", requestInfo.getHost(), requestInfo.getApiName(), data_size, expend_time, status, requestInfo.getType(), requestInfo.getMethod().getName(), code, localIP, computerName, Time.getDate());
 //        RecordBean requestBean = new RecordBean();
 //        requestBean.setApi(requestInfo.getApiName());
@@ -154,7 +154,7 @@ public class MySqlTest extends SqlBase {
      */
     public static void saveAlertOverMessage(RequestInfo requestInfo, String type, String title, String localIP, String computerName) {
         String host_name = requestInfo.getHost();
-        if (SysInit.isBlack(host_name) || SqlConstant.PERFORMANCE_TABLE == null) return;
+        if (SysInit.isBlack(host_name) || SqlConstant.ALERTOVER_TABLE == null) return;
         String sql = String.format("INSERT INTO alertover (type,title,host_name,api_name,local_ip,computer_name,create_time) VALUES('%s','%s','%s','%s','%s','%s','%s');", type, title, host_name, requestInfo.getApiName(), localIP, computerName, Time.getDate());
         sendWork(sql);
     }
@@ -244,6 +244,7 @@ public class MySqlTest extends SqlBase {
      */
     public static void sendWork(String sql) {
         logger.debug("记录SQL：{}", sql);
+        if (!SqlConstant.flag) return;
         FanLibrary.noHeader();
         JSONObject argss = new JSONObject();
         argss.put("sql", DecodeEncode.urlEncoderText(sql));

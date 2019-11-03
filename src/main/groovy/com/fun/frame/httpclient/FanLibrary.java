@@ -322,8 +322,8 @@ public class FanLibrary extends SourceCode {
             int data_size = content.length();
             res.putAll(getJsonResponse(content, setCookies));
             int code = iBase == null ? -2 : iBase.checkCode(res, requestInfo);
-//            if (!iBase.isRight(res))
-//                new AlertOver("响应状态码错误：" + status, "状态码错误：" + status, requestInfo.getUrl(), requestInfo).sendSystemMessage();
+            if (!iBase.isRight(res))
+                new AlertOver("响应状态码错误：" + status, "状态码错误：" + status, requestInfo.getUrl(), requestInfo).sendSystemMessage();
             MySqlTest.saveApiTestDate(requestInfo, data_size, elapsed_time, status, getMark(), code, LOCAL_IP, COMPUTER_USER_NAME);
         } catch (Exception e) {
             logger.warn("获取请求相应失败！", e);

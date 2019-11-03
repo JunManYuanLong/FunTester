@@ -76,9 +76,14 @@ public class SqlConstant {
     public static String CLASS_TABLE;
 
     /**
-     * 默认class表名
+     * 默认性能测试表名
      */
     public static String PERFORMANCE_TABLE;
+
+    /**
+     * 默认的alertover表格
+     */
+    public static String ALERTOVER_TABLE;
 
     /**
      * 是否保存所有的请求到数据库
