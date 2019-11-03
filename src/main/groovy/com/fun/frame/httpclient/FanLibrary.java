@@ -306,7 +306,7 @@ public class FanLibrary extends SourceCode {
      * @return 返回json类型的对象
      */
     public static JSONObject getHttpResponse(HttpRequestBase request) {
-        if (!isRightRequest(request)) throw new RequestException(request);
+        if (!isRightRequest(request))RequestException.fail(request);
         beforeRequest(request);
         JSONObject res = new JSONObject();
         RequestInfo requestInfo = new RequestInfo(request);

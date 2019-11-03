@@ -8,8 +8,12 @@ public class FailException extends RuntimeException {
         super("FunTester");
     }
 
-    public FailException(String message) {
+    protected FailException(String message) {
         super(message);
+    }
+
+    public static void fail(String message) {
+        throw new FailException(message);
     }
 
 
