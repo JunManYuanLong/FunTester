@@ -60,11 +60,19 @@ class FunRequestTest extends Specification {
     }
 
     def "校验requesttype"() {
-        given:"准备测试数据"
+        given: "准备测试数据"
         def request = mock(FunRequest)
         doReturn(RequestType.POST).when(request).getRequestType()
 
         expect:
         request.getRequestType() == RequestType.POST
+    }
+
+    def "校验url测试"() {
+        given:
+        def request = FunRequest.isGet().setUri("www.funtest.cn")
+
+        expect:
+        "www.funtest.cn" == request.getUri()
     }
 }
