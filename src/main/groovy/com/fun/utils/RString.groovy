@@ -85,7 +85,7 @@ class RString extends SourceCode {
  * @return
  */
     static String getChinese(int i) {
-        if (i <= 0) return "零零零"
+        if (i <= 0) return "〇〇〇"
         String num = (i + EMPTY).collect { x -> chineses[changeStringToInt(x)] }.join()
         num.length() > 2 ? num : getManyString(chineses[0] + EMPTY, 3 - num.length()) + num
     }
