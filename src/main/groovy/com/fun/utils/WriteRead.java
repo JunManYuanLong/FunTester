@@ -1,8 +1,10 @@
 package com.fun.utils;
 
+import com.fun.base.exception.ParamException;
 import com.fun.config.Constant;
 import com.fun.frame.SourceCode;
 import net.sf.json.JSONObject;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,6 +24,8 @@ public class WriteRead extends SourceCode {
      * @return
      */
     public static JSONObject readTxtByJson(String filePath) {
+        if (StringUtils.isEmpty(filePath) || !new File(filePath).exists() || new File(filePath).isDirectory())
+            ParamException.fail("配置文件信息错误!" + filePath);
         logger.debug("读取文件名：{}", filePath);
         List<String> lines = readTxtFileByLine(filePath);
         JSONObject info = new JSONObject();
@@ -39,6 +43,8 @@ public class WriteRead extends SourceCode {
      * @return
      */
     public static String readTextByString(String filePath) {
+        if (StringUtils.isEmpty(filePath) || !new File(filePath).exists() || new File(filePath).isDirectory())
+            ParamException.fail("配置文件信息错误!" + filePath);
         logger.debug("读取文件名：{}", filePath);
         List<String> list = readTxtFileByLine(filePath);
         StringBuffer all = new StringBuffer();
@@ -65,6 +71,8 @@ public class WriteRead extends SourceCode {
      * @return 返回list数组
      */
     public static List<String> readTxtFileByLine(String filePath, String content, boolean key) {
+        if (StringUtils.isEmpty(filePath) || !new File(filePath).exists() || new File(filePath).isDirectory())
+            ParamException.fail("配置文件信息错误!" + filePath);
         logger.debug("读取文件名：{}", filePath);
         List<String> lines = new ArrayList<>();
         try {
@@ -176,5 +184,6 @@ public class WriteRead extends SourceCode {
             logger.warn("写入文件失败！", e);
         }
     }
+
 
 }
