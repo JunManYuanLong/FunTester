@@ -60,4 +60,47 @@ class test01 extends Specification {
         name << ["fjdslj", "fds"]
         length << [6, 3]
     }
+
+    def "校验对象"() {
+        given:
+        def per = new Per("fun", 12)
+        expect:
+        with(per) {
+            name == "fun"
+            age == 12
+        }
+    }
+
+
+    def "when then结构测试"() {
+        when:
+        def s = plus(3, 2)
+        def ss = plus(3, 2)
+        then:
+        verifyAll {
+            s == 3
+            ss == 3
+        }
+    }
+
+    def plus(int i, int j) {
+        i
+    }
+
+    class Per {
+
+        Per(String name, int age) {
+            this.name = name
+            this.age = age
+        }
+
+        String name
+
+        int age
+
+
+    }
 }
+
+
+
