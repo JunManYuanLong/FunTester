@@ -33,6 +33,21 @@ class PropertyUtils extends SourceCode {
         }
     }
 
+/**
+ * 获取指定路径下的文件配置
+ * @param filePath
+ * @return
+ */
+    static Property getLocalProperties(String filePath) {
+        logger.debug("读取配置文件：{}", filePath)
+        try {
+            new Property(WriteRead.readTxtByJson(filePath))
+        } catch (MissingResourceException e) {
+            logger.warn("找不到配置文件", e)
+            new Property()
+        }
+    }
+
     static Property getPropertiesByFile(String propertyName) {
         logger.debug("读取配置文件：{}", propertyName)
         try {
