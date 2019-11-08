@@ -32,8 +32,6 @@ public class Constant {
 
     public static final int TEST_ERROR_CODE = -2;
 
-    public static final String FILE_TYPE_LOG = ".log";
-
     /**
      * UTF-8字符编码格式
      */

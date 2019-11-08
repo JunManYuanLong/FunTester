@@ -158,7 +158,7 @@ public class Concurrent extends SourceCode {
      * @param name 线程数
      */
     public static PerformanceResultBean countQPS(int name, String desc, String start, String end) {
-        List<String> strings = WriteRead.readTxtFileByLine(Constant.LONG_Path + name + Constant.FILE_TYPE_LOG);
+        List<String> strings = WriteRead.readTxtFileByLine(Constant.LONG_Path + name);
         int size = strings.size();
         int sum = 0;
         for (int i = 0; i < size; i++) {

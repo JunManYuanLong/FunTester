@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -79,7 +78,7 @@ public class Save extends SourceCode {
      */
     public static void saveStringList(List<String> data, String name) {
         String join = StringUtils.join(data, LINE);
-        info(name + FILE_TYPE_LOG, join);
+        info(name, join);
     }
 
     /**
@@ -96,6 +95,8 @@ public class Save extends SourceCode {
     public static void saveJson(JSONObject data, String name) {
         StringBuffer buffer = new StringBuffer();
         data.keySet().forEach(x -> buffer.append(LINE + x.toString() + PART + data.getString(x.toString())));
-        info(name + FILE_TYPE_LOG, buffer.toString().substring(2));
+        info(name, buffer.toString().substring(2));
     }
+
+
 }
