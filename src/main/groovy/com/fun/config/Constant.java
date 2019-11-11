@@ -137,4 +137,15 @@ public class Constant {
         return name.toString();
     }
 
+    /**
+     * 直接获取long目录下的文件
+     *
+     * @param fileName
+     * @return
+     */
+    public static String getLongFile(String fileName) {
+        return LONG_Path + fileName;
+    }
+
+
 }
