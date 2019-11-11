@@ -117,7 +117,7 @@ class PropertyUtils extends SourceCode {
  * @param name
  * @return
  */
-        def getArrays(String name) {
+        String[] getArrays(String name) {
             getProperty(name).split(",")
         }
 
