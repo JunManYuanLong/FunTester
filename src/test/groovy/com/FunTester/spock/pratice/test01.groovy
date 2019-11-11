@@ -83,10 +83,19 @@ class test01 extends Specification {
         }
     }
 
+/**
+ * 测试方法
+ * @param i
+ * @param j
+ * @return
+ */
     def plus(int i, int j) {
         i
     }
 
+/**
+ * 测试类
+ */
     class Per {
 
         Per(String name, int age) {
