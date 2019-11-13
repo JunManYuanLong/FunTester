@@ -1,3 +1,5 @@
+> FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的质变。
+
 # 接口测试
 
 ## 接口测试
@@ -21,6 +23,10 @@
 - [接口批量上传文件的实例](https://mp.weixin.qq.com/s/wZwkWchXXC6iddX1oVEnZQ)
 - [httpclient发送https协议请求以及javax.net.ssl.SSLHandshakeException解决办法](https://mp.weixin.qq.com/s/uSHhKRrL2f9USKpSykkpkQ)
 
+# 单元测试
+
+- [Maven和Gradle中配置单元测试框架Spock](https://mp.weixin.qq.com/s/kL5keijAAZwmq_DO1NDBtw)
+- [Groovy单元测试框架spock基础功能Demo](https://mp.weixin.qq.com/s/fQCyIyeQANbu2YP2ML6_8Q)
 
 ## 接口性能
 - [Linux性能监控软件netdata中文汉化版](https://mp.weixin.qq.com/s/7VG7gHx7FUvsuNtBTJpjWA)
@@ -55,7 +61,6 @@
 - [使用Groovy进行Bash（shell）操作](https://mp.weixin.qq.com/s/fgCTlZUF3QeNj6jzq1ZgGg)
 
 ## Python
-- [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/xs6Q7uk5l8Gxoagh-sY0uQ)
 - [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/D8RfpdIi8smCL8TAzBcNpA)
 - [关于python版微信使用经验分享](https://mp.weixin.qq.com/s/19IaI6ETZAm_T4ePPlXqIg)
 - [python用递归筛选法求N以内的孪生质数（孪生素数）](https://mp.weixin.qq.com/s/rVY2pTl8So11WCvA9GrFbA)
@@ -159,8 +164,13 @@
 - [成为自动化测试的7种技能](https://mp.weixin.qq.com/s/e-HAGMO0JLR7VBBWLvk0dQ)
 - [功能测试与非功能测试](https://mp.weixin.qq.com/s/oJ6PJs1zO0LOQSTRF6M6WA)
 - [自动化和手动测试，保持平衡！](https://mp.weixin.qq.com/s/mMr_4C98W_FOkks2i2TiCg)
-
-
+- [43种常见软件测试分类](https://mp.weixin.qq.com/s/GTMkcEm-xPtVF7_HxXGKDg)
+- [自动化测试生命周期](https://mp.weixin.qq.com/s/SH-vb2RagYQ3sfCY8QM5ew)
+- [代码审查如何保证软件质量](https://mp.weixin.qq.com/s/osRnG09KDqEojiV3kp2nrw)
+- [TDD测试驱动开发的基础](https://mp.weixin.qq.com/s/diW_2HSbWMEsn8G6uQriOg)
+- [如何在DevOps引入自动化测试](https://mp.weixin.qq.com/s/MclK3VvMN1dsiXXJO8g7ig)
+- [测试人员如何成为变革的推动者](https://mp.weixin.qq.com/s/0nTZHBOuKG0rewKAeyIqwA)
+- [测试自动化与自动化测试：差异很重要](https://mp.weixin.qq.com/s/6HC1bKesOs4mZYb9nOCHjw)
 
 ## 大咖风采
 
@@ -210,7 +220,8 @@
 - [selenium2java让浏览器停止加载的方法](https://mp.weixin.qq.com/s/aBQdGYys3Bpyf6yigGOCIA)
 - [selenium2java写一个强制刷新页面的方法](https://mp.weixin.qq.com/s/VWW7cH5WSDmw_eCabUh9LQ)
 - [selenium2java通过接口获取并注入cookies](https://mp.weixin.qq.com/s/luLHWxPWSekuDMbnKsfJvg)
-
+- [Selenium编写自动化用例的8种技巧](https://mp.weixin.qq.com/s/8wRHc_krXNfWclNeOJDNPg)
+- [JUnit中用于Selenium测试的中实践](https://mp.weixin.qq.com/s/KG4sltQMCfH2MGXkRdtnwA)
 
 
 ## APP性能
@@ -220,3 +231,6 @@
 - [统计APP启动时间和进入首页时间的多线程类](https://mp.weixin.qq.com/s/IMs6vd3H-HF65Vb-zPwDhw)
 - [如何获取手机性能测试数据FPS](https://mp.weixin.qq.com/s/qZy5AQkNpUXRJk46BHVzaQ)
 - [一个循环启动APP并保持WiFi常开的多线程类](https://mp.weixin.qq.com/s/OgdT4IffDyAdkKmO2SS9iQ)
+
+
+![长按关注](https://mmbiz.qpic.cn/mmbiz_jpg/13eN86FKXzBEASPySoVdOFmP12QUIWAQms664L0b82nic8BRIlufg0QibzXNnoibZp8yqhU9Pv0hXjKtqrGof8kMA/0?wx_fmt=jpeg)
