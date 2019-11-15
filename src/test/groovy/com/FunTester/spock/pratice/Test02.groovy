@@ -1,10 +1,12 @@
 package com.FunTester.spock.pratice
 
 import com.fun.config.PropertyUtils
+import com.fun.frame.SourceCode
 import org.slf4j.Logger
 import spock.lang.Shared
 import spock.lang.Specification
 
+import static com.fun.config.Constant.EMPTY
 import static com.fun.config.Constant.getLongFile
 import static com.fun.frame.Output.output
 import static com.fun.frame.SourceCode.*
@@ -99,6 +101,25 @@ class Test02 extends Specification {
         c << cc
         b << bb
         a << aa
+    }
+
+    def "测试数组0..10方式是否可用"() {
+        expect:
+        true == SourceCode.isNumber(x + EMPTY)
+
+        where: "需要用括号,不然会报错"
+        x << (0..5)
+
+    }
+
+    def "测试lambda写法是否可用"() {
+        given:
+        def collect =  range(10).filter {x -> x % 2 == 1}.collect() as List
+
+        expect:
+        collect.size() == 5
+        collect.contains(3)
+        collect.contains(5)
     }
 
 
