@@ -1,6 +1,6 @@
 package com.fun.frame.thead;
 
-import com.fun.base.constaint.ThreadBase;
+import com.fun.base.constaint.ThreadLimitTimes;
 import com.fun.base.interfaces.IMySqlBasic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 /**
  * 数据库多线程类,update方法类，区别于querythread
  */
-public class UpdateSqlThread extends ThreadBase {
+public class UpdateSqlThread extends ThreadLimitTimes {
 
     private static Logger logger = LoggerFactory.getLogger(UpdateSqlThread.class);
 

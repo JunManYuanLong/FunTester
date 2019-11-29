@@ -1,6 +1,6 @@
 package com.fun.frame.thead;
 
-import com.fun.base.constaint.ThreadBase;
+import com.fun.base.constaint.ThreadLimitTimes;
 import com.fun.frame.httpclient.ClientManage;
 import com.fun.frame.httpclient.FanLibrary;
 import com.fun.frame.httpclient.GCThread;
@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * http请求多线程类
  */
-public class RequestThread extends ThreadBase {
+public class RequestThread extends ThreadLimitTimes {
 
     static Logger logger = LoggerFactory.getLogger(RequestThread.class);
 

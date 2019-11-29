@@ -174,7 +174,8 @@ public class Concurrent extends SourceCode {
     }
 
     public static PerformanceResultBean countQPS(int name) {
-      return   countQPS(name, "FunTester", Time.getDate(), Time.getDate());
+        return countQPS(name, "FunTester", Time.getDate(), Time.getDate());
     }
+
 
 }
