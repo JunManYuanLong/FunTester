@@ -58,7 +58,7 @@ public class AlertOver extends FanLibrary implements IMessage {
      * 发送系统异常
      */
     public void sendSystemMessage() {
-        if (SysInit.isBlack(murl)) return;
+        if (SysInit.isBlack(murl) || true) return;
         sendMessage(system);
         MySqlTest.saveAlertOverMessage(requestInfo, "system", title, LOCAL_IP, COMPUTER_USER_NAME);
         logger.info("发送系统错误提醒，title：{}，ip：{}，computer：{}", title, LOCAL_IP, COMPUTER_USER_NAME);
@@ -113,5 +113,6 @@ public class AlertOver extends FanLibrary implements IMessage {
         /*取消发送*/
 //        getHttpResponse(httpPost);
     }
+
 
 }
