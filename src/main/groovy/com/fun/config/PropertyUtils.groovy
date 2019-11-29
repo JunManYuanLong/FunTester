@@ -28,8 +28,7 @@ class PropertyUtils extends SourceCode {
         try {
             new Property(ResourceBundle.getBundle(propertyName.trim()))
         } catch (MissingResourceException e) {
-            logger.warn("找不到配置文件", e)
-            new Property()
+            getLocalProperties(WORK_SPACE + propertyName + ".properties")
         }
     }
 
