@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 
 import static com.fun.utils.Time.getTimeStamp;
 
@@ -90,10 +89,5 @@ public abstract class ThreadLimitTimes<T> extends ThreadBase {
      * 运行待测方法后的处理
      */
     protected abstract void after();
-
-    public void setCountDownLatch(CountDownLatch countDownLatch) {
-        this.countDownLatch = countDownLatch;
-    }
-
 
 }

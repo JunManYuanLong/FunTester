@@ -67,6 +67,9 @@ public abstract class ThreadLimitTime<T> extends ThreadBase {
         }
     }
 
+    /**
+     * 用于在某些情况下提前终止测试
+     */
     public static void stopAllThread() {
         key = true;
     }
