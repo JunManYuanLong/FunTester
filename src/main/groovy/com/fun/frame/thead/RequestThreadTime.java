@@ -1,6 +1,6 @@
 package com.fun.frame.thead;
 
-import com.fun.base.constaint.ThreadLimitTimes;
+import com.fun.base.constaint.ThreadLimitTime;
 import com.fun.frame.httpclient.ClientManage;
 import com.fun.frame.httpclient.FanLibrary;
 import com.fun.frame.httpclient.GCThread;
@@ -15,9 +15,9 @@ import java.io.IOException;
 /**
  * http请求多线程类
  */
-public class RequestThread extends ThreadLimitTimes {
+public class RequestThreadTime extends ThreadLimitTime {
 
-    static Logger logger = LoggerFactory.getLogger(RequestThread.class);
+    static Logger logger = LoggerFactory.getLogger(RequestThreadTime.class);
 
     /**
      * 请求
@@ -30,9 +30,9 @@ public class RequestThread extends ThreadLimitTimes {
      * @param request 被执行的请求
      * @param times   每个线程运行的次数
      */
-    public RequestThread(HttpRequestBase request, int times) {
+    public RequestThreadTime(HttpRequestBase request, int time) {
         this.request = request;
-        this.times = times;
+        this.time = time;
     }
 
     @Override

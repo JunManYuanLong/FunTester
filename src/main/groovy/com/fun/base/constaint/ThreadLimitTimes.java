@@ -10,7 +10,13 @@ import java.util.List;
 import static com.fun.utils.Time.getTimeStamp;
 
 /**
- * 请求次数限制的多线程类
+ * 请求时间限制的多线程类,限制每个线程执行的次数
+ *
+ * <p>
+ * 通常在测试某项用例固定时间的场景下使用,可以提前终止测试用例
+ * </p>
+ *
+ * @param <T> 闭包参数传递使用,Groovy脚本会有一些兼容问题,部分对象需要tostring获取参数值
  */
 public abstract class ThreadLimitTimes<T> extends ThreadBase {
 
@@ -89,5 +95,6 @@ public abstract class ThreadLimitTimes<T> extends ThreadBase {
      * 运行待测方法后的处理
      */
     protected abstract void after();
+
 
 }

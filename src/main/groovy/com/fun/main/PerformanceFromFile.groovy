@@ -3,7 +3,7 @@ package com.fun.main
 import com.fun.frame.SourceCode
 import com.fun.frame.excute.Concurrent
 import com.fun.frame.httpclient.FanLibrary
-import com.fun.frame.thead.RequestThread
+import com.fun.frame.thead.RequestThreadTimes
 import com.fun.utils.request.RequestFile
 import org.apache.http.client.methods.HttpRequestBase
 /**
@@ -23,10 +23,10 @@ class PerformanceFromFile extends SourceCode {
             }
         }
         int perTimes = changeStringToInt(args[size - 1])
-        List<RequestThread>  thread = new ArrayList<>()
+        List<RequestThreadTimes> thread = new ArrayList<>()
         for (int i = 0; i < list.size(); i++) {
             def get = list.get(i)
-            def thread1 = new RequestThread(get, perTimes)
+            def thread1 = new RequestThreadTimes(get, perTimes)
             thread.add(thread1)
         }
         def concurrent = new Concurrent(thread)
