@@ -1,3 +1,5 @@
+# 总目录
+
 > FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的质变。
 
 # 接口测试
@@ -27,18 +29,23 @@
 
 - [Maven和Gradle中配置单元测试框架Spock](https://mp.weixin.qq.com/s/kL5keijAAZwmq_DO1NDBtw)
 - [Groovy单元测试框架spock基础功能Demo](https://mp.weixin.qq.com/s/fQCyIyeQANbu2YP2ML6_8Q)
+- [Groovy单元测试框架spock数据驱动Demo](https://mp.weixin.qq.com/s/uCAB7Mxt1JZW229aKp-uVQ)
+- [人生苦短？试试Groovy进行单元测试](https://mp.weixin.qq.com/s/ahyP-YQTzigeq_5N8byC4g)
+- [模糊断言](https://mp.weixin.qq.com/s/OlJpqHkwpY6-yyELvQ9cIw)
 
 ## 接口性能
 - [Linux性能监控软件netdata中文汉化版](https://mp.weixin.qq.com/s/7VG7gHx7FUvsuNtBTJpjWA)
 - [一个时间计数器timewatch辅助性能测试](https://mp.weixin.qq.com/s/-YZ04n2kyfO0q2QaKHX_0Q)
 - [性能测试框架](https://mp.weixin.qq.com/s/3_09j7-5ex35u30HQRyWug)
+- [性能测试框架第二版](https://mp.weixin.qq.com/s/JPyGQ2DRC6EVBmZkxAoVWA)
 - [如何在Linux命令行界面愉快进行性能测试](https://mp.weixin.qq.com/s/fwGqBe1SpA2V0lPfAOd04Q)
-- [Mac+httpclient高并发配置实例](https://mp.weixin.qq.com/s/r4a-vGz0pxeZBPPH3phujw)
+- [Mac+httpclient高并发配置实例](https://mp.weixin.qq.com/s/r4a-vGz0pxeZBPPH3phujw)[]()
 - [单点登录性能测试方案](https://mp.weixin.qq.com/s/sv8FnvIq44dFEq63LpOD2A)
 - [如何对消息队列做性能测试](https://mp.weixin.qq.com/s/MNt22aW3Op9VQ5OoMzPwBw)
 - [如何对修改密码接口进行压测](https://mp.weixin.qq.com/s/9CL_6-uZOlAh7oeo7NOpag)
 - [如何对单行多次update接口进行压测](https://mp.weixin.qq.com/s/Ly1Y4iPGgL6FNRsbOTv0sg)
 - [如何对多行单次update接口进行压测](https://mp.weixin.qq.com/s/Fsqw7vlw6K9EKa_XJwGIgQ)
+- [如何获取JVM堆转储文件](https://mp.weixin.qq.com/s/qCg7nsXVvT1q-9yquQOfWA)
 
 
 # 语言合集
@@ -59,6 +66,8 @@
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)
 - [groovy使用stream语法递归筛选法求N以内的质数](https://mp.weixin.qq.com/s/TsrVn1cuQUrU6wj9OnR-FQ)
 - [使用Groovy进行Bash（shell）操作](https://mp.weixin.qq.com/s/fgCTlZUF3QeNj6jzq1ZgGg)
+- [使用Groovy和Gradle轻松进行数据库操作](https://mp.weixin.qq.com/s/lwmclrnW0csykVRhu7dNTQ)
+- [愉快地使用Groovy Shell](https://mp.weixin.qq.com/s/fJh7fbB3naBFBEiaS62oxw)
 
 ## Python
 - [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/D8RfpdIi8smCL8TAzBcNpA)
@@ -98,6 +107,7 @@
 ## Jacoco覆盖率
 - [接口测试代码覆盖率（jacoco）方案分享](https://mp.weixin.qq.com/s/D73Sq6NLjeRKN8aCpGLOjQ)
 - [jacoco无法读取build.xml配置中源码路径解决办法](https://mp.weixin.qq.com/s/8_x0rVfkIi-uX3y0drx_jw)
+- [使用JaCoCo Maven插件创建代码覆盖率报告](https://mp.weixin.qq.com/s/4Jo05k2WxytiSSNW9WTV-A)
 
 ## moco API
 - [解决moco框架API在post请求json参数情况下query失效的问题](https://mp.weixin.qq.com/s/V5lXoepEBtPJrSUHA0Uz5A)
@@ -123,6 +133,8 @@
 - [java和groovy混编的Maven项目如何用intellij打包执行jar包](https://mp.weixin.qq.com/s/bKexZXlONeo3r6FDhfMltQ)
 - [window系统权限不足导致gradle构建失败的解决办法](https://mp.weixin.qq.com/s/dqiQvmVG1o6glU-pknLDwQ)
 - [使用groovy脚本使gradle灵活加载本地jar包的两种方式](https://mp.weixin.qq.com/s/p3K3ZS7iOUeKO7E94gKFVg)
+- [Java 8，Jenkins，Jacoco和Sonar进行持续集成](https://mp.weixin.qq.com/s/dOoXnKnWtQmmC5itClsl4g)
+- [Gradle如何在任务失败后继续构建](https://mp.weixin.qq.com/s/GcXDzRN7cM_QQpt9ytqoKg)
 
 ## plotly可视化
 - [MacOS使用pip安装pandas提示Cannot uninstall 'numpy'解决方案](https://mp.weixin.qq.com/s/fIqMAMXRQvf_vBtS5jDsyg)
@@ -142,9 +154,6 @@
 
 ## 理论鸡汤
 
-- [图解HTTP脑图](https://mp.weixin.qq.com/s/100Vm8FVEuXs0x6rDGTipw)
-- [测试之JVM命令脑图](https://mp.weixin.qq.com/s/qprqyv0j3SCvGw1HMjbaMQ)
-- [如何优雅地屏蔽掉Google搜索结果中视频、新闻、图片等结果](https://mp.weixin.qq.com/s/Iu7pt4Qk3w9sJp3n_UVAeQ)
 - [写给所有人的编程思维](https://mp.weixin.qq.com/s/Oj33UCnYfbUgzsBzEm2GPQ)
 - [成为杰出Java开发人员的10个步骤](https://mp.weixin.qq.com/s/UCNOTSzzvTXwiUX6xpVlyA)
 - [测试之《代码不朽》脑图](https://mp.weixin.qq.com/s/2aGLK3knUiiSoex-kmi0GA)
@@ -160,7 +169,7 @@
 - [17种软件测试人员常用的高效技能-上](https://mp.weixin.qq.com/s/vrM_LxQMgTSdJxaPnD_CqQ)
 - [17种软件测试人员常用的高效技能-下](https://mp.weixin.qq.com/s/uyWdVm74TYKb62eIRKL7nQ)
 - [手动测试存在的重要原因](https://mp.weixin.qq.com/s/mW5vryoJIkeskZLkBPFe0Q)
-- [编写测试用例的17个技巧](https://mp.weixin.qq.com/s/2OPKYEQkl3o1M9fenF-uMA)
+- [编写测试用例的技巧](https://mp.weixin.qq.com/s/zZAh_XXXGOyhlm6ebzs06Q)
 - [成为自动化测试的7种技能](https://mp.weixin.qq.com/s/e-HAGMO0JLR7VBBWLvk0dQ)
 - [功能测试与非功能测试](https://mp.weixin.qq.com/s/oJ6PJs1zO0LOQSTRF6M6WA)
 - [自动化和手动测试，保持平衡！](https://mp.weixin.qq.com/s/mMr_4C98W_FOkks2i2TiCg)
@@ -169,8 +178,14 @@
 - [代码审查如何保证软件质量](https://mp.weixin.qq.com/s/osRnG09KDqEojiV3kp2nrw)
 - [TDD测试驱动开发的基础](https://mp.weixin.qq.com/s/diW_2HSbWMEsn8G6uQriOg)
 - [如何在DevOps引入自动化测试](https://mp.weixin.qq.com/s/MclK3VvMN1dsiXXJO8g7ig)
+- [自动化的好处](https://mp.weixin.qq.com/s/7MpWQhtozaTrlUMo1oRSBg)
+- [Web端自动化测试失败原因汇总](https://mp.weixin.qq.com/s/qzFth-Q9e8MTms1M8L5TyA)
 - [测试人员如何成为变革的推动者](https://mp.weixin.qq.com/s/0nTZHBOuKG0rewKAeyIqwA)
-- [测试自动化与自动化测试：差异很重要](https://mp.weixin.qq.com/s/6HC1bKesOs4mZYb9nOCHjw)
+- [探索性测试为何如此重要？](https://mp.weixin.qq.com/s/nebHPfKbCO0f-G24qCh9wA)
+- [5种促进业务增长的软件测试策略](https://mp.weixin.qq.com/s/3mB_DQVD2AZLPs84SmsmuA)
+- [如何选择正确的自动化测试工具](https://mp.weixin.qq.com/s/_Ee78UW9CxRpV5MoTrfgCQ)
+- [如何从测试自动化中实现价值](https://mp.weixin.qq.com/s/dj-sJvGjvFMYANfhIVo8jw)
+- [您如何使用Selenium来计算自动化测试的投资回报率？](https://mp.weixin.qq.com/s/DVSEm0DhoAvYfTWIniabJg)
 
 ## 大咖风采
 
@@ -222,6 +237,7 @@
 - [selenium2java通过接口获取并注入cookies](https://mp.weixin.qq.com/s/luLHWxPWSekuDMbnKsfJvg)
 - [Selenium编写自动化用例的8种技巧](https://mp.weixin.qq.com/s/8wRHc_krXNfWclNeOJDNPg)
 - [JUnit中用于Selenium测试的中实践](https://mp.weixin.qq.com/s/KG4sltQMCfH2MGXkRdtnwA)
+- [您如何使用Selenium来计算自动化测试的投资回报率？](https://mp.weixin.qq.com/s/DVSEm0DhoAvYfTWIniabJg)
 
 
 ## APP性能
@@ -232,5 +248,9 @@
 - [如何获取手机性能测试数据FPS](https://mp.weixin.qq.com/s/qZy5AQkNpUXRJk46BHVzaQ)
 - [一个循环启动APP并保持WiFi常开的多线程类](https://mp.weixin.qq.com/s/OgdT4IffDyAdkKmO2SS9iQ)
 
+## 曝光
+-[测试窝，首页抄我七篇原创还拉黑，你们的良心不会痛吗？](https://mp.weixin.qq.com/s/ke5avkknkDMCLMAOGT7wiQ)
 
-![长按关注](https://mmbiz.qpic.cn/mmbiz_jpg/13eN86FKXzBEASPySoVdOFmP12QUIWAQms664L0b82nic8BRIlufg0QibzXNnoibZp8yqhU9Pv0hXjKtqrGof8kMA/0?wx_fmt=jpeg)
+
+![](https://mmbiz.qpic.cn/mmbiz_jpg/13eN86FKXzCMW6WN4Wch71qNtGQvxLRSGejZpr37OWa7CDYg5e4ZeanaGWuBgRAX3jicJNIhcyyZPXbKByXcl7w/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![](https://mmbiz.qpic.cn/mmbiz_png/BuV4gXrNvFrQnPz6hPuyeNCH9BXB4Ufc0lbWyTGjcWrpSwFJOWqFtL0jIYWeqa093ibQcZCu7UMpSVZsFwKbicHQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
