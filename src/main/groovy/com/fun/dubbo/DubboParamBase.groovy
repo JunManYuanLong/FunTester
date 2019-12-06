@@ -1,7 +1,5 @@
 package com.fun.dubbo
 
-import net.sf.json.JSONObject
-
 class DubboParamBase {
 
     String type
@@ -13,8 +11,4 @@ class DubboParamBase {
         this.value = value
     }
 
-    public static void main(String[] args) {
-
-        new DubboParamBase("32r",new JSONObject())
-    }
 }
