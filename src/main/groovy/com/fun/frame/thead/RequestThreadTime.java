@@ -28,7 +28,7 @@ public class RequestThreadTime extends ThreadLimitTime {
      * 单请求多线程多次任务构造方法
      *
      * @param request 被执行的请求
-     * @param times   每个线程运行的次数
+     * @param time    每个线程运行的次数
      */
     public RequestThreadTime(HttpRequestBase request, int time) {
         this.request = request;
@@ -57,11 +57,13 @@ public class RequestThreadTime extends ThreadLimitTime {
      * @param request 请求
      * @throws IOException
      */
-    void getResponse(HttpRequestBase request) throws IOException {
+    static void getResponse(HttpRequestBase request) throws IOException {
         CloseableHttpResponse response = ClientManage.httpsClient.execute(request);
         String content = FanLibrary.getContent(response);
         if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK)
             logger.warn("响应状态码：{},响应内容：{}", content, response.getStatusLine());
         response.close();
     }
+
+
 }
