@@ -1,5 +1,7 @@
 # UI自动化
 
+> FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的质变。
+
 ## UI自动化
 - [自动化测试中java多线程的使用实例](https://mp.weixin.qq.com/s/BNSLaIdcTPTNj1tKpGf6fw)
 - [自动化测试中递归函数的应用](https://mp.weixin.qq.com/s/86602zV9zYblhCRMiUlwdA)
@@ -39,6 +41,9 @@
 - [selenium2java让浏览器停止加载的方法](https://mp.weixin.qq.com/s/aBQdGYys3Bpyf6yigGOCIA)
 - [selenium2java写一个强制刷新页面的方法](https://mp.weixin.qq.com/s/VWW7cH5WSDmw_eCabUh9LQ)
 - [selenium2java通过接口获取并注入cookies](https://mp.weixin.qq.com/s/luLHWxPWSekuDMbnKsfJvg)
+- [Selenium编写自动化用例的8种技巧](https://mp.weixin.qq.com/s/8wRHc_krXNfWclNeOJDNPg)
+- [JUnit中用于Selenium测试的中实践](https://mp.weixin.qq.com/s/KG4sltQMCfH2MGXkRdtnwA)
+- [您如何使用Selenium来计算自动化测试的投资回报率？](https://mp.weixin.qq.com/s/DVSEm0DhoAvYfTWIniabJg)
 
 
 ## APP性能
@@ -48,3 +53,6 @@
 - [统计APP启动时间和进入首页时间的多线程类](https://mp.weixin.qq.com/s/IMs6vd3H-HF65Vb-zPwDhw)
 - [如何获取手机性能测试数据FPS](https://mp.weixin.qq.com/s/qZy5AQkNpUXRJk46BHVzaQ)
 - [一个循环启动APP并保持WiFi常开的多线程类](https://mp.weixin.qq.com/s/OgdT4IffDyAdkKmO2SS9iQ)
+
+
+![长按关注](https://mmbiz.qpic.cn/mmbiz_jpg/13eN86FKXzBEASPySoVdOFmP12QUIWAQms664L0b82nic8BRIlufg0QibzXNnoibZp8yqhU9Pv0hXjKtqrGof8kMA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)

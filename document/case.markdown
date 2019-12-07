@@ -1,5 +1,7 @@
 # 案例分享
 
+> FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的质变。
+
 ## 测试方案
 - [如何对消息队列做性能测试](https://mp.weixin.qq.com/s/MNt22aW3Op9VQ5OoMzPwBw)
 - [如何对修改密码接口进行压测](https://mp.weixin.qq.com/s/9CL_6-uZOlAh7oeo7NOpag)
