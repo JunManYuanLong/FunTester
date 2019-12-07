@@ -35,8 +35,12 @@ public class SourceCode extends Output {
         return LoggerFactory.getLogger(name);
     }
 
+    public static Logger getLogger(Class name) {
+        return LoggerFactory.getLogger(name);
+    }
+
     public static Logger getLogger() {
-        return getLogger("default");
+        return logger;
     }
 
     /**
