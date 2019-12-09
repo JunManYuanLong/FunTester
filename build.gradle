@@ -150,7 +150,8 @@ task prepareFile(dependsOn: [
         'copyConf',
         'copyBin',
         'copyDep'
-]) {}
+]) {}//如果没有内容的话,可以不需要大括号
+//还有一种写法表示task之间的依赖:prepareFile.dependsOn createDirs,copyLibs,copyConf,copyBin,copyDep
 //指定打包的tar包的名字，以及文件来源目录
 distributions {
     monitor {
