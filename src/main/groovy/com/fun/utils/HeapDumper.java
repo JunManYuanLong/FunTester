@@ -7,6 +7,9 @@ import org.slf4j.Logger;
 import javax.management.MBeanServer;
 import java.lang.management.ManagementFactory;
 
+/**
+ * 获取JVM内存转储文件的工具类
+ */
 public class HeapDumper extends SourceCode {
 
     private static Logger logger = getLogger();
