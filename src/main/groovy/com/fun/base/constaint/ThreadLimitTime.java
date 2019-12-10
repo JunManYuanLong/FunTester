@@ -46,8 +46,7 @@ public abstract class ThreadLimitTime<T> extends ThreadBase {
         this.time = time * 1000;
     }
 
-    protected ThreadLimitTime() {
-        super();
+    private ThreadLimitTime() {
     }
 
     @Override

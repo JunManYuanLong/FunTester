@@ -43,7 +43,6 @@ public abstract class ThreadLimitTimes<T> extends ThreadBase {
     }
 
     protected ThreadLimitTimes() {
-        super();
     }
 
     /**

@@ -23,7 +23,6 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
     public T t;
 
     protected ThreadBase() {
-        super();
     }
 
     /**

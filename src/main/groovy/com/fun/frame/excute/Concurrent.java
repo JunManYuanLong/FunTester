@@ -26,12 +26,12 @@ public class Concurrent extends SourceCode {
     /**
      * 开始时间
      */
-    public long start;
+    private long start;
 
     /**
      * 结束时间
      */
-    public long end;
+    private long end;
 
     /**
      * 任务描述
@@ -110,6 +110,9 @@ public class Concurrent extends SourceCode {
         countDownLatch = new CountDownLatch(threadNum);
     }
 
+    private Concurrent() {
+
+    }
     /**
      * 执行多线程任务
      */
