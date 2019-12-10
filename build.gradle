@@ -100,6 +100,7 @@ ext {
     }
     println "profile:" + profile
 }
+//因为打包配置,这里会执行
 task createDirs() {
     doLast {
         file('build/package/lib').mkdirs()
@@ -162,7 +163,7 @@ distributions {
     }
 }
 
-//distribution 插件的特性，以DistTar结尾
+//distribution 插件的特性
 monitorDistTar.dependsOn 'prepareFile'
 monitorDistTar.compression = Compression.NONE
 monitorDistTar.extension = 'tar'
