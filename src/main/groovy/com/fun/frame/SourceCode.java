@@ -4,7 +4,6 @@ package com.fun.frame;
 import com.fun.base.exception.FailException;
 import com.fun.utils.Regex;
 import com.fun.utils.Time;
-import io.netty.util.internal.StringUtil;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -31,7 +30,7 @@ public class SourceCode extends Output {
      * @return
      */
     public static Logger getLogger(String name) {
-        if (StringUtil.isNullOrEmpty(name)) return logger;
+        if (!StringUtils.isNoneEmpty(name)) return logger;
         return LoggerFactory.getLogger(name);
     }
 

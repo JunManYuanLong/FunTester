@@ -9,8 +9,8 @@ import com.fun.frame.httpclient.FanLibrary;
 import com.fun.utils.DecodeEncode;
 import com.fun.utils.Time;
 import com.fun.utils.message.AlertOver;
-import io.netty.util.internal.StringUtil;
 import net.sf.json.JSONObject;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -115,7 +115,7 @@ public class MySqlTest extends SqlBase {
      * @param bean
      */
     public static void savePerformanceBean(PerformanceResultBean bean) {
-        if (StringUtil.isNullOrEmpty(SqlConstant.PERFORMANCE_TABLE)) return;
+        if (StringUtils.isNoneEmpty(SqlConstant.PERFORMANCE_TABLE)) return;
         String sql = String.format("INSERT INTO " + SqlConstant.PERFORMANCE_TABLE + "(threads,total,rt,qps,des,start_time,end_time) VALUES (%d,%d,%d,%f,'%s','%s','%s');", bean.getThreads(), bean.getTotal(), bean.getRt(), bean.getQps(), bean.getDesc(), bean.getStartTime(), bean.getEndTime());
         logger.info("记录性能测试数据：{}", bean.toJson());
         sendWork(sql);
