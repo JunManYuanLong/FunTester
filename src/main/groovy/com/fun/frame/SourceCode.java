@@ -30,7 +30,7 @@ public class SourceCode extends Output {
      * @return
      */
     public static Logger getLogger(String name) {
-        if (StringUtils.isNoneEmpty(name)) return logger;
+        if (!StringUtils.isNoneEmpty(name)) return logger;
         return LoggerFactory.getLogger(name);
     }
 
