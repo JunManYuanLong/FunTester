@@ -8,22 +8,10 @@ import com.fun.config.SysInit;
 import com.fun.frame.httpclient.FanLibrary;
 import com.fun.utils.DecodeEncode;
 import com.fun.utils.Time;
-import com.fun.utils.message.AlertOver;
-import io.netty.util.internal.StringUtil;
 import net.sf.json.JSONObject;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 数据库读写类
@@ -32,49 +20,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 打印请求信息的方法写在这里面，数据库服务的队列也在这里（可不用），暂时才用直接抛出sql语句完成记录功能
  * </p>
  */
-public class MySqlTest extends SqlBase {
+public abstract class MySqlTest {
 
     private static Logger logger = LoggerFactory.getLogger(MySqlTest.class);
-
-    /**
-     * 控台statement1和statement均衡
-     */
-    static AtomicInteger key = new AtomicInteger(0);
-
-    /**
-     * 存放数据库存储任务
-     */
-    static LinkedBlockingDeque<String> sqls = new LinkedBlockingDeque<>();
-
-    public static Connection getConnection0() {
-        return connection0;
-    }
-
-    public static Statement getStatement0() {
-        return statement0;
-    }
-
-    /**
-     * 用于查询
-     */
-    static Connection connection0;
-
-    /**
-     * 用于写入
-     */
-    static Connection connection1;
-
-    /**
-     * 用于写入
-     */
-    static Connection connection2;
-
-    static Statement statement0;
-
-    static Statement statement1;
-
-    static Statement statement2;
-
 
     /**
      * 新方法，报错requestinfo对象
@@ -115,31 +63,9 @@ public class MySqlTest extends SqlBase {
      * @param bean
      */
     public static void savePerformanceBean(PerformanceResultBean bean) {
-        if (StringUtil.isNullOrEmpty(SqlConstant.PERFORMANCE_TABLE)) return;
+        if (StringUtils.isNoneEmpty(SqlConstant.PERFORMANCE_TABLE)) return;
         String sql = String.format("INSERT INTO " + SqlConstant.PERFORMANCE_TABLE + "(threads,total,rt,qps,des,start_time,end_time) VALUES (%d,%d,%d,%f,'%s','%s','%s');", bean.getThreads(), bean.getTotal(), bean.getRt(), bean.getQps(), bean.getDesc(), bean.getStartTime(), bean.getEndTime());
         logger.info("记录性能测试数据：{}", bean.toJson());
-        sendWork(sql);
-    }
-
-    /**
-     * 保存测试结果
-     *
-     * @param label  测试标记
-     * @param result 测试结果
-     */
-    public static void saveTestResult(String label, JSONObject result) {
-        if (SqlConstant.RESULT_TABLE == null) return;
-        String data = result.toString();
-        Iterator<String> iterator = result.keys();
-        int abc = 1;
-        while (iterator.hasNext() && abc == 1) {
-            String key = iterator.next().toString();
-            String value = result.getString(key);
-            if (value.equals("false")) abc = 2;
-        }
-        if (abc != 1) new AlertOver("用例失败！", label + "测试结果：" + abc + LINE + data).sendBusinessMessage();
-        logger.info(label + LINE + "测试结果：" + (abc == 1 ? "通过" : "失败") + LINE + data);
-        String sql = String.format("INSERT INTO " + SqlConstant.RESULT_TABLE + " (result,label,params,local_ip,computer_name,create_time) VALUES (%d,'%s','%s','%s','%s','%s')", abc, label, data, LOCAL_IP, COMPUTER_USER_NAME, Time.getDate());
         sendWork(sql);
     }
 
@@ -157,83 +83,6 @@ public class MySqlTest extends SqlBase {
         if (SysInit.isBlack(host_name) || SqlConstant.ALERTOVER_TABLE == null) return;
         String sql = String.format("INSERT INTO alertover (type,title,host_name,api_name,local_ip,computer_name,create_time) VALUES('%s','%s','%s','%s','%s','%s','%s');", type, title, host_name, requestInfo.getApiName(), localIP, computerName, Time.getDate());
         sendWork(sql);
-    }
-
-    /**
-     * 获取所有有效的用例类
-     *
-     * @return
-     */
-    public static List<String> getAllCaseName() {
-        List<String> list = new ArrayList<>();
-        if (SqlConstant.CLASS_TABLE == null) return list;
-        String sql = "SELECT * FROM " + SqlConstant.CLASS_TABLE + " WHERE flag = 1 ORDER BY create_time DESC;";
-        TestConnectionManage.getQueryConnection();
-        ResultSet resultSet = excuteQuerySql(connection0, statement0, sql);
-        try {
-            while (resultSet != null && resultSet.next()) {
-                String className = resultSet.getString("class");
-                list.add(className);
-            }
-        } catch (SQLException e) {
-            logger.warn(sql, e);
-        }
-        return list;
-    }
-
-    /**
-     * 获取用例状态
-     *
-     * @param name
-     * @return
-     */
-    public static boolean getCaseStatus(String name) {
-        if (SqlConstant.CLASS_TABLE == null) return false;
-        String sql = "SELECT flag FROM " + SqlConstant.CLASS_TABLE + " WHERE class = \"" + name + "\";";
-        TestConnectionManage.getQueryConnection();
-        ResultSet resultSet = excuteQuerySql(connection0, statement0, sql);
-        try {
-            if (resultSet != null && resultSet.next()) {
-                int flag = resultSet.getInt(1);
-                return flag == 1 ? true : false;
-            }
-        } catch (SQLException e) {
-            logger.warn(sql, e);
-        }
-        return false;
-    }
-
-
-    /**
-     * 确保所有的储存任务都结束
-     */
-    private static void check() {
-        int size = sqls.size();
-        while (sqls.size() != 0) {
-            sleep(100);
-        }
-        TestConnectionManage.stopAllThread();
-    }
-
-    /**
-     * 执行sql语句，非query语句，并不关闭连接
-     *
-     * @param sql
-     * @param key
-     */
-    static void excuteUpdateSql(String sql, boolean key) {
-        int size = getWaitWorkNum();
-        if (size % 3 == 1 && size > MySqlObject.getThreadNum() * (SqlConstant.MYSQL_WORK_PER_THREAD + 1) && size < SqlConstant.MYSQL_MAX_WAIT_WORK)
-            new Thread(new AidThread()).start();
-        if (key) {
-            TestConnectionManage.getUpdateConnection1();
-            excuteUpdateSql(connection1, statement1, sql);
-            TestConnectionManage.updateLastUpdate1();
-        } else {
-            TestConnectionManage.getUpdateConnection2();
-            excuteUpdateSql(connection2, statement2, sql);
-            TestConnectionManage.updateLastUpdate2();
-        }
     }
 
     /**
@@ -260,82 +109,6 @@ public class MySqlTest extends SqlBase {
         FanLibrary.noHeader();
         if (SqlConstant.flag)
             FanLibrary.getHttpResponse(FanLibrary.getHttpPost(SqlConstant.MYSQL_SERVER_PATH, requestBean.toJson()));
-    }
-
-    /**
-     * 添加存储任务，数据库存储服务用
-     *
-     * @param sql
-     * @return
-     */
-    public static boolean addWork(String sql) {
-        try {
-            sqls.put(sql);
-        } catch (InterruptedException e) {
-            logger.warn("添加数据库存储任务失败！", e);
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * 从任务池里面获取任务
-     *
-     * @return
-     */
-    static String getWork() {
-        String sql = null;
-        try {
-            sql = sqls.poll(SqlConstant.MYSQLWORK_TIMEOUT, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-            logger.warn("获取存储任务失败！", e);
-        } finally {
-            return sql;
-        }
-    }
-
-    /**
-     * 获取等待任务数
-     *
-     * @return
-     */
-    public static int getWaitWorkNum() {
-        return sqls.size();
-    }
-
-    /**
-     * 提供外部查询功能
-     *
-     * @param sql
-     * @return
-     */
-    public static ResultSet excuteQuerySql(String sql) {
-        TestConnectionManage.getQueryConnection();
-        return excuteQuerySql(connection0, statement0, sql);
-    }
-
-
-    /**
-     * 关闭数据库链接的方法，供外部使用
-     */
-    public static void mySqlOver() {
-        mySqlQueryOver();
-    }
-
-    /**
-     * 关闭update连接
-     */
-    static void mySqlUpdateOver() {
-        check();
-        mySqlOver(connection1, statement1);
-        mySqlOver(connection2, statement2);
-    }
-
-    /**
-     * 关闭query连接
-     */
-    public static void mySqlQueryOver() {
-        mySqlOver(connection0, statement0);
     }
 
 
