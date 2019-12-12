@@ -1,13 +1,12 @@
 package com.fun.base.constaint;
 
 import com.fun.frame.excute.Concurrent;
+import com.fun.utils.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.fun.utils.Time.getTimeStamp;
 
 /**
  * 请求时间限制的多线程类,限制每个线程执行的次数
@@ -18,15 +17,13 @@ import static com.fun.utils.Time.getTimeStamp;
  *
  * @param <T> 闭包参数传递使用,Groovy脚本会有一些兼容问题,部分对象需要tostring获取参数值
  */
-public abstract class ThreadLimitTimes<T> extends ThreadBase {
+public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
 
-    private static final Logger logger = LoggerFactory.getLogger(ThreadLimitTimes.class);
-
+    private static final Logger logger = LoggerFactory.getLogger(ThreadLimitTimesCount.class);
     /**
      * 全局的时间终止开关
      */
     private static boolean key = false;
-
     /**
      * 任务请求执行次数
      */
@@ -37,17 +34,18 @@ public abstract class ThreadLimitTimes<T> extends ThreadBase {
      */
     public T t;
 
-    public ThreadLimitTimes(T t, int times) {
+    public ThreadLimitTimesCount(T t, int times) {
         this(times);
         this.t = t;
     }
 
-    public ThreadLimitTimes(int times) {
+    public ThreadLimitTimesCount(int times) {
         this();
         this.times = times;
     }
 
-    protected ThreadLimitTimes() {
+    private ThreadLimitTimesCount() {
+        super();
     }
 
     /**
@@ -64,14 +62,21 @@ public abstract class ThreadLimitTimes<T> extends ThreadBase {
         try {
             before();
             List<Long> t = new ArrayList<>();
-            long ss = getTimeStamp();
+            long ss = Time.getTimeStamp();
             for (int i = 0; i < times; i++) {
-                long s = getTimeStamp();
-                doing();
-                long e = getTimeStamp();
-                t.add(e - s);
+                try {
+                    long s = Time.getTimeStamp();
+                    doing();
+                    long e = Time.getTimeStamp();
+                    t.add(e - s);
+                } catch (Exception e) {
+                    logger.warn("执行任务失败！", e);
+                    errorNum++;
+                } finally {
+                    if (status()) break;
+                }
             }
-            long ee = getTimeStamp();
+            long ee = Time.getTimeStamp();
             logger.info("执行次数：{}，总耗时：{}", times, ee - ss);
             Concurrent.allTimes.addAll(t);
         } catch (Exception e) {
@@ -81,6 +86,7 @@ public abstract class ThreadLimitTimes<T> extends ThreadBase {
                 countDownLatch.countDown();
             after();
         }
+
     }
 
     /**
@@ -90,4 +96,10 @@ public abstract class ThreadLimitTimes<T> extends ThreadBase {
     public void before() {
         key = false;
     }
+
+    public boolean status() {
+        return errorNum > 10;
+    }
+
+
 }

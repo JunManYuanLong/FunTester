@@ -9,6 +9,8 @@ import java.util.concurrent.CountDownLatch;
  */
 public abstract class ThreadBase<T> extends SourceCode implements Runnable {
 
+    public int errorNum;
+
     /**
      * 计数锁
      * <p>
