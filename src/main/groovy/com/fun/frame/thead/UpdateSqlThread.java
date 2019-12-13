@@ -23,11 +23,6 @@ public class UpdateSqlThread extends ThreadLimitTimes {
     }
 
     @Override
-    protected void before() {
-        base.getConnection();
-    }
-
-    @Override
     protected void doing() {
         base.excuteUpdateSql(sql);
     }
