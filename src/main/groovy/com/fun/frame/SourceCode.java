@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 
-public class SourceCode extends Output {
+public class SourceCode extends Output implements Cloneable {
 
     private static Logger logger = LoggerFactory.getLogger(SourceCode.class);
 
@@ -324,16 +324,16 @@ public class SourceCode extends Output {
     }
 
     /**
-     * 通过讲对象序列化成数据流实现深层拷贝的方法
+     * 通过将对象序列化成数据流实现深层拷贝的方法
      * <p>
      * 将该对象序列化成流,因为写在流里的是对象的一个拷贝，而原对象仍然存在于JVM里面。所以利用这个特性可以实现对象的深拷贝
      * </p>
      *
-     * @param t   需要被拷贝的对象
+     * @param t   需要被拷贝的对象,必需实现 Serializable接口,不然会报错
      * @param <T> 需要拷贝对象的类型
      * @return
      */
-    public static <T> T clone(T t) {
+    public static <T> T deepClone(T t) {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);
@@ -348,6 +348,32 @@ public class SourceCode extends Output {
             logger.error("未找到对应类!", e);
         }
         return null;
+    }
+
+    /**
+     * 通过将调用object的clone方法完成对象的浅拷贝
+     *
+     * @param t   需要被拷贝的对象,必需实现Cloneable接口,不然会报错
+     * @param <T> 需要拷贝对象的类型
+     * @return
+     */
+    public static <T extends SourceCode> Cloneable shallowClone(T t) {
+        return (T) t.clone();
+    }
+
+    /**
+     * 为了浅拷贝通用方法,无法直接访问object.clone()方法
+     *
+     * @return
+     */
+    @Override
+    public SourceCode clone() {
+        try {
+            return (SourceCode) super.clone();
+        } catch (CloneNotSupportedException e) {
+            logger.error("未找到对应类!", e);
+            return null;
+        }
     }
 
 
