@@ -22,6 +22,8 @@ public abstract class ThreadLimitTimes<T> extends ThreadBase {
 
     private static final Logger logger = LoggerFactory.getLogger(ThreadLimitTimes.class);
 
+    private static final long serialVersionUID = -8338362913850019273L;
+
     /**
      * 全局的时间终止开关
      */
@@ -70,6 +72,7 @@ public abstract class ThreadLimitTimes<T> extends ThreadBase {
                 doing();
                 long e = getTimeStamp();
                 t.add(e - s);
+                excuteNum++;
             }
             long ee = getTimeStamp();
             logger.info("执行次数：{}，总耗时：{}", times, ee - ss);

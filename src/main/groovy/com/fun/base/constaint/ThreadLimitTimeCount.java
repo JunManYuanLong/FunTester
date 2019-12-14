@@ -20,6 +20,8 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase {
 
     private static final Logger logger = LoggerFactory.getLogger(ThreadLimitTimeCount.class);
 
+    private static final long serialVersionUID = -5865854749576497765L;
+
     /**
      * 全局的时间终止开关
      */
@@ -66,7 +68,8 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase {
                     logger.warn("执行任务失败！", e);
                     errorNum++;
                 } finally {
-                    if (status()) break;
+                    excuteNum++;
+                    if (status() || key) break;
                 }
                 long ee = Time.getTimeStamp();
                 logger.info("执行时间：{} s，总耗时：{}", time / 1000, ee - ss);
@@ -100,5 +103,6 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase {
     public void before() {
         key = false;
     }
+
 
 }

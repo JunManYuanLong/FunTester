@@ -20,10 +20,14 @@ import java.util.List;
 public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
 
     private static final Logger logger = LoggerFactory.getLogger(ThreadLimitTimesCount.class);
+
+    private static final long serialVersionUID = 3624618275201536440L;
+
     /**
      * 全局的时间终止开关
      */
     private static boolean key = false;
+
     /**
      * 任务请求执行次数
      */
@@ -73,7 +77,8 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
                     logger.warn("执行任务失败！", e);
                     errorNum++;
                 } finally {
-                    if (status()) break;
+                    excuteNum++;
+                    if (status() || key) break;
                 }
             }
             long ee = Time.getTimeStamp();

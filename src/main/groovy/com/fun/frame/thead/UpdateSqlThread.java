@@ -31,4 +31,11 @@ public class UpdateSqlThread extends ThreadLimitTimes {
     protected void after() {
         base.mySqlOver();
     }
+
+    @Override
+    public boolean status() {
+        return false;
+    }
+
+
 }
