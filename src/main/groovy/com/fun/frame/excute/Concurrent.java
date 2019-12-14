@@ -5,11 +5,13 @@ import com.fun.base.constaint.ThreadBase;
 import com.fun.config.Constant;
 import com.fun.frame.Save;
 import com.fun.frame.SourceCode;
+import com.fun.utils.RString;
 import com.fun.utils.Time;
 import com.fun.utils.WriteRead;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.CountDownLatch;
@@ -26,12 +28,12 @@ public class Concurrent extends SourceCode {
     /**
      * 开始时间
      */
-    private long start;
+    private long startTime;
 
     /**
      * 结束时间
      */
-    private long end;
+    private long endTime;
 
     /**
      * 任务描述
@@ -39,19 +41,29 @@ public class Concurrent extends SourceCode {
     public String desc = "FunTester";
 
     /**
-     * 线程任务
-     */
-    public ThreadBase thread;
-
-    /**
      * 任务集
      */
-    public List<ThreadBase> threads;
+    public List<ThreadBase> threads = new ArrayList<>();
 
     /**
      * 线程数
      */
     public int threadNum;
+
+    /**
+     * 执行失败总数
+     */
+    private int errorTotal;
+
+    /**
+     * 任务执行失败总数
+     */
+    private int failTotal;
+
+    /**
+     * 执行总数
+     */
+    private int excuteTotal;
 
     /**
      * 用于记录所有请求时间
@@ -74,7 +86,7 @@ public class Concurrent extends SourceCode {
      */
     public Concurrent(ThreadBase thread, int threadNum) {
         this(threadNum);
-        this.thread = thread;
+        range(threadNum).forEach(x -> threads.add(thread.clone()));
     }
 
     /**
@@ -113,19 +125,29 @@ public class Concurrent extends SourceCode {
     private Concurrent() {
 
     }
+
     /**
      * 执行多线程任务
      */
     public PerformanceResultBean start() {
-        start = Time.getTimeStamp();
+        startTime = Time.getTimeStamp();
         for (int i = 0; i < threadNum; i++) {
             ThreadBase thread = getThread(i);
             thread.setCountDownLatch(countDownLatch);
             executorService.execute(thread);
         }
         shutdownService(executorService, countDownLatch);
-        end = Time.getTimeStamp();
-        logger.info("总计" + threadNum + "个线程，共用时：" + Time.getTimeDiffer(start, end) + "秒！");
+        endTime = Time.getTimeStamp();
+        logger.info("总计" + threadNum + "个线程，共用时：" + Time.getTimeDiffer(startTime, endTime) + "秒！");
+        for (int i = 0; i < threadNum; i++) {
+            ThreadBase thread = threads.get(i);
+            output(thread.errorNum);
+        }
+        threads.forEach(x -> {
+            if (!x.status()) failTotal++;
+            errorTotal += x.errorNum;
+            excuteTotal += x.excuteNum;
+        });
         return over();
     }
 
@@ -146,11 +168,10 @@ public class Concurrent extends SourceCode {
 
     private PerformanceResultBean over() {
         Save.saveLongList(allTimes, threadNum);
-        return countQPS(threadNum, desc, Time.getTimeByTimestamp(start), Time.getTimeByTimestamp(end));
+        return countQPS(threadNum, desc, Time.getTimeByTimestamp(startTime), Time.getTimeByTimestamp(endTime));
     }
 
     ThreadBase getThread(int i) {
-        if (threads == null) return thread;
         return threads.get(i);
     }
 
@@ -160,7 +181,7 @@ public class Concurrent extends SourceCode {
      *
      * @param name 线程数
      */
-    public static PerformanceResultBean countQPS(int name, String desc, String start, String end) {
+    public PerformanceResultBean countQPS(int name, String desc, String start, String end) {
         List<String> strings = WriteRead.readTxtFileByLine(Constant.LONG_Path + name);
         int size = strings.size();
         int sum = 0;
@@ -168,16 +189,29 @@ public class Concurrent extends SourceCode {
             int time = SourceCode.changeStringToInt(strings.get(i));
             sum += time;
         }
-        double v = 1000.0 * size * name / sum;
-        return new PerformanceResultBean(name, size, sum / size, v, desc, start, end);
+        double qps = 1000.0 * size * name / sum;
+        return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(excuteTotal, errorTotal), getPercent(threadNum, failTotal), excuteTotal);
     }
 
-    public static PerformanceResultBean countQPS(int name, String desc) {
+    /**
+     * 用于做后期的计算
+     *
+     * @param name
+     * @param desc
+     * @return
+     */
+    public PerformanceResultBean countQPS(int name, String desc) {
         return countQPS(name, desc, Time.getDate(), Time.getDate());
     }
 
-    public static PerformanceResultBean countQPS(int name) {
-        return countQPS(name, "FunTester", Time.getDate(), Time.getDate());
+    /**
+     * 后期计算用
+     *
+     * @param name
+     * @return
+     */
+    public PerformanceResultBean countQPS(int name) {
+        return countQPS(name, RString.getString(10), Time.getDate(), Time.getDate());
     }
 
 
