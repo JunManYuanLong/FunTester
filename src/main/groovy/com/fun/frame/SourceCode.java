@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.*;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Random;
@@ -320,6 +321,33 @@ public class SourceCode extends Output {
      */
     public static void fail() {
         throw new FailException();
+    }
+
+    /**
+     * 通过讲对象序列化成数据流实现深层拷贝的方法
+     * <p>
+     * 将该对象序列化成流,因为写在流里的是对象的一个拷贝，而原对象仍然存在于JVM里面。所以利用这个特性可以实现对象的深拷贝
+     * </p>
+     *
+     * @param t   需要被拷贝的对象
+     * @param <T> 需要拷贝对象的类型
+     * @return
+     */
+    public static <T> T clone(T t) {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(t);
+            // 将流序列化成对象
+            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+            ObjectInputStream ois = new ObjectInputStream(bais);
+            return (T) ois.readObject();
+        } catch (IOException e) {
+            logger.error("线程任务拷贝失败!", e);
+        } catch (ClassNotFoundException e) {
+            logger.error("未找到对应类!", e);
+        }
+        return null;
     }
 
 
