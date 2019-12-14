@@ -1,14 +1,17 @@
 package com.fun.utils
 
 import com.fun.frame.SourceCode
+import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 /**
  * 时间观察者类，用于简单记录执行时间
  */
-class TimeWatch extends SourceCode {
+class TimeWatch extends SourceCode implements Serializable {
 
-    def static logger = LoggerFactory.getLogger(TimeWatch.class)
+    private static final long serialVersionUID = -4156600036913348727L;
+
+    static Logger logger = LoggerFactory.getLogger(TimeWatch.class)
 /**
  * 默认的名称
  */
@@ -238,7 +241,9 @@ class TimeWatch extends SourceCode {
 /**
  * 标记类
  */
-    class Mark {
+    class Mark implements Serializable {
+
+        private static final long serialVersionUID = -4156604036913335727L;
 
         public Mark(def name) {
             this.name = name

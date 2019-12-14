@@ -12,7 +12,9 @@ import org.slf4j.LoggerFactory
 /**
  * 重写FanLibrary，使用面对对象思想
  */
-public class FunRequest extends FanLibrary {
+public class FunRequest extends FanLibrary implements Serializable{
+
+    private static final long serialVersionUID = -4153600036943378727L;
 
     static Logger logger = LoggerFactory.getLogger(FunRequest.class)
 
