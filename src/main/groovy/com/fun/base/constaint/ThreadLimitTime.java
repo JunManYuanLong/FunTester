@@ -1,13 +1,12 @@
 package com.fun.base.constaint;
 
 import com.fun.frame.excute.Concurrent;
+import com.fun.utils.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.fun.utils.Time.getTimeStamp;
 
 /**
  * 请求时间限制的多线程类,限制每个线程执行的时间
@@ -56,16 +55,16 @@ public abstract class ThreadLimitTime<T> extends ThreadBase {
         try {
             before();
             List<Long> t = new ArrayList<>();
-            long ss = getTimeStamp();
+            long ss = Time.getTimeStamp();
             while (true) {
-                long s = getTimeStamp();
+                long s = Time.getTimeStamp();
                 doing();
-                long e = getTimeStamp();
+                long e = Time.getTimeStamp();
                 t.add(e - s);
                 excuteNum++;
                 if ((e - ss) > time || key) break;
             }
-            long ee = getTimeStamp();
+            long ee = Time.getTimeStamp();
             logger.info("执行时间：{} s，总耗时：{}", time / 1000, ee - ss);
             Concurrent.allTimes.addAll(t);
         } catch (Exception e) {
