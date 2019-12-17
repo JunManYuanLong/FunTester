@@ -96,18 +96,20 @@ ext {
     if (project.hasProperty('profile')) {
         profile = project['profile']
     } else {
-        profile = "dev"
+        profile = "FunTester"
     }
-    println "profile:" + profile
+    println "项目环境:" + profile
 }
 //因为打包配置,这里会执行
 task createDirs() {
     doLast {
-        file('build/package/lib').mkdirs()
-        file('build/package/bin').mkdirs()
-        file('build/package/logs').mkdirs()
-        file('build/package/conf').mkdirs()
-        println "文件夹创建成功!"
+        if (profile != "FunTester") {
+            file('build/package/lib').mkdirs()
+            file('build/package/bin').mkdirs()
+            file('build/package/logs').mkdirs()
+            file('build/package/conf').mkdirs()
+            println "文件夹创建成功!"
+        }
     }
 }
 
@@ -158,7 +160,7 @@ distributions {
     monitor {
         baseName = 'azkaban-monitor'
         contents {
-            from { 'build/package' }
+            from {'build/package'}
         }
     }
 }
