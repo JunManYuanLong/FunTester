@@ -8,7 +8,6 @@ import spock.lang.Specification
 
 import static com.fun.config.Constant.EMPTY
 import static com.fun.config.Constant.getLongFile
-import static com.fun.frame.Output.output
 import static com.fun.frame.SourceCode.*
 
 class Test02 extends Specification {
@@ -86,9 +85,8 @@ class Test02 extends Specification {
         given: "多线程支持测试,此处线程数改成很大之后效果比较明显"
         range(2).forEach {new Per().start()}
         sleep(1000)
-        output(Per.i)
         expect:
-        4 == Per.i
+        5 > Per.i
     }
 
     def "测试集合验证使用数据驱动"() {
@@ -114,7 +112,7 @@ class Test02 extends Specification {
 
     def "测试lambda写法是否可用"() {
         given:
-        def collect =  range(10).filter {x -> x % 2 == 1}.collect() as List
+        def collect = range(10).filter {x -> x % 2 == 1}.collect() as List
 
         expect:
         collect.size() == 5
