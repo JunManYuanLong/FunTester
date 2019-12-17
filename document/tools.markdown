@@ -29,6 +29,7 @@
 - [java利用时间戳来获取UTC时间](https://mp.weixin.qq.com/s/wbDIrwDnxb9_XWkkmP3A_g)
 - [如何遍历执行一个包里面每个类的用例方法](https://mp.weixin.qq.com/s/OJwCOHCJ4TalatsEWbtzIQ)
 - [阿拉伯数字转成汉字](https://mp.weixin.qq.com/s/jNZXIvwMpdxt7jIAlVBgHg)
+- [获取JVM转储文件的Java工具类](https://mp.weixin.qq.com/s/f_TlOb3m8MeR3argBmTzzA)
 
 ## 构建工具
 - [java和groovy混编的Maven项目如何用intellij打包执行jar包](https://mp.weixin.qq.com/s/bKexZXlONeo3r6FDhfMltQ)
@@ -36,6 +37,9 @@
 - [使用groovy脚本使gradle灵活加载本地jar包的两种方式](https://mp.weixin.qq.com/s/p3K3ZS7iOUeKO7E94gKFVg)
 - [Java 8，Jenkins，Jacoco和Sonar进行持续集成](https://mp.weixin.qq.com/s/dOoXnKnWtQmmC5itClsl4g)
 - [Gradle如何在任务失败后继续构建](https://mp.weixin.qq.com/s/GcXDzRN7cM_QQpt9ytqoKg)
+- [Gradle+Groovy基础篇](https://mp.weixin.qq.com/s/c2j7G-PoNtAB3oYYDUhCGw)
+- [Gradle+Groovy提高篇](https://mp.weixin.qq.com/s/yXmYj_1fynLkR0-5FV_Arw)
+
 
 ## plotly可视化
 - [MacOS使用pip安装pandas提示Cannot uninstall 'numpy'解决方案](https://mp.weixin.qq.com/s/fIqMAMXRQvf_vBtS5jDsyg)

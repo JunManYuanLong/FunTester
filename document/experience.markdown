@@ -37,6 +37,8 @@
 - [如何选择正确的自动化测试工具](https://mp.weixin.qq.com/s/_Ee78UW9CxRpV5MoTrfgCQ)
 - [如何从测试自动化中实现价值](https://mp.weixin.qq.com/s/dj-sJvGjvFMYANfhIVo8jw)
 - [您如何使用Selenium来计算自动化测试的投资回报率？](https://mp.weixin.qq.com/s/DVSEm0DhoAvYfTWIniabJg)
+- [如何在DevOps中实施连续测试](https://mp.weixin.qq.com/s/snPXkH6WEZ2kteYP_-c5_g)
+- [自动化如何选择用例](https://mp.weixin.qq.com/s/1hH5YIle4YQimJr4iGSWlA)
 
 
 ## 大咖风采

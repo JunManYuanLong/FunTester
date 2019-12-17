@@ -34,6 +34,7 @@
 - [模糊断言](https://mp.weixin.qq.com/s/OlJpqHkwpY6-yyELvQ9cIw)
 - [使用WireMock进行更好的集成测试](https://mp.weixin.qq.com/s/oMuVZOOQmuxSygJWH2_QHg)
 - [如何测试这个方法--功能篇](https://mp.weixin.qq.com/s/4zrwkc6ccozUGjOGV563dQ)
+- [如何测试这个方法--性能篇](https://mp.weixin.qq.com/s/QXl9_9Bj5c191oxkXmByUA)
 
 ## 接口性能
 - [Linux性能监控软件netdata中文汉化版](https://mp.weixin.qq.com/s/7VG7gHx7FUvsuNtBTJpjWA)
@@ -70,6 +71,9 @@
 - [使用Groovy进行Bash（shell）操作](https://mp.weixin.qq.com/s/fgCTlZUF3QeNj6jzq1ZgGg)
 - [使用Groovy和Gradle轻松进行数据库操作](https://mp.weixin.qq.com/s/lwmclrnW0csykVRhu7dNTQ)
 - [愉快地使用Groovy Shell](https://mp.weixin.qq.com/s/fJh7fbB3naBFBEiaS62oxw)
+- [Gradle+Groovy基础篇](https://mp.weixin.qq.com/s/c2j7G-PoNtAB3oYYDUhCGw)
+- [Gradle+Groovy提高篇](https://mp.weixin.qq.com/s/yXmYj_1fynLkR0-5FV_Arw)
+
 
 ## Python
 - [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/D8RfpdIi8smCL8TAzBcNpA)
@@ -130,6 +134,7 @@
 - [java利用时间戳来获取UTC时间](https://mp.weixin.qq.com/s/wbDIrwDnxb9_XWkkmP3A_g)
 - [如何遍历执行一个包里面每个类的用例方法](https://mp.weixin.qq.com/s/OJwCOHCJ4TalatsEWbtzIQ)
 - [阿拉伯数字转成汉字](https://mp.weixin.qq.com/s/jNZXIvwMpdxt7jIAlVBgHg)
+- [获取JVM转储文件的Java工具类](https://mp.weixin.qq.com/s/f_TlOb3m8MeR3argBmTzzA)
 
 ## 构建工具
 - [java和groovy混编的Maven项目如何用intellij打包执行jar包](https://mp.weixin.qq.com/s/bKexZXlONeo3r6FDhfMltQ)
@@ -137,6 +142,8 @@
 - [使用groovy脚本使gradle灵活加载本地jar包的两种方式](https://mp.weixin.qq.com/s/p3K3ZS7iOUeKO7E94gKFVg)
 - [Java 8，Jenkins，Jacoco和Sonar进行持续集成](https://mp.weixin.qq.com/s/dOoXnKnWtQmmC5itClsl4g)
 - [Gradle如何在任务失败后继续构建](https://mp.weixin.qq.com/s/GcXDzRN7cM_QQpt9ytqoKg)
+- [Gradle+Groovy基础篇](https://mp.weixin.qq.com/s/c2j7G-PoNtAB3oYYDUhCGw)
+- [Gradle+Groovy提高篇](https://mp.weixin.qq.com/s/yXmYj_1fynLkR0-5FV_Arw)
 
 ## plotly可视化
 - [MacOS使用pip安装pandas提示Cannot uninstall 'numpy'解决方案](https://mp.weixin.qq.com/s/fIqMAMXRQvf_vBtS5jDsyg)
@@ -188,6 +195,8 @@
 - [如何选择正确的自动化测试工具](https://mp.weixin.qq.com/s/_Ee78UW9CxRpV5MoTrfgCQ)
 - [如何从测试自动化中实现价值](https://mp.weixin.qq.com/s/dj-sJvGjvFMYANfhIVo8jw)
 - [您如何使用Selenium来计算自动化测试的投资回报率？](https://mp.weixin.qq.com/s/DVSEm0DhoAvYfTWIniabJg)
+- [如何在DevOps中实施连续测试](https://mp.weixin.qq.com/s/snPXkH6WEZ2kteYP_-c5_g)
+- [自动化如何选择用例](https://mp.weixin.qq.com/s/1hH5YIle4YQimJr4iGSWlA)
 
 ## 大咖风采
 
@@ -240,6 +249,9 @@
 - [Selenium编写自动化用例的8种技巧](https://mp.weixin.qq.com/s/8wRHc_krXNfWclNeOJDNPg)
 - [JUnit中用于Selenium测试的中实践](https://mp.weixin.qq.com/s/KG4sltQMCfH2MGXkRdtnwA)
 - [您如何使用Selenium来计算自动化测试的投资回报率？](https://mp.weixin.qq.com/s/DVSEm0DhoAvYfTWIniabJg)
+- [Selenium 4 Java的最佳测试框架](https://mp.weixin.qq.com/s/MlNyv-kb03gRTcYllxUreA)
+- [Selenium 4.0 Alpha更新日志](https://mp.weixin.qq.com/s/tU7sm-pcbpRNwDU9D3OVTQ)
+- [Selenium 4.0 Alpha更新实践](https://mp.weixin.qq.com/s/yT9wpO5o5aWBUus494TIHw)
 
 
 ## APP性能
@@ -255,4 +267,3 @@
 
 
 ![](https://mmbiz.qpic.cn/mmbiz_jpg/13eN86FKXzCMW6WN4Wch71qNtGQvxLRSGejZpr37OWa7CDYg5e4ZeanaGWuBgRAX3jicJNIhcyyZPXbKByXcl7w/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
-![](https://mmbiz.qpic.cn/mmbiz_png/BuV4gXrNvFrQnPz6hPuyeNCH9BXB4Ufc0lbWyTGjcWrpSwFJOWqFtL0jIYWeqa093ibQcZCu7UMpSVZsFwKbicHQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)

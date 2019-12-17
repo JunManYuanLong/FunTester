@@ -44,6 +44,9 @@
 - [Selenium编写自动化用例的8种技巧](https://mp.weixin.qq.com/s/8wRHc_krXNfWclNeOJDNPg)
 - [JUnit中用于Selenium测试的中实践](https://mp.weixin.qq.com/s/KG4sltQMCfH2MGXkRdtnwA)
 - [您如何使用Selenium来计算自动化测试的投资回报率？](https://mp.weixin.qq.com/s/DVSEm0DhoAvYfTWIniabJg)
+- [Selenium 4 Java的最佳测试框架](https://mp.weixin.qq.com/s/MlNyv-kb03gRTcYllxUreA)
+- [Selenium 4.0 Alpha更新日志](https://mp.weixin.qq.com/s/tU7sm-pcbpRNwDU9D3OVTQ)
+- [Selenium 4.0 Alpha更新实践](https://mp.weixin.qq.com/s/yT9wpO5o5aWBUus494TIHw)
 
 
 ## APP性能

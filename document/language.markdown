@@ -20,6 +20,9 @@
 - [使用Groovy进行Bash（shell）操作](https://mp.weixin.qq.com/s/fgCTlZUF3QeNj6jzq1ZgGg)
 - [使用Groovy和Gradle轻松进行数据库操作](https://mp.weixin.qq.com/s/lwmclrnW0csykVRhu7dNTQ)
 - [愉快地使用Groovy Shell](https://mp.weixin.qq.com/s/fJh7fbB3naBFBEiaS62oxw)
+- [Gradle+Groovy基础篇](https://mp.weixin.qq.com/s/c2j7G-PoNtAB3oYYDUhCGw)
+- [Gradle+Groovy提高篇](https://mp.weixin.qq.com/s/yXmYj_1fynLkR0-5FV_Arw)
+
 
 ## Python
 - [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/xs6Q7uk5l8Gxoagh-sY0uQ)
