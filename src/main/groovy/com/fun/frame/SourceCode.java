@@ -350,31 +350,5 @@ public class SourceCode extends Output implements Cloneable {
         return null;
     }
 
-    /**
-     * 通过将调用object的clone方法完成对象的浅拷贝
-     *
-     * @param t   需要被拷贝的对象,必需实现Cloneable接口,不然会报错
-     * @param <T> 需要拷贝对象的类型
-     * @return
-     */
-    public static <T extends SourceCode> Cloneable shallowClone(T t) {
-        return (T) t.clone();
-    }
-
-    /**
-     * 为了浅拷贝通用方法,无法直接访问object.clone()方法
-     *
-     * @return
-     */
-    @Override
-    public SourceCode clone() {
-        try {
-            return (SourceCode) super.clone();
-        } catch (CloneNotSupportedException e) {
-            logger.error("未找到对应类!", e);
-            return null;
-        }
-    }
-
 
 }
