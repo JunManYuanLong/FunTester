@@ -43,7 +43,7 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
         this.times = times;
     }
 
-    private ThreadLimitTimesCount() {
+    protected ThreadLimitTimesCount() {
         super();
     }
 

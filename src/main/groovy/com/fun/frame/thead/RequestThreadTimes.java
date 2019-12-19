@@ -1,6 +1,6 @@
 package com.fun.frame.thead;
 
-import com.fun.base.constaint.ThreadLimitTimes;
+import com.fun.base.constaint.ThreadLimitTimesCount;
 import com.fun.frame.httpclient.ClientManage;
 import com.fun.frame.httpclient.FanLibrary;
 import com.fun.frame.httpclient.GCThread;
@@ -15,7 +15,9 @@ import java.io.IOException;
 /**
  * http请求多线程类
  */
-public class RequestThreadTimes extends ThreadLimitTimes {
+public class RequestThreadTimes extends ThreadLimitTimesCount {
+
+    private static final long serialVersionUID = -2751325651625435070L;
 
     static Logger logger = LoggerFactory.getLogger(RequestThreadTimes.class);
 

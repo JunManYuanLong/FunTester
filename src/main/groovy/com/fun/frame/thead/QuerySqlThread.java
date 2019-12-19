@@ -1,6 +1,6 @@
 package com.fun.frame.thead;
 
-import com.fun.base.constaint.ThreadLimitTimes;
+import com.fun.base.constaint.ThreadLimitTimesCount;
 import com.fun.base.interfaces.IMySqlBasic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,9 @@ import java.sql.SQLException;
 /**
  * 数据库多线程类，query方法类，区别于updatethread
  */
-public class QuerySqlThread extends ThreadLimitTimes {
+public class QuerySqlThread extends ThreadLimitTimesCount {
+
+    private static final long serialVersionUID = 9083536446440368115L;
 
     private static Logger logger = LoggerFactory.getLogger(QuerySqlThread.class);
 
