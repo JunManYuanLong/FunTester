@@ -33,11 +33,6 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
      */
     public int times;
 
-    /**
-     * 用于设置访问资源
-     */
-    public T t;
-
     public ThreadLimitTimesCount(T t, int times) {
         this(times);
         this.t = t;
@@ -52,15 +47,6 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
         super();
     }
 
-    /**
-     * groovy无法直接访问t，所以写了这个方法
-     *
-     * @return
-     */
-    public String getT() {
-        return t.toString();
-    }
-
     @Override
     public void run() {
         try {
@@ -73,16 +59,15 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
                     doing();
                     long e = Time.getTimeStamp();
                     t.add(e - s);
+                    excuteNum++;
+                    if (status() || key) break;
                 } catch (Exception e) {
                     logger.warn("执行任务失败！", e);
                     errorNum++;
-                } finally {
-                    excuteNum++;
-                    if (status() || key) break;
                 }
             }
             long ee = Time.getTimeStamp();
-            logger.info("执行次数：{}，总耗时：{}", times, ee - ss);
+            logger.info("执行次数：{}，错误次数: {},总耗时：{}", times, errorNum, (ee - ss) / 1000);
             Concurrent.allTimes.addAll(t);
         } catch (Exception e) {
             logger.warn("执行任务失败！", e);

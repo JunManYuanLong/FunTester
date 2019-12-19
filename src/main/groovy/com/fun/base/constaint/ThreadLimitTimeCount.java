@@ -32,11 +32,6 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase {
      */
     public int time;
 
-    /**
-     * 用于设置访问资源
-     */
-    public T t;
-
     public ThreadLimitTimeCount(T t, int time) {
         this(time);
         this.t = t;
@@ -47,7 +42,7 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase {
         this.time = time * 1000;
     }
 
-    private ThreadLimitTimeCount() {
+    protected ThreadLimitTimeCount() {
         super();
     }
 
@@ -57,24 +52,23 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase {
             before();
             List<Long> t = new ArrayList<>();
             long ss = Time.getTimeStamp();
+            long et = ss;
             while (true) {
                 try {
                     long s = Time.getTimeStamp();
                     doing();
                     long e = Time.getTimeStamp();
+                    excuteNum++;
                     t.add(e - s);
-                    if ((e - ss) > time || key) break;
+                    if ((et - ss) > time || status() || key) break;
                 } catch (Exception e) {
                     logger.warn("执行任务失败！", e);
                     errorNum++;
-                } finally {
-                    excuteNum++;
-                    if (status() || key) break;
                 }
-                long ee = Time.getTimeStamp();
-                logger.info("执行时间：{} s，总耗时：{}", time / 1000, ee - ss);
-                Concurrent.allTimes.addAll(t);
             }
+            long ee = Time.getTimeStamp();
+            logger.info("执行次数：{}, 失败次数: {},总耗时: {}", excuteNum, errorNum, (ee - ss) / 1000);
+            Concurrent.allTimes.addAll(t);
         } catch (Exception e) {
             logger.warn("执行任务失败！", e);
         } finally {
