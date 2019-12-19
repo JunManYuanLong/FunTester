@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory
 /**
  * 重写FanLibrary，使用面对对象思想
  */
-public class FunRequest extends FanLibrary implements Serializable{
+public class FunRequest extends FanLibrary implements Serializable {
 
     private static final long serialVersionUID = -4153600036943378727L;
 
@@ -21,46 +21,55 @@ public class FunRequest extends FanLibrary implements Serializable{
     /**
      * 请求类型，true为get，false为post
      */
+
     RequestType requestType
 
     /**
      * 请求对象
      */
+
     HttpRequestBase request
 
     /**
      * host地址
      */
+
     String host
 
     /**
      * 接口地址
      */
+
     String apiName
 
     /**
      * 请求地址,如果为空则由host和apiname拼接
      */
+
     String uri
 
     /**
      * header集合
      */
+
     List<Header> headers = new ArrayList<>()
 
     /**
      * get参数
      */
+
     JSONObject args = new JSONObject()
 
     /**
      * post参数
      */
+
     JSONObject params = new JSONObject()
 
     /**
      * json参数
      */
+
     JSONObject json = new JSONObject()
 
     /**
@@ -189,7 +198,7 @@ public class FunRequest extends FanLibrary implements Serializable{
      * @return
      */
     public FunRequest addHeader(List<Header> header) {
-        header.each { h -> headers << h }
+        header.each {h -> headers << h}
         this
     }
 
@@ -220,7 +229,7 @@ public class FunRequest extends FanLibrary implements Serializable{
                 request = !params.isEmpty() ? FanLibrary.getHttpPost(uri + changeJsonToArguments(args), params) : !json.isEmpty() ? getHttpPost(uri + changeJsonToArguments(args), json.toString()) : getHttpPost(uri + changeJsonToArguments(args))
                 break
         }
-        headers.each { x -> request.addHeader(x) }
+        headers.each {x -> request.addHeader(x)}
         return getHttpResponse(request)
     }
 
@@ -231,12 +240,17 @@ public class FunRequest extends FanLibrary implements Serializable{
      * @return
      */
     public HttpRequestBase getRequest() {
-        logger.debug("请求信息：{}",new RequestInfo(this.request).toString())
+        logger.debug("请求信息：{}", new RequestInfo(this.request).toString())
         this.request
     }
 
     @Override
     public String toString() {
         JSONObject.fromObject(this).toString()
+    }
+
+    @Override
+    public FunRequest clone() {
+        return deepClone(this)
     }
 }
