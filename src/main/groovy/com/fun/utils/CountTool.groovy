@@ -25,7 +25,7 @@ class CountTool extends SourceCode {
      * @param num 增加值
      */
     static def count(Map counts, Object object, int num) {
-        counts.put(object, Integer.valueOf(counts.getOrDefault(object.toString(), 0) + num))
+        counts.put(object, Integer.valueOf(counts.getOrDefault(object, 0) + num))
     }
 
 /**
