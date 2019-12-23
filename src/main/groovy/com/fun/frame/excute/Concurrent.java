@@ -140,7 +140,7 @@ public class Concurrent extends SourceCode {
         endTime = Time.getTimeStamp();
         logger.info("总计" + threadNum + "个线程，共用时：" + Time.getTimeDiffer(startTime, endTime) + "秒！");
         threads.forEach(x -> {
-            if (!x.status()) failTotal++;
+            if (x.status()) failTotal++;
             errorTotal += x.errorNum;
             excuteTotal += x.excuteNum;
         });
