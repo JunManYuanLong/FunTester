@@ -52,11 +52,6 @@ public class RequestThreadTime extends ThreadLimitTimeCount {
         GCThread.stop();
     }
 
-    @Override
-    public boolean status() {
-        return false;
-    }
-
     /**
      * 多次执行某个请求，但是不记录日志，记录方法用 loglong
      * <p>此方法只适应与单个请求的重复请求，对于有业务联系的请求暂时不能适配</p>

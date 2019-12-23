@@ -41,10 +41,5 @@ public class QuerySqlThread extends ThreadLimitTimesCount {
         base.mySqlOver();
     }
 
-    @Override
-    public boolean status() {
-        return false;
-    }
-
 
 }

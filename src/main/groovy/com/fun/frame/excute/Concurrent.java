@@ -139,9 +139,6 @@ public class Concurrent extends SourceCode {
         shutdownService(executorService, countDownLatch);
         endTime = Time.getTimeStamp();
         logger.info("总计" + threadNum + "个线程，共用时：" + Time.getTimeDiffer(startTime, endTime) + "秒！");
-        for (int i = 0; i < threadNum; i++) {
-            ThreadBase thread = threads.get(i);
-        }
         threads.forEach(x -> {
             if (!x.status()) failTotal++;
             errorTotal += x.errorNum;
