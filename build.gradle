@@ -1,4 +1,5 @@
 buildscript {
+
     repositories {
         maven {url 'http://maven.aliyun.com/nexus/content/groups/public/'}
 //        maven { url 'http://repo1.maven.apache.org/maven2/' }
@@ -112,6 +113,18 @@ task createDirs() {
         }
     }
 }
+task copyFun(type: Copy) {
+    from('/Users/fv/Documents/workspace/fun/build/libs')
+    into('/Users/fv/Library/groovy-2.5.7/lib')
+    println "fun拷贝成功!"
+}
+task copyOkay(type: Copy) {
+    from('/Users/fv/Documents/workspace/okay_test/target/okay_test-1.0-SNAPSHOT.jar')
+    into('/Users/fv/Library/groovy-2.5.7/lib')
+    println "okay拷贝成功!"
+}
+
+task copyJarToGroovy(dependsOn: ['copyFun', 'copyOkay']) {}
 
 task copyLibs(type: Copy) {
     doLast {

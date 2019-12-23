@@ -37,6 +37,10 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
         this.times = times;
     }
 
+    public RequestThreadTimes() {
+        super();
+    }
+
     @Override
     public void before() {
         GCThread.starts();
@@ -71,4 +75,14 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
             logger.warn("响应状态码：{},响应内容：{}", content, response.getStatusLine());
         response.close();
     }
+
+    @Override
+    public RequestThreadTimes clone() {
+        RequestThreadTimes threadTimes = new RequestThreadTimes();
+        threadTimes.times = this.times;
+        threadTimes.request = this.request;
+        return threadTimes;
+    }
+
+
 }
