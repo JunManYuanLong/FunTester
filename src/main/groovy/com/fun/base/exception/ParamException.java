@@ -1,7 +1,5 @@
 package com.fun.base.exception;
 
-import com.mysql.cj.exceptions.SSLParamsException;
-
 public class ParamException extends FailException {
 
     private static final long serialVersionUID = -5079364420579956243L;
@@ -15,7 +13,7 @@ public class ParamException extends FailException {
     }
 
     public static void fail(String name) {
-        throw new SSLParamsException(name);
+        throw new ParamException(name);
     }
 
 
