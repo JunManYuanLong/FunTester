@@ -81,11 +81,11 @@ public class HttpClientConstant {
 
     public static Header X_FORWARDED_FOR = getHeader("X-FORWARDED-FOR", IP);
 
-    public static Header ContentType_JSON = getHeader("Content-Type", "application/json");
+    public static Header ContentType_JSON = getHeader("Content-Type", "application/json; charset=" + DEFAULT_CHARSET.toString());
 
     public static Header ContentType_FORM = getHeader("Content-Type", "application/x-www-form-urlencoded; charset=" + DEFAULT_CHARSET.toString());
 
-    public static Header ContentType_TEXT = getHeader("Content-Type", "text/plain");
+    public static Header ContentType_TEXT = getHeader("Content-Type", "text/plain; charset=" + DEFAULT_CHARSET.toString());
 
     public static Header X_Requested_KWith = getHeader("X-Requested-With", "XMLHttpRequest");
 
