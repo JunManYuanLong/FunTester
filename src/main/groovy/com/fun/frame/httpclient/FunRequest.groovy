@@ -1,11 +1,16 @@
 package com.fun.frame.httpclient
 
 import com.fun.base.bean.RequestInfo
+import com.fun.base.exception.RequestException
+import com.fun.config.HttpClientConstant
 import com.fun.config.RequestType
 import net.sf.json.JSONObject
 import org.apache.commons.lang3.StringUtils
 import org.apache.http.Header
+import org.apache.http.HttpEntity
+import org.apache.http.client.methods.HttpPost
 import org.apache.http.client.methods.HttpRequestBase
+import org.apache.http.util.EntityUtils
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -61,7 +66,7 @@ public class FunRequest extends FanLibrary implements Serializable {
     JSONObject args = new JSONObject()
 
     /**
-     * post参数
+     * post参数,表单
      */
 
     JSONObject params = new JSONObject()
@@ -86,7 +91,7 @@ public class FunRequest extends FanLibrary implements Serializable {
      *
      * @return
      */
-    public static FunRequest isGet() {
+    static FunRequest isGet() {
         new FunRequest(RequestType.GET)
     }
 
@@ -95,7 +100,7 @@ public class FunRequest extends FanLibrary implements Serializable {
      *
      * @return
      */
-    public static FunRequest isPost() {
+    static FunRequest isPost() {
         new FunRequest(RequestType.POST)
     }
 
@@ -105,7 +110,7 @@ public class FunRequest extends FanLibrary implements Serializable {
      * @param host
      * @return
      */
-    public FunRequest setHost(String host) {
+    FunRequest setHost(String host) {
         this.host = host
         this
     }
@@ -116,7 +121,7 @@ public class FunRequest extends FanLibrary implements Serializable {
      * @param apiName
      * @return
      */
-    public FunRequest setApiName(String apiName) {
+    FunRequest setApiName(String apiName) {
         this.apiName = apiName
         this
     }
@@ -127,7 +132,7 @@ public class FunRequest extends FanLibrary implements Serializable {
      * @param uri
      * @return
      */
-    public FunRequest setUri(String uri) {
+    FunRequest setUri(String uri) {
         this.uri = uri
         this
     }
@@ -139,7 +144,7 @@ public class FunRequest extends FanLibrary implements Serializable {
      * @param value
      * @return
      */
-    public FunRequest addArgs(Object key, Object value) {
+    FunRequest addArgs(Object key, Object value) {
         args.put(key, value)
         this
     }
@@ -151,7 +156,7 @@ public class FunRequest extends FanLibrary implements Serializable {
      * @param value
      * @return
      */
-    public FunRequest addParam(Object key, Object value) {
+    FunRequest addParam(Object key, Object value) {
         params.put(key, value)
         this
     }
@@ -163,7 +168,7 @@ public class FunRequest extends FanLibrary implements Serializable {
      * @param value
      * @return
      */
-    public FunRequest addJson(Object key, Object value) {
+    FunRequest addJson(Object key, Object value) {
         json.put(key, value)
         this
     }
@@ -175,7 +180,7 @@ public class FunRequest extends FanLibrary implements Serializable {
      * @param value
      * @return
      */
-    public FunRequest addHeader(Object key, Object value) {
+    FunRequest addHeader(Object key, Object value) {
         headers << getHeader(key.toString(), value.toString())
         this
     }
@@ -197,7 +202,7 @@ public class FunRequest extends FanLibrary implements Serializable {
      * @param header
      * @return
      */
-    public FunRequest addHeader(List<Header> header) {
+    FunRequest addHeader(List<Header> header) {
         header.each {h -> headers << h}
         this
     }
@@ -208,8 +213,28 @@ public class FunRequest extends FanLibrary implements Serializable {
      * @param cookies
      * @return
      */
-    public FunRequest addCookies(JSONObject cookies) {
+    FunRequest addCookies(JSONObject cookies) {
         headers << getCookies(cookies)
+        this
+    }
+
+    FunRequest setHeaders(List<Header> headers) {
+        this.headers.addAll(headers)
+        this
+    }
+
+    FunRequest setArgs(JSONObject args) {
+        this.args.putAll(args)
+        this
+    }
+
+    FunRequest setParams(JSONObject params) {
+        this.params.putAll(params)
+        this
+    }
+
+    FunRequest setJson(JSONObject json) {
+        this.json.putAll(json)
         this
     }
 
@@ -218,7 +243,18 @@ public class FunRequest extends FanLibrary implements Serializable {
      *
      * @return
      */
-    public JSONObject getResponse() {
+    JSONObject getResponse() {
+        return getHttpResponse(request == null ? getRequest() : request)
+    }
+
+
+    /**
+     * 获取请求对象
+     *
+     * @return
+     */
+    HttpRequestBase getRequest() {
+        if (request != null) request;
         if (StringUtils.isEmpty(uri))
             uri = host + apiName
         switch (requestType) {
@@ -229,28 +265,52 @@ public class FunRequest extends FanLibrary implements Serializable {
                 request = !params.isEmpty() ? FanLibrary.getHttpPost(uri + changeJsonToArguments(args), params) : !json.isEmpty() ? getHttpPost(uri + changeJsonToArguments(args), json.toString()) : getHttpPost(uri + changeJsonToArguments(args))
                 break
         }
-        headers.each {x -> request.addHeader(x)}
-        return getHttpResponse(request)
-    }
-
-
-    /**
-     * 获取请求对象
-     *
-     * @return
-     */
-    public HttpRequestBase getRequest() {
+        for (Header header in headers) {
+            request.addHeader(header)
+        }
         logger.debug("请求信息：{}", new RequestInfo(this.request).toString())
-        this.request
+        request
     }
 
     @Override
-    public String toString() {
+    String toString() {
         JSONObject.fromObject(this).toString()
     }
 
     @Override
-    public FunRequest clone() {
-        return deepClone(this)
+    FunRequest clone() {
+        def fun = new FunRequest()
+        fun.setRequest(cloneRequest(getRequest()))
+        fun
     }
+
+    static HttpRequestBase cloneRequest(HttpRequestBase base) {
+        String method = base.getMethod();
+        RequestType requestType = RequestType.getRequestType(method);
+        String uri = base.getURI().toString();
+        List<Header> headers = Arrays.asList(base.getAllHeaders());
+        if (requestType == requestType.GET) {
+            return FunRequest.isGet().setUri(uri).setHeaders(headers).getRequest();
+        } else if (requestType == RequestType.POST || requestType == RequestType.FUN) {
+            HttpPost post = (HttpPost) base;
+            HttpEntity entity = post.getEntity();
+            String value = entity.getContentType().getValue();
+            String content = null;
+            try {
+                content = EntityUtils.toString(entity);
+            } catch (IOException e) {
+                logger.error("解析响应失败!", e)
+                fail();
+            }
+            if (value.equalsIgnoreCase(HttpClientConstant.ContentType_TEXT.getValue()) || value.equalsIgnoreCase(HttpClientConstant.ContentType_JSON.getValue())) {
+                return FunRequest.isPost().setUri(uri).setHeaders(headers).setJson(JSONObject.fromObject(content)).getRequest();
+            } else if (value.equalsIgnoreCase(HttpClientConstant.ContentType_FORM.getValue())) {
+                return FunRequest.isPost().setUri(uri).setHeaders(headers).setParams(getJson(content.split("&"))).getRequest();
+            }
+        } else {
+            RequestException.fail("不支持的请求类型!");
+        }
+
+    }
+
 }
