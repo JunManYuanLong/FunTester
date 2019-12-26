@@ -1,6 +1,9 @@
 package com.fun.utils;
 
 import com.fun.frame.SourceCode;
+import net.sf.json.JSONObject;
+
+import java.io.File;
 
 public class ArgsUtil extends SourceCode {
 
@@ -41,5 +44,25 @@ public class ArgsUtil extends SourceCode {
     public String getStringOrdefault(int i, String k) {
         return i >= all.length ? k : all[i];
     }
+
+
+    /**
+     * @param i
+     * @param path
+     * @return
+     */
+    public File getFileOrDefault(int i, String path) {
+        return i >= all.length ? new File(path) : new File(all[i]);
+    }
+
+    /**
+     * @param i
+     * @param json
+     * @return
+     */
+    public JSONObject getJsonOrDefault(int i, String json) {
+        return i >= all.length ? JSONObject.fromObject(json) : JSONObject.fromObject(all[i]);
+    }
+
 
 }
