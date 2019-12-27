@@ -30,7 +30,7 @@ public class SqlBase extends SourceCode {
             logger.warn("加载驱动程序失败！", e);
         }
         try {
-            Connection connection = DriverManager.getConnection(url, user, passowrd);
+            return DriverManager.getConnection(url, user, passowrd);
         } catch (SQLException e) {
             logger.warn("数据库连接失败！", e);
         }
@@ -45,7 +45,7 @@ public class SqlBase extends SourceCode {
      */
     public static Statement getStatement(Connection connection) {
         try {
-            Statement statement = connection.createStatement();
+            return connection.createStatement();
         } catch (SQLException e) {
             logger.warn("获取数据库连接失败！", e);
         } catch (ExceptionInInitializerError e) {
@@ -63,7 +63,7 @@ public class SqlBase extends SourceCode {
      * @return
      */
     public static ResultSet excuteQuerySql(Connection connection, Statement statement, String sql) {
-        logger.debug("执行的SQL：{}",sql);
+        logger.debug("执行的SQL：{}", sql);
         try {
             if (connection != null && !connection.isClosed()) {
                 ResultSet resultSet = statement.executeQuery(sql);
@@ -83,7 +83,7 @@ public class SqlBase extends SourceCode {
      * @param sql
      */
     public static void excuteUpdateSql(Connection connection, Statement statement, String sql) {
-        logger.debug("执行的SQL：{}",sql);
+        logger.debug("执行的SQL：{}", sql);
         try {
             if (!connection.isClosed()) statement.executeUpdate(sql);
         } catch (SQLException e) {
@@ -106,4 +106,6 @@ public class SqlBase extends SourceCode {
             logger.warn("关闭数据库链接失败！", e);
         }
     }
+
+
 }
