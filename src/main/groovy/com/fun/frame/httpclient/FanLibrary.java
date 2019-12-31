@@ -66,6 +66,11 @@ public class FanLibrary extends SourceCode {
     static boolean HEADER_KEY = false;
 
     /**
+     * 是否保存请求和响应
+     */
+    public static boolean SAVE_KEY = false;
+
+    /**
      * 方法已重载，获取get对象
      * <p>方法重载，主要区别参数，会自动进行urlencode操作</p>
      *
@@ -325,6 +330,7 @@ public class FanLibrary extends SourceCode {
             if (iBase != null && !iBase.isRight(res))
                 new AlertOver("响应状态码错误：" + status, "状态码错误：" + status, requestInfo.getUrl(), requestInfo).sendSystemMessage();
             MySqlTest.saveApiTestDate(requestInfo, data_size, elapsed_time, status, getMark(), code, LOCAL_IP, COMPUTER_USER_NAME);
+            if (SAVE_KEY) FunRequest.save(request, res);
         } catch (Exception e) {
             logger.warn("获取请求相应失败！", e);
             if (!requestInfo.isBlack())
@@ -446,6 +452,18 @@ public class FanLibrary extends SourceCode {
 
     public static void setiBase(IBase iBase) {
         FanLibrary.iBase = iBase;
+    }
+
+    /**
+     * 将header转成json对象
+     *
+     * @param headers
+     * @return
+     */
+    public static JSONObject header2Json(List<Header> headers) {
+        JSONObject h = new JSONObject();
+        headers.forEach(x -> h.put(x.getName(), x.getValue()));
+        return h;
     }
 
     /**
