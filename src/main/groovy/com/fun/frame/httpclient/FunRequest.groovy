@@ -283,9 +283,7 @@ public class FunRequest extends FanLibrary implements Serializable, Cloneable {
 
     @Override
     FunRequest clone() {
-        def fun = new FunRequest()
-        fun.setRequest(cloneRequest(getRequest()))
-        fun
+        initFromRequest(this.getRequest())
     }
 
     @Override
