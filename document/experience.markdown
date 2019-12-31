@@ -39,7 +39,11 @@
 - [您如何使用Selenium来计算自动化测试的投资回报率？](https://mp.weixin.qq.com/s/DVSEm0DhoAvYfTWIniabJg)
 - [如何在DevOps中实施连续测试](https://mp.weixin.qq.com/s/snPXkH6WEZ2kteYP_-c5_g)
 - [自动化如何选择用例](https://mp.weixin.qq.com/s/1hH5YIle4YQimJr4iGSWlA)
-
+- [成功实施自动化测试的优点](https://mp.weixin.qq.com/s/UENdSU-NPa5AOVC9ciiy0Q)
+- [测试人员常用借口](https://mp.weixin.qq.com/s/0k_Ciud2sOpRb5PPiVzECw)
+- [测试自动化的边缘DevTestOps](https://mp.weixin.qq.com/s/kCySRYdCS11CA-lF30AtQA)
+- [筛选自动化测试用例的技巧](https://mp.weixin.qq.com/s/SWNopZLwgpj9yYsVEHEspw)
+w
 
 ## 大咖风采
 
@@ -57,4 +61,5 @@
 - [如何优雅地屏蔽掉Google搜索结果中视频、新闻、图片等结果](https://mp.weixin.qq.com/s/Iu7pt4Qk3w9sJp3n_UVAeQ)
 - [图解HTTP脑图](https://mp.weixin.qq.com/s/100Vm8FVEuXs0x6rDGTipw)
 - [测试之JVM命令脑图](https://mp.weixin.qq.com/s/qprqyv0j3SCvGw1HMjbaMQ)
+- [2019年浏览器市场份额排行榜](https://mp.weixin.qq.com/s/4NmJ_ZCPD5UwaRCtaCfjEg)
 
