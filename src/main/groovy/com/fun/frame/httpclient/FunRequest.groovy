@@ -4,6 +4,8 @@ import com.fun.base.bean.RequestInfo
 import com.fun.base.exception.RequestException
 import com.fun.config.HttpClientConstant
 import com.fun.config.RequestType
+import com.fun.frame.Save
+import com.fun.utils.Time
 import net.sf.json.JSONObject
 import org.apache.commons.lang3.StringUtils
 import org.apache.http.Header
@@ -39,19 +41,19 @@ public class FunRequest extends FanLibrary implements Serializable, Cloneable {
      * host地址
      */
 
-    String host
+    String host = EMPTY
 
     /**
      * 接口地址
      */
 
-    String apiName
+    String apiName = EMPTY
 
     /**
      * 请求地址,如果为空则由host和apiname拼接
      */
 
-    String uri
+    String uri = EMPTY
 
     /**
      * header集合
@@ -76,6 +78,12 @@ public class FunRequest extends FanLibrary implements Serializable, Cloneable {
      */
 
     JSONObject json = new JSONObject()
+
+    /**
+     * 响应,若没有这个参数,从将funrequest对象转换成json对象时会自动调用getresponse方法
+     */
+
+    JSONObject response = new JSONObject()
 
     /**
      * 构造方法
@@ -244,7 +252,8 @@ public class FunRequest extends FanLibrary implements Serializable, Cloneable {
      * @return
      */
     JSONObject getResponse() {
-        return getHttpResponse(request == null ? getRequest() : request)
+        response = response.isEmpty() ? getHttpResponse(request == null ? getRequest() : request) : response
+        response
     }
 
 
@@ -273,29 +282,41 @@ public class FunRequest extends FanLibrary implements Serializable, Cloneable {
     }
 
     @Override
-    String toString() {
-        JSONObject.fromObject(this).toString()
-    }
-
-    @Override
     FunRequest clone() {
         def fun = new FunRequest()
         fun.setRequest(cloneRequest(getRequest()))
         fun
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "requestType='" + requestType.getName() + '\'' +
+                ", host='" + host + '\'' +
+                ", apiName='" + apiName + '\'' +
+                ", uri='" + uri + '\'' +
+                ", headers=" + header2Json(headers).toString() +
+                ", args=" + args.toString() +
+                ", params=" + params.toString() +
+                ", json=" + json.toString() +
+                ", response=" + getResponse().toString() +
+                '}';
+    }
+
+
 /**
- * 拷贝HttpRequestBase对象
+ * 从requestbase对象从初始化funrequest
  * @param base
  * @return
  */
-    static HttpRequestBase cloneRequest(HttpRequestBase base) {
+    static FunRequest initFromRequest(HttpRequestBase base) {
+        FunRequest request = null;
         String method = base.getMethod();
         RequestType requestType = RequestType.getRequestType(method);
         String uri = base.getURI().toString();
         List<Header> headers = Arrays.asList(base.getAllHeaders());
         if (requestType == requestType.GET) {
-            return FunRequest.isGet().setUri(uri).setHeaders(headers).getRequest();
+            request = FunRequest.isGet().setUri(uri).setHeaders(headers);
         } else if (requestType == RequestType.POST || requestType == RequestType.FUN) {
             HttpPost post = (HttpPost) base;
             HttpEntity entity = post.getEntity();
@@ -308,14 +329,35 @@ public class FunRequest extends FanLibrary implements Serializable, Cloneable {
                 fail();
             }
             if (value.equalsIgnoreCase(HttpClientConstant.ContentType_TEXT.getValue()) || value.equalsIgnoreCase(HttpClientConstant.ContentType_JSON.getValue())) {
-                return FunRequest.isPost().setUri(uri).setHeaders(headers).setJson(JSONObject.fromObject(content)).getRequest();
+                request = FunRequest.isPost().setUri(uri).setHeaders(headers).setJson(JSONObject.fromObject(content));
             } else if (value.equalsIgnoreCase(HttpClientConstant.ContentType_FORM.getValue())) {
-                return FunRequest.isPost().setUri(uri).setHeaders(headers).setParams(getJson(content.split("&"))).getRequest();
+                request = FunRequest.isPost().setUri(uri).setHeaders(headers).setParams(getJson(content.split("&")));
             }
         } else {
             RequestException.fail("不支持的请求类型!");
         }
+        return request;
+    }
 
+
+/**
+ * 拷贝HttpRequestBase对象
+ * @param base
+ * @return
+ */
+    static HttpRequestBase cloneRequest(HttpRequestBase base) {
+        return initFromRequest(base).getRequest()
+    }
+
+/**
+ * 保存请求和响应
+ * @param base
+ * @param response
+ */
+    public static void save(HttpRequestBase base, JSONObject response) {
+        FunRequest request = initFromRequest(base)
+        request.setResponse(response);
+        Save.info("/request/" + Time.getDate().substring(8) + SPACE_1 + request.getUri().replace(OR, PART), request.toString());
     }
 
 }
