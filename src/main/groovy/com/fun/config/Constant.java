@@ -1,5 +1,6 @@
 package com.fun.config;
 
+import com.fun.base.exception.FailException;
 import org.apache.http.Consts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -83,6 +84,11 @@ public class Constant {
     public static final String LOG_Path = WORK_SPACE + "log/";
 
     /**
+     * request日志记录目录
+     */
+    public static final String REQUEST_Path = WORK_SPACE + "long/request/";
+
+    /**
      * 毫秒数
      */
     public static final long DAY = 86400000;
@@ -108,7 +114,11 @@ public class Constant {
     static {
         new File(LOG_Path).mkdir();
         new File(LONG_Path).mkdir();
-        logger.info("当前用户：{}，IP：{}，工作目录：{}", COMPUTER_USER_NAME, LOCAL_IP, WORK_SPACE);
+        File file = new File(REQUEST_Path);
+        file.mkdir();
+        int length = file.listFiles().length;
+        if (length > 1000) FailException.fail("request日志记录量过多!");
+        logger.info("当前用户：{}，IP：{}，工作目录：{},request记录总量: {}", COMPUTER_USER_NAME, LOCAL_IP, WORK_SPACE, length);
     }
 
 
