@@ -31,7 +31,15 @@ public class Constant {
 
     public static final String SPACE_1 = " ";
 
+    public static final String DEFAULT_STRING = "FunTester";
+
     public static final int TEST_ERROR_CODE = -2;
+
+    public static final Properties SYSTEM_INFO = getSysInfo();
+
+    private static Properties getSysInfo() {
+        return System.getProperties();
+    }
 
     /**
      * UTF-8字符编码格式
@@ -106,20 +114,15 @@ public class Constant {
     /**
      * 本机用户名，程序初始化会赋值
      */
-    public static String COMPUTER_USER_NAME = getComputerName();
+    public static String COMPUTER_USER_NAME = SYSTEM_INFO.getOrDefault("user.name", DEFAULT_STRING).toString();
 
-    /**
-     * 创建日志文件夹和数据存储文件夹
-     */
-    static {
-        new File(LOG_Path).mkdir();
-        new File(LONG_Path).mkdir();
-        File file = new File(REQUEST_Path);
-        file.mkdir();
-        int length = file.listFiles().length;
-        if (length > 1000) FailException.fail("request日志记录量过多!");
-        logger.info("当前用户：{}，IP：{}，工作目录：{},request记录总量: {}", COMPUTER_USER_NAME, LOCAL_IP, WORK_SPACE, length);
-    }
+    public static String JAVA_VERSION = SYSTEM_INFO.get("java.version").toString();
+
+    public static String SYS_ENCODING = SYSTEM_INFO.get("file.encoding").toString();
+
+    public static String SYS_VERSION = SYSTEM_INFO.get("os.version").toString();
+
+    public static String SYS_NAME = SYSTEM_INFO.get("os.name").toString();
 
 
     /**
@@ -137,17 +140,6 @@ public class Constant {
     }
 
     /**
-     * 获取本机用户username
-     *
-     * @return
-     */
-    public static String getComputerName() {
-        Properties properties = System.getProperties();
-        Object name = properties.get("user.name");
-        return name.toString();
-    }
-
-    /**
      * 直接获取long目录下的文件
      *
      * @param fileName
@@ -157,5 +149,17 @@ public class Constant {
         return LONG_Path + fileName;
     }
 
+    /**
+     * 创建日志文件夹和数据存储文件夹
+     */
+    static {
+        new File(LOG_Path).mkdir();
+        new File(LONG_Path).mkdir();
+        File file = new File(REQUEST_Path);
+        file.mkdir();
+        int length = file.listFiles().length;
+        if (length > 1000) FailException.fail("request日志记录量过多!");
+        logger.info("当前用户：{}，IP：{}，工作目录：{},请求记录总量: {},系统编码格式:{},系统{}版本:{}", COMPUTER_USER_NAME, LOCAL_IP, WORK_SPACE, length, SYS_ENCODING, SYS_NAME, SYS_VERSION);
+    }
 
 }
