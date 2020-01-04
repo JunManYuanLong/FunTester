@@ -63,7 +63,7 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
      * @param request 请求
      * @throws IOException
      */
-    void getResponse(HttpRequestBase request) throws IOException {
+    static void getResponse(HttpRequestBase request) throws IOException {
         CloseableHttpResponse response = ClientManage.httpsClient.execute(request);
         if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
             String content = FanLibrary.getContent(response);
