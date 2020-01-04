@@ -348,7 +348,7 @@ public class FunRequest extends FanLibrary implements Serializable, Cloneable {
  * @return
  */
     static HttpRequestBase cloneRequest(HttpRequestBase base) {
-        return initFromRequest(base).getRequest()
+        initFromRequest(base).getRequest()
     }
 
 /**
