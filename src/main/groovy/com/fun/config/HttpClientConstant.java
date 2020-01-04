@@ -92,12 +92,12 @@ public class HttpClientConstant {
     /**
      * 重试次数
      */
-    public static int TRY_TIMES = 3;
+    public static int TRY_TIMES = propertyUtils.getPropertyInt("TRY_TIMES");
 
     /**
      * 关闭超时的链接
      */
-    public static int IDLE_TIMEOUT = 100;
+    public static int IDLE_TIMEOUT = 5;
 
     /**
      * 在设置请求contenttype参数，表示请求以io流发送数据
