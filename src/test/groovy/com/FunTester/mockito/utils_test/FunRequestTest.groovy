@@ -1,12 +1,17 @@
 package com.FunTester.mockito.utils_test
 
 import com.fun.config.RequestType
+import com.fun.frame.SourceCode
+import com.fun.frame.httpclient.FanLibrary
 import com.fun.frame.httpclient.FunRequest
 import org.apache.http.Header
+import org.apache.http.client.methods.HttpPost
+import org.apache.http.client.methods.HttpRequestBase
 import org.slf4j.Logger
 import spock.lang.Shared
 import spock.lang.Specification
 
+import static com.fun.frame.Output.output
 import static com.fun.frame.SourceCode.getJson
 import static com.fun.frame.SourceCode.getLogger
 import static org.mockito.ArgumentMatchers.anyInt
@@ -74,5 +79,46 @@ class FunRequestTest extends Specification {
 
         expect:
         "www.funtest.cn" == request.getUri()
+    }
+
+    def "测试拷贝请求的功能"() {
+        given:
+        HttpPost httpPost = FanLibrary.getHttpPost("https://cn.bing.com/search", SourceCode.getJson("q=fun"));
+        FanLibrary.getHttpResponse(httpPost);
+
+//        FunRequest.save(httpPost, getJson("3242=234"));
+
+        HttpRequestBase httpRequestBase = FunRequest.cloneRequest(httpPost);
+
+        HttpRequestBase base = FunRequest.doCopy(httpPost);
+
+        FanLibrary.getHttpResponse(httpRequestBase);
+        FanLibrary.getHttpResponse(base);
+
+
+        FanLibrary.testOver();
+
+        output "拷贝请求成功!"
+    }
+
+
+    def "测试拷贝GET请求的功能"() {
+        given:
+        def re = FanLibrary.getHttpGet("https://cn.bing.com/search", SourceCode.getJson("q=fun"));
+        FanLibrary.getHttpResponse(re);
+
+//        FunRequest.save(httpPost, getJson("3242=234"));
+
+        HttpRequestBase httpRequestBase = FunRequest.cloneRequest(re);
+
+        HttpRequestBase base = FunRequest.doCopy(re);
+
+        FanLibrary.getHttpResponse(httpRequestBase);
+        FanLibrary.getHttpResponse(base);
+
+
+        FanLibrary.testOver();
+
+        output "拷贝GET请求成功!"
     }
 }
