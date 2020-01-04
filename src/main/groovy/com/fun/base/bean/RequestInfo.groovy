@@ -1,9 +1,8 @@
 package com.fun.base.bean
 
-
 import com.fun.config.RequestType
 import org.apache.http.HttpEntity
-import org.apache.http.client.methods.HttpPost
+import org.apache.http.client.methods.HttpEntityEnclosingRequestBase
 import org.apache.http.client.methods.HttpRequestBase
 import org.apache.http.util.EntityUtils
 import org.slf4j.Logger
@@ -97,13 +96,12 @@ class RequestInfo extends AbstractBean {
     }
 
     /**
-     * 获取post请求的参数
+     * 获取响应实体,post path,put方法适用
      *
      * @param request
      */
-    private void getPostRequestParams(HttpRequestBase request) {
-        HttpPost httpPost = (HttpPost) request// 强转httppost请求
-        HttpEntity entity = httpPost.getEntity()// 获取实体
+    private void getPostRequestParams(HttpEntityEnclosingRequestBase request) {
+        HttpEntity entity = request.getEntity()// 获取实体
         if (entity == null) return
         try {
             params = EntityUtils.toString(entity)// 解析实体
