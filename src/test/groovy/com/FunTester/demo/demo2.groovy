@@ -20,12 +20,12 @@ class demo2 extends SourceCode {
 
         ("fanfanfanfan" =~ "\\wf").each {println it}
 
-        "fanfanfanfan".eachMatch(/\wa/){println it}
+        "fanfanfanfan".eachMatch(/\wa/) {println it}
 
         new File(getLongFile("1")).eachLine {println it}
 
         new File(getLongFile("33")) << DEFAULT_STRING
-        def a = [4,2432,43,24,2,4,32,42,4,2]
+        def a = [4, 2432, 43, 24, 2, 4, 32, 42, 4, 2]
         def set = a.toSet()
         println set
         def any = a.any {
