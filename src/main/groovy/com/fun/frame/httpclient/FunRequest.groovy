@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory
 /**
  * 重写FanLibrary，使用面对对象思想
  */
-public class FunRequest extends FanLibrary implements Serializable, Cloneable {
+class FunRequest extends FanLibrary implements Serializable, Cloneable {
 
     private static final long serialVersionUID = -4153600036943378727L;
 
