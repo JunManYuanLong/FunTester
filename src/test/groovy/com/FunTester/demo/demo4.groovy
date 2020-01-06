@@ -15,7 +15,7 @@ class demo4 extends SourceCode {
         println map
         def list = [3,4]
 
-        println s(*list)
+//        println s(*list)//编译器会报错,但是可以用
 
         List<JSONObject> ss = new ArrayList<>()
         ss.add(getJson("324=23"))
