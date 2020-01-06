@@ -2,6 +2,9 @@ package com.fun.base.interfaces;
 
 import org.apache.http.client.methods.HttpRequestBase;
 
+/**
+ * 用来标记request,为了记录超时的请求
+ */
 public interface MarkRequest {
 
     /**
