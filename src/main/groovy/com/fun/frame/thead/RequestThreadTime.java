@@ -65,6 +65,7 @@ public class RequestThreadTime extends ThreadLimitTimeCount {
 
     @Override
     public void before() {
+        super.before();
         GCThread.starts();
     }
 
