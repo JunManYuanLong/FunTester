@@ -91,5 +91,9 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
         return errorNum > 10;
     }
 
+    public void stop() {
+        key = true;
+    }
+
 
 }

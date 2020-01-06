@@ -24,7 +24,7 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable, Seri
      * 会在concurrent类里面根据线程数自动设定
      * </p>
      */
-    CountDownLatch countDownLatch;
+   protected CountDownLatch countDownLatch;
 
     /**
      * 用于设置访问资源
