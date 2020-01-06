@@ -1,10 +1,15 @@
 package com.FunTester.mockito.utils_test
 
+import com.fun.base.interfaces.MarkRequest
+import com.fun.config.HttpClientConstant
 import com.fun.config.RequestType
 import com.fun.frame.SourceCode
+import com.fun.frame.excute.Concurrent
 import com.fun.frame.httpclient.FanLibrary
 import com.fun.frame.httpclient.FunRequest
+import com.fun.frame.thead.RequestThreadTimes
 import org.apache.http.Header
+import org.apache.http.client.methods.HttpGet
 import org.apache.http.client.methods.HttpPost
 import org.apache.http.client.methods.HttpRequestBase
 import org.slf4j.Logger
@@ -120,5 +125,28 @@ class FunRequestTest extends Specification {
         FanLibrary.testOver();
 
         output "拷贝GET请求成功!"
+    }
+
+
+    def "测试并发情况下记录响应标记符的"() {
+        given:
+        HttpGet httpGet = FanLibrary.getHttpGet("https://www.bing.com/");
+        MarkRequest mark = new MarkRequest() {
+
+            @Override
+            public String mark(HttpRequestBase base) {
+                base.removeHeaders("requestid");
+                String value = "fun_" + SourceCode.getNanoMark();
+                base.addHeader("requestid", value);
+                return value;
+            }
+        };
+        FanLibrary.getHttpResponse(httpGet);
+        HttpClientConstant.MAX_ACCEPT_TIME = -1
+        RequestThreadTimes threadTimes = new RequestThreadTimes(httpGet, 2, mark);
+        new Concurrent(threadTimes, 2).start();
+
+      output(RequestThreadTimes.requestMark)
+
     }
 }
