@@ -42,6 +42,11 @@ public class HttpClientConstant {
     public static int SOCKET_TIMEOUT = propertyUtils.getPropertyInt("SOCKET_TIMEOUT") * 1000;
 
     /**
+     * 记录
+     */
+    public static int MAX_ACCEPT_TIME = propertyUtils.getPropertyInt("MAX_ACCEPT_TIME") * 1000;
+
+    /**
      * 连接池最大连接数
      */
     public static int MAX_TOTAL_CONNECTION = 2000;
