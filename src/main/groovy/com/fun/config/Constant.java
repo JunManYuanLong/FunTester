@@ -31,6 +31,8 @@ public class Constant {
 
     public static final String SPACE_1 = " ";
 
+    public static final String CONNECTOR = "_";
+
     public static final String DEFAULT_STRING = "FunTester";
 
     public static final int TEST_ERROR_CODE = -2;
