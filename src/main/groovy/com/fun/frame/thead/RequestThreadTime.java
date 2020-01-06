@@ -6,13 +6,10 @@ import com.fun.config.Constant;
 import com.fun.config.HttpClientConstant;
 import com.fun.frame.Save;
 import com.fun.frame.excute.Concurrent;
-import com.fun.frame.httpclient.ClientManage;
 import com.fun.frame.httpclient.FanLibrary;
 import com.fun.frame.httpclient.FunRequest;
 import com.fun.frame.httpclient.GCThread;
 import com.fun.utils.Time;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,12 +68,7 @@ public class RequestThreadTime extends ThreadLimitTimeCount {
 
     @Override
     protected void doing() throws Exception {
-        CloseableHttpResponse response = ClientManage.httpsClient.execute(request);
-        if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
-            String content = FanLibrary.getContent(response);
-            logger.warn("响应状态码：{},响应内容：{}", content, response.getStatusLine());
-        }
-        response.close();
+        FanLibrary.excuteSimlple(request);
     }
 
     @Override

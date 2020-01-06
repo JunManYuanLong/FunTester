@@ -467,6 +467,20 @@ public class FanLibrary extends SourceCode {
     }
 
     /**
+     * 简单发送请求,只记录HTTP错误
+     *
+     * @param request
+     */
+    public static void excuteSimlple(HttpRequestBase request) throws IOException {
+        CloseableHttpResponse response = ClientManage.httpsClient.execute(request);
+        if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
+            String content = FanLibrary.getContent(response);
+            logger.warn("响应状态码：{},响应内容：{}", content, response.getStatusLine());
+        }
+        response.close();
+    }
+
+    /**
      * 获取最后一个发出的请求
      *
      * @return

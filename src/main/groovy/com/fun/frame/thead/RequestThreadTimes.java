@@ -6,13 +6,10 @@ import com.fun.config.Constant;
 import com.fun.config.HttpClientConstant;
 import com.fun.frame.Save;
 import com.fun.frame.excute.Concurrent;
-import com.fun.frame.httpclient.ClientManage;
 import com.fun.frame.httpclient.FanLibrary;
 import com.fun.frame.httpclient.FunRequest;
 import com.fun.frame.httpclient.GCThread;
 import com.fun.utils.Time;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -90,19 +87,11 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
     }
 
     /**
-     * 多次执行某个请求，但是不记录日志，记录方法用 loglong
-     * <p>此方法只适应与单个请求的重复请求，对于有业务联系的请求暂时不能适配</p>
-     *
      * @throws Exception
      */
     @Override
     protected void doing() throws Exception {
-        CloseableHttpResponse response = ClientManage.httpsClient.execute(request);
-        if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
-            String content = FanLibrary.getContent(response);
-            logger.warn("响应状态码：{},响应内容：{}", content, response.getStatusLine());
-        }
-        response.close();
+        FanLibrary.excuteSimlple(request);
     }
 
     @Override
@@ -157,6 +146,5 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
         threadTimes.mark = this.mark;
         return threadTimes;
     }
-
 
 }
