@@ -1,12 +1,10 @@
 package com.fun.db.redis;
 
-import com.fun.base.bean.BeanUtil;
 import com.fun.config.PropertyUtils;
 import com.fun.frame.SourceCode;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 

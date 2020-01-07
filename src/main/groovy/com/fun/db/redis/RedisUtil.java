@@ -1,12 +1,9 @@
 package com.fun.db.redis;
 
-import com.fun.frame.SourceCode;
-import com.fun.frame.httpclient.FanLibrary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
-import java.sql.Blob;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -69,7 +66,7 @@ public class RedisUtil extends RedisPool {
      *
      * @param key
      * @param value
-     * @param exTime 过期时间，单位s
+     * @param expiredTime
      * @return
      */
     public static String set(String key, String value, int expiredTime) {
@@ -176,7 +173,8 @@ public class RedisUtil extends RedisPool {
     /**
      * 获取符合条件的key集合
      *
-     * @param pattern
+     * @param key
+     * @param content
      * @return
      */
     public static boolean append(String key, String content) {
