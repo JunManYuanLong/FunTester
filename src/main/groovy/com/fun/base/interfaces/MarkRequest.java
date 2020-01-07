@@ -12,10 +12,10 @@ public interface MarkRequest extends Serializable {
     /**
      * 用来标记base,删除header其中一项,添加一项
      *
-     * @param base
+     * @param request
      * @return
      */
-    public String mark(HttpRequestBase base);
+    public String mark(HttpRequestBase request);
 
 
 }
