@@ -49,6 +49,8 @@ public class RequestThreadTime extends ThreadLimitTimeCount {
         this.request = request;
         this.time = time;
         this.mark = new MarkRequest() {
+            private static final long serialVersionUID = -7451004319787009435L;
+
             @Override
             public String mark(HttpRequestBase base) {
                 return EMPTY;
@@ -121,7 +123,7 @@ public class RequestThreadTime extends ThreadLimitTimeCount {
         RequestThreadTime threadTime = new RequestThreadTime();
         threadTime.time = this.time;
         threadTime.request = FunRequest.cloneRequest(request);
-        threadTime.mark = this.mark;
+        threadTime.mark = deepClone(mark);
         return threadTime;
     }
 
