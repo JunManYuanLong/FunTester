@@ -101,7 +101,6 @@ class FunRequestTest extends Specification {
         FanLibrary.getHttpResponse(base);
 
 
-        FanLibrary.testOver();
 
         output "拷贝请求成功!"
     }
@@ -122,11 +121,23 @@ class FunRequestTest extends Specification {
         FanLibrary.getHttpResponse(base);
 
 
-        FanLibrary.testOver();
 
         output "拷贝GET请求成功!"
     }
 
+    def "测试get请求的url,save功能"() {
+        given:
+        def re = FanLibrary.getHttpGet("https://cn.bing.com/search", SourceCode.getJson("q=fun"));
+
+        HttpRequestBase httpRequestBase = FunRequest.cloneRequest(re);
+
+        def response = FanLibrary.getHttpResponse(re)
+
+        FunRequest.save(re, response)
+
+
+        output "拷贝GET请求成功!"
+    }
 
     def "测试并发情况下记录响应标记符的"() {
         given:
