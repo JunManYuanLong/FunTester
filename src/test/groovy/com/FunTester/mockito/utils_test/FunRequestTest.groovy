@@ -8,6 +8,8 @@ import com.fun.frame.excute.Concurrent
 import com.fun.frame.httpclient.FanLibrary
 import com.fun.frame.httpclient.FunRequest
 import com.fun.frame.thead.RequestThreadTimes
+import com.fun.utils.RString
+import com.fun.utils.Time
 import org.apache.http.Header
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.client.methods.HttpPost
@@ -16,13 +18,16 @@ import org.slf4j.Logger
 import spock.lang.Shared
 import spock.lang.Specification
 
+import static com.fun.config.Constant.CONNECTOR
 import static com.fun.frame.Output.output
 import static com.fun.frame.SourceCode.getJson
 import static com.fun.frame.SourceCode.getLogger
 import static org.mockito.ArgumentMatchers.anyInt
 import static org.mockito.Mockito.*
 
-class FunRequestTest extends Specification {
+class FunRequestTest extends Specification implements Serializable {
+
+    private static final long serialVersionUID = -2751257651625435030L;
 
     @Shared
     Logger logger = getLogger(this.getClass().getName())
@@ -141,23 +146,27 @@ class FunRequestTest extends Specification {
 
     def "测试并发情况下记录响应标记符的"() {
         given:
-        HttpGet httpGet = FanLibrary.getHttpGet("https://www.bing.com/");
+        HttpGet httpGet = FanLibrary.getHttpGet("https://cn.bing.com/");
         MarkRequest mark = new MarkRequest() {
+
+            String m;
 
             @Override
             public String mark(HttpRequestBase base) {
                 base.removeHeaders("requestid");
-                String value = "fun_" + SourceCode.getNanoMark();
+                m = m == null ? RString.getStringWithoutNum(4) : m
+                String value = "fun_" + m + CONNECTOR + Time.getTimeStamp();
                 base.addHeader("requestid", value);
                 return value;
             }
+
         };
         FanLibrary.getHttpResponse(httpGet);
         HttpClientConstant.MAX_ACCEPT_TIME = -1
         RequestThreadTimes threadTimes = new RequestThreadTimes(httpGet, 2, mark);
         new Concurrent(threadTimes, 2).start();
 
-      output(RequestThreadTimes.requestMark)
+        output(RequestThreadTimes.requestMark)
 
     }
 }
