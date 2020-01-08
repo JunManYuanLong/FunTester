@@ -359,7 +359,7 @@ class FunRequest extends FanLibrary implements Serializable, Cloneable {
     public static void save(HttpRequestBase base, JSONObject response) {
         FunRequest request = initFromRequest(base)
         request.setResponse(response);
-        Save.info("/request/" + Time.getDate().substring(8) + SPACE_1 + request.getUri().replace(OR, PART).replaceAll("https*:\\|\\|", EMPTY), request.toString());
+        Save.info("/request/" + Time.getDate().substring(8) + SPACE_1 + request.getUri().replace(OR, CONNECTOR).replaceAll("https*:_+", EMPTY), request.toString());
     }
 
 }
