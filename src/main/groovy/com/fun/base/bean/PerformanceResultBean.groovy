@@ -69,6 +69,7 @@ class PerformanceResultBean extends AbstractBean {
         this.errorRate = errorRate
         this.failRate = failRate
         this.excuteTotal = excuteTotal
+        output(this.toJson())
         MySqlTest.savePerformanceBean(this)
     }
 
