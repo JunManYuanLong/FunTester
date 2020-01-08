@@ -117,7 +117,6 @@ public class MySqlTest extends SqlBase {
     public static void savePerformanceBean(PerformanceResultBean bean) {
         if (!StringUtils.isNoneEmpty(SqlConstant.PERFORMANCE_TABLE)) return;
         String sql = String.format("INSERT INTO " + SqlConstant.PERFORMANCE_TABLE + "(threads,total,rt,qps,error,fail,des,start_time,end_time) VALUES (%d,%d,%d,%f,%f,%f,'%s','%s','%s');", bean.getThreads(), bean.getTotal(), bean.getRt(), bean.getQps(), bean.getErrorRate(), bean.getFailRate(), bean.getDesc(), bean.getStartTime(), bean.getEndTime());
-        logger.info("记录性能测试数据：{}", bean.toJson());
         sendWork(sql);
     }
 
@@ -243,8 +242,8 @@ public class MySqlTest extends SqlBase {
      * @return
      */
     public static void sendWork(String sql) {
-        logger.debug("记录SQL：{}", sql);
         if (!SqlConstant.flag) return;
+        logger.debug("记录SQL：{}", sql);
         FanLibrary.noHeader();
         JSONObject argss = new JSONObject();
         argss.put("sql", DecodeEncode.urlEncoderText(sql));
