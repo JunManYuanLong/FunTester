@@ -2,7 +2,6 @@ package com.fun.frame.thead;
 
 import com.fun.base.constaint.ThreadLimitTimesCount;
 import com.fun.base.interfaces.MarkRequest;
-import com.fun.config.Constant;
 import com.fun.config.HttpClientConstant;
 import com.fun.frame.Save;
 import com.fun.frame.excute.Concurrent;
@@ -102,7 +101,8 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
         requestMark.addAll(marks);
         GCThread.stop();
         synchronized (RequestThreadTimes.class) {
-            if (countDownLatch.getCount() == 0) Save.saveStringList(requestMark, Constant.DEFAULT_STRING);
+            if (countDownLatch.getCount() == 0)
+                Save.saveStringList(requestMark, MARK_Path.replace(LONG_Path, EMPTY) + Time.getDate() + request.getURI().toString().replace("/", CONNECTOR));
         }
     }
 
@@ -149,5 +149,6 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
         threadTimes.mark = deepClone(mark);
         return threadTimes;
     }
+
 
 }
