@@ -96,7 +96,12 @@ public class Constant {
     /**
      * request日志记录目录
      */
-    public static final String REQUEST_Path = WORK_SPACE + "long/request/";
+    public static final String REQUEST_Path = LONG_Path + "request/";
+
+    /**
+     * 标记请求地址
+     */
+    public static final String MARK_Path = LONG_Path + "mark/";
 
     /**
      * 毫秒数
@@ -158,10 +163,14 @@ public class Constant {
         new File(LOG_Path).mkdir();
         new File(LONG_Path).mkdir();
         File file = new File(REQUEST_Path);
+        File mark = new File(MARK_Path);
         file.mkdir();
+        mark.mkdir();
         int length = file.listFiles().length;
-        if (length > 1000) FailException.fail("request日志记录量过多!");
-        logger.info("当前用户：{}，IP：{}，工作目录：{},请求记录总量: {},系统编码格式:{},系统{}版本:{}", COMPUTER_USER_NAME, LOCAL_IP, WORK_SPACE, length, SYS_ENCODING, SYS_NAME, SYS_VERSION);
+        int markNum = mark.listFiles().length;
+        if (length > 200) FailException.fail("request日志记录量过多!");
+        if (markNum > 200) FailException.fail("mark日志记录量过多!");
+        logger.info("当前用户：{}，IP：{}，工作目录：{},系统编码格式:{},系统{}版本:{}", COMPUTER_USER_NAME, LOCAL_IP, WORK_SPACE, SYS_ENCODING, SYS_NAME, SYS_VERSION);
     }
 
 }
