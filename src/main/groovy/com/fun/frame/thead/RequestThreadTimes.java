@@ -57,11 +57,14 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
         this.times = times;
         this.mark = new MarkRequest() {
 
-            private static final long serialVersionUID = 5599842482575655279L;
-
             @Override
             public String mark(HttpRequestBase base) {
                 return EMPTY;
+            }
+
+            @Override
+            public MarkRequest clone() {
+                return this;
             }
         };
     }
@@ -146,7 +149,7 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
         RequestThreadTimes threadTimes = new RequestThreadTimes();
         threadTimes.times = this.times;
         threadTimes.request = FunRequest.cloneRequest(request);
-        threadTimes.mark = deepClone(mark);
+        threadTimes.mark = mark.clone();
         return threadTimes;
     }
 

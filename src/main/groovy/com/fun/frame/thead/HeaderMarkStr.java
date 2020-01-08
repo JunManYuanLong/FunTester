@@ -8,8 +8,6 @@ import org.apache.http.client.methods.HttpRequestBase;
 
 public abstract class HeaderMarkStr extends SourceCode implements MarkRequest {
 
-    private static final long serialVersionUID = 1730580911420795709L;
-
     String headerName;
 
     String m;
@@ -22,7 +20,10 @@ public abstract class HeaderMarkStr extends SourceCode implements MarkRequest {
         request.addHeader(headerName, value);
         return value;
     }
-
+    @Override
+    public HeaderMarkStr clone() {
+        return this;
+    }
     public HeaderMarkStr(String headerName) {
         this.headerName = headerName;
     }
