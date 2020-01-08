@@ -105,7 +105,7 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
         GCThread.stop();
         synchronized (RequestThreadTimes.class) {
             if (countDownLatch.getCount() == 0)
-                Save.saveStringList(requestMark, MARK_Path.replace(LONG_Path, EMPTY) + Time.getDate() + request.getURI().toString().replace("/", CONNECTOR));
+                Save.saveStringList(requestMark, MARK_Path.replace(LONG_Path, EMPTY) + getMark()  + request.getURI().toString().replace("/", CONNECTOR));
         }
     }
 

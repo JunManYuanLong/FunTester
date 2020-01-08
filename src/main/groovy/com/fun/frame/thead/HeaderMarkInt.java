@@ -4,7 +4,11 @@ import com.fun.base.interfaces.MarkRequest;
 import com.fun.frame.SourceCode;
 import org.apache.http.client.methods.HttpRequestBase;
 
-public abstract class HeaderMarkInt extends SourceCode implements MarkRequest {
+import java.io.Serializable;
+
+public class HeaderMarkInt extends SourceCode implements MarkRequest,Cloneable, Serializable {
+
+    private static final long serialVersionUID = -1595942567071153477L;
 
     String headerName;
 
@@ -20,7 +24,7 @@ public abstract class HeaderMarkInt extends SourceCode implements MarkRequest {
 
     @Override
     public HeaderMarkInt clone() {
-        return this;
+        return new HeaderMarkInt(headerName);
     }
 
     public HeaderMarkInt(String headerName) {

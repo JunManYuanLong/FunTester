@@ -6,7 +6,11 @@ import com.fun.utils.RString;
 import com.fun.utils.Time;
 import org.apache.http.client.methods.HttpRequestBase;
 
-public abstract class HeaderMarkStr extends SourceCode implements MarkRequest {
+import java.io.Serializable;
+
+public class HeaderMarkStr extends SourceCode implements MarkRequest, Cloneable, Serializable {
+
+    private static final long serialVersionUID = 3461028184513435518L;
 
     String headerName;
 
@@ -20,10 +24,12 @@ public abstract class HeaderMarkStr extends SourceCode implements MarkRequest {
         request.addHeader(headerName, value);
         return value;
     }
+
     @Override
     public HeaderMarkStr clone() {
-        return this;
+        return new HeaderMarkStr(headerName);
     }
+
     public HeaderMarkStr(String headerName) {
         this.headerName = headerName;
     }
