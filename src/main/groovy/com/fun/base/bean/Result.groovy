@@ -2,9 +2,11 @@ package com.fun.base.bean
 /**
  * 通用的返回体
  * 配合moco框架使用
- * @param < T >
+ * @param <T >
  */
 class Result<T> extends AbstractBean {
+
+    private static final long serialVersionUID = -1255726737452768380L;
     /**
      * code码
      */
@@ -36,7 +38,8 @@ class Result<T> extends AbstractBean {
         new Result<>(0, data)
     }
 
-    def Result() {}
+    def Result() {
+    }
 
 /**
  * 返回通用失败的响应内容

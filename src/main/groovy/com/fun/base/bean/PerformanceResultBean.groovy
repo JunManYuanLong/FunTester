@@ -7,6 +7,8 @@ import com.fun.db.mysql.MySqlTest
  * 性能测试结果集
  */
 class PerformanceResultBean extends AbstractBean {
+
+    private static final long serialVersionUID = -1236526737452768380L;
     /**
      * 测试用例描述
      */
