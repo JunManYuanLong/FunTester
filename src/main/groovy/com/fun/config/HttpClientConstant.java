@@ -27,19 +27,19 @@ public class HttpClientConstant {
     public static Header USER_AGENT = getHeader("User-Agent", getProperty("User-Agent"));
 
     /**
-     * 从连接池中获取可用连接最大超时时间 单位：毫秒
+     * 从连接目标url最大超时 单位：毫秒
      */
-    public static int CONNECT_REQUEST_TIMEOUT = 5 * 1000;
+    public static int CONNECT_REQUEST_TIMEOUT = propertyUtils.getPropertyInt("TIMEOUT") * 1000;
 
     /**
-     * 连接目标url最大超时 单位：毫秒
+     * 连接池中获取可用连接最大超时时间 单位：毫秒
      */
-    public static int CONNECT_TIMEOUT = propertyUtils.getPropertyInt("CONNECT_TIMEOUT") * 1000;
+    public static int CONNECT_TIMEOUT = CONNECT_REQUEST_TIMEOUT;
 
     /**
      * 等待响应（读数据）最大超时 单位：毫秒
      */
-    public static int SOCKET_TIMEOUT = propertyUtils.getPropertyInt("SOCKET_TIMEOUT") * 1000;
+    public static int SOCKET_TIMEOUT = CONNECT_REQUEST_TIMEOUT;
 
     /**
      * 记录
