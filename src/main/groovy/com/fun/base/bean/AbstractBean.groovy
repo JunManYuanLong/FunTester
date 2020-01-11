@@ -9,9 +9,7 @@ import org.slf4j.LoggerFactory
 /**
  * bean的基类
  */
-abstract class AbstractBean extends SourceCode implements Serializable {
-
-    private static final long serialVersionUID = -4153600636513348747L;
+abstract class AbstractBean extends SourceCode {
 
     static final Logger logger = LoggerFactory.getLogger(AbstractBean.class)
 

@@ -6,7 +6,6 @@ package com.fun.base.bean
  */
 class Result<T> extends AbstractBean {
 
-    private static final long serialVersionUID = -1255726737452768380L;
     /**
      * code码
      */

@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory
  */
 class RequestInfo extends AbstractBean {
 
-    private static final long serialVersionUID = -1255726737459848380L;
     private static Logger logger = LoggerFactory.getLogger(RequestInfo.class)
 
     /**

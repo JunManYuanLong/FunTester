@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory
  */
 class RecordBean extends AbstractBean {
 
-    private static final long serialVersionUID = -1255726737452725880L;
     static Logger logger = LoggerFactory.getLogger(RecordBean.class)
 
     String domain;
