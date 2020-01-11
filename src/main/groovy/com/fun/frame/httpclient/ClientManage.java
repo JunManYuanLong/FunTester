@@ -181,9 +181,7 @@ public class ClientManage extends SourceCode {
      * @return
      */
     private static CloseableHttpClient getCloseableHttpsClients() {
-        // 创建自定义的httpsclient对象
-        CloseableHttpClient client = HttpClients.custom().setConnectionManager(connManager).setRetryHandler(httpRequestRetryHandler).setDefaultRequestConfig(requestConfig).build();
-        return client;
+        return HttpClients.custom().setConnectionManager(connManager).setRetryHandler(httpRequestRetryHandler).setDefaultRequestConfig(requestConfig).build();
     }
 
     /**
@@ -207,5 +205,21 @@ public class ClientManage extends SourceCode {
         connManager.closeExpiredConnections();
         connManager.closeIdleConnections(HttpClientConstant.IDLE_TIMEOUT, TimeUnit.MILLISECONDS);
     }
+
+    /**
+     * 重新初始化连接池,用于临时改变超时和超时标准线的重置
+     *
+     * @param timeout
+     * @param accepttime
+     */
+    public static void init(int timeout, int accepttime) {
+        HttpClientConstant.CONNECT_REQUEST_TIMEOUT = timeout;
+        HttpClientConstant.CONNECT_TIMEOUT = timeout;
+        HttpClientConstant.SOCKET_TIMEOUT = timeout;
+        HttpClientConstant.MAX_ACCEPT_TIME = accepttime;
+        requestConfig = getRequestConfig();
+        httpsClient = getCloseableHttpsClients();
+    }
+
 
 }
