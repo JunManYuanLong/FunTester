@@ -111,9 +111,10 @@ public interface IBase {
 
     /**
      * 校验响应正确性
-     *<p>
-     *     用于处理响应结果，一般校验json的必要层级和响应码
-     *</p>
+     * <p>
+     * 用于处理响应结果，一般校验json的必要层级和响应码
+     * </p>
+     *
      * @param response
      * @return
      */
@@ -121,10 +122,11 @@ public interface IBase {
 
     /**
      * 检查响应是否符合标准
-     *<p>
-     *     会在fanlibrary类使用，如果没有ibase对象，会默认返回test_error_code
-     *     requestinfo主要用于校验该请求是否需要校验，黑名单有配置black_host提供【】
-     *</p>
+     * <p>
+     * 会在fanlibrary类使用，如果没有ibase对象，会默认返回test_error_code
+     * requestinfo主要用于校验该请求是否需要校验，黑名单有配置black_host提供【】
+     * </p>
+     *
      * @param response    响应json
      * @param requestInfo 请求info
      * @return
@@ -158,9 +160,23 @@ public interface IBase {
     /**
      * 初始化对象，从json数据中，一般指cookie
      * <p>
-     *     主要用于new了新的对象之后，然后赋值的操作，场景是从另外一个服务的对象拷贝到现在的对象，区别于clone，因为可能还会涉及其他的验证，所以单独写出一个方法，极少用到
+     * 主要用于new了新的对象之后，然后赋值的操作，场景是从另外一个服务的对象拷贝到现在的对象，区别于clone，因为可能还会涉及其他的验证，所以单独写出一个方法，极少用到
      * </p>
      */
     void init(JSONObject info);
+
+
+    /**
+     * 记录请求
+     */
+    void recordRequest();
+
+    /**
+     * 获取请求,用于并发
+     *
+     * @return
+     */
+    HttpRequestBase getRequest();
+
 
 }

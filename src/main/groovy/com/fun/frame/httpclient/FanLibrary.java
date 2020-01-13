@@ -56,11 +56,6 @@ public class FanLibrary extends SourceCode {
     }
 
     /**
-     * 最近发送的请求
-     */
-    public static LinkedList<HttpRequestBase> requests = new LinkedList<>();
-
-    /**
      * 是否显示请求所有header的开关
      */
     static boolean HEADER_KEY = false;
@@ -337,10 +332,6 @@ public class FanLibrary extends SourceCode {
                 new AlertOver("接口请求失败", requestInfo.toString(), requestInfo.getUrl(), requestInfo).sendSystemMessage();
         } finally {
             HEADER_KEY = false;
-            if (!requestInfo.isBlack()) {
-                if (requests.size() > 9) requests.removeFirst();
-                requests.add(request);
-            }
         }
         return res;
     }
@@ -478,15 +469,6 @@ public class FanLibrary extends SourceCode {
             logger.warn("响应状态码：{},响应内容：{}", content, response.getStatusLine());
         }
         response.close();
-    }
-
-    /**
-     * 获取最后一个发出的请求
-     *
-     * @return
-     */
-    public static HttpRequestBase getLastRequest() {
-        return requests.getLast();
     }
 
     /**
