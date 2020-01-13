@@ -22,8 +22,6 @@ import java.util.Vector;
  */
 public class RequestThreadTime extends ThreadLimitTimeCount {
 
-    private static final long serialVersionUID = -4210938493934016518L;
-
     static Logger logger = LoggerFactory.getLogger(RequestThreadTime.class);
 
     /**

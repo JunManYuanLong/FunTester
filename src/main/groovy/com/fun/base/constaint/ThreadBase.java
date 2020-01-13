@@ -2,7 +2,6 @@ package com.fun.base.constaint;
 
 import com.fun.frame.SourceCode;
 
-import java.io.Serializable;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -10,9 +9,7 @@ import java.util.concurrent.CountDownLatch;
  *
  * @param <T> 必需实现Serializable
  */
-public abstract class ThreadBase<T> extends SourceCode implements Runnable, Serializable {
-
-    private static final long serialVersionUID = -1060930011532994028L;
+public abstract class ThreadBase<T> extends SourceCode implements Runnable {
 
     public int errorNum;
 

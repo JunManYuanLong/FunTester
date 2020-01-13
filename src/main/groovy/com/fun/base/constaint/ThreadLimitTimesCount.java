@@ -21,8 +21,6 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
 
     private static final Logger logger = LoggerFactory.getLogger(ThreadLimitTimesCount.class);
 
-    private static final long serialVersionUID = 3624618275201536440L;
-
     /**
      * 全局的时间终止开关
      */
