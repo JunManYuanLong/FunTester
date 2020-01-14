@@ -211,14 +211,17 @@ public class ClientManage extends SourceCode {
      *
      * @param timeout
      * @param accepttime
+     * @param retrytime
      */
-    public static void init(int timeout, int accepttime) {
+    public static void init(int timeout, int accepttime, int retrytime) {
         HttpClientConstant.CONNECT_REQUEST_TIMEOUT = timeout;
         HttpClientConstant.CONNECT_TIMEOUT = timeout;
         HttpClientConstant.SOCKET_TIMEOUT = timeout;
         HttpClientConstant.MAX_ACCEPT_TIME = accepttime;
+        HttpClientConstant.TRY_TIMES = retrytime;
         requestConfig = getRequestConfig();
         httpsClient = getCloseableHttpsClients();
+        httpRequestRetryHandler = getHttpRequestRetryHandler();
     }
 
 
