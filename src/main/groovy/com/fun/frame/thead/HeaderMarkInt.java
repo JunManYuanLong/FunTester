@@ -6,7 +6,7 @@ import org.apache.http.client.methods.HttpRequestBase;
 
 import java.io.Serializable;
 
-public class HeaderMarkInt extends SourceCode implements MarkRequest,Cloneable, Serializable {
+public class HeaderMarkInt extends SourceCode implements MarkRequest, Cloneable, Serializable {
 
     private static final long serialVersionUID = -1595942567071153477L;
 
@@ -14,10 +14,13 @@ public class HeaderMarkInt extends SourceCode implements MarkRequest,Cloneable, 
 
     int i;
 
+    int num = 100_0000;
+
     @Override
     public String mark(HttpRequestBase request) {
         request.removeHeaders(headerName);
-        String value = "fun_" + i++;
+        i = i == 0 ? getRandomInt(8999) + 1000 : i;
+        String value = 8 + EMPTY + i + num++;
         request.addHeader(headerName, value);
         return value;
     }
