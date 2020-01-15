@@ -43,7 +43,9 @@
 - [测试人员常用借口](https://mp.weixin.qq.com/s/0k_Ciud2sOpRb5PPiVzECw)
 - [测试自动化的边缘DevTestOps](https://mp.weixin.qq.com/s/kCySRYdCS11CA-lF30AtQA)
 - [筛选自动化测试用例的技巧](https://mp.weixin.qq.com/s/SWNopZLwgpj9yYsVEHEspw)
-w
+- [未来的QA测试工程师](https://mp.weixin.qq.com/s/ngL4sbEjZm7OFAyyWyQ3nQ)
+- [Web安全检查](https://mp.weixin.qq.com/s/SewUV3GMaNKD2P7g64ctYQ)
+
 
 ## 大咖风采
 

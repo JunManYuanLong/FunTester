@@ -27,6 +27,9 @@
 - [API测试基础](https://mp.weixin.qq.com/s/bkbUEa9CF21xMYSlhPcULw)
 - [拷贝HttpRequestBase对象](https://mp.weixin.qq.com/s/kxB1c0GmSF5OAM15UQJU2Q)
 - [API自动化测试指南](https://mp.weixin.qq.com/s/uy_Vn_ZVUEu3YAI1gW2T_A)
+- [如何统一接口测试的功能、自动化和性能测试用例](https://mp.weixin.qq.com/s/1xqtXNVw7BdUa03nVcsMTg)
+- [如何选择API测试工具](https://mp.weixin.qq.com/s/m2TNJDiqAAWYV9L6UP-29w)
+- [初学者的API测试技巧](https://mp.weixin.qq.com/s/_uk6dw5Q7CfS-gXGH-TZEQ)
 
 # 单元&白盒
 
@@ -38,6 +41,11 @@
 - [使用WireMock进行更好的集成测试](https://mp.weixin.qq.com/s/oMuVZOOQmuxSygJWH2_QHg)
 - [如何测试这个方法--功能篇](https://mp.weixin.qq.com/s/4zrwkc6ccozUGjOGV563dQ)
 - [如何测试这个方法--性能篇](https://mp.weixin.qq.com/s/QXl9_9Bj5c191oxkXmByUA)
+- [单元测试用例](https://mp.weixin.qq.com/s/UFEXJ1aXOvJUYp49iVLr5w)
+- [关于测试覆盖率](https://mp.weixin.qq.com/s/E15D785fkaWH7-YhiE5gPw)
+- [JUnit 5和Selenium基础（一）](https://mp.weixin.qq.com/s/ehBRf7st-OxeuvI_0yW3OQ)
+- [JUnit 5和Selenium基础（二）](https://mp.weixin.qq.com/s/Gt82cPmS2iX-DhKXTXiy8g)
+- [JUnit 5和Selenium基础（三）](https://mp.weixin.qq.com/s/8YkonXTYgAV5-pLs9yEAVw)
 
 ## 接口性能
 - [Linux性能监控软件netdata中文汉化版](https://mp.weixin.qq.com/s/7VG7gHx7FUvsuNtBTJpjWA)
@@ -52,7 +60,8 @@
 - [如何对单行多次update接口进行压测](https://mp.weixin.qq.com/s/Ly1Y4iPGgL6FNRsbOTv0sg)
 - [如何对多行单次update接口进行压测](https://mp.weixin.qq.com/s/Fsqw7vlw6K9EKa_XJwGIgQ)
 - [如何获取JVM堆转储文件](https://mp.weixin.qq.com/s/qCg7nsXVvT1q-9yquQOfWA)
-
+- [性能测试中标记每个请求](https://mp.weixin.qq.com/s/PokvzoLdVf_y9inlVXHJHQ)
+- [如何对N个接口按比例压测](https://mp.weixin.qq.com/s/GZxbH4GjDkk4BLqnUj1_kw)
 
 # 语言合集
 
@@ -68,6 +77,8 @@
 - [主线程都结束了，为何进程还在执行](https://mp.weixin.qq.com/s/q2v5JU5dtmNEol7I7IVY-Q)
 - [java测试框架如何执行groovy脚本文件](https://mp.weixin.qq.com/s/0GYt1l3_z5-1qzBNl6_PzA)
 - [从JVM堆内存分析验证深浅拷贝](https://mp.weixin.qq.com/s/SdYDnoau1rjjvPC2SUymBg)
+- [如何学习Java基础](https://mp.weixin.qq.com/s/FCPStkYoJF67NYln4Lc6xg)
+- [如何保存HTTPrequestbase和CloseableHttpResponse](https://mp.weixin.qq.com/s/gRY8HRQHCh0PfyS7Q22IwA)
 
 ## Groovy
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)
@@ -77,6 +88,7 @@
 - [愉快地使用Groovy Shell](https://mp.weixin.qq.com/s/fJh7fbB3naBFBEiaS62oxw)
 - [Gradle+Groovy基础篇](https://mp.weixin.qq.com/s/c2j7G-PoNtAB3oYYDUhCGw)
 - [Gradle+Groovy提高篇](https://mp.weixin.qq.com/s/yXmYj_1fynLkR0-5FV_Arw)
+- [Groovy重载操作符](https://mp.weixin.qq.com/s/4jW06Q4_vjFR9DovRTTuHg)
 
 
 ## Python
@@ -206,6 +218,8 @@
 - [测试自动化的边缘DevTestOps](https://mp.weixin.qq.com/s/kCySRYdCS11CA-lF30AtQA)
 - [筛选自动化测试用例的技巧](https://mp.weixin.qq.com/s/SWNopZLwgpj9yYsVEHEspw)
 - [什么阻碍手动测试发挥价值](https://mp.weixin.qq.com/s/t0VAVyA3ywQsHzaqzSILOw)
+- [未来的QA测试工程师](https://mp.weixin.qq.com/s/ngL4sbEjZm7OFAyyWyQ3nQ)
+- [Web安全检查](https://mp.weixin.qq.com/s/SewUV3GMaNKD2P7g64ctYQ)
 
 ## 大咖风采
 
@@ -261,7 +275,9 @@
 - [Selenium 4 Java的最佳测试框架](https://mp.weixin.qq.com/s/MlNyv-kb03gRTcYllxUreA)
 - [Selenium 4.0 Alpha更新日志](https://mp.weixin.qq.com/s/tU7sm-pcbpRNwDU9D3OVTQ)
 - [Selenium 4.0 Alpha更新实践](https://mp.weixin.qq.com/s/yT9wpO5o5aWBUus494TIHw)
-
+- [JUnit 5和Selenium基础（一）](https://mp.weixin.qq.com/s/ehBRf7st-OxeuvI_0yW3OQ)
+- [JUnit 5和Selenium基础（二）](https://mp.weixin.qq.com/s/Gt82cPmS2iX-DhKXTXiy8g)
+- [JUnit 5和Selenium基础（三）](https://mp.weixin.qq.com/s/8YkonXTYgAV5-pLs9yEAVw)
 
 ## APP性能
 - [使用monkey测试时，一个控制WiFi状态的多线程类](https://mp.weixin.qq.com/s/P8HVtzHBlj_FcDAAHFKBDg)
