@@ -2,7 +2,9 @@ package com.fun.base.constaint;
 
 import com.fun.frame.SourceCode;
 
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
+import java.util.stream.Collectors;
 
 /**
  * 多线程任务基类，可单独使用
@@ -21,7 +23,7 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
      * 会在concurrent类里面根据线程数自动设定
      * </p>
      */
-   protected CountDownLatch countDownLatch;
+    protected CountDownLatch countDownLatch;
 
     /**
      * 用于设置访问资源
@@ -85,6 +87,16 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
      */
     public boolean status() {
         return false;
+    }
+
+    /**
+     * Groovy乘法调用方法
+     *
+     * @param num
+     * @return
+     */
+    public List<ThreadBase> multiply(int num) {
+        return range(num).mapToObj(x -> this.clone()).collect(Collectors.toList());
     }
 
 
