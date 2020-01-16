@@ -1,5 +1,6 @@
 package com.FunTester.mockito.utils_test
 
+
 import com.fun.base.interfaces.MarkRequest
 import com.fun.config.HttpClientConstant
 import com.fun.config.RequestType
@@ -149,8 +150,7 @@ class FunRequestTest extends Specification implements Serializable {
         FanLibrary.getHttpResponse(httpGet);
         HttpClientConstant.MAX_ACCEPT_TIME = -1
         RequestThreadTimes threadTimes = new RequestThreadTimes(httpGet, 2, mark);
-        new Concurrent(threadTimes, 2).start();
-
+        new Concurrent(threadTimes * 2).start();
         output(RequestThreadTimes.requestMark)
 
     }
