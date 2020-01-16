@@ -38,7 +38,7 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
      *
      * @return
      */
-    public String getT() {
+    public String getTString() {
         return t.toString();
     }
 
