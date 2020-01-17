@@ -1,18 +1,11 @@
 package com.FunTester.mockito.utils_test
 
 
-import com.fun.base.interfaces.MarkThread
-import com.fun.config.HttpClientConstant
 import com.fun.config.RequestType
 import com.fun.frame.SourceCode
-import com.fun.frame.excute.Concurrent
 import com.fun.frame.httpclient.FanLibrary
 import com.fun.frame.httpclient.FunRequest
-import com.fun.frame.thead.HeaderMark
-import com.fun.frame.thead.RequestThreadTime
-import com.fun.frame.thead.RequestThreadTimes
 import org.apache.http.Header
-import org.apache.http.client.methods.HttpGet
 import org.apache.http.client.methods.HttpPost
 import org.apache.http.client.methods.HttpRequestBase
 import org.slf4j.Logger
@@ -144,25 +137,4 @@ class FunRequestTest extends Specification implements Serializable {
         output "拷贝GET请求成功!"
     }
 
-    def "测试并发情况下记录响应标记符的"() {
-        given:
-        HttpGet httpGet = FanLibrary.getHttpGet("https://cn.bing.com/");
-        MarkThread mark = new HeaderMark("requestid")
-        FanLibrary.getHttpResponse(httpGet);
-        HttpClientConstant.MAX_ACCEPT_TIME = -1
-        RequestThreadTimes threadTimes = new RequestThreadTimes(httpGet, 2, mark);
-        new Concurrent(threadTimes * 2).start();
-
-    }
-
-    def "测试并发情况下记录响应标记符的,按照时间压测"() {
-        given:
-        HttpGet httpGet = FanLibrary.getHttpGet("https://cn.bing.com/");
-        MarkThread mark = new HeaderMark("requestid")
-        FanLibrary.getHttpResponse(httpGet);
-        HttpClientConstant.MAX_ACCEPT_TIME = -1
-        RequestThreadTime threadTimes = new RequestThreadTime(httpGet, 1, mark);
-        new Concurrent(threadTimes * 2).start();
-
-    }
 }
