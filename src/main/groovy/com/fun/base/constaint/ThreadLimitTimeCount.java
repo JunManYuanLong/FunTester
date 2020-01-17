@@ -111,7 +111,7 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase {
         requestMark.addAll(marks);
         GCThread.stop();
         synchronized (this.getClass()) {
-            if (countDownLatch.getCount() == 0) {
+            if (countDownLatch.getCount() == 0 && requestMark.size() != 0) {
                 Save.saveStringList(requestMark, MARK_Path.replace(LONG_Path, EMPTY) + Time.getDate().replace(SPACE_1, CONNECTOR));
                 requestMark = new Vector<>();
             }
