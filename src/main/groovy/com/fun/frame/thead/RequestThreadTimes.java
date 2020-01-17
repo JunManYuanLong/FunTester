@@ -43,7 +43,7 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
      * @param times   每个线程运行的次数
      */
     public RequestThreadTimes(HttpRequestBase request, int times) {
-        super(null,times,null);
+        super(null, times, null);
         this.request = request;
     }
 
@@ -55,7 +55,7 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
      * @param mark
      */
     public RequestThreadTimes(HttpRequestBase request, int times, MarkThread mark) {
-        super(times, mark);
+        super(null, times, mark);
         this.request = request;
     }
 
