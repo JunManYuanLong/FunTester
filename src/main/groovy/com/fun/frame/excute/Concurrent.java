@@ -138,12 +138,12 @@ public class Concurrent extends SourceCode {
         }
         shutdownService(executorService, countDownLatch);
         endTime = Time.getTimeStamp();
-        logger.info("总计" + threadNum + "个线程，共用时：" + Time.getTimeDiffer(startTime, endTime) + "秒！");
         threads.forEach(x -> {
             if (x.status()) failTotal++;
             errorTotal += x.errorNum;
             excuteTotal += x.excuteNum;
         });
+        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{},失败数:{}",threadNum,Time.getTimeDiffer(startTime, endTime),excuteTotal,errorTotal,failTotal);
         return over();
     }
 
