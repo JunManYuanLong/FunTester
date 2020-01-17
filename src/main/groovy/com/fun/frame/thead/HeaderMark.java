@@ -2,13 +2,13 @@ package com.fun.frame.thead;
 
 import com.fun.base.constaint.ThreadBase;
 import com.fun.base.exception.ParamException;
-import com.fun.base.interfaces.MarkThread;
+import com.fun.base.interfaces.MarkRequest;
 import com.fun.frame.SourceCode;
 import org.apache.http.client.methods.HttpRequestBase;
 
 import java.io.Serializable;
 
-public class HeaderMark extends SourceCode implements MarkThread, Cloneable, Serializable {
+public class HeaderMark extends SourceCode implements MarkRequest, Cloneable, Serializable {
 
     private static final long serialVersionUID = -1595942567071153477L;
 
@@ -38,7 +38,7 @@ public class HeaderMark extends SourceCode implements MarkThread, Cloneable, Ser
      * @param base
      * @return
      */
-    private String mark(HttpRequestBase base) {
+    public String mark(HttpRequestBase base) {
         base.removeHeaders(headerName);
         i = i == 0 ? getRandomInt(8999) + 1000 : i;
         String value = 8 + EMPTY + i + num++;
