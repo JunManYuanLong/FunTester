@@ -1,14 +1,10 @@
 package com.fun.frame.thead;
 
 import com.fun.base.constaint.ThreadLimitTimesCount;
-import com.fun.base.interfaces.MarkRequest;
-import com.fun.config.HttpClientConstant;
-import com.fun.frame.Save;
-import com.fun.frame.excute.Concurrent;
+import com.fun.base.interfaces.MarkThread;
 import com.fun.frame.httpclient.FanLibrary;
 import com.fun.frame.httpclient.FunRequest;
 import com.fun.frame.httpclient.GCThread;
-import com.fun.utils.Time;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,10 +30,6 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
      */
     public HttpRequestBase request;
 
-    /**
-     * 标记对象
-     */
-    public MarkRequest mark;
 
     /**
      * 记录当前线程超时请求
@@ -51,20 +43,8 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
      * @param times   每个线程运行的次数
      */
     public RequestThreadTimes(HttpRequestBase request, int times) {
+        super(null,times,null);
         this.request = request;
-        this.times = times;
-        this.mark = new MarkRequest() {
-
-            @Override
-            public String mark(HttpRequestBase base) {
-                return EMPTY;
-            }
-
-            @Override
-            public MarkRequest clone() {
-                return this;
-            }
-        };
     }
 
     /**
@@ -74,9 +54,9 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
      * @param times
      * @param mark
      */
-    public RequestThreadTimes(HttpRequestBase request, int times, MarkRequest mark) {
-        this(request, times);
-        this.mark = mark;
+    public RequestThreadTimes(HttpRequestBase request, int times, MarkThread mark) {
+        super(times, mark);
+        this.request = request;
     }
 
     protected RequestThreadTimes() {
@@ -95,51 +75,6 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
     @Override
     protected void doing() throws Exception {
         FanLibrary.excuteSimlple(request);
-    }
-
-    @Override
-    protected void after() {
-        requestMark.addAll(marks);
-        GCThread.stop();
-        synchronized (RequestThreadTimes.class) {
-            if (countDownLatch.getCount() == 0)
-                Save.saveStringList(requestMark, MARK_Path.replace(LONG_Path, EMPTY) + getMark()  + request.getURI().toString().replace("/", CONNECTOR));
-        }
-    }
-
-    @Override
-    public void run() {
-        try {
-            before();
-            List<Long> t = new ArrayList<>();
-            long ss = Time.getTimeStamp();
-            for (int i = 0; i < times; i++) {
-                try {
-                    String m = this.mark.mark(request);
-                    long s = Time.getTimeStamp();
-                    doing();
-                    long e = Time.getTimeStamp();
-                    long diff = e - s;
-                    t.add(diff);
-                    if (diff > HttpClientConstant.MAX_ACCEPT_TIME) marks.add(diff + CONNECTOR + m);
-                    excuteNum++;
-                    if (status()) break;
-                } catch (Exception e) {
-                    logger.warn("执行任务失败！", e);
-                    errorNum++;
-                }
-            }
-            long ee = Time.getTimeStamp();
-            logger.info("执行次数：{}，错误次数: {},总耗时：{} s", times, errorNum, (ee - ss) / 1000 + 1);
-            Concurrent.allTimes.addAll(t);
-        } catch (Exception e) {
-            logger.warn("执行任务失败！", e);
-        } finally {
-            if (countDownLatch != null)
-                countDownLatch.countDown();
-            after();
-        }
-
     }
 
     @Override

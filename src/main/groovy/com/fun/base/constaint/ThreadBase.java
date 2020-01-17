@@ -1,5 +1,6 @@
 package com.fun.base.constaint;
 
+import com.fun.base.interfaces.MarkThread;
 import com.fun.frame.SourceCode;
 
 import java.util.List;
@@ -24,6 +25,11 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
      * </p>
      */
     protected CountDownLatch countDownLatch;
+
+    /**
+     * 标记对象
+     */
+    public MarkThread mark;
 
     /**
      * 用于设置访问资源
