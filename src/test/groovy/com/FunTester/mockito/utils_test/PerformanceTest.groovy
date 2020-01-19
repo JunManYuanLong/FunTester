@@ -18,6 +18,7 @@ import spock.lang.Specification
 import static com.fun.config.Constant.EMPTY
 import static com.fun.config.Constant.TEST_ERROR_CODE
 import static com.fun.frame.SourceCode.getLogger
+import static com.fun.frame.SourceCode.sleep
 
 class PerformanceTest extends Specification {
 
@@ -66,7 +67,7 @@ class PerformanceTest extends Specification {
     def "测试虚拟类内部类实现"() {
         given:
         def threads = []
-        2.times {
+        3.times {
             threads << new ThreadLimitTimesCount<Object>(null, 2, new MarkThread() {
 
                 def i = SourceCode.getRandomInt(9) * 100
@@ -92,6 +93,45 @@ class PerformanceTest extends Specification {
             }
         }
         HttpClientConstant.MAX_ACCEPT_TIME = TEST_ERROR_CODE
+        new Concurrent(threads).start()
+
+        expect:
+
+        2 == 2
+
+    }
+
+    def "测试虚拟类内部类实现,连续多次"() {
+        given:
+        def threads = []
+        3.times {
+            threads << new ThreadLimitTimesCount<Object>(null, 2, new MarkThread() {
+
+                def i = SourceCode.getRandomInt(9) * 100
+
+
+                @Override
+                String mark(ThreadBase threadBase) {
+                    return EMPTY + i++
+                }
+
+                @Override
+                MarkThread clone() {
+                    return null
+                }
+            }) {
+
+                @Override
+                protected void doing() throws Exception {
+                    sleep(200)
+                    logger.info("test method over once .")
+                }
+
+            }
+        }
+        HttpClientConstant.MAX_ACCEPT_TIME = TEST_ERROR_CODE
+        new Concurrent(threads).start()
+        sleep(1000)
         new Concurrent(threads).start()
 
         expect:
