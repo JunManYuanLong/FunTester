@@ -41,6 +41,7 @@ public class Save extends SourceCode {
         List<String> list = new ArrayList<>();
         data.forEach(num -> list.add(num.toString()));
         saveStringList(list, name.toString());
+        data.removeAll(data);
     }
 
     /**
@@ -88,6 +89,19 @@ public class Save extends SourceCode {
         StringBuffer buffer = new StringBuffer();
         data.keySet().forEach(x -> buffer.append(LINE + x.toString() + PART + data.getString(x.toString())));
         info(name, buffer.toString().substring(2));
+    }
+
+    /**
+     * 同步save数据,用于匿名类多线程保存测试数据
+     *
+     * @param data
+     * @param name
+     */
+    public static void saveStringListSync(Collection<String> data, String name) {
+        synchronized (Save.class) {
+            if (data.isEmpty()) return;
+            saveStringList(data, name);
+        }
     }
 
 

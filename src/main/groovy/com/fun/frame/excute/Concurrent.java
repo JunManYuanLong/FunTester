@@ -164,6 +164,7 @@ public class Concurrent extends SourceCode {
 
     private PerformanceResultBean over() {
         Save.saveLongList(allTimes, threadNum);
+        allTimes = new Vector<>();
         return countQPS(threadNum, desc, Time.getTimeByTimestamp(startTime), Time.getTimeByTimestamp(endTime));
     }
 
