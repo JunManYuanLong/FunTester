@@ -11,10 +11,23 @@ public class GCThread extends SourceCode implements Runnable {
 
     private static Logger logger = LoggerFactory.getLogger(GCThread.class);
 
-    private static Thread gc = new Thread(new GCThread());
+    private static volatile Thread gc = init();
 
+    /**
+     * 增加了线程状态的判断,同一进程多次运行HTTP请求的压测功能
+     */
     public synchronized static void starts() {
         if (gc.getState() == Thread.State.NEW) gc.start();
+        else if (gc.getState() == Thread.State.TERMINATED) gc = init();
+    }
+
+    /**
+     * 初始化方法,获取新的gc线程对象
+     *
+     * @return
+     */
+    public static synchronized Thread init() {
+        return new Thread(new GCThread());
     }
 
     private GCThread() {
@@ -41,4 +54,6 @@ public class GCThread extends SourceCode implements Runnable {
     public static void stop() {
         FLAG = false;
     }
+
+
 }
