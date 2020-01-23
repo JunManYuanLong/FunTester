@@ -14,8 +14,14 @@ import java.util.stream.Collectors;
  */
 public abstract class ThreadBase<T> extends SourceCode implements Runnable {
 
+    /**
+     * 错误数
+     */
     public int errorNum;
 
+    /**
+     * 执行数,一般与响应时间记录数量相同
+     */
     public int excuteNum;
 
     /**
@@ -32,7 +38,7 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
     public MarkThread mark;
 
     /**
-     * 用于设置访问资源
+     * 用于设置访问资源,用于闭包中无法访问包外实例对象的情况
      */
     public T t;
 
@@ -40,7 +46,7 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
     }
 
     /**
-     * groovy无法直接访问t，所以写了这个方法
+     * groovy无法直接访问t，所以写了这个方法,如果报错可以忽略,直接运行,兴许可以成功的
      *
      * @return
      */
@@ -56,7 +62,7 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
     /**
      * 待测方法
      *
-     * @throws Exception
+     * @throws Exception 抛出异常后记录错误次数,一般在性能测试的时候重置重试控制器不再重试
      */
     protected abstract void doing() throws Exception;
 
@@ -65,6 +71,11 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
      */
     protected abstract void after();
 
+    /**
+     * 设置计数器
+     *
+     * @param countDownLatch
+     */
     public void setCountDownLatch(CountDownLatch countDownLatch) {
         this.countDownLatch = countDownLatch;
     }

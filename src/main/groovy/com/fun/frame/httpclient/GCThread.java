@@ -11,6 +11,9 @@ public class GCThread extends SourceCode implements Runnable {
 
     private static Logger logger = LoggerFactory.getLogger(GCThread.class);
 
+    /**
+     * 资源回收线程
+     */
     private static volatile Thread gc = init();
 
     /**

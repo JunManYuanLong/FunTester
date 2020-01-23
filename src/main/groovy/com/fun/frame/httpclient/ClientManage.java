@@ -208,6 +208,9 @@ public class ClientManage extends SourceCode {
 
     /**
      * 重新初始化连接池,用于临时改变超时和超时标准线的重置
+     * <p>
+     * 会重置请求控制器,重置连接池和重试控制器
+     * </p>
      *
      * @param timeout
      * @param accepttime
