@@ -2,6 +2,7 @@ package com.fun.frame;
 
 
 import com.fun.base.exception.FailException;
+import com.fun.base.exception.ParamException;
 import com.fun.utils.Regex;
 import com.fun.utils.Time;
 import net.sf.json.JSONObject;
@@ -130,7 +131,8 @@ public class SourceCode extends Output implements Cloneable {
      * @param content
      * @return
      */
-    public static JSONObject getJson(Object... content) {
+    public static JSONObject getJson(String... content) {
+        if (StringUtils.isAnyEmpty(content)) ParamException.fail("转换成json格式参数错误!");
         return changeArraysToJson(content, "=");
     }
 
