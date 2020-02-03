@@ -36,6 +36,19 @@ public class WriteRead extends SourceCode {
         return info;
     }
 
+    public static JSONObject readTxtByJson(String filePath, String filter) {
+        if (StringUtils.isEmpty(filePath) || !new File(filePath).exists() || new File(filePath).isDirectory())
+            ParamException.fail("配置文件信息错误!" + filePath);
+        logger.debug("读取文件名：{}", filePath);
+        List<String> lines = readTxtFileByLine(filePath, filter, false);
+        JSONObject info = new JSONObject();
+        lines.forEach(line -> {
+            String[] split = line.split("=", 2);
+            info.put(split[0], split[1]);
+        });
+        return info;
+    }
+
     /**
      * 通过文件信息，返回string
      *

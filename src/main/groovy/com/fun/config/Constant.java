@@ -33,6 +33,11 @@ public class Constant {
 
     public static final String CONNECTOR = "_";
 
+    /**
+     * 读写配置文件过滤的文本
+     */
+    public static final String FILTER = "##";
+
     public static final String DEFAULT_STRING = "FunTester";
 
     public static final int TEST_ERROR_CODE = -2;

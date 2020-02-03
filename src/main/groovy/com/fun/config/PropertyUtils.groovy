@@ -40,7 +40,7 @@ class PropertyUtils extends SourceCode {
     static Property getLocalProperties(String filePath) {
         logger.debug("读取配置文件：{}", filePath)
         try {
-            new Property(WriteRead.readTxtByJson(filePath))
+            new Property(WriteRead.readTxtByJson(filePath,FILTER))
         } catch (MissingResourceException e) {
             logger.warn("找不到配置文件", e)
             new Property()
@@ -50,7 +50,7 @@ class PropertyUtils extends SourceCode {
     static Property getPropertiesByFile(String propertyName) {
         logger.debug("读取配置文件：{}", propertyName)
         try {
-            new Property(WriteRead.readTxtByJson(WORK_SPACE + propertyName))
+            new Property(WriteRead.readTxtByJson(WORK_SPACE + propertyName,FILTER))
         } catch (MissingResourceException e) {
             logger.warn("找不到配置文件", e)
             new Property()
