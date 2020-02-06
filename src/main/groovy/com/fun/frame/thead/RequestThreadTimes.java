@@ -82,7 +82,7 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
         RequestThreadTimes threadTimes = new RequestThreadTimes();
         threadTimes.times = this.times;
         threadTimes.request = FunRequest.cloneRequest(request);
-        threadTimes.mark = mark.clone();
+        threadTimes.mark = mark == null ? null : mark.clone();
         return threadTimes;
     }
 
