@@ -36,6 +36,7 @@ public class QuerySqlThread extends ThreadLimitTimesCount {
 
     @Override
     protected void after() {
+        super.after();
         base.mySqlOver();
     }
 

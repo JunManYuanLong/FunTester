@@ -69,7 +69,10 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
     /**
      * 运行待测方法后的处理
      */
-    protected abstract void after();
+    protected  void after() {
+        if (countDownLatch != null)
+            countDownLatch.countDown();
+    }
 
     /**
      * 设置计数器

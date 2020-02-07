@@ -29,6 +29,7 @@ public class UpdateSqlThread extends ThreadLimitTimesCount {
 
     @Override
     protected void after() {
+        super.after();
         base.mySqlOver();
     }
 

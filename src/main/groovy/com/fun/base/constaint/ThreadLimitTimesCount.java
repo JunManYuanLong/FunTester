@@ -2,7 +2,6 @@ package com.fun.base.constaint;
 
 import com.fun.base.interfaces.MarkThread;
 import com.fun.config.HttpClientConstant;
-import com.fun.frame.Save;
 import com.fun.frame.excute.Concurrent;
 import com.fun.frame.httpclient.GCThread;
 import com.fun.utils.Time;
@@ -11,7 +10,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 /**
  * 请求时间限制的多线程类,限制每个线程执行的次数
@@ -27,8 +25,6 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
     private static final Logger logger = LoggerFactory.getLogger(ThreadLimitTimesCount.class);
 
     public List<String> marks = new ArrayList<>();
-
-    public static Vector<String> requestMark = new Vector<>();
 
     /**
      * 全局的时间终止开关
@@ -75,11 +71,10 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
             long ee = Time.getTimeStamp();
             logger.info("执行次数：{}，错误次数: {},总耗时：{} s", times, errorNum, (ee - ss) / 1000 + 1);
             Concurrent.allTimes.addAll(t);
+            Concurrent.requestMark.addAll(marks);
         } catch (Exception e) {
             logger.warn("执行任务失败！", e);
         } finally {
-            if (countDownLatch != null)
-                countDownLatch.countDown();
             after();
         }
 
@@ -107,15 +102,9 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
 
     @Override
     protected void after() {
-        requestMark.addAll(marks);
+        super.after();
         marks = new ArrayList<>();
         GCThread.stop();
-        synchronized (this.getClass()) {
-            if (countDownLatch.getCount() == 0) {
-                Save.saveStringListSync(requestMark, MARK_Path.replace(LONG_Path, EMPTY) + Time.getDate().replace(SPACE_1, CONNECTOR));
-                requestMark = new Vector<>();
-            }
-        }
     }
 
 

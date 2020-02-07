@@ -71,6 +71,11 @@ public class Concurrent extends SourceCode {
     public static Vector<Long> allTimes = new Vector<>();
 
     /**
+     * 记录所有markrequest的信息
+     */
+    public static Vector<String> requestMark = new Vector<>();
+
+    /**
      * 线程池
      */
     ExecutorService executorService;
@@ -143,7 +148,7 @@ public class Concurrent extends SourceCode {
             errorTotal += x.errorNum;
             excuteTotal += x.excuteNum;
         });
-        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{},失败数:{}",threadNum,Time.getTimeDiffer(startTime, endTime),excuteTotal,errorTotal,failTotal);
+        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{},失败数:{}", threadNum, Time.getTimeDiffer(startTime, endTime), excuteTotal, errorTotal, failTotal);
         return over();
     }
 
@@ -164,7 +169,9 @@ public class Concurrent extends SourceCode {
 
     private PerformanceResultBean over() {
         Save.saveLongList(allTimes, threadNum);
+        Save.saveStringListSync(Concurrent.requestMark, MARK_Path.replace(LONG_Path, EMPTY) + desc + Time.getNow());
         allTimes = new Vector<>();
+        requestMark = new Vector<>();
         return countQPS(threadNum, desc, Time.getTimeByTimestamp(startTime), Time.getTimeByTimestamp(endTime));
     }
 
