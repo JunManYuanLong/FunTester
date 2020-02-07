@@ -48,6 +48,8 @@ public class Constant {
         return System.getProperties();
     }
 
+    public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
     /**
      * UTF-8字符编码格式
      */

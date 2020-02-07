@@ -28,7 +28,7 @@ public class Time extends SourceCode {
      * @return
      */
     public static String getStartOfDay() {
-        return getUtcDate() + "%2000:00:00";
+        return getUtcDate() + " 00:00:00";
     }
 
     /**
@@ -37,7 +37,7 @@ public class Time extends SourceCode {
      * @return
      */
     public static String getEndOfDay() {
-        return getUtcDate() + "%2023:55:55";
+        return getUtcDate() + " 23:55:55";
     }
 
     /**
@@ -141,14 +141,14 @@ public class Time extends SourceCode {
      * @return 返回时间戳，毫秒
      */
     public static long getTimestamp(String time) {
-        time = time.replace("-", EMPTY).replace(":", EMPTY).replace(SPACE_1, EMPTY);
+        time = time.replaceAll("\\D*", EMPTY);
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
         try {
             return format.parse(time).getTime();
         } catch (ParseException e) {
             logger.warn("时间格式错误！", e);
         }
-        return 0;
+        return TEST_ERROR_CODE;
     }
 
     public static long getTimestamp(long time) {
@@ -163,7 +163,7 @@ public class Time extends SourceCode {
      */
     public static String getTimeByTimestamp(long time) {
         Date now = new Date(time);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
         String nowTime = format.format(now);
         return nowTime;
     }
@@ -200,9 +200,10 @@ public class Time extends SourceCode {
      */
     public static String getDate() {
         Date time = new Date();
-        SimpleDateFormat now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat now = new SimpleDateFormat(DATE_FORMAT);
         String c = now.format(time);
         return c;
     }
+
 
 }
