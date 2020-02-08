@@ -168,7 +168,7 @@ public class Concurrent extends SourceCode {
     }
 
     private PerformanceResultBean over() {
-        Save.saveLongList(allTimes, threadNum);
+        Save.saveLongList(allTimes, threadNum + desc + Time.getNow());
         Save.saveStringListSync(Concurrent.requestMark, MARK_Path.replace(LONG_Path, EMPTY) + desc + Time.getNow());
         allTimes = new Vector<>();
         requestMark = new Vector<>();
