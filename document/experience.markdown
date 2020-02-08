@@ -45,6 +45,16 @@
 - [筛选自动化测试用例的技巧](https://mp.weixin.qq.com/s/SWNopZLwgpj9yYsVEHEspw)
 - [未来的QA测试工程师](https://mp.weixin.qq.com/s/ngL4sbEjZm7OFAyyWyQ3nQ)
 - [Web安全检查](https://mp.weixin.qq.com/s/SewUV3GMaNKD2P7g64ctYQ)
+- [关于可用性测试](https://mp.weixin.qq.com/s/aUIg40scOWzbRR89ojJWLg)
+- [如何实施DevOps](https://mp.weixin.qq.com/s/UPIL942eOKR1bY0mbC-42w)
+- [黑盒测试和白盒测试](https://mp.weixin.qq.com/s/5kvrYMWG0vFR3vj-aNY49g)
+- [测试用例中的细节](https://mp.weixin.qq.com/s/wvScTliPwuvH9ReIoDQGNQ)
+- [集成测试、单元测试、系统测试](https://mp.weixin.qq.com/s/LRkxMasRvmDYRVb0_aybtA)
+- [集成测试类型和最佳实践](https://mp.weixin.qq.com/s/sSubzrs3cikLV7rmRQaWEA)
+- [软件测试中质量优于数量](https://mp.weixin.qq.com/s/4FxtVFqialRz6R4680rPAw)
+- [DevOps工具](https://mp.weixin.qq.com/s/4r8FoxQyYZ5naowML5Cw-Q)
+- [2020年Tester自我提升](https://mp.weixin.qq.com/s/vuhUp85_6Sbg6ReAN3TTSQ)
+- [DevOps中的测试工程师](https://mp.weixin.qq.com/s/42Ile_T1BAIp7QHleI-c7w)
 
 
 ## 大咖风采
@@ -55,13 +65,12 @@
 - [JVM的对象和堆](https://mp.weixin.qq.com/s/iNDpTz3gBK3By_bvUnrWOA)
 - [JVM虚拟机面试大全](https://mp.weixin.qq.com/s/WPll-3ZvYrS7J7Cl8MuzhA)
 
-![长按关注](https://mmbiz.qpic.cn/mmbiz_jpg/13eN86FKXzBEASPySoVdOFmP12QUIWAQms664L0b82nic8BRIlufg0QibzXNnoibZp8yqhU9Pv0hXjKtqrGof8kMA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
-
-
 ## 杂乱
 
 - [如何优雅地屏蔽掉Google搜索结果中视频、新闻、图片等结果](https://mp.weixin.qq.com/s/Iu7pt4Qk3w9sJp3n_UVAeQ)
 - [图解HTTP脑图](https://mp.weixin.qq.com/s/100Vm8FVEuXs0x6rDGTipw)
 - [测试之JVM命令脑图](https://mp.weixin.qq.com/s/qprqyv0j3SCvGw1HMjbaMQ)
 - [2019年浏览器市场份额排行榜](https://mp.weixin.qq.com/s/4NmJ_ZCPD5UwaRCtaCfjEg)
+- [JSON基础](https://mp.weixin.qq.com/s/tnQmAFfFbRloYp8J9TYurw)
 
+![长按关注](https://mmbiz.qpic.cn/mmbiz_jpg/13eN86FKXzBEASPySoVdOFmP12QUIWAQms664L0b82nic8BRIlufg0QibzXNnoibZp8yqhU9Pv0hXjKtqrGof8kMA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)

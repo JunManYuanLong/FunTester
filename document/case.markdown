@@ -17,6 +17,7 @@
 - [iOS 11计算器1+2+3=24真的是bug么？](https://mp.weixin.qq.com/s/nokQhe_Hqcq-o7pZJmFlqQ)
 - [不要在遍历的时候删除](https://mp.weixin.qq.com/s/MIczbEpbOrADL0_V7ZUhlg)
 - [连开100年会员会怎样](https://mp.weixin.qq.com/s/mZw-SFIxFFbE-o8UeXhdfg)
+- [异步查询转同步加redis业务实现的BUG分享](https://mp.weixin.qq.com/s/ni3f6QTxw0K-0I3epvEYOA)
 
 
 ## 爬虫实践
@@ -29,6 +30,7 @@
 - [电子书网站爬虫实践](https://mp.weixin.qq.com/s/KGW0dIS5NTLgxyhSjxDiOw)
 - [groovy爬虫实例——历史上的今天](https://mp.weixin.qq.com/s/5LDUvpU6t_GZ09uhZr224A)
 - [爬取720万条城市历史天气数据](https://mp.weixin.qq.com/s/vOyKpeGlJSJp9bQ8NIMe2A)
+- [记一次失败的爬虫](https://mp.weixin.qq.com/s/SMylrZLXDGw5f1xKI9ObnA)
 
 
 ![长按关注](https://mmbiz.qpic.cn/mmbiz_jpg/13eN86FKXzBEASPySoVdOFmP12QUIWAQms664L0b82nic8BRIlufg0QibzXNnoibZp8yqhU9Pv0hXjKtqrGof8kMA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)

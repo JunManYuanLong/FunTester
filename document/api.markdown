@@ -50,6 +50,9 @@
 - [性能测试框架第二版](https://mp.weixin.qq.com/s/JPyGQ2DRC6EVBmZkxAoVWA)
 - [性能测试中标记每个请求](https://mp.weixin.qq.com/s/PokvzoLdVf_y9inlVXHJHQ)
 - [如何对N个接口按比例压测](https://mp.weixin.qq.com/s/GZxbH4GjDkk4BLqnUj1_kw)
+- [如何性能测试中进行业务验证](https://mp.weixin.qq.com/s/OEvRy1bS2Yq_w1kGiidmng)
+- [性能测试中记录每一个耗时请求](https://mp.weixin.qq.com/s/VXcp4uIMm8mRgqe8fVhuCQ)
+- [性能测试框架第三版](https://mp.weixin.qq.com/s/Mk3PoH7oJX7baFmbeLtl_w)
 
 ## 测试方案
 对于特定的测试场景进行的测试方案的设计，有功能的也有性能的。

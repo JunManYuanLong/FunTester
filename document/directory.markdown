@@ -1,6 +1,6 @@
 # 总目录
 
-> FunTester，230+原创文章，4次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，量变引起质变，欢迎关注。
+> FunTester，270+原创文章，4次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，量变引起质变，欢迎关注。
 
 # 接口测试
 
@@ -46,6 +46,7 @@
 - [JUnit 5和Selenium基础（一）](https://mp.weixin.qq.com/s/ehBRf7st-OxeuvI_0yW3OQ)
 - [JUnit 5和Selenium基础（二）](https://mp.weixin.qq.com/s/Gt82cPmS2iX-DhKXTXiy8g)
 - [JUnit 5和Selenium基础（三）](https://mp.weixin.qq.com/s/8YkonXTYgAV5-pLs9yEAVw)
+- [浅谈单元测试](https://mp.weixin.qq.com/s/mJM9qXQepSYQ9vLBnBEs3Q)
 
 ## 接口性能
 - [Linux性能监控软件netdata中文汉化版](https://mp.weixin.qq.com/s/7VG7gHx7FUvsuNtBTJpjWA)
@@ -62,6 +63,9 @@
 - [如何获取JVM堆转储文件](https://mp.weixin.qq.com/s/qCg7nsXVvT1q-9yquQOfWA)
 - [性能测试中标记每个请求](https://mp.weixin.qq.com/s/PokvzoLdVf_y9inlVXHJHQ)
 - [如何对N个接口按比例压测](https://mp.weixin.qq.com/s/GZxbH4GjDkk4BLqnUj1_kw)
+- [如何性能测试中进行业务验证](https://mp.weixin.qq.com/s/OEvRy1bS2Yq_w1kGiidmng)
+- [性能测试中记录每一个耗时请求](https://mp.weixin.qq.com/s/VXcp4uIMm8mRgqe8fVhuCQ)
+- [性能测试框架第三版](https://mp.weixin.qq.com/s/Mk3PoH7oJX7baFmbeLtl_w)
 
 # 语言合集
 
@@ -79,6 +83,9 @@
 - [从JVM堆内存分析验证深浅拷贝](https://mp.weixin.qq.com/s/SdYDnoau1rjjvPC2SUymBg)
 - [如何学习Java基础](https://mp.weixin.qq.com/s/FCPStkYoJF67NYln4Lc6xg)
 - [如何保存HTTPrequestbase和CloseableHttpResponse](https://mp.weixin.qq.com/s/gRY8HRQHCh0PfyS7Q22IwA)
+- [如何在匿名thread子类中保证线程安全](https://mp.weixin.qq.com/s/GCXx_-ummi0JfZQ7GTIxig)
+- [Java服务端两个常见的并发错误](https://mp.weixin.qq.com/s/5VvCox3eY6sQDsuaKB4ZIw)
+- [Java中interface属性和实例方法](https://mp.weixin.qq.com/s/vrKkM6522tgw3v_cL7R8HA)
 
 ## Groovy
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)
@@ -104,6 +111,8 @@
 - [如何对修改密码接口进行压测](https://mp.weixin.qq.com/s/9CL_6-uZOlAh7oeo7NOpag)
 - [如何测试概率型业务接口](https://mp.weixin.qq.com/s/kUVffhjae3eYivrGqo6ZMg)
 - [如何测试非固定型概率算法P=p(1+0.1*N)](https://mp.weixin.qq.com/s/sgg8v-Bi-_sUDJXwuTCMGg)
+- [性能测试中标记每个请求](https://mp.weixin.qq.com/s/PokvzoLdVf_y9inlVXHJHQ)
+- [如何对N个接口按比例压测](https://mp.weixin.qq.com/s/GZxbH4GjDkk4BLqnUj1_kw)
 
 ## BUG集锦
 - [一个MySQL索引引发的血案](https://mp.weixin.qq.com/s/KLSber-gPg53JVfsCa3Dtw)
@@ -112,6 +121,8 @@
 - [iOS 11计算器1+2+3=24真的是bug么？](https://mp.weixin.qq.com/s/nokQhe_Hqcq-o7pZJmFlqQ)
 - [不要在遍历的时候删除](https://mp.weixin.qq.com/s/MIczbEpbOrADL0_V7ZUhlg)
 - [连开100年会员会怎样](https://mp.weixin.qq.com/s/mZw-SFIxFFbE-o8UeXhdfg)
+- [异步查询转同步加redis业务实现的BUG分享](https://mp.weixin.qq.com/s/ni3f6QTxw0K-0I3epvEYOA)
+- [Java服务端两个常见的并发错误](https://mp.weixin.qq.com/s/5VvCox3eY6sQDsuaKB4ZIw)
 
 ## 爬虫实践
 - [接口爬虫之网页表单数据提取](https://mp.weixin.qq.com/s/imJ5u67xhYQaEzv-O1in4g)
@@ -123,6 +134,7 @@
 - [电子书网站爬虫实践](https://mp.weixin.qq.com/s/KGW0dIS5NTLgxyhSjxDiOw)
 - [groovy爬虫实例——历史上的今天](https://mp.weixin.qq.com/s/5LDUvpU6t_GZ09uhZr224A)
 - [爬取720万条城市历史天气数据](https://mp.weixin.qq.com/s/vOyKpeGlJSJp9bQ8NIMe2A)
+- [记一次失败的爬虫](https://mp.weixin.qq.com/s/SMylrZLXDGw5f1xKI9ObnA)
 
 # 工具合集
 
@@ -220,6 +232,16 @@
 - [什么阻碍手动测试发挥价值](https://mp.weixin.qq.com/s/t0VAVyA3ywQsHzaqzSILOw)
 - [未来的QA测试工程师](https://mp.weixin.qq.com/s/ngL4sbEjZm7OFAyyWyQ3nQ)
 - [Web安全检查](https://mp.weixin.qq.com/s/SewUV3GMaNKD2P7g64ctYQ)
+- [关于可用性测试](https://mp.weixin.qq.com/s/aUIg40scOWzbRR89ojJWLg)
+- [如何实施DevOps](https://mp.weixin.qq.com/s/UPIL942eOKR1bY0mbC-42w)
+- [黑盒测试和白盒测试](https://mp.weixin.qq.com/s/5kvrYMWG0vFR3vj-aNY49g)
+- [测试用例中的细节](https://mp.weixin.qq.com/s/wvScTliPwuvH9ReIoDQGNQ)
+- [集成测试、单元测试、系统测试](https://mp.weixin.qq.com/s/LRkxMasRvmDYRVb0_aybtA)
+- [集成测试类型和最佳实践](https://mp.weixin.qq.com/s/sSubzrs3cikLV7rmRQaWEA)
+- [软件测试中质量优于数量](https://mp.weixin.qq.com/s/4FxtVFqialRz6R4680rPAw)
+- [DevOps工具](https://mp.weixin.qq.com/s/4r8FoxQyYZ5naowML5Cw-Q)
+- [2020年Tester自我提升](https://mp.weixin.qq.com/s/vuhUp85_6Sbg6ReAN3TTSQ)
+- [DevOps中的测试工程师](https://mp.weixin.qq.com/s/42Ile_T1BAIp7QHleI-c7w)
 
 ## 大咖风采
 
@@ -278,6 +300,10 @@
 - [JUnit 5和Selenium基础（一）](https://mp.weixin.qq.com/s/ehBRf7st-OxeuvI_0yW3OQ)
 - [JUnit 5和Selenium基础（二）](https://mp.weixin.qq.com/s/Gt82cPmS2iX-DhKXTXiy8g)
 - [JUnit 5和Selenium基础（三）](https://mp.weixin.qq.com/s/8YkonXTYgAV5-pLs9yEAVw)
+- [如何在跨浏览器测试中提高效率](https://mp.weixin.qq.com/s/MB_Wv7yQ6i9BztAZtL4grA)
+- [Selenium Python使用技巧（一）](https://mp.weixin.qq.com/s/39v8tXG3xig63d-ioEAi8Q)
+- [Selenium Python使用技巧（二）](https://mp.weixin.qq.com/s/uDM3y9zoVjaRmJJJTNs6Vw)
+- [Selenium Python使用技巧（三）](https://mp.weixin.qq.com/s/J7-CO-UDspUGSpB8isjsmQ)
 
 ## APP性能
 - [使用monkey测试时，一个控制WiFi状态的多线程类](https://mp.weixin.qq.com/s/P8HVtzHBlj_FcDAAHFKBDg)
@@ -296,6 +322,7 @@
 - [图解HTTP脑图](https://mp.weixin.qq.com/s/100Vm8FVEuXs0x6rDGTipw)
 - [测试之JVM命令脑图](https://mp.weixin.qq.com/s/qprqyv0j3SCvGw1HMjbaMQ)
 - [2019年浏览器市场份额排行榜](https://mp.weixin.qq.com/s/4NmJ_ZCPD5UwaRCtaCfjEg)
+- [JSON基础](https://mp.weixin.qq.com/s/tnQmAFfFbRloYp8J9TYurw)
 
 
 ![](https://mmbiz.qpic.cn/mmbiz_jpg/13eN86FKXzCMW6WN4Wch71qNtGQvxLRSGejZpr37OWa7CDYg5e4ZeanaGWuBgRAX3jicJNIhcyyZPXbKByXcl7w/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)

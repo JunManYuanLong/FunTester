@@ -16,6 +16,8 @@
 - [从JVM堆内存分析验证深浅拷贝](https://mp.weixin.qq.com/s/SdYDnoau1rjjvPC2SUymBg)
 - [如何学习Java基础](https://mp.weixin.qq.com/s/FCPStkYoJF67NYln4Lc6xg)
 - [如何保存HTTPrequestbase和CloseableHttpResponse](https://mp.weixin.qq.com/s/gRY8HRQHCh0PfyS7Q22IwA)
+- [如何在匿名thread子类中保证线程安全](https://mp.weixin.qq.com/s/GCXx_-ummi0JfZQ7GTIxig)
+- [Java中interface属性和实例方法](https://mp.weixin.qq.com/s/vrKkM6522tgw3v_cL7R8HA)
 
 ## Groovy
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)

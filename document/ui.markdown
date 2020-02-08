@@ -50,7 +50,10 @@
 - [JUnit 5和Selenium基础（一）](https://mp.weixin.qq.com/s/ehBRf7st-OxeuvI_0yW3OQ)
 - [JUnit 5和Selenium基础（二）](https://mp.weixin.qq.com/s/Gt82cPmS2iX-DhKXTXiy8g)
 - [JUnit 5和Selenium基础（三）](https://mp.weixin.qq.com/s/8YkonXTYgAV5-pLs9yEAVw)
-
+- [如何在跨浏览器测试中提高效率](https://mp.weixin.qq.com/s/MB_Wv7yQ6i9BztAZtL4grA)
+- [Selenium Python使用技巧（一）](https://mp.weixin.qq.com/s/39v8tXG3xig63d-ioEAi8Q)
+- [Selenium Python使用技巧（二）](https://mp.weixin.qq.com/s/uDM3y9zoVjaRmJJJTNs6Vw)
+- [Selenium Python使用技巧（三）](https://mp.weixin.qq.com/s/J7-CO-UDspUGSpB8isjsmQ)
 
 ## APP性能
 - [使用monkey测试时，一个控制WiFi状态的多线程类](https://mp.weixin.qq.com/s/P8HVtzHBlj_FcDAAHFKBDg)
