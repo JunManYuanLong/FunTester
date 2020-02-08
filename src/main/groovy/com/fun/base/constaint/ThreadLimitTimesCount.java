@@ -53,6 +53,7 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
             List<Long> t = new ArrayList<>();
             long ss = Time.getTimeStamp();
             for (int i = 0; i < times; i++) {
+                excuteNum++;
                 try {
                     String m = mark == null ? EMPTY : this.mark.mark(this);
                     long s = Time.getTimeStamp();
@@ -61,7 +62,6 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
                     long diff = e - s;
                     t.add(diff);
                     if (diff > HttpClientConstant.MAX_ACCEPT_TIME) marks.add(diff + CONNECTOR + m);
-                    excuteNum++;
                     if (status() || key) break;
                 } catch (Exception e) {
                     logger.warn("执行任务失败！", e);
