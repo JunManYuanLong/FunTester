@@ -109,7 +109,7 @@ public class Concurrent extends SourceCode {
      */
     public Concurrent(ThreadBase thread, int threadNum, String desc) {
         this(thread, threadNum);
-        this.desc = desc;
+        this.desc = desc + Time.getNow();
     }
 
     /**
@@ -118,7 +118,7 @@ public class Concurrent extends SourceCode {
      */
     public Concurrent(List<ThreadBase> threads, String desc) {
         this(threads);
-        this.desc = desc;
+        this.desc = desc + Time.getNow();
     }
 
     private Concurrent(int threadNum) {
@@ -168,8 +168,8 @@ public class Concurrent extends SourceCode {
     }
 
     private PerformanceResultBean over() {
-        Save.saveLongList(allTimes, threadNum + desc + Time.getNow());
-        Save.saveStringListSync(Concurrent.requestMark, MARK_Path.replace(LONG_Path, EMPTY) + desc + Time.getNow());
+        Save.saveLongList(allTimes, threadNum + desc);
+        Save.saveStringListSync(Concurrent.requestMark, MARK_Path.replace(LONG_Path, EMPTY) + desc);
         allTimes = new Vector<>();
         requestMark = new Vector<>();
         return countQPS(threadNum, desc, Time.getTimeByTimestamp(startTime), Time.getTimeByTimestamp(endTime));
@@ -186,7 +186,7 @@ public class Concurrent extends SourceCode {
      * @param name 线程数
      */
     public PerformanceResultBean countQPS(int name, String desc, String start, String end) {
-        List<String> strings = WriteRead.readTxtFileByLine(Constant.LONG_Path + name);
+        List<String> strings = WriteRead.readTxtFileByLine(Constant.LONG_Path + name + desc);
         int size = strings.size();
         int sum = 0;
         for (int i = 0; i < size; i++) {
