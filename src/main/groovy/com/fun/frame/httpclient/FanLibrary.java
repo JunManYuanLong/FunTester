@@ -1,5 +1,6 @@
 package com.fun.frame.httpclient;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fun.base.bean.RequestInfo;
 import com.fun.base.exception.RequestException;
 import com.fun.base.interfaces.IBase;
@@ -10,8 +11,6 @@ import com.fun.utils.DecodeEncode;
 import com.fun.utils.Time;
 import com.fun.utils.message.AlertOver;
 import io.netty.util.internal.StringUtil;
-import net.sf.json.JSONObject;
-import org.apache.commons.collections.MapUtils;
 import org.apache.http.*;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -29,7 +28,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -79,7 +81,7 @@ public class FanLibrary extends SourceCode {
      * @return 返回get对象
      */
     public static HttpGet getHttpGet(String url, JSONObject args) {
-        if (MapUtils.isEmpty(args)) return getHttpGet(url);
+        if (args == null || args.size() == 0) return getHttpGet(url);
         String uri = url + changeJsonToArguments(args);
         return getHttpGet(uri.replace(" ", ""));
     }
@@ -207,7 +209,7 @@ public class FanLibrary extends SourceCode {
         } catch (FileNotFoundException e) {
             logger.warn("读取文件失败！", e);
         }
-        Iterator<String> keys = params.keys();// 遍历 params 参数和值
+        Iterator<String> keys = params.keySet().iterator();// 遍历 params 参数和值
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();// 新建MultipartEntityBuilder对象
         while (keys.hasNext()) {
             String key = keys.next();
@@ -256,18 +258,15 @@ public class FanLibrary extends SourceCode {
      * @return
      */
     private static JSONObject getJsonResponse(String content, JSONObject cookies) {
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject = JSONObject.fromObject(content);
-        } catch (Exception e) {
-            jsonObject.put("content", content);
-            jsonObject.put("code", TEST_ERROR_CODE);
+        JSONObject jsonObject = JSONObject.parseObject(content);
+        if (jsonObject == null || jsonObject.size() == 0) {
+            jsonObject = getJson("content=" + content, "code=" + TEST_ERROR_CODE);
             logger.warn("响应体非json格式，已经自动转换成json格式！");
-        } finally {
-            if (!cookies.isEmpty()) jsonObject.put(HttpClientConstant.COOKIE, cookies);
-            return jsonObject;
         }
+        if (!cookies.isEmpty()) jsonObject.put(HttpClientConstant.COOKIE, cookies);
+        return jsonObject;
     }
+
 
     /**
      * 根据响应获取响应实体

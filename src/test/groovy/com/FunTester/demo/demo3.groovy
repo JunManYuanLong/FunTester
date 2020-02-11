@@ -1,7 +1,7 @@
 package com.FunTester.demo
 
 import com.fun.frame.SourceCode
-import net.sf.json.JSONObject
+import com.alibaba.fastjson.JSONObject
 
 class demo3 extends SourceCode {
 

@@ -1,12 +1,12 @@
 package com.fun.frame.httpclient
 
+import com.alibaba.fastjson.JSONObject
 import com.fun.base.bean.RequestInfo
 import com.fun.base.exception.RequestException
 import com.fun.config.HttpClientConstant
 import com.fun.config.RequestType
 import com.fun.frame.Save
 import com.fun.utils.Time
-import net.sf.json.JSONObject
 import org.apache.commons.lang3.StringUtils
 import org.apache.http.Header
 import org.apache.http.HttpEntity

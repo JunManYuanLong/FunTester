@@ -1,11 +1,10 @@
 package com.fun.frame;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.fun.base.bean.AbstractBean;
 import com.fun.config.Constant;
 import com.fun.utils.Emoji;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -91,7 +90,7 @@ public class Output extends Constant {
     }
 
     public static void output(Map map) {
-        if (MapUtils.isEmpty(map)) {
+        if (map == null || map.size() == 0) {
             logger.warn("怎么空了呢！");
         } else {
             show(map);
@@ -152,7 +151,7 @@ public class Output extends Constant {
      * @param jsonObject json格式响应实体
      */
     public static JSONObject output(JSONObject jsonObject) {
-        if (MapUtils.isEmpty(jsonObject)) {
+        if (jsonObject == null || jsonObject.size() == 0) {
             output("json 对象是空的！");
             return jsonObject;
         }

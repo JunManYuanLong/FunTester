@@ -5,7 +5,7 @@ import com.fun.base.bean.RequestInfo;
 import com.fun.base.interfaces.IMessage;
 import com.fun.db.mysql.MySqlTest;
 import com.fun.config.SysInit;
-import net.sf.json.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.http.client.methods.HttpPost;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

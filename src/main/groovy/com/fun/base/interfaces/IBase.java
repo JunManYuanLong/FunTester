@@ -1,7 +1,7 @@
 package com.fun.base.interfaces;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fun.base.bean.RequestInfo;
-import net.sf.json.JSONObject;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;

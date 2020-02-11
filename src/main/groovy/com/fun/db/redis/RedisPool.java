@@ -2,7 +2,7 @@ package com.fun.db.redis;
 
 import com.fun.config.PropertyUtils;
 import com.fun.frame.SourceCode;
-import net.sf.json.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.JedisPool;
@@ -87,7 +87,7 @@ public class RedisPool extends SourceCode {
         config.setTestOnReturn(testOnReturn);
         config.setBlockWhenExhausted(blockWhenExhausted);
         config.setMaxWaitMillis(MAX_WAIT);
-        logger.debug("连接redis配置：{}", JSONObject.fromObject(config).toString());
+        logger.debug("连接redis配置：{}", JSONObject.toJSONString(config));
         return config;
     }
 

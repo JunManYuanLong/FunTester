@@ -1,7 +1,8 @@
 package com.fun.utils;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.fun.frame.SourceCode;
-import net.sf.json.JSONObject;
 
 import java.io.File;
 
@@ -61,7 +62,7 @@ public class ArgsUtil extends SourceCode {
      * @return
      */
     public JSONObject getJsonOrDefault(int i, String json) {
-        return i >= all.length ? JSONObject.fromObject(json) : JSONObject.fromObject(all[i]);
+        return i >= all.length ? JSON.parseObject(json) : JSON.parseObject(all[i]);
     }
 
 

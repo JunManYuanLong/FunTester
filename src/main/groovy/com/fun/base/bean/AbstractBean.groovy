@@ -1,8 +1,8 @@
 package com.fun.base.bean
 
+import com.alibaba.fastjson.JSONObject
 import com.fun.frame.Save
 import com.fun.frame.SourceCode
-import net.sf.json.JSONObject
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 

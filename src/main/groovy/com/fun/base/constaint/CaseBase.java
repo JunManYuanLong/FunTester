@@ -1,8 +1,8 @@
 package com.fun.base.constaint;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fun.db.mysql.MySqlTest;
 import com.fun.frame.SourceCode;
-import net.sf.json.JSONObject;
 
 /**
  * 用例虚拟类

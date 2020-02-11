@@ -7,7 +7,7 @@ import com.fun.moco.support.RandomHandler
 import com.github.dreamhead.moco.ResponseHandler
 import com.github.dreamhead.moco.procedure.LatencyProcedure
 import com.google.common.collect.FluentIterable
-import net.sf.json.JSONObject
+import com.alibaba.fastjson.JSONObject
 
 import java.util.concurrent.TimeUnit
 

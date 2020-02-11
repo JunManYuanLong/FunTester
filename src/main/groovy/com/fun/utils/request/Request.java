@@ -4,7 +4,7 @@ import com.fun.config.HttpClientConstant;
 import com.fun.config.RequestType;
 import com.fun.frame.SourceCode;
 import com.fun.utils.Regex;
-import net.sf.json.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;

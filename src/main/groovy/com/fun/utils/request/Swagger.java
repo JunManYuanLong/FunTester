@@ -1,11 +1,10 @@
 package com.fun.utils.request;
 
-import com.fun.config.HttpClientConstant;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.fun.config.RequestType;
 import com.fun.frame.httpclient.FanLibrary;
 import com.fun.utils.Regex;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;

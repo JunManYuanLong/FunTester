@@ -1,5 +1,6 @@
 package com.fun.db.mysql;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fun.base.bean.PerformanceResultBean;
 import com.fun.base.bean.RecordBean;
 import com.fun.base.bean.RequestInfo;
@@ -9,7 +10,6 @@ import com.fun.frame.httpclient.FanLibrary;
 import com.fun.utils.DecodeEncode;
 import com.fun.utils.Time;
 import com.fun.utils.message.AlertOver;
-import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -129,7 +129,7 @@ public class MySqlTest extends SqlBase {
     public static void saveTestResult(String label, JSONObject result) {
         if (SqlConstant.RESULT_TABLE == null) return;
         String data = result.toString();
-        Iterator<String> iterator = result.keys();
+        Iterator<String> iterator = result.keySet().iterator();
         int abc = 1;
         while (iterator.hasNext() && abc == 1) {
             String key = iterator.next().toString();

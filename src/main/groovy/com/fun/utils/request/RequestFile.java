@@ -4,7 +4,7 @@ import com.fun.config.Constant;
 import com.fun.config.RequestType;
 import com.fun.frame.httpclient.FanLibrary;
 import com.fun.utils.WriteRead;
-import net.sf.json.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +42,7 @@ public class RequestFile extends FanLibrary {
         this.url = this.info.getString("url");
         requestType = RequestType.getRequestType(this.info.getString("requestType"));
         getParams();
-        headers = JSONObject.fromObject(this.info.getString("headers"));
+        headers = JSONObject.parseObject(this.info.getString("headers"));
     }
 
     /**
@@ -67,7 +67,7 @@ public class RequestFile extends FanLibrary {
      * 获取请求参数
      */
     private void getParams() {
-        params = JSONObject.fromObject(info.getString("params"));
+        params = JSONObject.parseObject(info.getString("params"));
     }
 
 

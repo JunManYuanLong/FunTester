@@ -1,7 +1,7 @@
 package com.fun.base.exception;
 
 import com.fun.frame.Output;
-import net.sf.json.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.http.client.methods.HttpRequestBase;
 
 public class VerifyException extends FailException {

@@ -4,7 +4,7 @@ import com.github.dreamhead.moco.HttpRequest;
 import com.github.dreamhead.moco.HttpRequestExtractor;
 import com.github.dreamhead.moco.RequestExtractor;
 import com.google.common.base.Optional;
-import net.sf.json.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 
 import static com.github.dreamhead.moco.util.Preconditions.checkNotNullOrEmpty;
 import static com.google.common.base.Optional.fromNullable;
@@ -25,7 +25,7 @@ public class JsonExtractor extends HttpRequestExtractor<String[]> {
     protected Optional<String[]> doExtract(HttpRequest request) {
         try {
             String s = request.getContent().toString();
-            String value = JSONObject.fromObject(s).getString(param);
+            String value = JSONObject.parseObject(s).getString(param);
             return fromNullable(new String[]{value});
         } catch (Exception e) {
             return fromNullable(new String[]{""});

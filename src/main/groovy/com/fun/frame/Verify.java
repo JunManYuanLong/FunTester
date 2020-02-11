@@ -1,11 +1,8 @@
 package com.fun.frame;
 
-import com.fun.base.bean.RequestInfo;
-import com.fun.base.interfaces.IBase;
+import com.alibaba.fastjson.JSONObject;
 import com.fun.frame.httpclient.FanLibrary;
 import com.fun.utils.Regex;
-import net.sf.json.JSONException;
-import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

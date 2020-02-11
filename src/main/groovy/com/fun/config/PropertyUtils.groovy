@@ -2,7 +2,7 @@ package com.fun.config
 
 import com.fun.frame.SourceCode
 import com.fun.utils.WriteRead
-import net.sf.json.JSONObject
+import com.alibaba.fastjson.JSONObject
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 

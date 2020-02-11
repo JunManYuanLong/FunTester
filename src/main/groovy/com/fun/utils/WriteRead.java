@@ -3,7 +3,7 @@ package com.fun.utils;
 import com.fun.base.exception.ParamException;
 import com.fun.config.Constant;
 import com.fun.frame.SourceCode;
-import net.sf.json.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

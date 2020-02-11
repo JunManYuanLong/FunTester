@@ -1,11 +1,11 @@
 package com.fun.frame;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.fun.base.exception.FailException;
 import com.fun.base.exception.ParamException;
 import com.fun.utils.Regex;
 import com.fun.utils.Time;
-import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
