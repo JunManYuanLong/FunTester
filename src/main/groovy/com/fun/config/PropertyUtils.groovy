@@ -143,7 +143,7 @@ class PropertyUtils extends SourceCode {
  */
         boolean contain(def key) {
             boolean var = properties.containsKey key asBoolean()
-            if (!var) logger.error("配置{}未发现！", key)
+            if (!var) PropertyUtils.logger.error("配置{}未发现！", key)
             var
         }
     }
