@@ -1,5 +1,6 @@
 package com.fun.frame.httpclient;
 
+import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.fun.base.bean.RequestInfo;
 import com.fun.base.exception.RequestException;
@@ -258,13 +259,16 @@ public class FanLibrary extends SourceCode {
      * @return
      */
     private static JSONObject getJsonResponse(String content, JSONObject cookies) {
-        JSONObject jsonObject = JSONObject.parseObject(content);
-        if (jsonObject == null || jsonObject.size() == 0) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject = JSONObject.parseObject(content);
+        } catch (JSONException e) {
             jsonObject = getJson("content=" + content, "code=" + TEST_ERROR_CODE);
             logger.warn("响应体非json格式，已经自动转换成json格式！");
+        } finally {
+            if (!cookies.isEmpty()) jsonObject.put(HttpClientConstant.COOKIE, cookies);
+            return jsonObject;
         }
-        if (!cookies.isEmpty()) jsonObject.put(HttpClientConstant.COOKIE, cookies);
-        return jsonObject;
     }
 
 
