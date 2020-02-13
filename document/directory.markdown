@@ -47,6 +47,7 @@
 - [JUnit 5和Selenium基础（二）](https://mp.weixin.qq.com/s/Gt82cPmS2iX-DhKXTXiy8g)
 - [JUnit 5和Selenium基础（三）](https://mp.weixin.qq.com/s/8YkonXTYgAV5-pLs9yEAVw)
 - [浅谈单元测试](https://mp.weixin.qq.com/s/mJM9qXQepSYQ9vLBnBEs3Q)
+- [Spock 2.0 M1版本初探](https://mp.weixin.qq.com/s/nyYh2QzER03kIk-w9P9GNw)
 
 ## 接口性能
 - [Linux性能监控软件netdata中文汉化版](https://mp.weixin.qq.com/s/7VG7gHx7FUvsuNtBTJpjWA)
@@ -66,6 +67,8 @@
 - [如何性能测试中进行业务验证](https://mp.weixin.qq.com/s/OEvRy1bS2Yq_w1kGiidmng)
 - [性能测试中记录每一个耗时请求](https://mp.weixin.qq.com/s/VXcp4uIMm8mRgqe8fVhuCQ)
 - [性能测试框架第三版](https://mp.weixin.qq.com/s/Mk3PoH7oJX7baFmbeLtl_w)
+- [线程安全类在性能测试中应用](https://mp.weixin.qq.com/s/0-Y63wXqIugVC8RiKldHvg)
+- [利用微基准测试修正压测结果](https://mp.weixin.qq.com/s/dmO33qhOBrTByw_NshS-uA)
 
 # 语言合集
 
@@ -242,6 +245,7 @@
 - [DevOps工具](https://mp.weixin.qq.com/s/4r8FoxQyYZ5naowML5Cw-Q)
 - [2020年Tester自我提升](https://mp.weixin.qq.com/s/vuhUp85_6Sbg6ReAN3TTSQ)
 - [DevOps中的测试工程师](https://mp.weixin.qq.com/s/42Ile_T1BAIp7QHleI-c7w)
+- [敏捷团队的回归测试策略](https://mp.weixin.qq.com/s/Z7dzDdfp5_kxvzBVQ3rEDg)
 
 ## 大咖风采
 
@@ -314,7 +318,7 @@
 - [一个循环启动APP并保持WiFi常开的多线程类](https://mp.weixin.qq.com/s/OgdT4IffDyAdkKmO2SS9iQ)
 
 ## 曝光
--[测试窝，首页抄我七篇原创还拉黑，你们的良心不会痛吗？](https://mp.weixin.qq.com/s/ke5avkknkDMCLMAOGT7wiQ)
+- [测试窝，首页抄我七篇原创还拉黑，你们的良心不会痛吗？](https://mp.weixin.qq.com/s/ke5avkknkDMCLMAOGT7wiQ)
 
 ## 杂乱
 
@@ -324,5 +328,6 @@
 - [2019年浏览器市场份额排行榜](https://mp.weixin.qq.com/s/4NmJ_ZCPD5UwaRCtaCfjEg)
 - [JSON基础](https://mp.weixin.qq.com/s/tnQmAFfFbRloYp8J9TYurw)
 
+![](http://pic.automancloud.com/0_Fotor.jpg)
 
-![](https://mmbiz.qpic.cn/mmbiz_jpg/13eN86FKXzCMW6WN4Wch71qNtGQvxLRSGejZpr37OWa7CDYg5e4ZeanaGWuBgRAX3jicJNIhcyyZPXbKByXcl7w/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![](http://pic.automancloud.com/42387498274.jpeg)
