@@ -32,7 +32,7 @@ public class HeaderMark extends SourceCode implements MarkRequest, Cloneable, Se
         } else {
             ParamException.fail(threadBase.getClass().toString());
         }
-        return null;
+        return EMPTY;
     }
 
     /**
@@ -44,7 +44,6 @@ public class HeaderMark extends SourceCode implements MarkRequest, Cloneable, Se
     @Override
     public String mark(HttpRequestBase base) {
         base.removeHeaders(headerName);
-        i = i == 0 ? threadName.getAndIncrement() : i;
         String value = 8 + EMPTY + i + num++;
         base.addHeader(headerName, value);
         return value;
@@ -57,7 +56,10 @@ public class HeaderMark extends SourceCode implements MarkRequest, Cloneable, Se
 
     public HeaderMark(String headerName) {
         this.headerName = headerName;
+        this.i = threadName.getAndIncrement();
     }
 
+    public HeaderMark() {
 
+    }
 }
