@@ -33,6 +33,13 @@ public class Constant {
 
     public static final String CONNECTOR = "_";
 
+    public static final String[] PERCENT = {" ", "▁", "▂", "▃", "▄", "▅", "▅", "▇", "█"};
+
+    /**
+     * 统计性能数据的分桶数
+     */
+    public static final int BUCKET_SIZE = 23;
+
     /**
      * 读写配置文件过滤的文本
      */

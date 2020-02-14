@@ -5,18 +5,19 @@ import com.fun.base.constaint.ThreadBase;
 import com.fun.config.Constant;
 import com.fun.frame.Save;
 import com.fun.frame.SourceCode;
-import com.fun.utils.RString;
 import com.fun.utils.Time;
 import com.fun.utils.WriteRead;
+import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * 并发类，用于启动压力脚本
@@ -188,14 +189,45 @@ public class Concurrent extends SourceCode {
     public PerformanceResultBean countQPS(int name, String desc, String start, String end) {
         List<String> strings = WriteRead.readTxtFileByLine(Constant.LONG_Path + name + desc);
         int size = strings.size();
-        int sum = 0;
-        for (int i = 0; i < size; i++) {
-            int time = SourceCode.changeStringToInt(strings.get(i));
-            sum += time;
-        }
+        List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
+        int sum = data.stream().mapToInt(x -> x).sum();
+        Collections.sort(data);
+        String statistics = statistics(data);
+        output(statistics);
+
         double qps = 1000.0 * size * name / sum;
         return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(excuteTotal, errorTotal), getPercent(threadNum, failTotal), excuteTotal);
     }
+
+    /**
+     * 将性能测试数据图表展示
+     *
+     * <p>
+     * 将数据排序,然后按照循序分桶,选择桶中中位数作代码,通过二维数组转化成柱状图
+     * </p>
+     *
+     * @param data 性能测试数据,也可以其他统计数据
+     * @return
+     */
+    public static String statistics(List<Integer> data) {
+        int size = data.size();
+        int[] ints = range(1, BUCKET_SIZE + 1).map(x -> data.get(size * x / BUCKET_SIZE - size / BUCKET_SIZE / 2)).toArray();
+        int largest = ints[BUCKET_SIZE - 1];
+        String[][] map = Arrays.asList(ArrayUtils.toObject(ints)).stream().map(x -> getPercent(x, largest, BUCKET_SIZE)).collect(toList()).toArray(new String[BUCKET_SIZE][BUCKET_SIZE]);
+        String[][] result = new String[BUCKET_SIZE][BUCKET_SIZE];
+        /*将二维数组反转成竖排*/
+        for (int i = 0; i < BUCKET_SIZE; i++) {
+            for (int j = 0; j < BUCKET_SIZE; j++) {
+                result[i][j] = getManyString(map[j][BUCKET_SIZE - 1 - i], 2) + SPACE_1;
+            }
+        }
+        StringBuffer table = new StringBuffer(LINE + TAB + ">>响应时间分布图,横轴排序分成桶的序号,纵轴每个桶的中位数<<" + LINE + TAB + TAB + "--<中位数数据最小值为:" + ints[0] + " ms,最大值:" + ints[BUCKET_SIZE - 1] + " ms>--" + LINE);
+        for (int i = 0; i < BUCKET_SIZE; i++) {
+            table.append(TAB + Arrays.asList(result[i]).stream().collect(Collectors.joining()) + LINE);
+        }
+        return table.toString();
+    }
+
 
     /**
      * 用于做后期的计算
@@ -215,7 +247,23 @@ public class Concurrent extends SourceCode {
      * @return
      */
     public PerformanceResultBean countQPS(int name) {
-        return countQPS(name, RString.getString(10), Time.getDate(), Time.getDate());
+        return countQPS(name, EMPTY, Time.getDate(), Time.getDate());
+    }
+
+    /**
+     * 将数据转化成string数组
+     *
+     * @param part   数据
+     * @param total  基准数据,默认最大的中位数
+     * @param length
+     * @return
+     */
+    public static String[] getPercent(int part, int total, int length) {
+        int i = part * 8 * length / total;
+        int prefix = i / 8;
+        int suffix = i % 8;
+        String s = getManyString(PERCENT[8], prefix) + (prefix == length ? EMPTY : PERCENT[suffix] + getManyString(SPACE_1, length - prefix - 1));
+        return s.split(EMPTY);
     }
 
 
