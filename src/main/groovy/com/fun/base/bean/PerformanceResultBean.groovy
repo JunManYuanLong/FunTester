@@ -23,6 +23,8 @@ class PerformanceResultBean extends AbstractBean {
      */
 
     String endTime
+
+    String table
     /**
      * 线程数
      */
@@ -59,7 +61,7 @@ class PerformanceResultBean extends AbstractBean {
 
     int excuteTotal
 
-    PerformanceResultBean(String desc, String startTime, String endTime, int threads, int total, int rt, double qps, double errorRate, double failRate, int excuteTotal) {
+    PerformanceResultBean(String desc, String startTime, String endTime, int threads, int total, int rt, double qps, double errorRate, double failRate, int excuteTotal, String table) {
         this.desc = desc
         this.startTime = startTime
         this.endTime = endTime
@@ -70,7 +72,10 @@ class PerformanceResultBean extends AbstractBean {
         this.errorRate = errorRate
         this.failRate = failRate
         this.excuteTotal = excuteTotal
+        this.excuteTotal = excuteTotal
+        this.table = table
         output(this.toJson())
+        output(this.table)
         MySqlTest.savePerformanceBean(this)
     }
 
