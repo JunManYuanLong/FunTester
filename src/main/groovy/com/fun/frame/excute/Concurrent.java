@@ -192,7 +192,7 @@ public class Concurrent extends SourceCode {
         List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
         int sum = data.stream().mapToInt(x -> x).sum();
         Collections.sort(data);
-        String statistics = statistics(data);
+        String statistics = statistics(data, desc);
         double qps = 1000.0 * size * name / sum;
         return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(excuteTotal, errorTotal), getPercent(threadNum, failTotal), excuteTotal, statistics);
     }
@@ -207,8 +207,9 @@ public class Concurrent extends SourceCode {
      * @param data 性能测试数据,也可以其他统计数据
      * @return
      */
-    public static String statistics(List<Integer> data) {
+    public static String statistics(List<Integer> data, String title) {
         int size = data.size();
+        if (size < 1000) return EMPTY;
         int[] ints = range(1, BUCKET_SIZE + 1).map(x -> data.get(size * x / BUCKET_SIZE - size / BUCKET_SIZE / 2)).toArray();
         int largest = ints[BUCKET_SIZE - 1];
         String[][] map = Arrays.asList(ArrayUtils.toObject(ints)).stream().map(x -> getPercent(x, largest, BUCKET_SIZE)).collect(toList()).toArray(new String[BUCKET_SIZE][BUCKET_SIZE]);
@@ -219,9 +220,9 @@ public class Concurrent extends SourceCode {
                 result[i][j] = getManyString(map[j][BUCKET_SIZE - 1 - i], 2) + SPACE_1;
             }
         }
-        StringBuffer table = new StringBuffer(LINE + TAB + ">>响应时间分布图,横轴排序分成桶的序号,纵轴每个桶的中位数<<" + LINE + TAB + TAB + "--<中位数数据最小值为:" + ints[0] + " ms,最大值:" + ints[BUCKET_SIZE - 1] + " ms>--" + LINE);
+        StringBuffer table = new StringBuffer(LINE + getManyString(TAB, 4) + ((title == null || title.length() == 0) ? DEFAULT_STRING : title) + LINE + LINE + TAB + ">>响应时间分布图,横轴排序分成桶的序号,纵轴每个桶的中位数<<" + LINE + TAB + TAB + "--<中位数数据最小值为:" + ints[0] + " ms,最大值:" + ints[BUCKET_SIZE - 1] + " ms>--" + LINE);
         for (int i = 0; i < BUCKET_SIZE; i++) {
-            table.append(TAB + Arrays.asList(result[i]).stream().collect(Collectors.joining()) + LINE);
+            table.append(Arrays.asList(result[i]).stream().collect(Collectors.joining()) + LINE);
         }
         return table.toString();
     }
