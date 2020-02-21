@@ -33,7 +33,7 @@ public class Constant {
 
     public static final String CONNECTOR = "_";
 
-    public static final String[] PERCENT = {" ", "▁", "▂", "▃", "▄", "▅", "▅", "▇", "█"};
+    public static final String[] PERCENT = {SPACE_1, "▁", "▂", "▃", "▄", "▅", "▅", "▇", "█"};
 
     /**
      * 统计性能数据的分桶数
