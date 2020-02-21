@@ -328,7 +328,7 @@ class FunRequest extends FanLibrary implements Serializable, Cloneable {
                 fail();
             }
             if (value.equalsIgnoreCase(HttpClientConstant.ContentType_TEXT.getValue()) || value.equalsIgnoreCase(HttpClientConstant.ContentType_JSON.getValue())) {
-                request = FunRequest.isPost().setUri(uri).setHeaders(headers).setJson(JSONObject.fromObject(content));
+                request = FunRequest.isPost().setUri(uri).setHeaders(headers).setJson(JSONObject.parseObject(content));
             } else if (value.equalsIgnoreCase(HttpClientConstant.ContentType_FORM.getValue())) {
                 request = FunRequest.isPost().setUri(uri).setHeaders(headers).setParams(getJson(content.split("&")));
             }
