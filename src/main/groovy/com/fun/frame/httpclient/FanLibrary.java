@@ -3,6 +3,7 @@ package com.fun.frame.httpclient;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.fun.base.bean.RequestInfo;
+import com.fun.base.exception.ParamException;
 import com.fun.base.exception.RequestException;
 import com.fun.base.interfaces.IBase;
 import com.fun.config.HttpClientConstant;
@@ -12,6 +13,7 @@ import com.fun.utils.DecodeEncode;
 import com.fun.utils.Time;
 import com.fun.utils.message.AlertOver;
 import io.netty.util.internal.StringUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.*;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -261,6 +263,7 @@ public class FanLibrary extends SourceCode {
     private static JSONObject getJsonResponse(String content, JSONObject cookies) {
         JSONObject jsonObject = new JSONObject();
         try {
+            if (StringUtils.isEmpty(content)) ParamException.fail("响应为空!");
             jsonObject = JSONObject.parseObject(content);
         } catch (JSONException e) {
             jsonObject = getJson("content=" + content, "code=" + TEST_ERROR_CODE);
@@ -355,7 +358,7 @@ public class FanLibrary extends SourceCode {
      */
     private static boolean isRightRequest(HttpRequestBase request) {
         String url = request.getURI().toString().toLowerCase();
-        return !StringUtil.isNullOrEmpty(url) && url.startsWith("http") && url.length() < 1000;
+        return !StringUtil.isNullOrEmpty(url) && url.startsWith("http");
     }
 
     /**
