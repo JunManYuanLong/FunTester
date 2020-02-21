@@ -86,16 +86,19 @@ class RString extends SourceCode {
  */
     static String getChinese(int i) {
         if (i <= 0) return "〇〇〇"
-        String num = (i + EMPTY).collect { x -> chineses[changeStringToInt(x)] }.join()
+        String num = (i + EMPTY).collect {x -> chineses[changeStringToInt(x)]}.join()
         num.length() > 2 ? num : getManyString(chineses[0] + EMPTY, 3 - num.length()) + num
     }
 
 /**
- * 将int类型转化汉字大写数字表示
+ * 将int类型转化汉字大写数字表示，对于3位数的数字自动补零
  * @param i
  * @return
  */
     static String getCapeChinese(int i) {
-        (i + EMPTY).collect { x -> capeChineses[changeStringToInt(x)] }.join()
+        if (i <= 0) return "零零零"
+        def num = (i + EMPTY).collect {x -> capeChineses[changeStringToInt(x)]}.join()
+        num.length() > 2 ? num : getManyString(capeChineses[0] + EMPTY, 3 - num.length()) + num
+
     }
 }

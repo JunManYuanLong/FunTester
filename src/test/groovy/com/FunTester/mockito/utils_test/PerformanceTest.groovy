@@ -48,7 +48,7 @@ class PerformanceTest extends Specification {
         FanLibrary.getHttpResponse(httpGet);
         HttpClientConstant.MAX_ACCEPT_TIME = -1
         RequestThreadTimes threadTimes = new RequestThreadTimes(httpGet, 2, mark);
-        new Concurrent(threadTimes * 2).start();
+//        new Concurrent(threadTimes * 2).start();
 
     }
 
@@ -59,7 +59,7 @@ class PerformanceTest extends Specification {
         FanLibrary.getHttpResponse(httpGet);
         HttpClientConstant.MAX_ACCEPT_TIME = -1
         RequestThreadTime threadTimes = new RequestThreadTime(httpGet, 1, mark);
-        new Concurrent(threadTimes * 2).start();
+//        new Concurrent(threadTimes * 2).start();
 
     }
 
@@ -93,7 +93,7 @@ class PerformanceTest extends Specification {
             }
         }
         HttpClientConstant.MAX_ACCEPT_TIME = TEST_ERROR_CODE
-        new Concurrent(threads).start()
+//        new Concurrent(threads).start()
 
         expect:
 
@@ -132,7 +132,7 @@ class PerformanceTest extends Specification {
         HttpClientConstant.MAX_ACCEPT_TIME = TEST_ERROR_CODE
         new Concurrent(threads).start()
         sleep(1000)
-        new Concurrent(threads).start()
+//        new Concurrent(threads).start()
 
         expect:
 
