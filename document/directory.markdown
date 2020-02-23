@@ -1,6 +1,6 @@
 # 总目录
 
-> FunTester，270+原创文章，4次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，量变引起质变，欢迎关注。
+> FunTester，290+原创文章，6次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，量变引起质变，欢迎关注。
 
 # 接口测试
 
@@ -30,6 +30,7 @@
 - [如何统一接口测试的功能、自动化和性能测试用例](https://mp.weixin.qq.com/s/1xqtXNVw7BdUa03nVcsMTg)
 - [如何选择API测试工具](https://mp.weixin.qq.com/s/m2TNJDiqAAWYV9L6UP-29w)
 - [初学者的API测试技巧](https://mp.weixin.qq.com/s/_uk6dw5Q7CfS-gXGH-TZEQ)
+- [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
 
 # 单元&白盒
 
@@ -48,8 +49,11 @@
 - [JUnit 5和Selenium基础（三）](https://mp.weixin.qq.com/s/8YkonXTYgAV5-pLs9yEAVw)
 - [浅谈单元测试](https://mp.weixin.qq.com/s/mJM9qXQepSYQ9vLBnBEs3Q)
 - [Spock 2.0 M1版本初探](https://mp.weixin.qq.com/s/nyYh2QzER03kIk-w9P9GNw)
+- [Java并发BUG基础篇](https://mp.weixin.qq.com/s/NR4vYx81HtgAEqH2Q93k2Q)
+- [Java并发BUG提升篇](https://mp.weixin.qq.com/s/GCRRe8hJpe1QJtxq9VBEhg)
 
 ## 接口性能
+
 - [Linux性能监控软件netdata中文汉化版](https://mp.weixin.qq.com/s/7VG7gHx7FUvsuNtBTJpjWA)
 - [一个时间计数器timewatch辅助性能测试](https://mp.weixin.qq.com/s/-YZ04n2kyfO0q2QaKHX_0Q)
 - [性能测试框架](https://mp.weixin.qq.com/s/3_09j7-5ex35u30HQRyWug)
@@ -69,6 +73,11 @@
 - [性能测试框架第三版](https://mp.weixin.qq.com/s/Mk3PoH7oJX7baFmbeLtl_w)
 - [线程安全类在性能测试中应用](https://mp.weixin.qq.com/s/0-Y63wXqIugVC8RiKldHvg)
 - [利用微基准测试修正压测结果](https://mp.weixin.qq.com/s/dmO33qhOBrTByw_NshS-uA)
+- [性能测试如何减少本机误差](https://mp.weixin.qq.com/s/S6b_wwSowVolp1Uu6sEIOA)
+- [服务端性能优化之异步查询转同步](https://mp.weixin.qq.com/s/okYP2aOPfkWj2FjZcAtQNA)
+- [服务端性能优化之双重检查锁](https://mp.weixin.qq.com/s/-bOyHBcqFlJY3c0PEZaWgQ)
+- [多种登录方式定量性能测试方案](https://mp.weixin.qq.com/s/WuZ2h2rr0rNBgEvQVioacA)
+- [性能测试中图形化输出测试数据](https://mp.weixin.qq.com/s/EMvpYIsszdwBJFPIxztTvA)
 
 # 语言合集
 
@@ -89,6 +98,11 @@
 - [如何在匿名thread子类中保证线程安全](https://mp.weixin.qq.com/s/GCXx_-ummi0JfZQ7GTIxig)
 - [Java服务端两个常见的并发错误](https://mp.weixin.qq.com/s/5VvCox3eY6sQDsuaKB4ZIw)
 - [Java中interface属性和实例方法](https://mp.weixin.qq.com/s/vrKkM6522tgw3v_cL7R8HA)
+- [服务端性能优化之双重检查锁](https://mp.weixin.qq.com/s/-bOyHBcqFlJY3c0PEZaWgQ)
+- [Java并发BUG基础篇](https://mp.weixin.qq.com/s/NR4vYx81HtgAEqH2Q93k2Q)
+- [Java并发BUG提升篇](https://mp.weixin.qq.com/s/GCRRe8hJpe1QJtxq9VBEhg)
+- [性能测试中图形化输出测试数据](https://mp.weixin.qq.com/s/EMvpYIsszdwBJFPIxztTvA)
+- [超大对象导致Full GC超高的BUG分享](https://mp.weixin.qq.com/s/L15-0JW9WK-E005GeOG9WQ)
 
 ## Groovy
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)
@@ -116,6 +130,8 @@
 - [如何测试非固定型概率算法P=p(1+0.1*N)](https://mp.weixin.qq.com/s/sgg8v-Bi-_sUDJXwuTCMGg)
 - [性能测试中标记每个请求](https://mp.weixin.qq.com/s/PokvzoLdVf_y9inlVXHJHQ)
 - [如何对N个接口按比例压测](https://mp.weixin.qq.com/s/GZxbH4GjDkk4BLqnUj1_kw)
+- [多种登录方式定量性能测试方案](https://mp.weixin.qq.com/s/WuZ2h2rr0rNBgEvQVioacA)
+- [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
 
 ## BUG集锦
 - [一个MySQL索引引发的血案](https://mp.weixin.qq.com/s/KLSber-gPg53JVfsCa3Dtw)
@@ -126,6 +142,7 @@
 - [连开100年会员会怎样](https://mp.weixin.qq.com/s/mZw-SFIxFFbE-o8UeXhdfg)
 - [异步查询转同步加redis业务实现的BUG分享](https://mp.weixin.qq.com/s/ni3f6QTxw0K-0I3epvEYOA)
 - [Java服务端两个常见的并发错误](https://mp.weixin.qq.com/s/5VvCox3eY6sQDsuaKB4ZIw)
+- [超大对象导致Full GC超高的BUG分享](https://mp.weixin.qq.com/s/L15-0JW9WK-E005GeOG9WQ)
 
 ## 爬虫实践
 - [接口爬虫之网页表单数据提取](https://mp.weixin.qq.com/s/imJ5u67xhYQaEzv-O1in4g)
@@ -138,6 +155,7 @@
 - [groovy爬虫实例——历史上的今天](https://mp.weixin.qq.com/s/5LDUvpU6t_GZ09uhZr224A)
 - [爬取720万条城市历史天气数据](https://mp.weixin.qq.com/s/vOyKpeGlJSJp9bQ8NIMe2A)
 - [记一次失败的爬虫](https://mp.weixin.qq.com/s/SMylrZLXDGw5f1xKI9ObnA)
+- [爬虫实践--CBA历年比赛数据](https://mp.weixin.qq.com/s/mM_QSQddabU5im_O6iVR-Q)
 
 # 工具合集
 
@@ -246,6 +264,9 @@
 - [2020年Tester自我提升](https://mp.weixin.qq.com/s/vuhUp85_6Sbg6ReAN3TTSQ)
 - [DevOps中的测试工程师](https://mp.weixin.qq.com/s/42Ile_T1BAIp7QHleI-c7w)
 - [敏捷团队的回归测试策略](https://mp.weixin.qq.com/s/Z7dzDdfp5_kxvzBVQ3rEDg)
+- [测试自动化与自动化测试：差异很重要](https://mp.weixin.qq.com/s/6HC1bKesOs4mZYb9nOCHjw)
+- [自动化新手要避免的坑（上）](https://mp.weixin.qq.com/s/MjcX40heTRhEgCFhInoqYQ)
+- [自动化新手要避免的坑（下）](https://mp.weixin.qq.com/s/azDUo1IO5JgkJIS9n1CMRg)
 
 ## 大咖风采
 

@@ -63,3 +63,6 @@
 - [如何获取手机性能测试数据FPS](https://mp.weixin.qq.com/s/qZy5AQkNpUXRJk46BHVzaQ)
 - [一个循环启动APP并保持WiFi常开的多线程类](https://mp.weixin.qq.com/s/OgdT4IffDyAdkKmO2SS9iQ)
 
+![](http://pic.automancloud.com/0_Fotor.jpg)
+
+![](http://pic.automancloud.com/42387498274.jpeg)

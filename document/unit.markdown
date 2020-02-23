@@ -12,3 +12,10 @@
 - [JUnit 5和Selenium基础（二）](https://mp.weixin.qq.com/s/Gt82cPmS2iX-DhKXTXiy8g)
 - [JUnit 5和Selenium基础（三）](https://mp.weixin.qq.com/s/8YkonXTYgAV5-pLs9yEAVw)
 - [浅谈单元测试](https://mp.weixin.qq.com/s/mJM9qXQepSYQ9vLBnBEs3Q)
+- [Spock 2.0 M1版本初探](https://mp.weixin.qq.com/s/nyYh2QzER03kIk-w9P9GNw)
+- [Java并发BUG基础篇](https://mp.weixin.qq.com/s/NR4vYx81HtgAEqH2Q93k2Q)
+- [Java并发BUG提升篇](https://mp.weixin.qq.com/s/GCRRe8hJpe1QJtxq9VBEhg)
+
+![](http://pic.automancloud.com/0_Fotor.jpg)
+
+![](http://pic.automancloud.com/42387498274.jpeg)

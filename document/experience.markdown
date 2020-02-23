@@ -56,7 +56,9 @@
 - [2020年Tester自我提升](https://mp.weixin.qq.com/s/vuhUp85_6Sbg6ReAN3TTSQ)
 - [DevOps中的测试工程师](https://mp.weixin.qq.com/s/42Ile_T1BAIp7QHleI-c7w)
 - [敏捷团队的回归测试策略](https://mp.weixin.qq.com/s/Z7dzDdfp5_kxvzBVQ3rEDg)
-
+- [测试自动化与自动化测试：差异很重要](https://mp.weixin.qq.com/s/6HC1bKesOs4mZYb9nOCHjw)
+- [自动化新手要避免的坑（上）](https://mp.weixin.qq.com/s/MjcX40heTRhEgCFhInoqYQ)
+- [自动化新手要避免的坑（下）](https://mp.weixin.qq.com/s/azDUo1IO5JgkJIS9n1CMRg)
 
 ## 大咖风采
 
@@ -73,6 +75,7 @@
 - [测试之JVM命令脑图](https://mp.weixin.qq.com/s/qprqyv0j3SCvGw1HMjbaMQ)
 - [2019年浏览器市场份额排行榜](https://mp.weixin.qq.com/s/4NmJ_ZCPD5UwaRCtaCfjEg)
 - [JSON基础](https://mp.weixin.qq.com/s/tnQmAFfFbRloYp8J9TYurw)
+
 
 ![](http://pic.automancloud.com/0_Fotor.jpg)
 

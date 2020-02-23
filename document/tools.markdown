@@ -55,4 +55,6 @@
 - [python plotly制作接口响应耗时的时间序列表（Time Series ）](https://mp.weixin.qq.com/s/U8chcVzCjGTdT3T_X5v4kw)
 - [python使用plotly批量生成图表](https://mp.weixin.qq.com/s/l18WfWz-s6qQ1JKKuh_2AQ)
 
-![长按关注](https://mmbiz.qpic.cn/mmbiz_jpg/13eN86FKXzBEASPySoVdOFmP12QUIWAQms664L0b82nic8BRIlufg0QibzXNnoibZp8yqhU9Pv0hXjKtqrGof8kMA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![](http://pic.automancloud.com/0_Fotor.jpg)
+
+![](http://pic.automancloud.com/42387498274.jpeg)

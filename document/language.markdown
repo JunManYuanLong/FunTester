@@ -18,6 +18,11 @@
 - [如何保存HTTPrequestbase和CloseableHttpResponse](https://mp.weixin.qq.com/s/gRY8HRQHCh0PfyS7Q22IwA)
 - [如何在匿名thread子类中保证线程安全](https://mp.weixin.qq.com/s/GCXx_-ummi0JfZQ7GTIxig)
 - [Java中interface属性和实例方法](https://mp.weixin.qq.com/s/vrKkM6522tgw3v_cL7R8HA)
+- [服务端性能优化之双重检查锁](https://mp.weixin.qq.com/s/-bOyHBcqFlJY3c0PEZaWgQ)
+- [Java并发BUG基础篇](https://mp.weixin.qq.com/s/NR4vYx81HtgAEqH2Q93k2Q)
+- [Java并发BUG提升篇](https://mp.weixin.qq.com/s/GCRRe8hJpe1QJtxq9VBEhg)
+- [性能测试中图形化输出测试数据](https://mp.weixin.qq.com/s/EMvpYIsszdwBJFPIxztTvA)
+- [超大对象导致Full GC超高的BUG分享](https://mp.weixin.qq.com/s/L15-0JW9WK-E005GeOG9WQ)
 
 ## Groovy
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)

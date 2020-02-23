@@ -1,11 +1,12 @@
 # 接口测试
 
-> FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的质变。
+FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的质变。
 
 从事专门的服务端测试两年时间，纯语言脚本测试，工作语言Java和Groovy。在经历过1年左右的实践，逐步完善了自己的测试框架（包含接口功能、自动化、性能）。框架基础依然是java语言，基于httpclient4.5进行的封装，还拓展了其他功能，如mysql存储数据，HTML报告，alterover分级通知等。下面是我在工作经历中遇到的比较典型的难点解决方案。
 
 
 ## 接口测试
+
 接口功能和自动化过程中遇到的坑，大多是基础的功能实现Demo和测试痛点的解决方案。
 
 - [使用springboot+mybatis数据库存储服务化](https://mp.weixin.qq.com/s/N_5tHW1JJLZlxCaDI2PvyQ)
@@ -34,7 +35,8 @@
 - [如何选择API测试工具](https://mp.weixin.qq.com/s/m2TNJDiqAAWYV9L6UP-29w)
 - [初学者的API测试技巧](https://mp.weixin.qq.com/s/_uk6dw5Q7CfS-gXGH-TZEQ)
 
-## 接口性能!
+## 接口性能
+
 接口性能是做接口性能测试过程中使用的测试策略以及Groovy脚本实现，以及性能测试工具的实现，如timewatch和netdata汉化。
 - [Linux性能监控软件netdata中文汉化版](https://mp.weixin.qq.com/s/7VG7gHx7FUvsuNtBTJpjWA)
 - [一个时间计数器timewatch辅助性能测试](https://mp.weixin.qq.com/s/-YZ04n2kyfO0q2QaKHX_0Q)
@@ -55,6 +57,12 @@
 - [性能测试框架第三版](https://mp.weixin.qq.com/s/Mk3PoH7oJX7baFmbeLtl_w)
 - [线程安全类在性能测试中应用](https://mp.weixin.qq.com/s/0-Y63wXqIugVC8RiKldHvg)
 - [利用微基准测试修正压测结果](https://mp.weixin.qq.com/s/dmO33qhOBrTByw_NshS-uA)
+- [性能测试如何减少本机误差](https://mp.weixin.qq.com/s/S6b_wwSowVolp1Uu6sEIOA)
+- [服务端性能优化之异步查询转同步](https://mp.weixin.qq.com/s/okYP2aOPfkWj2FjZcAtQNA)
+- [服务端性能优化之双重检查锁](https://mp.weixin.qq.com/s/-bOyHBcqFlJY3c0PEZaWgQ)
+- [多种登录方式定量性能测试方案](https://mp.weixin.qq.com/s/WuZ2h2rr0rNBgEvQVioacA)
+- [性能测试中图形化输出测试数据](https://mp.weixin.qq.com/s/EMvpYIsszdwBJFPIxztTvA)
+- [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
 
 ## 测试方案
 - [如何对消息队列做性能测试](https://mp.weixin.qq.com/s/MNt22aW3Op9VQ5OoMzPwBw)
@@ -63,7 +71,12 @@
 - [如何测试非固定型概率算法P=p(1+0.1*N)](https://mp.weixin.qq.com/s/sgg8v-Bi-_sUDJXwuTCMGg)
 - [性能测试中标记每个请求](https://mp.weixin.qq.com/s/PokvzoLdVf_y9inlVXHJHQ)
 - [如何对N个接口按比例压测](https://mp.weixin.qq.com/s/GZxbH4GjDkk4BLqnUj1_kw)
+- [多种登录方式定量性能测试方案](https://mp.weixin.qq.com/s/WuZ2h2rr0rNBgEvQVioacA)
+- [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
 
+![](https://mmbiz.qpic.cn/mmbiz_jpg/13eN86FKXzCxr0Sa2MXpNKicZE024zJm73r4hrjticMMYViagtaSXxwsyhmRmOrdXPXfS5zB2ILHtaqNSoWGRwa8Q/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+
+![](https://mmbiz.qpic.cn/mmbiz_png/13eN86FKXzCxr0Sa2MXpNKicZE024zJm7vIAFRC09bPV9iaMer9Ncq8xppcYF73sDHbrG2iaBtRqCFibdckDTcojKg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 ![](http://pic.automancloud.com/0_Fotor.jpg)
 
