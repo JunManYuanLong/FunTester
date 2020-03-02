@@ -118,4 +118,18 @@ class Demo extends Specification {
         3 == listsss.get(3)
     }
 
+/**
+ *      对于未指定mock的方法，spy默认会调用真实的方法，有返回值的返回真实的返回值，而mock默认不执行，有返回值的，默认返回null
+ */
+    def "spy和mock区别"() {
+        given:
+        def list = [1,2,3,4]
+        def integers = spy(list)
+        when(integers.size()).thenReturn(9)
+
+        expect:
+        integers.size() == 9
+        integers.get(0) == 1
+
+    }
 }
