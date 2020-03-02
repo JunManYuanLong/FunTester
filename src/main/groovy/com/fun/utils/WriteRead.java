@@ -1,9 +1,9 @@
 package com.fun.utils;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fun.base.exception.ParamException;
 import com.fun.config.Constant;
 import com.fun.frame.SourceCode;
-import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +12,7 @@ import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WriteRead extends SourceCode {
 
@@ -72,7 +73,7 @@ public class WriteRead extends SourceCode {
      * @return 返回list数组
      */
     public static List<String> readTxtFileByLine(String filePath) {
-        return readTxtFileByLine(filePath, "", true);
+        return readTxtFileByLine(filePath, EMPTY, true);
     }
 
     /**
@@ -110,6 +111,26 @@ public class WriteRead extends SourceCode {
             logger.warn("读取文件内容出错", e);
         }
         return lines;
+    }
+
+    /**
+     * 从配置文件中读取数字信息
+     *
+     * @param filePath
+     * @return
+     */
+    public static List<Integer> readTxtFileByNumLine(String filePath) {
+        return readTxtFileByLine(filePath, EMPTY, true).stream().map(x -> changeStringToInt(x)).collect(Collectors.toList());
+    }
+
+    /**
+     * 从配置文件中读取数字信息
+     *
+     * @param filePath
+     * @return
+     */
+    public static List<Double> readTxtFileByDoubleLine(String filePath) {
+        return readTxtFileByLine(filePath, EMPTY, true).stream().map(x -> changeStringToDouble(x)).collect(Collectors.toList());
     }
 
     /**
