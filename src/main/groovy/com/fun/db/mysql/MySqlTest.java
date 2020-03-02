@@ -21,7 +21,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -44,7 +44,7 @@ public class MySqlTest extends SqlBase {
     /**
      * 存放数据库存储任务
      */
-    static LinkedBlockingDeque<String> sqls = new LinkedBlockingDeque<>();
+    static LinkedBlockingQueue<String> sqls = new LinkedBlockingQueue<>();
 
     public static Connection getConnection0() {
         return connection0;
