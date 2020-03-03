@@ -55,7 +55,7 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase {
             while (true) {
                 excuteNum++;
                 try {
-                    String m = mark == null ? EMPTY : this.mark.mark(this);
+                    threadmark = mark == null ? EMPTY : this.mark.mark(this);
                     long s = Time.getTimeStamp();
                     doing();
                     et = Time.getTimeStamp();
@@ -63,7 +63,7 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase {
                     long diff = et - s;
                     t.add(diff);
                     output(et - ss);
-                    if (diff > HttpClientConstant.MAX_ACCEPT_TIME) marks.add(diff + CONNECTOR + m);
+                    if (diff > HttpClientConstant.MAX_ACCEPT_TIME) marks.add(diff + CONNECTOR + threadmark);
                     if ((et - ss) > time || status() || key) break;
                 } catch (Exception e) {
                     logger.warn("执行任务失败！", e);

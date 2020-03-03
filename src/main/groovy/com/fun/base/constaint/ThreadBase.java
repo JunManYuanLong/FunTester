@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
  */
 public abstract class ThreadBase<T> extends SourceCode implements Runnable {
 
+    public String threadmark;
+
     /**
      * 错误数
      */
@@ -69,7 +71,7 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
     /**
      * 运行待测方法后的处理
      */
-    protected  void after() {
+    protected void after() {
         if (countDownLatch != null)
             countDownLatch.countDown();
     }
