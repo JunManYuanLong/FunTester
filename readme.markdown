@@ -15,7 +15,10 @@
 
 微信公众号：
 ===
-![微信公众号](https://oscimg.oschina.net/oscnet/64c3fa99be2ecc594aeb1a426be285aa49b.jpg)
+![](http://pic.automancloud.com/0_Fotor.jpg)
+
+![](http://pic.automancloud.com/42387498274.jpeg)
+
 
 QQ群：340964272
 ===
