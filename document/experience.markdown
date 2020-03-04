@@ -1,4 +1,4 @@
-# 非技术分享
+# 无代码合集
 
 
 > FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的质变。
@@ -59,6 +59,12 @@
 - [测试自动化与自动化测试：差异很重要](https://mp.weixin.qq.com/s/6HC1bKesOs4mZYb9nOCHjw)
 - [自动化新手要避免的坑（上）](https://mp.weixin.qq.com/s/MjcX40heTRhEgCFhInoqYQ)
 - [自动化新手要避免的坑（下）](https://mp.weixin.qq.com/s/azDUo1IO5JgkJIS9n1CMRg)
+- [如何成为全栈自动化工程师](https://mp.weixin.qq.com/s/j2rQ3COFhg939KLrgKr_bg)
+- [API自动化测试指南](https://mp.weixin.qq.com/s/uy_Vn_ZVUEu3YAI1gW2T_A)
+- [API测试基础](https://mp.weixin.qq.com/s/bkbUEa9CF21xMYSlhPcULw)
+- [左移测试](https://mp.weixin.qq.com/s/8zXkWV4ils17hUqlXIpXSw)
+- [从单元测试标准中学习](https://mp.weixin.qq.com/s/x0TyMAdPBWYL7JSPAmoQsw)
+- [选择手动测试还是自动化测试？](https://mp.weixin.qq.com/s/4haRrfSIp5Plgm_GN98lRA)
 
 ## 大咖风采
 
