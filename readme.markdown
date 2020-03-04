@@ -19,6 +19,10 @@
 
 ![](http://pic.automancloud.com/42387498274.jpeg)
 
+个人微信:
+===
+
+![](http://pic.automancloud.com/WechatIMG34.jpeg)
 
 QQ群：340964272
 ===
