@@ -26,6 +26,8 @@
 - [利用ThreadLocal解决线程同步问题](https://mp.weixin.qq.com/s/VEm8jt3ZUEUdyyeXPC8VvQ)
 - [线程安全集合类中的对象是安全的么？](https://mp.weixin.qq.com/s/WKSuPEfzZCVwjVTcoD0Dyg)
 - [如何使用“dd MM”解析日期](https://mp.weixin.qq.com/s/v9ooAj3dKu53JXgxB482HA)
+- [Java和Groovy正则使用](https://mp.weixin.qq.com/s/DT3BKE3ZcCKf6TLzGc5wbg)
+- [运行越来越快的Java热点代码](https://mp.weixin.qq.com/s/AP0BcDEjDuaouaB0RXJOoQ)
 
 ## Groovy
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)
@@ -38,6 +40,12 @@
 - [Groovy重载操作符](https://mp.weixin.qq.com/s/4jW06Q4_vjFR9DovRTTuHg)
 - [用Groovy处理JMeter断言和日志](https://mp.weixin.qq.com/s/Q4yPA4p8dZYAARZ60ZDh9w)
 - [用Groovy处理JMeter变量](https://mp.weixin.qq.com/s/BxtweLrBUptM8r3LxmeM_Q)
+- [用Groovy在JMeter中执行命令行](https://mp.weixin.qq.com/s/VTip7tiLpwBOr1gUoZ0n8A)
+- [用Groovy处理JMeter中的请求参数](https://mp.weixin.qq.com/s/9pCUOXWpMwXR5ynvCMYJ7A)
+- [Java和Groovy正则使用](https://mp.weixin.qq.com/s/DT3BKE3ZcCKf6TLzGc5wbg)
+- [Groovy中的元组](https://mp.weixin.qq.com/s/0-ka0-tv1vyKbiA6m44jRw)
+- [从Java到Groovy的八级进化论](https://mp.weixin.qq.com/s/QTrRHsD3w-zLGbn79y8yUg)
+- [用Groovy在JMeter中使用正则提取赋值](https://mp.weixin.qq.com/s/9riPpnQZCfKGscuzOOpYmQ)
 
 ## Python
 - [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/xs6Q7uk5l8Gxoagh-sY0uQ)

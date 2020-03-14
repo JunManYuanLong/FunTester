@@ -65,6 +65,7 @@
 - [左移测试](https://mp.weixin.qq.com/s/8zXkWV4ils17hUqlXIpXSw)
 - [从单元测试标准中学习](https://mp.weixin.qq.com/s/x0TyMAdPBWYL7JSPAmoQsw)
 - [选择手动测试还是自动化测试？](https://mp.weixin.qq.com/s/4haRrfSIp5Plgm_GN98lRA)
+- [负载测试很重要](https://mp.weixin.qq.com/s/2q7kNQVJuNwB948ks463CA)
 
 ## 大咖风采
 
@@ -81,6 +82,7 @@
 - [测试之JVM命令脑图](https://mp.weixin.qq.com/s/qprqyv0j3SCvGw1HMjbaMQ)
 - [2019年浏览器市场份额排行榜](https://mp.weixin.qq.com/s/4NmJ_ZCPD5UwaRCtaCfjEg)
 - [JSON基础](https://mp.weixin.qq.com/s/tnQmAFfFbRloYp8J9TYurw)
+- [JMeter吞吐量误差分析](https://mp.weixin.qq.com/s/jHKmFNrLmjpihnoigNNCSg)
 
 
 ![](http://pic.automancloud.com/0_Fotor.jpg)

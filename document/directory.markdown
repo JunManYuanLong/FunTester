@@ -1,6 +1,6 @@
 # 总目录
 
-> FunTester，300+原创文章，6次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，量变引起质变，欢迎关注。
+> FunTester，310+原创文章，6次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，量变引起质变，欢迎关注。
 
 # 接口测试
 
@@ -108,6 +108,8 @@
 - [利用ThreadLocal解决线程同步问题](https://mp.weixin.qq.com/s/VEm8jt3ZUEUdyyeXPC8VvQ)
 - [线程安全集合类中的对象是安全的么？](https://mp.weixin.qq.com/s/WKSuPEfzZCVwjVTcoD0Dyg)
 - [如何使用“dd MM”解析日期](https://mp.weixin.qq.com/s/v9ooAj3dKu53JXgxB482HA)
+- [Java和Groovy正则使用](https://mp.weixin.qq.com/s/DT3BKE3ZcCKf6TLzGc5wbg)
+- [运行越来越快的Java热点代码](https://mp.weixin.qq.com/s/AP0BcDEjDuaouaB0RXJOoQ)
 
 ## Groovy
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)
@@ -120,7 +122,12 @@
 - [Groovy重载操作符](https://mp.weixin.qq.com/s/4jW06Q4_vjFR9DovRTTuHg)
 - [用Groovy处理JMeter断言和日志](https://mp.weixin.qq.com/s/Q4yPA4p8dZYAARZ60ZDh9w)
 - [用Groovy处理JMeter变量](https://mp.weixin.qq.com/s/BxtweLrBUptM8r3LxmeM_Q)
-
+- [用Groovy在JMeter中执行命令行](https://mp.weixin.qq.com/s/VTip7tiLpwBOr1gUoZ0n8A)
+- [用Groovy处理JMeter中的请求参数](https://mp.weixin.qq.com/s/9pCUOXWpMwXR5ynvCMYJ7A)
+- [Java和Groovy正则使用](https://mp.weixin.qq.com/s/DT3BKE3ZcCKf6TLzGc5wbg)
+- [Groovy中的元组](https://mp.weixin.qq.com/s/0-ka0-tv1vyKbiA6m44jRw)
+- [从Java到Groovy的八级进化论](https://mp.weixin.qq.com/s/QTrRHsD3w-zLGbn79y8yUg)
+- [用Groovy在JMeter中使用正则提取赋值](https://mp.weixin.qq.com/s/9riPpnQZCfKGscuzOOpYmQ)
 
 ## Python
 - [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/D8RfpdIi8smCL8TAzBcNpA)
@@ -278,6 +285,7 @@
 - [左移测试](https://mp.weixin.qq.com/s/8zXkWV4ils17hUqlXIpXSw)
 - [选择手动测试还是自动化测试？](https://mp.weixin.qq.com/s/4haRrfSIp5Plgm_GN98lRA)
 - [从单元测试标准中学习](https://mp.weixin.qq.com/s/x0TyMAdPBWYL7JSPAmoQsw)
+- [负载测试很重要](https://mp.weixin.qq.com/s/2q7kNQVJuNwB948ks463CA)
 
 ## 大咖风采
 
@@ -359,12 +367,18 @@
 - [测试之JVM命令脑图](https://mp.weixin.qq.com/s/qprqyv0j3SCvGw1HMjbaMQ)
 - [2019年浏览器市场份额排行榜](https://mp.weixin.qq.com/s/4NmJ_ZCPD5UwaRCtaCfjEg)
 - [JSON基础](https://mp.weixin.qq.com/s/tnQmAFfFbRloYp8J9TYurw)
-- [用Groovy处理JMeter断言和日志](https://mp.weixin.qq.com/s/Q4yPA4p8dZYAARZ60ZDh9w)
+- [JMeter吞吐量误差分析](https://mp.weixin.qq.com/s/jHKmFNrLmjpihnoigNNCSg)
 
 ![](http://pic.automancloud.com/0_Fotor.jpg)
 
 ![](http://pic.automancloud.com/42387498274.jpeg)
 
-![](https://mmbiz.qpic.cn/mmbiz_jpg/13eN86FKXzCxr0Sa2MXpNKicZE024zJm73r4hrjticMMYViagtaSXxwsyhmRmOrdXPXfS5zB2ILHtaqNSoWGRwa8Q/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
-![](https://mmbiz.qpic.cn/mmbiz_png/13eN86FKXzCxr0Sa2MXpNKicZE024zJm7vIAFRC09bPV9iaMer9Ncq8xppcYF73sDHbrG2iaBtRqCFibdckDTcojKg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
-![](https://mmbiz.qpic.cn/mmbiz_gif/13eN86FKXzCPsneTRDBzskVY9GpIhbl6e3JpwysPqAbM7Z80J1EZrIYpTO7YSD40Cp9hOicibdV3GIbVTcEapgqA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)
+![](http://pic.automancloud.com/ES5YqymXkAArmT-.jpg)
+
+![](http://pic.automancloud.com/web-3967926_1920.png)
+
+![](http://pic.automancloud.com/WechatIMG49.jpeg)
+
+![](http://pic.automancloud.com/Data-Science-as-a-Service-Market-880x660.png)
+
+![](http://pic.automancloud.com/dkjflsjf.jpg)
