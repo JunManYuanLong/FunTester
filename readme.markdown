@@ -17,7 +17,9 @@
 个人微信:
 ===
 
-![](http://pic.automancloud.com/WechatIMG34.jpeg)
+![](http://pic.automancloud.com/WechatIMG58.jpeg)
+
+![](http://pic.automancloud.com/WechatIMG161.jpeg)
 
 QQ群：340964272
 ===
