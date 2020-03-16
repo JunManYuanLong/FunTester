@@ -483,6 +483,16 @@ public class FanLibrary extends SourceCode {
     }
 
     /**
+     * 异步发送请求
+     *
+     * @param request
+     */
+    public static void excuteSync(HttpRequestBase request) {
+        if (!ClientManage.httpAsyncClient.isRunning()) ClientManage.httpAsyncClient.start();
+        ClientManage.httpAsyncClient.execute(request, null);
+    }
+
+    /**
      * 获取最后一个发出的请求
      *
      * @return
@@ -497,6 +507,7 @@ public class FanLibrary extends SourceCode {
     public static void testOver() {
         try {
             ClientManage.httpsClient.close();
+            ClientManage.httpAsyncClient.close();
         } catch (IOException e) {
             logger.warn("连接池关闭失败！", e);
         }

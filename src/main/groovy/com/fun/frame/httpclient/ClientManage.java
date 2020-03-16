@@ -21,6 +21,13 @@ import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
+import org.apache.http.impl.nio.client.HttpAsyncClients;
+import org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager;
+import org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor;
+import org.apache.http.impl.nio.reactor.IOReactorConfig;
+import org.apache.http.nio.reactor.ConnectingIOReactor;
+import org.apache.http.nio.reactor.IOReactorException;
 import org.apache.http.protocol.HttpContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,9 +66,24 @@ public class ClientManage extends SourceCode {
     private static PoolingHttpClientConnectionManager connManager = getPool();
 
     /**
+     * 异步连接池
+     */
+    private static PoolingNHttpClientConnectionManager NconnManager = getNPool();
+
+    /**
+     * ssl验证
+     */
+    private static SSLContext sslContext = createIgnoreVerifySSL();
+
+    /**
      * httpclient对象
      */
     public static CloseableHttpClient httpsClient = getCloseableHttpsClients();
+
+    /**
+     * 异步连接池
+     */
+    public static CloseableHttpAsyncClient httpAsyncClient = getCloseableHttpAsyncClient();
 
     /**
      * 获取连接池
@@ -71,9 +93,8 @@ public class ClientManage extends SourceCode {
     private static PoolingHttpClientConnectionManager getPool() {
         PoolingHttpClientConnectionManager connManager = null;
         // 采用绕过验证的方式处理https请求
-        SSLContext sslcontext = createIgnoreVerifySSL();
         // 设置协议http和https对应的处理socket链接工厂的对象
-        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create().register("http", PlainConnectionSocketFactory.INSTANCE).register("https", new SSLConnectionSocketFactory(sslcontext)).build();
+        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create().register("http", PlainConnectionSocketFactory.INSTANCE).register("https", new SSLConnectionSocketFactory(sslContext)).build();
         connManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
         // 消息约束
         MessageConstraints messageConstraints = MessageConstraints.custom().setMaxHeaderCount(HttpClientConstant.MAX_HEADER_COUNT).setMaxLineLength(HttpClientConstant.MAX_LINE_LENGTH).build();
@@ -82,10 +103,25 @@ public class ClientManage extends SourceCode {
         connManager.setDefaultConnectionConfig(connectionConfig);
         connManager.setMaxTotal(HttpClientConstant.MAX_TOTAL_CONNECTION);
         connManager.setDefaultMaxPerRoute(HttpClientConstant.MAX_PER_ROUTE_CONNECTION);
-        HttpClients.custom().setConnectionManager(connManager);
         return connManager;
     }
 
+    private static PoolingNHttpClientConnectionManager getNPool() {
+        IOReactorConfig ioReactorConfig = IOReactorConfig.custom().setIoThreadCount(Runtime.getRuntime().availableProcessors()).setConnectTimeout(HttpClientConstant.CONNECT_REQUEST_TIMEOUT).setSoTimeout(HttpClientConstant.SOCKET_TIMEOUT).build();
+        ConnectingIOReactor ioReactor = null;
+        try {
+            ioReactor = new DefaultConnectingIOReactor(ioReactorConfig);
+        } catch (IOReactorException e) {
+            logger.error("创建连接响应器失败!", e);
+        }
+        MessageConstraints messageConstraints = MessageConstraints.custom().setMaxHeaderCount(HttpClientConstant.MAX_HEADER_COUNT).setMaxLineLength(HttpClientConstant.MAX_LINE_LENGTH).build();
+        PoolingNHttpClientConnectionManager connManager = new PoolingNHttpClientConnectionManager(ioReactor);
+        ConnectionConfig connectionConfig = ConnectionConfig.custom().setMalformedInputAction(CodingErrorAction.IGNORE).setUnmappableInputAction(CodingErrorAction.IGNORE).setCharset(DEFAULT_CHARSET).setMessageConstraints(messageConstraints).build();
+        connManager.setDefaultConnectionConfig(connectionConfig);
+        connManager.setMaxTotal(HttpClientConstant.MAX_TOTAL_CONNECTION);
+        connManager.setDefaultMaxPerRoute(HttpClientConstant.MAX_PER_ROUTE_CONNECTION);
+        return connManager;
+    }
 
     /**
      * 获取SSL套接字对象 重点重点：设置tls协议的版本
@@ -180,6 +216,11 @@ public class ClientManage extends SourceCode {
      *
      * @return
      */
+    private static CloseableHttpAsyncClient getCloseableHttpAsyncClient() {
+        return HttpAsyncClients.custom().setConnectionManager(NconnManager).setSSLHostnameVerifier(SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER)
+                .setSSLContext(sslContext).build();
+    }
+
     private static CloseableHttpClient getCloseableHttpsClients() {
         return HttpClients.custom().setConnectionManager(connManager).setRetryHandler(httpRequestRetryHandler).setDefaultRequestConfig(requestConfig).build();
     }
