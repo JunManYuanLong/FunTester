@@ -51,6 +51,11 @@ public class ClientManage extends SourceCode {
     private static Logger logger = LoggerFactory.getLogger(ClientManage.class);
 
     /**
+     * ssl验证
+     */
+    private static SSLContext sslContext = createIgnoreVerifySSL();
+
+    /**
      * 请求超时控制器
      */
     public static RequestConfig requestConfig = getRequestConfig();
@@ -69,11 +74,6 @@ public class ClientManage extends SourceCode {
      * 异步连接池
      */
     private static PoolingNHttpClientConnectionManager NconnManager = getNPool();
-
-    /**
-     * ssl验证
-     */
-    private static SSLContext sslContext = createIgnoreVerifySSL();
 
     /**
      * httpclient对象
