@@ -74,7 +74,25 @@ FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的�
 - [多种登录方式定量性能测试方案](https://mp.weixin.qq.com/s/WuZ2h2rr0rNBgEvQVioacA)
 - [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
 
+## 接口测试视频
+
+- [FunTester测试框架视频讲解（序）](https://mp.weixin.qq.com/s/CJrHAAniDMyr5oDXYHpPcQ)
+- [获取HTTP请求对象--测试框架视频讲解](https://mp.weixin.qq.com/s/hG89sGf96GcPb2hGnludsw)
+- [发送请求和解析响应—测试框架视频解读](https://mp.weixin.qq.com/s/xUQ8o3YuZOChXZ2UGR1Kyw)
+- [json对象基本操作--视频讲解](https://mp.weixin.qq.com/s/MQtcIGKwWGEMb2XD3zmAIQ)
+- [GET请求实践--测试框架视频讲解](https://mp.weixin.qq.com/s/_ZEDmRPXe4SLjCgdwDtC7A)
+
 
 ![](http://pic.automancloud.com/0_Fotor.jpg)
 
 ![](http://pic.automancloud.com/42387498274.jpeg)
+
+![](http://pic.automancloud.com/ES5YqymXkAArmT-.jpg)
+
+![](http://pic.automancloud.com/web-3967926_1920.png)
+
+![](http://pic.automancloud.com/WechatIMG49.jpeg)
+
+![](http://pic.automancloud.com/Data-Science-as-a-Service-Market-880x660.png)
+
+![](http://pic.automancloud.com/dkjflsjf.jpg)
