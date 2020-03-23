@@ -79,7 +79,11 @@ public class Output extends Constant {
             }
         } else if (object.length == 2) {
             output(LINE + object[0]);
-            output(object[1]);
+            if (object[1] instanceof List) {
+                output((List) object[1]);
+            } else {
+                output(object[1]);
+            }
         } else if (object.getClass().isArray()) {
             output(Arrays.asList(object));
         }
