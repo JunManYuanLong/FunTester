@@ -1,7 +1,8 @@
 package com.fun.base.exception;
 
-import com.fun.frame.Output;
 import com.alibaba.fastjson.JSONObject;
+import com.fun.frame.Output;
+import com.fun.frame.SourceCode;
 import org.apache.http.client.methods.HttpRequestBase;
 
 public class VerifyException extends FailException {
@@ -22,10 +23,12 @@ public class VerifyException extends FailException {
 
     public static void fail(JSONObject response) {
         Output.output(response);
+        SourceCode.getiMessage().sendBusinessMessage();
         throw new VerifyException();
     }
 
     public static void fail(String message) {
+        SourceCode.getiMessage().sendBusinessMessage();
         throw new VerifyException(message);
     }
 
