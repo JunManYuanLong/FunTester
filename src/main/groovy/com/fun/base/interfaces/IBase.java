@@ -124,7 +124,7 @@ public interface IBase {
      * 检查响应是否符合标准
      * <p>
      * 会在fanlibrary类使用，如果没有ibase对象，会默认返回test_error_code
-     * requestinfo主要用于校验该请求是否需要校验，黑名单有配置black_host提供【】
+     * requestinfo主要用于校验该请求是否需要校验，黑名单有配置black_host提供
      * </p>
      *
      * @param response    响应json
