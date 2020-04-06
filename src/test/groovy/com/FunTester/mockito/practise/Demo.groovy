@@ -39,7 +39,7 @@ class Demo extends Specification {
     }
 
     def "这是一个普通的demo"() {
-        given:
+        given:"创建一个存根list,添加一些元素"
         List mockedList = mock(List.class);
         mockedList.add("one");
         mockedList.add("two");
@@ -52,7 +52,7 @@ class Demo extends Specification {
         mockedList.add("3")
         mockedList.add("3")
 
-        expect:
+        expect:"验证属性以及方法调用次数"
         5 == mockedList.size()
         false == verify(mockedList, atLeastOnce()).add("one")
         false == verify(mockedList, times(3)).add("three times")
@@ -72,11 +72,13 @@ class Demo extends Specification {
     def "这是一个测试,用来在对象初始化之后mock对象的"() {
         given: "创建对象后再Mockito"
         def iterator = new ArrayList()
+        iterator.add("323")
         def list = spy(iterator)
         doReturn("fun").when(list).get(3)
         doReturn(3).when(list).get(0)
 
         expect:
+        list.contains("323")
         "fun" == list.get(3)
         3 == list.get(0)
     }
