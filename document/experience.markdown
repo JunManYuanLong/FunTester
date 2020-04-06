@@ -68,6 +68,9 @@
 - [负载测试很重要](https://mp.weixin.qq.com/s/2q7kNQVJuNwB948ks463CA)
 - [白盒测试扫盲](https://mp.weixin.qq.com/s/s_FvGZTC42GEjaWzroz1eA)
 - [自动化测试项目为何失败](https://mp.weixin.qq.com/s/KFJXuLjjs1hii47C1BH8PA)
+- [简化测试用例](https://mp.weixin.qq.com/s/BhwfDqhN9yoa3Iul_Eu5TA)
+- [敏捷测试二三事](https://mp.weixin.qq.com/s/bKkGWJA3JhvdCjgg6-AVEQ)
+- [软件测试中的虚拟化](https://mp.weixin.qq.com/s/zHyJiNFgHIo2ZaPFXsxQMg)
 
 ## 大咖风采
 
@@ -85,6 +88,7 @@
 - [2019年浏览器市场份额排行榜](https://mp.weixin.qq.com/s/4NmJ_ZCPD5UwaRCtaCfjEg)
 - [JSON基础](https://mp.weixin.qq.com/s/tnQmAFfFbRloYp8J9TYurw)
 - [JMeter吞吐量误差分析](https://mp.weixin.qq.com/s/jHKmFNrLmjpihnoigNNCSg)
+- [Groovy在JMeter中应用专题](https://mp.weixin.qq.com/s/KcxPUDWl7MLQemFRoIV92A)
 
 
 

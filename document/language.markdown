@@ -46,6 +46,8 @@
 - [Groovy中的元组](https://mp.weixin.qq.com/s/0-ka0-tv1vyKbiA6m44jRw)
 - [从Java到Groovy的八级进化论](https://mp.weixin.qq.com/s/QTrRHsD3w-zLGbn79y8yUg)
 - [用Groovy在JMeter中使用正则提取赋值](https://mp.weixin.qq.com/s/9riPpnQZCfKGscuzOOpYmQ)
+- [Groovy在JMeter中处理cookie](https://mp.weixin.qq.com/s/DCnDjWaj2aiKv5HVw3-n6A)
+- [Groovy在JMeter中处理header](https://mp.weixin.qq.com/s/juY-1jEWODJ5HHiEsxhIEw)
 
 ## Python
 - [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/xs6Q7uk5l8Gxoagh-sY0uQ)

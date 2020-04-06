@@ -1,6 +1,6 @@
 # 总目录
 
-> FunTester，320+原创文章，6次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，量变引起质变，欢迎关注。
+> FunTester，330+原创文章，6次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，量变引起质变，欢迎关注。
 
 # 接口测试
 
@@ -31,6 +31,7 @@
 - [如何选择API测试工具](https://mp.weixin.qq.com/s/m2TNJDiqAAWYV9L6UP-29w)
 - [初学者的API测试技巧](https://mp.weixin.qq.com/s/_uk6dw5Q7CfS-gXGH-TZEQ)
 - [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
+- [多项目登录互踢测试用例](https://mp.weixin.qq.com/s/Nn_CUy_j7j6bUwHSkO0pCQ)
 
 ## 接口测试视频
 
@@ -39,6 +40,13 @@
 - [发送请求和解析响应—测试框架视频解读](https://mp.weixin.qq.com/s/xUQ8o3YuZOChXZ2UGR1Kyw)
 - [json对象基本操作--视频讲解](https://mp.weixin.qq.com/s/MQtcIGKwWGEMb2XD3zmAIQ)
 - [GET请求实践--测试框架视频讲解](https://mp.weixin.qq.com/s/_ZEDmRPXe4SLjCgdwDtC7A)
+- [POST请求实践--视频演示](https://mp.weixin.qq.com/s/g0mLzMQ4Br2e592m3p68eg)
+- [如何处理header和cookie--视频演示](https://mp.weixin.qq.com/s/MkwzT9VPglSnOxY7geSUiQ)
+- [FunRequest类功能--视频演示](https://mp.weixin.qq.com/s/WGS6ZwAvw7X4MC004Gz4pA)
+- [接口测试业务验证--视频演示](https://mp.weixin.qq.com/s/DH8HDmaritXQnkBIFOadoA)
+- [自动化测试项目基础--视频讲解](https://mp.weixin.qq.com/s/n9zu4OLyj7FbNsV0bYlOYg)
+- [JSONArray基本操作--视频演示](https://mp.weixin.qq.com/s/OosDbRoknMe1riaPc3hhLg)
+- [自动化项目基类实践--视频演示](https://mp.weixin.qq.com/s/IdvSi-GDtE5nqGnR-_4LWA)
 
 # 单元&白盒
 
@@ -89,6 +97,7 @@
 - [服务端性能优化之双重检查锁](https://mp.weixin.qq.com/s/-bOyHBcqFlJY3c0PEZaWgQ)
 - [多种登录方式定量性能测试方案](https://mp.weixin.qq.com/s/WuZ2h2rr0rNBgEvQVioacA)
 - [性能测试中图形化输出测试数据](https://mp.weixin.qq.com/s/EMvpYIsszdwBJFPIxztTvA)
+- [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
 
 # 语言合集
 
@@ -119,6 +128,7 @@
 - [如何使用“dd MM”解析日期](https://mp.weixin.qq.com/s/v9ooAj3dKu53JXgxB482HA)
 - [Java和Groovy正则使用](https://mp.weixin.qq.com/s/DT3BKE3ZcCKf6TLzGc5wbg)
 - [运行越来越快的Java热点代码](https://mp.weixin.qq.com/s/AP0BcDEjDuaouaB0RXJOoQ)
+- [6个重要的JVM性能参数](https://mp.weixin.qq.com/s/b1QnapiAVn0HD5DQU9JrIw)
 
 ## Groovy
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)
@@ -137,6 +147,8 @@
 - [Groovy中的元组](https://mp.weixin.qq.com/s/0-ka0-tv1vyKbiA6m44jRw)
 - [从Java到Groovy的八级进化论](https://mp.weixin.qq.com/s/QTrRHsD3w-zLGbn79y8yUg)
 - [用Groovy在JMeter中使用正则提取赋值](https://mp.weixin.qq.com/s/9riPpnQZCfKGscuzOOpYmQ)
+- [Groovy在JMeter中处理cookie](https://mp.weixin.qq.com/s/DCnDjWaj2aiKv5HVw3-n6A)
+- [Groovy在JMeter中处理header](https://mp.weixin.qq.com/s/juY-1jEWODJ5HHiEsxhIEw)
 
 ## Python
 - [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/D8RfpdIi8smCL8TAzBcNpA)
@@ -216,6 +228,7 @@
 - [Gradle如何在任务失败后继续构建](https://mp.weixin.qq.com/s/GcXDzRN7cM_QQpt9ytqoKg)
 - [Gradle+Groovy基础篇](https://mp.weixin.qq.com/s/c2j7G-PoNtAB3oYYDUhCGw)
 - [Gradle+Groovy提高篇](https://mp.weixin.qq.com/s/yXmYj_1fynLkR0-5FV_Arw)
+- [Maven进行增量构建](https://mp.weixin.qq.com/s/ThQ7j6TS93KJZFqlNx8IQg)
 
 ## plotly可视化
 - [MacOS使用pip安装pandas提示Cannot uninstall 'numpy'解决方案](https://mp.weixin.qq.com/s/fIqMAMXRQvf_vBtS5jDsyg)
@@ -297,6 +310,10 @@
 - [负载测试很重要](https://mp.weixin.qq.com/s/2q7kNQVJuNwB948ks463CA)
 - [白盒测试扫盲](https://mp.weixin.qq.com/s/s_FvGZTC42GEjaWzroz1eA)
 - [自动化测试项目为何失败](https://mp.weixin.qq.com/s/KFJXuLjjs1hii47C1BH8PA)
+- [简化测试用例](https://mp.weixin.qq.com/s/BhwfDqhN9yoa3Iul_Eu5TA)
+- [敏捷测试二三事](https://mp.weixin.qq.com/s/bKkGWJA3JhvdCjgg6-AVEQ)
+- [软件测试中的虚拟化](https://mp.weixin.qq.com/s/zHyJiNFgHIo2ZaPFXsxQMg)
+- [新词：QA-Ops](https://mp.weixin.qq.com/s/detcY6OVYmzOTUxfwN6CFQ)
 
 ## 大咖风采
 
@@ -379,8 +396,11 @@
 - [2019年浏览器市场份额排行榜](https://mp.weixin.qq.com/s/4NmJ_ZCPD5UwaRCtaCfjEg)
 - [JSON基础](https://mp.weixin.qq.com/s/tnQmAFfFbRloYp8J9TYurw)
 - [JMeter吞吐量误差分析](https://mp.weixin.qq.com/s/jHKmFNrLmjpihnoigNNCSg)
+- [Groovy在JMeter中应用专题](https://mp.weixin.qq.com/s/KcxPUDWl7MLQemFRoIV92A)
 
 ![](http://pic.automancloud.com/0_Fotor.jpg)
+
+![](http://pic.automancloud.com/WechatIMG161.jpeg)
 
 ![](http://pic.automancloud.com/42387498274.jpeg)
 
