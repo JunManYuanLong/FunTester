@@ -1,6 +1,6 @@
 # 总目录
 
-> FunTester，330+原创文章，6次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，量变引起质变，欢迎关注。
+> FunTester，340+原创文章，6次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，量变引起质变，欢迎关注。
 
 # 接口测试
 
@@ -314,6 +314,8 @@
 - [敏捷测试二三事](https://mp.weixin.qq.com/s/bKkGWJA3JhvdCjgg6-AVEQ)
 - [软件测试中的虚拟化](https://mp.weixin.qq.com/s/zHyJiNFgHIo2ZaPFXsxQMg)
 - [新词：QA-Ops](https://mp.weixin.qq.com/s/detcY6OVYmzOTUxfwN6CFQ)
+- [生产环境中进行自动化测试](https://mp.weixin.qq.com/s/JKEGRLOlgpINUxs-6mohzA)
+- [所谓UI测试](https://mp.weixin.qq.com/s/wDvUy_BhQZCSCqrlC2j1qA)
 
 ## 大咖风采
 
@@ -397,6 +399,7 @@
 - [JSON基础](https://mp.weixin.qq.com/s/tnQmAFfFbRloYp8J9TYurw)
 - [JMeter吞吐量误差分析](https://mp.weixin.qq.com/s/jHKmFNrLmjpihnoigNNCSg)
 - [Groovy在JMeter中应用专题](https://mp.weixin.qq.com/s/KcxPUDWl7MLQemFRoIV92A)
+- [JMeter如何模拟不同的网络速度](https://mp.weixin.qq.com/s/1FCwNN2htfTGF6ItdkcCzw)
 
 ![](http://pic.automancloud.com/0_Fotor.jpg)
 
