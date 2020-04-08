@@ -85,7 +85,7 @@ public class SourceCode extends Output implements Cloneable {
         scanner = new Scanner(System.in);
         while (scanner.hasNext()) {
             String next = scanner.next();
-            if (next.equals(key.toString())) break;
+            if (next.equalsIgnoreCase(key.toString())) break;
             logger.warn("输入：{}错误！", next);
         }
         long end = Time.getTimeStamp();
