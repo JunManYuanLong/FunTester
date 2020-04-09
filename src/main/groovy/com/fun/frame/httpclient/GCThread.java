@@ -30,6 +30,7 @@ public class GCThread extends SourceCode implements Runnable {
      * @return
      */
     public static synchronized Thread init() {
+        FLAG = true;
         return new Thread(new GCThread());
     }
 
