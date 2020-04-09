@@ -53,12 +53,12 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
             List<Long> t = new ArrayList<>();
             long ss = Time.getTimeStamp();
             for (int i = 0; i < times; i++) {
-                excuteNum++;
                 try {
                     threadmark = mark == null ? EMPTY : this.mark.mark(this);
                     long s = Time.getTimeStamp();
                     doing();
                     long e = Time.getTimeStamp();
+                    excuteNum++;
                     long diff = e - s;
                     t.add(diff);
                     if (diff > HttpClientConstant.MAX_ACCEPT_TIME) marks.add(diff + CONNECTOR + threadmark);
