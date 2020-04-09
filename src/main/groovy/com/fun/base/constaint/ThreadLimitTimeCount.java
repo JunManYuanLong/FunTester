@@ -53,7 +53,6 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase {
             long ss = Time.getTimeStamp();
             long et = ss;
             while (true) {
-                excuteNum++;
                 try {
                     threadmark = mark == null ? EMPTY : this.mark.mark(this);
                     long s = Time.getTimeStamp();
