@@ -169,7 +169,7 @@ public class Concurrent extends SourceCode {
     }
 
     private PerformanceResultBean over() {
-        Save.saveLongList(allTimes, threadNum + desc);
+        Save.saveLongList(allTimes, "data/" + threadNum + desc);
         Save.saveStringListSync(Concurrent.requestMark, MARK_Path.replace(LONG_Path, EMPTY) + desc);
         allTimes = new Vector<>();
         requestMark = new Vector<>();
@@ -187,7 +187,7 @@ public class Concurrent extends SourceCode {
      * @param name 线程数
      */
     public PerformanceResultBean countQPS(int name, String desc, String start, String end) {
-        List<String> strings = WriteRead.readTxtFileByLine(Constant.LONG_Path + name + desc);
+        List<String> strings = WriteRead.readTxtFileByLine(Constant.DATA_Path + name + desc);
         int size = strings.size();
         List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
         int sum = data.stream().mapToInt(x -> x).sum();

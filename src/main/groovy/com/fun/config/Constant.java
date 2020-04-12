@@ -118,6 +118,11 @@ public class Constant {
     public static final String MARK_Path = LONG_Path + "mark/";
 
     /**
+     * 压测数据存放地址
+     */
+    public static final String DATA_Path = LONG_Path + "data/";
+
+    /**
      * 毫秒数
      */
     public static final long DAY = 86400000;
@@ -178,12 +183,16 @@ public class Constant {
         new File(LONG_Path).mkdir();
         File file = new File(REQUEST_Path);
         File mark = new File(MARK_Path);
+        File data = new File(DATA_Path);
         file.mkdir();
         mark.mkdir();
+        data.mkdir();
         int length = file.listFiles().length;
         int markNum = mark.listFiles().length;
-        if (length > 200) FailException.fail("request日志记录量过多!");
-        if (markNum > 200) FailException.fail("mark日志记录量过多!");
+        int dataNum = data.listFiles().length;
+        if (length > 100) FailException.fail("request日志记录量过多!");
+        if (markNum > 100) FailException.fail("mark日志记录量过多!");
+        if (markNum > 100) FailException.fail("data日志记录量过多!");
         logger.info("当前用户：{}，IP：{}，工作目录：{},系统编码格式:{},系统{}版本:{}", COMPUTER_USER_NAME, LOCAL_IP, WORK_SPACE, SYS_ENCODING, SYS_NAME, SYS_VERSION);
     }
 
