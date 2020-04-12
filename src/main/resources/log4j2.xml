@@ -8,7 +8,7 @@
         <!--这个输出控制台的配置-->
         <console name="Console" target="SYSTEM_OUT">
             <!--输出日志的格式-->
-            <PatternLayout pattern="%-4p %d{HH:mm:ss} (%F:%L) - %m%n"/>
+            <PatternLayout pattern="%-4p-> %m%n"/>
             <!--            <PatternLayout pattern="[%-4p] %d - %t %L:%M %m %n"/>-->
             <!--            <PatternLayout pattern="%d %-4p (%F:%L) - %m%n"/>-->
         </console>
@@ -50,4 +50,23 @@
             <appender-ref ref="RollingFileWarn"/>
         </root>
     </loggers>
+<!--    异步日志记录的配置-->
+<!--    <Appenders>-->
+<!--        &lt;!&ndash; Async Loggers will auto-flush in batches, so switch off immediateFlush. &ndash;&gt;-->
+<!--        <RandomAccessFile name="RandomAccessFile" fileName="asyncWithLocation.log"-->
+<!--                          immediateFlush="false" append="false">-->
+<!--            <PatternLayout>-->
+<!--                <Pattern>%d %p %class{1.} [%t] %location %m %ex%n</Pattern>-->
+<!--            </PatternLayout>-->
+<!--        </RandomAccessFile>-->
+<!--    </Appenders>-->
+<!--    <Loggers>-->
+<!--        &lt;!&ndash; pattern layout actually uses location, so we need to include it &ndash;&gt;-->
+<!--        <AsyncLogger name="com.foo.Bar" level="trace" includeLocation="true">-->
+<!--            <AppenderRef ref="RandomAccessFile"/>-->
+<!--        </AsyncLogger>-->
+<!--        <Root level="info" includeLocation="true">-->
+<!--            <AppenderRef ref="RandomAccessFile"/>-->
+<!--        </Root>-->
+<!--    </Loggers>-->
 </configuration>
