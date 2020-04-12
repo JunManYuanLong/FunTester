@@ -289,6 +289,17 @@ public class SourceCode extends Output implements Cloneable {
     }
 
     /**
+     * 随机范围int,取头不取尾
+     *
+     * @param start
+     * @param end
+     * @return
+     */
+    public static int getRandomIntRange(int start, int end) {
+        return new Random().nextInt(end - start) + start;
+    }
+
+    /**
      * 获取一定范围内的随机值
      *
      * @param start 初始值
