@@ -3,11 +3,11 @@ package com.fun.frame.httpclient;
 import com.fun.config.HttpClientConstant;
 import com.fun.frame.SourceCode;
 import org.apache.http.HttpEntityEnclosingRequest;
-import org.apache.http.HttpRequest;
 import org.apache.http.NoHttpResponseException;
 import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.ConnectionConfig;
 import org.apache.http.config.MessageConstraints;
@@ -169,6 +169,9 @@ public class ClientManage extends SourceCode {
         return new HttpRequestRetryHandler() {
             public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
                 logger.warn("请求发生错误！", exception);
+                HttpClientContext clientContext = HttpClientContext.adapt(context);
+                HttpRequestBase request = clientContext.getAttribute("http.request", HttpRequestBase.class);
+                logger.error(FunRequest.initFromRequest(request).toString());
                 if (executionCount > HttpClientConstant.TRY_TIMES) return false;
                 if (exception instanceof NoHttpResponseException) {
                     logger.warn("没有响应异常");
@@ -197,11 +200,10 @@ public class ClientManage extends SourceCode {
                 } else {
                     logger.warn("未记录的请求异常：{}", exception.getClass());
                 }
-                HttpClientContext clientContext = HttpClientContext.adapt(context);
-                HttpRequest request = clientContext.getRequest();
-                // 如果请求是幂等的，则重试
+
+                // 如果请求是幂等的，则不重试
                 if (!(request instanceof HttpEntityEnclosingRequest)) {
-                    return true;
+                    return false;
                 }
                 return false;
             }
