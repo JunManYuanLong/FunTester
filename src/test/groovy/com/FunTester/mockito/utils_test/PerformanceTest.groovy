@@ -48,7 +48,7 @@ class PerformanceTest extends Specification {
         FanLibrary.getHttpResponse(httpGet);
         HttpClientConstant.MAX_ACCEPT_TIME = -1
         RequestThreadTimes threadTimes = new RequestThreadTimes(httpGet, 2, mark);
-//        new Concurrent(threadTimes * 2).start();
+//        new Concurrent(threadTimes * 2,"测试并发情况下记录响应标记符的").start();
 
     }
 
