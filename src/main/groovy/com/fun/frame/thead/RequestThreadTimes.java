@@ -9,10 +9,6 @@ import org.apache.http.client.methods.HttpRequestBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
-
 /**
  * http请求多线程类
  */
@@ -21,20 +17,9 @@ public class RequestThreadTimes extends ThreadLimitTimesCount {
     static Logger logger = LoggerFactory.getLogger(RequestThreadTimes.class);
 
     /**
-     * 记录总的请求超时的情况
-     */
-    public static Vector<String> requestMark = new Vector<>();
-
-    /**
      * 请求
      */
     public HttpRequestBase request;
-
-
-    /**
-     * 记录当前线程超时请求
-     */
-    public List<String> marks = new ArrayList<>();
 
     /**
      * 单请求多线程多次任务构造方法

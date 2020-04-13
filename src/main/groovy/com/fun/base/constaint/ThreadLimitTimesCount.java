@@ -24,6 +24,9 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
 
     private static final Logger logger = LoggerFactory.getLogger(ThreadLimitTimesCount.class);
 
+    /**
+     * 记录所有超时的请求标记
+     */
     public List<String> marks = new ArrayList<>();
 
     /**
