@@ -64,8 +64,9 @@ FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的�
 - [多种登录方式定量性能测试方案](https://mp.weixin.qq.com/s/WuZ2h2rr0rNBgEvQVioacA)
 - [性能测试中图形化输出测试数据](https://mp.weixin.qq.com/s/EMvpYIsszdwBJFPIxztTvA)
 - [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
-- [性能测试中图形化输出测试数据](https://mp.weixin.qq.com/s/EMvpYIsszdwBJFPIxztTvA)
 - [6个重要的JVM性能参数](https://mp.weixin.qq.com/s/b1QnapiAVn0HD5DQU9JrIw)
+- [手机号验证码登录性能测试](https://mp.weixin.qq.com/s/i-j8fJAdcsJ7v8XPOnPDAw)
+- [绑定手机号性能测试](https://mp.weixin.qq.com/s/K5x1t1dKtIT2NKV6k4v5mw)
 
 ## 测试方案
 - [如何对消息队列做性能测试](https://mp.weixin.qq.com/s/MNt22aW3Op9VQ5OoMzPwBw)
@@ -76,6 +77,8 @@ FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的�
 - [如何对N个接口按比例压测](https://mp.weixin.qq.com/s/GZxbH4GjDkk4BLqnUj1_kw)
 - [多种登录方式定量性能测试方案](https://mp.weixin.qq.com/s/WuZ2h2rr0rNBgEvQVioacA)
 - [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
+- [手机号验证码登录性能测试](https://mp.weixin.qq.com/s/i-j8fJAdcsJ7v8XPOnPDAw)
+- [绑定手机号性能测试](https://mp.weixin.qq.com/s/K5x1t1dKtIT2NKV6k4v5mw)
 
 ## 接口测试视频
 
@@ -91,6 +94,10 @@ FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的�
 - [自动化测试项目基础--视频讲解](https://mp.weixin.qq.com/s/n9zu4OLyj7FbNsV0bYlOYg)
 - [JSONArray基本操作--视频演示](https://mp.weixin.qq.com/s/OosDbRoknMe1riaPc3hhLg)
 - [自动化项目基类实践--视频演示](https://mp.weixin.qq.com/s/IdvSi-GDtE5nqGnR-_4LWA)
+- [模块类和自动化用例实践--视频演示](https://mp.weixin.qq.com/s/Y_A8M7KHmdlJJOD4B4rN4Q)
+- [性能框架多线程基类和执行类--视频讲解](https://mp.weixin.qq.com/s/8Dh-5XfvX8Fm4IqmzbtY6Q)
+- [定时和定量压测模式实现--视频讲解](https://mp.weixin.qq.com/s/l_4wCjVM1fAVRHgEPrcrwg)
+- [基于HTTP请求的多线程实现类--视频讲解](https://mp.weixin.qq.com/s/8SG1xtzq8ArY84Bxm_SNow)
 
 
 ![](http://pic.automancloud.com/0_Fotor.jpg)

@@ -71,6 +71,11 @@
 - [简化测试用例](https://mp.weixin.qq.com/s/BhwfDqhN9yoa3Iul_Eu5TA)
 - [敏捷测试二三事](https://mp.weixin.qq.com/s/bKkGWJA3JhvdCjgg6-AVEQ)
 - [软件测试中的虚拟化](https://mp.weixin.qq.com/s/zHyJiNFgHIo2ZaPFXsxQMg)
+- [生产环境中进行自动化测试](https://mp.weixin.qq.com/s/JKEGRLOlgpINUxs-6mohzA)
+- [所谓UI测试](https://mp.weixin.qq.com/s/wDvUy_BhQZCSCqrlC2j1qA)
+- [预上线环境失败的原因](https://mp.weixin.qq.com/s/jva0Jb2OMarERmTn7Kh2Ng)
+- [自动化策略六步走](https://mp.weixin.qq.com/s/He69k8iCKhTKD1j-yV6M5g)
+- [合格的测试经理必备技能](https://mp.weixin.qq.com/s/gFIYksHMn_bHEwAhmgVzjg)
 
 ## 大咖风采
 
@@ -89,6 +94,7 @@
 - [JSON基础](https://mp.weixin.qq.com/s/tnQmAFfFbRloYp8J9TYurw)
 - [JMeter吞吐量误差分析](https://mp.weixin.qq.com/s/jHKmFNrLmjpihnoigNNCSg)
 - [Groovy在JMeter中应用专题](https://mp.weixin.qq.com/s/KcxPUDWl7MLQemFRoIV92A)
+- [JMeter如何模拟不同的网络速度](https://mp.weixin.qq.com/s/1FCwNN2htfTGF6ItdkcCzw)
 
 
 

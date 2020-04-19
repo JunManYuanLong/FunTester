@@ -48,6 +48,9 @@
 - [用Groovy在JMeter中使用正则提取赋值](https://mp.weixin.qq.com/s/9riPpnQZCfKGscuzOOpYmQ)
 - [Groovy在JMeter中处理cookie](https://mp.weixin.qq.com/s/DCnDjWaj2aiKv5HVw3-n6A)
 - [Groovy在JMeter中处理header](https://mp.weixin.qq.com/s/juY-1jEWODJ5HHiEsxhIEw)
+- [Groovy的神奇NullObject](https://mp.weixin.qq.com/s/jLGisN_30PrCgNP33Sww0g)
+- [Groovy中的list](https://mp.weixin.qq.com/s/0mUe1_WrUiEm1t6kqCV3eQ)
+- [JMeter参数签名——Groovy脚本形式](https://mp.weixin.qq.com/s/wQN9-xAUQofSqiAVFXdqug)
 
 ## Python
 - [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/xs6Q7uk5l8Gxoagh-sY0uQ)

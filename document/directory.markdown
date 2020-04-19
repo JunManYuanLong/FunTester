@@ -1,6 +1,6 @@
 # 总目录
 
-> FunTester，340+原创文章，6次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，量变引起质变，欢迎关注。
+> FunTester，350+原创文章，6次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，量变引起质变，欢迎关注。
 
 # 接口测试
 
@@ -47,6 +47,10 @@
 - [自动化测试项目基础--视频讲解](https://mp.weixin.qq.com/s/n9zu4OLyj7FbNsV0bYlOYg)
 - [JSONArray基本操作--视频演示](https://mp.weixin.qq.com/s/OosDbRoknMe1riaPc3hhLg)
 - [自动化项目基类实践--视频演示](https://mp.weixin.qq.com/s/IdvSi-GDtE5nqGnR-_4LWA)
+- [模块类和自动化用例实践--视频演示](https://mp.weixin.qq.com/s/Y_A8M7KHmdlJJOD4B4rN4Q)
+- [性能框架多线程基类和执行类--视频讲解](https://mp.weixin.qq.com/s/8Dh-5XfvX8Fm4IqmzbtY6Q)
+- [定时和定量压测模式实现--视频讲解](https://mp.weixin.qq.com/s/l_4wCjVM1fAVRHgEPrcrwg)
+- [基于HTTP请求的多线程实现类--视频讲解](https://mp.weixin.qq.com/s/8SG1xtzq8ArY84Bxm_SNow)
 
 # 单元&白盒
 
@@ -98,6 +102,8 @@
 - [多种登录方式定量性能测试方案](https://mp.weixin.qq.com/s/WuZ2h2rr0rNBgEvQVioacA)
 - [性能测试中图形化输出测试数据](https://mp.weixin.qq.com/s/EMvpYIsszdwBJFPIxztTvA)
 - [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
+- [手机号验证码登录性能测试](https://mp.weixin.qq.com/s/i-j8fJAdcsJ7v8XPOnPDAw)
+- [绑定手机号性能测试](https://mp.weixin.qq.com/s/K5x1t1dKtIT2NKV6k4v5mw)
 
 # 语言合集
 
@@ -149,6 +155,9 @@
 - [用Groovy在JMeter中使用正则提取赋值](https://mp.weixin.qq.com/s/9riPpnQZCfKGscuzOOpYmQ)
 - [Groovy在JMeter中处理cookie](https://mp.weixin.qq.com/s/DCnDjWaj2aiKv5HVw3-n6A)
 - [Groovy在JMeter中处理header](https://mp.weixin.qq.com/s/juY-1jEWODJ5HHiEsxhIEw)
+- [Groovy的神奇NullObject](https://mp.weixin.qq.com/s/jLGisN_30PrCgNP33Sww0g)
+- [Groovy中的list](https://mp.weixin.qq.com/s/0mUe1_WrUiEm1t6kqCV3eQ)
+- [JMeter参数签名——Groovy脚本形式](https://mp.weixin.qq.com/s/wQN9-xAUQofSqiAVFXdqug)
 
 ## Python
 - [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/D8RfpdIi8smCL8TAzBcNpA)
@@ -167,6 +176,8 @@
 - [如何对N个接口按比例压测](https://mp.weixin.qq.com/s/GZxbH4GjDkk4BLqnUj1_kw)
 - [多种登录方式定量性能测试方案](https://mp.weixin.qq.com/s/WuZ2h2rr0rNBgEvQVioacA)
 - [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
+- [绑定手机号性能测试](https://mp.weixin.qq.com/s/K5x1t1dKtIT2NKV6k4v5mw)
+- [手机号验证码登录性能测试](https://mp.weixin.qq.com/s/i-j8fJAdcsJ7v8XPOnPDAw)
 
 ## BUG集锦
 - [一个MySQL索引引发的血案](https://mp.weixin.qq.com/s/KLSber-gPg53JVfsCa3Dtw)
@@ -316,6 +327,9 @@
 - [新词：QA-Ops](https://mp.weixin.qq.com/s/detcY6OVYmzOTUxfwN6CFQ)
 - [生产环境中进行自动化测试](https://mp.weixin.qq.com/s/JKEGRLOlgpINUxs-6mohzA)
 - [所谓UI测试](https://mp.weixin.qq.com/s/wDvUy_BhQZCSCqrlC2j1qA)
+- [预上线环境失败的原因](https://mp.weixin.qq.com/s/jva0Jb2OMarERmTn7Kh2Ng)
+- [自动化策略六步走](https://mp.weixin.qq.com/s/He69k8iCKhTKD1j-yV6M5g)
+- [合格的测试经理必备技能](https://mp.weixin.qq.com/s/gFIYksHMn_bHEwAhmgVzjg)
 
 ## 大咖风采
 
@@ -416,3 +430,11 @@
 ![](http://pic.automancloud.com/Data-Science-as-a-Service-Market-880x660.png)
 
 ![](http://pic.automancloud.com/dkjflsjf.jpg)
+
+![](http://pic.automancloud.com/WechatIMG3433.jpeg)
+
+![](http://pic.automancloud.com/WechatIMG31.jpeg)
+
+![](http://pic.automancloud.com/WechatIMG32.jpeg)
+
+![](http://pic.automancloud.com/WechatIMG33.jpeg)
