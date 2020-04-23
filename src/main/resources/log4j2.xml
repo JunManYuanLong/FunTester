@@ -21,7 +21,7 @@
                      fileName="log/info.log"
                      filePattern="log/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
             <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
-            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+<!--            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>-->
             <PatternLayout pattern="%d{HH:mm:ss} %-4level %l - %m%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
