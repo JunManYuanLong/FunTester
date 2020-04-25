@@ -13,7 +13,7 @@ public class HeaderMark extends SourceCode implements MarkRequest, Cloneable, Se
 
     private static final long serialVersionUID = -1595942567071153477L;
 
-    public static AtomicInteger threadName = new AtomicInteger(100);
+    public static AtomicInteger threadName = new AtomicInteger(1000);
 
     String headerName;
 
