@@ -49,12 +49,12 @@ public class HttpClientConstant {
     /**
      * 连接池最大连接数
      */
-    public static int MAX_TOTAL_CONNECTION = 2000;
+    public static int MAX_TOTAL_CONNECTION = 5000;
 
     /**
      * 每个路由最大连接数
      */
-    public static int MAX_PER_ROUTE_CONNECTION = 500;
+    public static int MAX_PER_ROUTE_CONNECTION = 2000;
 
     /**
      * 最大header数
