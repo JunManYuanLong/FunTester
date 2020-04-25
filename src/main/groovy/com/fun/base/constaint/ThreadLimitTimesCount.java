@@ -68,6 +68,7 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
                     if (status() || key) break;
                 } catch (Exception e) {
                     logger.warn("执行任务失败！", e);
+                    logger.warn("对象标记:{}", threadmark);
                     errorNum++;
                 }
             }
