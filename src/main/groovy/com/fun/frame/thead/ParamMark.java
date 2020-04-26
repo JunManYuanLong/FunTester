@@ -14,11 +14,11 @@ public class ParamMark extends SourceCode implements MarkThread, Cloneable, Seri
 
     private static final long serialVersionUID = -5532592151245141262L;
 
-    public static AtomicInteger threadName = new AtomicInteger(1000);
+    public static AtomicInteger threadName = new AtomicInteger(getRandomIntRange(1000, 9000));
 
     String name;
 
-    int num = 100_0000;
+    int num = getRandomIntRange(100, 999) * 1000;
 
     @Override
     public String mark(ThreadBase threadBase) {

@@ -13,13 +13,13 @@ public class HeaderMark extends SourceCode implements MarkRequest, Cloneable, Se
 
     private static final long serialVersionUID = -1595942567071153477L;
 
-    public static AtomicInteger threadName = new AtomicInteger(1000);
+    public static AtomicInteger threadName = new AtomicInteger(getRandomIntRange(1000, 9000));
 
     String headerName;
 
     int i;
 
-    int num = 100_0000;
+    int num = getRandomIntRange(100, 999) * 1000;
 
     @Override
     public String mark(ThreadBase threadBase) {
@@ -62,4 +62,6 @@ public class HeaderMark extends SourceCode implements MarkRequest, Cloneable, Se
     public HeaderMark() {
 
     }
+
+
 }
