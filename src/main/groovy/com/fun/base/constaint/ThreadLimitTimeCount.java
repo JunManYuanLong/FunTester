@@ -65,7 +65,7 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase {
                     if ((et - ss) > time || status() || key) break;
                 } catch (Exception e) {
                     logger.warn("执行任务失败！", e);
-                    logger.warn("对象标记:{}", threadmark);
+                    logger.warn("执行失败对象的标记:{}", threadmark);
                     errorNum++;
                 }
             }
