@@ -1,6 +1,6 @@
 # 总目录
 
-> FunTester，350+原创文章，6次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，量变引起质变，欢迎关注。
+> FunTester，360+原创文章，6次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，量变引起质变，欢迎关注。
 
 # 接口测试
 
@@ -74,6 +74,7 @@
 - [集成测试、单元测试、系统测试](https://mp.weixin.qq.com/s/LRkxMasRvmDYRVb0_aybtA)
 - [从单元测试标准中学习](https://mp.weixin.qq.com/s/x0TyMAdPBWYL7JSPAmoQsw)
 - [白盒测试扫盲](https://mp.weixin.qq.com/s/s_FvGZTC42GEjaWzroz1eA)
+- [Mock System.in和检查System.out](https://mp.weixin.qq.com/s/1ly3uXCZsukmIylN6F5GxQ)
 
 ## 接口性能
 
@@ -158,6 +159,10 @@
 - [Groovy的神奇NullObject](https://mp.weixin.qq.com/s/jLGisN_30PrCgNP33Sww0g)
 - [Groovy中的list](https://mp.weixin.qq.com/s/0mUe1_WrUiEm1t6kqCV3eQ)
 - [JMeter参数签名——Groovy脚本形式](https://mp.weixin.qq.com/s/wQN9-xAUQofSqiAVFXdqug)
+- [Groovy中的闭包](https://mp.weixin.qq.com/s/pfcG47gSPfUveAaEfdeo8A)
+- [JMeter参数签名——Groovy工具类形式](https://mp.weixin.qq.com/s/urwU4p9ofv9sU-JFy5Z0iA)
+- [删除List中null的N种方法--最后放大招](https://mp.weixin.qq.com/s/4mfskN781dybyL59dbSbeQ)
+- [混合Java函数和Groovy闭包](https://mp.weixin.qq.com/s/FAIzGgLSX2u7RKbOGs3lGA)
 
 ## Python
 - [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/D8RfpdIi8smCL8TAzBcNpA)
@@ -209,6 +214,14 @@
 - [接口测试代码覆盖率（jacoco）方案分享](https://mp.weixin.qq.com/s/D73Sq6NLjeRKN8aCpGLOjQ)
 - [jacoco无法读取build.xml配置中源码路径解决办法](https://mp.weixin.qq.com/s/8_x0rVfkIi-uX3y0drx_jw)
 - [使用JaCoCo Maven插件创建代码覆盖率报告](https://mp.weixin.qq.com/s/4Jo05k2WxytiSSNW9WTV-A)
+- [Java 8，Jenkins，Jacoco和Sonar进行持续集成](https://mp.weixin.qq.com/s/dOoXnKnWtQmmC5itClsl4g)
+
+## arthas诊断工具
+
+- [arthas快速入门视频演示](https://mp.weixin.qq.com/s/Wl5QMD52isGTRuAP4Cpo-A)
+- [arthas进阶thread命令视频演示](https://mp.weixin.qq.com/s/XuF7Nr1sGC3diIn50zlDDQ)
+- [arthas命令jvm,sysprop,sysenv,vmoption视频演示](https://mp.weixin.qq.com/s/87BsTYqnTCnVdG3a_kBcng)
+- [arthas命令logger动态修改日志级别--视频演示](https://mp.weixin.qq.com/s/w724P9B12eTC9rMbavwsMA)
 
 ## moco API
 - [解决moco框架API在post请求json参数情况下query失效的问题](https://mp.weixin.qq.com/s/V5lXoepEBtPJrSUHA0Uz5A)
@@ -401,19 +414,19 @@
 - [如何获取手机性能测试数据FPS](https://mp.weixin.qq.com/s/qZy5AQkNpUXRJk46BHVzaQ)
 - [一个循环启动APP并保持WiFi常开的多线程类](https://mp.weixin.qq.com/s/OgdT4IffDyAdkKmO2SS9iQ)
 
-## 曝光
-- [测试窝，首页抄我七篇原创还拉黑，你们的良心不会痛吗？](https://mp.weixin.qq.com/s/ke5avkknkDMCLMAOGT7wiQ)
-
 ## 杂乱
 
+- [测试窝，首页抄我七篇原创还拉黑，你们的良心不会痛吗？](https://mp.weixin.qq.com/s/ke5avkknkDMCLMAOGT7wiQ)
 - [如何优雅地屏蔽掉Google搜索结果中视频、新闻、图片等结果](https://mp.weixin.qq.com/s/Iu7pt4Qk3w9sJp3n_UVAeQ)
 - [图解HTTP脑图](https://mp.weixin.qq.com/s/100Vm8FVEuXs0x6rDGTipw)
 - [测试之JVM命令脑图](https://mp.weixin.qq.com/s/qprqyv0j3SCvGw1HMjbaMQ)
+- [好书推荐《Java性能权威指南》](https://mp.weixin.qq.com/s/YWd5Yx6n7887g1lMLTcsWQ)
 - [2019年浏览器市场份额排行榜](https://mp.weixin.qq.com/s/4NmJ_ZCPD5UwaRCtaCfjEg)
 - [JSON基础](https://mp.weixin.qq.com/s/tnQmAFfFbRloYp8J9TYurw)
 - [JMeter吞吐量误差分析](https://mp.weixin.qq.com/s/jHKmFNrLmjpihnoigNNCSg)
-- [Groovy在JMeter中应用专题](https://mp.weixin.qq.com/s/KcxPUDWl7MLQemFRoIV92A)
 - [JMeter如何模拟不同的网络速度](https://mp.weixin.qq.com/s/1FCwNN2htfTGF6ItdkcCzw)
+- [疫情期间，如何提高远程办公效率](https://mp.weixin.qq.com/s/k_XrdqjGKMshK2Ea-VCNLw)
+- [接口测试视频专题](https://mp.weixin.qq.com/s/4mKpW3QiVRee3kcVOSraog)
 
 ![](http://pic.automancloud.com/0_Fotor.jpg)
 
@@ -438,3 +451,5 @@
 ![](http://pic.automancloud.com/WechatIMG32.jpeg)
 
 ![](http://pic.automancloud.com/WechatIMG33.jpeg)
+
+![](http://pic.automancloud.com/EWIjU49X0AcZv58.jpg)

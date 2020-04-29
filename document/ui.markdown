@@ -6,26 +6,6 @@
 - [自动化测试中java多线程的使用实例](https://mp.weixin.qq.com/s/BNSLaIdcTPTNj1tKpGf6fw)
 - [自动化测试中递归函数的应用](https://mp.weixin.qq.com/s/86602zV9zYblhCRMiUlwdA)
 
-## UiAutomator
-- [android uiautomator一个画心形图案的方法--代码的浪漫](https://mp.weixin.qq.com/s/byfAKHxD2i83VHnuaNgIZA)
-- [android UiAutomator了解源码解决控件bonds[0,0]无法点击](https://mp.weixin.qq.com/s/nu2ftXNUSG2_kmZjyhEcVA)
-- [android UiAutomator在清除文本时遇到中文的解决办法](https://mp.weixin.qq.com/s/cNGNCoXsYBSk-MWTWLxF4g)
-- [android UiAutomator获取当前页面某类控件个数的方法](https://mp.weixin.qq.com/s/njb19Sq_Kg4SusAS_eEuug)
-- [android uiautomator自定义监听示例--一个弹出权限设置的监听](https://mp.weixin.qq.com/s/OKKZOf51yq6qY5D6PvN-gg)
-- [如何在Mac OS上使用UiAutomator快速调试类](https://mp.weixin.qq.com/s/jm9d_42jp_BSlv-IW0BpzQ)
-- [UiAutomator测试中如何恢复手机输入法](https://mp.weixin.qq.com/s/o4-zCgbdq6OsHRK9XT14QA)
-- [android UiAutomator基本api的二次封装](https://mp.weixin.qq.com/s/_3jGg3ZYoeyAkjZpy8gWfQ)
-- [android UiAutomator让运行失败的用例重新运行](https://mp.weixin.qq.com/s/tMOPbt1w9tRaKEuIZYKCyg)
-- [利用UiAutomator写一个首页刷新的稳定性测试脚本](https://mp.weixin.qq.com/s/au9hAScsqUdcrh_usu8Pfg)
-- [android UiAutomator长按实现控制按住控件时间的方法](https://mp.weixin.qq.com/s/lOvxAOMh6mmIh3CEV6Fduw)
-- [android UiAutomator自定义快速调试类](https://mp.weixin.qq.com/s/iP2dTOeVkFMzU3dQ06R9GA)
-- [利用UiAutomator写一个自动遍历渠道包关键功能的脚本](https://mp.weixin.qq.com/s/0vg2OlfTy0y4T6sWUG-olA)
-- [android UiAutomator如何根据颜色判断控件的状态](https://mp.weixin.qq.com/s/kldsD3OZ4mJZ5yYQXfXxLw)
-- [android UiAutomator控制多台手机同时运行用例的方法](https://mp.weixin.qq.com/s/z9vgpOQP0wQffmG4C_oBWg)
-- [android UiAutomator使用递归函数写一个让屏幕一闪一闪提醒的方法](https://mp.weixin.qq.com/s/AzXjePdmsgs6QsICZOdPyw)
-- [android UiAutomator获取视频播放进度的方法](https://mp.weixin.qq.com/s/ho070zX9rrLPmh8bZe_HgQ)
-
-
 ## Selenium
 - [selenium2java截图保存桌面](https://mp.weixin.qq.com/s/OUfwsIo635coGONRNccYlg)
 - [selenium2java调用JavaScript方法封装](https://mp.weixin.qq.com/s/t-Xs2Hr9TM2bjDiOqQX2mA)
@@ -54,6 +34,26 @@
 - [Selenium Python使用技巧（一）](https://mp.weixin.qq.com/s/39v8tXG3xig63d-ioEAi8Q)
 - [Selenium Python使用技巧（二）](https://mp.weixin.qq.com/s/uDM3y9zoVjaRmJJJTNs6Vw)
 - [Selenium Python使用技巧（三）](https://mp.weixin.qq.com/s/J7-CO-UDspUGSpB8isjsmQ)
+
+## UiAutomator
+- [android uiautomator一个画心形图案的方法--代码的浪漫](https://mp.weixin.qq.com/s/byfAKHxD2i83VHnuaNgIZA)
+- [android UiAutomator了解源码解决控件bonds[0,0]无法点击](https://mp.weixin.qq.com/s/nu2ftXNUSG2_kmZjyhEcVA)
+- [android UiAutomator在清除文本时遇到中文的解决办法](https://mp.weixin.qq.com/s/cNGNCoXsYBSk-MWTWLxF4g)
+- [android UiAutomator获取当前页面某类控件个数的方法](https://mp.weixin.qq.com/s/njb19Sq_Kg4SusAS_eEuug)
+- [android uiautomator自定义监听示例--一个弹出权限设置的监听](https://mp.weixin.qq.com/s/OKKZOf51yq6qY5D6PvN-gg)
+- [如何在Mac OS上使用UiAutomator快速调试类](https://mp.weixin.qq.com/s/jm9d_42jp_BSlv-IW0BpzQ)
+- [UiAutomator测试中如何恢复手机输入法](https://mp.weixin.qq.com/s/o4-zCgbdq6OsHRK9XT14QA)
+- [android UiAutomator基本api的二次封装](https://mp.weixin.qq.com/s/_3jGg3ZYoeyAkjZpy8gWfQ)
+- [android UiAutomator让运行失败的用例重新运行](https://mp.weixin.qq.com/s/tMOPbt1w9tRaKEuIZYKCyg)
+- [利用UiAutomator写一个首页刷新的稳定性测试脚本](https://mp.weixin.qq.com/s/au9hAScsqUdcrh_usu8Pfg)
+- [android UiAutomator长按实现控制按住控件时间的方法](https://mp.weixin.qq.com/s/lOvxAOMh6mmIh3CEV6Fduw)
+- [android UiAutomator自定义快速调试类](https://mp.weixin.qq.com/s/iP2dTOeVkFMzU3dQ06R9GA)
+- [利用UiAutomator写一个自动遍历渠道包关键功能的脚本](https://mp.weixin.qq.com/s/0vg2OlfTy0y4T6sWUG-olA)
+- [android UiAutomator如何根据颜色判断控件的状态](https://mp.weixin.qq.com/s/kldsD3OZ4mJZ5yYQXfXxLw)
+- [android UiAutomator控制多台手机同时运行用例的方法](https://mp.weixin.qq.com/s/z9vgpOQP0wQffmG4C_oBWg)
+- [android UiAutomator使用递归函数写一个让屏幕一闪一闪提醒的方法](https://mp.weixin.qq.com/s/AzXjePdmsgs6QsICZOdPyw)
+- [android UiAutomator获取视频播放进度的方法](https://mp.weixin.qq.com/s/ho070zX9rrLPmh8bZe_HgQ)
+
 
 ## APP性能
 - [使用monkey测试时，一个控制WiFi状态的多线程类](https://mp.weixin.qq.com/s/P8HVtzHBlj_FcDAAHFKBDg)

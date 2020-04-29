@@ -15,7 +15,7 @@
 - [Spock 2.0 M1版本初探](https://mp.weixin.qq.com/s/nyYh2QzER03kIk-w9P9GNw)
 - [Java并发BUG基础篇](https://mp.weixin.qq.com/s/NR4vYx81HtgAEqH2Q93k2Q)
 - [Java并发BUG提升篇](https://mp.weixin.qq.com/s/GCRRe8hJpe1QJtxq9VBEhg)
+- [从单元测试标准中学习](https://mp.weixin.qq.com/s/x0TyMAdPBWYL7JSPAmoQsw)
+- [白盒测试扫盲](https://mp.weixin.qq.com/s/s_FvGZTC42GEjaWzroz1eA)
+- [Mock System.in和检查System.out](https://mp.weixin.qq.com/s/1ly3uXCZsukmIylN6F5GxQ)
 
-![](http://pic.automancloud.com/0_Fotor.jpg)
-
-![](http://pic.automancloud.com/42387498274.jpeg)

@@ -51,6 +51,10 @@
 - [Groovy的神奇NullObject](https://mp.weixin.qq.com/s/jLGisN_30PrCgNP33Sww0g)
 - [Groovy中的list](https://mp.weixin.qq.com/s/0mUe1_WrUiEm1t6kqCV3eQ)
 - [JMeter参数签名——Groovy脚本形式](https://mp.weixin.qq.com/s/wQN9-xAUQofSqiAVFXdqug)
+- [Groovy中的闭包](https://mp.weixin.qq.com/s/pfcG47gSPfUveAaEfdeo8A)
+- [JMeter参数签名——Groovy工具类形式](https://mp.weixin.qq.com/s/urwU4p9ofv9sU-JFy5Z0iA)
+- [删除List中null的N种方法--最后放大招](https://mp.weixin.qq.com/s/4mfskN781dybyL59dbSbeQ)
+- [混合Java函数和Groovy闭包](https://mp.weixin.qq.com/s/FAIzGgLSX2u7RKbOGs3lGA)
 
 ## Python
 - [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/xs6Q7uk5l8Gxoagh-sY0uQ)

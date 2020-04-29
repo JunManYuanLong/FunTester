@@ -38,7 +38,8 @@ FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的�
 
 ## 接口性能
 
-接口性能是做接口性能测试过程中使用的测试策略以及Groovy脚本实现，以及性能测试工具的实现，如timewatch和netdata汉化。
+接口性能是做接口性能测试过程中使用的测试策略以及Groovy脚本实现，以及性能测试工具的实现，如timewatch和netdata汉化，欢迎关注“FunTester”。
+
 - [Linux性能监控软件netdata中文汉化版](https://mp.weixin.qq.com/s/7VG7gHx7FUvsuNtBTJpjWA)
 - [一个时间计数器timewatch辅助性能测试](https://mp.weixin.qq.com/s/-YZ04n2kyfO0q2QaKHX_0Q)
 - [性能测试框架](https://mp.weixin.qq.com/s/3_09j7-5ex35u30HQRyWug)

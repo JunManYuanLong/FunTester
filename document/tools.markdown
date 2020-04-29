@@ -8,6 +8,13 @@
 - [使用JaCoCo Maven插件创建代码覆盖率报告](https://mp.weixin.qq.com/s/4Jo05k2WxytiSSNW9WTV-A)
 - [Java 8，Jenkins，Jacoco和Sonar进行持续集成](https://mp.weixin.qq.com/s/dOoXnKnWtQmmC5itClsl4g)
 
+## arthas诊断工具
+
+- [arthas快速入门视频演示](https://mp.weixin.qq.com/s/Wl5QMD52isGTRuAP4Cpo-A)
+- [arthas进阶thread命令视频演示](https://mp.weixin.qq.com/s/XuF7Nr1sGC3diIn50zlDDQ)
+- [arthas命令jvm,sysprop,sysenv,vmoption视频演示](https://mp.weixin.qq.com/s/87BsTYqnTCnVdG3a_kBcng)
+- [arthas命令logger动态修改日志级别--视频演示](https://mp.weixin.qq.com/s/w724P9B12eTC9rMbavwsMA)
+
 ## moco API
 - [解决moco框架API在post请求json参数情况下query失效的问题](https://mp.weixin.qq.com/s/V5lXoepEBtPJrSUHA0Uz5A)
 - [解决moco框架API在cycle方法缺失的问题](https://mp.weixin.qq.com/s/ilzMNwI6YDyqJkoXg5kLfg)
@@ -39,7 +46,7 @@
 - [Gradle如何在任务失败后继续构建](https://mp.weixin.qq.com/s/GcXDzRN7cM_QQpt9ytqoKg)
 - [Gradle+Groovy基础篇](https://mp.weixin.qq.com/s/c2j7G-PoNtAB3oYYDUhCGw)
 - [Gradle+Groovy提高篇](https://mp.weixin.qq.com/s/yXmYj_1fynLkR0-5FV_Arw)
-
+- [Maven进行增量构建](https://mp.weixin.qq.com/s/ThQ7j6TS93KJZFqlNx8IQg)
 
 ## plotly可视化
 - [MacOS使用pip安装pandas提示Cannot uninstall 'numpy'解决方案](https://mp.weixin.qq.com/s/fIqMAMXRQvf_vBtS5jDsyg)
