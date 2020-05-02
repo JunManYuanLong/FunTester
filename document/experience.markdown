@@ -76,6 +76,7 @@
 - [预上线环境失败的原因](https://mp.weixin.qq.com/s/jva0Jb2OMarERmTn7Kh2Ng)
 - [自动化策略六步走](https://mp.weixin.qq.com/s/He69k8iCKhTKD1j-yV6M5g)
 - [合格的测试经理必备技能](https://mp.weixin.qq.com/s/gFIYksHMn_bHEwAhmgVzjg)
+- [质量保障的拓展实践](https://mp.weixin.qq.com/s/a3sd0dQnjk3TerOhfo-1ng)
 
 ## 大咖风采
 
@@ -87,7 +88,9 @@
 
 ## 杂乱
 
+- [测试窝，首页抄我七篇原创还拉黑，你们的良心不会痛吗？](https://mp.weixin.qq.com/s/ke5avkknkDMCLMAOGT7wiQ)
 - [如何优雅地屏蔽掉Google搜索结果中视频、新闻、图片等结果](https://mp.weixin.qq.com/s/Iu7pt4Qk3w9sJp3n_UVAeQ)
+- [测试玩梗--欢迎补充](https://mp.weixin.qq.com/s/y_QHbsjFCQVSCfj-A4Usmg)
 - [图解HTTP脑图](https://mp.weixin.qq.com/s/100Vm8FVEuXs0x6rDGTipw)
 - [测试之JVM命令脑图](https://mp.weixin.qq.com/s/qprqyv0j3SCvGw1HMjbaMQ)
 - [好书推荐《Java性能权威指南》](https://mp.weixin.qq.com/s/YWd5Yx6n7887g1lMLTcsWQ)
@@ -96,6 +99,7 @@
 - [JMeter吞吐量误差分析](https://mp.weixin.qq.com/s/jHKmFNrLmjpihnoigNNCSg)
 - [JMeter如何模拟不同的网络速度](https://mp.weixin.qq.com/s/1FCwNN2htfTGF6ItdkcCzw)
 - [疫情期间，如何提高远程办公效率](https://mp.weixin.qq.com/s/k_XrdqjGKMshK2Ea-VCNLw)
+- [接口测试视频专题](https://mp.weixin.qq.com/s/4mKpW3QiVRee3kcVOSraog)
 
 
 
