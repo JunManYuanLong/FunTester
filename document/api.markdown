@@ -25,7 +25,7 @@ FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的�
 - [使用httpclient中EntityUtils类解析entity遇到socket closed错误的原因](https://mp.weixin.qq.com/s/RJnuOa2K6aRCElJafkFeug)
 - [httpclient接口测试中重试控制器设置](https://mp.weixin.qq.com/s/hknNdq_ybQ1MoXh_dI3JVA)
 - [拼接GET请求的参数](https://mp.weixin.qq.com/s/EGw_97scexH_3m2Uc8Ye5A)
-- [httpclient上传文件方法的封装](https://mp.weixin.qq.com/s/HIrwl5ullvEmn_UuyLKkRg)
+- [httpclient上传文件方法封装](https://mp.weixin.qq.com/s/HIrwl5ullvEmn_UuyLKkRg)
 - [接口批量上传文件的实例](https://mp.weixin.qq.com/s/wZwkWchXXC6iddX1oVEnZQ)
 - [httpclient发送https协议请求以及javax.net.ssl.SSLHandshakeException解决办法](https://mp.weixin.qq.com/s/uSHhKRrL2f9USKpSykkpkQ)
 - [API测试基础](https://mp.weixin.qq.com/s/bkbUEa9CF21xMYSlhPcULw)

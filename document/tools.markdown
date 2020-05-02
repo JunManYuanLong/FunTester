@@ -14,10 +14,10 @@
 - [arthas进阶thread命令视频演示](https://mp.weixin.qq.com/s/XuF7Nr1sGC3diIn50zlDDQ)
 - [arthas命令jvm,sysprop,sysenv,vmoption视频演示](https://mp.weixin.qq.com/s/87BsTYqnTCnVdG3a_kBcng)
 - [arthas命令logger动态修改日志级别--视频演示](https://mp.weixin.qq.com/s/w724P9B12eTC9rMbavwsMA)
+- [arthas命令sc和sm视频演示](https://mp.weixin.qq.com/s/Ga63sjW_bOKQqfnA5LTb9w)
 
 ## moco API
 - [解决moco框架API在post请求json参数情况下query失效的问题](https://mp.weixin.qq.com/s/V5lXoepEBtPJrSUHA0Uz5A)
-- [解决moco框架API在cycle方法缺失的问题](https://mp.weixin.qq.com/s/ilzMNwI6YDyqJkoXg5kLfg)
 - [解决moco框架API在cycle方法缺失的问题](https://mp.weixin.qq.com/s/so77Gai7vQZSLvB7rzsxfw)
 - [给moco API添加limit功能](https://mp.weixin.qq.com/s/pXJECi15ieNLmA0uIqEqfA)
 - [给moco API添加random功能](https://mp.weixin.qq.com/s/YTcbFbFaWB5arW_fubgTTQ)
@@ -25,7 +25,6 @@
 - [五行代码构建静态博客](https://mp.weixin.qq.com/s/hZnimJOg5OqxRSDyFvuiiQ)
 
 ## 工具类
-- [java网格输出的类](https://mp.weixin.qq.com/s/BJTJu0LGjn7Hc9J1yT04KQ)
 - [java使用poi写入excel文档的一种解决方案](https://mp.weixin.qq.com/s/Ft56gd1B9CPrQs2zq4Cpug)
 - [java使用poi读取excel文档的一种解决方案](https://mp.weixin.qq.com/s/ltZGx9J7E8DTer0D-pfQ2Q)
 - [MongoDB操作类封装](https://mp.weixin.qq.com/s/u-RHOE5XrjOEkelWIxdplw)
