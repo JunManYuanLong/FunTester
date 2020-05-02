@@ -2,6 +2,8 @@
 
 > FunTester，360+原创文章，6次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，量变引起质变，欢迎关注。
 
+[FunTester原创专辑](https://mp.weixin.qq.com/s/Le-tpC79pIpacHXGOkkYWw)
+
 # 接口测试
 
 ## 接口测试
@@ -173,6 +175,7 @@
 # 案例分享
 
 ## 测试方案
+
 - [如何对消息队列做性能测试](https://mp.weixin.qq.com/s/MNt22aW3Op9VQ5OoMzPwBw)
 - [如何对修改密码接口进行压测](https://mp.weixin.qq.com/s/9CL_6-uZOlAh7oeo7NOpag)
 - [如何测试概率型业务接口](https://mp.weixin.qq.com/s/kUVffhjae3eYivrGqo6ZMg)
@@ -222,6 +225,7 @@
 - [arthas进阶thread命令视频演示](https://mp.weixin.qq.com/s/XuF7Nr1sGC3diIn50zlDDQ)
 - [arthas命令jvm,sysprop,sysenv,vmoption视频演示](https://mp.weixin.qq.com/s/87BsTYqnTCnVdG3a_kBcng)
 - [arthas命令logger动态修改日志级别--视频演示](https://mp.weixin.qq.com/s/w724P9B12eTC9rMbavwsMA)
+- [arthas命令sc和sm视频演示](https://mp.weixin.qq.com/s/Ga63sjW_bOKQqfnA5LTb9w)
 
 ## moco API
 - [解决moco框架API在post请求json参数情况下query失效的问题](https://mp.weixin.qq.com/s/V5lXoepEBtPJrSUHA0Uz5A)
@@ -343,6 +347,7 @@
 - [预上线环境失败的原因](https://mp.weixin.qq.com/s/jva0Jb2OMarERmTn7Kh2Ng)
 - [自动化策略六步走](https://mp.weixin.qq.com/s/He69k8iCKhTKD1j-yV6M5g)
 - [合格的测试经理必备技能](https://mp.weixin.qq.com/s/gFIYksHMn_bHEwAhmgVzjg)
+- [质量保障的拓展实践](https://mp.weixin.qq.com/s/a3sd0dQnjk3TerOhfo-1ng)
 
 ## 大咖风采
 
@@ -418,6 +423,7 @@
 
 - [测试窝，首页抄我七篇原创还拉黑，你们的良心不会痛吗？](https://mp.weixin.qq.com/s/ke5avkknkDMCLMAOGT7wiQ)
 - [如何优雅地屏蔽掉Google搜索结果中视频、新闻、图片等结果](https://mp.weixin.qq.com/s/Iu7pt4Qk3w9sJp3n_UVAeQ)
+- [测试玩梗--欢迎补充](https://mp.weixin.qq.com/s/y_QHbsjFCQVSCfj-A4Usmg)
 - [图解HTTP脑图](https://mp.weixin.qq.com/s/100Vm8FVEuXs0x6rDGTipw)
 - [测试之JVM命令脑图](https://mp.weixin.qq.com/s/qprqyv0j3SCvGw1HMjbaMQ)
 - [好书推荐《Java性能权威指南》](https://mp.weixin.qq.com/s/YWd5Yx6n7887g1lMLTcsWQ)
