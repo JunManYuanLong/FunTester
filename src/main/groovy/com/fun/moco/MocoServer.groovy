@@ -16,7 +16,7 @@ import static com.github.dreamhead.moco.Moco.log
  */
 class MocoServer extends MocoResponse {
 
-    def array = new ArrayList()
+    def array = []
 
 /**
  * 获取httpserver对象，端口号12345
