@@ -147,4 +147,34 @@ class MocoRequest extends SourceCode {
         logger.debug("匹配请求cookie中key：{}是否存在", key)
         exist(cookie(key))
     }
+
+/**
+ * 多个筛选条件
+ * @param matcher
+ * @param matchers
+ * @return
+ */
+    static RequestMatcher both(RequestMatcher matcher, RequestMatcher... matchers) {
+        return and(matcher, matchers);
+    }
+
+/**
+ * 满足任意条件即可
+ * @param matcher
+ * @param matchers
+ * @return
+ */
+    static RequestMatcher or(RequestMatcher matcher, RequestMatcher... matchers) {
+        return com.github.dreamhead.moco.Moco.or(matcher, matchers);
+    }
+
+/**
+ * 排除满足条件的请求
+ * @param matcher
+ * @param matchers
+ * @return
+ */
+    static RequestMatcher not(RequestMatcher matcher, RequestMatcher... matchers) {
+        return com.github.dreamhead.moco.Moco.not(matcher, matchers);
+    }
 }
