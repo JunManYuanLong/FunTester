@@ -23,7 +23,7 @@ public class LimitHandle extends AbstractResponseHandler {
 
     private final ResponseHandler unlimit;
 
-    private Map<String, Long> tatal = new ConcurrentHashMap<>();
+    private Map<String, Long> total = new ConcurrentHashMap<>();
 
     private int interval;
 
@@ -47,7 +47,7 @@ public class LimitHandle extends AbstractResponseHandler {
         HttpRequest request = (HttpRequest) context.getRequest();
         String uri = request.getUri();
         MessageContent content = request.getContent();
-        (limited(uri + content) ? limit : unlimit).writeToResponse(context);
+        (limited(uri ) ? limit : unlimit).writeToResponse(context);
     }
 
     @Override
@@ -78,8 +78,8 @@ public class LimitHandle extends AbstractResponseHandler {
      */
     public boolean limited(String info) {
         long fresh = Time.getTimeStamp();
-        long old = tatal.containsKey(info) ? tatal.get(info) : 0L;
-        tatal.put(info, fresh);
+        long old = total.containsKey(info) ? total.get(info) : 0L;
+        total.put(info, fresh);
         return fresh - old > interval;
     }
 }
