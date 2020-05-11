@@ -59,17 +59,18 @@ class MocoResponse extends MocoRequest {
     static ResponseHandler fail(Object result) {
         with Result.fail(result).toString()
     }
+
 /**
  * 随机response
  * @param handlers
  * @return
  */
-    static ResponseHandler randownRes(ResponseHandler handler, ResponseHandler... handlers) {
+    static ResponseHandler randomRes(ResponseHandler handler, ResponseHandler... handlers) {
         random handler, handlers
     }
 
 /**
- * 随机返回闻文本
+ * 随机返回文本
  * @param contents
  * @return
  */
@@ -77,7 +78,7 @@ class MocoResponse extends MocoRequest {
         cycle content, contents
     }
 /**
- * 随机返回闻文本
+ * 随机返回文本
  * @param contents
  * @return
  */
