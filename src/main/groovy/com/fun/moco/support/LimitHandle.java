@@ -6,7 +6,6 @@ import com.github.dreamhead.moco.MocoConfig;
 import com.github.dreamhead.moco.ResponseHandler;
 import com.github.dreamhead.moco.handler.AbstractResponseHandler;
 import com.github.dreamhead.moco.internal.SessionContext;
-import com.github.dreamhead.moco.model.MessageContent;
 import com.google.common.base.Function;
 
 import java.util.Map;
@@ -46,7 +45,6 @@ public class LimitHandle extends AbstractResponseHandler {
     public void writeToResponse(final SessionContext context) {
         HttpRequest request = (HttpRequest) context.getRequest();
         String uri = request.getUri();
-        MessageContent content = request.getContent();
         (limited(uri ) ? limit : unlimit).writeToResponse(context);
     }
 
