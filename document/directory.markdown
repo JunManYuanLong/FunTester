@@ -77,6 +77,7 @@
 - [从单元测试标准中学习](https://mp.weixin.qq.com/s/x0TyMAdPBWYL7JSPAmoQsw)
 - [白盒测试扫盲](https://mp.weixin.qq.com/s/s_FvGZTC42GEjaWzroz1eA)
 - [Mock System.in和检查System.out](https://mp.weixin.qq.com/s/1ly3uXCZsukmIylN6F5GxQ)
+- [单元测试框架spock和Mockito应用](https://mp.weixin.qq.com/s/s21Lts1UnG9HwOEVvgj-uw)
 
 ## 接口性能
 
@@ -107,6 +108,7 @@
 - [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
 - [手机号验证码登录性能测试](https://mp.weixin.qq.com/s/i-j8fJAdcsJ7v8XPOnPDAw)
 - [绑定手机号性能测试](https://mp.weixin.qq.com/s/K5x1t1dKtIT2NKV6k4v5mw)
+- [终止性能测试并输出报告](https://mp.weixin.qq.com/s/II4-UbKDikctmS_vRT-xLg)
 
 # 语言合集
 
@@ -138,6 +140,8 @@
 - [Java和Groovy正则使用](https://mp.weixin.qq.com/s/DT3BKE3ZcCKf6TLzGc5wbg)
 - [运行越来越快的Java热点代码](https://mp.weixin.qq.com/s/AP0BcDEjDuaouaB0RXJOoQ)
 - [6个重要的JVM性能参数](https://mp.weixin.qq.com/s/b1QnapiAVn0HD5DQU9JrIw)
+- [ArrayList浅、深拷贝](https://mp.weixin.qq.com/s/kYsBzFsCyDPUssdV3MDqLA)
+- [Java性能测试中两种锁的实现](https://mp.weixin.qq.com/s/j9dGFvYzCJ0AGwYUtTrTsw)
 
 ## Groovy
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)
@@ -226,6 +230,10 @@
 - [arthas命令jvm,sysprop,sysenv,vmoption视频演示](https://mp.weixin.qq.com/s/87BsTYqnTCnVdG3a_kBcng)
 - [arthas命令logger动态修改日志级别--视频演示](https://mp.weixin.qq.com/s/w724P9B12eTC9rMbavwsMA)
 - [arthas命令sc和sm视频演示](https://mp.weixin.qq.com/s/Ga63sjW_bOKQqfnA5LTb9w)
+- [arthas命令ognl视频演示](https://mp.weixin.qq.com/s/cMCaXFwjp6QHFq40TvP4bQ)
+- [arthas命令redefine实现Java热更新](https://mp.weixin.qq.com/s/2HUXfJhoUfg4yMzSoRHK9w)
+- [arthas命令monitor监控方法执行](https://mp.weixin.qq.com/s/7-oe3UoTY8bzpi89tIKvQQ)
+- [arthas命令watch观察方法调用（上）](https://mp.weixin.qq.com/s/6fMKP7H4Q7ll_0v-wyN19g)
 
 ## moco API
 - [解决moco框架API在post请求json参数情况下query失效的问题](https://mp.weixin.qq.com/s/V5lXoepEBtPJrSUHA0Uz5A)
@@ -348,6 +356,8 @@
 - [自动化策略六步走](https://mp.weixin.qq.com/s/He69k8iCKhTKD1j-yV6M5g)
 - [合格的测试经理必备技能](https://mp.weixin.qq.com/s/gFIYksHMn_bHEwAhmgVzjg)
 - [质量保障的拓展实践](https://mp.weixin.qq.com/s/a3sd0dQnjk3TerOhfo-1ng)
+- [敏捷领导者常见误区](https://mp.weixin.qq.com/s/xdq3CZflRjvDBGDLK4tNFQ)
+- [功能自动化测试策略](https://mp.weixin.qq.com/s/qHmcblN4cD4JK6jT7oU4fQ)
 
 ## 大咖风采
 

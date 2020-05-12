@@ -15,6 +15,10 @@
 - [arthas命令jvm,sysprop,sysenv,vmoption视频演示](https://mp.weixin.qq.com/s/87BsTYqnTCnVdG3a_kBcng)
 - [arthas命令logger动态修改日志级别--视频演示](https://mp.weixin.qq.com/s/w724P9B12eTC9rMbavwsMA)
 - [arthas命令sc和sm视频演示](https://mp.weixin.qq.com/s/Ga63sjW_bOKQqfnA5LTb9w)
+- [arthas命令ognl视频演示](https://mp.weixin.qq.com/s/cMCaXFwjp6QHFq40TvP4bQ)
+- [arthas命令redefine实现Java热更新](https://mp.weixin.qq.com/s/2HUXfJhoUfg4yMzSoRHK9w)
+- [arthas命令monitor监控方法执行](https://mp.weixin.qq.com/s/7-oe3UoTY8bzpi89tIKvQQ)
+- [arthas命令watch观察方法调用（上）](https://mp.weixin.qq.com/s/6fMKP7H4Q7ll_0v-wyN19g)
 
 ## moco API
 - [解决moco框架API在post请求json参数情况下query失效的问题](https://mp.weixin.qq.com/s/V5lXoepEBtPJrSUHA0Uz5A)

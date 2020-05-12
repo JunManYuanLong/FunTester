@@ -77,6 +77,8 @@
 - [自动化策略六步走](https://mp.weixin.qq.com/s/He69k8iCKhTKD1j-yV6M5g)
 - [合格的测试经理必备技能](https://mp.weixin.qq.com/s/gFIYksHMn_bHEwAhmgVzjg)
 - [质量保障的拓展实践](https://mp.weixin.qq.com/s/a3sd0dQnjk3TerOhfo-1ng)
+- [敏捷领导者常见误区](https://mp.weixin.qq.com/s/xdq3CZflRjvDBGDLK4tNFQ)
+- [功能自动化测试策略](https://mp.weixin.qq.com/s/qHmcblN4cD4JK6jT7oU4fQ)
 
 ## 大咖风采
 
