@@ -316,7 +316,7 @@ class FunRequest extends FanLibrary implements Serializable, Cloneable {
         List<Header> headers = Arrays.asList(base.getAllHeaders());
         if (requestType == requestType.GET) {
             request = FunRequest.isGet().setUri(uri).setHeaders(headers);
-        } else if (requestType == RequestType.POST || requestType == RequestType.FUN) {
+        } else if (requestType == RequestType.POST) {
             HttpPost post = (HttpPost) base;
             HttpEntity entity = post.getEntity();
             String value = entity.getContentType().getValue();
