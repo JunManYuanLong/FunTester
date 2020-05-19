@@ -12,7 +12,6 @@ import com.fun.frame.SourceCode;
 import com.fun.utils.DecodeEncode;
 import com.fun.utils.Time;
 import com.fun.utils.message.AlertOver;
-import io.netty.util.internal.StringUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.*;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -360,7 +359,7 @@ public class FanLibrary extends SourceCode {
      */
     private static boolean isRightRequest(HttpRequestBase request) {
         String url = request.getURI().toString().toLowerCase();
-        return !StringUtil.isNullOrEmpty(url) && url.startsWith("http");
+        return StringUtils.isNoneEmpty(url) && url.startsWith("http");
     }
 
     /**
