@@ -4,8 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 请求枚举类，fun备用，在区分post请求参数类型中用到
- * fun是为了区分post请求，json格式传参用
+ * 请求枚举类，fun备用，暂时无用,通过其他方式区分了post请求的参数格式
  */
 public enum RequestType {
     GET("get"), POST("post"), FUN("fun");
