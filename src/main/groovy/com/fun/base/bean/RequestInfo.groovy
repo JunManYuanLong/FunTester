@@ -1,6 +1,7 @@
 package com.fun.base.bean
 
 import com.fun.config.RequestType
+import com.fun.config.SysInit
 import org.apache.http.HttpEntity
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase
 import org.apache.http.client.methods.HttpRequestBase
@@ -77,6 +78,7 @@ class RequestInfo extends AbstractBean {
         String one = url.substring(url.indexOf("//") + 2)// 删除掉http://
         apiName = one.substring(one.indexOf("/"))// 获取接口名
         host = one.substring(0, one.indexOf("/"))// 获取host地址
+        isBlack = SysInit.isBlack(host)
         type = url.substring(0, url.indexOf("//") - 1)// 获取协议类型
         if (method == RequestType.GET) {
             if (!uri.contains("?")) return
