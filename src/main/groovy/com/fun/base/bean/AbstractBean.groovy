@@ -19,7 +19,8 @@ abstract class AbstractBean extends SourceCode {
      * @return
      */
     JSONObject toJson() {
-        return BeanUtil.toJson(this);
+        JSONObject.parseObject(JSONObject.toJSONString(this))
+
     }
 
     /**
