@@ -39,6 +39,6 @@ abstract class AbstractBean extends SourceCode {
 
     @Override
     String toString() {
-        return this.toJson().toString();
+        JSONObject.toJSONString(this)
     }
 }
