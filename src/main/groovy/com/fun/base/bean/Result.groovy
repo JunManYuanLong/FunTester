@@ -1,4 +1,7 @@
 package com.fun.base.bean
+
+import com.fun.base.interfaces.ErrorCode
+
 /**
  * 通用的返回体
  * 配合moco框架使用
@@ -19,6 +22,12 @@ class Result<T> extends AbstractBean {
         this.code = code
         this.data = data
     }
+
+    Result(ErrorCode errorCode) {
+        this.code = errorCode.getcode()
+        this.data = errorCode.getDesc()
+    }
+
 /**
  * 返回简单的响应
  * @param c
