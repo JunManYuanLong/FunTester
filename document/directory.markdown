@@ -1,12 +1,13 @@
 # 总目录
 
-> FunTester，360+原创文章，6次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，量变引起质变，欢迎关注。
+> FunTester，380+原创文章，6次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，欢迎关注。
 
 [FunTester原创专辑](https://mp.weixin.qq.com/s/Le-tpC79pIpacHXGOkkYWw)
 
 # 接口测试
 
-## 接口测试
+## 接口功能测试
+
 - [使用springboot+mybatis数据库存储服务化](https://mp.weixin.qq.com/s/N_5tHW1JJLZlxCaDI2PvyQ)
 - [alertover推送api的java httpclient实现实例](https://mp.weixin.qq.com/s/DJXCBEG3SbybfbT6blO1jA)
 - [接口自动化通用验证类](https://mp.weixin.qq.com/s/fP1clCKkLREfg6POKV5n1A)
@@ -113,6 +114,7 @@
 # 语言合集
 
 ## Java
+
 - [java一行代码打印心形](https://mp.weixin.qq.com/s/QPSryoSbViVURpSa9QXtpg)
 - [操作的原子性与线程安全](https://mp.weixin.qq.com/s/QU3llkGLepX2VCch8Y9GKw)
 - [快看，i++真的不安全](https://mp.weixin.qq.com/s/-CdWdROKSEq_ZiLX2kWxzA)
@@ -142,8 +144,10 @@
 - [6个重要的JVM性能参数](https://mp.weixin.qq.com/s/b1QnapiAVn0HD5DQU9JrIw)
 - [ArrayList浅、深拷贝](https://mp.weixin.qq.com/s/kYsBzFsCyDPUssdV3MDqLA)
 - [Java性能测试中两种锁的实现](https://mp.weixin.qq.com/s/j9dGFvYzCJ0AGwYUtTrTsw)
+- [测试如何处理Java异常](https://mp.weixin.qq.com/s/H00GWiATOD8QHJu3UewrBw)
 
 ## Groovy
+
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)
 - [groovy使用stream语法递归筛选法求N以内的质数](https://mp.weixin.qq.com/s/TsrVn1cuQUrU6wj9OnR-FQ)
 - [使用Groovy进行Bash（shell）操作](https://mp.weixin.qq.com/s/fgCTlZUF3QeNj6jzq1ZgGg)
@@ -171,6 +175,7 @@
 - [混合Java函数和Groovy闭包](https://mp.weixin.qq.com/s/FAIzGgLSX2u7RKbOGs3lGA)
 
 ## Python
+
 - [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/D8RfpdIi8smCL8TAzBcNpA)
 - [关于python版微信使用经验分享](https://mp.weixin.qq.com/s/19IaI6ETZAm_T4ePPlXqIg)
 - [python用递归筛选法求N以内的孪生质数（孪生素数）](https://mp.weixin.qq.com/s/rVY2pTl8So11WCvA9GrFbA)
@@ -192,6 +197,7 @@
 - [手机号验证码登录性能测试](https://mp.weixin.qq.com/s/i-j8fJAdcsJ7v8XPOnPDAw)
 
 ## BUG集锦
+
 - [一个MySQL索引引发的血案](https://mp.weixin.qq.com/s/KLSber-gPg53JVfsCa3Dtw)
 - [微软Zune闰年BUG分析](https://mp.weixin.qq.com/s/zpqAUcNcHaZjWUdUYH_loQ)
 - [“双花”BUG的测试分享](https://mp.weixin.qq.com/s/0dsBsssNfg-seJ_tu9zFaQ)
@@ -203,6 +209,7 @@
 - [超大对象导致Full GC超高的BUG分享](https://mp.weixin.qq.com/s/L15-0JW9WK-E005GeOG9WQ)
 
 ## 爬虫实践
+
 - [接口爬虫之网页表单数据提取](https://mp.weixin.qq.com/s/imJ5u67xhYQaEzv-O1in4g)
 - [httpclient爬虫爬取汉字拼音等信息](https://mp.weixin.qq.com/s/w-IvBxAsotmPA3pydpIo1w)
 - [httpclient爬虫爬取电影信息和下载地址实例](https://mp.weixin.qq.com/s/TB49X4S-ioyoW5CrzAnHcw)
@@ -218,10 +225,12 @@
 # 工具合集
 
 ## Jacoco覆盖率
+
 - [接口测试代码覆盖率（jacoco）方案分享](https://mp.weixin.qq.com/s/D73Sq6NLjeRKN8aCpGLOjQ)
 - [jacoco无法读取build.xml配置中源码路径解决办法](https://mp.weixin.qq.com/s/8_x0rVfkIi-uX3y0drx_jw)
 - [使用JaCoCo Maven插件创建代码覆盖率报告](https://mp.weixin.qq.com/s/4Jo05k2WxytiSSNW9WTV-A)
 - [Java 8，Jenkins，Jacoco和Sonar进行持续集成](https://mp.weixin.qq.com/s/dOoXnKnWtQmmC5itClsl4g)
+- [jacoco测试覆盖率过滤非业务类](https://mp.weixin.qq.com/s/7YGe9pCHw3wd87tgOlKjSA)
 
 ## arthas诊断工具
 
@@ -234,15 +243,23 @@
 - [arthas命令redefine实现Java热更新](https://mp.weixin.qq.com/s/2HUXfJhoUfg4yMzSoRHK9w)
 - [arthas命令monitor监控方法执行](https://mp.weixin.qq.com/s/7-oe3UoTY8bzpi89tIKvQQ)
 - [arthas命令watch观察方法调用（上）](https://mp.weixin.qq.com/s/6fMKP7H4Q7ll_0v-wyN19g)
+- [arthas命令watch观察方法调用（下）](https://mp.weixin.qq.com/s/-r2kufxdOjRb2TgF2HPskg)
+- [arthas命令trace追踪方法链路](https://mp.weixin.qq.com/s/bzkdKZugkOl8C-_xTw92YA)
+- [arthas命令tt方法时空隧道](https://mp.weixin.qq.com/s/mDczYmVdSmL5ZbK7bb8i0A)
 
 ## moco API
+
 - [解决moco框架API在post请求json参数情况下query失效的问题](https://mp.weixin.qq.com/s/V5lXoepEBtPJrSUHA0Uz5A)
 - [给moco API添加limit功能](https://mp.weixin.qq.com/s/pXJECi15ieNLmA0uIqEqfA)
 - [给moco API添加random功能](https://mp.weixin.qq.com/s/YTcbFbFaWB5arW_fubgTTQ)
 - [解决moco框架API在cycle方法缺失的问题](https://mp.weixin.qq.com/s/YfsPa7eW8WV65CDbPooBPg)
 - [五行代码构建静态博客](https://mp.weixin.qq.com/s/hZnimJOg5OqxRSDyFvuiiQ)
+- [moco API模拟框架视频讲解（上）](https://mp.weixin.qq.com/s/X5-fFXe018_O60WCRdawZg)
+- [moco API模拟框架视频讲解（中）](https://mp.weixin.qq.com/s/g2En-9W9JWYrCLQr_WPEBA)
+- [moco API模拟框架视频讲解（下）](https://mp.weixin.qq.com/s/mz__DiNxMGHwIKCLsjKR8g)
 
 ## 工具类
+
 - [java网格输出的类](https://mp.weixin.qq.com/s/BJTJu0LGjn7Hc9J1yT04KQ)
 - [java使用poi写入excel文档的一种解决方案](https://mp.weixin.qq.com/s/Ft56gd1B9CPrQs2zq4Cpug)
 - [java使用poi读取excel文档的一种解决方案](https://mp.weixin.qq.com/s/ltZGx9J7E8DTer0D-pfQ2Q)
@@ -257,6 +274,7 @@
 - [获取JVM转储文件的Java工具类](https://mp.weixin.qq.com/s/f_TlOb3m8MeR3argBmTzzA)
 
 ## 构建工具
+
 - [java和groovy混编的Maven项目如何用intellij打包执行jar包](https://mp.weixin.qq.com/s/bKexZXlONeo3r6FDhfMltQ)
 - [window系统权限不足导致gradle构建失败的解决办法](https://mp.weixin.qq.com/s/dqiQvmVG1o6glU-pknLDwQ)
 - [使用groovy脚本使gradle灵活加载本地jar包的两种方式](https://mp.weixin.qq.com/s/p3K3ZS7iOUeKO7E94gKFVg)
@@ -267,6 +285,7 @@
 - [Maven进行增量构建](https://mp.weixin.qq.com/s/ThQ7j6TS93KJZFqlNx8IQg)
 
 ## plotly可视化
+
 - [MacOS使用pip安装pandas提示Cannot uninstall 'numpy'解决方案](https://mp.weixin.qq.com/s/fIqMAMXRQvf_vBtS5jDsyg)
 - [Python使用plotly生成本地文件教程](https://mp.weixin.qq.com/s/4dJdIP-g3fF40vX7S31jNg)
 - [Python2.7使用plotly绘制本地散点图和折线图实例](https://mp.weixin.qq.com/s/9QWrA0c-STmrmjSkBYWvbQ)
@@ -358,6 +377,7 @@
 - [质量保障的拓展实践](https://mp.weixin.qq.com/s/a3sd0dQnjk3TerOhfo-1ng)
 - [敏捷领导者常见误区](https://mp.weixin.qq.com/s/xdq3CZflRjvDBGDLK4tNFQ)
 - [功能自动化测试策略](https://mp.weixin.qq.com/s/qHmcblN4cD4JK6jT7oU4fQ)
+- [性能测试、压力测试和负载测试](https://mp.weixin.qq.com/s/g26lpd7d7EtpN7pkiqkkjg)
 
 ## 大咖风采
 
@@ -369,10 +389,12 @@
 # UI自动化
 
 ## UI自动化
+
 - [自动化测试中java多线程的使用实例](https://mp.weixin.qq.com/s/BNSLaIdcTPTNj1tKpGf6fw)
 - [自动化测试中递归函数的应用](https://mp.weixin.qq.com/s/86602zV9zYblhCRMiUlwdA)
 
 ## UiAutomator
+
 - [android uiautomator一个画心形图案的方法--代码的浪漫](https://mp.weixin.qq.com/s/byfAKHxD2i83VHnuaNgIZA)
 - [android UiAutomator了解源码解决控件bonds[0,0]无法点击](https://mp.weixin.qq.com/s/nu2ftXNUSG2_kmZjyhEcVA)
 - [android UiAutomator在清除文本时遇到中文的解决办法](https://mp.weixin.qq.com/s/cNGNCoXsYBSk-MWTWLxF4g)
@@ -393,6 +415,7 @@
 
 
 ## Selenium
+
 - [selenium2java截图保存桌面](https://mp.weixin.qq.com/s/OUfwsIo635coGONRNccYlg)
 - [selenium2java调用JavaScript方法封装](https://mp.weixin.qq.com/s/t-Xs2Hr9TM2bjDiOqQX2mA)
 - [selenium2java利用mysq解决向浏览器插入cookies时token过期问题](https://mp.weixin.qq.com/s/oAAkDKUGytQjxJLFkod-AQ)
@@ -420,8 +443,11 @@
 - [Selenium Python使用技巧（一）](https://mp.weixin.qq.com/s/39v8tXG3xig63d-ioEAi8Q)
 - [Selenium Python使用技巧（二）](https://mp.weixin.qq.com/s/uDM3y9zoVjaRmJJJTNs6Vw)
 - [Selenium Python使用技巧（三）](https://mp.weixin.qq.com/s/J7-CO-UDspUGSpB8isjsmQ)
+- [Selenium并行测试基础](https://mp.weixin.qq.com/s/OfXipd7YtqL2AdGAQ5cIMw)
+- [Selenium并行测试最佳实践](https://mp.weixin.qq.com/s/-RsQZaT5pH8DHPvm0L8Hjw)
 
 ## APP性能
+
 - [使用monkey测试时，一个控制WiFi状态的多线程类](https://mp.weixin.qq.com/s/P8HVtzHBlj_FcDAAHFKBDg)
 - [java执行和停止Logcat命令及多线程实现](https://mp.weixin.qq.com/s/sUYibRc-muxQoxi48QiaRg)
 - [APP性能测试中获取CPU和PSS数据多线程实现](https://mp.weixin.qq.com/s/NiJSZ8VxpdnarbDJjcJziA)
