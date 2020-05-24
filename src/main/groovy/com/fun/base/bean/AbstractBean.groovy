@@ -20,7 +20,6 @@ abstract class AbstractBean extends SourceCode {
      */
     JSONObject toJson() {
         JSONObject.parseObject(JSONObject.toJSONString(this))
-
     }
 
     /**
