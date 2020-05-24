@@ -3,6 +3,9 @@ package com.FunTester.demo
 import com.fun.frame.SourceCode
 import com.alibaba.fastjson.JSONObject
 
+/**
+ * Groovy中的闭包
+ */
 class demo3 extends SourceCode {
 
     public static void main(String[] args) {

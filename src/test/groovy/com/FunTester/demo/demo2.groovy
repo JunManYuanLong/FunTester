@@ -2,6 +2,9 @@ package com.FunTester.demo
 
 import com.fun.frame.SourceCode
 
+/**
+ * Groovy正则
+ */
 class demo2 extends SourceCode {
 
     public static void main(String[] args) {

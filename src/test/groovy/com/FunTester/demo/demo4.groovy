@@ -3,6 +3,9 @@ package com.FunTester.demo
 import com.fun.frame.SourceCode
 import com.alibaba.fastjson.JSONObject
 
+/**
+ * Groovy中的字典和方法参数默认值
+ */
 class demo4 extends SourceCode {
 
     public static void main(String[] args) {
