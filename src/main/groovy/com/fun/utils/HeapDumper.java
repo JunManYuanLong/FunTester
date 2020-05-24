@@ -12,7 +12,7 @@ import java.lang.management.ManagementFactory;
  */
 public class HeapDumper extends SourceCode {
 
-    private static Logger logger = getLogger();
+    private static Logger logger = getLogger(HeapDumper.class);
 
     /**
      * 这是HotSpot Diagnostic MBean的名称
