@@ -207,7 +207,7 @@ public class Concurrent extends SourceCode {
      */
     public static String statistics(List<Integer> data, String title) {
         int size = data.size();
-        if (size < 1000) return EMPTY;
+        if (size < BUCKET_SIZE * BUCKET_SIZE) return EMPTY;
         int[] ints = range(1, BUCKET_SIZE + 1).map(x -> data.get(size * x / BUCKET_SIZE - size / BUCKET_SIZE / 2)).toArray();
         int largest = ints[BUCKET_SIZE - 1];
         String[][] map = Arrays.asList(ArrayUtils.toObject(ints)).stream().map(x -> getPercent(x, largest, BUCKET_SIZE)).collect(toList()).toArray(new String[BUCKET_SIZE][BUCKET_SIZE]);
