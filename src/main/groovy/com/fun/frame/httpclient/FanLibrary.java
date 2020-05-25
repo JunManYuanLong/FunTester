@@ -235,7 +235,10 @@ public class FanLibrary extends SourceCode {
      * @param request
      */
     protected static void beforeRequest(HttpRequestBase request) {
-        HttpClientConstant.COMMON_HEADER.forEach(header -> request.addHeader(header));
+        HttpClientConstant.COMMON_HEADER.forEach(header -> {
+            if (!request.containsHeader(header.getName()))
+                request.addHeader(header);
+        });
     }
 
     /**
