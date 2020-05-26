@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 循环的responsehandle
  */
 @SuppressWarnings("all")
-public class LimitHandle extends AbstractResponseHandler {
+public class LimitHandler extends AbstractResponseHandler {
 
 
     private final ResponseHandler limit;
@@ -26,14 +26,14 @@ public class LimitHandle extends AbstractResponseHandler {
 
     private int interval;
 
-    private LimitHandle(final ResponseHandler limit, final ResponseHandler unLimit, int interval) {
+    private LimitHandler(final ResponseHandler limit, final ResponseHandler unLimit, int interval) {
         this.limit = limit;
         this.unlimit = unLimit;
         this.interval = interval;
     }
 
     public static ResponseHandler newSeq(final ResponseHandler limit, final ResponseHandler unLimit, int interval) {
-        return new LimitHandle(limit, unLimit, interval);
+        return new LimitHandler(limit, unLimit, interval);
     }
 
     /**
@@ -53,7 +53,7 @@ public class LimitHandle extends AbstractResponseHandler {
         if (config.isFor(MocoConfig.RESPONSE_ID)) {
             return super.apply(config);
         }
-        return new LimitHandle(limit, unlimit, interval);
+        return new LimitHandler(limit, unlimit, interval);
     }
 
     private Function<ResponseHandler, ResponseHandler> applyConfig(final MocoConfig config) {

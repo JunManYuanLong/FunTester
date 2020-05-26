@@ -17,19 +17,19 @@ import static com.google.common.collect.ImmutableList.copyOf;
  * 循环的responsehandle
  */
 @SuppressWarnings("all")
-public class CycleHandle extends AbstractResponseHandler {
+public class CycleHandler extends AbstractResponseHandler {
 
     private final ImmutableList<ResponseHandler> handlers;
 
     private int index;
 
-    private CycleHandle(final Iterable<ResponseHandler> handlers) {
+    private CycleHandler(final Iterable<ResponseHandler> handlers) {
         this.handlers = copyOf(handlers);
     }
 
     public static ResponseHandler newSeq(final Iterable<ResponseHandler> handlers) {
         checkArgument(Iterables.size(handlers) > 0, "Sequence contents should not be null");
-        return new CycleHandle(handlers);
+        return new CycleHandler(handlers);
     }
 
     /**
@@ -49,7 +49,7 @@ public class CycleHandle extends AbstractResponseHandler {
         }
 
         FluentIterable<ResponseHandler> transformedResources = from(copyOf(handlers)).transform(applyConfig(config));
-        return new CycleHandle(transformedResources.toList());
+        return new CycleHandler(transformedResources.toList());
     }
 
     private Function<ResponseHandler, ResponseHandler> applyConfig(final MocoConfig config) {
