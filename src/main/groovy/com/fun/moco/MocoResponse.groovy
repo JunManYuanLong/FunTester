@@ -1,8 +1,10 @@
 package com.fun.moco
 
 import com.fun.base.bean.Result
-import com.fun.moco.support.CycleHandle
-import com.fun.moco.support.LimitHandle
+import com.fun.moco.support.CycleHandler
+import com.fun.moco.support.DelayHandler
+import com.fun.moco.support.LimitHandler
+import com.fun.moco.support.QPSHandler
 import com.fun.moco.support.RandomHandler
 import com.github.dreamhead.moco.ResponseHandler
 import com.github.dreamhead.moco.procedure.LatencyProcedure
@@ -58,15 +60,6 @@ class MocoResponse extends MocoRequest {
 
     static ResponseHandler fail(Object result) {
         with Result.fail(result).toString()
-    }
-
-/**
- * 随机response
- * @param handlers
- * @return
- */
-    static ResponseHandler randomRes(ResponseHandler handler, ResponseHandler... handlers) {
-        random handler, handlers
     }
 
 /**
@@ -212,13 +205,51 @@ class MocoResponse extends MocoRequest {
     }
 
 /**
+ * 延迟响应
+ * @param handler
+ * @param time 时间,单位ms,存在理论BUG,不能低于50ms
+ * @return
+ */
+    static ResponseHandler delay(ResponseHandler handler, int time) {
+        DelayHandler.newSeq(handler, time)
+    }
+
+/**
+ * 延迟响应,默认1000ms
+ * @param handler
+ * @return
+ */
+    static ResponseHandler delay(ResponseHandler handler) {
+        DelayHandler.newSeq(handler, 1000)
+    }
+
+/**
+ * 创建固定QPS的ResponseHandler,默认QPS=1
+ * @param handler
+ * @return
+ */
+    static ResponseHandler qps(ResponseHandler handler) {
+        QPSHandler.newSeq(handler, 1000)
+    }
+
+/**
+ * 创建固定QPS的ResponseHandler
+ * @param handler
+ * @param gap
+ * @return
+ */
+    static ResponseHandler qps(ResponseHandler handler,int gap) {
+        QPSHandler.newSeq(handler, gap)
+    }
+
+/**
  * 循环返回
  * @param content
  * @param contents
  * @return
  */
     static ResponseHandler cycle(String content, String... contents) {
-        CycleHandle.newSeq(FluentIterable.from(asIterable(content, contents)).transform(textToResource()))
+        CycleHandler.newSeq(FluentIterable.from(asIterable(content, contents)).transform(textToResource()))
     }
 
 /**
@@ -228,7 +259,7 @@ class MocoResponse extends MocoRequest {
  * @return
  */
     static ResponseHandler cycle(JSONObject json, JSONObject... jsons) {
-        CycleHandle.newSeq(FluentIterable.from(asIterable(json.toString(), jsons.toList().stream().map {x -> x.toString()}.toArray() as String[])).transform(textToResource()))
+        CycleHandler.newSeq(FluentIterable.from(asIterable(json.toString(), jsons.toList().stream().map {x -> x.toString()}.toArray() as String[])).transform(textToResource()))
     }
 
 /**
@@ -238,7 +269,7 @@ class MocoResponse extends MocoRequest {
  * @return
  */
     static ResponseHandler cycle(ResponseHandler handler, ResponseHandler... handlers) {
-        CycleHandle.newSeq(asIterable(handler, handlers))
+        CycleHandler.newSeq(asIterable(handler, handlers))
     }
 
 /**
@@ -277,6 +308,6 @@ class MocoResponse extends MocoRequest {
     }
 
     static ResponseHandler limit(ResponseHandler unlimited, ResponseHandler limited, int interval) {
-        LimitHandle.newSeq(unlimited, limited, interval)
+        LimitHandler.newSeq(unlimited, limited, interval)
     }
 }
