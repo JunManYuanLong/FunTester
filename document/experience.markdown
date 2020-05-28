@@ -79,6 +79,9 @@
 - [质量保障的拓展实践](https://mp.weixin.qq.com/s/a3sd0dQnjk3TerOhfo-1ng)
 - [敏捷领导者常见误区](https://mp.weixin.qq.com/s/xdq3CZflRjvDBGDLK4tNFQ)
 - [功能自动化测试策略](https://mp.weixin.qq.com/s/qHmcblN4cD4JK6jT7oU4fQ)
+- [性能测试、压力测试和负载测试](https://mp.weixin.qq.com/s/g26lpd7d7EtpN7pkiqkkjg)
+- [如何维护自动化测试](https://mp.weixin.qq.com/s/4eh4AN_MiatMSkoCMtY3UA)
+- [负载测试最佳实践](https://mp.weixin.qq.com/s/hNj7UsCCvv9TdexAcNFUvg)
 
 ## 大咖风采
 

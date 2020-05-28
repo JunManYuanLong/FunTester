@@ -34,6 +34,8 @@
 - [Selenium Python使用技巧（一）](https://mp.weixin.qq.com/s/39v8tXG3xig63d-ioEAi8Q)
 - [Selenium Python使用技巧（二）](https://mp.weixin.qq.com/s/uDM3y9zoVjaRmJJJTNs6Vw)
 - [Selenium Python使用技巧（三）](https://mp.weixin.qq.com/s/J7-CO-UDspUGSpB8isjsmQ)
+- [Selenium并行测试基础](https://mp.weixin.qq.com/s/OfXipd7YtqL2AdGAQ5cIMw)
+- [Selenium并行测试最佳实践](https://mp.weixin.qq.com/s/-RsQZaT5pH8DHPvm0L8Hjw)
 
 ## UiAutomator
 - [android uiautomator一个画心形图案的方法--代码的浪漫](https://mp.weixin.qq.com/s/byfAKHxD2i83VHnuaNgIZA)

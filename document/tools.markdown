@@ -3,10 +3,12 @@
 > FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的质变。
 
 ## Jacoco覆盖率
+
 - [接口测试代码覆盖率（jacoco）方案分享](https://mp.weixin.qq.com/s/D73Sq6NLjeRKN8aCpGLOjQ)
 - [jacoco无法读取build.xml配置中源码路径解决办法](https://mp.weixin.qq.com/s/8_x0rVfkIi-uX3y0drx_jw)
 - [使用JaCoCo Maven插件创建代码覆盖率报告](https://mp.weixin.qq.com/s/4Jo05k2WxytiSSNW9WTV-A)
 - [Java 8，Jenkins，Jacoco和Sonar进行持续集成](https://mp.weixin.qq.com/s/dOoXnKnWtQmmC5itClsl4g)
+- [jacoco测试覆盖率过滤非业务类](https://mp.weixin.qq.com/s/7YGe9pCHw3wd87tgOlKjSA)
 
 ## arthas诊断工具
 
@@ -19,16 +21,25 @@
 - [arthas命令redefine实现Java热更新](https://mp.weixin.qq.com/s/2HUXfJhoUfg4yMzSoRHK9w)
 - [arthas命令monitor监控方法执行](https://mp.weixin.qq.com/s/7-oe3UoTY8bzpi89tIKvQQ)
 - [arthas命令watch观察方法调用（上）](https://mp.weixin.qq.com/s/6fMKP7H4Q7ll_0v-wyN19g)
+- [arthas命令watch观察方法调用（下）](https://mp.weixin.qq.com/s/-r2kufxdOjRb2TgF2HPskg)
+- [arthas命令trace追踪方法链路](https://mp.weixin.qq.com/s/bzkdKZugkOl8C-_xTw92YA)
+- [arthas命令tt方法时空隧道](https://mp.weixin.qq.com/s/mDczYmVdSmL5ZbK7bb8i0A)
 
 ## moco API
+
 - [解决moco框架API在post请求json参数情况下query失效的问题](https://mp.weixin.qq.com/s/V5lXoepEBtPJrSUHA0Uz5A)
 - [解决moco框架API在cycle方法缺失的问题](https://mp.weixin.qq.com/s/so77Gai7vQZSLvB7rzsxfw)
 - [给moco API添加limit功能](https://mp.weixin.qq.com/s/pXJECi15ieNLmA0uIqEqfA)
 - [给moco API添加random功能](https://mp.weixin.qq.com/s/YTcbFbFaWB5arW_fubgTTQ)
 - [解决moco框架API在cycle方法缺失的问题](https://mp.weixin.qq.com/s/YfsPa7eW8WV65CDbPooBPg)
 - [五行代码构建静态博客](https://mp.weixin.qq.com/s/hZnimJOg5OqxRSDyFvuiiQ)
+- [moco API模拟框架视频讲解（上）](https://mp.weixin.qq.com/s/X5-fFXe018_O60WCRdawZg)
+- [moco API模拟框架视频讲解（中）](https://mp.weixin.qq.com/s/g2En-9W9JWYrCLQr_WPEBA)
+- [moco API模拟框架视频讲解（下）](https://mp.weixin.qq.com/s/mz__DiNxMGHwIKCLsjKR8g)
+- [如何mock固定QPS的接口](https://mp.weixin.qq.com/s/yogj9Fni0KJkyQuKuDYlbA)
 
 ## 工具类
+
 - [java使用poi写入excel文档的一种解决方案](https://mp.weixin.qq.com/s/Ft56gd1B9CPrQs2zq4Cpug)
 - [java使用poi读取excel文档的一种解决方案](https://mp.weixin.qq.com/s/ltZGx9J7E8DTer0D-pfQ2Q)
 - [MongoDB操作类封装](https://mp.weixin.qq.com/s/u-RHOE5XrjOEkelWIxdplw)
@@ -42,6 +53,7 @@
 - [获取JVM转储文件的Java工具类](https://mp.weixin.qq.com/s/f_TlOb3m8MeR3argBmTzzA)
 
 ## 构建工具
+
 - [java和groovy混编的Maven项目如何用intellij打包执行jar包](https://mp.weixin.qq.com/s/bKexZXlONeo3r6FDhfMltQ)
 - [window系统权限不足导致gradle构建失败的解决办法](https://mp.weixin.qq.com/s/dqiQvmVG1o6glU-pknLDwQ)
 - [使用groovy脚本使gradle灵活加载本地jar包的两种方式](https://mp.weixin.qq.com/s/p3K3ZS7iOUeKO7E94gKFVg)
@@ -52,6 +64,7 @@
 - [Maven进行增量构建](https://mp.weixin.qq.com/s/ThQ7j6TS93KJZFqlNx8IQg)
 
 ## plotly可视化
+
 - [MacOS使用pip安装pandas提示Cannot uninstall 'numpy'解决方案](https://mp.weixin.qq.com/s/fIqMAMXRQvf_vBtS5jDsyg)
 - [Python使用plotly生成本地文件教程](https://mp.weixin.qq.com/s/4dJdIP-g3fF40vX7S31jNg)
 - [Python2.7使用plotly绘制本地散点图和折线图实例](https://mp.weixin.qq.com/s/9QWrA0c-STmrmjSkBYWvbQ)

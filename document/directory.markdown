@@ -1,6 +1,6 @@
 # 总目录
 
-> FunTester，380+原创文章，6次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，欢迎关注。
+> FunTester，400+原创文章，多次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，欢迎关注。
 
 [FunTester原创专辑](https://mp.weixin.qq.com/s/Le-tpC79pIpacHXGOkkYWw)
 
@@ -125,6 +125,7 @@
 - [json里面put了null会怎么样？](https://mp.weixin.qq.com/s/gQVROe01I3JzIqNdTSHpDQ)
 - [主线程都结束了，为何进程还在执行](https://mp.weixin.qq.com/s/q2v5JU5dtmNEol7I7IVY-Q)
 - [java测试框架如何执行groovy脚本文件](https://mp.weixin.qq.com/s/0GYt1l3_z5-1qzBNl6_PzA)
+- [java用递归筛选法求N以内的孪生质数（孪生素数）](https://mp.weixin.qq.com/s/PSdCb-DrgMPb4WpJJMexmQ)
 - [从JVM堆内存分析验证深浅拷贝](https://mp.weixin.qq.com/s/SdYDnoau1rjjvPC2SUymBg)
 - [如何学习Java基础](https://mp.weixin.qq.com/s/FCPStkYoJF67NYln4Lc6xg)
 - [如何保存HTTPrequestbase和CloseableHttpResponse](https://mp.weixin.qq.com/s/gRY8HRQHCh0PfyS7Q22IwA)
@@ -145,6 +146,7 @@
 - [ArrayList浅、深拷贝](https://mp.weixin.qq.com/s/kYsBzFsCyDPUssdV3MDqLA)
 - [Java性能测试中两种锁的实现](https://mp.weixin.qq.com/s/j9dGFvYzCJ0AGwYUtTrTsw)
 - [测试如何处理Java异常](https://mp.weixin.qq.com/s/H00GWiATOD8QHJu3UewrBw)
+- [创建Java守护线程](https://mp.weixin.qq.com/s/_UjWdvq8QWYTshr4SeniBg)
 
 ## Groovy
 
@@ -257,6 +259,7 @@
 - [moco API模拟框架视频讲解（上）](https://mp.weixin.qq.com/s/X5-fFXe018_O60WCRdawZg)
 - [moco API模拟框架视频讲解（中）](https://mp.weixin.qq.com/s/g2En-9W9JWYrCLQr_WPEBA)
 - [moco API模拟框架视频讲解（下）](https://mp.weixin.qq.com/s/mz__DiNxMGHwIKCLsjKR8g)
+- [如何mock固定QPS的接口](https://mp.weixin.qq.com/s/yogj9Fni0KJkyQuKuDYlbA)
 
 ## 工具类
 
@@ -378,6 +381,8 @@
 - [敏捷领导者常见误区](https://mp.weixin.qq.com/s/xdq3CZflRjvDBGDLK4tNFQ)
 - [功能自动化测试策略](https://mp.weixin.qq.com/s/qHmcblN4cD4JK6jT7oU4fQ)
 - [性能测试、压力测试和负载测试](https://mp.weixin.qq.com/s/g26lpd7d7EtpN7pkiqkkjg)
+- [如何维护自动化测试](https://mp.weixin.qq.com/s/4eh4AN_MiatMSkoCMtY3UA)
+- [负载测试最佳实践](https://mp.weixin.qq.com/s/hNj7UsCCvv9TdexAcNFUvg)
 
 ## 大咖风采
 
