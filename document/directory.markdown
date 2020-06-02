@@ -147,6 +147,7 @@
 - [Java性能测试中两种锁的实现](https://mp.weixin.qq.com/s/j9dGFvYzCJ0AGwYUtTrTsw)
 - [测试如何处理Java异常](https://mp.weixin.qq.com/s/H00GWiATOD8QHJu3UewrBw)
 - [创建Java守护线程](https://mp.weixin.qq.com/s/_UjWdvq8QWYTshr4SeniBg)
+- [Lambda表达式在线程安全Map中应用](https://mp.weixin.qq.com/s/zZjB5aOWh4a_k1eoEsR5ww)
 
 ## Groovy
 
@@ -260,6 +261,7 @@
 - [moco API模拟框架视频讲解（中）](https://mp.weixin.qq.com/s/g2En-9W9JWYrCLQr_WPEBA)
 - [moco API模拟框架视频讲解（下）](https://mp.weixin.qq.com/s/mz__DiNxMGHwIKCLsjKR8g)
 - [如何mock固定QPS的接口](https://mp.weixin.qq.com/s/yogj9Fni0KJkyQuKuDYlbA)
+- [mock延迟响应的接口](https://mp.weixin.qq.com/s/x_fu0InQpYIUJIQFi9a50g)
 
 ## 工具类
 
@@ -383,6 +385,9 @@
 - [性能测试、压力测试和负载测试](https://mp.weixin.qq.com/s/g26lpd7d7EtpN7pkiqkkjg)
 - [如何维护自动化测试](https://mp.weixin.qq.com/s/4eh4AN_MiatMSkoCMtY3UA)
 - [负载测试最佳实践](https://mp.weixin.qq.com/s/hNj7UsCCvv9TdexAcNFUvg)
+- [有关UI测试计划](https://mp.weixin.qq.com/s/D0fMXwJF754a7Mr5ARY5tQ)
+- [软件测试外包](https://mp.weixin.qq.com/s/sYQfb2PiQptcT0o_lLpBqQ)
+- [避免PPT自动化的最佳实践](https://mp.weixin.qq.com/s/5YgYK4_YLZ1wDDhbwMTGlw)
 
 ## 大咖风采
 
@@ -450,6 +455,7 @@
 - [Selenium Python使用技巧（三）](https://mp.weixin.qq.com/s/J7-CO-UDspUGSpB8isjsmQ)
 - [Selenium并行测试基础](https://mp.weixin.qq.com/s/OfXipd7YtqL2AdGAQ5cIMw)
 - [Selenium并行测试最佳实践](https://mp.weixin.qq.com/s/-RsQZaT5pH8DHPvm0L8Hjw)
+- [维护Selenium测试自动化的最佳实践](https://mp.weixin.qq.com/s/EMD1aWuzOSfT7j3KeXhJcA)
 
 ## APP性能
 
