@@ -292,6 +292,7 @@ public class SourceCode extends Output implements Cloneable {
      * @return
      */
     public static int getRandomIntRange(int start, int end) {
+        if (end <= start) ParamException.fail("随机功能参数错误!");
         return new Random().nextInt(end - start) + start;
     }
 
