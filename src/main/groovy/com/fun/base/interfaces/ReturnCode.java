@@ -1,8 +1,8 @@
 package com.fun.base.interfaces;
 
-public interface ErrorCode {
+public interface ReturnCode {
 
-    int getcode();
+    int getCode();
 
     String getDesc();
 

@@ -1,6 +1,7 @@
 package com.fun.base.bean
 
-import com.fun.base.interfaces.ErrorCode
+import com.fun.base.interfaces.ReturnCode
+import com.fun.config.Constant
 
 /**
  * 通用的返回体
@@ -41,7 +42,11 @@ class Result<T> extends AbstractBean {
         new Result<>(0, data)
     }
 
-    static <T> Result<T> build(ErrorCode errorCode) {
+    static <T> Result<T> success() {
+        new Result<>()
+    }
+
+    static <T> Result<T> build(ReturnCode errorCode) {
         new Result(errorCode)
     }
 
@@ -55,14 +60,18 @@ class Result<T> extends AbstractBean {
  * @return
  */
     static <T> Result<T> fail(T data) {
-        new Result<T>(TEST_ERROR_CODE, data)
+        new Result<T>(Constant.TEST_ERROR_CODE, data)
     }
 
-    static <T> Result<T> fail(ErrorCode errorCode) {
+    static <T> Result<T> fail() {
+        new Result<T>(Constant.TEST_ERROR_CODE)
+    }
+
+    static <T> Result<T> fail(ReturnCode errorCode) {
         new Result<T>(errorCode)
     }
 
-    Result(ErrorCode errorCode) {
+    Result(ReturnCode errorCode) {
         this.code = errorCode.getcode()
         this.data = errorCode.getDesc()
     }
