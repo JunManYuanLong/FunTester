@@ -227,22 +227,29 @@ class FunRequest extends FanLibrary implements Serializable, Cloneable {
         this
     }
 
-    FunRequest setHeaders(List<Header> headers) {
+    FunRequest addHeaders(List<Header> headers) {
         this.headers.addAll(headers)
         this
     }
 
-    FunRequest setArgs(JSONObject args) {
+    FunRequest addHeaders(JSONObject headers) {
+        headers.each {x ->
+            this.headers.add(getHeader(x.getKey(), x.getValue()))
+        }
+        this
+    }
+
+    FunRequest addArgs(JSONObject args) {
         this.args.putAll(args)
         this
     }
 
-    FunRequest setParams(JSONObject params) {
+    FunRequest addParams(JSONObject params) {
         this.params.putAll(params)
         this
     }
 
-    FunRequest setJson(JSONObject json) {
+    FunRequest addJson(JSONObject json) {
         this.json.putAll(json)
         this
     }
@@ -315,7 +322,7 @@ class FunRequest extends FanLibrary implements Serializable, Cloneable {
         String uri = base.getURI().toString();
         List<Header> headers = Arrays.asList(base.getAllHeaders());
         if (requestType == requestType.GET) {
-            request = FunRequest.isGet().setUri(uri).setHeaders(headers);
+            request = FunRequest.isGet().setUri(uri).addHeaders(headers);
         } else if (requestType == RequestType.POST) {
             HttpPost post = (HttpPost) base;
             HttpEntity entity = post.getEntity();
@@ -328,9 +335,9 @@ class FunRequest extends FanLibrary implements Serializable, Cloneable {
                 fail();
             }
             if (value.equalsIgnoreCase(HttpClientConstant.ContentType_TEXT.getValue()) || value.equalsIgnoreCase(HttpClientConstant.ContentType_JSON.getValue())) {
-                request = FunRequest.isPost().setUri(uri).setHeaders(headers).setJson(JSONObject.parseObject(content));
+                request = FunRequest.isPost().setUri(uri).addHeaders(headers).addJson(JSONObject.parseObject(content));
             } else if (value.equalsIgnoreCase(HttpClientConstant.ContentType_FORM.getValue())) {
-                request = FunRequest.isPost().setUri(uri).setHeaders(headers).setParams(getJson(content.split("&")));
+                request = FunRequest.isPost().setUri(uri).addHeaders(headers).addParams(getJson(content.split("&")));
             }
         } else {
             RequestException.fail("不支持的请求类型!");
