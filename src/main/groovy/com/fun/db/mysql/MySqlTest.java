@@ -116,7 +116,7 @@ public class MySqlTest extends SqlBase {
      */
     public static void savePerformanceBean(PerformanceResultBean bean) {
         if (!StringUtils.isNoneEmpty(SqlConstant.PERFORMANCE_TABLE)) return;
-        String sql = String.format("INSERT INTO " + SqlConstant.PERFORMANCE_TABLE + "(threads,total,rt,qps,error,fail,des,start_time,end_time) VALUES (%d,%d,%d,%f,%f,%f,'%s','%s','%s');", bean.getThreads(), bean.getTotal(), bean.getRt(), bean.getQps(), bean.getErrorRate(), bean.getFailRate(), bean.getDesc(), bean.getStartTime(), bean.getEndTime());
+        String sql = String.format("INSERT INTO " + SqlConstant.PERFORMANCE_TABLE + "(threads,total,rt,qps,error,fail,des,start_time,end_time) VALUES (%d,%d,%d,%f,%f,%f,'%s','%s','%s');", bean.getThreads(), bean.getTotal(), bean.getRt(), bean.getQps(), bean.getErrorRate(), bean.getFailRate(), bean.getMark(), bean.getStartTime(), bean.getEndTime());
         sendWork(sql);
     }
 

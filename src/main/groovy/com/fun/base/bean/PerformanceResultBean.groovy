@@ -12,7 +12,7 @@ class PerformanceResultBean extends AbstractBean {
      * 测试用例描述
      */
 
-    String desc
+    String mark
     /**
      * 开始时间
      */
@@ -23,7 +23,9 @@ class PerformanceResultBean extends AbstractBean {
      */
 
     String endTime
-
+    /**
+     * 表格信息
+     */
     String table
     /**
      * 线程数
@@ -61,8 +63,8 @@ class PerformanceResultBean extends AbstractBean {
 
     int excuteTotal
 
-    PerformanceResultBean(String desc, String startTime, String endTime, int threads, int total, int rt, double qps, double errorRate, double failRate, int excuteTotal, String table) {
-        this.desc = desc
+    PerformanceResultBean(String mark, String startTime, String endTime, int threads, int total, int rt, double qps, double errorRate, double failRate, int excuteTotal, String table) {
+        this.mark = mark
         this.startTime = startTime
         this.endTime = endTime
         this.threads = threads
