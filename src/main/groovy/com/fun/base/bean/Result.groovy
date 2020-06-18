@@ -1,5 +1,6 @@
 package com.fun.base.bean
 
+import com.alibaba.fastjson.JSONObject
 import com.fun.base.interfaces.ReturnCode
 import com.fun.config.Constant
 
@@ -27,8 +28,9 @@ class Result<T> extends AbstractBean {
  * 返回简单的响应
  * @param c
  */
-    Result(int c) {
-        this.code = c
+
+    Result(ReturnCode errorCode) {
+        this(errorCode.getCode(), errorCode.getDesc())
     }
 
     def Result() {
@@ -39,19 +41,23 @@ class Result<T> extends AbstractBean {
  * @return
  */
     static <T> Result<T> success(T data) {
-        new Result<>(0, data)
+        new Result(0, data)
     }
 
-    static <T> Result<T> success() {
-        new Result<>()
+    static Result success() {
+        new Result()
     }
 
-    static <T> Result<T> build(ReturnCode errorCode) {
+    static Result build(ReturnCode errorCode) {
         new Result(errorCode)
     }
 
-    static <T> Result<T> build(int code, String desc) {
-        new Result(code, desc)
+    static Result build(int code, String msg) {
+        new Result(code, msg)
+    }
+
+    static Result build(List listData) {
+        success([list: listData] as JSONObject)
     }
 
 /**
@@ -63,18 +69,14 @@ class Result<T> extends AbstractBean {
         new Result<T>(Constant.TEST_ERROR_CODE, data)
     }
 
-    static <T> Result<T> fail() {
-        new Result<T>(Constant.TEST_ERROR_CODE)
+    static Result fail() {
+        new Result(Constant.TEST_ERROR_CODE)
     }
 
-    static <T> Result<T> fail(ReturnCode errorCode) {
-        new Result<T>(errorCode)
+    static Result fail(ReturnCode errorCode) {
+        new Result(errorCode)
     }
 
-    Result(ReturnCode errorCode) {
-        this.code = errorCode.getcode()
-        this.data = errorCode.getDesc()
-    }
 /**
  * 是否成功响应
  * @return
