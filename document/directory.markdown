@@ -148,6 +148,8 @@
 - [测试如何处理Java异常](https://mp.weixin.qq.com/s/H00GWiATOD8QHJu3UewrBw)
 - [创建Java守护线程](https://mp.weixin.qq.com/s/_UjWdvq8QWYTshr4SeniBg)
 - [Lambda表达式在线程安全Map中应用](https://mp.weixin.qq.com/s/zZjB5aOWh4a_k1eoEsR5ww)
+- [Java程序是如何浪费内存的](https://mp.weixin.qq.com/s/w7VF5m5cc0X7LNvqmwGfvg)
+- [Java中的自定义异常](https://mp.weixin.qq.com/s/nspIdxFP9qEDtagGN4gaMQ)
 
 ## Groovy
 
@@ -183,6 +185,14 @@
 - [关于python版微信使用经验分享](https://mp.weixin.qq.com/s/19IaI6ETZAm_T4ePPlXqIg)
 - [python用递归筛选法求N以内的孪生质数（孪生素数）](https://mp.weixin.qq.com/s/rVY2pTl8So11WCvA9GrFbA)
 - [利用python wxpy和requests写一个自动应答微信机器人实例](https://mp.weixin.qq.com/s/Fni2kX5BRjdqOQ-glCLjRg)
+
+## 测开笔记
+
+- [我的开发日记（一）](https://mp.weixin.qq.com/s/eQgpOKbXsU9vOmxp0Xiklg)
+- [我的开发日记（二）](https://mp.weixin.qq.com/s/XuffL3ZmKKOgHDtH_cEYOw)
+- [我的开发日记（三）](https://mp.weixin.qq.com/s/a-I0agh6nWp8RLlcmbgf5w)
+- [我的开发日记（四）](https://mp.weixin.qq.com/s/QukXd00Mx_dbkgiXys0FNg)
+- [我的开发日记（五）](https://mp.weixin.qq.com/s/6P3nScsVW6MfMcyIqcA1AQ)
 
 # 案例分享
 
@@ -388,6 +398,8 @@
 - [有关UI测试计划](https://mp.weixin.qq.com/s/D0fMXwJF754a7Mr5ARY5tQ)
 - [软件测试外包](https://mp.weixin.qq.com/s/sYQfb2PiQptcT0o_lLpBqQ)
 - [避免PPT自动化的最佳实践](https://mp.weixin.qq.com/s/5YgYK4_YLZ1wDDhbwMTGlw)
+- [如何优化软件测试成本](https://mp.weixin.qq.com/s/_eXrzDyNDA6yCRR8nPmzGA)
+- [如何从手动测试转到自动化测试](https://mp.weixin.qq.com/s/EBDTX4AMnn2KTEjL88bOhQ)
 
 ## 大咖风采
 
@@ -406,7 +418,7 @@
 ## UiAutomator
 
 - [android uiautomator一个画心形图案的方法--代码的浪漫](https://mp.weixin.qq.com/s/byfAKHxD2i83VHnuaNgIZA)
-- [android UiAutomator了解源码解决控件bonds[0,0]无法点击](https://mp.weixin.qq.com/s/nu2ftXNUSG2_kmZjyhEcVA)
+- [android UiAutomator了解源码解决控件bonds\[0,0\]无法点击](https://mp.weixin.qq.com/s/nu2ftXNUSG2_kmZjyhEcVA)
 - [android UiAutomator在清除文本时遇到中文的解决办法](https://mp.weixin.qq.com/s/cNGNCoXsYBSk-MWTWLxF4g)
 - [android UiAutomator获取当前页面某类控件个数的方法](https://mp.weixin.qq.com/s/njb19Sq_Kg4SusAS_eEuug)
 - [android uiautomator自定义监听示例--一个弹出权限设置的监听](https://mp.weixin.qq.com/s/OKKZOf51yq6qY5D6PvN-gg)
