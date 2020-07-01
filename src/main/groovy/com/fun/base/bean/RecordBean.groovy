@@ -3,11 +3,12 @@ package com.fun.base.bean
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-
 /**
  * 测试记录的bean
  */
 class RecordBean extends AbstractBean {
+
+
 
     static Logger logger = LoggerFactory.getLogger(RecordBean.class)
 

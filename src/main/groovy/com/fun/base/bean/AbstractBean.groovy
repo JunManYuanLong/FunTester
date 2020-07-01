@@ -1,5 +1,6 @@
 package com.fun.base.bean
 
+import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONObject
 import com.fun.frame.Save
 import com.fun.frame.SourceCode
@@ -41,6 +42,10 @@ abstract class AbstractBean implements Serializable {
 
     def initFrom(String str) {
         JSONObject.parseObject(str, this.getClass())
+    }
+
+    def initFrom(Object str) {
+        initFrom(JSON.toJSON(str))
     }
 
     def copyFrom(AbstractBean source) {

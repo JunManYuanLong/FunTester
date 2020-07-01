@@ -150,6 +150,7 @@
 - [Lambda表达式在线程安全Map中应用](https://mp.weixin.qq.com/s/zZjB5aOWh4a_k1eoEsR5ww)
 - [Java程序是如何浪费内存的](https://mp.weixin.qq.com/s/w7VF5m5cc0X7LNvqmwGfvg)
 - [Java中的自定义异常](https://mp.weixin.qq.com/s/nspIdxFP9qEDtagGN4gaMQ)
+- [Java文本块](https://mp.weixin.qq.com/s/GwasvpJsd7uLngvCr6KlQw)
 
 ## Groovy
 
@@ -193,6 +194,12 @@
 - [我的开发日记（三）](https://mp.weixin.qq.com/s/a-I0agh6nWp8RLlcmbgf5w)
 - [我的开发日记（四）](https://mp.weixin.qq.com/s/QukXd00Mx_dbkgiXys0FNg)
 - [我的开发日记（五）](https://mp.weixin.qq.com/s/6P3nScsVW6MfMcyIqcA1AQ)
+- [我的开发日记（六）](https://mp.weixin.qq.com/s/Gz2QmukONNldSy9Fd29u5w)
+- [我的开发日记（七）](https://mp.weixin.qq.com/s/MjZ-nFXfQkHMsXS0fX1c1w)
+- [我的开发日记（八）](https://mp.weixin.qq.com/s/6ZhNcFm-gR5dhKQjEkE3Rg)
+- [我的开发日记（九）](https://mp.weixin.qq.com/s/VfD2T3orojGxnylr3Q5UeA)
+- [我的开发日记（十）](https://mp.weixin.qq.com/s/6DWth40LGbAraJi05G16Pw)
+- [我的开发日记（十一）](https://mp.weixin.qq.com/s/nsX5A-P6QbePHDN_Pse0_A)
 
 # 案例分享
 
@@ -400,6 +407,9 @@
 - [避免PPT自动化的最佳实践](https://mp.weixin.qq.com/s/5YgYK4_YLZ1wDDhbwMTGlw)
 - [如何优化软件测试成本](https://mp.weixin.qq.com/s/_eXrzDyNDA6yCRR8nPmzGA)
 - [如何从手动测试转到自动化测试](https://mp.weixin.qq.com/s/EBDTX4AMnn2KTEjL88bOhQ)
+- [Selenium自动化测试技巧](https://mp.weixin.qq.com/s/EzrpFaBSVITO2Y2UvYvw0w)
+- [测试为何会错过Bug](https://mp.weixin.qq.com/s/UFHy8OwZjnMkB70roIS-zQ)
+- [测试用例设计——一切测试的基础](https://mp.weixin.qq.com/s/0_ubnlhp2jk-jxHxJ95E9g)
 
 ## 大咖风采
 
@@ -468,6 +478,7 @@
 - [Selenium并行测试基础](https://mp.weixin.qq.com/s/OfXipd7YtqL2AdGAQ5cIMw)
 - [Selenium并行测试最佳实践](https://mp.weixin.qq.com/s/-RsQZaT5pH8DHPvm0L8Hjw)
 - [维护Selenium测试自动化的最佳实践](https://mp.weixin.qq.com/s/EMD1aWuzOSfT7j3KeXhJcA)
+- [Selenium自动化测试技巧](https://mp.weixin.qq.com/s/EzrpFaBSVITO2Y2UvYvw0w)
 
 ## APP性能
 

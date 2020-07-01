@@ -12,6 +12,7 @@
 - [传参传的到底是什么?](https://mp.weixin.qq.com/s/p_pEQwE6h6q7PprkW-kjbg)
 - [json里面put了null会怎么样？](https://mp.weixin.qq.com/s/gQVROe01I3JzIqNdTSHpDQ)
 - [主线程都结束了，为何进程还在执行](https://mp.weixin.qq.com/s/q2v5JU5dtmNEol7I7IVY-Q)
+- [java用递归筛选法求N以内的孪生质数（孪生素数）](https://mp.weixin.qq.com/s/PSdCb-DrgMPb4WpJJMexmQ)
 - [java测试框架如何执行groovy脚本文件](https://mp.weixin.qq.com/s/0GYt1l3_z5-1qzBNl6_PzA)
 - [从JVM堆内存分析验证深浅拷贝](https://mp.weixin.qq.com/s/SdYDnoau1rjjvPC2SUymBg)
 - [如何学习Java基础](https://mp.weixin.qq.com/s/FCPStkYoJF67NYln4Lc6xg)
@@ -28,6 +29,15 @@
 - [如何使用“dd MM”解析日期](https://mp.weixin.qq.com/s/v9ooAj3dKu53JXgxB482HA)
 - [Java和Groovy正则使用](https://mp.weixin.qq.com/s/DT3BKE3ZcCKf6TLzGc5wbg)
 - [运行越来越快的Java热点代码](https://mp.weixin.qq.com/s/AP0BcDEjDuaouaB0RXJOoQ)
+- [ArrayList浅、深拷贝](https://mp.weixin.qq.com/s/kYsBzFsCyDPUssdV3MDqLA)
+- [6个重要的JVM性能参数](https://mp.weixin.qq.com/s/b1QnapiAVn0HD5DQU9JrIw)
+- [Java性能测试中两种锁的实现](https://mp.weixin.qq.com/s/j9dGFvYzCJ0AGwYUtTrTsw)
+- [测试如何处理Java异常](https://mp.weixin.qq.com/s/H00GWiATOD8QHJu3UewrBw)
+- [创建Java守护线程](https://mp.weixin.qq.com/s/_UjWdvq8QWYTshr4SeniBg)
+- [Lambda表达式在线程安全Map中应用](https://mp.weixin.qq.com/s/zZjB5aOWh4a_k1eoEsR5ww)
+- [Java程序是如何浪费内存的](https://mp.weixin.qq.com/s/w7VF5m5cc0X7LNvqmwGfvg)
+- [Java中的自定义异常](https://mp.weixin.qq.com/s/nspIdxFP9qEDtagGN4gaMQ)
+- [Java文本块](https://mp.weixin.qq.com/s/GwasvpJsd7uLngvCr6KlQw)
 
 ## Groovy
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)

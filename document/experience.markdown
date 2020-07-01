@@ -82,6 +82,14 @@
 - [性能测试、压力测试和负载测试](https://mp.weixin.qq.com/s/g26lpd7d7EtpN7pkiqkkjg)
 - [如何维护自动化测试](https://mp.weixin.qq.com/s/4eh4AN_MiatMSkoCMtY3UA)
 - [负载测试最佳实践](https://mp.weixin.qq.com/s/hNj7UsCCvv9TdexAcNFUvg)
+- [有关UI测试计划](https://mp.weixin.qq.com/s/D0fMXwJF754a7Mr5ARY5tQ)
+- [软件测试外包](https://mp.weixin.qq.com/s/sYQfb2PiQptcT0o_lLpBqQ)
+- [避免PPT自动化的最佳实践](https://mp.weixin.qq.com/s/5YgYK4_YLZ1wDDhbwMTGlw)
+- [如何优化软件测试成本](https://mp.weixin.qq.com/s/_eXrzDyNDA6yCRR8nPmzGA)
+- [如何从手动测试转到自动化测试](https://mp.weixin.qq.com/s/EBDTX4AMnn2KTEjL88bOhQ)
+- [Selenium自动化测试技巧](https://mp.weixin.qq.com/s/EzrpFaBSVITO2Y2UvYvw0w)
+- [测试为何会错过Bug](https://mp.weixin.qq.com/s/UFHy8OwZjnMkB70roIS-zQ)
+- [测试用例设计——一切测试的基础](https://mp.weixin.qq.com/s/0_ubnlhp2jk-jxHxJ95E9g)
 
 ## 大咖风采
 

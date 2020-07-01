@@ -90,8 +90,8 @@ public class MySqlTest extends SqlBase {
      */
     public static void saveApiTestDate(RequestInfo requestInfo, int data_size, long expend_time, int status, int mark, int code, String localIP, String computerName) {
         logger.debug("请求信息：{}", requestInfo.toString());
-        if (SysInit.isBlack(requestInfo.getHost())) return;
         logger.info("请求uri：{},耗时：{} ms", requestInfo.getUri(), expend_time);
+        if (SysInit.isBlack(requestInfo.getHost())) return;
         String sql = String.format("INSERT INTO " + SqlConstant.REQUEST_TABLE + " (domain,api,data_size,expend_time,status,type,method,code,local_ip,local_name,create_time) VALUES ('%s','%s',%d,%d,%d,'%s','%s',%d,'%s','%s','%s');", requestInfo.getHost(), requestInfo.getApiName(), data_size, expend_time, status, requestInfo.getType(), requestInfo.getMethod().getName(), code, localIP, computerName, Time.getDate());
 //        RecordBean requestBean = new RecordBean();
 //        requestBean.setApi(requestInfo.getApiName());
