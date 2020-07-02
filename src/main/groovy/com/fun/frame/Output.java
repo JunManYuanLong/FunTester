@@ -141,14 +141,6 @@ public class Output extends Constant {
         output(ArrayUtils.toObject(nums));
     }
 
-    public static void output(boolean[] nums) {
-        output(ArrayUtils.toObject(nums));
-    }
-
-    public static void output(char[] nums) {
-        output(ArrayUtils.toObject(nums));
-    }
-
     /**
      * 输出json
      *

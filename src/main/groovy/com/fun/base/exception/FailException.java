@@ -16,5 +16,8 @@ public class FailException extends RuntimeException {
         throw new FailException(message);
     }
 
+    public static void fail() {
+        throw new FailException();
+    }
 
 }
