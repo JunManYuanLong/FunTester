@@ -5,7 +5,6 @@ import com.fun.base.constaint.ThreadLimitTimesCount
 import com.fun.base.interfaces.MarkThread
 import com.fun.config.HttpClientConstant
 import com.fun.frame.SourceCode
-import com.fun.frame.excute.Concurrent
 import com.fun.frame.httpclient.FanLibrary
 import com.fun.frame.thead.HeaderMark
 import com.fun.frame.thead.RequestThreadTime
@@ -18,7 +17,6 @@ import spock.lang.Specification
 import static com.fun.config.Constant.EMPTY
 import static com.fun.config.Constant.TEST_ERROR_CODE
 import static com.fun.frame.SourceCode.getLogger
-import static com.fun.frame.SourceCode.sleep
 
 class PerformanceTest extends Specification {
 
@@ -130,8 +128,8 @@ class PerformanceTest extends Specification {
             }
         }
         HttpClientConstant.MAX_ACCEPT_TIME = TEST_ERROR_CODE
-        new Concurrent(threads).start()
-        sleep(1000)
+//        new Concurrent(threads).start()
+//        sleep(1000)
 //        new Concurrent(threads).start()
 
         expect:

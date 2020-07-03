@@ -143,6 +143,14 @@ public class SourceCode extends Output implements Cloneable {
         return changeArraysToJson(content, "=");
     }
 
+    public static JSONObject getSimpleJson(String key, Object value) {
+        if (StringUtils.isBlank(key)) return null;
+        JSONObject result = new JSONObject(1) {{
+            put(key, value);
+        }};
+        return result;
+    }
+
     /**
      * 获取text复制拼接的string
      *
