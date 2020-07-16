@@ -234,7 +234,7 @@ class FunRequest extends FanLibrary implements Serializable, Cloneable {
 
     FunRequest addHeaders(JSONObject headers) {
         headers.each {x ->
-            this.headers.add(getHeader(x.getKey(), x.getValue()))
+            this.headers.add(getHeader(x.getKey().toString(), x.getValue().toString()))
         }
         this
     }

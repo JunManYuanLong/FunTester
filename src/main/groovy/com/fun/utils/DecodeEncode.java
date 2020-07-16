@@ -113,6 +113,15 @@ public class DecodeEncode extends SourceCode {
         }
     }
 
+    public static String base64Encode(byte[] data) {
+        try {
+            return new String(Base64.getEncoder().encode(data));
+        } catch (Exception e) {
+            logger.warn("base64转码失败！", e);
+            return EMPTY;
+        }
+    }
+
     /**
      * 使用md5加密数据
      *

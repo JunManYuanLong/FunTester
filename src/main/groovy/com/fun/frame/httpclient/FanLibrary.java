@@ -270,8 +270,10 @@ public class FanLibrary extends SourceCode {
             if (StringUtils.isEmpty(content)) ParamException.fail("响应为空!");
             jsonObject = JSONObject.parseObject(content);
         } catch (JSONException e) {
-            jsonObject = getJson("content=" + content, "code=" + TEST_ERROR_CODE);
-            logger.warn("响应体非json格式，已经自动转换成json格式！");
+            jsonObject = new JSONObject() {{
+                put(RESPOINSE_CONTENT, content);
+                put(RESPONSE_CODE, TEST_ERROR_CODE);
+            }};            logger.warn("响应体非json格式，已经自动转换成json格式！");
         } finally {
             if (cookies != null && !cookies.isEmpty()) jsonObject.put(HttpClientConstant.COOKIE, cookies);
             return jsonObject;

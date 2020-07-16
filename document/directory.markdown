@@ -200,6 +200,10 @@
 - [我的开发日记（九）](https://mp.weixin.qq.com/s/VfD2T3orojGxnylr3Q5UeA)
 - [我的开发日记（十）](https://mp.weixin.qq.com/s/6DWth40LGbAraJi05G16Pw)
 - [我的开发日记（十一）](https://mp.weixin.qq.com/s/nsX5A-P6QbePHDN_Pse0_A)
+- [我的开发日记（十二）](https://mp.weixin.qq.com/s/XA1KJXBP3Zl-XFswXxUtvg)
+- [我的开发日记（十三）](https://mp.weixin.qq.com/s/_QPUu5pUlg4A_AlC5wOGkA)
+- [我的开发日记（十四）](https://mp.weixin.qq.com/s/Qy1YKAb3wqW_Ip2FwH7Otw)
+- [我的开发日记（十五）](https://mp.weixin.qq.com/s/bwkvz2t6YItQD0O_BIxpHQ)
 
 # 案例分享
 
@@ -410,6 +414,9 @@
 - [Selenium自动化测试技巧](https://mp.weixin.qq.com/s/EzrpFaBSVITO2Y2UvYvw0w)
 - [测试为何会错过Bug](https://mp.weixin.qq.com/s/UFHy8OwZjnMkB70roIS-zQ)
 - [测试用例设计——一切测试的基础](https://mp.weixin.qq.com/s/0_ubnlhp2jk-jxHxJ95E9g)
+- [移动应用测试：挑战，类型和最佳实践](https://mp.weixin.qq.com/s/kYxh6xki69evVDsXDxrYKQ)
+- [敏捷测试中面临的挑战](https://mp.weixin.qq.com/s/vmsW56r1J7jWXHSZdcwbPg)
+- [AI如何影响测试行业](https://mp.weixin.qq.com/s/d6c7u1-lAmsiIQz3UvcGKg)
 
 ## 大咖风采
 
@@ -479,6 +486,7 @@
 - [Selenium并行测试最佳实践](https://mp.weixin.qq.com/s/-RsQZaT5pH8DHPvm0L8Hjw)
 - [维护Selenium测试自动化的最佳实践](https://mp.weixin.qq.com/s/EMD1aWuzOSfT7j3KeXhJcA)
 - [Selenium自动化测试技巧](https://mp.weixin.qq.com/s/EzrpFaBSVITO2Y2UvYvw0w)
+- [Selenium自动化：代码测试与无代码测试](https://mp.weixin.qq.com/s/gtmLpQ5FCeuzh1SB5mxuvg)
 
 ## APP性能
 
