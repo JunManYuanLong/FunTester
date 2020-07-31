@@ -1,6 +1,6 @@
 # 总目录
 
-> FunTester，400+原创文章，多次腾讯云首页推荐，一枚只知道瞎掰呼的核弹派测试工程师，欢迎关注。
+> 公众号：FunTester，原创文章430+，腾讯云社区首页推荐，排名300+，主要方向接口功能、自动化、性能测试，兼顾白盒测试，功能拓展。工作语言Java和Groovy，欢迎关注。
 
 [FunTester原创专辑](https://mp.weixin.qq.com/s/Le-tpC79pIpacHXGOkkYWw)
 
@@ -204,6 +204,7 @@
 - [我的开发日记（十三）](https://mp.weixin.qq.com/s/_QPUu5pUlg4A_AlC5wOGkA)
 - [我的开发日记（十四）](https://mp.weixin.qq.com/s/Qy1YKAb3wqW_Ip2FwH7Otw)
 - [我的开发日记（十五）](https://mp.weixin.qq.com/s/bwkvz2t6YItQD0O_BIxpHQ)
+- [这些年，我写过的BUG（一）](https://mp.weixin.qq.com/s/mVTmT1FdwWl1e0BaL7Ne1g)
 
 # 案例分享
 
@@ -417,6 +418,9 @@
 - [移动应用测试：挑战，类型和最佳实践](https://mp.weixin.qq.com/s/kYxh6xki69evVDsXDxrYKQ)
 - [敏捷测试中面临的挑战](https://mp.weixin.qq.com/s/vmsW56r1J7jWXHSZdcwbPg)
 - [AI如何影响测试行业](https://mp.weixin.qq.com/s/d6c7u1-lAmsiIQz3UvcGKg)
+- [自动测试失败的5个原因](https://mp.weixin.qq.com/s/bTakAHIcx_WyJIo-tsbvvg)
+- [大促前必做的质量检查](https://mp.weixin.qq.com/s/iOku2wKnlr8pSZO0l9Q3Bw)
+- [测试开发工程师工作技巧](https://mp.weixin.qq.com/s/TvrUCisja5Zbq-NIwy_2fQ)
 
 ## 大咖风采
 
@@ -487,6 +491,7 @@
 - [维护Selenium测试自动化的最佳实践](https://mp.weixin.qq.com/s/EMD1aWuzOSfT7j3KeXhJcA)
 - [Selenium自动化测试技巧](https://mp.weixin.qq.com/s/EzrpFaBSVITO2Y2UvYvw0w)
 - [Selenium自动化：代码测试与无代码测试](https://mp.weixin.qq.com/s/gtmLpQ5FCeuzh1SB5mxuvg)
+- [Selenium处理下拉列表](https://mp.weixin.qq.com/s/E2txSVAmDzYIEZWnyAND4g)
 
 ## APP性能
 
@@ -511,6 +516,8 @@
 - [JMeter如何模拟不同的网络速度](https://mp.weixin.qq.com/s/1FCwNN2htfTGF6ItdkcCzw)
 - [疫情期间，如何提高远程办公效率](https://mp.weixin.qq.com/s/k_XrdqjGKMshK2Ea-VCNLw)
 - [接口测试视频专题](https://mp.weixin.qq.com/s/4mKpW3QiVRee3kcVOSraog)
+- [Groovy在JMeter中应用专题](https://mp.weixin.qq.com/s/KcxPUDWl7MLQemFRoIV92A)
+- [Java多线程编程在JMeter中应用](https://mp.weixin.qq.com/s/xCnFx5TvIF1SAVNm-aZnxQ)
 
 ![](http://pic.automancloud.com/0_Fotor.jpg)
 
