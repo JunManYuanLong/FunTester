@@ -5,6 +5,9 @@ import com.fun.frame.SourceCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
@@ -12,6 +15,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.InflaterOutputStream;
 
 /**
  * 编码格式转码解码类
@@ -73,18 +78,61 @@ public class DecodeEncode extends SourceCode {
     }
 
     /**
-     * 对本文进行base64解码，方法默认ISO_8859_1
+     * 对本文进行base64解码，方法默认UTF_8
      *
      * @param text
      * @return
      */
     public static String base64Decode(String text) {
-        try {
-            return new String(Base64.getDecoder().decode(text));
-        } catch (Exception e) {
-            logger.warn("base64解码失败！", e);
-            return EMPTY;
+        return base64Decode(text, Constant.UTF_8);
+    }
+
+    public static String base64Decode(String text, Charset charset) {
+        return new String(base64Byte(text.getBytes(charset)));
+    }
+
+    public static byte[] base64Byte(byte[] text) {
+        return Base64.getDecoder().decode(text);
+    }
+
+    public static byte[] base64Byte(String text) {
+        return base64Byte(text.getBytes());
+    }
+
+    /**
+     * 压缩字符串,默认梳utf-8
+     *
+     * @param text
+     * @return
+     */
+    public static String zipBase64(String text) {
+        try (ByteArrayOutputStream out = new ByteArrayOutputStream()) {
+            try (DeflaterOutputStream deflaterOutputStream = new DeflaterOutputStream(out)) {
+                deflaterOutputStream.write(text.getBytes(Constant.UTF_8));
+            }
+            return new String(DecodeEncode.base64Encode(out.toByteArray()));
+        } catch (IOException e) {
+            logger.error("压缩文本失败:{}", text, e);
         }
+        return EMPTY;
+    }
+
+    /**
+     * 解压字符串,默认utf-8
+     *
+     * @param text
+     * @return
+     */
+    public static String unzipBase64(String text) {
+        try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
+            try (OutputStream outputStream = new InflaterOutputStream(os)) {
+                outputStream.write(DecodeEncode.base64Byte(text));
+            }
+            return new String(os.toByteArray(), Constant.UTF_8);
+        } catch (IOException e) {
+            logger.error("解压文本失败:{}", text, e);
+        }
+        return EMPTY;
     }
 
     /**
