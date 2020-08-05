@@ -24,16 +24,5 @@ QQ群：340964272
 微信公众号：
 ===
 
-![](http://pic.automancloud.com/0_Fotor.jpg)
-
-![](http://pic.automancloud.com/42387498274.jpeg)
-
-![](http://pic.automancloud.com/ES5YqymXkAArmT-.jpg)
-
-![](http://pic.automancloud.com/web-3967926_1920.png)
-
-![](http://pic.automancloud.com/WechatIMG49.jpeg)
-
-![](http://pic.automancloud.com/Data-Science-as-a-Service-Market-880x660.png)
-
-![](http://pic.automancloud.com/dkjflsjf.jpg)
+![](http://pic.automancloud.com/0.png)
+![](http://pic.automancloud.com/0 (1).png)
