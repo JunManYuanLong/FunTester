@@ -9,7 +9,7 @@ public class ParamException extends FailException {
     }
 
     private ParamException(String name) {
-        super(String.format("参数{%s}错误!", name));
+        super(name);
     }
 
     public static void fail(String name) {
