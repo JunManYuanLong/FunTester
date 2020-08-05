@@ -34,6 +34,21 @@ import org.slf4j.LoggerFactory
  * stddev()	Provides the standard deviation value of an array of numbers	Double
  * length()	Provides the length of an array	Integer
  * sum()	Provides the sum value of an array of numbers	Double
+ *
+ * ==	left is equal to right (note that 1 is not equal to '1')
+ * !=	left is not equal to right
+ * <	left is less than right
+ * <=	left is less or equal to right
+ * >	left is greater than right
+ * >=	left is greater than or equal to right
+ * =~	left matches regular expression [?(@.name =~ /foo.*?/i)]
+ * in	left exists in right [?(@.size in ['S', 'M'])]
+ * nin	left does not exists in right
+ * subsetof	left is a subset of right [?(@.sizes subsetof ['S', 'M', 'L'])]
+ * anyof	left has an intersection with right [?(@.sizes anyof ['M', 'L'])]
+ * noneof	left has no intersection with right [?(@.sizes noneof ['M', 'L'])]
+ * size	size of left (array or string) should match right
+ * empty	left (array or string) should be empty
  */
 class JsonUtil extends SourceCode {
 
