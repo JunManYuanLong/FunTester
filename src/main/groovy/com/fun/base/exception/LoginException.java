@@ -9,7 +9,7 @@ public class LoginException extends FailException {
     }
 
     private LoginException(String name) {
-        super(String.format("账号{%s}登录失败!", name));
+        super(name);
     }
 
     public static void fail(String name) {
