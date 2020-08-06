@@ -8,12 +8,6 @@
 
 # [**文章目录传送门**](https://gitee.com/fanapi/tester/blob/okay/document/directory.markdown)
 
-个人微信:
-===
-
-![](http://pic.automancloud.com/WechatIMG58.jpeg)
-
-![](http://pic.automancloud.com/WechatIMG161.jpeg)
 
 QQ群：340964272
 ===
