@@ -79,8 +79,9 @@
 - [白盒测试扫盲](https://mp.weixin.qq.com/s/s_FvGZTC42GEjaWzroz1eA)
 - [Mock System.in和检查System.out](https://mp.weixin.qq.com/s/1ly3uXCZsukmIylN6F5GxQ)
 - [单元测试框架spock和Mockito应用](https://mp.weixin.qq.com/s/s21Lts1UnG9HwOEVvgj-uw)
+- [Mockito框架Mock Void方法](https://mp.weixin.qq.com/s/R95wOMVyeDCHm3_Z0S2kqg)
 
-## 接口性能
+## 性能测试
 
 - [Linux性能监控软件netdata中文汉化版](https://mp.weixin.qq.com/s/7VG7gHx7FUvsuNtBTJpjWA)
 - [一个时间计数器timewatch辅助性能测试](https://mp.weixin.qq.com/s/-YZ04n2kyfO0q2QaKHX_0Q)
@@ -110,6 +111,9 @@
 - [手机号验证码登录性能测试](https://mp.weixin.qq.com/s/i-j8fJAdcsJ7v8XPOnPDAw)
 - [绑定手机号性能测试](https://mp.weixin.qq.com/s/K5x1t1dKtIT2NKV6k4v5mw)
 - [终止性能测试并输出报告](https://mp.weixin.qq.com/s/II4-UbKDikctmS_vRT-xLg)
+- [CountDownLatch类在性能测试中应用](https://mp.weixin.qq.com/s/uYBPPOjauR2h81l2uKMANQ)
+- [CyclicBarrier类在性能测试中应用](https://mp.weixin.qq.com/s/kvEHX3t_2xpMke9vwOdWrg)
+- [Phaser类在性能测试中应用](https://mp.weixin.qq.com/s/plxNnQq7yNQvHYEGpyY4uA)
 
 # 语言合集
 
@@ -151,6 +155,8 @@
 - [Java程序是如何浪费内存的](https://mp.weixin.qq.com/s/w7VF5m5cc0X7LNvqmwGfvg)
 - [Java中的自定义异常](https://mp.weixin.qq.com/s/nspIdxFP9qEDtagGN4gaMQ)
 - [Java文本块](https://mp.weixin.qq.com/s/GwasvpJsd7uLngvCr6KlQw)
+- [CountDownLatch类在性能测试中应用](https://mp.weixin.qq.com/s/uYBPPOjauR2h81l2uKMANQ)
+- [Java压缩/解压缩字符串](https://mp.weixin.qq.com/s/7vHNd5dEN93DPUqgS8od_A)
 
 ## Groovy
 
@@ -205,6 +211,7 @@
 - [我的开发日记（十四）](https://mp.weixin.qq.com/s/Qy1YKAb3wqW_Ip2FwH7Otw)
 - [我的开发日记（十五）](https://mp.weixin.qq.com/s/bwkvz2t6YItQD0O_BIxpHQ)
 - [这些年，我写过的BUG（一）](https://mp.weixin.qq.com/s/mVTmT1FdwWl1e0BaL7Ne1g)
+- [这些年，我写过的BUG（二）](https://mp.weixin.qq.com/s/NMz5n0ZMf6taGb-gr1BLyw)
 
 # 案例分享
 
@@ -421,6 +428,7 @@
 - [自动测试失败的5个原因](https://mp.weixin.qq.com/s/bTakAHIcx_WyJIo-tsbvvg)
 - [大促前必做的质量检查](https://mp.weixin.qq.com/s/iOku2wKnlr8pSZO0l9Q3Bw)
 - [测试开发工程师工作技巧](https://mp.weixin.qq.com/s/TvrUCisja5Zbq-NIwy_2fQ)
+- [敏捷回归测试](https://mp.weixin.qq.com/s/_bBQFggkZTTEqcb9R_68OA)
 
 ## 大咖风采
 

@@ -90,6 +90,13 @@
 - [Selenium自动化测试技巧](https://mp.weixin.qq.com/s/EzrpFaBSVITO2Y2UvYvw0w)
 - [测试为何会错过Bug](https://mp.weixin.qq.com/s/UFHy8OwZjnMkB70roIS-zQ)
 - [测试用例设计——一切测试的基础](https://mp.weixin.qq.com/s/0_ubnlhp2jk-jxHxJ95E9g)
+- [移动应用测试：挑战，类型和最佳实践](https://mp.weixin.qq.com/s/kYxh6xki69evVDsXDxrYKQ)
+- [敏捷测试中面临的挑战](https://mp.weixin.qq.com/s/vmsW56r1J7jWXHSZdcwbPg)
+- [AI如何影响测试行业](https://mp.weixin.qq.com/s/d6c7u1-lAmsiIQz3UvcGKg)
+- [自动测试失败的5个原因](https://mp.weixin.qq.com/s/bTakAHIcx_WyJIo-tsbvvg)
+- [大促前必做的质量检查](https://mp.weixin.qq.com/s/iOku2wKnlr8pSZO0l9Q3Bw)
+- [测试开发工程师工作技巧](https://mp.weixin.qq.com/s/TvrUCisja5Zbq-NIwy_2fQ)
+- [敏捷回归测试](https://mp.weixin.qq.com/s/_bBQFggkZTTEqcb9R_68OA)
 
 ## 大咖风采
 
@@ -113,6 +120,8 @@
 - [JMeter如何模拟不同的网络速度](https://mp.weixin.qq.com/s/1FCwNN2htfTGF6ItdkcCzw)
 - [疫情期间，如何提高远程办公效率](https://mp.weixin.qq.com/s/k_XrdqjGKMshK2Ea-VCNLw)
 - [接口测试视频专题](https://mp.weixin.qq.com/s/4mKpW3QiVRee3kcVOSraog)
+- [Groovy在JMeter中应用专题](https://mp.weixin.qq.com/s/KcxPUDWl7MLQemFRoIV92A)
+- [Java多线程编程在JMeter中应用](https://mp.weixin.qq.com/s/xCnFx5TvIF1SAVNm-aZnxQ)
 
 
 

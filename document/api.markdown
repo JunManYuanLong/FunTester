@@ -1,6 +1,6 @@
 # 接口测试
 
-FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的质变。
+> FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的质变。
 
 从事专门的服务端测试两年时间，纯语言脚本测试，工作语言Java和Groovy。在经历过1年左右的实践，逐步完善了自己的测试框架（包含接口功能、自动化、性能）。框架基础依然是java语言，基于httpclient4.5进行的封装，还拓展了其他功能，如mysql存储数据，HTML报告，alterover分级通知等。下面是我在工作经历中遇到的比较典型的难点解决方案。
 
@@ -36,9 +36,9 @@ FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的�
 - [初学者的API测试技巧](https://mp.weixin.qq.com/s/_uk6dw5Q7CfS-gXGH-TZEQ)
 - [多项目登录互踢测试用例](https://mp.weixin.qq.com/s/Nn_CUy_j7j6bUwHSkO0pCQ)
 
-## 接口性能
+## 性能性能
 
-接口性能是做接口性能测试过程中使用的测试策略以及Groovy脚本实现，以及性能测试工具的实现，如timewatch和netdata汉化，欢迎关注“FunTester”。
+性能测试是做接口性能测试过程中使用的测试策略以及Groovy脚本实现，以及性能测试工具的实现，如timewatch和netdata汉化，欢迎关注“FunTester”。
 
 - [Linux性能监控软件netdata中文汉化版](https://mp.weixin.qq.com/s/7VG7gHx7FUvsuNtBTJpjWA)
 - [一个时间计数器timewatch辅助性能测试](https://mp.weixin.qq.com/s/-YZ04n2kyfO0q2QaKHX_0Q)
@@ -69,6 +69,9 @@ FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的�
 - [手机号验证码登录性能测试](https://mp.weixin.qq.com/s/i-j8fJAdcsJ7v8XPOnPDAw)
 - [绑定手机号性能测试](https://mp.weixin.qq.com/s/K5x1t1dKtIT2NKV6k4v5mw)
 - [终止性能测试并输出报告](https://mp.weixin.qq.com/s/II4-UbKDikctmS_vRT-xLg)
+- [CountDownLatch类在性能测试中应用](https://mp.weixin.qq.com/s/uYBPPOjauR2h81l2uKMANQ)
+- [CyclicBarrier类在性能测试中应用](https://mp.weixin.qq.com/s/kvEHX3t_2xpMke9vwOdWrg)
+- [Phaser类在性能测试中应用](https://mp.weixin.qq.com/s/plxNnQq7yNQvHYEGpyY4uA)
 
 ## 测试方案
 - [如何对消息队列做性能测试](https://mp.weixin.qq.com/s/MNt22aW3Op9VQ5OoMzPwBw)
