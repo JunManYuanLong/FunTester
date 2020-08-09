@@ -6,6 +6,8 @@
 
 联系地址：Fhaohaizi@163.com
 
+联系地址：FunTester@88.com
+
 # [**文章目录传送门**](https://gitee.com/fanapi/tester/blob/okay/document/directory.markdown)
 
 
