@@ -45,6 +45,12 @@ repositories {
 
     mavenCentral()
 }
+
+test {
+    useJUnitPlatform()
+    exclude "com/test/**"
+}
+
 sourceSets {
     main {
         groovy {
