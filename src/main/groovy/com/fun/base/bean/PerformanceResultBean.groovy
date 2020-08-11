@@ -1,8 +1,7 @@
 package com.fun.base.bean
 
 import com.fun.db.mysql.MySqlTest
-
-
+import com.fun.frame.Output
 /**
  * 性能测试结果集
  */
@@ -76,8 +75,8 @@ class PerformanceResultBean extends AbstractBean {
         this.excuteTotal = excuteTotal
         this.excuteTotal = excuteTotal
         this.table = table
-        output(this.toJson())
-        output(this.table)
+        Output.output(this.toJson())
+        Output.output(this.table)
         MySqlTest.savePerformanceBean(this)
     }
 
