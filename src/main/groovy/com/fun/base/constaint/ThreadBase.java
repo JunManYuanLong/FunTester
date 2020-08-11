@@ -14,6 +14,11 @@ import java.util.stream.Collectors;
  */
 public abstract class ThreadBase<T> extends SourceCode implements Runnable {
 
+    /**
+     * 线程的名字
+     */
+    public String threadName;
+
     public String threadmark;
 
     /**
