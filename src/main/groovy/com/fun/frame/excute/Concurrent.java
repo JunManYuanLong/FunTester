@@ -8,6 +8,7 @@ import com.fun.frame.SourceCode;
 import com.fun.utils.Time;
 import com.fun.utils.WriteRead;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -137,6 +138,7 @@ public class Concurrent extends SourceCode {
         startTime = Time.getTimeStamp();
         for (int i = 0; i < threadNum; i++) {
             ThreadBase thread = getThread(i);
+            if (StringUtils.isBlank(thread.threadName)) thread.threadName = desc.replaceAll("\\d{14}$", EMPTY) + i;
             thread.setCountDownLatch(countDownLatch);
             executorService.execute(thread);
         }
