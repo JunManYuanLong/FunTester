@@ -133,6 +133,7 @@ public class Concurrent extends SourceCode {
 
     /**
      * 执行多线程任务
+     * 默认取list中thread对象,丢入线程池,完成多线程执行,如果没有threadname,name默认采用desc+线程数作为threadname,去除末尾的日期
      */
     public PerformanceResultBean start() {
         startTime = Time.getTimeStamp();
