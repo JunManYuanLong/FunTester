@@ -19,6 +19,9 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
      */
     public String threadName;
 
+    /**
+     * 线程标记对象,用户标记请求或者单次执行任务的
+     */
     public String threadmark;
 
     /**
