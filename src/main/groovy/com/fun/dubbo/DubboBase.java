@@ -22,7 +22,7 @@ public class DubboBase {
 
     ReferenceConfigCache configCache;
 
-    private DubboBase(String propertyName) {
+    public DubboBase(String propertyName) {
         PropertyUtils.Property properties = PropertyUtils.getProperties(propertyName);
         this.registryAddress = properties.getProperty("address");
         this.version = properties.getProperty("version");

@@ -6,8 +6,8 @@ class DubboParamBase {
 
     Object value
 
-    DubboParamBase(String type, Object value) {
-        this.type = type
+    DubboParamBase(Class type, Object value) {
+        this.type = type.getTypeName()
         this.value = value
     }
 
