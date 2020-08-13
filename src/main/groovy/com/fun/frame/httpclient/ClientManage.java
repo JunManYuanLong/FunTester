@@ -2,7 +2,10 @@ package com.fun.frame.httpclient;
 
 import com.fun.config.HttpClientConstant;
 import com.fun.frame.SourceCode;
+import com.fun.utils.Regex;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntityEnclosingRequest;
+import org.apache.http.HttpHost;
 import org.apache.http.NoHttpResponseException;
 import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.config.CookieSpecs;
@@ -242,6 +245,18 @@ public class ClientManage extends SourceCode {
     }
 
     /**
+     * 获取代理配置项
+     *
+     * @param ip
+     * @param port
+     * @return
+     */
+    public static RequestConfig getProxyRequestConfig(String ip, int port) {
+        return RequestConfig.custom().setConnectionRequestTimeout(HttpClientConstant.CONNECT_REQUEST_TIMEOUT).setConnectTimeout(HttpClientConstant.CONNECT_TIMEOUT).setSocketTimeout(HttpClientConstant.SOCKET_TIMEOUT).setCookieSpec(CookieSpecs.IGNORE_COOKIES).setRedirectsEnabled(false).setProxy(new HttpHost(ip, port)).build();
+    }
+
+
+    /**
      * 回收资源方法，关闭过期连接，关闭超时连接，用于另起线程回收连接池连接
      */
     public static void recyclingConnection() {
@@ -259,13 +274,13 @@ public class ClientManage extends SourceCode {
      * @param accepttime
      * @param retrytime
      */
-    public static void init(int timeout, int accepttime, int retrytime) {
+    public static void init(int timeout, int accepttime, int retrytime, String ip, int port) {
         HttpClientConstant.CONNECT_REQUEST_TIMEOUT = timeout;
         HttpClientConstant.CONNECT_TIMEOUT = timeout;
         HttpClientConstant.SOCKET_TIMEOUT = timeout;
         HttpClientConstant.MAX_ACCEPT_TIME = accepttime;
         HttpClientConstant.TRY_TIMES = retrytime;
-        requestConfig = getRequestConfig();
+        requestConfig = StringUtils.isBlank(ip + ":" + port) || !Regex.isMatch(ip + ":" + port, "((25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))):([0-9]|[1-9]\\d{1,3}|[1-5]\\d{4}|6[0-4]\\d{4}|65[0-4]\\d{2}|655[0-2]\\d|6553[0-5])") ? getProxyRequestConfig(ip, port) : getRequestConfig();
         httpsClient = getCloseableHttpsClients();
         httpRequestRetryHandler = getHttpRequestRetryHandler();
     }

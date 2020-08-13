@@ -10,10 +10,12 @@ import com.fun.config.HttpClientConstant;
 import com.fun.db.mysql.MySqlTest;
 import com.fun.frame.SourceCode;
 import com.fun.utils.DecodeEncode;
+import com.fun.utils.Regex;
 import com.fun.utils.Time;
 import com.fun.utils.message.AlertOver;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.*;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -273,7 +275,8 @@ public class FanLibrary extends SourceCode {
             jsonObject = new JSONObject() {{
                 put(RESPOINSE_CONTENT, content);
                 put(RESPONSE_CODE, TEST_ERROR_CODE);
-            }};            logger.warn("响应体非json格式，已经自动转换成json格式！");
+            }};
+            logger.warn("响应体非json格式，已经自动转换成json格式！");
         } finally {
             if (cookies != null && !cookies.isEmpty()) jsonObject.put(HttpClientConstant.COOKIE, cookies);
             return jsonObject;
@@ -486,6 +489,26 @@ public class FanLibrary extends SourceCode {
         try (CloseableHttpResponse response = ClientManage.httpsClient.execute(request);) {
             return getContent(response);
         }
+    }
+
+    /**
+     * 设置代理请求
+     *
+     * @param request
+     * @param adress
+     */
+    public static void setProxy(HttpRequestBase request, String adress) {
+        if (StringUtils.isBlank(adress) ||!Regex.isMatch(adress, "((25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))):([0-9]|[1-9]\\d{1,3}|[1-5]\\d{4}|6[0-4]\\d{4}|65[0-4]\\d{2}|655[0-2]\\d|6553[0-5])")) {
+            logger.warn("adress格式错误:" + adress);
+            return;
+        }
+        String[] split = adress.split(":");
+        RequestConfig proxyRequestConfig = ClientManage.getProxyRequestConfig(split[0], changeStringToInt(split[1]));
+        request.setConfig(proxyRequestConfig);
+    }
+
+    public static void setProxy(HttpRequestBase request, String ip, int port) {
+        setProxy(request, ip + ":" + port);
     }
 
     /**
