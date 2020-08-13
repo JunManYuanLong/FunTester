@@ -17,8 +17,9 @@ public class DubboUtil extends SourceCode {
         DubboInvokeParams invokeParams = new DubboInvokeParams(params.length);
         range(invokeParams.getLength()).forEach(x ->
                 {
-                    invokeParams.getTypes()[x] = params[x].getType();
-                    invokeParams.getValues()[x] = params[x].getValue();
+                    DubboParamBase param = params[x];
+                    invokeParams.getTypes()[x] = param.getType();
+                    invokeParams.getValues()[x] = param.getValue();
                 }
         );
         return invokeParams;
@@ -27,5 +28,6 @@ public class DubboUtil extends SourceCode {
     public static Object getResponse(GenericService genericService, String methodName, DubboInvokeParams params) {
         return genericService.$invoke(methodName, params.getTypes(), params.getValues());
     }
+
 
 }

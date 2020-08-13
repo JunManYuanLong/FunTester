@@ -46,7 +46,9 @@ public class DubboBase {
             referenceConfig.setApplication(applicationConfig);
             referenceConfig.setRegistry(registryConfig);
             referenceConfig.setVersion(version);
+            // 弱类型接口名
             referenceConfig.setInterface(interfaceClass);
+            // 声明为泛化接口
             referenceConfig.setGeneric(true);
         }
         return ReferenceConfigCache.getCache(RString.getChinese(5)).get(referenceConfig);
