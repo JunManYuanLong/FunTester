@@ -3,10 +3,12 @@
 > FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的质变。
 
 ## UI自动化
+
 - [自动化测试中java多线程的使用实例](https://mp.weixin.qq.com/s/BNSLaIdcTPTNj1tKpGf6fw)
 - [自动化测试中递归函数的应用](https://mp.weixin.qq.com/s/86602zV9zYblhCRMiUlwdA)
 
 ## Selenium
+
 - [selenium2java截图保存桌面](https://mp.weixin.qq.com/s/OUfwsIo635coGONRNccYlg)
 - [selenium2java调用JavaScript方法封装](https://mp.weixin.qq.com/s/t-Xs2Hr9TM2bjDiOqQX2mA)
 - [selenium2java利用mysq解决向浏览器插入cookies时token过期问题](https://mp.weixin.qq.com/s/oAAkDKUGytQjxJLFkod-AQ)
@@ -36,8 +38,14 @@
 - [Selenium Python使用技巧（三）](https://mp.weixin.qq.com/s/J7-CO-UDspUGSpB8isjsmQ)
 - [Selenium并行测试基础](https://mp.weixin.qq.com/s/OfXipd7YtqL2AdGAQ5cIMw)
 - [Selenium并行测试最佳实践](https://mp.weixin.qq.com/s/-RsQZaT5pH8DHPvm0L8Hjw)
+- [维护Selenium测试自动化的最佳实践](https://mp.weixin.qq.com/s/EMD1aWuzOSfT7j3KeXhJcA)
+- [Selenium自动化测试技巧](https://mp.weixin.qq.com/s/EzrpFaBSVITO2Y2UvYvw0w)
+- [Selenium自动化：代码测试与无代码测试](https://mp.weixin.qq.com/s/gtmLpQ5FCeuzh1SB5mxuvg)
+- [Selenium处理下拉列表](https://mp.weixin.qq.com/s/E2txSVAmDzYIEZWnyAND4g)
+- [Selenium自动化常见问题](https://mp.weixin.qq.com/s/edoxu-QaD0SOw1VqrhCZWA)
 
 ## UiAutomator
+
 - [android uiautomator一个画心形图案的方法--代码的浪漫](https://mp.weixin.qq.com/s/byfAKHxD2i83VHnuaNgIZA)
 - [android UiAutomator了解源码解决控件bonds[0,0]无法点击](https://mp.weixin.qq.com/s/nu2ftXNUSG2_kmZjyhEcVA)
 - [android UiAutomator在清除文本时遇到中文的解决办法](https://mp.weixin.qq.com/s/cNGNCoXsYBSk-MWTWLxF4g)

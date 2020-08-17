@@ -4,6 +4,7 @@
 
 从事专门的服务端测试两年时间，纯语言脚本测试，工作语言Java和Groovy。在经历过1年左右的实践，逐步完善了自己的测试框架（包含接口功能、自动化、性能）。框架基础依然是java语言，基于httpclient4.5进行的封装，还拓展了其他功能，如mysql存储数据，HTML报告，alterover分级通知等。下面是我在工作经历中遇到的比较典型的难点解决方案。
 
+## [GitHub地址](https://github.com/JunManYuanLong/FunTester)
 
 ## 接口测试
 

@@ -3,6 +3,8 @@
 
 > FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的质变。
 
+## [GitHub地址](https://github.com/JunManYuanLong/FunTester)
+
 ## 理论鸡汤
 
 - [写给所有人的编程思维](https://mp.weixin.qq.com/s/Oj33UCnYfbUgzsBzEm2GPQ)
@@ -97,6 +99,7 @@
 - [大促前必做的质量检查](https://mp.weixin.qq.com/s/iOku2wKnlr8pSZO0l9Q3Bw)
 - [测试开发工程师工作技巧](https://mp.weixin.qq.com/s/TvrUCisja5Zbq-NIwy_2fQ)
 - [敏捷回归测试](https://mp.weixin.qq.com/s/_bBQFggkZTTEqcb9R_68OA)
+- [制定质量管理计划指南](https://mp.weixin.qq.com/s/ztXYE8EtwlkUdxnk1cjKVg)
 
 ## 大咖风采
 
@@ -122,6 +125,8 @@
 - [接口测试视频专题](https://mp.weixin.qq.com/s/4mKpW3QiVRee3kcVOSraog)
 - [Groovy在JMeter中应用专题](https://mp.weixin.qq.com/s/KcxPUDWl7MLQemFRoIV92A)
 - [Java多线程编程在JMeter中应用](https://mp.weixin.qq.com/s/xCnFx5TvIF1SAVNm-aZnxQ)
+- [未来的神器fiddler Everywhere](https://mp.weixin.qq.com/s/-BSuHR6RPkdv8R-iy47MLQ)
+- [Charles报错Failed to install helper解决方案](https://mp.weixin.qq.com/s/LHhMTBhlDM0DrPCvWeU0zA)
 
 
 
