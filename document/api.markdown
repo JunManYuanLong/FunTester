@@ -9,6 +9,7 @@
 
 接口功能和自动化过程中遇到的坑，大多是基础的功能实现Demo和测试痛点的解决方案。
 
+- [开源测试服务](https://mp.weixin.qq.com/s/ZOs0cp_vt6_iiundHaKk4g)
 - [使用springboot+mybatis数据库存储服务化](https://mp.weixin.qq.com/s/N_5tHW1JJLZlxCaDI2PvyQ)
 - [alertover推送api的java httpclient实现实例](https://mp.weixin.qq.com/s/DJXCBEG3SbybfbT6blO1jA)
 - [接口自动化通用验证类](https://mp.weixin.qq.com/s/fP1clCKkLREfg6POKV5n1A)
@@ -35,14 +36,20 @@
 - [如何选择API测试工具](https://mp.weixin.qq.com/s/m2TNJDiqAAWYV9L6UP-29w)
 - [初学者的API测试技巧](https://mp.weixin.qq.com/s/_uk6dw5Q7CfS-gXGH-TZEQ)
 - [多项目登录互踢测试用例](https://mp.weixin.qq.com/s/Nn_CUy_j7j6bUwHSkO0pCQ)
+- [JsonPath实践（一）](https://mp.weixin.qq.com/s/Cq0_v_ptbGd4f5y8HIsq7w)
+- [JsonPath实践（二）](https://mp.weixin.qq.com/s/w_iJTiuQahIw6U00CJVJZg)
+- [JsonPath实践（三）](https://mp.weixin.qq.com/s/58A3k0T6dbOkBJ5nRYKDqA)
+- [httpclient使用HTTP代理实践](https://mp.weixin.qq.com/s/24IJwJ1TJWHdfj0PzSjmvw)
 
 ## 性能性能
 
 性能测试是做接口性能测试过程中使用的测试策略以及Groovy脚本实现，以及性能测试工具的实现，如timewatch和netdata汉化，欢迎关注“FunTester”。
 
 - [Linux性能监控软件netdata中文汉化版](https://mp.weixin.qq.com/s/7VG7gHx7FUvsuNtBTJpjWA)
-- [一个时间计数器timewatch辅助性能测试](https://mp.weixin.qq.com/s/-YZ04n2kyfO0q2QaKHX_0Q)
 - [性能测试框架](https://mp.weixin.qq.com/s/3_09j7-5ex35u30HQRyWug)
+- [性能测试框架第二版](https://mp.weixin.qq.com/s/JPyGQ2DRC6EVBmZkxAoVWA)
+- [性能测试框架第三版](https://mp.weixin.qq.com/s/Mk3PoH7oJX7baFmbeLtl_w)
+- [一个时间计数器timewatch辅助性能测试](https://mp.weixin.qq.com/s/-YZ04n2kyfO0q2QaKHX_0Q)
 - [如何在Linux命令行界面愉快进行性能测试](https://mp.weixin.qq.com/s/fwGqBe1SpA2V0lPfAOd04Q)
 - [Mac+httpclient高并发配置实例](https://mp.weixin.qq.com/s/r4a-vGz0pxeZBPPH3phujw)
 - [单点登录性能测试方案](https://mp.weixin.qq.com/s/sv8FnvIq44dFEq63LpOD2A)
@@ -51,12 +58,10 @@
 - [如何对修改密码接口进行压测](https://mp.weixin.qq.com/s/9CL_6-uZOlAh7oeo7NOpag)
 - [如何对多行单次update接口进行压测](https://mp.weixin.qq.com/s/Fsqw7vlw6K9EKa_XJwGIgQ)
 - [如何获取JVM堆转储文件](https://mp.weixin.qq.com/s/qCg7nsXVvT1q-9yquQOfWA)
-- [性能测试框架第二版](https://mp.weixin.qq.com/s/JPyGQ2DRC6EVBmZkxAoVWA)
 - [性能测试中标记每个请求](https://mp.weixin.qq.com/s/PokvzoLdVf_y9inlVXHJHQ)
 - [如何对N个接口按比例压测](https://mp.weixin.qq.com/s/GZxbH4GjDkk4BLqnUj1_kw)
 - [如何性能测试中进行业务验证](https://mp.weixin.qq.com/s/OEvRy1bS2Yq_w1kGiidmng)
 - [性能测试中记录每一个耗时请求](https://mp.weixin.qq.com/s/VXcp4uIMm8mRgqe8fVhuCQ)
-- [性能测试框架第三版](https://mp.weixin.qq.com/s/Mk3PoH7oJX7baFmbeLtl_w)
 - [线程安全类在性能测试中应用](https://mp.weixin.qq.com/s/0-Y63wXqIugVC8RiKldHvg)
 - [利用微基准测试修正压测结果](https://mp.weixin.qq.com/s/dmO33qhOBrTByw_NshS-uA)
 - [性能测试如何减少本机误差](https://mp.weixin.qq.com/s/S6b_wwSowVolp1Uu6sEIOA)
@@ -74,6 +79,7 @@
 - [Phaser类在性能测试中应用](https://mp.weixin.qq.com/s/plxNnQq7yNQvHYEGpyY4uA)
 
 ## 测试方案
+
 - [如何对消息队列做性能测试](https://mp.weixin.qq.com/s/MNt22aW3Op9VQ5OoMzPwBw)
 - [如何对修改密码接口进行压测](https://mp.weixin.qq.com/s/9CL_6-uZOlAh7oeo7NOpag)
 - [如何测试概率型业务接口](https://mp.weixin.qq.com/s/kUVffhjae3eYivrGqo6ZMg)
