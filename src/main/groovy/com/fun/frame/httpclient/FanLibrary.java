@@ -498,17 +498,22 @@ public class FanLibrary extends SourceCode {
      * @param adress
      */
     public static void setProxy(HttpRequestBase request, String adress) {
-        if (StringUtils.isBlank(adress) ||!Regex.isMatch(adress, "((25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))):([0-9]|[1-9]\\d{1,3}|[1-5]\\d{4}|6[0-4]\\d{4}|65[0-4]\\d{2}|655[0-2]\\d|6553[0-5])")) {
-            logger.warn("adress格式错误:" + adress);
-            return;
-        }
-        String[] split = adress.split(":");
-        RequestConfig proxyRequestConfig = ClientManage.getProxyRequestConfig(split[0], changeStringToInt(split[1]));
-        request.setConfig(proxyRequestConfig);
+        request.setConfig(getProxyConfig(adress));
     }
 
     public static void setProxy(HttpRequestBase request, String ip, int port) {
         setProxy(request, ip + ":" + port);
+    }
+
+    public static RequestConfig getProxyConfig(String adress) {
+        if (StringUtils.isBlank(adress) || !Regex.isMatch(adress, "((25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))):([0-9]|[1-9]\\d{1,3}|[1-5]\\d{4}|6[0-4]\\d{4}|65[0-4]\\d{2}|655[0-2]\\d|6553[0-5])"))
+            ParamException.fail("adress格式错误:" + adress);
+        String[] split = adress.split(":");
+        return ClientManage.getProxyRequestConfig(split[0], changeStringToInt(split[1]));
+    }
+
+    public static RequestConfig getProxyConfig(String ip, int port) {
+        return getProxyConfig(ip + ":" + port);
     }
 
     /**
