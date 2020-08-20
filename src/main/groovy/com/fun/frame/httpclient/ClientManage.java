@@ -222,8 +222,7 @@ public class ClientManage extends SourceCode {
      * @return
      */
     private static CloseableHttpAsyncClient getCloseableHttpAsyncClient() {
-        return HttpAsyncClients.custom().setConnectionManager(NconnManager).setSSLHostnameVerifier(SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER)
-                .setSSLContext(sslContext).build();
+        return HttpAsyncClients.custom().setConnectionManager(NconnManager).setSSLHostnameVerifier(SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER).setSSLContext(sslContext).build();
     }
 
     private static CloseableHttpClient getCloseableHttpsClients() {
