@@ -32,6 +32,21 @@ public class DubboBase {
     }
 
     /**
+     * 不依赖配置文件
+     *
+     * @param adress
+     * @param version
+     * @param name
+     */
+    public DubboBase(String adress, String version, String name) {
+        this.registryAddress = adress;
+        this.version = version;
+        RegistryConfig registryConfig = new RegistryConfig();
+        registryConfig.setAddress(registryAddress);
+        applicationConfig.setName(name);
+    }
+
+    /**
      * ReferenceConfig实例很重，封装了与注册中心的连接以及与提供者的连接，
      * 需要缓存，否则重复生成ReferenceConfig可能造成性能问题并且会有内存和连接泄漏。
      * API方式编程时，容易忽略此问题。
