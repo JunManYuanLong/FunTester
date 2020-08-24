@@ -180,7 +180,7 @@ public class Output extends Constant {
             switch (piece) {
                 case ',':
                     // 如果是“,”，则断行
-                    jsonResultStr.append(piece + ("\"0123456789le]}".contains(last + EMPTY) ? LINE : SPACE_1));
+                    jsonResultStr.append(piece + (("\"0123456789le]}".contains(last + EMPTY) && "\"[{".contains(next + EMPTY)) ? LINE : EMPTY));
                     break;
                 case '{':
                 case '[':
