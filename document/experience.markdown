@@ -127,7 +127,9 @@
 - [Java多线程编程在JMeter中应用](https://mp.weixin.qq.com/s/xCnFx5TvIF1SAVNm-aZnxQ)
 - [未来的神器fiddler Everywhere](https://mp.weixin.qq.com/s/-BSuHR6RPkdv8R-iy47MLQ)
 - [Charles报错Failed to install helper解决方案](https://mp.weixin.qq.com/s/LHhMTBhlDM0DrPCvWeU0zA)
-
+- [测试仓库推介（上）](https://mp.weixin.qq.com/s/zgy6UgNMFcbISD1NhxSAWg)
+- [测试仓库推介（下）](https://mp.weixin.qq.com/s/njnpmRGoEgdxjqkR7c3a6A)
+- [Fiddler Everywhere工具答疑](https://mp.weixin.qq.com/s/2peWMJ-rgDlVjs3STNeS1Q)
 
 
 ![](http://pic.automancloud.com/0_Fotor.jpg)

@@ -1,6 +1,6 @@
 # 总目录
 
-> 公众号：FunTester，原创文章440+，腾讯云社区首页推荐，排名200+，主要方向接口功能、自动化、性能测试，兼顾白盒测试，功能拓展。工作语言Java和Groovy，欢迎关注。
+> 公众号：FunTester，原创文章450+，腾讯云社区首页推荐，排名200+，主要方向接口功能、自动化、性能测试，兼顾白盒测试，功能拓展。工作语言Java和Groovy，欢迎关注。
 
 [FunTester原创专辑](https://mp.weixin.qq.com/s/Le-tpC79pIpacHXGOkkYWw)
 
@@ -38,10 +38,8 @@
 - [初学者的API测试技巧](https://mp.weixin.qq.com/s/_uk6dw5Q7CfS-gXGH-TZEQ)
 - [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
 - [多项目登录互踢测试用例](https://mp.weixin.qq.com/s/Nn_CUy_j7j6bUwHSkO0pCQ)
-- [JsonPath实践（一）](https://mp.weixin.qq.com/s/Cq0_v_ptbGd4f5y8HIsq7w)
-- [JsonPath实践（二）](https://mp.weixin.qq.com/s/w_iJTiuQahIw6U00CJVJZg)
-- [JsonPath实践（三）](https://mp.weixin.qq.com/s/58A3k0T6dbOkBJ5nRYKDqA)
 - [httpclient使用HTTP代理实践](https://mp.weixin.qq.com/s/24IJwJ1TJWHdfj0PzSjmvw)
+- [HTTP异步连接池和多线程实践](https://mp.weixin.qq.com/s/8M348LuHakBe4GAEnnDPxw)
 
 ## 接口测试视频
 
@@ -192,6 +190,7 @@
 - [JMeter参数签名——Groovy工具类形式](https://mp.weixin.qq.com/s/urwU4p9ofv9sU-JFy5Z0iA)
 - [删除List中null的N种方法--最后放大招](https://mp.weixin.qq.com/s/4mfskN781dybyL59dbSbeQ)
 - [混合Java函数和Groovy闭包](https://mp.weixin.qq.com/s/FAIzGgLSX2u7RKbOGs3lGA)
+- [Groovy重载操作符（终极版）](https://mp.weixin.qq.com/s/4oYGJ2B2Y1AqxsIj8v5nZA)
 
 ## Python
 
@@ -262,6 +261,14 @@
 - [爬虫实践--CBA历年比赛数据](https://mp.weixin.qq.com/s/mM_QSQddabU5im_O6iVR-Q)
 
 # 工具合集
+
+## JSonpath合集
+
+- [JsonPath实践（一）](https://mp.weixin.qq.com/s/Cq0_v_ptbGd4f5y8HIsq7w)
+- [JsonPath实践（二）](https://mp.weixin.qq.com/s/w_iJTiuQahIw6U00CJVJZg)
+- [JsonPath实践（三）](https://mp.weixin.qq.com/s/58A3k0T6dbOkBJ5nRYKDqA)
+- [JsonPath实践（四）](https://mp.weixin.qq.com/s/8ER61qrkMj8bdBpyuq9r6w)
+- [JsonPath实践（五）](https://mp.weixin.qq.com/s/knVLW960WXnckGLstdrOVQ)
 
 ## Jacoco覆盖率
 
@@ -445,7 +452,7 @@
 - [Android App 测试工具及知识大集合](https://mp.weixin.qq.com/s/Xk9rCW8whXOTAQuCfhZqTg)
 - [Android App常规测试内容](https://mp.weixin.qq.com/s/tweeoS5wTqK3k7R2TVuDXA)
 - [JVM的对象和堆](https://mp.weixin.qq.com/s/iNDpTz3gBK3By_bvUnrWOA)
-
+ 
 # UI自动化
 
 ## UI自动化
@@ -538,6 +545,9 @@
 - [Java多线程编程在JMeter中应用](https://mp.weixin.qq.com/s/xCnFx5TvIF1SAVNm-aZnxQ)
 - [未来的神器fiddler Everywhere](https://mp.weixin.qq.com/s/-BSuHR6RPkdv8R-iy47MLQ)
 - [Charles报错Failed to install helper解决方案](https://mp.weixin.qq.com/s/LHhMTBhlDM0DrPCvWeU0zA)
+- [测试仓库推介（上）](https://mp.weixin.qq.com/s/zgy6UgNMFcbISD1NhxSAWg)
+- [测试仓库推介（下）](https://mp.weixin.qq.com/s/njnpmRGoEgdxjqkR7c3a6A)
+- [Fiddler Everywhere工具答疑](https://mp.weixin.qq.com/s/2peWMJ-rgDlVjs3STNeS1Q)
 
 ![](http://pic.automancloud.com/0_Fotor.jpg)
 

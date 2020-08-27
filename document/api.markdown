@@ -37,10 +37,8 @@
 - [如何选择API测试工具](https://mp.weixin.qq.com/s/m2TNJDiqAAWYV9L6UP-29w)
 - [初学者的API测试技巧](https://mp.weixin.qq.com/s/_uk6dw5Q7CfS-gXGH-TZEQ)
 - [多项目登录互踢测试用例](https://mp.weixin.qq.com/s/Nn_CUy_j7j6bUwHSkO0pCQ)
-- [JsonPath实践（一）](https://mp.weixin.qq.com/s/Cq0_v_ptbGd4f5y8HIsq7w)
-- [JsonPath实践（二）](https://mp.weixin.qq.com/s/w_iJTiuQahIw6U00CJVJZg)
-- [JsonPath实践（三）](https://mp.weixin.qq.com/s/58A3k0T6dbOkBJ5nRYKDqA)
 - [httpclient使用HTTP代理实践](https://mp.weixin.qq.com/s/24IJwJ1TJWHdfj0PzSjmvw)
+- [HTTP异步连接池和多线程实践](https://mp.weixin.qq.com/s/8M348LuHakBe4GAEnnDPxw)
 
 ## 性能性能
 
