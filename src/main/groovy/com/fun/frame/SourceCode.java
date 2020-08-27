@@ -265,7 +265,7 @@ public class SourceCode extends Output implements Cloneable {
         logger.debug("需要判断的文本：{}", text);
         if (StringUtils.isEmpty(text)) return false;
         if (text.equals("0")) return true;
-        return Regex.isRegex(text, "^[1-9][0-9]*(.\\d+)$");
+        return Regex.isRegex(text, "^-{0,1}[1-9][0-9]*(.\\d+)$");
     }
 
     /**
