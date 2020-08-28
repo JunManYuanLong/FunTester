@@ -245,7 +245,7 @@ public class SourceCode extends Output implements Cloneable {
      * @param text
      * @return
      */
-    public static Double changeStringToDouble(String text) {
+    public static double changeStringToDouble(String text) {
         logger.debug("需要转化成的文本：{}", text);
         try {
             return Double.parseDouble(text);
