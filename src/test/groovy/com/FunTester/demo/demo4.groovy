@@ -15,6 +15,7 @@ class demo4 extends SourceCode {
         Map map = [a: 2, b: 3]
         println map
         map.get("c",3)
+        map.fun = 323
         println map
         def list = [3,4]
 
