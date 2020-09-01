@@ -1,8 +1,8 @@
 # 总目录
 
-> 公众号：FunTester，原创文章450+，腾讯云社区首页推荐，排名200+，主要方向接口功能、自动化、性能测试，兼顾白盒测试，功能拓展。工作语言Java和Groovy，欢迎关注。
+> 公众号：FunTester，原创分享爱好者，腾讯云和掘金社区首页推荐，知乎七级原创作者，主要方向接口功能、自动化、性能测试，兼顾白盒测试，框架开发，业务开发。工作语言Java和Groovy，欢迎关注。
 
-[FunTester原创专辑](https://mp.weixin.qq.com/s/Le-tpC79pIpacHXGOkkYWw)
+[FunTester原创专辑](https://mp.weixin.qq.com/s/gpIsjO-Oi_oXMu7iwjZ8gQ)
 
 ## [GitHub地址](https://github.com/JunManYuanLong/FunTester)
 
@@ -262,13 +262,15 @@
 
 # 工具合集
 
-## JSonpath合集
+## JsonPath合集
 
 - [JsonPath实践（一）](https://mp.weixin.qq.com/s/Cq0_v_ptbGd4f5y8HIsq7w)
 - [JsonPath实践（二）](https://mp.weixin.qq.com/s/w_iJTiuQahIw6U00CJVJZg)
 - [JsonPath实践（三）](https://mp.weixin.qq.com/s/58A3k0T6dbOkBJ5nRYKDqA)
 - [JsonPath实践（四）](https://mp.weixin.qq.com/s/8ER61qrkMj8bdBpyuq9r6w)
 - [JsonPath实践（五）](https://mp.weixin.qq.com/s/knVLW960WXnckGLstdrOVQ)
+- [JsonPath实践（六）](https://mp.weixin.qq.com/s/ckBCK3t1w68FLBhaw5a7Jw)
+- [JsonPath工具类封装](https://mp.weixin.qq.com/s/KyuCuG5fVEExxBdGJO2LdA)
 
 ## Jacoco覆盖率
 
@@ -445,6 +447,7 @@
 - [敏捷回归测试](https://mp.weixin.qq.com/s/_bBQFggkZTTEqcb9R_68OA)
 - [制定质量管理计划指南](https://mp.weixin.qq.com/s/ztXYE8EtwlkUdxnk1cjKVg)
 - [质量管理计划的基本要素](https://mp.weixin.qq.com/s/v8lOioYn01S1F0ex4mmljA)
+- [质量保障的方法和实践](https://mp.weixin.qq.com/s/hU_YCaZB-0a09dOCAVgcpw)
 
 ## 大咖风采
 
@@ -517,6 +520,7 @@
 - [Selenium自动化：代码测试与无代码测试](https://mp.weixin.qq.com/s/gtmLpQ5FCeuzh1SB5mxuvg)
 - [Selenium处理下拉列表](https://mp.weixin.qq.com/s/E2txSVAmDzYIEZWnyAND4g)
 - [Selenium自动化常见问题](https://mp.weixin.qq.com/s/edoxu-QaD0SOw1VqrhCZWA)
+- [Selenium4 IDE，它终于来了](https://mp.weixin.qq.com/s/XNotlZvFpmBmBQy1pYifOw)
 
 ## APP性能
 
