@@ -149,7 +149,7 @@ class JsonUtil extends SourceCode {
     }
 
     /**
-     * 获取匹配对象
+     * 获取匹配对象,这里如果使用模糊路径匹配失败,返回"[]",如果绝对路径报错
      * @param path
      * @return
      */
