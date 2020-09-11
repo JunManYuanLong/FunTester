@@ -501,10 +501,23 @@ public class FanLibrary extends SourceCode {
         request.setConfig(getProxyConfig(adress));
     }
 
+    /**
+     * 设置代理请求
+     *
+     * @param request
+     * @param ip
+     * @param port
+     */
     public static void setProxy(HttpRequestBase request, String ip, int port) {
         setProxy(request, ip + ":" + port);
     }
 
+    /**
+     * 通过IP和端口获取代理配置对象
+     *
+     * @param adress
+     * @return
+     */
     public static RequestConfig getProxyConfig(String adress) {
         if (StringUtils.isBlank(adress) || !Regex.isMatch(adress, "((25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))):([0-9]|[1-9]\\d{1,3}|[1-5]\\d{4}|6[0-4]\\d{4}|65[0-4]\\d{2}|655[0-2]\\d|6553[0-5])"))
             ParamException.fail("adress格式错误:" + adress);
@@ -512,6 +525,13 @@ public class FanLibrary extends SourceCode {
         return ClientManage.getProxyRequestConfig(split[0], changeStringToInt(split[1]));
     }
 
+    /**
+     * 通过IP和端口获取代理配置对象
+     *
+     * @param ip
+     * @param port
+     * @return
+     */
     public static RequestConfig getProxyConfig(String ip, int port) {
         return getProxyConfig(ip + ":" + port);
     }
