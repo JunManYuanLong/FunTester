@@ -40,6 +40,7 @@
 - [Java文本块](https://mp.weixin.qq.com/s/GwasvpJsd7uLngvCr6KlQw)
 - [CountDownLatch类在性能测试中应用](https://mp.weixin.qq.com/s/uYBPPOjauR2h81l2uKMANQ)
 - [Java压缩/解压缩字符串](https://mp.weixin.qq.com/s/7vHNd5dEN93DPUqgS8od_A)
+- [Java删除空字符：Java8 & Java11](https://mp.weixin.qq.com/s/6dlgYgTFZsHuJ4Eaby5eyg)
 
 ## Groovy
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)
@@ -67,6 +68,7 @@
 - [JMeter参数签名——Groovy工具类形式](https://mp.weixin.qq.com/s/urwU4p9ofv9sU-JFy5Z0iA)
 - [删除List中null的N种方法--最后放大招](https://mp.weixin.qq.com/s/4mfskN781dybyL59dbSbeQ)
 - [混合Java函数和Groovy闭包](https://mp.weixin.qq.com/s/FAIzGgLSX2u7RKbOGs3lGA)
+- [Groovy重载操作符（终极版）](https://mp.weixin.qq.com/s/4oYGJ2B2Y1AqxsIj8v5nZA)
 
 ## Python
 - [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/xs6Q7uk5l8Gxoagh-sY0uQ)
@@ -74,7 +76,3 @@
 - [关于python版微信使用经验分享](https://mp.weixin.qq.com/s/19IaI6ETZAm_T4ePPlXqIg)
 - [python用递归筛选法求N以内的孪生质数（孪生素数）](https://mp.weixin.qq.com/s/rVY2pTl8So11WCvA9GrFbA)
 - [利用python wxpy和requests写一个自动应答微信机器人实例](https://mp.weixin.qq.com/s/Fni2kX5BRjdqOQ-glCLjRg)
-
-![](http://pic.automancloud.com/0_Fotor.jpg)
-
-![](http://pic.automancloud.com/42387498274.jpeg)

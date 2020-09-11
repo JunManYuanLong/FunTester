@@ -43,6 +43,8 @@
 - [Selenium自动化：代码测试与无代码测试](https://mp.weixin.qq.com/s/gtmLpQ5FCeuzh1SB5mxuvg)
 - [Selenium处理下拉列表](https://mp.weixin.qq.com/s/E2txSVAmDzYIEZWnyAND4g)
 - [Selenium自动化常见问题](https://mp.weixin.qq.com/s/edoxu-QaD0SOw1VqrhCZWA)
+- [Selenium4 IDE，它终于来了](https://mp.weixin.qq.com/s/XNotlZvFpmBmBQy1pYifOw)
+- [Selenium4 IDE特性：无代码趋势和SIDE Runner](https://mp.weixin.qq.com/s/G0S9K0jHsN0P_jxdMME-cg)
 
 ## UiAutomator
 

@@ -19,4 +19,6 @@
 - [白盒测试扫盲](https://mp.weixin.qq.com/s/s_FvGZTC42GEjaWzroz1eA)
 - [Mock System.in和检查System.out](https://mp.weixin.qq.com/s/1ly3uXCZsukmIylN6F5GxQ)
 - [单元测试框架spock和Mockito应用](https://mp.weixin.qq.com/s/s21Lts1UnG9HwOEVvgj-uw)
+- [Mockito框架Mock Void方法](https://mp.weixin.qq.com/s/R95wOMVyeDCHm3_Z0S2kqg)
+- [JsonPath工具类单元测试](https://mp.weixin.qq.com/s/1YtUWGk_sTjn9bHwAeT0Ew)
 

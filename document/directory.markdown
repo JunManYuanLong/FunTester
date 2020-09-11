@@ -1,6 +1,6 @@
 # 总目录
 
-> 公众号：FunTester，原创分享爱好者，腾讯云和掘金社区首页推荐，知乎七级原创作者，主要方向接口功能、自动化、性能测试，兼顾白盒测试，框架开发，业务开发。工作语言Java和Groovy，欢迎关注。
+> 公众号：FunTester，原创分享爱好者，腾讯云、掘金社区、开源中国推荐，知乎七级原创作者，主要方向接口功能、自动化、性能测试，兼顾白盒测试，框架开发，业务开发。工作语言Java和Groovy，欢迎关注。
 
 [FunTester原创专辑](https://mp.weixin.qq.com/s/gpIsjO-Oi_oXMu7iwjZ8gQ)
 
@@ -85,6 +85,7 @@
 - [Mock System.in和检查System.out](https://mp.weixin.qq.com/s/1ly3uXCZsukmIylN6F5GxQ)
 - [单元测试框架spock和Mockito应用](https://mp.weixin.qq.com/s/s21Lts1UnG9HwOEVvgj-uw)
 - [Mockito框架Mock Void方法](https://mp.weixin.qq.com/s/R95wOMVyeDCHm3_Z0S2kqg)
+- [JsonPath工具类单元测试](https://mp.weixin.qq.com/s/1YtUWGk_sTjn9bHwAeT0Ew)
 
 ## 性能测试
 
@@ -162,6 +163,7 @@
 - [Java文本块](https://mp.weixin.qq.com/s/GwasvpJsd7uLngvCr6KlQw)
 - [CountDownLatch类在性能测试中应用](https://mp.weixin.qq.com/s/uYBPPOjauR2h81l2uKMANQ)
 - [Java压缩/解压缩字符串](https://mp.weixin.qq.com/s/7vHNd5dEN93DPUqgS8od_A)
+- [Java删除空字符：Java8 & Java11](https://mp.weixin.qq.com/s/6dlgYgTFZsHuJ4Eaby5eyg)
 
 ## Groovy
 
@@ -191,6 +193,7 @@
 - [删除List中null的N种方法--最后放大招](https://mp.weixin.qq.com/s/4mfskN781dybyL59dbSbeQ)
 - [混合Java函数和Groovy闭包](https://mp.weixin.qq.com/s/FAIzGgLSX2u7RKbOGs3lGA)
 - [Groovy重载操作符（终极版）](https://mp.weixin.qq.com/s/4oYGJ2B2Y1AqxsIj8v5nZA)
+- [JsonPath工具类单元测试](https://mp.weixin.qq.com/s/1YtUWGk_sTjn9bHwAeT0Ew)
 
 ## Python
 
@@ -198,6 +201,9 @@
 - [关于python版微信使用经验分享](https://mp.weixin.qq.com/s/19IaI6ETZAm_T4ePPlXqIg)
 - [python用递归筛选法求N以内的孪生质数（孪生素数）](https://mp.weixin.qq.com/s/rVY2pTl8So11WCvA9GrFbA)
 - [利用python wxpy和requests写一个自动应答微信机器人实例](https://mp.weixin.qq.com/s/Fni2kX5BRjdqOQ-glCLjRg)
+
+---------------------------基础分割线--------------------------
+
 
 ## 测开笔记
 
@@ -271,6 +277,7 @@
 - [JsonPath实践（五）](https://mp.weixin.qq.com/s/knVLW960WXnckGLstdrOVQ)
 - [JsonPath实践（六）](https://mp.weixin.qq.com/s/ckBCK3t1w68FLBhaw5a7Jw)
 - [JsonPath工具类封装](https://mp.weixin.qq.com/s/KyuCuG5fVEExxBdGJO2LdA)
+- [JsonPath工具类单元测试](https://mp.weixin.qq.com/s/1YtUWGk_sTjn9bHwAeT0Ew)
 
 ## Jacoco覆盖率
 
@@ -307,6 +314,7 @@
 - [moco API模拟框架视频讲解（下）](https://mp.weixin.qq.com/s/mz__DiNxMGHwIKCLsjKR8g)
 - [如何mock固定QPS的接口](https://mp.weixin.qq.com/s/yogj9Fni0KJkyQuKuDYlbA)
 - [mock延迟响应的接口](https://mp.weixin.qq.com/s/x_fu0InQpYIUJIQFi9a50g)
+- [moco固定QPS接口升级补偿机制](https://mp.weixin.qq.com/s/zAM91e_REo4edSPTLuHLOw)
 
 ## 工具类
 
@@ -348,6 +356,9 @@
 - [利用 python+plotly 制作双波源干涉三维图像](https://mp.weixin.qq.com/s/KSeV8VvQXRIg-bnzYoa5qg)
 - [python plotly制作接口响应耗时的时间序列表（Time Series ）](https://mp.weixin.qq.com/s/U8chcVzCjGTdT3T_X5v4kw)
 - [python使用plotly批量生成图表](https://mp.weixin.qq.com/s/l18WfWz-s6qQ1JKKuh_2AQ)
+
+---------------------------升级分割线--------------------------
+
 
 # 无代码合集
 
@@ -448,6 +459,7 @@
 - [制定质量管理计划指南](https://mp.weixin.qq.com/s/ztXYE8EtwlkUdxnk1cjKVg)
 - [质量管理计划的基本要素](https://mp.weixin.qq.com/s/v8lOioYn01S1F0ex4mmljA)
 - [质量保障的方法和实践](https://mp.weixin.qq.com/s/hU_YCaZB-0a09dOCAVgcpw)
+- [为什么测试覆盖率如此重要](https://mp.weixin.qq.com/s/0evyuiU2kdXDgMDnDKjORg)
 
 ## 大咖风采
 
@@ -521,6 +533,7 @@
 - [Selenium处理下拉列表](https://mp.weixin.qq.com/s/E2txSVAmDzYIEZWnyAND4g)
 - [Selenium自动化常见问题](https://mp.weixin.qq.com/s/edoxu-QaD0SOw1VqrhCZWA)
 - [Selenium4 IDE，它终于来了](https://mp.weixin.qq.com/s/XNotlZvFpmBmBQy1pYifOw)
+- [Selenium4 IDE特性：无代码趋势和SIDE Runner](https://mp.weixin.qq.com/s/G0S9K0jHsN0P_jxdMME-cg)
 
 ## APP性能
 
@@ -552,6 +565,7 @@
 - [测试仓库推介（上）](https://mp.weixin.qq.com/s/zgy6UgNMFcbISD1NhxSAWg)
 - [测试仓库推介（下）](https://mp.weixin.qq.com/s/njnpmRGoEgdxjqkR7c3a6A)
 - [Fiddler Everywhere工具答疑](https://mp.weixin.qq.com/s/2peWMJ-rgDlVjs3STNeS1Q)
+- [Mac上测试Internet Explorer的N种方法](https://mp.weixin.qq.com/s/HeLBPTp2dfs5IlyLMCi90Q)
 
 ![](http://pic.automancloud.com/0_Fotor.jpg)
 
