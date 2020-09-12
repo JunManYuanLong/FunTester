@@ -5,10 +5,11 @@ import java.util.concurrent.*;
 /**
  * Java线程池Demo
  */
-public class ThreadPoolDemo {
+class ThreadPoolUtil {
 
 
     /**
+     * 重建可变线程池
      * corePoolSize：核心池的大小，这个参数跟后面讲述的线程池的实现原理有非常大的关系。在创建了线程池后，默认情况下，线程池中并没有任何线程，而是等待有任务到来才创建线程去执行任务，除非调用了prestartAllCoreThreads()或者prestartCoreThread()方法，从这2个方法的名字就可以看出，是预创建线程的意思，即在没有任务到来之前就创建corePoolSize个线程或者一个线程。默认情况下，在创建了线程池后，线程池中的线程数为0，当有任务来之后，就会创建一个线程去执行任务，当线程池中的线程数目达到corePoolSize后，就会把到达的任务放到缓存队列当中；
      * maximumPoolSize：线程池最大线程数，这个参数也是一个非常重要的参数，它表示在线程池中最多能创建多少个线程；
      * keepAliveTime：表示线程没有任务执行时最多保持多久时间会终止。默认情况下，只有当线程池中的线程数大于corePoolSize时，keepAliveTime才会起作用，直到线程池中的线程数不大于corePoolSize，即当线程池中的线程数大于corePoolSize时，如果一个线程空闲的时间达到keepAliveTime，则会终止，直到线程池中的线程数不超过corePoolSize。但是如果调用了allowCoreThreadTimeOut(boolean)方法，在线程池中的线程数不大于corePoolSize时，keepAliveTime参数也会起作用，直到线程池中的线程数为0；
@@ -21,9 +22,14 @@ public class ThreadPoolDemo {
      * ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常。
      * ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
      * ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
+     *
+     * @param core 核心线程数
+     * @param max 最大线程数
+     * @param liveTime 空闲时间
+     * @return
      */
-    public ThreadPoolExecutor createPool() {
-        return new ThreadPoolExecutor(5, 50, 1, TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>(1000));
+    static ThreadPoolExecutor createPool(int core = 5, int max = 20, int liveTime = 5) {
+        return new ThreadPoolExecutor(core, max, liveTime, TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>(1000));
 
     }
 
@@ -33,7 +39,7 @@ public class ThreadPoolDemo {
      * @param size
      * @return
      */
-    public ExecutorService createFixedPool(int size) {
+    static ExecutorService createFixedPool(int size = 10) {
         return Executors.newFixedThreadPool(size);
     }
 
@@ -42,7 +48,7 @@ public class ThreadPoolDemo {
      *
      * @return
      */
-    public ExecutorService createCachePool() {
+    static ExecutorService createCachePool() {
         return Executors.newCachedThreadPool();
     }
 
