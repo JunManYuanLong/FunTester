@@ -487,6 +487,7 @@ public class FanLibrary extends SourceCode {
      */
     public static String excuteSimlple(HttpRequestBase request) throws IOException {
         try (CloseableHttpResponse response = ClientManage.httpsClient.execute(request);) {
+            if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) RequestException.fail("响应状态码错误:"+response.getStatusLine().getStatusCode());
             return getContent(response);
         }
     }
