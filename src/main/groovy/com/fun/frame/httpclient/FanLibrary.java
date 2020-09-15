@@ -485,7 +485,7 @@ public class FanLibrary extends SourceCode {
      *
      * @param request
      */
-    public static String excuteSimlple(HttpRequestBase request) throws IOException {
+    public static String executeSimlple(HttpRequestBase request) throws IOException {
         try (CloseableHttpResponse response = ClientManage.httpsClient.execute(request);) {
             if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) RequestException.fail("响应状态码错误:"+response.getStatusLine().getStatusCode());
             return getContent(response);
@@ -542,7 +542,7 @@ public class FanLibrary extends SourceCode {
      *
      * @param request
      */
-    public static void excuteSync(HttpRequestBase request) {
+    public static void executeSync(HttpRequestBase request) {
         if (!ClientManage.httpAsyncClient.isRunning()) ClientManage.httpAsyncClient.start();
         ClientManage.httpAsyncClient.execute(request, null);
     }
@@ -555,7 +555,7 @@ public class FanLibrary extends SourceCode {
      * @throws ExecutionException
      * @throws InterruptedException
      */
-    public static JSONObject excuteSyncWithResponse(HttpRequestBase request) {
+    public static JSONObject executeSyncWithResponse(HttpRequestBase request) {
         if (!ClientManage.httpAsyncClient.isRunning()) ClientManage.httpAsyncClient.start();
         Future<HttpResponse> execute = ClientManage.httpAsyncClient.execute(request, null);
         try {

@@ -23,7 +23,7 @@ public class AidThread extends SourceCode implements Runnable {
             String sql = MySqlTest.getWork();
             if (sql == null) break;
             logger.info("辅助线程执行SQL：{}", sql);
-            object.excuteUpdateSql(sql);
+            object.executeUpdateSql(sql);
         }
         MySqlObject.threadNum.decrementAndGet();
         object.close();

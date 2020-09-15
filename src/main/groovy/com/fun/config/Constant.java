@@ -136,7 +136,7 @@ public class Constant {
     /**
      * 反射方法执行用例时间间隔
      */
-    public static final int EXCUTE_GAP_TIME = 10;
+    public static final int EXECUTE_GAP_TIME = 10;
 
     /**
      * 本机ip，程序初始化会赋值

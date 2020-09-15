@@ -54,7 +54,7 @@ public class RequestThreadTime extends ThreadLimitTimeCount {
 
     @Override
     protected void doing() throws Exception {
-        FanLibrary.excuteSimlple(request);
+        FanLibrary.executeSimlple(request);
     }
 
 

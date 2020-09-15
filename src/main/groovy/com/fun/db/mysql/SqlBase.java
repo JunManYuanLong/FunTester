@@ -62,7 +62,7 @@ public class SqlBase extends SourceCode {
      * @param sql
      * @return
      */
-    public static ResultSet excuteQuerySql(Connection connection, Statement statement, String sql) {
+    public static ResultSet executeQuerySql(Connection connection, Statement statement, String sql) {
         logger.debug("执行的SQL：{}", sql);
         try {
             if (connection != null && !connection.isClosed()) {
@@ -82,7 +82,7 @@ public class SqlBase extends SourceCode {
      * @param statement
      * @param sql
      */
-    public static void excuteUpdateSql(Connection connection, Statement statement, String sql) {
+    public static void executeUpdateSql(Connection connection, Statement statement, String sql) {
         logger.debug("执行的SQL：{}", sql);
         try {
             if (!connection.isClosed()) statement.executeUpdate(sql);

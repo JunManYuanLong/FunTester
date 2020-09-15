@@ -1,27 +1,18 @@
-package com.fun.frame.thead;
+package com.fun.frame.thead
 
-import com.fun.base.constaint.FixedQpsThread;
-import com.fun.base.constaint.ThreadBase;
-import com.fun.base.exception.ParamException;
-import com.fun.base.interfaces.MarkRequest;
-import com.fun.frame.SourceCode;
-import com.fun.utils.Time;
-import org.apache.http.client.methods.HttpRequestBase;
+import com.fun.base.constaint.ThreadBase
+import com.fun.base.exception.ParamException
+import com.fun.base.interfaces.MarkRequest
+import com.fun.frame.SourceCode
+import org.apache.http.client.methods.HttpRequestBase
 
-import java.io.Serializable;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicInteger
 
-public class HeaderMark extends SourceCode implements MarkRequest, Cloneable, Serializable {
+class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, Serializable {
 
-    private static final long serialVersionUID = -1595942567071153477L;
+    private static final long serialVersionUID = -1595942567078477L;
 
     public static AtomicInteger threadName = new AtomicInteger(getRandomIntRange(1000, 9000));
-
-    String headerName;
-
-    int i;
-
-    int num = getRandomIntRange(100, 999) * 1000;
 
     @Override
     public String mark(ThreadBase threadBase) {
@@ -31,8 +22,6 @@ public class HeaderMark extends SourceCode implements MarkRequest, Cloneable, Se
         } else if (threadBase instanceof RequestThreadTimes) {
             RequestThreadTimes req = (RequestThreadTimes) threadBase;
             return mark(req.request);
-        } else if (threadBase instanceof FixedQpsThread) {
-            return Time.getTimeStamp() + EMPTY + getRandomInt(100);
         } else {
             ParamException.fail(threadBase.getClass().toString());
         }
@@ -66,6 +55,5 @@ public class HeaderMark extends SourceCode implements MarkRequest, Cloneable, Se
     public HeaderMark() {
 
     }
-
 
 }

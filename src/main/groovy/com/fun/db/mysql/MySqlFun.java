@@ -51,8 +51,8 @@ public class MySqlFun extends SqlBase implements IMySqlBasic {
      * @param sql
      */
     @Override
-    public void excuteUpdateSql(String sql) {
-        excuteUpdateSql(EMPTY, sql);
+    public void executeUpdateSql(String sql) {
+        executeUpdateSql(EMPTY, sql);
     }
 
     /**
@@ -62,9 +62,9 @@ public class MySqlFun extends SqlBase implements IMySqlBasic {
      * @param sql
      */
     @Override
-    public void excuteUpdateSql(String database, String sql) {
+    public void executeUpdateSql(String database, String sql) {
         getConnection(database);
-        SqlBase.excuteUpdateSql(connection, statement, sql);
+        SqlBase.executeUpdateSql(connection, statement, sql);
     }
 
     /**
@@ -74,14 +74,14 @@ public class MySqlFun extends SqlBase implements IMySqlBasic {
      * @return
      */
     @Override
-    public ResultSet excuteQuerySql(String sql) {
-        return SqlBase.excuteQuerySql(connection, statement, sql);
+    public ResultSet executeQuerySql(String sql) {
+        return SqlBase.executeQuerySql(connection, statement, sql);
     }
 
     @Override
-    public ResultSet excuteQuerySql(String database, String sql) {
+    public ResultSet executeQuerySql(String database, String sql) {
         getConnection(database);
-        return excuteQuerySql(sql);
+        return executeQuerySql(sql);
     }
 
     /**

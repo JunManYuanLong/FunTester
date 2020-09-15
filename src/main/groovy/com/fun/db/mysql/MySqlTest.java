@@ -168,7 +168,7 @@ public class MySqlTest extends SqlBase {
         if (SqlConstant.CLASS_TABLE == null) return list;
         String sql = "SELECT * FROM " + SqlConstant.CLASS_TABLE + " WHERE flag = 1 ORDER BY create_time DESC;";
         TestConnectionManage.getQueryConnection();
-        ResultSet resultSet = excuteQuerySql(connection0, statement0, sql);
+        ResultSet resultSet = executeQuerySql(connection0, statement0, sql);
         try {
             while (resultSet != null && resultSet.next()) {
                 String className = resultSet.getString("class");
@@ -190,7 +190,7 @@ public class MySqlTest extends SqlBase {
         if (SqlConstant.CLASS_TABLE == null) return false;
         String sql = "SELECT flag FROM " + SqlConstant.CLASS_TABLE + " WHERE class = \"" + name + "\";";
         TestConnectionManage.getQueryConnection();
-        ResultSet resultSet = excuteQuerySql(connection0, statement0, sql);
+        ResultSet resultSet = executeQuerySql(connection0, statement0, sql);
         try {
             if (resultSet != null && resultSet.next()) {
                 int flag = resultSet.getInt(1);
@@ -220,17 +220,17 @@ public class MySqlTest extends SqlBase {
      * @param sql
      * @param key
      */
-    static void excuteUpdateSql(String sql, boolean key) {
+    static void executeUpdateSql(String sql, boolean key) {
         int size = getWaitWorkNum();
         if (size % 3 == 1 && size > MySqlObject.getThreadNum() * (SqlConstant.MYSQL_WORK_PER_THREAD + 1) && size < SqlConstant.MYSQL_MAX_WAIT_WORK)
             new Thread(new AidThread()).start();
         if (key) {
             TestConnectionManage.getUpdateConnection1();
-            excuteUpdateSql(connection1, statement1, sql);
+            executeUpdateSql(connection1, statement1, sql);
             TestConnectionManage.updateLastUpdate1();
         } else {
             TestConnectionManage.getUpdateConnection2();
-            excuteUpdateSql(connection2, statement2, sql);
+            executeUpdateSql(connection2, statement2, sql);
             TestConnectionManage.updateLastUpdate2();
         }
     }
@@ -308,9 +308,9 @@ public class MySqlTest extends SqlBase {
      * @param sql
      * @return
      */
-    public static ResultSet excuteQuerySql(String sql) {
+    public static ResultSet executeQuerySql(String sql) {
         TestConnectionManage.getQueryConnection();
-        return excuteQuerySql(connection0, statement0, sql);
+        return executeQuerySql(connection0, statement0, sql);
     }
 
 

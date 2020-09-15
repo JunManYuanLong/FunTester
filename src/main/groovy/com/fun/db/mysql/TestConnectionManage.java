@@ -15,10 +15,10 @@ public class TestConnectionManage extends SqlBase {
 
     static Logger logger = LoggerFactory.getLogger(TestConnectionManage.class);
 
-    public static ExcuteThread excuteThread1 = new ExcuteThread(true);
+    public static ExecuteThread executeThread1 = new ExecuteThread(true);
 
 
-    public static ExcuteThread excuteThread2 = new ExcuteThread(false);
+    public static ExecuteThread executeThread2 = new ExecuteThread(false);
 
 
     /**
@@ -39,8 +39,8 @@ public class TestConnectionManage extends SqlBase {
     public static void start() {
         getUpdateConnection1();
         getUpdateConnection2();
-        excuteThread1.start();
-        excuteThread2.start();
+        executeThread1.start();
+        executeThread2.start();
     }
 
     static void getQueryConnection() {
@@ -113,7 +113,7 @@ public class TestConnectionManage extends SqlBase {
      * 结束所有sql任务线程
      */
     public static void stopAllThread() {
-        ExcuteThread.threadKey = true;
+        ExecuteThread.threadKey = true;
     }
 
 }
@@ -122,7 +122,7 @@ public class TestConnectionManage extends SqlBase {
  * 多线程类，用于消耗mysqltest里sqls中的数据库任务
  */
 @Deprecated
-class ExcuteThread extends Thread {
+class ExecuteThread extends Thread {
 
     /**
      * 分配连接
@@ -134,7 +134,7 @@ class ExcuteThread extends Thread {
      */
     static boolean threadKey = false;
 
-    ExcuteThread(boolean key) {
+    ExecuteThread(boolean key) {
         this.key = key;
     }
 
@@ -145,7 +145,7 @@ class ExcuteThread extends Thread {
             String sql = MySqlTest.getWork();
             if (sql == null) continue;
             TestConnectionManage.logger.info("辅助线程执行SQL：{}", sql);
-            MySqlTest.excuteUpdateSql(sql, key);
+            MySqlTest.executeUpdateSql(sql, key);
         }
     }
 

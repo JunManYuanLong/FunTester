@@ -1,4 +1,4 @@
-package com.fun.frame.excute;
+package com.fun.frame.execute;
 
 import com.fun.frame.SourceCode;
 import com.fun.utils.FileUtil;
@@ -16,9 +16,9 @@ import java.util.List;
 /**
  * groovy脚本执行类，用户执行上传的groovy脚本，功能简单，使用未做封装，将就用一下
  */
-public class ExcuteGroovy extends SourceCode {
+public class ExecuteGroovy extends SourceCode {
 
-    private static Logger logger = LoggerFactory.getLogger(ExcuteSource.class);
+    private static Logger logger = LoggerFactory.getLogger(ExecuteSource.class);
 
     private String path;
 
@@ -35,7 +35,7 @@ public class ExcuteGroovy extends SourceCode {
     private Class<?> groovyClass;//执行类
 
 
-    public ExcuteGroovy(String path, String name) {
+    public ExecuteGroovy(String path, String name) {
         this.path = path;
         this.name = name;
         getGroovyObject();
@@ -44,11 +44,11 @@ public class ExcuteGroovy extends SourceCode {
     /**
      * 执行一个类的所有方法
      */
-    public void excuteAllMethod(String path) {
+    public void executeAllMethod(String path) {
         FileUtil.getAllFile(path);
         if (files == null)
             return;
-        files.forEach((file) -> new ExcuteGroovy(file, EMPTY).excuteMethodByPath());
+        files.forEach((file) -> new ExecuteGroovy(file, EMPTY).executeMethodByPath());
     }
 
     /**
@@ -56,7 +56,7 @@ public class ExcuteGroovy extends SourceCode {
      *
      * @return
      */
-    public void excuteMethodByName() {
+    public void executeMethodByName() {
         if (new File(path).isDirectory()) {
             logger.warn("文件类型错误!");
         }
@@ -70,7 +70,7 @@ public class ExcuteGroovy extends SourceCode {
     /**
      * 根据path执行相关方法
      */
-    public void excuteMethodByPath() {
+    public void executeMethodByPath() {
         Method[] methods = groovyClass.getDeclaredMethods();//获取类方法，此处方法比较多，需过滤
         for (Method method : methods) {
             String methodName = method.getName();

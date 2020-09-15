@@ -1,4 +1,4 @@
-package com.fun.frame.excute;
+package com.fun.frame.execute;
 
 import com.fun.base.bean.PerformanceResultBean;
 import com.fun.base.constaint.ThreadBase;
@@ -13,7 +13,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.*;
-import java.util.concurrent.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
@@ -63,7 +64,7 @@ public class Concurrent extends SourceCode {
     /**
      * 执行总数
      */
-    private int excuteTotal;
+    private int executeTotal;
 
     /**
      * 用于记录所有请求时间
@@ -123,7 +124,7 @@ public class Concurrent extends SourceCode {
 
     private Concurrent(int threadNum) {
         this.threadNum = threadNum;
-        executorService = Executors.newFixedThreadPool(threadNum);
+        executorService = ThreadPoolUtil.createFixedPool(threadNum);
         countDownLatch = new CountDownLatch(threadNum);
     }
 
@@ -148,9 +149,9 @@ public class Concurrent extends SourceCode {
         threads.forEach(x -> {
             if (x.status()) failTotal++;
             errorTotal += x.errorNum;
-            excuteTotal += x.excuteNum;
+            executeTotal += x.executeNum;
         });
-        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{},失败数:{}", threadNum, Time.getTimeDiffer(startTime, endTime), excuteTotal, errorTotal, failTotal);
+        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{},失败数:{}", threadNum, Time.getTimeDiffer(startTime, endTime), executeTotal, errorTotal, failTotal);
         return over();
     }
 
@@ -195,7 +196,7 @@ public class Concurrent extends SourceCode {
         Collections.sort(data);
         String statistics = statistics(data, desc, this.threadNum);
         double qps = 1000.0 * size * name / sum;
-        return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(excuteTotal, errorTotal), getPercent(threadNum, failTotal), excuteTotal, statistics);
+        return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(executeTotal, errorTotal), getPercent(threadNum, failTotal), executeTotal, statistics);
     }
 
     /**

@@ -2,7 +2,7 @@ package com.fun.base.constaint;
 
 import com.fun.base.interfaces.MarkThread;
 import com.fun.config.HttpClientConstant;
-import com.fun.frame.excute.Concurrent;
+import com.fun.frame.execute.Concurrent;
 import com.fun.frame.httpclient.GCThread;
 import com.fun.utils.Time;
 import org.slf4j.Logger;
@@ -61,7 +61,7 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
                     long s = Time.getTimeStamp();
                     doing();
                     long e = Time.getTimeStamp();
-                    excuteNum++;
+                    executeNum++;
                     long diff = e - s;
                     t.add(diff);
                     if (diff > HttpClientConstant.MAX_ACCEPT_TIME) marks.add(diff + CONNECTOR + threadmark);
@@ -97,18 +97,20 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase {
         return errorNum > 10;
     }
 
-    /**
-     * 用于在某些情况下提前终止测试
-     */
-    public static void stopAllThread() {
-        key = true;
-    }
 
     @Override
     protected void after() {
         super.after();
         marks = new ArrayList<>();
         GCThread.stop();
+    }
+
+
+    /**
+     * 用于在某些情况下提前终止测试
+     */
+    public static void stopAllThread() {
+        key = true;
     }
 
 

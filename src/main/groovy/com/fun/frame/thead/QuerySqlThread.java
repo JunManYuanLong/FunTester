@@ -31,7 +31,7 @@ public class QuerySqlThread extends ThreadLimitTimesCount {
 
     @Override
     protected void doing() throws SQLException {
-        base.excuteQuerySql(sql);
+        base.executeQuerySql(sql);
     }
 
     @Override

@@ -2,7 +2,7 @@ package com.fun.base.constaint;
 
 import com.fun.base.interfaces.MarkThread;
 import com.fun.config.HttpClientConstant;
-import com.fun.frame.excute.Concurrent;
+import com.fun.frame.execute.Concurrent;
 import com.fun.frame.httpclient.GCThread;
 import com.fun.utils.Time;
 import org.slf4j.Logger;
@@ -58,7 +58,7 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase {
                     long s = Time.getTimeStamp();
                     doing();
                     et = Time.getTimeStamp();
-                    excuteNum++;
+                    executeNum++;
                     long diff = et - s;
                     t.add(diff);
                     if (diff > HttpClientConstant.MAX_ACCEPT_TIME) marks.add(diff + CONNECTOR + threadmark);
@@ -70,7 +70,7 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase {
                 }
             }
             long ee = Time.getTimeStamp();
-            logger.info("线程:{},执行次数：{}, 失败次数: {},总耗时: {} s", threadName, excuteNum, errorNum, (ee - ss) / 1000 + 1);
+            logger.info("线程:{},执行次数：{}, 失败次数: {},总耗时: {} s", threadName, executeNum, errorNum, (ee - ss) / 1000 + 1);
             Concurrent.allTimes.addAll(t);
             Concurrent.requestMark.addAll(marks);
         } catch (Exception e) {

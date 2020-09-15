@@ -54,9 +54,9 @@ public class MySqlObject {
      *
      * @param sql
      */
-    void excuteUpdateSql(String sql) {
+    void executeUpdateSql(String sql) {
         getConnection();
-        SqlBase.excuteUpdateSql(connection, statement, sql);
+        SqlBase.executeUpdateSql(connection, statement, sql);
         updateLastUpdate();
     }
 

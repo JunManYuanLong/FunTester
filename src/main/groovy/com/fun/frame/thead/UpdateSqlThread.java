@@ -24,7 +24,7 @@ public class UpdateSqlThread extends ThreadLimitTimesCount {
 
     @Override
     protected void doing() {
-        base.excuteUpdateSql(sql);
+        base.executeUpdateSql(sql);
     }
 
     @Override

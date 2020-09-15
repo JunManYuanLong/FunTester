@@ -281,7 +281,14 @@ public class SourceCode extends Output implements Cloneable {
             logger.warn("sleep发生错误！", e);
         }
     }
-
+    public static void sleep(int second) {
+        try {
+            if (second > 30) Thread.sleep(second);
+            if (second <= 30) Thread.sleep(second * 1000);
+        } catch (InterruptedException e) {
+            logger.warn("sleep发生错误！", e);
+        }
+    }
     /**
      * 获取随机数，获取1~num 的数字，包含 num
      *

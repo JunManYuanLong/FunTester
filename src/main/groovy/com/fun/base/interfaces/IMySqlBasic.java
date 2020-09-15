@@ -12,7 +12,7 @@ public interface IMySqlBasic {
      * @param sql
      * @return
      */
-    ResultSet excuteQuerySql(String sql);
+    ResultSet executeQuerySql(String sql);
 
     /**
      * 执行查询sql
@@ -21,14 +21,14 @@ public interface IMySqlBasic {
      * @param sql
      * @return
      */
-    ResultSet excuteQuerySql(String database, String sql);
+    ResultSet executeQuerySql(String database, String sql);
 
     /**
      * 执行修改sql
      *
      * @param sql
      */
-    void excuteUpdateSql(String sql);
+    void executeUpdateSql(String sql);
 
     /**
      * 执行查询sql
@@ -36,7 +36,7 @@ public interface IMySqlBasic {
      * @param database
      * @param sql
      */
-    void excuteUpdateSql(String database, String sql);
+    void executeUpdateSql(String database, String sql);
 
     /**
      * 关闭数据库连接

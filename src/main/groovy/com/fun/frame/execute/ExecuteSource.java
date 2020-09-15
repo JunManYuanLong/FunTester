@@ -1,4 +1,4 @@
-package com.fun.frame.excute;
+package com.fun.frame.execute;
 
 import com.fun.config.Constant;
 import com.fun.frame.SourceCode;
@@ -12,22 +12,22 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExcuteSource extends SourceCode {
+public class ExecuteSource extends SourceCode {
 
-    private static Logger logger = LoggerFactory.getLogger(ExcuteSource.class);
+    private static Logger logger = LoggerFactory.getLogger(ExecuteSource.class);
 
     /**
      * 执行包内所有类的非 main 方法
      *
      * @param packageName
      */
-    public static void excuteAllMethodInPackage(String packageName) {
+    public static void executeAllMethodInPackage(String packageName) {
         // String packageName = "najm.base";
         List<String> classNames = getClassName(packageName);
         if (classNames != null) {
             for (String className : classNames) {
                 String path = packageName + "." + className;
-                excuteAllMethod(path);// 执行所有方法
+                executeAllMethod(path);// 执行所有方法
             }
         }
     }
@@ -38,7 +38,7 @@ public class ExcuteSource extends SourceCode {
      *
      * @param path 类名
      */
-    public static void excuteAllMethod(String path) {
+    public static void executeAllMethod(String path) {
         Class<?> c = null;
         Object object = null;
         try {
@@ -68,7 +68,7 @@ public class ExcuteSource extends SourceCode {
             } catch (Exception e) {
                 logger.warn("反射方法执行失败！", e);
             } finally {
-                sleep(Constant.EXCUTE_GAP_TIME);
+                sleep(Constant.EXECUTE_GAP_TIME);
             }
         }
     }
