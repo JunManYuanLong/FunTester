@@ -16,6 +16,7 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -281,14 +282,20 @@ public class SourceCode extends Output implements Cloneable {
             logger.warn("sleep发生错误！", e);
         }
     }
-    public static void sleep(int second) {
+
+    /**
+     * 线程休眠,以纳秒为单位
+     *
+     * @param nanosec
+     */
+    public static void sleep(long nanosec) {
         try {
-            if (second > 30) Thread.sleep(second);
-            if (second <= 30) Thread.sleep(second * 1000);
+            TimeUnit.NANOSECONDS.sleep(nanosec);
         } catch (InterruptedException e) {
             logger.warn("sleep发生错误！", e);
         }
     }
+
     /**
      * 获取随机数，获取1~num 的数字，包含 num
      *
