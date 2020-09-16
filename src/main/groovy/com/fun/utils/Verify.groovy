@@ -79,7 +79,7 @@ class Verify extends SourceCode implements Comparable {
      * @return
      */
     def plus(Verify v) {
-        isNumber() && v.isNumber() ? this + (v.num) : extra - v.extra
+        isNumber() && v.isNumber() ? this + (v.num) : extra + v.extra
     }
 
     /**
@@ -90,6 +90,7 @@ class Verify extends SourceCode implements Comparable {
     def minus(double i) {
         isNumber() ? num - i : extra - i.toString()
     }
+
     /**
      * 加法重载,string类型
      * @param s
