@@ -536,6 +536,8 @@
 - [Selenium4 IDE，它终于来了](https://mp.weixin.qq.com/s/XNotlZvFpmBmBQy1pYifOw)
 - [Selenium4 IDE特性：无代码趋势和SIDE Runner](https://mp.weixin.qq.com/s/G0S9K0jHsN0P_jxdMME-cg)
 - [Selenium自动化最佳实践技巧（上）](https://mp.weixin.qq.com/s/lZww1azmncMMMHRY0_yKqA)
+- [Selenium自动化最佳实践技巧（中）](https://mp.weixin.qq.com/s/9D0lUZ-XKHiukNeRqp6zOQ)
+- [Selenium自动化最佳实践技巧（下）](https://mp.weixin.qq.com/s/opVik2ZxmTBurIBoa4yipQ)
 
 ## APP性能
 
