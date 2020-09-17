@@ -214,30 +214,26 @@ public class Output extends Constant {
         new ConsoleTable(rows);
     }
 
+    /**
+     * 打印可能的json数据
+     *
+     * @param content
+     */
+    public static void showStr(String content) {
+        try {
+            if (content.contains("&")) output(SourceCode.getJson(content.split("&")));
+            else output(JSONObject.parseObject(content));
+        } catch (JSONException e) {
+            output(content);
+        }
+    }
+
     static class ConsoleTable extends SourceCode {
 
         List<Integer> rowLength = new ArrayList<>();
 
         public static void show(Map map) {
             new ConsoleTable(map);
-        }
-
-        /**
-         * 打印可能的json数据
-         *
-         * @param content
-         */
-        public static void showStr(String content) {
-            try {
-                if (content.contains("&")) output(SourceCode.getJson(content.split("&")));
-                else output(JSONObject.parseObject(content));
-            } catch (JSONException e) {
-                output(content);
-            }
-        }
-
-        public static void show(List<List<String>> rows) {
-            new ConsoleTable(rows);
         }
 
         /**
