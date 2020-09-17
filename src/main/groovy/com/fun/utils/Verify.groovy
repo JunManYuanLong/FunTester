@@ -9,7 +9,8 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 /**
- * 操作符重写类,用于匹配JSonpath验证语法
+ * 操作符重写类,用于匹配JSonpath验证语法,基本重载的方法以及各种比较方法,每个方法重载三次,参数为double,String,verify
+ * 数字统一采用double类型,无法操作的String对象的方法返回empty
  */
 class Verify extends SourceCode implements Comparable {
 
@@ -32,12 +33,13 @@ class Verify extends SourceCode implements Comparable {
      * @param path
      */
     private Verify(JSONObject json, String path) {
-        extra = JsonUtil.getInstance(json).getString(path)
+        this(JsonUtil.getInstance(json).getString(path))
         if (isNumber()) num = changeStringToDouble(extra)
     }
 
     private Verify(String value) {
         extra = value
+        logger.info("构建verify对象:{}", extra)
         if (isNumber()) num = changeStringToDouble(extra)
     }
 
@@ -215,13 +217,13 @@ class Verify extends SourceCode implements Comparable {
      * @return
      */
     def <T> T asType(Class<T> tClass) {
-        logger.info(tClass.toString())
+        logger.info("强转类型:{}", tClass.toString())
         if (tClass == Integer) num.intValue()
-        if (tClass == Double) num
-        if (tClass == Long) num.longValue()
-        if (tClass == String) extra
-        if (tClass == Verify) new Verify(extra)
-        if (tClass == Boolean) changeStringToBoolean(extra)
+        else if (tClass == Double) num
+        else if (tClass == Long) num.longValue()
+        else if (tClass == String) extra
+        else if (tClass == Verify) new Verify(extra)
+        else if (tClass == Boolean) changeStringToBoolean(extra)
     }
 
     /**
