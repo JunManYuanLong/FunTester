@@ -1,10 +1,10 @@
-package com.fun.utils
+package com.fun.frame
 
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONArray
 import com.alibaba.fastjson.JSONException
 import com.alibaba.fastjson.JSONObject
-import com.fun.frame.SourceCode
+import com.fun.utils.JsonUtil
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -12,9 +12,9 @@ import org.slf4j.LoggerFactory
  * 操作符重写类,用于匹配JSonpath验证语法,基本重载的方法以及各种比较方法,每个方法重载三次,参数为double,String,verify
  * 数字统一采用double类型,无法操作的String对象的方法返回empty
  */
-class Verify extends SourceCode implements Comparable {
+class JsonVerify extends SourceCode implements Comparable {
 
-    public static Logger logger = LoggerFactory.getLogger(Verify.class)
+    public static Logger logger = LoggerFactory.getLogger(JsonVerify.class)
 
     /**
      * 验证文本
@@ -32,12 +32,12 @@ class Verify extends SourceCode implements Comparable {
      * @param json
      * @param path
      */
-    private Verify(JSONObject json, String path) {
+    private JsonVerify(JSONObject json, String path) {
         this(JsonUtil.getInstance(json).getString(path))
         if (isNumber()) num = changeStringToDouble(extra)
     }
 
-    private Verify(String value) {
+    private JsonVerify(String value) {
         extra = value
         logger.info("构建verify对象:{}", extra)
         if (isNumber()) num = changeStringToDouble(extra)
@@ -49,12 +49,12 @@ class Verify extends SourceCode implements Comparable {
      * @param path
      * @return
      */
-    static Verify getInstance(JSONObject json, String path) {
-        new Verify(json, path)
+    static JsonVerify getInstance(JSONObject json, String path) {
+        new JsonVerify(json, path)
     }
 
-    static Verify getInstance(String str) {
-        new Verify(str)
+    static JsonVerify getInstance(String str) {
+        new JsonVerify(str)
     }
 
     /**
@@ -80,7 +80,7 @@ class Verify extends SourceCode implements Comparable {
      * @param s
      * @return
      */
-    def plus(Verify v) {
+    def plus(JsonVerify v) {
         isNumber() && v.isNumber() ? this + (v.num) : extra + v.extra
     }
 
@@ -102,7 +102,7 @@ class Verify extends SourceCode implements Comparable {
         extra - s
     }
 
-    def minus(Verify v) {
+    def minus(JsonVerify v) {
         if (isNumber() && v.isNumber()) this - v.num
         extra - v.extra
     }
@@ -121,7 +121,7 @@ class Verify extends SourceCode implements Comparable {
         isNumber() ? isNumber(s) ? num * changeStringToDouble(s) : s * num : isNumber(s) ? extra * changeStringToDouble(s) : EMPTY
     }
 
-    def multiply(Verify v) {
+    def multiply(JsonVerify v) {
         this * v.extra
     }
 
@@ -138,7 +138,7 @@ class Verify extends SourceCode implements Comparable {
         if (isNumber() && isNumber(s)) num / changeStringToDouble(s)
     }
 
-    def div(Verify v) {
+    def div(JsonVerify v) {
         if (isNumber() && v.isNumber()) num / v.num
     }
 
@@ -176,7 +176,7 @@ class Verify extends SourceCode implements Comparable {
      * if (a implements Comparable) { a.compareTo(b) == 0 } else { a.equals(b) }* @param a
      * @return
      */
-    boolean equals(Verify verify) {
+    boolean equals(JsonVerify verify) {
         extra == verify.extra
     }
 
@@ -222,7 +222,7 @@ class Verify extends SourceCode implements Comparable {
         else if (tClass == Double) num
         else if (tClass == Long) num.longValue()
         else if (tClass == String) extra
-        else if (tClass == Verify) new Verify(extra)
+        else if (tClass == JsonVerify) new JsonVerify(extra)
         else if (tClass == Boolean) changeStringToBoolean(extra)
     }
 

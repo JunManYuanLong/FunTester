@@ -2,7 +2,6 @@ package com.fun.frame.execute;
 
 import com.fun.base.bean.PerformanceResultBean;
 import com.fun.base.constaint.FixedQpsThread;
-import com.fun.base.constaint.StatisticsUtil;
 import com.fun.config.Constant;
 import com.fun.frame.Save;
 import com.fun.frame.SourceCode;

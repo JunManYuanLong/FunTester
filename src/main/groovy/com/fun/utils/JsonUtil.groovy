@@ -2,6 +2,7 @@ package com.fun.utils
 
 import com.alibaba.fastjson.JSONObject
 import com.fun.base.exception.ParamException
+import com.fun.frame.JsonVerify
 import com.fun.frame.SourceCode
 import com.jayway.jsonpath.JsonPath
 import com.jayway.jsonpath.JsonPathException
@@ -72,8 +73,8 @@ class JsonUtil extends SourceCode {
         new JsonUtil(json)
     }
 
-    Verify getVerify(String path) {
-        Verify.getInstance(this.json, path)
+    JsonVerify getVerify(String path) {
+        JsonVerify.getInstance(this.json, path)
     }
 
     /**

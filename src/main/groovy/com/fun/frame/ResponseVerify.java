@@ -13,9 +13,9 @@ import java.util.List;
 /**
  * 通用验证方法封装
  */
-public class Verify extends SourceCode {
+public class ResponseVerify extends SourceCode {
 
-    private static Logger logger = LoggerFactory.getLogger(Verify.class);
+    private static Logger logger = LoggerFactory.getLogger(ResponseVerify.class);
 
     /**
      * 断言的json对象
@@ -41,7 +41,7 @@ public class Verify extends SourceCode {
      */
     private List<String> lines = new ArrayList<>();
 
-    public Verify(JSONObject jsonObject) {
+    public ResponseVerify(JSONObject jsonObject) {
         this.verifyJson = jsonObject;
         this.lines = parseJsonLines(jsonObject);
     }
