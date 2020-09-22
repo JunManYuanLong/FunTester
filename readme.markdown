@@ -4,8 +4,6 @@
 
 ## [GitHub地址](https://github.com/JunManYuanLong/FunTester)
 
-联系地址：Fhaohaizi@163.com
-
 联系地址：FunTester@88.com
 
 # [**文章目录传送门**](https://gitee.com/fanapi/tester/blob/okay/document/directory.markdown)
@@ -20,5 +18,4 @@ QQ群：340964272
 微信公众号：
 ===
 
-![](http://pic.automancloud.com/0.png)
-![](http://pic.automancloud.com/45556.png)
+![](http://pic.automancloud.com/324X0AcZv58_Fotor.png)
