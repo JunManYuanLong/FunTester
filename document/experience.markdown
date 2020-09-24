@@ -102,6 +102,7 @@
 - [制定质量管理计划指南](https://mp.weixin.qq.com/s/ztXYE8EtwlkUdxnk1cjKVg)
 - [质量保障的方法和实践](https://mp.weixin.qq.com/s/hU_YCaZB-0a09dOCAVgcpw)
 - [为什么测试覆盖率如此重要](https://mp.weixin.qq.com/s/0evyuiU2kdXDgMDnDKjORg)
+- [自动化测试框架](https://mp.weixin.qq.com/s/vu6p_rQd3vFKDYu8JDJ0Rg)
 
 ## 大咖风采
 

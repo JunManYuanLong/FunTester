@@ -2,8 +2,6 @@
 
 > 公众号：FunTester，原创分享爱好者，腾讯云、掘金社区、开源中国推荐，知乎七级原创作者，主要方向接口功能、自动化、性能测试，兼顾白盒测试，框架开发，业务开发。工作语言Java和Groovy，欢迎关注。
 
-[FunTester原创专辑](https://mp.weixin.qq.com/s/gpIsjO-Oi_oXMu7iwjZ8gQ)
-
 ## [GitHub地址](https://github.com/JunManYuanLong/FunTester)
 
 # 接口测试
@@ -40,6 +38,7 @@
 - [多项目登录互踢测试用例](https://mp.weixin.qq.com/s/Nn_CUy_j7j6bUwHSkO0pCQ)
 - [httpclient使用HTTP代理实践](https://mp.weixin.qq.com/s/24IJwJ1TJWHdfj0PzSjmvw)
 - [HTTP异步连接池和多线程实践](https://mp.weixin.qq.com/s/8M348LuHakBe4GAEnnDPxw)
+- [IntelliJ中基于文本的HTTP客户端](https://mp.weixin.qq.com/s/-9qi_lLVVfxQKEFmcRYFtA)
 
 ## 接口测试视频
 
@@ -195,6 +194,8 @@
 - [混合Java函数和Groovy闭包](https://mp.weixin.qq.com/s/FAIzGgLSX2u7RKbOGs3lGA)
 - [Groovy重载操作符（终极版）](https://mp.weixin.qq.com/s/4oYGJ2B2Y1AqxsIj8v5nZA)
 - [JsonPath工具类单元测试](https://mp.weixin.qq.com/s/1YtUWGk_sTjn9bHwAeT0Ew)
+- [Groovy小记it关键字和IDE报错](https://mp.weixin.qq.com/s/cIMHzkvKtH0a0ewkiBnV8g)
+- [JsonPath验证类既Groovy重载操作符实践](https://mp.weixin.qq.com/s/5gc04CAsBY6pWxe5c2P41w)
 
 ## Python
 
@@ -279,6 +280,7 @@
 - [JsonPath实践（六）](https://mp.weixin.qq.com/s/ckBCK3t1w68FLBhaw5a7Jw)
 - [JsonPath工具类封装](https://mp.weixin.qq.com/s/KyuCuG5fVEExxBdGJO2LdA)
 - [JsonPath工具类单元测试](https://mp.weixin.qq.com/s/1YtUWGk_sTjn9bHwAeT0Ew)
+- [JsonPath验证类既Groovy重载操作符实践](https://mp.weixin.qq.com/s/5gc04CAsBY6pWxe5c2P41w)
 
 ## Jacoco覆盖率
 
@@ -461,6 +463,7 @@
 - [质量管理计划的基本要素](https://mp.weixin.qq.com/s/v8lOioYn01S1F0ex4mmljA)
 - [质量保障的方法和实践](https://mp.weixin.qq.com/s/hU_YCaZB-0a09dOCAVgcpw)
 - [为什么测试覆盖率如此重要](https://mp.weixin.qq.com/s/0evyuiU2kdXDgMDnDKjORg)
+- [自动化测试框架](https://mp.weixin.qq.com/s/vu6p_rQd3vFKDYu8JDJ0Rg)
 
 ## 大咖风采
 
@@ -535,6 +538,7 @@
 - [Selenium自动化常见问题](https://mp.weixin.qq.com/s/edoxu-QaD0SOw1VqrhCZWA)
 - [Selenium4 IDE，它终于来了](https://mp.weixin.qq.com/s/XNotlZvFpmBmBQy1pYifOw)
 - [Selenium4 IDE特性：无代码趋势和SIDE Runner](https://mp.weixin.qq.com/s/G0S9K0jHsN0P_jxdMME-cg)
+- [Selenium4 IDE特性：弹性测试、循环和逻辑判断](https://mp.weixin.qq.com/s/o4_jIyi9O7s4S3CbTzl5rQ)
 - [Selenium自动化最佳实践技巧（上）](https://mp.weixin.qq.com/s/lZww1azmncMMMHRY0_yKqA)
 - [Selenium自动化最佳实践技巧（中）](https://mp.weixin.qq.com/s/9D0lUZ-XKHiukNeRqp6zOQ)
 - [Selenium自动化最佳实践技巧（下）](https://mp.weixin.qq.com/s/opVik2ZxmTBurIBoa4yipQ)
@@ -570,29 +574,5 @@
 - [测试仓库推介（下）](https://mp.weixin.qq.com/s/njnpmRGoEgdxjqkR7c3a6A)
 - [Fiddler Everywhere工具答疑](https://mp.weixin.qq.com/s/2peWMJ-rgDlVjs3STNeS1Q)
 - [Mac上测试Internet Explorer的N种方法](https://mp.weixin.qq.com/s/HeLBPTp2dfs5IlyLMCi90Q)
+- [IntelliJ中基于文本的HTTP客户端](https://mp.weixin.qq.com/s/-9qi_lLVVfxQKEFmcRYFtA)
 
-![](http://pic.automancloud.com/0_Fotor.jpg)
-
-![](http://pic.automancloud.com/WechatIMG161.jpeg)
-
-![](http://pic.automancloud.com/42387498274.jpeg)
-
-![](http://pic.automancloud.com/ES5YqymXkAArmT-.jpg)
-
-![](http://pic.automancloud.com/web-3967926_1920.png)
-
-![](http://pic.automancloud.com/WechatIMG49.jpeg)
-
-![](http://pic.automancloud.com/Data-Science-as-a-Service-Market-880x660.png)
-
-![](http://pic.automancloud.com/dkjflsjf.jpg)
-
-![](http://pic.automancloud.com/WechatIMG3433.jpeg)
-
-![](http://pic.automancloud.com/WechatIMG31.jpeg)
-
-![](http://pic.automancloud.com/WechatIMG32.jpeg)
-
-![](http://pic.automancloud.com/WechatIMG33.jpeg)
-
-![](http://pic.automancloud.com/EWIjU49X0AcZv58.jpg)
