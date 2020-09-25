@@ -6,7 +6,7 @@
 
 联系地址：FunTester@88.com
 
-# [**文章目录传送门**](https://gitee.com/fanapi/tester/blob/okay/document/directory.markdown)
+# [**文章目录传送门**](/fanapi/tester/blob/okay/document/directory.markdown)
 
 
 QQ群：340964272
