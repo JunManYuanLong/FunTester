@@ -12,10 +12,9 @@
 QQ群：340964272
 ===
 
-![QQ群](https://oscimg.oschina.net/oscnet/2e49545e35e83deb0e2c57079577a629641.jpg)
-
+![](http://pic.automancloud.com/WechatIMG265.png)
 
 微信公众号：
 ===
 
-![](http://pic.automancloud.com/WechatIMG265.png)
+![](http://pic.automancloud.com/324X0AcZv58_Fotor.png)
