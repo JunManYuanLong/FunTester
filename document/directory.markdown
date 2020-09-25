@@ -575,4 +575,5 @@
 - [Fiddler Everywhere工具答疑](https://mp.weixin.qq.com/s/2peWMJ-rgDlVjs3STNeS1Q)
 - [Mac上测试Internet Explorer的N种方法](https://mp.weixin.qq.com/s/HeLBPTp2dfs5IlyLMCi90Q)
 - [IntelliJ中基于文本的HTTP客户端](https://mp.weixin.qq.com/s/-9qi_lLVVfxQKEFmcRYFtA)
+- [开源礼节](https://mp.weixin.qq.com/s/EyNules2f9NYdnYAX_NQSw)
 
