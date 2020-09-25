@@ -12,7 +12,7 @@
 QQ群：340964272
 ===
 
-![](http://pic.automancloud.com/WechatIMG265.png)
+![](http://pic.automancloud.com/WechatIMG265.jpg)
 
 微信公众号：
 ===
