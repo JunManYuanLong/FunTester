@@ -8,13 +8,14 @@
 
 # [**文章目录传送门**](/document/directory.markdown)
 
+微信公众号：
+===
+
+![](http://pic.automancloud.com/324X0AcZv58_Fotor.png)
+
+
 
 QQ群：340964272
 ===
 
 ![](http://pic.automancloud.com/WechatIMG2651.jpg)
-
-微信公众号：
-===
-
-![](http://pic.automancloud.com/324X0AcZv58_Fotor.png)
