@@ -1,6 +1,6 @@
 # ArrayList浅、深拷贝
 
-[原文地址](https://www.javacodegeeks.com/2020/04/arraylist-clone-arraylist-deep-copy-and-shallow-copy.html)
+
 
 # 简介
 

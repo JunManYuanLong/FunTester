@@ -1,6 +1,6 @@
 # Selenium处理下拉列表
 
-[原文地址](https://www.lambdatest.com/blog/webdriverio-tutorial-for-handling-dropdown-in-selenium/)
+
 
 在执行`Selenium`自动浏览器测试时，很多时候需要处理下拉菜单。下拉菜单通常用于表单中，在节省空间和防止用户在表单中选择错误的选项时非常有用。因此在测试任何网站或访问表单时，如何使用`Selenium`处理下拉列表显得尤为重要。
 

@@ -1,6 +1,6 @@
 # Selenium自动化：有代码测试与无代码测试
 
-[原文地址](https://www.testcraft.io/selenium-testing-code-vs-codeless/)
+
 
 大多数测试人员认为`Selenium`是满足其测试自动化需求的自动化框架。作为全球测试人员使用的开放源框架，`Selenium`无疑是测试人员适应日趋敏捷的公司的一种好方法。实际上，`Selenium`仍然被认为是最普遍的开源代码，已在世界范围内采用，并且用户群体不断增长。
 

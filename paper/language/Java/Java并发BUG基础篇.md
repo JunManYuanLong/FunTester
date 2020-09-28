@@ -1,6 +1,6 @@
 # Java并发BUG基础篇
 
-[原文地址](https://www.baeldung.com/java-common-concurrency-pitfalls)
+
 
 ## 使用线程安全对象
 

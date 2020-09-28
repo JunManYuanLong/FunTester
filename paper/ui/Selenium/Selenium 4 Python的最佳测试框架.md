@@ -1,6 +1,6 @@
 # Selenium 4 Python的最佳测试框架
 
-[原文地址](https://www.lambdatest.com/blog/top-5-python-frameworks-for-test-automation-in-2019/)
+
 
 随着Python语言的使用越来越流行，基于Python的测试自动化框架也越来越流行。在项目选择最佳框架时，开发人员和测试人员会有些无法下手。做出选择是应该判断很多事情，框架的脚本质量，测试用例的简单性以及运行模块并找出其缺点的技术。这篇文章总结了测试自动化领域，适合Web端自动化框架（基于Python语言）以及它们相对于其他方面的优缺点。因此，可以帮助一些人根据需要和实际情况选择合适的的Python框架进行测试自动化。
 

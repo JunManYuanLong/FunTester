@@ -1,6 +1,6 @@
 # 从Java到Groovy的八级进化论
 
-[原文地址](https://dzone.com/articles/java-groovy-few-easy-steps)
+
 
 Groovy和Java确实是亲戚关系，它们的语法非常相似，因此对于Java开发人员来说，Groovy非常容易学习。相似之处在于，大多数Java程序甚至都是有效的Groovy程序（把文件后缀`.java`改成`.groovy`即可）。
 

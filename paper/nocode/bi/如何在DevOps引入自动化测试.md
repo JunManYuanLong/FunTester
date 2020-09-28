@@ -1,6 +1,6 @@
 # 如何在DevOps引入自动化测试
 
-[原文地址](https://www.javacodegeeks.com/2019/06/automate-testing-devops-setup.html)
+
 
 > 在开发软件时，专业知识和策略在采用开发和运维（DevOps）策略中起着至关重要的作用。这是因为为了实现测试自动化目标，需要一组专用的测试人员。
 

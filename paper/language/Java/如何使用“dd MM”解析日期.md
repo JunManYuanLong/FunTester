@@ -1,6 +1,6 @@
 # 如何使用“dd MM”解析日期
 
-[原文地址](https://mkyong.com/java8/java-8-how-to-parse-date-with-dd-mmm-02-jan-without-year/)
+
 
 ## 错误示范
 

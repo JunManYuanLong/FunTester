@@ -1,6 +1,6 @@
 # Groovy中的闭包
 
-[原文地址](https://dzone.com/articles/java-groovy-part-2-closures-an)
+
 
 书接上文：
 

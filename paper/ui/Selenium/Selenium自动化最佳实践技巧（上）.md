@@ -1,6 +1,6 @@
 # Selenium自动化最佳实践技巧（上）
 
-[原文地址](https://www.lambdatest.com/blog/27-best-practices-selenium-test-automation/)
+
 
 近年来，越来越多的的Web端自动化测试都选择过渡到`Selenium`测试自动化的敏捷组织。毕竟，对于新功能的快速反馈，绝大部分人都不想错过Web端自动化测试的机会。虽然趋势如此，一些测试人员仍抱怨自动化测试不稳定且不可靠。造成这些问题的原因有很多，大多数时候，导致测试不稳定的原因是都是没有遵循适合的`Selenium`测试自动化的正确做法。
 

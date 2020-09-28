@@ -1,6 +1,6 @@
 # 用Groovy在JMeter中使用正则提取赋值
 
-[原文地址](https://www.blazemeter.com/blog/using-regular-expressions-and-groovy-for-testing-in-jmeter/)
+
 
 之前写过一些文章讲了Groovy如何在JMeter中协助测试：
 

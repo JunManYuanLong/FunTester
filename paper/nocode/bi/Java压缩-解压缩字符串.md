@@ -1,6 +1,6 @@
 # Java压缩/解压缩字符串
 
-[原文地址](https://www.javacodegeeks.com/2020/07/java-compress-decompress-string-data.html)
+
 
 `Java`使用压缩库为常规压缩提供了`Deflater`类。它还提供了`DeflaterOutputStream`，它使用`Deflater`类通过压缩（压缩）数据流，然后将压缩后的数据写入另一个输出流来过滤数据流。有等效的`Inflater`和`InflaterOutputStream`类来处理解压。
 

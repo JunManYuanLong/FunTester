@@ -1,6 +1,6 @@
 # Groovy中的list
 
-[原文地址](https://dzone.com/articles/java-groovy-part-2-closures-an)
+
 
 在上一期[从Java到Groovy的八级进化论](https://mp.weixin.qq.com/s/QTrRHsD3w-zLGbn79y8yUg)中，我分享了`Java`是如何转变成`Groovy`。今天，我将分享学习`Groovy`对`list`的语法支持。
 

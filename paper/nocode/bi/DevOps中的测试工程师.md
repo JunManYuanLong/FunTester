@@ -1,6 +1,6 @@
 # DevOps中的测试工程师
 
-[原文地址](https://dzone.com/articles/know-how-testers-are-an-aid-in-devops)
+
 
 > 尽管DevOps仍需要手动测试，但测试人员能做的还有很多。
 

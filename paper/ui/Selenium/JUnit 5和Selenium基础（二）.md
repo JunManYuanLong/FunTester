@@ -1,6 +1,6 @@
 # JUnit 5和Selenium基础（二）
 
-[原文地址](https://www.javacodegeeks.com/2019/10/using-pagefactory-implement-page-object-pattern.html)
+
 
 > 使用Selenium内置的`PageFactory`实现页面对象模式
 

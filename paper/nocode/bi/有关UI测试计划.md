@@ -1,6 +1,6 @@
 # 有关UI测试计划
 
-[原文地址](https://www.lambdatest.com/blog/devising-a-ui-test-plan-that-works-like-a-charm/)
+
 
 [UI测试](https://mp.weixin.qq.com/s/wDvUy_BhQZCSCqrlC2j1qA)是用户在网站或者APP上进行的。良好的用户界面和交互可以吸引用户使用，这就是为什么测试用户界面至关重要的原因，[UI测试](https://mp.weixin.qq.com/s/wDvUy_BhQZCSCqrlC2j1qA)是软件周期的一个非常重要的阶段。
 

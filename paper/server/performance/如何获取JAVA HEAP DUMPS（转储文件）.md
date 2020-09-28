@@ -1,6 +1,6 @@
 # 如何获取JAVA HEAP DUMPS（转储文件）
 
-[原文地址]( https://blog.heaphero.io/2017/10/13/how-to-capture-java-heap-dumps-7-options/)
+
 
 堆转储是诊断与内存相关的问题（例如内存泄漏缓慢，垃圾回收问题和 java.lang.OutOfMemoryError。它们也是优化内存消耗的重要工具。
 

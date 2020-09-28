@@ -1,6 +1,6 @@
 # 混合Java函数和Groovy闭包
 
-[原文地址](https://dzone.com/articles/mixing-java-functions-and-groovy-closures?fromrel=true)
+
 
 之前分享过[Groovy中的闭包](https://mp.weixin.qq.com/s/pfcG47gSPfUveAaEfdeo8A)，在我日常的工作中，就会想到一个问题：“如何在`Groovy`中使用`Java`方法？”
 

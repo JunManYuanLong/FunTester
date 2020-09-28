@@ -1,6 +1,6 @@
 # Java删除空字符：Java8 & Java11
 
-[原文地址](https://www.javacodegeeks.com/2020/08/different-ways-to-remove-spaces-from-string-in-java.html)
+
 
 操作字符串是编程时经常遇到的，常用的比如在字符串中处理空格。到目前为止，`Java`提供了很多从字符串中删除空格的不同方法，即`trim`，`replaceAll`。但是，`Java 11`通过诸如`strip`，`stripLeading`和`stripTrailing`之类的方法对这些方法进行了一些功能性的拓展。
 

@@ -1,6 +1,6 @@
 # Selenium并行测试基础
 
-[原文地址](https://www.lambdatest.com/blog/what-is-parallel-testing-and-why-to-adopt-it/)
+
 
 随着技术的进步，组织从人工测试转向[Selenium](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&album_id=1319034944479510528&__biz=MzU4MTE2NDEyMQ==#wechat_redirect)测试自动化，测试解决方案变得比以往更具可扩展性。但是，摆在大多数团队面前的还有一座山：并行测试的可伸缩性。许多公司仍在使用顺序测试方法来提供质量保证，这会消耗大量的时间，资源和精力。
 e

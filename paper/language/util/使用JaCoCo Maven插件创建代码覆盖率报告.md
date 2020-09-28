@@ -1,6 +1,6 @@
 # 使用JaCoCo Maven插件创建代码覆盖率报告
 
-[原文地址](https://www.javacodegeeks.com/2013/08/creating-code-coverage-reports-for-unit-and-integration-tests-with-the-jacoco-maven-plugin.html)
+
 
 这篇博客文章描述了我们如何使用JaCoCo Maven插件为单元和集成测试创建代码覆盖率报告。
 

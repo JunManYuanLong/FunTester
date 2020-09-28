@@ -1,6 +1,6 @@
 # 维护Selenium测试自动化的最佳实践
 
-[原文地址](https://www.lambdatest.com/blog/the-perfect-way-to-maintain-your-selenium-test-automation/)
+
 
 自动化测试框架和基础组件需要及时、良好的维护。如果团队无法跟上与维护相关的需求，那么以后可能会付出更大代价，最终带来自动化项目的深陷泥潭。这里有一些减少[Selenium自动化测试](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&album_id=1319034944479510528&__biz=MzU4MTE2NDEyMQ==#wechat_redirect)维护的最佳实践。
 

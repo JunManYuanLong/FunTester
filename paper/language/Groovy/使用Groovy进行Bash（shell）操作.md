@@ -1,6 +1,6 @@
 # 使用Groovy进行Bash（shell）操作
 
-[原文地址](https://www.javacodegeeks.com/2014/11/using-groovy-for-bash-shell-operations.html)
+
 
 最近，我需要创建一个Groovy脚本来删除Linux机器中的某些目录。原因如下：
 1. 我们有一台服务器来执行预定的作业。从一个数据库到另一个数据库的ETL之类的工作，从文件到数据库的工作，等等。服务器激活客户端，这些客户端位于我们要对其执行操作的机器中。大多数（几乎所有）作业都是用普通脚本编写的。

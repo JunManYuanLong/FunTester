@@ -1,6 +1,6 @@
 # 使用Groovy和Gradle轻松进行数据库操作
 
-[原文地址](https://www.javacodegeeks.com/2016/02/easy-database-manipulation-groovy-gradle.html)
+
 
 ## Groovy：“时髦”语言
 

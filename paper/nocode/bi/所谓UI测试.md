@@ -1,6 +1,6 @@
 # 所谓UI测试
 
-[原文地址](https://www.lambdatest.com/blog/all-you-need-to-know-about-ui-testing/)
+
 
 > 用户在应用程序看到和使用的内容都属于用户界面类别。
 

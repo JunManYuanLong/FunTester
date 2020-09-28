@@ -1,6 +1,6 @@
 # 6个重要的JVM性能参数
 
-[原文地址](https://www.javacodegeeks.com/2020/03/7-jvm-arguments-of-highly-effective-applications.html)
+
 
 围绕垃圾收集和内存，您可以将600多个参数传递给`JVM`。如果包括其他方面，则JVM参数总数将很容易超过1000+。任何人都无法消化和理解太多的论据。在本文中，重点介绍了六个重要的`JVM`参数，在`Java性能测试`中起着非常重要的作用。
 

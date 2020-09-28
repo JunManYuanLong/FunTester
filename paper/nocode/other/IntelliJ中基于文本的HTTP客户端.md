@@ -1,6 +1,6 @@
 # IntelliJ中基于文本的HTTP客户端
 
-[原文地址](https://www.javacodegeeks.com/2020/07/intellijs-text-based-http-client.html)
+
 
 `IntelliJ`提供了一个纯基于文本的**HTTP客户端**。尽管一开始听起来可能很奇怪，但事实证明这是一个非常有用的功能。
 

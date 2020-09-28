@@ -1,6 +1,6 @@
 # 测试如何处理Java异常
 
-[原文地址](https://www.javacodegeeks.com/10-best-practices-to-handle-java-exceptions.html)
+
 
 
 本文主要内容：处理`Java异常`的几种情况下的错误示范和正确示范。用`Java`处理异常不是一件容易的事，幸好对于测试来讲，没有那么多悬而不决的场景，只要开发之前进行简单的`异常约束`基本能解决所有问题。

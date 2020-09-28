@@ -1,6 +1,6 @@
 # JUnit中用于Selenium测试的中实践
 
-[原文地址](https://www.lambdatest.com/blog/junit-assertions-example-for-selenium-testing/)
+
 
 自动化测试通过允许他们自动化重复性的任务来帮助简化软件测试人员的生活，而开源测试自动化框架（如Selenium）使用户能够大规模自动化Web测试体验。 但是，如果您无法验证测试用例是否通过，则自动化测试有什么用？
 

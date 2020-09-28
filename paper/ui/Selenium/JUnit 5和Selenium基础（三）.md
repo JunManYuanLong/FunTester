@@ -1,7 +1,7 @@
 # JUnit 5和Selenium基础（三）
 
 
-[原文地址](https://www.javacodegeeks.com/2019/12/junit-5-and-selenium-improving-project-configuration.html)
+
 
 在这一部分教程中，将介绍JUnit 5的其他功能，这些功能将通过并行运行测试，配置测试顺序和创建参数化测试来帮助减少测试的执行时间。还将介绍如何利用Selenium Jupiter功能，例如通过系统属性进行测试执行配置，单个浏览器会话测试以加快测试执行速度或捕获测试中的屏幕截图，AssertJ库的基本Demo。
 

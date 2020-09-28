@@ -1,6 +1,6 @@
 # DevOps工具
 
-[原文地址](https://www.xongolab.com/blog/the-best-devops-development-and-operations-tools-you-should-opt-for/)
+
 
 DevOps是IT行业的转折点。它是根据将“ 开发”和“运营 ”人员和流程整合在一起以形成稳定的运营环境的理念进行概念化的。这有助于提高操作速度并减少错误，从而优化成本，改善资源管理并增强最终产品。
 

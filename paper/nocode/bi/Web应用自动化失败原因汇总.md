@@ -1,6 +1,6 @@
 # Web应用自动化失败原因汇总
 
-[原文地址](https://www.javacodegeeks.com/2019/09/reasons-test-automation-fails-web-application.html)
+
 
 > 多位从业多年的测试工程师经验汇总，说起来都是一部血泪史。
 

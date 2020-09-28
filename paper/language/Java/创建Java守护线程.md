@@ -1,6 +1,6 @@
 # 创建Java守护线程
 
-[原文地址](https://dzone.com/articles/creating-daemon-thread-in-java)
+
 
 # Java中的守护程序线程是什么
 

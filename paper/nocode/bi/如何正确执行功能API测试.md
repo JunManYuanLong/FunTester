@@ -1,6 +1,6 @@
 # 如何正确执行功能API测试
 
-[原文地址](https://dzone.com/articles/functional-api-testing-how-to-do-it-right?fromrel=true)
+
 
 测试曾经在GUI级别进行，但开发人员已经意识到它是多么脆弱。本文将讲述更多API测试以及如何使其最佳运行。
 

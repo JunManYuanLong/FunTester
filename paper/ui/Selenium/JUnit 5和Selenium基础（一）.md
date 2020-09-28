@@ -1,10 +1,10 @@
 # JUnit 5和Selenium基础（一）
 
-[原文地址](https://www.javacodegeeks.com/2019/09/junit-selenium-setup-project-gradle-jupiter-selenium.html)
+
 
 > Gradle、JUnit 5和Jupiter Selenium
 
-[原文地址](https://www.javacodegeeks.com/2019/09/junit-selenium-setup-project-gradle-jupiter-selenium.html)
+
 
 Selenium是一组支持浏览器自动化的工具，主要用于Web应用程序测试。Selenium的组件之一是Selenium WebDriver，它提供客户端库，JSON有线协议（与浏览器驱动程序进行通信的协议）和浏览器驱动程序。Selenium WebDriver的主要优点之一是，它几乎支持所有主要编程语言，并且可以在所有主流操作系统上运行。
 

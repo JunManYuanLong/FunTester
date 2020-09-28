@@ -1,6 +1,6 @@
 # Selenium 4.0 Alpha更新日志
 
-[原文地址](https://www.javacodegeeks.com/2019/12/selenium-4-alpha-what-to-expect.html)
+
 
 早在2018年8月，整个测试自动化社区就发生了一件重大新闻：Selenium的创始成员Simon Stewart在班加罗尔Selenium会议上正式确认了Selenium 4的发布日期和一些重要更新。
 

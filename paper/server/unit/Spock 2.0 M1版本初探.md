@@ -1,6 +1,6 @@
 # Spock 2.0 M1版本初探
 
-[原文地址](https://www.javacodegeeks.com/2020/01/migrating-spock-1-3-tests-to-spock-2-0.html)
+
 
 > spock2进行了较大的升级，基于Junit5，基于Groovy3（Groovy3要求JDK9+）
 

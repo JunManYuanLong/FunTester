@@ -1,6 +1,6 @@
 # 获取JVM转储文件的Java工具类
 
-[原文地址](https://blogs.oracle.com/sundararajan/programmatically-dumping-heap-from-java-applications)
+
 
 在上期文章[如何获取JVM堆转储文件](https://mp.weixin.qq.com/s/qCg7nsXVvT1q-9yquQOfWA)中，介绍了几种方法获取JVM的转储文件，其中编程方法是里面唯一一个从JVM内部获取的方法。这里就不演示了其他方法获取正在运行的应用程序的堆转储，重点放在了使用编程来获取转储文件的方法，并演示了如何使用jhat工具浏览/分析生成的二进制堆转储。
 

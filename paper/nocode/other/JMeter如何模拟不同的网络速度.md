@@ -1,6 +1,6 @@
 # JMeter如何模拟不同的网络速度
 
-[原文地址](https://www.blazemeter.com/blog/how-simulate-different-network-speeds-your-jmeter-load-test/)
+
 
 * **如何以不同的网络连接速度测试移动应用程序和网站？**
 

@@ -1,6 +1,6 @@
 # Maven进行增量构建
 
-[原文地址](https://www.javacodegeeks.com/2020/03/incremental-build-with-maven.html)
+
 
 如果要开始任何新的基于`Java`的项目，则`gradle`应该是第一选择，但是某些场景或者某些方面，`Maven`依然有着不错的优势。在编译构建项目时，就会需要一些插件来提供不同的功能支持。
 

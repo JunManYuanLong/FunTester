@@ -1,6 +1,6 @@
 # Selenium等待：sleep、隐式、显式和Fluent
 
-[原文地址](https://www.lambdatest.com/blog/selenium-waits-implicit-explicit-fluent-and-sleep/)
+
 
 `Selenium`等待页面加载在`Selenium`自动化测试中起着重要的作用。它们有助于使测试用例更加稳定，增强健壮性。`Selenium`提供多种等待，根据某些条件在脚本执行相应的等待，从而确保`Selenium`执行自动化测试时不会导致脚本失败。
 

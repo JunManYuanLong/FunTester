@@ -1,6 +1,6 @@
 # TDD测试驱动开发的基础
 
-[原文地址](https://www.javacodegeeks.com/2019/03/essentials-test-driven-development.html)
+
 
 > 如果您需要软件并且需要快速，那么测试驱动开发（TDD）可能是解决方案。TDD致力于快速将软件从计算机推向市场，是当今顶级软件开发和软件测试公司正在使用的最有效方法之一。
 

@@ -1,6 +1,6 @@
 # 测试为何会错过Bug
 
-[原文地址](https://www.softwaretestinghelp.com/cognitive-bias-in-software-testing/)
+
 
 为了确保**快速变化**的质量，测试领域正随着技术的进步以更快的速度发展。
 

@@ -1,6 +1,6 @@
 # Gradle如何在任务失败后继续构建
 
-[原文地址](https://www.javacodegeeks.com/2014/12/gradle-goodness-continue-build-even-with-failed-tasks.html)
+
 
 如果我们运行Gradle构建并且其中一项任务失败，则整个构建将立即停止。因此，我们可以快速反馈构建状态。如果我们不想这样做，并且希望Gradle执行所有任务，即使某些任务可能失败了，我们也可以使用命令行选项`--continue`。当我们使用`--continue`命令行选项时，Gradle将执行从属任务没有失败的所有任务。这在多模块项目中也很有用，即使在某些项目中测试可能失败，我们也可能希望构建所有项目，因此我们可以全面了解所有模块的失败测试。
 

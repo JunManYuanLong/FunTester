@@ -1,6 +1,6 @@
 # Java中interface属性和实例方法
 
-[原文地址](https://blogs.oracle.com/javamagazine/quiz-yourself-default-methods-advanced)
+
 
 给定代码：
 

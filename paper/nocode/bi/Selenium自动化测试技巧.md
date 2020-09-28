@@ -1,6 +1,6 @@
 # Selenium自动化测试技巧
 
-[原文地址](https://dzone.com/articles/best-practices-for-selenium-automation-one-must-kn)
+
 
 与以前瀑布式开发模式不同，现在软件测试人员具有使用自动化工具执行测试用例套件的优势，而以前，测试人员习惯于通过测试脚本执行来完成测试。
 

@@ -1,6 +1,6 @@
 # 新词：QA-Ops
 
-[原文地址](https://www.lambdatest.com/blog/guide-to-implement-qaops-framework/)
+
 
 QAOps是指通过使用DevOps思维方式来保持软件质量。DevOps指软件开发（Dev）和IT运维（Ops），并在开发和IT运营之间建立关系。 将DevOps引入业务实践的目的是改善两个业务部门之间的协作。
 

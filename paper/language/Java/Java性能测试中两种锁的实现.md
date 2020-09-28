@@ -1,6 +1,6 @@
 # Java性能测试中两种锁的实现
 
-[原文地址](https://howtodoinjava.com/java/multi-threading/object-vs-class-level-locking/)
+
 
 在使用`Java`进行性能测试过程中，经常会遇到线程同步代码锁的使用，同步内容的对象、方法、代码块。
 

@@ -1,6 +1,6 @@
 # Web安全检查
 
-[原文地址](https://www.softwaretestingclass.com/top-10-web-security-checks-how-to-test-for-a-secure-website/)
+
 
 在使用成熟的框架编写Web应用程序时，有时候开发会处于永无止境的修改=>测试=>修改=>测试的状态。尽管如此，开发人员更专注于更改的功能和可视输出，而在安全性方面花费的时间却少得多。但是，当他们确实专注于安全性时，通常会想到的就是典型的事情，例如防止SQL注入或访问控制错误，但是对安全性的关注应该远远超过这些。
 

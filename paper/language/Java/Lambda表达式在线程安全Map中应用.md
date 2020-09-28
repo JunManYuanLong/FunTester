@@ -1,6 +1,6 @@
 # Lambda表达式在线程安全Map中应用
 
-[原文地址](https://dzone.com/articles/lambdas-for-concurrent-maps)
+
 
 `java.util.concurrent`包含两个线程安全的`Map`，即`ConcurrentHashMap`类和`ConcurrentSkipListMap`类。这两个类都是线程安全的和高性能的。但是由于读取修改写入竞争条件，因此使用它们容易出错。`Lambda`表达式帮助我们优雅地避免了这些竞争条件。
 

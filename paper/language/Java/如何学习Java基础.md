@@ -1,6 +1,6 @@
 # 如何学习Java基础
 
-[原文地址](https://www.javacodegeeks.com/2019/12/learn-java-from-scratch-with-these-easy-steps.html)
+
 
 Java是用于软件开发的最流行的编程语言，无论做自动化测试或者测试开发，Java依然是最重要的选项之一。
 

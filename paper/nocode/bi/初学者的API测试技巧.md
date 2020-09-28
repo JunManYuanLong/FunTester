@@ -1,6 +1,6 @@
 # 初学者的API测试技巧
 
-[原文地址](https://www.katalon.com/resources-center/blog/api-testing-tips/)
+
 
 API（应用程序编程接口）测试是一种直接在API级别执行验证的软件测试。它是集成测试的一部分，它确认API是否满足测试人员对功能、可靠性、性能和安全性的期望。与UI测试不同，API测试是在没有GUI层执行操作的。
 

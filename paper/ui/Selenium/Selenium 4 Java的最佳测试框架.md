@@ -1,6 +1,6 @@
 # Selenium 4 Java的最佳测试框架
 
-[原文地址](https://www.lambdatest.com/blog/top-5-java-test-frameworks-for-automation-in-2019/)
+
 
 几十年来，Java一直是开发应用程序服务器端的首选编程语言。尽管JUnit一直在与开发人员一起帮助他们进行自动化的单元测试，但随着时间的推移和测试行业的发展，特别是伴随着自动化测试的兴起，已经开发了许多基于Java的开源框架，它们在验证和业务逻辑方面与JUnit有所不同。在这里，我将讨论用于使用Selenium WebDriver执行测试自动化的顶级Java测试框架，还将重点介绍这些顶级Java测试框架的优缺点和独到之处。
 

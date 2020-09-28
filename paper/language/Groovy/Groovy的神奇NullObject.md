@@ -1,6 +1,6 @@
 # Groovy的神奇NullObject
 
-[原文地址](https://www.mscharhag.com/groovy/groovy-null-nullobject)
+
 
 `Java`中`null`和`Groovy`中`null`的一些明显差异。 首先看一下Demo：
 

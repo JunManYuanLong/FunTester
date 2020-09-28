@@ -1,6 +1,6 @@
 # 如何实施DevOps
 
-[原文地址](https://www.xongolab.com/blog/want-to-achieve-success-in-devops-know-how/)
+
 
 对于长期在孤立的架构下工作的组织来说，转移到协作式DevOps系统似乎是难以成功的。为了进一步提高效率，必须改变观念，并进行团队文化改变。例如：许多人认为只有自动化工具才能解决DevOps，其实这是不准确的。
 

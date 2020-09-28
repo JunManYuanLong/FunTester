@@ -1,6 +1,6 @@
 # 2020年Tester自我提升
 
-[原文地址](https://www.javacodegeeks.com/2020/01/new-year-resolutions-of-every-website-tester-in-2020.html)
+
 
 2020年，测试工程师自我提升的几个方面。
 

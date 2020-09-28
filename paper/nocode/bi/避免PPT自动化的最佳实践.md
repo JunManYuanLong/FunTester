@@ -1,6 +1,6 @@
 # 避免PPT自动化的最佳实践
 
-[原文地址](https://www.simform.com/test-automation-best-practices/)
+
 
 某些**PPT自动化**团队失败的原因是，他们知道严重依赖一种测试模式将是行不通的，例如录制和播放。
 

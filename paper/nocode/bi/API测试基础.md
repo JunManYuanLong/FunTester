@@ -1,6 +1,6 @@
 # API测试基础
 
-[原文地址](https://www.guru99.com/api-testing.html)
+
 
 在进行API测试之前，我们先了解一下
 

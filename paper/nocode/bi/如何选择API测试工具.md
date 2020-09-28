@@ -1,6 +1,6 @@
 # 如何选择API测试工具
 
-[原文地址](https://testguild.com/how-to-choose-api-testing-tool/)
+
 
 > 没有最好，只有最合适。
 

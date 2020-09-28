@@ -1,6 +1,6 @@
 # Gradle+Groovy提高篇
 
-[原文地址](https://www.javacodegeeks.com/2019/11/get-groovy-with-gradle.html)
+
 
 ## 创建自定义任务
 打开`build.gradle`文件，并在末尾添加以下内容：

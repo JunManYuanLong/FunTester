@@ -1,6 +1,6 @@
 # Mockito框架Mock Void方法
 
-[原文地址](https://www.javacodegeeks.com/2020/06/mock-void-method-with-mockito.html)
+
 
 在编写代码时，总是有方法返回`void`，并且在某个测试用例需要模拟`void`方法。那么我们如何去做呢？让我们一起在下面的内容中使用`Mockito`完成这个需求。
 

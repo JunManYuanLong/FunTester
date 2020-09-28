@@ -1,6 +1,6 @@
 # Gradle+Groovy基础篇
 
-[原文地址](https://www.javacodegeeks.com/2019/11/get-groovy-with-gradle.html)
+
 
 在Java项目中，有两个主要的构建系统：Gradle和Maven。构建系统主要管理潜在的复杂依赖关系并正确编译项目。还可以将已编译的项目以及所有资源和源文件打包到`.war`或`.jar`文件中。对于简单的构建，Maven和Gradle之间的选择几乎是个人喜好之一，或者也许是公司CTO或技术经理的偏好。他们俩都是非常好的构建工具。但是，对于更复杂的项目，Gradle比Maven更胜一筹。
 

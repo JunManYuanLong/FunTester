@@ -1,6 +1,6 @@
 # Mock System.in和检查System.out
 
-[原文地址](https://www.javacodegeeks.com/2019/02/approach-simulate-input-check-output.html)
+
 
 做在单元测试的时候，会遇到测试数据依赖于用户输入的情况，类似于代码`Scanner scanner = new Scanner(System.in);`。下面提供一种方法，可以在测试过程中设置`System.in`和`System.out`内容，很好地解决了模拟用户输入和检查输出的问题。
 

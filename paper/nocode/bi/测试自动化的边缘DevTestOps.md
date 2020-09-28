@@ -1,6 +1,6 @@
 # 测试自动化的边缘DevTestOps
 
-[原文地址](https://dzone.com/articles/the-edge-of-test-automation-devtestops-and-devseco)
+
 
 > DevTestOps和DevSecOps是DevOps中测试自动化的必要组件。
 

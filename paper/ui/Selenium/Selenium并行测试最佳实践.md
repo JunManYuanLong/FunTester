@@ -1,6 +1,6 @@
 # Selenium并行测试最佳实践
 
-[原文地址](https://www.lambdatest.com/blog/what-is-parallel-testing-and-why-to-adopt-it/)
+
 
 前文讲到[Selenium并行测试基础](https://mp.weixin.qq.com/s/OfXipd7YtqL2AdGAQ5cIMw)，本文将分享一些并行测试实践相关内容。主要以理论为主，各位如何像了解代码和项目实践细节的可参考之前的文章：
 
