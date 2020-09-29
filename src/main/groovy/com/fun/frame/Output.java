@@ -173,10 +173,10 @@ public class Output extends Constant {
             // 如果上一个字符是断行，则在本行开始按照level数值添加标记符，排除第一行
             if (i != 0 && '\n' == jsonResultStr.charAt(jsonResultStr.length() - 1)) {
                 jsonResultStr.append(Emoji.getSerialEmoji(level) + " . ");
-                IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(". . "));
+                IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(". . "));//没有采用sourcecode的getmanystring
             }
             char last = i == 0 ? ' ' : jsonStr.charAt(i - 1);
-            char next = i < length - 1 ? jsonStr.charAt(i + 1) : ' ';
+            char next = i < length - 1 ? jsonStr.charAt(i + 1) : '}';
             switch (piece) {
                 case ',':
                     // 如果是“,”，则断行
@@ -185,16 +185,17 @@ public class Output extends Constant {
                 case '{':
                 case '[':
                     // 如果字符是{或者[，则断行，level加1
-                    jsonResultStr.append(piece + LINE);
-                    if (last != '[') level++;//解决jsonarray
+                    jsonResultStr.append(piece + (":[{,".contains(last + EMPTY) && ",[{}]\"".contains(next + EMPTY) ? LINE : EMPTY));
+                    if (last != '[') level++;//解决jsonarray:[{
                     break;
                 case '}':
                 case ']':
                     // 如果是}或者]，则断行，level减1
-                    jsonResultStr.append(LINE);
-                    if (next != ']') level--;//解决jsonarray
+//                    jsonResultStr.append(LINE);
+                    jsonResultStr.append(("\"0123456789le]}{[,".contains(last + EMPTY) && "}],".contains(next + EMPTY) ? LINE : EMPTY));
+                    if (next != ']') level--;//解决jsonarray:[{
                     jsonResultStr.append(level == 0 ? "" : Emoji.getSerialEmoji(level) + " . ");
-                    IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(". . "));
+                    IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(". . "));//没有采用sourcecode的getmanystring
                     jsonResultStr.append(piece);
                     break;
                 default:
