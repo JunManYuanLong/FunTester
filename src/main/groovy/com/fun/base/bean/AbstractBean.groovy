@@ -56,6 +56,10 @@ abstract class AbstractBean implements Serializable {
         BeanUtils.copyProperties(this, target)
     }
 
+    /**
+     * 这里bean的属性必需是可以访问的,不然会返回空json串
+     * @return
+     */
     @Override
     String toString() {
         JSONObject.toJSONString(this)
