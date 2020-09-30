@@ -7,6 +7,9 @@ import org.dom4j.io.SAXReader
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
+/**
+ * 基于dom4j解析xml工具类
+ */
 class XMLUtil2 extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(XMLUtil2.class)

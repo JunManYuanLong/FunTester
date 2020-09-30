@@ -15,6 +15,9 @@ import javax.xml.parsers.DocumentBuilder
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.parsers.ParserConfigurationException
 
+/**
+ * 基于dom解析xml文件工具类
+ */
 class XMLUtil extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(XMLUtil.class)
