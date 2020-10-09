@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory
 /**
  * 操作符重写类,用于匹配JSonpath验证语法,基本重载的方法以及各种比较方法,每个方法重载三次,参数为double,String,verify
  * 数字统一采用double类型,无法操作的String对象的方法返回empty
+ * 操作符现在支持['>', '<', '=']三种,暂无增加计划
  */
 class JsonVerify extends SourceCode implements Comparable {
 
@@ -45,7 +46,7 @@ class JsonVerify extends SourceCode implements Comparable {
 
     private JsonVerify(String value) {
         extra = value
-        logger.info("构建verify对象:{}", extra)
+        logger.debug("构建verify对象:{}", extra)
         if (isNumber()) num = changeStringToDouble(extra)
     }
 
@@ -100,17 +101,21 @@ class JsonVerify extends SourceCode implements Comparable {
     }
 
     /**
-     * 加法重载,string类型
+     * 减法重载,string类型
      * @param s
      * @return
      */
     def minus(String s) {
         extra - s
     }
-
+    /**
+     * 减法重载
+     * @param v
+     * @return
+     */
     def minus(JsonVerify v) {
         if (isNumber() && v.isNumber()) this - v.num
-        extra - v.extra
+        else extra - v.extra
     }
 
     /**
@@ -120,7 +125,7 @@ class JsonVerify extends SourceCode implements Comparable {
      */
     def multiply(double i) {
         if (isNumber()) num * i
-        extra * i
+        else extra * i
     }
 
     def multiply(String s) {
@@ -174,7 +179,7 @@ class JsonVerify extends SourceCode implements Comparable {
         try {
             JSON.parseObject(extra)[s]
         } catch (JSONException e) {
-            extra.indexOf(s)
+            isNumber(s) ? extra.charAt(changeStringToInt(s)) : null
         }
     }
 
@@ -187,7 +192,7 @@ class JsonVerify extends SourceCode implements Comparable {
     }
 
     boolean equals(Number n) {
-        num == n.doubleValue()
+        num.toString() == n.toString()
     }
 
     boolean equals(String s) {
@@ -223,7 +228,7 @@ class JsonVerify extends SourceCode implements Comparable {
      * @return
      */
     def <T> T asType(Class<T> tClass) {
-        logger.info("强转类型:{}", tClass.toString())
+        logger.debug("强转类型:{}", tClass.toString())
         if (tClass == Integer) num.intValue()
         else if (tClass == Double) num
         else if (tClass == Long) num.longValue()
@@ -269,6 +274,7 @@ class JsonVerify extends SourceCode implements Comparable {
      */
     public boolean fit(String str) {
         def at = str.charAt(0)
+        logger.debug("verify对象:{},匹配的字符串:{}", extra, str)
         if (!ops.contains(at)) ParamException.fail("匹配字符串规范错误!")
         def res = str - at
         switch (at) {
