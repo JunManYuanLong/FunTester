@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONArray
 import com.alibaba.fastjson.JSONException
 import com.alibaba.fastjson.JSONObject
+import com.fun.base.exception.ParamException
 import com.fun.utils.JsonUtil
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -15,6 +16,11 @@ import org.slf4j.LoggerFactory
 class JsonVerify extends SourceCode implements Comparable {
 
     public static Logger logger = LoggerFactory.getLogger(JsonVerify.class)
+
+    /**
+     * 支持的操作符,暂时不支持其他操作符
+     */
+    static Character[] ops = ['>', '<', '=']
 
     /**
      * 验证文本
@@ -254,5 +260,29 @@ class JsonVerify extends SourceCode implements Comparable {
     @Override
     String toString() {
         extra
+    }
+
+    /**
+     * 判断是否符合期望
+     * @param str
+     * @return
+     */
+    public boolean fit(String str) {
+        def at = str.charAt(0)
+        if (!ops.contains(at)) ParamException.fail("匹配字符串规范错误!")
+        def res = str - at
+        switch (at) {
+            case ops[0]:
+                this > res
+                break
+            case ops[1]:
+                this < res
+                break
+            case ops[2]:
+                this == res
+                break
+            default:
+                ParamException.fail("验证方法传参错误!")
+        }
     }
 }
