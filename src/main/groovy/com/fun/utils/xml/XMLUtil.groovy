@@ -22,7 +22,7 @@ class XMLUtil extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(XMLUtil.class)
 
-    static List<com.sun.org.apache.xalan.internal.lib.NodeInfo> parseRoot(String path, String root) {
+    static List<NodeInfo> parseRoot(String path, String root) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance()
         try {
             DocumentBuilder db = dbf.newDocumentBuilder()
@@ -50,7 +50,7 @@ class XMLUtil extends SourceCode {
         }
         nodeInfo.attrs = nodeAttr
         NodeList childNodes = node.getChildNodes()
-        List<com.sun.org.apache.xalan.internal.lib.NodeInfo> children = new ArrayList<>()
+        List<NodeInfo> children = new ArrayList<>()
         range(childNodes.getLength()).each {children.add(parseNode(childNodes.item(it)))}
         nodeInfo.children = children.findAll {it != null}
         return nodeInfo
