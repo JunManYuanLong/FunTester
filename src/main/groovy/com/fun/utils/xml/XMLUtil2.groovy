@@ -18,8 +18,8 @@ class XMLUtil2 extends SourceCode {
         SAXReader reader = new SAXReader();
         try {
             Document document = reader.read(path.startsWith("http") ? new URL(path) : new File(path));
-            Element bookStore = document.getRootElement();
-            def iterator = bookStore.elementIterator()
+            Element rootElement = document.getRootElement();
+            def iterator = rootElement.elementIterator()
             List<NodeInfo> info = new ArrayList<>()
             while (iterator.hasNext()) {
                 info << parseNode(iterator.next() as Element)
