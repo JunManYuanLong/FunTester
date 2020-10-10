@@ -171,11 +171,11 @@ public class Output extends Constant {
         for (int i = 0; i < length; i++) {// 循环遍历每一个字符
             char piece = jsonStr.charAt(i);// 获取当前字符
             // 如果上一个字符是断行，则在本行开始按照level数值添加标记符，排除第一行
-            if (i != 0 && '\n' == jsonResultStr.charAt(jsonResultStr.length() - 1)) {
+            if ('\n' == jsonResultStr.charAt(jsonResultStr.length() - 1)) {
                 jsonResultStr.append(Emoji.getSerialEmoji(level) + " . ");
                 IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(". . "));//没有采用sourcecode的getmanystring
             }
-            char last = i == 0 ? ' ' : jsonStr.charAt(i - 1);
+            char last = i == 0 ? '{' : jsonStr.charAt(i - 1);
             char next = i < length - 1 ? jsonStr.charAt(i + 1) : '}';
             switch (piece) {
                 case ',':
