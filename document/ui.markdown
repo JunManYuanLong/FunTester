@@ -49,6 +49,7 @@
 - [Selenium自动化最佳实践技巧（上）](https://mp.weixin.qq.com/s/lZww1azmncMMMHRY0_yKqA)
 - [Selenium自动化最佳实践技巧（中）](https://mp.weixin.qq.com/s/9D0lUZ-XKHiukNeRqp6zOQ)
 - [Selenium自动化最佳实践技巧（下）](https://mp.weixin.qq.com/s/opVik2ZxmTBurIBoa4yipQ)
+- [Selenium等待：sleep、隐式、显式和Fluent](https://mp.weixin.qq.com/s/73BobMq9M12rYMvzxNhRtA)
 
 ## UiAutomator
 

@@ -103,6 +103,8 @@
 - [质量保障的方法和实践](https://mp.weixin.qq.com/s/hU_YCaZB-0a09dOCAVgcpw)
 - [为什么测试覆盖率如此重要](https://mp.weixin.qq.com/s/0evyuiU2kdXDgMDnDKjORg)
 - [自动化测试框架](https://mp.weixin.qq.com/s/vu6p_rQd3vFKDYu8JDJ0Rg)
+- [敏捷中的端到端测试](https://mp.weixin.qq.com/s/cdi4xnEzDLpl9ncQguLuAQ)
+- [自动化测试灵魂三问：是什么、为什么和做什么](https://mp.weixin.qq.com/s/geOejJx79-jTwafG9aXwqA)
 
 ## 大咖风采
 

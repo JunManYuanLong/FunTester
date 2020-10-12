@@ -164,6 +164,7 @@
 - [CountDownLatch类在性能测试中应用](https://mp.weixin.qq.com/s/uYBPPOjauR2h81l2uKMANQ)
 - [Java压缩/解压缩字符串](https://mp.weixin.qq.com/s/7vHNd5dEN93DPUqgS8od_A)
 - [Java删除空字符：Java8 & Java11](https://mp.weixin.qq.com/s/6dlgYgTFZsHuJ4Eaby5eyg)
+- [Java Stream中map和flatMap方法](https://mp.weixin.qq.com/s/0FG2o7VUAG6z8a_0je-1EQ)
 
 ## Groovy
 
@@ -253,6 +254,7 @@
 - [异步查询转同步加redis业务实现的BUG分享](https://mp.weixin.qq.com/s/ni3f6QTxw0K-0I3epvEYOA)
 - [Java服务端两个常见的并发错误](https://mp.weixin.qq.com/s/5VvCox3eY6sQDsuaKB4ZIw)
 - [超大对象导致Full GC超高的BUG分享](https://mp.weixin.qq.com/s/L15-0JW9WK-E005GeOG9WQ)
+- [访问权限导致toString返回空BUG分享](https://mp.weixin.qq.com/s/usDOcuJrXOmEKN-mVBzRKg)
 
 ## 爬虫实践
 
@@ -333,6 +335,9 @@
 - [如何遍历执行一个包里面每个类的用例方法](https://mp.weixin.qq.com/s/OJwCOHCJ4TalatsEWbtzIQ)
 - [阿拉伯数字转成汉字](https://mp.weixin.qq.com/s/jNZXIvwMpdxt7jIAlVBgHg)
 - [获取JVM转储文件的Java工具类](https://mp.weixin.qq.com/s/f_TlOb3m8MeR3argBmTzzA)
+- [基于DOM的XML文件解析类](https://mp.weixin.qq.com/s/scRj7OAhvJYL3mx_hCFp4A)
+- [XML文件解析实践（DOM解析）](https://mp.weixin.qq.com/s/V2DG3osaPNUJzFNDQgqM-w)
+- [基于DOM4J的XML文件解析类](https://mp.weixin.qq.com/s/K5R7iMXouTn4g0p14T7iAQ)
 
 ## 构建工具
 
@@ -464,6 +469,9 @@
 - [质量保障的方法和实践](https://mp.weixin.qq.com/s/hU_YCaZB-0a09dOCAVgcpw)
 - [为什么测试覆盖率如此重要](https://mp.weixin.qq.com/s/0evyuiU2kdXDgMDnDKjORg)
 - [自动化测试框架](https://mp.weixin.qq.com/s/vu6p_rQd3vFKDYu8JDJ0Rg)
+- [敏捷中的端到端测试](https://mp.weixin.qq.com/s/cdi4xnEzDLpl9ncQguLuAQ)
+- [自动化测试灵魂三问：是什么、为什么和做什么](https://mp.weixin.qq.com/s/geOejJx79-jTwafG9aXwqA)
+- [基于代码的自动化和无代码自动化](https://mp.weixin.qq.com/s/8Dopihqs4XzpU-sN-I94kw)
 
 ## 大咖风采
 
@@ -542,6 +550,7 @@
 - [Selenium自动化最佳实践技巧（上）](https://mp.weixin.qq.com/s/lZww1azmncMMMHRY0_yKqA)
 - [Selenium自动化最佳实践技巧（中）](https://mp.weixin.qq.com/s/9D0lUZ-XKHiukNeRqp6zOQ)
 - [Selenium自动化最佳实践技巧（下）](https://mp.weixin.qq.com/s/opVik2ZxmTBurIBoa4yipQ)
+- [Selenium等待：sleep、隐式、显式和Fluent](https://mp.weixin.qq.com/s/73BobMq9M12rYMvzxNhRtA)
 
 ## APP性能
 

@@ -72,6 +72,7 @@
 - [CountDownLatch类在性能测试中应用](https://mp.weixin.qq.com/s/uYBPPOjauR2h81l2uKMANQ)
 - [CyclicBarrier类在性能测试中应用](https://mp.weixin.qq.com/s/kvEHX3t_2xpMke9vwOdWrg)
 - [Phaser类在性能测试中应用](https://mp.weixin.qq.com/s/plxNnQq7yNQvHYEGpyY4uA)
+- [如何同时压测创建和删除接口](https://mp.weixin.qq.com/s/NCeoEF3DkEtpdaaQ365I0Q)
 
 ## 测试方案
 

@@ -65,6 +65,9 @@
 - [如何遍历执行一个包里面每个类的用例方法](https://mp.weixin.qq.com/s/OJwCOHCJ4TalatsEWbtzIQ)
 - [阿拉伯数字转成汉字](https://mp.weixin.qq.com/s/jNZXIvwMpdxt7jIAlVBgHg)
 - [获取JVM转储文件的Java工具类](https://mp.weixin.qq.com/s/f_TlOb3m8MeR3argBmTzzA)
+- [基于DOM的XML文件解析类](https://mp.weixin.qq.com/s/scRj7OAhvJYL3mx_hCFp4A)
+- [XML文件解析实践（DOM解析）](https://mp.weixin.qq.com/s/V2DG3osaPNUJzFNDQgqM-w)
+- [基于DOM4J的XML文件解析类](https://mp.weixin.qq.com/s/K5R7iMXouTn4g0p14T7iAQ)
 
 ## 构建工具
 
