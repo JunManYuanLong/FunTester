@@ -14,6 +14,11 @@ class XMLUtil2 extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(XMLUtil2.class)
 
+    /**
+     * 解析xml文件
+     * @param path 绝对路径或者URL
+     * @return
+     */
     static List<NodeInfo> parse(String path) {
         SAXReader reader = new SAXReader();
         try {
@@ -31,6 +36,11 @@ class XMLUtil2 extends SourceCode {
         FailException.fail("解析文件${path}失败!")
     }
 
+    /**
+     * 解析节点信息
+     * @param e
+     * @return
+     */
     static NodeInfo parseNode(Element e) {
         if (e.getNodeType() != Node.ELEMENT_NODE) return null;
         def info = new NodeInfo()

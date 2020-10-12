@@ -22,6 +22,12 @@ class XMLUtil extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(XMLUtil.class)
 
+    /**
+     *  解析某个节点(根节点)信息
+     * @param path 绝对路径或者URL
+     * @param root
+     * @return
+     */
     static List<NodeInfo> parseRoot(String path, String root) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance()
         try {
@@ -39,6 +45,11 @@ class XMLUtil extends SourceCode {
         FailException.fail("解析文件:${path}中${root}节点出错!")
     }
 
+    /**
+     * 解析某个节点信息
+     * @param node
+     * @return
+     */
     static NodeInfo parseNode(Node node) {
         if (node.getNodeType() != Node.ELEMENT_NODE) return null
         NodeInfo nodeInfo = new NodeInfo()
