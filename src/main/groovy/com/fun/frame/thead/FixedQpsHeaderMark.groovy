@@ -10,9 +10,11 @@ import java.util.concurrent.atomic.AtomicInteger
 
 class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, Serializable {
 
-    private static final long serialVersionUID = -1595942567078477L;
+    private static final long serialVersionUID = -158942567078477L;
 
-    public static AtomicInteger threadName = new AtomicInteger(getRandomIntRange(1000, 9000));
+    public static AtomicInteger num = new AtomicInteger(10000);
+
+    String headerName = DEFAULT_STRING;
 
     @Override
     public String mark(ThreadBase threadBase) {
@@ -37,7 +39,7 @@ class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, S
     @Override
     public String mark(HttpRequestBase base) {
         base.removeHeaders(headerName);
-        String value = 8 + EMPTY + i + num++;
+        String value = 8 + EMPTY + num.getAndIncrement();
         base.addHeader(headerName, value);
         return value;
     }
@@ -49,7 +51,6 @@ class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, S
 
     public HeaderMark(String headerName) {
         this.headerName = headerName;
-        this.i = threadName.getAndIncrement();
     }
 
     public HeaderMark() {
