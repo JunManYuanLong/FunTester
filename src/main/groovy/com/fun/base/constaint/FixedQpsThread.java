@@ -45,9 +45,8 @@ public abstract class FixedQpsThread<T> extends ThreadBase {
             if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
                 FixedQpsConcurrent.marks.add(diff + CONNECTOR + threadmark);
         } catch (Exception e) {
-            logger.warn("执行任务失败！", e);
-            logger.warn("执行失败对象的标记:{}", threadmark);
             FixedQpsConcurrent.errorTimes.getAndIncrement();
+            logger.warn("执行任务失败！,标记:{}", threadmark, e);
         } finally {
             after();
         }

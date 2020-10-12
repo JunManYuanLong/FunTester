@@ -185,6 +185,9 @@ public class FixedQpsConcurrent extends SourceCode {
     }
 
 
+    /**
+     * 补偿线程
+     */
     class AidThread implements Runnable {
 
         public boolean key;
