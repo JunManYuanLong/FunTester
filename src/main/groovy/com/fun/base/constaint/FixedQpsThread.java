@@ -3,7 +3,6 @@ package com.fun.base.constaint;
 import com.fun.base.interfaces.MarkThread;
 import com.fun.config.HttpClientConstant;
 import com.fun.frame.execute.FixedQpsConcurrent;
-import com.fun.frame.httpclient.GCThread;
 import com.fun.utils.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +34,7 @@ public abstract class FixedQpsThread<T> extends ThreadBase {
     public void run() {
         try {
             before();
-            threadmark = mark == null ? EMPTY : this.mark.mark(this);
+            threadmark = this.mark == null ? EMPTY : this.mark.mark(this);
             long s = Time.getTimeStamp();
             doing();
             long e = Time.getTimeStamp();
@@ -54,7 +53,7 @@ public abstract class FixedQpsThread<T> extends ThreadBase {
 
     @Override
     public void before() {
-        GCThread.starts();
+
     }
 
     /**

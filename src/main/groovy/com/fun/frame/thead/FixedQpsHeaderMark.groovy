@@ -14,11 +14,13 @@ class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, S
 
     public static AtomicInteger num = new AtomicInteger(10000);
 
-    String headerName = DEFAULT_STRING;
+    String headerName;
 
     @Override
     public String mark(ThreadBase threadBase) {
-        if (threadBase instanceof RequestThreadTime) {
+
+        //todo:完成两种类
+        if (threadBase instanceof RequestTimesFixedQps) {
             RequestThreadTime req = (RequestThreadTime) threadBase;
             return mark(req.request);
         } else if (threadBase instanceof RequestThreadTimes) {
@@ -49,11 +51,11 @@ class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, S
         return new HeaderMark(headerName);
     }
 
-    public HeaderMark(String headerName) {
+    public FixedQpsHeaderMark(String headerName) {
         this.headerName = headerName;
     }
 
-    public HeaderMark() {
+    private FixedQpsHeaderMark() {
 
     }
 
