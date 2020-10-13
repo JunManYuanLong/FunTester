@@ -118,7 +118,7 @@ public class FixedQpsConcurrent extends SourceCode {
         boolean isTimesMode = fixedQpsThread.isTimesMode;
         int limit = fixedQpsThread.limit;
         int qps = fixedQpsThread.qps;
-        long interval = 1000_000 / qps;
+        long interval = 1_000_000_000 / qps;
         AidThread aidThread = new AidThread();
         new Thread(aidThread).start();
         startTime = Time.getTimeStamp();
@@ -132,7 +132,7 @@ public class FixedQpsConcurrent extends SourceCode {
         GCThread.stop();
         try {
             executorService.shutdown();
-            executorService.awaitTermination(10, TimeUnit.SECONDS);
+            executorService.awaitTermination(10, TimeUnit.SECONDS);//此方法需要在shutdown方法执行之后执行
         } catch (InterruptedException e) {
             logger.error("线程池等待任务结束失败!", e);
         }
@@ -209,6 +209,7 @@ public class FixedQpsConcurrent extends SourceCode {
             logger.info("补偿线程开始!");
             while (key) {
                 long expect = (Time.getTimeStamp() - startTime) / 1000 * threads.get(0).qps;
+                logger.info("期望执行数:{},实际执行数:{},设置QPS:{}", expect, executeTimes.get(), threads.get(0).qps);
                 if (expect > executeTimes.get() + 10) {
                     range((int) expect - executeTimes.get()).forEach(x -> {
                         sleep(100);
