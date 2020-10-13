@@ -289,7 +289,7 @@ public class SourceCode extends Output implements Cloneable {
      * @param nanosec
      */
     public static void sleep(long nanosec) {
-        if (nanosec < 1000) return;
+        if (nanosec < 1_000_000) return;
         try {
             TimeUnit.NANOSECONDS.sleep(nanosec);
         } catch (InterruptedException e) {
