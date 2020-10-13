@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.util.stream.Collectors.toList;
@@ -127,9 +128,14 @@ public class FixedQpsConcurrent extends SourceCode {
             sleep(interval);
         }
         endTime = Time.getTimeStamp();
-        executorService.shutdown();
         aidThread.stop();
         GCThread.stop();
+        try {
+            executorService.shutdown();
+            executorService.awaitTermination(10, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            logger.error("线程池等待任务结束失败!", e);
+        }
         logger.info("总计执行 {} ，共用时：{} s,执行总数:{},错误数:{}!", fixedQpsThread.isTimesMode ? fixedQpsThread.limit + "次任务" : "秒", Time.getTimeDiffer(startTime, endTime), executeTimes, errorTimes);
         return over();
     }
@@ -140,8 +146,8 @@ public class FixedQpsConcurrent extends SourceCode {
         Save.saveStringListSync(marks, MARK_Path.replace(LONG_Path, EMPTY) + desc);
         allTimes = new Vector<>();
         marks = new Vector<>();
-        executeTimes = new AtomicInteger();
-        errorTimes = new AtomicInteger();
+        executeTimes.set(0);
+        errorTimes.set(0);
         return countQPS(queueLength, desc, Time.getTimeByTimestamp(startTime), Time.getTimeByTimestamp(endTime));
     }
 
@@ -190,25 +196,28 @@ public class FixedQpsConcurrent extends SourceCode {
      */
     class AidThread implements Runnable {
 
-        public boolean key;
+        private boolean key = true;
 
         int i;
 
         public AidThread() {
-            key = true;
+
         }
 
         @Override
         public void run() {
+            logger.info("补偿线程开始!");
             while (key) {
-                sleep(5);
                 long expect = (Time.getTimeStamp() - startTime) / 1000 * threads.get(0).qps;
-                if (expect > executeTimes.get() + 100)
+                if (expect > executeTimes.get() + 10) {
                     range((int) expect - executeTimes.get()).forEach(x -> {
                         sleep(100);
                         executorService.execute(threads.get(i++ % queueLength).clone());
                     });
+                }
+                sleep(3);
             }
+            logger.info("补偿线程结束!");
         }
 
         public void stop() {
