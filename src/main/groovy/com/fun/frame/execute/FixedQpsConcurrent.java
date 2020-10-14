@@ -164,7 +164,7 @@ public class FixedQpsConcurrent extends SourceCode {
         int sum = data.stream().mapToInt(x -> x).sum();
         Collections.sort(data);
         String statistics = StatisticsUtil.statistics(data, desc, this.queueLength);
-        double qps = 1000.0 * size * name / sum;
+        double qps = this.threads.get(0).qps;
         return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(executeTimes.get(), errorTimes.get()), 0, executeTimes.get(), statistics);
     }
 
