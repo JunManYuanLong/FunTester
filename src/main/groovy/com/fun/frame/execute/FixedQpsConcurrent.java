@@ -3,6 +3,7 @@ package com.fun.frame.execute;
 import com.fun.base.bean.PerformanceResultBean;
 import com.fun.base.constaint.FixedQpsThread;
 import com.fun.config.Constant;
+import com.fun.config.HttpClientConstant;
 import com.fun.frame.Save;
 import com.fun.frame.SourceCode;
 import com.fun.frame.httpclient.GCThread;
@@ -146,9 +147,9 @@ public class FixedQpsConcurrent extends SourceCode {
         Save.saveStringListSync(marks, MARK_Path.replace(LONG_Path, EMPTY) + desc);
         allTimes = new Vector<>();
         marks = new Vector<>();
-        executeTimes.set(0);
-        errorTimes.set(0);
-        return countQPS(queueLength, desc, Time.getTimeByTimestamp(startTime), Time.getTimeByTimestamp(endTime));
+        int executeNum = executeTimes.getAndSet(0);
+        int errorNum = errorTimes.getAndSet(0);
+        return countQPS(queueLength, desc, Time.getTimeByTimestamp(startTime), Time.getTimeByTimestamp(endTime), executeNum, errorNum);
     }
 
     /**
@@ -157,15 +158,15 @@ public class FixedQpsConcurrent extends SourceCode {
      *
      * @param name 线程数
      */
-    public PerformanceResultBean countQPS(int name, String desc, String start, String end) {
+    public static PerformanceResultBean countQPS(int name, String desc, String start, String end, int executeNum, int errorNum) {
         List<String> strings = WriteRead.readTxtFileByLine(Constant.DATA_Path + name + desc);
         int size = strings.size();
         List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
         int sum = data.stream().mapToInt(x -> x).sum();
         Collections.sort(data);
-        String statistics = StatisticsUtil.statistics(data, desc, this.queueLength);
-        double qps = this.threads.get(0).qps;
-        return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(executeTimes.get(), errorTimes.get()), 0, executeTimes.get(), statistics);
+        String statistics = StatisticsUtil.statistics(data, desc, name);
+        double qps = executeNum * 1.0 / (Time.getTimestamp(end) - Time.getTimestamp(start)) * 1000;
+        return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(executeNum, errorNum), 0, executeNum, statistics);
     }
 
 
@@ -177,7 +178,7 @@ public class FixedQpsConcurrent extends SourceCode {
      * @return
      */
     public PerformanceResultBean countQPS(int name, String desc) {
-        return countQPS(name, desc, Time.getDate(), Time.getDate());
+        return countQPS(name, desc, Time.getDate(), Time.getDate(),0,0);
     }
 
     /**
@@ -187,7 +188,7 @@ public class FixedQpsConcurrent extends SourceCode {
      * @return
      */
     public PerformanceResultBean countQPS(int name) {
-        return countQPS(name, EMPTY, Time.getDate(), Time.getDate());
+        return countQPS(name, EMPTY, Time.getDate(), Time.getDate(),0,0);
     }
 
 
@@ -210,13 +211,13 @@ public class FixedQpsConcurrent extends SourceCode {
             while (key) {
                 long expect = (Time.getTimeStamp() - startTime) / 1000 * threads.get(0).qps;
                 logger.info("期望执行数:{},实际执行数:{},设置QPS:{}", expect, executeTimes.get(), threads.get(0).qps);
-                if (expect > executeTimes.get() + 10) {
+                if (expect > executeTimes.get() + threads.get(0).qps) {
                     range((int) expect - executeTimes.get()).forEach(x -> {
                         sleep(100);
                         executorService.execute(threads.get(i++ % queueLength).clone());
                     });
                 }
-                sleep(3);
+                sleep(HttpClientConstant.LOOP_INTERVAL);
             }
             logger.info("补偿线程结束!");
         }
