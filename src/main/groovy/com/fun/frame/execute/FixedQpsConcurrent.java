@@ -105,8 +105,21 @@ public class FixedQpsConcurrent extends SourceCode {
         this.desc = desc + Time.getNow();
     }
 
+    /**
+     * 初始化连接池
+     */
     private FixedQpsConcurrent() {
         executorService = ThreadPoolUtil.createPool(20, 200, 3);
+    }
+
+    /**
+     * 重置连接池,用以改变并发能力
+     *
+     * @param core
+     * @param max
+     */
+    public void initPool(int core, int max) {
+        executorService = ThreadPoolUtil.createPool(core, max, 3);
     }
 
     /**
@@ -119,7 +132,7 @@ public class FixedQpsConcurrent extends SourceCode {
         boolean isTimesMode = fixedQpsThread.isTimesMode;
         int limit = fixedQpsThread.limit;
         int qps = fixedQpsThread.qps;
-        long interval = 1_000_000_000 / qps;
+        long interval = 1_000_000_000 / qps;//此处单位1s=1000ms,1ms=1000000ns
         startTime = Time.getTimeStamp();
         AidThread aidThread = new AidThread();
         new Thread(aidThread).start();
@@ -178,7 +191,7 @@ public class FixedQpsConcurrent extends SourceCode {
      * @return
      */
     public PerformanceResultBean countQPS(int name, String desc) {
-        return countQPS(name, desc, Time.getDate(), Time.getDate(),0,0);
+        return countQPS(name, desc, Time.getDate(), Time.getDate(), 0, 0);
     }
 
     /**
@@ -188,7 +201,7 @@ public class FixedQpsConcurrent extends SourceCode {
      * @return
      */
     public PerformanceResultBean countQPS(int name) {
-        return countQPS(name, EMPTY, Time.getDate(), Time.getDate(),0,0);
+        return countQPS(name, EMPTY, Time.getDate(), Time.getDate(), 0, 0);
     }
 
 
