@@ -31,9 +31,9 @@ public class FixedQpsConcurrent extends SourceCode {
 
     public static boolean key = false;
 
-    public static AtomicInteger executeTimes = new AtomicInteger();
+    public static AtomicInteger executeTimes = new AtomicInteger(0);
 
-    public static AtomicInteger errorTimes = new AtomicInteger();
+    public static AtomicInteger errorTimes = new AtomicInteger(0);
 
     public static Vector<String> marks = new Vector<>();
 
@@ -120,9 +120,9 @@ public class FixedQpsConcurrent extends SourceCode {
         int limit = fixedQpsThread.limit;
         int qps = fixedQpsThread.qps;
         long interval = 1_000_000_000 / qps;
+        startTime = Time.getTimeStamp();
         AidThread aidThread = new AidThread();
         new Thread(aidThread).start();
-        startTime = Time.getTimeStamp();
         while (true) {
             executorService.execute(threads.get(limit-- % queueLength).clone());
             if (key ? true : isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > fixedQpsThread.limit) break;
@@ -209,12 +209,14 @@ public class FixedQpsConcurrent extends SourceCode {
         public void run() {
             logger.info("补偿线程开始!");
             while (key) {
-                long expect = (Time.getTimeStamp() - startTime) / 1000 * threads.get(0).qps;
-                logger.info("期望执行数:{},实际执行数:{},设置QPS:{}", expect, executeTimes.get(), threads.get(0).qps);
-                if (expect > executeTimes.get() + threads.get(0).qps) {
-                    range((int) expect - executeTimes.get()).forEach(x -> {
+                int actual = executeTimes.get();
+                int qps = threads.get(0).qps;
+                long expect = (Time.getTimeStamp() - FixedQpsConcurrent.this.startTime) / 1000 * qps;
+                if (expect > actual + qps) {
+                    logger.info("期望执行数:{},实际执行数:{},设置QPS:{}", expect, actual, qps);
+                    range((int) expect - actual).forEach(x -> {
                         sleep(100);
-                        executorService.execute(threads.get(i++ % queueLength).clone());
+                        executorService.execute(threads.get(this.i++ % queueLength).clone());
                     });
                 }
                 sleep(HttpClientConstant.LOOP_INTERVAL);

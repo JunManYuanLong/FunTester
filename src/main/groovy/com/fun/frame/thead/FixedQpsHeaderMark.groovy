@@ -21,7 +21,7 @@ class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, S
 
         //todo:完成两种类
         if (threadBase instanceof RequestTimesFixedQps) {
-            RequestThreadTime req = (RequestThreadTime) threadBase;
+            RequestTimesFixedQps req = (RequestTimesFixedQps) threadBase;
             return mark(req.request);
         } else if (threadBase instanceof RequestThreadTimes) {
             RequestThreadTimes req = (RequestThreadTimes) threadBase;
@@ -47,8 +47,8 @@ class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, S
     }
 
     @Override
-    public HeaderMark clone() {
-        return new HeaderMark(headerName);
+    public FixedQpsHeaderMark clone() {
+        return new FixedQpsHeaderMark(headerName);
     }
 
     public FixedQpsHeaderMark(String headerName) {
