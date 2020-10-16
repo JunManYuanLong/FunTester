@@ -4,6 +4,7 @@ import com.fun.frame.SourceCode;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,11 +57,12 @@ public class StatisticsUtil extends SourceCode {
      * @return
      */
     public static String statistics(List<Integer> data, String title, int threadNum) {
-        int size = data.size();
-        if (size < BUCKET_SIZE * BUCKET_SIZE) return EMPTY;
-        int[] ints = range(1, BUCKET_SIZE + 1).map(x -> data.get(size * x / BUCKET_SIZE - size / BUCKET_SIZE / 2)).toArray();
-        int largest = ints[BUCKET_SIZE - 1];
-        String[][] map = Arrays.asList(ArrayUtils.toObject(ints)).stream().map(x -> getPercent(x, largest, BUCKET_SIZE)).collect(toList()).toArray(new String[BUCKET_SIZE][BUCKET_SIZE]);
+        int size = data.size();//获取总数据量大小
+        Collections.sort(data);
+        if (size < BUCKET_SIZE * BUCKET_SIZE) return EMPTY;//过滤少量数据
+        int[] ints = range(1, BUCKET_SIZE + 1).map(x -> data.get(size * x / BUCKET_SIZE - size / BUCKET_SIZE / 2)).toArray();//获取取样点数据数组
+        int largest = ints[BUCKET_SIZE - 1];//获取最大值
+        String[][] map = Arrays.asList(ArrayUtils.toObject(ints)).stream().map(x -> getPercent(x, largest, BUCKET_SIZE)).collect(toList()).toArray(new String[BUCKET_SIZE][BUCKET_SIZE]);//转换成string二维数组
         String[][] result = new String[BUCKET_SIZE][BUCKET_SIZE];
         /*将二维数组反转成竖排*/
         for (int i = 0; i < BUCKET_SIZE; i++) {
@@ -69,9 +71,7 @@ public class StatisticsUtil extends SourceCode {
             }
         }
         StringBuffer table = new StringBuffer(LINE + getManyString(TAB, 4) + ((title == null || title.length() == 0) ? DEFAULT_STRING : title.replaceAll("\\d{14}$", EMPTY)) + threadNum + "队列" + LINE + LINE + TAB + ">>响应时间分布图,横轴排序分成桶的序号,纵轴每个桶的中位数<<" + LINE + TAB + TAB + "--<中位数数据最小值为:" + ints[0] + " ms,最大值:" + ints[BUCKET_SIZE - 1] + " ms>--" + LINE);
-        for (int i = 0; i < BUCKET_SIZE; i++) {
-            table.append(Arrays.asList(result[i]).stream().collect(Collectors.joining()) + LINE);
-        }
+        range(BUCKET_SIZE).forEach(x -> table.append(Arrays.asList(result[x]).stream().collect(Collectors.joining()) + LINE));
         return table.toString();
     }
 

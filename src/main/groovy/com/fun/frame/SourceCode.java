@@ -351,7 +351,7 @@ public class SourceCode extends Output implements Cloneable {
     }
 
     /**
-     * 获取一个intsteam，默认从0开始
+     * 获取一个intsteam，默认从0开始,num为止,不包含num
      *
      * @param num
      * @return

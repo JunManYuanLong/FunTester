@@ -176,7 +176,6 @@ public class FixedQpsConcurrent extends SourceCode {
         int size = strings.size();
         List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
         int sum = data.stream().mapToInt(x -> x).sum();
-        Collections.sort(data);
         String statistics = StatisticsUtil.statistics(data, desc, name);
         double qps = executeNum * 1.0 / (Time.getTimestamp(end) - Time.getTimestamp(start)) * 1000;
         return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(executeNum, errorNum), 0, executeNum, statistics);

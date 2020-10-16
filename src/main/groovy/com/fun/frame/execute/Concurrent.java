@@ -12,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.CountDownLatch;
@@ -194,7 +193,6 @@ public class Concurrent extends SourceCode {
         int size = strings.size();
         List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
         int sum = data.stream().mapToInt(x -> x).sum();
-        Collections.sort(data);
         String statistics = StatisticsUtil.statistics(data, desc, this.threadNum);
         double qps = 1000.0 * size * name / sum;
         return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(executeTotal, errorTotal), getPercent(threadNum, failTotal), executeTotal, statistics);
