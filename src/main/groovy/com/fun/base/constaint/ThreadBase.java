@@ -48,7 +48,8 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
     public MarkThread mark;
 
     /**
-     * 用于设置访问资源,用于闭包中无法访问包外实例对象的情况
+     * 用于设置访问资源,用于闭包中无法访问包外实例对象的情况,这里还有一个用处就是在标记线程对象的时候,用到了这个t(参数标记模式中)
+     * @since 2020年10月19日,统一用来设置HTTPrequestbase对象.同样可以用于执行SQL和redis查询语句或者对象,暂未使用dubbo尝试
      */
     public T t;
 

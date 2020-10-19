@@ -8,6 +8,9 @@ import org.apache.http.client.methods.HttpRequestBase
 
 import java.util.concurrent.atomic.AtomicInteger
 
+/**
+ * 针对固定QPS模式的多线程对象的标记类
+ */
 class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, Serializable {
 
     private static final long serialVersionUID = -158942567078477L;
@@ -18,14 +21,12 @@ class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, S
 
     @Override
     public String mark(ThreadBase threadBase) {
-
-        //todo:完成两种类
         if (threadBase instanceof RequestTimesFixedQps) {
-            RequestTimesFixedQps req = (RequestTimesFixedQps) threadBase;
-            return mark(req.request);
-        } else if (threadBase instanceof RequestThreadTimes) {
-            RequestThreadTimes req = (RequestThreadTimes) threadBase;
-            return mark(req.request);
+            RequestTimesFixedQps<HttpRequestBase> req = (RequestTimesFixedQps<HttpRequestBase>) threadBase;
+            return mark(req.t);
+        } else if (threadBase instanceof RequestTimeFixedQps) {
+            RequestThreadTimes<HttpRequestBase> req = (RequestTimeFixedQps<HttpRequestBase>) threadBase;
+            return mark(req.t);
         } else {
             ParamException.fail(threadBase.getClass().toString());
         }

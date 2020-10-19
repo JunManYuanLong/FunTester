@@ -19,7 +19,7 @@ import java.util.List;
  *
  * @param <T> 闭包参数传递使用,Groovy脚本会有一些兼容问题,部分对象需要tostring获取参数值
  */
-public abstract class ThreadLimitTimeCount<T> extends ThreadBase {
+public abstract class ThreadLimitTimeCount<T> extends ThreadBase<T> {
 
     private static final Logger logger = LoggerFactory.getLogger(ThreadLimitTimeCount.class);
 

@@ -7,12 +7,15 @@ import com.fun.utils.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class FixedQpsThread<T> extends ThreadBase {
+public abstract class FixedQpsThread<T> extends ThreadBase<T> {
 
     private static Logger logger = LoggerFactory.getLogger(FixedQpsThread.class);
 
     public int qps;
 
+    /**
+     * 根据属性isTimesMode判断,次数或者时间(单位ms)
+     */
     public int limit;
 
     public boolean isTimesMode;

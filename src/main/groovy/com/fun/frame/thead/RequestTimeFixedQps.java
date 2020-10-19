@@ -9,18 +9,18 @@ import org.apache.http.client.methods.HttpRequestBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RequestTimesFixedQps<T> extends FixedQpsThread<HttpRequestBase> {
+public class RequestTimeFixedQps<T> extends FixedQpsThread<HttpRequestBase> {
 
-    private static Logger logger = LoggerFactory.getLogger(RequestTimesFixedQps.class);
+    private static Logger logger = LoggerFactory.getLogger(RequestTimeFixedQps.class);
 
-    private RequestTimesFixedQps() {
+    private RequestTimeFixedQps() {
 
     }
 
-    public RequestTimesFixedQps(int qps, int times, MarkRequest markRequest, HttpRequestBase request) {
+    public RequestTimeFixedQps(int qps, int time, MarkRequest markRequest, HttpRequestBase request) {
         this.qps = qps;
-        this.limit = times;
-        this.isTimesMode = true;
+        this.limit = time;
+        this.isTimesMode = false;
         this.mark = markRequest;
         this.t = request;
     }
@@ -37,8 +37,8 @@ public class RequestTimesFixedQps<T> extends FixedQpsThread<HttpRequestBase> {
     }
 
     @Override
-    public RequestTimesFixedQps clone() {
-        RequestTimesFixedQps newone = new RequestTimesFixedQps();
+    public RequestTimeFixedQps clone() {
+        RequestTimeFixedQps newone = new RequestTimeFixedQps();
         newone.t = FunRequest.cloneRequest(this.t);
         newone.mark = this.mark == null ? null : this.mark.clone();
         newone.qps = this.qps;

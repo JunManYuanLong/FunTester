@@ -12,14 +12,9 @@ import org.slf4j.LoggerFactory;
 /**
  * http请求多线程类
  */
-public class RequestThreadTime extends ThreadLimitTimeCount {
+public class RequestThreadTime<T> extends ThreadLimitTimeCount<HttpRequestBase> {
 
-    static Logger logger = LoggerFactory.getLogger(RequestThreadTime.class);
-
-    /**
-     * 请求
-     */
-    public HttpRequestBase request;
+    private static Logger logger = LoggerFactory.getLogger(RequestThreadTime.class);
 
     /**
      * 单请求多线程多次任务构造方法
@@ -29,7 +24,7 @@ public class RequestThreadTime extends ThreadLimitTimeCount {
      */
     public RequestThreadTime(HttpRequestBase request, int time) {
         super(null,time,null);
-        this.request = request;
+        this.t = request;
     }
 
     /**
@@ -39,7 +34,7 @@ public class RequestThreadTime extends ThreadLimitTimeCount {
      */
     public RequestThreadTime(HttpRequestBase request, int time, MarkThread mark) {
         super(null,time, mark);
-        this.request = request;
+        this.t = request;
     }
 
     protected RequestThreadTime() {
@@ -54,7 +49,7 @@ public class RequestThreadTime extends ThreadLimitTimeCount {
 
     @Override
     protected void doing() throws Exception {
-        FanLibrary.executeSimlple(request);
+        FanLibrary.executeSimlple(t);
     }
 
 
@@ -62,7 +57,7 @@ public class RequestThreadTime extends ThreadLimitTimeCount {
     public RequestThreadTime clone() {
         RequestThreadTime threadTime = new RequestThreadTime();
         threadTime.time = this.time;
-        threadTime.request = FunRequest.cloneRequest(request);
+        threadTime.t = FunRequest.cloneRequest(t);
         threadTime.mark = mark == null ? null : mark.clone();
         return threadTime;
     }
