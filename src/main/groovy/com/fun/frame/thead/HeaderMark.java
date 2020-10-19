@@ -1,11 +1,9 @@
 package com.fun.frame.thead;
 
-import com.fun.base.constaint.FixedQpsThread;
 import com.fun.base.constaint.ThreadBase;
 import com.fun.base.exception.ParamException;
 import com.fun.base.interfaces.MarkRequest;
 import com.fun.frame.SourceCode;
-import com.fun.utils.Time;
 import org.apache.http.client.methods.HttpRequestBase;
 
 import java.io.Serializable;
@@ -31,8 +29,6 @@ public class HeaderMark extends SourceCode implements MarkRequest, Cloneable, Se
         } else if (threadBase instanceof RequestThreadTimes) {
             RequestThreadTimes<HttpRequestBase> req = (RequestThreadTimes<HttpRequestBase>) threadBase;
             return mark(req.t);
-        } else if (threadBase instanceof FixedQpsThread) {
-            return Time.getTimeStamp() + EMPTY + getRandomInt(100);
         } else {
             ParamException.fail(threadBase.getClass().toString());
         }
