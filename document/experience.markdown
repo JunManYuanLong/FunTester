@@ -105,6 +105,9 @@
 - [自动化测试框架](https://mp.weixin.qq.com/s/vu6p_rQd3vFKDYu8JDJ0Rg)
 - [敏捷中的端到端测试](https://mp.weixin.qq.com/s/cdi4xnEzDLpl9ncQguLuAQ)
 - [自动化测试灵魂三问：是什么、为什么和做什么](https://mp.weixin.qq.com/s/geOejJx79-jTwafG9aXwqA)
+- [物联网测试](https://mp.weixin.qq.com/s/B_JI4DANxoOq4HurxZC65Q)
+- [功能测试知多少](https://mp.weixin.qq.com/s/vTxZLwlvlfIBv892Ji-oLQ)
+- [如何选择自动化测试工具](https://mp.weixin.qq.com/s/yJo-d9bAZDs1Lcp8j7ISRg)
 
 ## 大咖风采
 
@@ -136,6 +139,10 @@
 - [测试仓库推介（下）](https://mp.weixin.qq.com/s/njnpmRGoEgdxjqkR7c3a6A)
 - [Fiddler Everywhere工具答疑](https://mp.weixin.qq.com/s/2peWMJ-rgDlVjs3STNeS1Q)
 - [Mac上测试Internet Explorer的N种方法](https://mp.weixin.qq.com/s/HeLBPTp2dfs5IlyLMCi90Q)
+- [IntelliJ中基于文本的HTTP客户端](https://mp.weixin.qq.com/s/-9qi_lLVVfxQKEFmcRYFtA)
+- [开源礼节](https://mp.weixin.qq.com/s/EyNules2f9NYdnYAX_NQSw)
+- [弱网测试：最低流畅网速是多少？](https://mp.weixin.qq.com/s/rCji6fZs9yYyk7GyIWvSiA)
+- [接口测试直播回顾](https://mp.weixin.qq.com/s/B8ih9sswaE-OWuVib6C16g)
 
 
 ![](http://pic.automancloud.com/0_Fotor.jpg)

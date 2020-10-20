@@ -50,6 +50,8 @@
 - [Selenium自动化最佳实践技巧（中）](https://mp.weixin.qq.com/s/9D0lUZ-XKHiukNeRqp6zOQ)
 - [Selenium自动化最佳实践技巧（下）](https://mp.weixin.qq.com/s/opVik2ZxmTBurIBoa4yipQ)
 - [Selenium等待：sleep、隐式、显式和Fluent](https://mp.weixin.qq.com/s/73BobMq9M12rYMvzxNhRtA)
+- [Selenium自动化的JUnit参数化实践](https://mp.weixin.qq.com/s/WFu5rJaowxhAIcbEoEatkw)
+- [Selenium异常集锦](https://mp.weixin.qq.com/s/DDkaliSVthX-c_KKG-WwNA)
 
 ## UiAutomator
 
@@ -79,7 +81,3 @@
 - [统计APP启动时间和进入首页时间的多线程类](https://mp.weixin.qq.com/s/IMs6vd3H-HF65Vb-zPwDhw)
 - [如何获取手机性能测试数据FPS](https://mp.weixin.qq.com/s/qZy5AQkNpUXRJk46BHVzaQ)
 - [一个循环启动APP并保持WiFi常开的多线程类](https://mp.weixin.qq.com/s/OgdT4IffDyAdkKmO2SS9iQ)
-
-![](http://pic.automancloud.com/0_Fotor.jpg)
-
-![](http://pic.automancloud.com/42387498274.jpeg)

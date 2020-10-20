@@ -1,6 +1,6 @@
 # 总目录
 
-> 公众号：FunTester，原创分享爱好者，腾讯云、掘金社区、开源中国推荐，知乎七级原创作者，主要方向接口功能、自动化、性能测试，兼顾白盒测试，框架开发，业务开发。工作语言Java和Groovy，欢迎关注。
+> 公众号：FunTester，原创分享爱好者，腾讯云、掘金社区、开源中国推荐，知乎八级原创作者，主要方向接口功能、自动化、性能测试，兼顾白盒测试，框架开发，业务开发。工作语言Java和Groovy，欢迎关注。
 
 ## [GitHub地址](https://github.com/JunManYuanLong/FunTester)
 
@@ -120,6 +120,7 @@
 - [CyclicBarrier类在性能测试中应用](https://mp.weixin.qq.com/s/kvEHX3t_2xpMke9vwOdWrg)
 - [Phaser类在性能测试中应用](https://mp.weixin.qq.com/s/plxNnQq7yNQvHYEGpyY4uA)
 - [如何同时压测创建和删除接口](https://mp.weixin.qq.com/s/NCeoEF3DkEtpdaaQ365I0Q)
+- [固定QPS压测模式探索](https://mp.weixin.qq.com/s/S2h-zEUoik_CWs60RL6g7Q)
 
 # 语言合集
 
@@ -472,6 +473,9 @@
 - [敏捷中的端到端测试](https://mp.weixin.qq.com/s/cdi4xnEzDLpl9ncQguLuAQ)
 - [自动化测试灵魂三问：是什么、为什么和做什么](https://mp.weixin.qq.com/s/geOejJx79-jTwafG9aXwqA)
 - [基于代码的自动化和无代码自动化](https://mp.weixin.qq.com/s/8Dopihqs4XzpU-sN-I94kw)
+- [物联网测试](https://mp.weixin.qq.com/s/B_JI4DANxoOq4HurxZC65Q)
+- [功能测试知多少](https://mp.weixin.qq.com/s/vTxZLwlvlfIBv892Ji-oLQ)
+- [如何选择自动化测试工具](https://mp.weixin.qq.com/s/yJo-d9bAZDs1Lcp8j7ISRg)
 
 ## 大咖风采
 
@@ -551,6 +555,8 @@
 - [Selenium自动化最佳实践技巧（中）](https://mp.weixin.qq.com/s/9D0lUZ-XKHiukNeRqp6zOQ)
 - [Selenium自动化最佳实践技巧（下）](https://mp.weixin.qq.com/s/opVik2ZxmTBurIBoa4yipQ)
 - [Selenium等待：sleep、隐式、显式和Fluent](https://mp.weixin.qq.com/s/73BobMq9M12rYMvzxNhRtA)
+- [Selenium自动化的JUnit参数化实践](https://mp.weixin.qq.com/s/WFu5rJaowxhAIcbEoEatkw)
+- [Selenium异常集锦](https://mp.weixin.qq.com/s/DDkaliSVthX-c_KKG-WwNA)
 
 ## APP性能
 
@@ -585,4 +591,5 @@
 - [Mac上测试Internet Explorer的N种方法](https://mp.weixin.qq.com/s/HeLBPTp2dfs5IlyLMCi90Q)
 - [IntelliJ中基于文本的HTTP客户端](https://mp.weixin.qq.com/s/-9qi_lLVVfxQKEFmcRYFtA)
 - [开源礼节](https://mp.weixin.qq.com/s/EyNules2f9NYdnYAX_NQSw)
-
+- [弱网测试：最低流畅网速是多少？](https://mp.weixin.qq.com/s/rCji6fZs9yYyk7GyIWvSiA)
+- [接口测试直播回顾](https://mp.weixin.qq.com/s/B8ih9sswaE-OWuVib6C16g)

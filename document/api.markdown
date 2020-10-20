@@ -1,6 +1,6 @@
 # 接口测试
 
-> 公众号：FunTester，原创分享爱好者，腾讯云、掘金社区、开源中国推荐，知乎七级原创作者，主要方向接口功能、自动化、性能测试，兼顾白盒测试，框架开发，业务开发。工作语言Java和Groovy，欢迎关注。
+> 公众号：FunTester，原创分享爱好者，腾讯云、掘金社区、开源中国推荐，知乎八级原创作者，主要方向接口功能、自动化、性能测试，兼顾白盒测试，框架开发，业务开发。工作语言Java和Groovy，欢迎关注。
 
 ## 接口测试
 
@@ -73,6 +73,7 @@
 - [CyclicBarrier类在性能测试中应用](https://mp.weixin.qq.com/s/kvEHX3t_2xpMke9vwOdWrg)
 - [Phaser类在性能测试中应用](https://mp.weixin.qq.com/s/plxNnQq7yNQvHYEGpyY4uA)
 - [如何同时压测创建和删除接口](https://mp.weixin.qq.com/s/NCeoEF3DkEtpdaaQ365I0Q)
+- [固定QPS压测模式探索](https://mp.weixin.qq.com/s/S2h-zEUoik_CWs60RL6g7Q)
 
 ## 测试方案
 
@@ -106,17 +107,3 @@
 - [定时和定量压测模式实现--视频讲解](https://mp.weixin.qq.com/s/l_4wCjVM1fAVRHgEPrcrwg)
 - [基于HTTP请求的多线程实现类--视频讲解](https://mp.weixin.qq.com/s/8SG1xtzq8ArY84Bxm_SNow)
 
-
-![](http://pic.automancloud.com/0_Fotor.jpg)
-
-![](http://pic.automancloud.com/42387498274.jpeg)
-
-![](http://pic.automancloud.com/ES5YqymXkAArmT-.jpg)
-
-![](http://pic.automancloud.com/web-3967926_1920.png)
-
-![](http://pic.automancloud.com/WechatIMG49.jpeg)
-
-![](http://pic.automancloud.com/Data-Science-as-a-Service-Market-880x660.png)
-
-![](http://pic.automancloud.com/dkjflsjf.jpg)
