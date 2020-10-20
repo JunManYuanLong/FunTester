@@ -8,23 +8,21 @@ import org.slf4j.LoggerFactory;
 /**
  * 数据库多线程类,update方法类，区别于querythread
  */
-public class UpdateSqlThread extends ThreadLimitTimesCount {
+public class UpdateSqlThread extends ThreadLimitTimesCount<String> {
 
     private static Logger logger = LoggerFactory.getLogger(UpdateSqlThread.class);
-
-    String sql;
 
     IMySqlBasic base;
 
     public UpdateSqlThread(IMySqlBasic base, String sql, int times) {
         this.times = times;
-        this.sql = sql;
+        this.t = sql;
         this.base = base;
     }
 
     @Override
     protected void doing() {
-        base.executeUpdateSql(sql);
+        base.executeUpdateSql(t);
     }
 
     @Override

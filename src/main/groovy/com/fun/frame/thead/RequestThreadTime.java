@@ -23,8 +23,7 @@ public class RequestThreadTime<T> extends ThreadLimitTimeCount<HttpRequestBase> 
      * @param time    每个线程运行的次数
      */
     public RequestThreadTime(HttpRequestBase request, int time) {
-        super(null,time,null);
-        this.t = request;
+        super(request, time, null);
     }
 
     /**
@@ -33,8 +32,7 @@ public class RequestThreadTime<T> extends ThreadLimitTimeCount<HttpRequestBase> 
      * @param mark    标记类对象
      */
     public RequestThreadTime(HttpRequestBase request, int time, MarkThread mark) {
-        super(null,time, mark);
-        this.t = request;
+        super(request, time, mark);
     }
 
     protected RequestThreadTime() {

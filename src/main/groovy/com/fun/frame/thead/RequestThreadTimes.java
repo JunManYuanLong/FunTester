@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 /**
  * http请求多线程类
  */
-public class RequestThreadTimes<T> extends ThreadLimitTimesCount<HttpRequestBase> {
+public class RequestThreadTimes<T extends HttpRequestBase> extends ThreadLimitTimesCount<HttpRequestBase> {
 
     static Logger logger = LoggerFactory.getLogger(RequestThreadTimes.class);
 
@@ -23,8 +23,7 @@ public class RequestThreadTimes<T> extends ThreadLimitTimesCount<HttpRequestBase
      * @param times   每个线程运行的次数
      */
     public RequestThreadTimes(HttpRequestBase request, int times) {
-        super(null, times, null);
-        this.t = request;
+        super(request, times, null);
     }
 
     /**
@@ -35,8 +34,7 @@ public class RequestThreadTimes<T> extends ThreadLimitTimesCount<HttpRequestBase
      * @param mark
      */
     public RequestThreadTimes(HttpRequestBase request, int times, MarkThread mark) {
-        super(null, times, mark);
-        this.t = request;
+        super(request, times, mark);
     }
 
     protected RequestThreadTimes() {

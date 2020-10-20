@@ -18,11 +18,7 @@ public class RequestTimesFixedQps<T> extends FixedQpsThread<HttpRequestBase> {
     }
 
     public RequestTimesFixedQps(int qps, int times, MarkRequest markRequest, HttpRequestBase request) {
-        this.qps = qps;
-        this.limit = times;
-        this.isTimesMode = true;
-        this.mark = markRequest;
-        this.t = request;
+        super(request, times, qps, markRequest, true);
     }
 
     @Override

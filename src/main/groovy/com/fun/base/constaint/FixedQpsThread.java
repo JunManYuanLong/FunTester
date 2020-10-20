@@ -20,12 +20,12 @@ public abstract class FixedQpsThread<T> extends ThreadBase<T> {
 
     public boolean isTimesMode;
 
-    public FixedQpsThread(T t, int limit, int qps, MarkThread markThread) {
+    public FixedQpsThread(T t, int limit, int qps, MarkThread markThread,boolean isTimesMode) {
         this.limit = limit;
         this.qps = qps;
         this.mark = markThread;
         this.t = t;
-        isTimesMode = limit > 1000 ? true : false;
+        this.isTimesMode = isTimesMode;
     }
 
 

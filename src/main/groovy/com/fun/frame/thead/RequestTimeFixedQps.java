@@ -9,7 +9,7 @@ import org.apache.http.client.methods.HttpRequestBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RequestTimeFixedQps<T> extends FixedQpsThread<HttpRequestBase> {
+public class RequestTimeFixedQps<T extends HttpRequestBase> extends FixedQpsThread<HttpRequestBase> {
 
     private static Logger logger = LoggerFactory.getLogger(RequestTimeFixedQps.class);
 
@@ -18,11 +18,7 @@ public class RequestTimeFixedQps<T> extends FixedQpsThread<HttpRequestBase> {
     }
 
     public RequestTimeFixedQps(int qps, int time, MarkRequest markRequest, HttpRequestBase request) {
-        this.qps = qps;
-        this.limit = time;
-        this.isTimesMode = false;
-        this.mark = markRequest;
-        this.t = request;
+        super(request, time, qps, markRequest, false);
     }
 
     @Override
