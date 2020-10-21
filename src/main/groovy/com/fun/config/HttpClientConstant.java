@@ -140,6 +140,21 @@ public class HttpClientConstant {
     public static final int LOOP_INTERVAL = 3;
 
     /**
+     * 线程池,线程最大空闲时间
+     */
+    public static final int THREAD_ALIVE_TIME = 3;
+
+    /**
+     * 线程池核心线程数
+     */
+    public static final int THREADPOOL_CORE = 20;
+
+    /**
+     * 线程池最大线程数
+     */
+    public static final int THREADPOOL_MAX = 200;
+
+    /**
      * 添加黑名单
      *
      * @param host

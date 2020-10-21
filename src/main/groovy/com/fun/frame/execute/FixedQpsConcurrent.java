@@ -13,7 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.ExecutorService;
@@ -38,6 +37,11 @@ public class FixedQpsConcurrent extends SourceCode {
     public static Vector<String> marks = new Vector<>();
 
     /**
+     * 基础任务对象
+     */
+    public FixedQpsThread baseThread;
+
+    /**
      * 用于记录所有请求时间
      */
     public static Vector<Long> allTimes = new Vector<>();
@@ -52,6 +56,9 @@ public class FixedQpsConcurrent extends SourceCode {
      */
     public long endTime;
 
+    /**
+     * 任务队列的长度,因为会循环去那队列的任务
+     */
     public int queueLength;
 
     /**
@@ -91,6 +98,7 @@ public class FixedQpsConcurrent extends SourceCode {
         this();
         this.queueLength = 1;
         threads.add(thread);
+        baseThread = thread;
         this.desc = desc + Time.getNow();
     }
 
@@ -101,6 +109,7 @@ public class FixedQpsConcurrent extends SourceCode {
     public FixedQpsConcurrent(List<FixedQpsThread> threads, String desc) {
         this();
         this.threads = threads;
+        baseThread = threads.get(0);
         this.queueLength = threads.size();
         this.desc = desc + Time.getNow();
     }
@@ -109,7 +118,7 @@ public class FixedQpsConcurrent extends SourceCode {
      * 初始化连接池
      */
     private FixedQpsConcurrent() {
-        executorService = ThreadPoolUtil.createPool(20, 200, 3);
+        executorService = ThreadPoolUtil.createPool(HttpClientConstant.THREADPOOL_CORE, HttpClientConstant.THREADPOOL_MAX, HttpClientConstant.THREAD_ALIVE_TIME);
     }
 
     /**
@@ -128,17 +137,16 @@ public class FixedQpsConcurrent extends SourceCode {
      */
     public PerformanceResultBean start() {
         key = false;
-        FixedQpsThread fixedQpsThread = threads.get(0);
-        boolean isTimesMode = fixedQpsThread.isTimesMode;
-        int limit = fixedQpsThread.limit;
-        int qps = fixedQpsThread.qps;
+        boolean isTimesMode = baseThread.isTimesMode;
+        int limit = baseThread.limit;
+        int qps = baseThread.qps;
         long interval = 1_000_000_000 / qps;//此处单位1s=1000ms,1ms=1000000ns
         startTime = Time.getTimeStamp();
         AidThread aidThread = new AidThread();
         new Thread(aidThread).start();
         while (true) {
             executorService.execute(threads.get(limit-- % queueLength).clone());
-            if (key ? true : isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > fixedQpsThread.limit) break;
+            if (key ? true : isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > baseThread.limit) break;
             sleep(interval);
         }
         endTime = Time.getTimeStamp();
@@ -150,7 +158,7 @@ public class FixedQpsConcurrent extends SourceCode {
         } catch (InterruptedException e) {
             logger.error("线程池等待任务结束失败!", e);
         }
-        logger.info("总计执行 {} ，共用时：{} s,执行总数:{},错误数:{}!", fixedQpsThread.isTimesMode ? fixedQpsThread.limit + "次任务" : "秒", Time.getTimeDiffer(startTime, endTime), executeTimes, errorTimes);
+        logger.info("总计执行 {} ，共用时：{} s,执行总数:{},错误数:{}!", baseThread.isTimesMode ? baseThread.limit + "次任务" : "秒", Time.getTimeDiffer(startTime, endTime), executeTimes, errorTimes);
         return over();
     }
 
@@ -222,7 +230,7 @@ public class FixedQpsConcurrent extends SourceCode {
             logger.info("补偿线程开始!");
             while (key) {
                 int actual = executeTimes.get();
-                int qps = threads.get(0).qps;
+                int qps = baseThread.qps;
                 long expect = (Time.getTimeStamp() - FixedQpsConcurrent.this.startTime) / 1000 * qps;
                 if (expect > actual + qps) {
                     logger.info("期望执行数:{},实际执行数:{},设置QPS:{}", expect, actual, qps);
