@@ -25,32 +25,8 @@ public class Output extends Constant {
 
     static final String DOWN = SourceCode.getManyString("~☢~", 10);
 
-    /**
-     * 输出带有信息的异常
-     *
-     * @param object
-     * @param e
-     */
-    public static void output(Object object, Exception e) {
-        output(object);
-        output(e);
-    }
-
     public static void output(AbstractBean bean) {
         output(bean.toJson());
-    }
-
-    /**
-     * 输出异常
-     *
-     * @param e
-     */
-    public static void output(Exception e) {
-        logger.error("error！！！", e);
-//        StackTraceElement[] stackTrace = e.getStackTrace();
-//        for (int i = 0; i < stackTrace.length; i++) {
-//            logger.warn(stackTrace[i].toString());
-//        }
     }
 
     /**
@@ -80,7 +56,7 @@ public class Output extends Constant {
                 output(object[0].toString());
             }
         } else if (object.length == 2) {
-            output(LINE + object[0]);
+            output(object[0]);
             if (object[1] instanceof List) {
                 output((List) object[1]);
             } else {
@@ -127,13 +103,19 @@ public class Output extends Constant {
      *
      * @param arrays
      */
-    public static void output(Number[] nums) {
-        if (ArrayUtils.isEmpty(nums))
-            return;
-        int length = nums.length;
-        for (int i = 0; i < length; i++) {
-            output(nums[i] + "");
-        }
+    public static <T extends Number> void output(T[] nums) {
+        if (ArrayUtils.isEmpty(nums)) return;
+        Arrays.asList(nums).forEach(x -> output(x));
+    }
+
+    /**
+     * 泛型做输出数字对象
+     *
+     * @param x
+     * @param <T>
+     */
+    public static <T extends Number> void output(T x) {
+        output(x.toString());
     }
 
     public static void output(Object o) {
@@ -207,7 +189,9 @@ public class Output extends Constant {
         return jsonObject;
     }
 
-    /**格式化输出内容
+    /**
+     * 格式化输出内容
+     *
      * @param format
      * @param o
      */
