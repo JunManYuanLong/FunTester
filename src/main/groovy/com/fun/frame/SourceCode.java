@@ -257,14 +257,14 @@ public class SourceCode extends Output implements Cloneable {
     }
 
     /**
-     * 是否是数字，000不算
+     * 是否是数字，000不算,0.0也算,-0和-0.0不算
      *
      * @param text
      * @return
      */
     public static boolean isNumber(String text) {
         logger.debug("需要判断的文本：{}", text);
-        if (StringUtils.isEmpty(text)) return false;
+        if (StringUtils.isEmpty(text) || text.equals("-0")) return false;
         if (text.equals("0")) return true;
         return Regex.isMatch(text, "-{0,1}(([1-9][0-9]*)|0)(.\\d+){0,1}");
     }
