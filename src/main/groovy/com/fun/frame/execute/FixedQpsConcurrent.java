@@ -229,6 +229,7 @@ public class FixedQpsConcurrent extends SourceCode {
         public void run() {
             logger.info("补偿线程开始!");
             while (key) {
+                sleep(HttpClientConstant.LOOP_INTERVAL);
                 int actual = executeTimes.get();
                 int qps = baseThread.qps;
                 long expect = (Time.getTimeStamp() - FixedQpsConcurrent.this.startTime) / 1000 * qps;
@@ -239,7 +240,6 @@ public class FixedQpsConcurrent extends SourceCode {
                         executorService.execute(threads.get(this.i++ % queueLength).clone());
                     });
                 }
-                sleep(HttpClientConstant.LOOP_INTERVAL);
             }
             logger.info("补偿线程结束!");
         }
