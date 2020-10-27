@@ -237,14 +237,14 @@ public class FanLibrary extends SourceCode {
      * @param request
      */
     protected static void beforeRequest(HttpRequestBase request) {
+        if (HEADER_KEY) {
+            output(LINE + "===========request header===========");
+            output(Arrays.asList(request.getAllHeaders()));
+        }
         HttpClientConstant.COMMON_HEADER.forEach(header -> {
             if (!request.containsHeader(header.getName()))
                 request.addHeader(header);
         });
-        if (HEADER_KEY) {
-            output("===========request header===========");
-            output(Arrays.asList(request.getAllHeaders()));
-        }
     }
 
     /**
@@ -254,6 +254,10 @@ public class FanLibrary extends SourceCode {
      * @return
      */
     private static JSONObject afterResponse(CloseableHttpResponse response) {
+        if (HEADER_KEY) {
+            output(LINE + "===========response header===========");
+            output(Arrays.asList(response.getAllHeaders()));
+        }
         JSONObject cookies = new JSONObject();
         List<Header> headers = Arrays.asList(response.getHeaders("Set-Cookie"));
         if (headers.size() == 0) return cookies;
@@ -261,10 +265,6 @@ public class FanLibrary extends SourceCode {
             String[] split = x.getValue().split(";")[0].split("=", 2);
             cookies.put(split[0], split[1]);
         });
-        if (HEADER_KEY) {
-            output("===========response header===========");
-            output(Arrays.asList(response.getAllHeaders()));
-        }
         return cookies;
     }
 
@@ -493,7 +493,8 @@ public class FanLibrary extends SourceCode {
      */
     public static String executeSimlple(HttpRequestBase request) throws IOException {
         try (CloseableHttpResponse response = ClientManage.httpsClient.execute(request);) {
-            if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) RequestException.fail("响应状态码错误:"+response.getStatusLine().getStatusCode());
+            if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK)
+                RequestException.fail("响应状态码错误:" + response.getStatusLine().getStatusCode());
             return getContent(response);
         }
     }
