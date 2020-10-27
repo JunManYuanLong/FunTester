@@ -241,6 +241,10 @@ public class FanLibrary extends SourceCode {
             if (!request.containsHeader(header.getName()))
                 request.addHeader(header);
         });
+        if (HEADER_KEY) {
+            output("===========request header===========");
+            output(Arrays.asList(request.getAllHeaders()));
+        }
     }
 
     /**
@@ -257,6 +261,10 @@ public class FanLibrary extends SourceCode {
             String[] split = x.getValue().split(";")[0].split("=", 2);
             cookies.put(split[0], split[1]);
         });
+        if (HEADER_KEY) {
+            output("===========response header===========");
+            output(Arrays.asList(response.getAllHeaders()));
+        }
         return cookies;
     }
 
@@ -330,12 +338,10 @@ public class FanLibrary extends SourceCode {
         beforeRequest(request);
         JSONObject res = new JSONObject();
         RequestInfo requestInfo = new RequestInfo(request);
-        if (HEADER_KEY) output("===========request header===========", Arrays.asList(request.getAllHeaders()));
         long start = Time.getTimeStamp();
         try (CloseableHttpResponse response = ClientManage.httpsClient.execute(request)) {
             long end = Time.getTimeStamp();
             long elapsed_time = end - start;
-            if (HEADER_KEY) output("===========response header===========", Arrays.asList(response.getAllHeaders()));
             int status = getStatus(response, res);
             JSONObject setCookies = afterResponse(response);
             String content = getContent(response);
