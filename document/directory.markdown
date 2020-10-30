@@ -166,6 +166,7 @@
 - [Java压缩/解压缩字符串](https://mp.weixin.qq.com/s/7vHNd5dEN93DPUqgS8od_A)
 - [Java删除空字符：Java8 & Java11](https://mp.weixin.qq.com/s/6dlgYgTFZsHuJ4Eaby5eyg)
 - [Java Stream中map和flatMap方法](https://mp.weixin.qq.com/s/0FG2o7VUAG6z8a_0je-1EQ)
+- [泛型类的正确用法](https://mp.weixin.qq.com/s/1azilraonPIZNCnw_9MB5Q)
 
 ## Groovy
 
@@ -350,6 +351,7 @@
 - [Gradle+Groovy基础篇](https://mp.weixin.qq.com/s/c2j7G-PoNtAB3oYYDUhCGw)
 - [Gradle+Groovy提高篇](https://mp.weixin.qq.com/s/yXmYj_1fynLkR0-5FV_Arw)
 - [Maven进行增量构建](https://mp.weixin.qq.com/s/ThQ7j6TS93KJZFqlNx8IQg)
+- [SonarQube8.3中的Maven项目的测试覆盖率报告](https://mp.weixin.qq.com/s/Xhp26jyE1c7Auielz48Llw)
 
 ## plotly可视化
 
@@ -476,6 +478,9 @@
 - [物联网测试](https://mp.weixin.qq.com/s/B_JI4DANxoOq4HurxZC65Q)
 - [功能测试知多少](https://mp.weixin.qq.com/s/vTxZLwlvlfIBv892Ji-oLQ)
 - [如何选择自动化测试工具](https://mp.weixin.qq.com/s/yJo-d9bAZDs1Lcp8j7ISRg)
+- [连续测试策略](https://mp.weixin.qq.com/s/0aD_0cUW83oPu3sl7sHNnQ)
+- [如何设置质量检查流程](https://mp.weixin.qq.com/s/PQeXxMZzzU15xSfY5wkVgA)
+- [编写干净的代码之变量篇](https://mp.weixin.qq.com/s/J9rGIe8a2xaLlNJq2nVmzw)
 
 ## 大咖风采
 

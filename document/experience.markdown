@@ -108,6 +108,9 @@
 - [物联网测试](https://mp.weixin.qq.com/s/B_JI4DANxoOq4HurxZC65Q)
 - [功能测试知多少](https://mp.weixin.qq.com/s/vTxZLwlvlfIBv892Ji-oLQ)
 - [如何选择自动化测试工具](https://mp.weixin.qq.com/s/yJo-d9bAZDs1Lcp8j7ISRg)
+- [连续测试策略](https://mp.weixin.qq.com/s/0aD_0cUW83oPu3sl7sHNnQ)
+- [如何设置质量检查流程](https://mp.weixin.qq.com/s/PQeXxMZzzU15xSfY5wkVgA)
+- [编写干净的代码之变量篇](https://mp.weixin.qq.com/s/J9rGIe8a2xaLlNJq2nVmzw)
 
 ## 大咖风采
 

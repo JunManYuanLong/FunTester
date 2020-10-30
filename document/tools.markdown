@@ -79,6 +79,7 @@
 - [Gradle+Groovy基础篇](https://mp.weixin.qq.com/s/c2j7G-PoNtAB3oYYDUhCGw)
 - [Gradle+Groovy提高篇](https://mp.weixin.qq.com/s/yXmYj_1fynLkR0-5FV_Arw)
 - [Maven进行增量构建](https://mp.weixin.qq.com/s/ThQ7j6TS93KJZFqlNx8IQg)
+- [SonarQube8.3中的Maven项目的测试覆盖率报告](https://mp.weixin.qq.com/s/Xhp26jyE1c7Auielz48Llw)
 
 ## plotly可视化
 
@@ -94,7 +95,3 @@
 - [利用 python+plotly 制作双波源干涉三维图像](https://mp.weixin.qq.com/s/KSeV8VvQXRIg-bnzYoa5qg)
 - [python plotly制作接口响应耗时的时间序列表（Time Series ）](https://mp.weixin.qq.com/s/U8chcVzCjGTdT3T_X5v4kw)
 - [python使用plotly批量生成图表](https://mp.weixin.qq.com/s/l18WfWz-s6qQ1JKKuh_2AQ)
-
-![](http://pic.automancloud.com/0_Fotor.jpg)
-
-![](http://pic.automancloud.com/42387498274.jpeg)
