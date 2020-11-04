@@ -596,5 +596,20 @@ public class FanLibrary extends SourceCode {
         }
     }
 
+    /**
+     * 初始化连接池和各类管理器
+     *
+     * @param timeout
+     * @param accepttime
+     * @param retrytimes
+     */
+    public synchronized static void init(int timeout, int accepttime, int retrytimes) {
+        ClientManage.init(timeout, accepttime, retrytimes, null, 0);
+    }
+
+    public synchronized static void init(int timeout, int accepttime, int retrytimes, String ip, int port) {
+        ClientManage.init(timeout, accepttime, retrytimes, ip, port);
+    }
+
 
 }

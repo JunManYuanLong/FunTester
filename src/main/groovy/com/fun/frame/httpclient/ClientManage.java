@@ -1,7 +1,7 @@
 package com.fun.frame.httpclient;
 
+import com.fun.config.Constant;
 import com.fun.config.HttpClientConstant;
-import com.fun.frame.SourceCode;
 import com.fun.utils.Regex;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntityEnclosingRequest;
@@ -49,7 +49,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 连接池管理类
  */
-public class ClientManage extends SourceCode {
+public class ClientManage {
 
     private static Logger logger = LoggerFactory.getLogger(ClientManage.class);
 
@@ -102,7 +102,7 @@ public class ClientManage extends SourceCode {
         // 消息约束
         MessageConstraints messageConstraints = MessageConstraints.custom().setMaxHeaderCount(HttpClientConstant.MAX_HEADER_COUNT).setMaxLineLength(HttpClientConstant.MAX_LINE_LENGTH).build();
         // 连接设置
-        ConnectionConfig connectionConfig = ConnectionConfig.custom().setMalformedInputAction(CodingErrorAction.IGNORE).setUnmappableInputAction(CodingErrorAction.IGNORE).setCharset(DEFAULT_CHARSET).setMessageConstraints(messageConstraints).build();
+        ConnectionConfig connectionConfig = ConnectionConfig.custom().setMalformedInputAction(CodingErrorAction.IGNORE).setUnmappableInputAction(CodingErrorAction.IGNORE).setCharset(Constant.DEFAULT_CHARSET).setMessageConstraints(messageConstraints).build();
         connManager.setDefaultConnectionConfig(connectionConfig);
         connManager.setMaxTotal(HttpClientConstant.MAX_TOTAL_CONNECTION);
         connManager.setDefaultMaxPerRoute(HttpClientConstant.MAX_PER_ROUTE_CONNECTION);
@@ -119,7 +119,7 @@ public class ClientManage extends SourceCode {
         }
         MessageConstraints messageConstraints = MessageConstraints.custom().setMaxHeaderCount(HttpClientConstant.MAX_HEADER_COUNT).setMaxLineLength(HttpClientConstant.MAX_LINE_LENGTH).build();
         PoolingNHttpClientConnectionManager connManager = new PoolingNHttpClientConnectionManager(ioReactor);
-        ConnectionConfig connectionConfig = ConnectionConfig.custom().setMalformedInputAction(CodingErrorAction.IGNORE).setUnmappableInputAction(CodingErrorAction.IGNORE).setCharset(DEFAULT_CHARSET).setMessageConstraints(messageConstraints).build();
+        ConnectionConfig connectionConfig = ConnectionConfig.custom().setMalformedInputAction(CodingErrorAction.IGNORE).setUnmappableInputAction(CodingErrorAction.IGNORE).setCharset(Constant.DEFAULT_CHARSET).setMessageConstraints(messageConstraints).build();
         connManager.setDefaultConnectionConfig(connectionConfig);
         connManager.setMaxTotal(HttpClientConstant.MAX_TOTAL_CONNECTION);
         connManager.setDefaultMaxPerRoute(HttpClientConstant.MAX_PER_ROUTE_CONNECTION);
@@ -268,18 +268,21 @@ public class ClientManage extends SourceCode {
      * <p>
      * 会重置请求控制器,重置连接池和重试控制器
      * </p>
+     * 时间单位s,默认配置单位ms,自动乘以1000
      *
      * @param timeout
      * @param accepttime
-     * @param retrytime
+     * @param retrytimes
+     * @param ip
+     * @param port
      */
-    public static void init(int timeout, int accepttime, int retrytime, String ip, int port) {
-        HttpClientConstant.CONNECT_REQUEST_TIMEOUT = timeout;
-        HttpClientConstant.CONNECT_TIMEOUT = timeout;
-        HttpClientConstant.SOCKET_TIMEOUT = timeout;
-        HttpClientConstant.MAX_ACCEPT_TIME = accepttime;
-        HttpClientConstant.TRY_TIMES = retrytime;
-        requestConfig = StringUtils.isBlank(ip) || !Regex.isMatch(ip + ":" + port, "((25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))):([0-9]|[1-9]\\d{1,3}|[1-5]\\d{4}|6[0-4]\\d{4}|65[0-4]\\d{2}|655[0-2]\\d|6553[0-5])") ? getProxyRequestConfig(ip, port) : getRequestConfig();
+    static void init(int timeout, int accepttime, int retrytimes, String ip, int port) {
+        HttpClientConstant.CONNECT_REQUEST_TIMEOUT = timeout * 1000;
+        HttpClientConstant.CONNECT_TIMEOUT = timeout * 1000;
+        HttpClientConstant.SOCKET_TIMEOUT = timeout * 1000;
+        HttpClientConstant.MAX_ACCEPT_TIME = accepttime * 1000;
+        HttpClientConstant.TRY_TIMES = retrytimes;
+        requestConfig = StringUtils.isNoneBlank(ip) && Regex.isMatch(ip + ":" + port, "((25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))):([0-9]|[1-9]\\d{1,3}|[1-5]\\d{4}|6[0-4]\\d{4}|65[0-4]\\d{2}|655[0-2]\\d|6553[0-5])") ? getProxyRequestConfig(ip, port) : getRequestConfig();
         httpsClient = getCloseableHttpsClients();
         httpRequestRetryHandler = getHttpRequestRetryHandler();
     }
