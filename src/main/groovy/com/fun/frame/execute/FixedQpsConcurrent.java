@@ -237,7 +237,8 @@ public class FixedQpsConcurrent extends SourceCode {
                     logger.info("期望执行数:{},实际执行数:{},设置QPS:{}", expect, actual, qps);
                     range((int) expect - actual).forEach(x -> {
                         sleep(100);
-                        executorService.execute(threads.get(this.i++ % queueLength).clone());
+                        if (!executorService.isShutdown())
+                            executorService.execute(threads.get(this.i++ % queueLength).clone());
                     });
                 }
             }

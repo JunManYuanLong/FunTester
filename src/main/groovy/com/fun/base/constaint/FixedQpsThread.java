@@ -38,12 +38,12 @@ public abstract class FixedQpsThread<T> extends ThreadBase<T> {
         try {
             before();
             threadmark = this.mark == null ? EMPTY : this.mark.mark(this);
+            FixedQpsConcurrent.executeTimes.getAndIncrement();
             long s = Time.getTimeStamp();
             doing();
             long e = Time.getTimeStamp();
             long diff = e - s;
             FixedQpsConcurrent.allTimes.add(diff);
-            FixedQpsConcurrent.executeTimes.getAndIncrement();
             if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
                 FixedQpsConcurrent.marks.add(diff + CONNECTOR + threadmark);
         } catch (Exception e) {
