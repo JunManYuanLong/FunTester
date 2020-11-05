@@ -111,6 +111,8 @@
 - [连续测试策略](https://mp.weixin.qq.com/s/0aD_0cUW83oPu3sl7sHNnQ)
 - [如何设置质量检查流程](https://mp.weixin.qq.com/s/PQeXxMZzzU15xSfY5wkVgA)
 - [编写干净的代码之变量篇](https://mp.weixin.qq.com/s/J9rGIe8a2xaLlNJq2nVmzw)
+- [高效Mobile DevOps步骤](https://mp.weixin.qq.com/s/-qc-d_zJ1C9H_Uvd8gJiBw)
+- [回归BUG](https://mp.weixin.qq.com/s/00j-acjPeKQ7uap62WpY3w)
 
 ## 大咖风采
 

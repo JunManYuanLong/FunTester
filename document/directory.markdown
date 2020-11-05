@@ -167,6 +167,7 @@
 - [Java删除空字符：Java8 & Java11](https://mp.weixin.qq.com/s/6dlgYgTFZsHuJ4Eaby5eyg)
 - [Java Stream中map和flatMap方法](https://mp.weixin.qq.com/s/0FG2o7VUAG6z8a_0je-1EQ)
 - [泛型类的正确用法](https://mp.weixin.qq.com/s/1azilraonPIZNCnw_9MB5Q)
+- [Java字符串到数组的转换--最后放大招](https://mp.weixin.qq.com/s/iMUYZYkJ5CjykwWqinNm5g)
 
 ## Groovy
 
@@ -481,6 +482,8 @@
 - [连续测试策略](https://mp.weixin.qq.com/s/0aD_0cUW83oPu3sl7sHNnQ)
 - [如何设置质量检查流程](https://mp.weixin.qq.com/s/PQeXxMZzzU15xSfY5wkVgA)
 - [编写干净的代码之变量篇](https://mp.weixin.qq.com/s/J9rGIe8a2xaLlNJq2nVmzw)
+- [高效Mobile DevOps步骤](https://mp.weixin.qq.com/s/-qc-d_zJ1C9H_Uvd8gJiBw)
+- [回归BUG](https://mp.weixin.qq.com/s/00j-acjPeKQ7uap62WpY3w)
 
 ## 大咖风采
 
