@@ -228,21 +228,25 @@ public class FixedQpsConcurrent extends SourceCode {
         @Override
         public void run() {
             logger.info("补偿线程开始!");
-            while (key) {
-                sleep(HttpClientConstant.LOOP_INTERVAL);
-                int actual = executeTimes.get();
-                int qps = baseThread.qps;
-                long expect = (Time.getTimeStamp() - FixedQpsConcurrent.this.startTime) / 1000 * qps;
-                if (expect > actual + qps) {
-                    logger.info("期望执行数:{},实际执行数:{},设置QPS:{}", expect, actual, qps);
-                    range((int) expect - actual).forEach(x -> {
-                        sleep(100);
-                        if (!executorService.isShutdown())
-                            executorService.execute(threads.get(this.i++ % queueLength).clone());
-                    });
+            try {
+                while (key) {
+                    sleep(HttpClientConstant.LOOP_INTERVAL);
+                    int actual = executeTimes.get();
+                    int qps = baseThread.qps;
+                    long expect = (Time.getTimeStamp() - FixedQpsConcurrent.this.startTime) / 1000 * qps;
+                    if (expect > actual + qps) {
+                        logger.info("期望执行数:{},实际执行数:{},设置QPS:{}", expect, actual, qps);
+                        range((int) expect - actual).forEach(x -> {
+                            sleep(100);
+                            if (!executorService.isShutdown())
+                                executorService.execute(threads.get(this.i++ % queueLength).clone());
+                        });
+                    }
                 }
+                logger.info("补偿线程结束!");
+            } catch (Exception e) {
+                logger.error("补偿线程发生错误!", e);
             }
-            logger.info("补偿线程结束!");
         }
 
         public void stop() {
