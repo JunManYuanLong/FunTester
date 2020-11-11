@@ -11,11 +11,11 @@ class RString extends SourceCode {
 
     static String[] capeChineses = ["零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"]
 
-/**
- * 获取随机字符串
- * @param i
- * @return
- */
+    /**
+     * 获取随机字符串
+     * @param i
+     * @return
+     */
     static String getString(int i) {
         def re = new StringBuffer()
         if (i < 1) return re
@@ -25,19 +25,19 @@ class RString extends SourceCode {
         re.toString()
     }
 
-/**
- * 获取随机字符
- * @return
- */
+    /**
+     * 获取随机字符
+     * @return
+     */
     static char getChar() {
         chars[getRandomInt(62) - 1]
     }
 
-/**
- * 获取随机字母，区分大小写
- *
- * @return
- */
+    /**
+     * 获取随机字母，区分大小写
+     *
+     * @return
+     */
     static char getWord() {
         chars[getRandomInt(52) + 9];
     }
@@ -56,45 +56,46 @@ class RString extends SourceCode {
         re.toString()
     }
 
-/**
- * 获取所有小写字母
- * @return
- */
+    /**
+     * 获取所有小写字母
+     * @return
+     */
     static String getAllLowWord() {
         "abcdefghijklmnopqrstuvwxyz"
     }
-/**
- * 获取所有大写字母
- * @return
- */
+
+    /**
+     * 获取所有大写字母
+     * @return
+     */
     static String getAllUpWord() {
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     }
 
-/**
- * 获取所有的数字
- * @return
- */
+    /**
+     * 获取所有的数字
+     * @return
+     */
     static String getAllNumber() {
         "0123456789"
     }
 
-/**
- * 将int类型转化为汉子数字，对于3位数的数字自动补零
- * @param i
- * @return
- */
+    /**
+     * 将int类型转化为汉子数字，对于3位数的数字自动补零
+     * @param i
+     * @return
+     */
     static String getChinese(int i) {
         if (i <= 0) return "〇〇〇"
         String num = (i + EMPTY).collect {x -> chineses[changeStringToInt(x)]}.join()
         num.length() > 2 ? num : getManyString(chineses[0] + EMPTY, 3 - num.length()) + num
     }
 
-/**
- * 将int类型转化汉字大写数字表示，对于3位数的数字自动补零
- * @param i
- * @return
- */
+    /**
+     * 将int类型转化汉字大写数字表示，对于3位数的数字自动补零
+     * @param i
+     * @return
+     */
     static String getCapeChinese(int i) {
         if (i <= 0) return "零零零"
         def num = (i + EMPTY).collect {x -> capeChineses[changeStringToInt(x)]}.join()
