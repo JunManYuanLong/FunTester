@@ -113,6 +113,7 @@
 - [编写干净的代码之变量篇](https://mp.weixin.qq.com/s/J9rGIe8a2xaLlNJq2nVmzw)
 - [高效Mobile DevOps步骤](https://mp.weixin.qq.com/s/-qc-d_zJ1C9H_Uvd8gJiBw)
 - [回归BUG](https://mp.weixin.qq.com/s/00j-acjPeKQ7uap62WpY3w)
+- [处理回归BUG最佳实践](https://mp.weixin.qq.com/s/R3O2NruPAA2gQf4-3R6aAQ)
 
 ## 大咖风采
 

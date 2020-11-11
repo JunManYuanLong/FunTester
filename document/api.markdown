@@ -74,6 +74,7 @@
 - [Phaser类在性能测试中应用](https://mp.weixin.qq.com/s/plxNnQq7yNQvHYEGpyY4uA)
 - [如何同时压测创建和删除接口](https://mp.weixin.qq.com/s/NCeoEF3DkEtpdaaQ365I0Q)
 - [固定QPS压测模式探索](https://mp.weixin.qq.com/s/S2h-zEUoik_CWs60RL6g7Q)
+- [固定QPS压测初试](https://mp.weixin.qq.com/s/ySlJmDIH3fFB4qEnL-ueMg)
 
 ## 测试方案
 

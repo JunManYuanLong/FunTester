@@ -121,6 +121,7 @@
 - [Phaser类在性能测试中应用](https://mp.weixin.qq.com/s/plxNnQq7yNQvHYEGpyY4uA)
 - [如何同时压测创建和删除接口](https://mp.weixin.qq.com/s/NCeoEF3DkEtpdaaQ365I0Q)
 - [固定QPS压测模式探索](https://mp.weixin.qq.com/s/S2h-zEUoik_CWs60RL6g7Q)
+- [固定QPS压测初试](https://mp.weixin.qq.com/s/ySlJmDIH3fFB4qEnL-ueMg)
 
 # 语言合集
 
@@ -258,6 +259,7 @@
 - [Java服务端两个常见的并发错误](https://mp.weixin.qq.com/s/5VvCox3eY6sQDsuaKB4ZIw)
 - [超大对象导致Full GC超高的BUG分享](https://mp.weixin.qq.com/s/L15-0JW9WK-E005GeOG9WQ)
 - [访问权限导致toString返回空BUG分享](https://mp.weixin.qq.com/s/usDOcuJrXOmEKN-mVBzRKg)
+- [异常使用中的BUG](https://mp.weixin.qq.com/s/IG9Ar3IT7CrlSv4d0lCvgA)
 
 ## 爬虫实践
 
@@ -484,6 +486,7 @@
 - [编写干净的代码之变量篇](https://mp.weixin.qq.com/s/J9rGIe8a2xaLlNJq2nVmzw)
 - [高效Mobile DevOps步骤](https://mp.weixin.qq.com/s/-qc-d_zJ1C9H_Uvd8gJiBw)
 - [回归BUG](https://mp.weixin.qq.com/s/00j-acjPeKQ7uap62WpY3w)
+- [处理回归BUG最佳实践](https://mp.weixin.qq.com/s/R3O2NruPAA2gQf4-3R6aAQ)
 
 ## 大咖风采
 
