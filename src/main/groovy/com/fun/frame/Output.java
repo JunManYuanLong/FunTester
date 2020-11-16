@@ -71,6 +71,10 @@ public class Output extends Constant {
         list.forEach(x -> output("第" + (list.indexOf(x) + 1) + "个：" + x.toString()));
     }
 
+    public static void output(Iterator its) {
+        its.forEachRemaining(x -> output(x.toString()));
+    }
+
     public static void output(Map map) {
         if (map == null || map.size() == 0) {
             logger.warn("怎么空了呢！");
