@@ -53,11 +53,18 @@ public class SocketClient extends WebSocketClient implements Serializable {
         logger.info("收到: {}", message);
     }
 
+    /**
+     * 关闭,存疑.线程结束会自动关闭.不可调用websocketclient中的clone()方法
+     *
+     * @param code
+     * @param reason
+     * @param remote
+     */
     @Override
     public void onClose(int code, String reason, boolean remote) {
         logger.info("socket 连接关闭...");
         try {
-             this.getSocket().close();
+            getSocket().close();
         } catch (IOException e) {
             logger.error("socket连接关闭失败!", e);
         }
@@ -102,6 +109,11 @@ public class SocketClient extends WebSocketClient implements Serializable {
         send(bean.toString());
     }
 
+    /**
+     * 该方法用于性能测试中,clone多线程对象
+     *
+     * @return
+     */
     @Override
     public SocketClient clone() {
         return new SocketClient(this.uri);
