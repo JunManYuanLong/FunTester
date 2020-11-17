@@ -35,6 +35,8 @@
 - [多项目登录互踢测试用例](https://mp.weixin.qq.com/s/Nn_CUy_j7j6bUwHSkO0pCQ)
 - [httpclient使用HTTP代理实践](https://mp.weixin.qq.com/s/24IJwJ1TJWHdfj0PzSjmvw)
 - [HTTP异步连接池和多线程实践](https://mp.weixin.qq.com/s/8M348LuHakBe4GAEnnDPxw)
+- [socket接口开发和测试初探](https://mp.weixin.qq.com/s/uhmkbrMp91PP1pQjlEofOQ)
+- [IntelliJ中基于文本的HTTP客户端](https://mp.weixin.qq.com/s/-9qi_lLVVfxQKEFmcRYFtA)
 
 ## 性能性能
 

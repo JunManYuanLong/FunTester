@@ -39,6 +39,7 @@
 - [httpclient使用HTTP代理实践](https://mp.weixin.qq.com/s/24IJwJ1TJWHdfj0PzSjmvw)
 - [HTTP异步连接池和多线程实践](https://mp.weixin.qq.com/s/8M348LuHakBe4GAEnnDPxw)
 - [IntelliJ中基于文本的HTTP客户端](https://mp.weixin.qq.com/s/-9qi_lLVVfxQKEFmcRYFtA)
+- [socket接口开发和测试初探](https://mp.weixin.qq.com/s/uhmkbrMp91PP1pQjlEofOQ)
 
 ## 接口测试视频
 
@@ -169,6 +170,8 @@
 - [Java Stream中map和flatMap方法](https://mp.weixin.qq.com/s/0FG2o7VUAG6z8a_0je-1EQ)
 - [泛型类的正确用法](https://mp.weixin.qq.com/s/1azilraonPIZNCnw_9MB5Q)
 - [Java字符串到数组的转换--最后放大招](https://mp.weixin.qq.com/s/iMUYZYkJ5CjykwWqinNm5g)
+- [Java求数组的并集--最后放大招](https://mp.weixin.qq.com/s/bZ93SGakyiRbaRujhx4nvw)
+- [Java计算数组平均值--最后放大招](https://mp.weixin.qq.com/s/dxQaFHu2PyAbOK6jpEgEUQ)
 
 ## Groovy
 
