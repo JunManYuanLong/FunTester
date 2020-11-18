@@ -198,7 +198,7 @@ public class Constant {
         int dataNum = data.listFiles().length;
         if (length > 100) FailException.fail("request日志记录量过多!");
         if (markNum > 100) FailException.fail("mark日志记录量过多!");
-        if (markNum > 100) FailException.fail("data日志记录量过多!");
+        if (dataNum > 100) FailException.fail("data日志记录量过多!");
         logger.info("当前用户：{}，IP：{}，工作目录：{},系统编码格式:{},系统{}版本:{}", COMPUTER_USER_NAME, LOCAL_IP, WORK_SPACE, SYS_ENCODING, SYS_NAME, SYS_VERSION);
     }
 
