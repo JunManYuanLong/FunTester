@@ -15,7 +15,7 @@ class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, S
 
     private static final long serialVersionUID = -158942567078477L;
 
-    public static AtomicInteger num = new AtomicInteger(10000);
+    public static volatile AtomicInteger num = new AtomicInteger(10000);
 
     String headerName;
 
