@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
  * 请求枚举类，fun备用，暂时无用,通过其他方式区分了post请求的参数格式
  */
 public enum RequestType {
+
     GET("get"), POST("post"), FUN("fun");
 
     static Logger logger = LoggerFactory.getLogger(RequestType.class);
@@ -35,4 +36,5 @@ public enum RequestType {
     public String getName() {
         return name;
     }
+
 }
