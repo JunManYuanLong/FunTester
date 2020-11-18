@@ -19,11 +19,6 @@ class JsonVerify extends SourceCode implements Comparable {
     public static Logger logger = LoggerFactory.getLogger(JsonVerify.class)
 
     /**
-     * 支持的操作符,暂时不支持其他操作符
-     */
-    static Character[] ops = ['>', '<', '=']
-
-    /**
      * 验证文本
      */
     String extra
@@ -273,22 +268,40 @@ class JsonVerify extends SourceCode implements Comparable {
      * @return
      */
     public boolean fit(String str) {
-        def at = str.charAt(0)
-        logger.debug("verify对象:{},匹配的字符串:{}", extra, str)
-        if (!ops.contains(at)) ParamException.fail("匹配字符串规范错误!")
-        def res = str - at
-        switch (at) {
-            case ops[0]:
+        logger.info("verify对象:{},匹配的字符串:{}", extra, str)
+        OPS o = OPS.getInterfaces(str.charAt(0))
+        def res = str - o
+        switch (o) {
+            case OPS.GREATER:
                 this > res
                 break
-            case ops[1]:
+            case OPS.LESS:
                 this < res
                 break
-            case ops[2]:
+            case OPS.EQUAL:
                 this == res
                 break
-            default:
-                ParamException.fail("验证方法传参错误!")
+        }
+    }
+
+    /**
+     * 支持的操作符枚举类
+     */
+    private static enum OPS {
+
+        GREATER, LESS, EQUAL;
+
+        static OPS getInstance(char c) {
+            switch (c) {
+                case '>':
+                    return GREATER;
+                case '<':
+                    return LESS;
+                case '=':
+                    return EQUAL;
+                default:
+                    ParamException.fail("操作符参数错误!")
+            }
         }
     }
 }
