@@ -195,9 +195,12 @@ public class Constant {
         File file = new File(REQUEST_Path);
         File mark = new File(MARK_Path);
         File data = new File(DATA_Path);
-        int length = file.listFiles().length;
-        int markNum = mark.listFiles().length;
-        int dataNum = data.listFiles().length;
+        file.mkdir();
+        mark.mkdir();
+        data.mkdir();
+        int length = file.listFiles() == null ? 0 : file.listFiles().length;
+        int markNum = mark.listFiles() == null ? 0 : mark.listFiles().length;
+        int dataNum = data.listFiles() == null ? 0 : data.listFiles().length;
         if (length > 100) FailException.fail("request日志记录量过多!");
         if (markNum > 100) FailException.fail("mark日志记录量过多!");
         if (dataNum > 100) FailException.fail("data日志记录量过多!");
