@@ -13,6 +13,7 @@ import java.io.Serializable;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
+import java.util.Vector;
 
 /**
  * socket客户端代码
@@ -23,8 +24,19 @@ public class SocketClient extends WebSocketClient implements Serializable {
 
     private static Logger logger = LoggerFactory.getLogger(SocketClient.class);
 
+
+    public static Vector<SocketClient> socketClients = new Vector<>();
+
+    private String name;
+
     private SocketClient(URI uri) {
+        this(uri, Thread.currentThread().getName());
+    }
+
+    private SocketClient(URI uri, String name) {
         super(uri);
+        this.name = name;
+        socketClients.add(this);
     }
 
     public static SocketClient getInstance(String url) {
