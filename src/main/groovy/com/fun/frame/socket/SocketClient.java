@@ -81,6 +81,8 @@ public class SocketClient extends WebSocketClient implements Serializable {
             if (!socket.isClosed()) socket.close();
         } catch (IOException e) {
             logger.error("socket连接关闭失败!", e);
+        }finally {
+            socketClients.remove(this);
         }
     }
 
