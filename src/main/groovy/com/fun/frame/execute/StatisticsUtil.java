@@ -87,7 +87,7 @@ public class StatisticsUtil extends SourceCode {
         int i = part * 8 * length / total;
         int prefix = i / 8;
         int suffix = i % 8;
-        String s = getManyString(PERCENT[8], prefix) + (prefix == length ? EMPTY : PERCENT[suffix] + getManyString(SPACE_1, length - prefix - 1));
+        String s = getManyString(getPercent(8), prefix) + (prefix == length ? EMPTY : getPercent(suffix) + getManyString(SPACE_1, length - prefix - 1));
         return s.split(EMPTY);
     }
 

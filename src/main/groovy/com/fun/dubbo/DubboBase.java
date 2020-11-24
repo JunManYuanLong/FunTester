@@ -66,14 +66,15 @@ public class DubboBase {
             // 声明为泛化接口
             referenceConfig.setGeneric(true);
         }
-        return ReferenceConfigCache.getCache(RString.getChinese(5)).get(referenceConfig);
+        configCache = ReferenceConfigCache.getCache(RString.getChinese(5));
+        return configCache.get(referenceConfig);
     }
 
     /**
      * 释放资源
      */
     public void over() {
-        configCache.destroy(referenceConfig);
+        if (null == configCache) configCache.destroy(referenceConfig);
     }
 
 

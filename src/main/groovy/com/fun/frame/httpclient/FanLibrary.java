@@ -66,7 +66,7 @@ public class FanLibrary extends SourceCode {
     /**
      * 最近发送的请求
      */
-    public static HttpRequestBase lastRequest;
+    private static HttpRequestBase lastRequest;
 
     /**
      * 是否显示请求所有header的开关

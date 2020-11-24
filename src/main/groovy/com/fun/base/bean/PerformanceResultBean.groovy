@@ -2,10 +2,13 @@ package com.fun.base.bean
 
 import com.fun.db.mysql.MySqlTest
 import com.fun.frame.Output
+
 /**
  * 性能测试结果集
  */
 class PerformanceResultBean extends AbstractBean {
+
+    private static final long serialVersionUID = -1595942562342357L;
 
     /**
      * 测试用例描述

@@ -1,5 +1,6 @@
 package com.fun.frame.httpclient;
 
+import com.fun.base.exception.FailException;
 import com.fun.config.Constant;
 import com.fun.config.HttpClientConstant;
 import com.fun.utils.Regex;
@@ -61,7 +62,7 @@ public class ClientManage {
     /**
      * 请求超时控制器
      */
-    public static RequestConfig requestConfig = getRequestConfig();
+    private static RequestConfig requestConfig = getRequestConfig();
 
     /**
      * 请求重试管理器
@@ -136,7 +137,7 @@ public class ClientManage {
         try {
             sslContext = SSLContext.getInstance(HttpClientConstant.SSL_VERSION);// 指定TLS版本
         } catch (NoSuchAlgorithmException e) {
-            logger.warn("创建套接字失败！", e);
+            FailException.fail("创建套接字失败！" + e.getMessage());
         }
         // 实现X509TrustManager接口，用于绕过验证
         X509TrustManager trustManager = new X509TrustManager() {

@@ -14,6 +14,7 @@ import java.util.Properties;
 /**
  * 常量类
  */
+@edu.umd.cs.findbugs.annotations.SuppressFBWarnings({"MS_SHOULD_BE_FINAL", "NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE", "NS_DANGEROUS_NON_SHORT_CIRCUIT", "RV_RETURN_VALUE_IGNORED_BAD_PRACTICE"})
 public class Constant {
 
     private static Logger logger = LoggerFactory.getLogger(Constant.class);
@@ -35,7 +36,7 @@ public class Constant {
 
     public static final String CONNECTOR = "_";
 
-    public static final String[] PERCENT = {SPACE_1, "▁", "▂", "▃", "▄", "▅", "▅", "▇", "█"};
+    private static final String[] PERCENT = {SPACE_1, "▁", "▂", "▃", "▄", "▅", "▅", "▇", "█"};
 
     /**
      * 统计性能数据的分桶数
@@ -141,20 +142,20 @@ public class Constant {
     /**
      * 本机ip，程序初始化会赋值
      */
-    public static String LOCAL_IP = getLocalIp();
+    public static final String LOCAL_IP = getLocalIp();
 
     /**
      * 本机用户名，程序初始化会赋值
      */
-    public static String COMPUTER_USER_NAME = SYSTEM_INFO.getOrDefault("user.name", DEFAULT_STRING).toString();
+    public static final String COMPUTER_USER_NAME = SYSTEM_INFO.getOrDefault("user.name", DEFAULT_STRING).toString();
 
-    public static String JAVA_VERSION = SYSTEM_INFO.get("java.version").toString();
+    public static final String JAVA_VERSION = SYSTEM_INFO.get("java.version").toString();
 
-    public static String SYS_ENCODING = SYSTEM_INFO.get("file.encoding").toString();
+    public static final String SYS_ENCODING = SYSTEM_INFO.get("file.encoding").toString();
 
-    public static String SYS_VERSION = SYSTEM_INFO.get("os.version").toString();
+    public static final String SYS_VERSION = SYSTEM_INFO.get("os.version").toString();
 
-    public static String SYS_NAME = SYSTEM_INFO.get("os.name").toString();
+    public static final String SYS_NAME = SYSTEM_INFO.get("os.name").toString();
 
 
     /**
@@ -181,6 +182,10 @@ public class Constant {
         return LONG_Path + fileName;
     }
 
+    public static String getPercent(int i) {
+        return PERCENT[i % 9];
+    }
+
     /**
      * 创建日志文件夹和数据存储文件夹
      */
@@ -190,9 +195,6 @@ public class Constant {
         File file = new File(REQUEST_Path);
         File mark = new File(MARK_Path);
         File data = new File(DATA_Path);
-        file.mkdir();
-        mark.mkdir();
-        data.mkdir();
         int length = file.listFiles().length;
         int markNum = mark.listFiles().length;
         int dataNum = data.listFiles().length;

@@ -1,5 +1,6 @@
 package com.fun.utils;
 
+import com.fun.base.exception.FailException;
 import com.fun.config.Constant;
 import com.fun.frame.SourceCode;
 import org.slf4j.Logger;
@@ -110,7 +111,7 @@ public class DecodeEncode extends SourceCode {
             try (DeflaterOutputStream deflaterOutputStream = new DeflaterOutputStream(out)) {
                 deflaterOutputStream.write(text.getBytes(Constant.UTF_8));
             }
-            return new String(DecodeEncode.base64Encode(out.toByteArray()));
+            return DecodeEncode.base64Encode(out.toByteArray());
         } catch (IOException e) {
             logger.error("压缩文本失败:{}", text, e);
         }
@@ -181,13 +182,13 @@ public class DecodeEncode extends SourceCode {
         try {
             date = text.getBytes("utf-8");
         } catch (UnsupportedEncodingException e) {
-            logger.warn("utf-8格式错误！", e);
+            FailException.fail("utf-8格式错误！" + e.getMessage());
         }
         MessageDigest message = null;
         try {
             message = MessageDigest.getInstance("md5");
         } catch (NoSuchAlgorithmException e) {
-            logger.warn("md5加密失败！", e);
+            FailException.fail("md5加密失败！" + e.getMessage());
         }
         message.update(date);
         byte[] result = message.digest();

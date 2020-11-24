@@ -11,7 +11,7 @@ public class ArgsUtil extends SourceCode {
     String[] all;
 
     public ArgsUtil(String[] args) {
-        all = args;
+        all = (String[]) args.clone();
     }
 
     /**

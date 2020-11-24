@@ -11,6 +11,8 @@ import com.fun.config.Constant
  */
 class Result<T> extends AbstractBean {
 
+    private static final long serialVersionUID = -196371159847L;
+
     /**
      * code码
      */

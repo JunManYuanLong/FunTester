@@ -21,9 +21,9 @@ public class Output extends Constant {
 
     private static Logger logger = LoggerFactory.getLogger(Output.class);
 
-    static final String UP = SourceCode.getManyString("~☢~", 10);
+    private static final String UP = "~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~";
 
-    static final String DOWN = SourceCode.getManyString("~☢~", 10);
+    private static final String DOWN = "~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~";
 
     public static void output(AbstractBean bean) {
         output(bean.toJson());

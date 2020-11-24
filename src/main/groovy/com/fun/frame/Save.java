@@ -1,5 +1,6 @@
 package com.fun.frame;
 
+import com.fun.base.exception.FailException;
 import com.fun.utils.WriteRead;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
@@ -29,7 +30,10 @@ public class Save extends SourceCode {
 
     public static void info(String name, String content) {
         File dirFile = new File(LONG_Path + name);
-        if (dirFile.exists()) dirFile.delete();
+        if (dirFile.exists()) {
+            boolean delete = dirFile.delete();
+            if (!delete) FailException.fail("删除文件失败!" + name);
+        }
         WriteRead.writeText(dirFile, content);
         logger.info("数据保存成功！文件名：{}{}", LONG_Path, name);
     }
@@ -41,7 +45,7 @@ public class Save extends SourceCode {
         List<String> list = new ArrayList<>();
         data.forEach(num -> list.add(num.toString()));
         saveStringList(list, name.toString());
-        data.removeAll(data);
+        data.clear();
     }
 
     /**
@@ -88,7 +92,8 @@ public class Save extends SourceCode {
     public static void saveJson(JSONObject data, String name) {
         StringBuffer buffer = new StringBuffer();
         data.keySet().forEach(x -> buffer.append(LINE + x.toString() + PART + data.getString(x.toString())));
-        info(name, buffer.toString().substring(2));
+        /*处理\n\t(LINE)*/
+        if (buffer.length() > 2) info(name, buffer.substring(2));
     }
 
     /**

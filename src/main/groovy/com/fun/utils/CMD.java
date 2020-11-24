@@ -42,7 +42,7 @@ public class CMD extends SourceCode {
              InputStreamReader inputStreamReader = new InputStreamReader(input, charset);
              BufferedReader reader = new BufferedReader(inputStreamReader);
              InputStream errorInput = p.getErrorStream();
-             InputStreamReader streamReader = new InputStreamReader(errorInput);
+             InputStreamReader streamReader = new InputStreamReader(errorInput,charset.name());
              BufferedReader errorReader = new BufferedReader(streamReader)) {
             String line = "";
             while ((line = reader.readLine()) != null) {// 循环读取

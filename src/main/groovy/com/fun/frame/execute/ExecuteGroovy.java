@@ -24,8 +24,6 @@ public class ExecuteGroovy extends SourceCode {
 
     private String name;
 
-    private String[] args;//参数，暂时不支持参数
-
     private List<String> files = new ArrayList<>();//所有脚本
 
     private GroovyClassLoader loader = new GroovyClassLoader(getClass().getClassLoader());

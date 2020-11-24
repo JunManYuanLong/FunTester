@@ -1,4 +1,4 @@
-package com.fun.frame.thead;
+package com.fun.frame.thread;
 
 import com.fun.base.constaint.ThreadBase;
 import com.fun.base.exception.ParamException;

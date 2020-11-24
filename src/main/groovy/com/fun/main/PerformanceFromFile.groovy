@@ -3,7 +3,7 @@ package com.fun.main
 import com.fun.frame.SourceCode
 import com.fun.frame.execute.Concurrent
 import com.fun.frame.httpclient.FanLibrary
-import com.fun.frame.thead.RequestThreadTimes
+import com.fun.frame.thread.RequestThreadTimes
 import com.fun.utils.request.RequestFile
 import org.apache.http.client.methods.HttpRequestBase
 /**

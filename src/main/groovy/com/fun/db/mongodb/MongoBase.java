@@ -99,7 +99,7 @@ public class MongoBase extends SourceCode {
      *
      * @param mongoClient
      */
-    public static void MongoOver(MongoClient mongoClient) {
+    public static void over(MongoClient mongoClient) {
         mongoClient.close();
     }
 

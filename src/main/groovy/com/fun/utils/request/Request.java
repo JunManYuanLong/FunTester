@@ -1,10 +1,9 @@
 package com.fun.utils.request;
 
-import com.fun.config.HttpClientConstant;
+import com.alibaba.fastjson.JSONObject;
 import com.fun.config.RequestType;
 import com.fun.frame.SourceCode;
 import com.fun.utils.Regex;
-import com.alibaba.fastjson.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -240,7 +239,10 @@ public class Request extends SourceCode {
         if (this.type == RequestType.GET) spliceGet();
         if (this.type == RequestType.POST) splicePost();
         String finalCode = spliceEnd();
-        if (this.postNoParams) finalCode.replace(urlLine, urlLine.replace(";", EMPTY) + " + changeJsonToArguments(args)");
+        if (this.postNoParams)
+            finalCode = finalCode.replace(urlLine, urlLine.replace(";", EMPTY) + " + changeJsonToArguments(args)");
         return finalCode;
     }
+
+
 }

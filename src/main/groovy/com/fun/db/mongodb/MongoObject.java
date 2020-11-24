@@ -74,7 +74,7 @@ public class MongoObject extends MongoBase {
      * 关闭连接
      */
     public void over() {
-        MongoOver(this.mongoClient);
+        over(this.mongoClient);
     }
 
     @Override

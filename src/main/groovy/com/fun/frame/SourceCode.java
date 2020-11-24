@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 
-public class SourceCode extends Output implements Cloneable {
+public class SourceCode extends Output {
 
     private static Logger logger = LoggerFactory.getLogger(SourceCode.class);
 
@@ -36,6 +36,8 @@ public class SourceCode extends Output implements Cloneable {
     public static void setiMessage(IMessage iMessage) {
         SourceCode.iMessage = iMessage;
     }
+
+    private static Random random = new Random();
 
     /**
      * 获取日志记录的logger
@@ -79,7 +81,7 @@ public class SourceCode extends Output implements Cloneable {
     public static void waitForKey(Object key) {
         logger.warn("请输入“{}”继续运行！", key.toString());
         long start = Time.getTimeStamp();
-        scanner = new Scanner(System.in);
+        scanner = new Scanner(System.in, DEFAULT_CHARSET.name());
         while (scanner.hasNext()) {
             String next = scanner.next();
             if (next.equalsIgnoreCase(key.toString())) break;
@@ -97,7 +99,7 @@ public class SourceCode extends Output implements Cloneable {
      * @return
      */
     public static String getInput() {
-        scanner = new Scanner(System.in);
+        scanner = new Scanner(System.in, DEFAULT_CHARSET.name());
         String next = scanner.next();
         logger.debug("输、入内容：{}", next);
         return next;
@@ -237,7 +239,8 @@ public class SourceCode extends Output implements Cloneable {
      */
     public static boolean changeStringToBoolean(String text) {
         logger.debug("需要转化成的文本：{}", text);
-        return text == null ? null : text.equalsIgnoreCase("true") ? true : text.equalsIgnoreCase("false") ? false : null;
+        if (text == null || !Regex.isMatch(text, "false|ture")) return false;
+        return true;
     }
 
     /**
@@ -304,7 +307,7 @@ public class SourceCode extends Output implements Cloneable {
      * @return 随机数
      */
     public static int getRandomInt(int num) {
-        return new Random().nextInt(num) + 1;
+        return random.nextInt(num) + 1;
     }
 
     /**
@@ -336,7 +339,7 @@ public class SourceCode extends Output implements Cloneable {
      * @return 随机数
      */
     public static double getRandomDouble() {
-        return new Random().nextDouble();
+        return random.nextDouble();
     }
 
     /**

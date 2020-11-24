@@ -12,41 +12,41 @@ class TimeWatch extends SourceCode implements Serializable {
     private static final long serialVersionUID = -4156600036913348727L;
 
     static Logger logger = LoggerFactory.getLogger(TimeWatch.class)
-/**
- * 默认的名称
- */
 
+    /**
+     * 默认的名称
+     */
     def name = "default"
-/**
- * 纳秒
- */
 
+    /**
+     * 纳秒
+     */
     def startNano
     /**
      * 标记集合
      */
 
     def marks = new HashMap<String, Mark>()
+
     /**
      * 毫秒
      */
-
     def startMillis
 
-/**
- * 无参创建方法，默认名称
- * @return
- */
+    /**
+     * 无参创建方法，默认名称
+     * @return
+     */
     public static TimeWatch create() {
         final TimeWatch timeWatch = new TimeWatch()
         timeWatch.start()
     }
 
-/**
- * 创建方法
- * @param name
- * @return
- */
+    /**
+     * 创建方法
+     * @param name
+     * @return
+     */
     public static TimeWatch create(def name) {
         final TimeWatch timeWatch = new TimeWatch()
         timeWatch.start()
@@ -56,44 +56,45 @@ class TimeWatch extends SourceCode implements Serializable {
     private TimeWatch() {
     }
 
-/**
- * 开始记录
- * @return
- */
+    /**
+     * 开始记录
+     * @return
+     */
     def start() {
         reset()
     }
 
-/**
- * 重置
- */
+    /**
+     * 重置
+     */
     def reset() {
         startNano = getNanoMark()
         startMillis = Time.getTimeStamp()
         this
     }
-/**
- * 标记
- * @param name
- * @return
- */
+
+    /**
+     * 标记
+     * @param name
+     * @return
+     */
     String mark(String name) {
         marks.put name, new Mark(name)
         name
     }
 
-/**
- * 标记
- * @return
- */
+    /**
+     * 标记
+     * @return
+     */
     String mark() {
         mark(name)
     }
 
-/**
- * 获取标记时间
- * @return
- */
+    /**
+     * 获取标记时间
+     * @return
+     */
     def getMarkTime() {
         if (marks.containsKey(name)) {
             def diff = Time.getTimeStamp() - marks.get(name).getStartMillis()
@@ -117,11 +118,11 @@ class TimeWatch extends SourceCode implements Serializable {
     }
 
 
-/**
- * 获取某个标记的记录时间
- * @param name
- * @return
- */
+    /**
+     * 获取某个标记的记录时间
+     * @param name
+     * @return
+     */
     def getMarkTime(String name) {
         if (marks.containsKey(name)) {
             def diff = Time.getTimeStamp() - marks.get(name).getStartMillis()
@@ -166,11 +167,11 @@ class TimeWatch extends SourceCode implements Serializable {
         diff
     }
 
-/**
- * 获取标记与观察者的时间差
- * @param name
- * @return
- */
+    /**
+     * 获取标记与观察者的时间差
+     * @param name
+     * @return
+     */
     def getDiffTime(String name) {
         if (marks.containsKey(name)) {
             def diff = marks.get(name).getStartTimeMillis() - this.getStartTimeMillis()
@@ -194,12 +195,12 @@ class TimeWatch extends SourceCode implements Serializable {
         }
     }
 
-/**
- * 获取两个标记的时间差
- * @param first
- * @param second
- * @return
- */
+    /**
+     * 获取两个标记的时间差
+     * @param first
+     * @param second
+     * @return
+     */
     def getDiffTime(String first, String second) {
         if (marks.containsKey(first) && marks.containsKey(second)) {
             def diff = marks.get(second).getStartMillis() - marks.get(first).getStartMillis()
@@ -210,12 +211,12 @@ class TimeWatch extends SourceCode implements Serializable {
     }
 
 
-/**
- * 获取两个标记的时间差
- * @param first
- * @param second
- * @return
- */
+    /**
+     * 获取两个标记的时间差
+     * @param first
+     * @param second
+     * @return
+     */
     def getDiffNanoTime(String first, String second) {
         if (marks.containsKey(first) && marks.containsKey(second)) {
             def diff = marks.get(second).getStartNano() - marks.get(first).getStartNano()
@@ -232,15 +233,15 @@ class TimeWatch extends SourceCode implements Serializable {
 
     @Override
     public TimeWatch clone() {
-        def watch = new TimeWatch()
+        TimeWatch watch = new TimeWatch()
         watch.name = getName() + "_c"
-        watch.startTime = getStartTime()
-        watch.startTimeMillis = getStartTimeMillis()
+        watch.startMillis = this.getStartMillis()
+        watch.startNano = this.getStartNano()
         watch
     }
-/**
- * 标记类
- */
+    /**
+     * 标记类
+     */
     class Mark implements Serializable {
 
         private static final long serialVersionUID = -4156604036913335727L;

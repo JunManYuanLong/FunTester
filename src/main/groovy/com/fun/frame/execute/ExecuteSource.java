@@ -1,5 +1,6 @@
 package com.fun.frame.execute;
 
+import com.fun.base.exception.FailException;
 import com.fun.config.Constant;
 import com.fun.frame.SourceCode;
 import org.slf4j.Logger;
@@ -87,7 +88,7 @@ public class ExecuteSource extends SourceCode {
             c = Class.forName(path);
             object = c.newInstance();
         } catch (Exception e) {
-            e.printStackTrace();
+            FailException.fail("初始化对象失败:" + path);
         }
         Class<?> class1 = object.getClass();
         Method[] all = class1.getDeclaredMethods();
@@ -110,8 +111,7 @@ public class ExecuteSource extends SourceCode {
         String packagePath = packageName.replace(".", Constant.OR);// 转化路径，Linux 系统
         URL url = loader.getResource(packagePath);// 具体路径
         if (url == null || !"file".equals(url.getProtocol())) {
-            logger.warn("获取类名失败！");
-            return fileNames;
+            FailException.fail("获取包路径失败!");
         }
         File file = new File(url.getPath());
         File[] childFiles = file.listFiles();
@@ -124,4 +124,6 @@ public class ExecuteSource extends SourceCode {
         }
         return fileNames;
     }
+
+
 }

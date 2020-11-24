@@ -6,9 +6,9 @@ import com.fun.base.interfaces.MarkThread
 import com.fun.config.HttpClientConstant
 import com.fun.frame.SourceCode
 import com.fun.frame.httpclient.FanLibrary
-import com.fun.frame.thead.HeaderMark
-import com.fun.frame.thead.RequestThreadTime
-import com.fun.frame.thead.RequestThreadTimes
+import com.fun.frame.thread.HeaderMark
+import com.fun.frame.thread.RequestThreadTime
+import com.fun.frame.thread.RequestThreadTimes
 import org.apache.http.client.methods.HttpGet
 import org.slf4j.Logger
 import spock.lang.Shared

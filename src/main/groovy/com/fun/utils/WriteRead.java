@@ -1,6 +1,7 @@
 package com.fun.utils;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fun.base.exception.FailException;
 import com.fun.base.exception.ParamException;
 import com.fun.config.Constant;
 import com.fun.frame.SourceCode;
@@ -167,13 +168,11 @@ public class WriteRead extends SourceCode {
      */
     public static void copyFile(String oldPath, String newPath) {
         logger.debug("源文件名：{}，目标文件名：{}", oldPath, newPath);
-        try {
-            int bytesum = 0;// 这个用来统计需要写入byte数组的长度
-            int byteread = 0;// 这个用来接收read()方法的返回值，表示读取内容的长度
-            File oldfile = new File(oldPath);// 获取源文件的file对象
-            if (oldfile.exists()) {// 文件存在时
-                InputStream inputStream = new FileInputStream(oldPath);// 读入原文件，实例化输入流
-                FileOutputStream fileOutputStream = new FileOutputStream(newPath);// 实例化输出流
+        int bytesum = 0;// 这个用来统计需要写入byte数组的长度
+        int byteread = 0;// 这个用来接收read()方法的返回值，表示读取内容的长度
+        File oldfile = new File(oldPath);// 获取源文件的file对象
+        if (oldfile.exists()) {// 文件存在时
+            try (InputStream inputStream = new FileInputStream(oldPath); FileOutputStream fileOutputStream = new FileOutputStream(newPath);) {
                 byte[] buffer = new byte[1024];// 新建读取文件所用的数组
                 // 此处用while循环每次按buffer读取文件直到读取完成
                 while ((byteread = inputStream.read(buffer)) != -1) {// 如何读取到文件末尾
@@ -182,13 +181,11 @@ public class WriteRead extends SourceCode {
                 }
                 logger.info("文件：{}，总大小是：", oldfile, getFormatNumber(bytesum));// 输出读取的总长度
                 fileOutputStream.flush();// 强制缓存输出，防止数据丢失
-                fileOutputStream.close();// 关闭输出流
-                inputStream.close();// 关闭输入流
-            } else {
-                logger.warn("文件不存在！");
+            } catch (IOException e) {
+                FailException.fail("复制文件出错!" + e.getMessage());
             }
-        } catch (Exception e) {
-            logger.warn("复制文件失败！", e);
+        } else {
+            logger.warn("文件不存在！");
         }
         // File oldfile2 = new File(oldPath);
         // oldfile2.delete();

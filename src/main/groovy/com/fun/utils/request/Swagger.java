@@ -14,38 +14,42 @@ import java.util.Set;
  * swagger文档解析类
  */
 public class Swagger extends FanLibrary {
+
     /**
      * 关键字，用于url前
      */
     String key;
+
     /**
      * swagger文档地址
      */
     String swaggerPath;
+
     /**
      * 构造方法中接口地址类别
      */
     String name;
-    /**
-     * 构造方法中接口地址
-     */
-    String url;
+
     /**
      * swagger地址所有类别
      */
     List<String> names = new ArrayList<>();
+
     /**
      * 某类别所有接口地址
      */
     List<String> urls = new ArrayList<>();
+
     /**
      * swagger文档转换成的json对象
      */
     JSONObject swagger = new JSONObject();
+
     /**
      * 所有接口地址的json对象
      */
     JSONObject paths = new JSONObject();
+
     /**
      * 对应构造方法中url的request对象
      */
@@ -86,7 +90,6 @@ public class Swagger extends FanLibrary {
     public Swagger(String swaggerPath, String name, String url) {
         this.swaggerPath = swaggerPath;
         this.name = name;
-        this.url = url;
         build();
         request = getRequest(url);
     }

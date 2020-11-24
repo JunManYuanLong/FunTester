@@ -3,6 +3,7 @@ package com.fun.frame.socket;
 import com.alibaba.fastjson.JSONObject;
 import com.fun.base.bean.AbstractBean;
 import com.fun.base.exception.ParamException;
+import com.fun.utils.RString;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.slf4j.Logger;
@@ -132,7 +133,7 @@ public class SocketClient extends WebSocketClient implements Serializable {
      */
     @Override
     public SocketClient clone() {
-        return new SocketClient(this.uri);
+        return new SocketClient(this.uri,this.name+ RString.getString(1));
     }
 
 
