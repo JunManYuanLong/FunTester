@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.net.Socket;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
@@ -68,15 +69,16 @@ public class SocketClient extends WebSocketClient implements Serializable {
     /**
      * 关闭,存疑.线程结束会自动关闭.不可调用websocketclient中的clone()方法
      *
-     * @param code
-     * @param reason
+     * @param code   关闭code码,详情查看 {@link org.java_websocket.framing.CloseFrame}
+     * @param reason 关闭原因
      * @param remote
      */
     @Override
     public void onClose(int code, String reason, boolean remote) {
-        logger.info("socket 连接关闭...");
+        logger.info("socket 连接关闭...;code码:{},原因:{},是否由远程服务关闭:{}", code, reason, remote);
         try {
-            getSocket().close();
+            Socket socket = getSocket();
+            if (!socket.isClosed()) socket.close();
         } catch (IOException e) {
             logger.error("socket连接关闭失败!", e);
         }
