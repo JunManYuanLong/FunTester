@@ -6,6 +6,7 @@ import com.fun.frame.Output
 /**
  * 性能测试结果集
  */
+@edu.umd.cs.findbugs.annotations.SuppressFBWarnings(value = "SE_TRANSIENT_FIELD_NOT_RESTORED")
 class PerformanceResultBean extends AbstractBean {
 
     private static final long serialVersionUID = -1595942562342357L;
