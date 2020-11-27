@@ -171,7 +171,7 @@ public class Output extends Constant {
                 case '{':
                 case '[':
                     // 如果字符是{或者[，则断行，level加1
-                    jsonResultStr.append(piece + (":[{,".contains(last + EMPTY) && ",[{}]\"".contains(next + EMPTY) ? LINE : EMPTY));
+                    jsonResultStr.append(piece + (":[{,".contains(last + EMPTY) && ",[{}]\"0123456789le".contains(next + EMPTY) ? LINE : EMPTY));
                     if (last != '[') level++;//解决jsonarray:[{
                     break;
                 case '}':
