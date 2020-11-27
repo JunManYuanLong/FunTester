@@ -5,10 +5,12 @@ import com.fun.base.interfaces.MarkRequest;
 import com.fun.frame.httpclient.FanLibrary;
 import com.fun.frame.httpclient.FunRequest;
 import com.fun.frame.httpclient.GCThread;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@SuppressFBWarnings("CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE")
 public class RequestTimeFixedQps<T extends HttpRequestBase> extends FixedQpsThread<HttpRequestBase> {
 
     private static Logger logger = LoggerFactory.getLogger(RequestTimeFixedQps.class);

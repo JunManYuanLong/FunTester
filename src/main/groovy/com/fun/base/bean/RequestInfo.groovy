@@ -2,6 +2,7 @@ package com.fun.base.bean
 
 import com.fun.config.RequestType
 import com.fun.config.SysInit
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.apache.http.HttpEntity
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase
 import org.apache.http.client.methods.HttpRequestBase
@@ -12,6 +13,7 @@ import org.slf4j.LoggerFactory
 /**
  * 请求信息封装类
  */
+@SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
 class RequestInfo extends AbstractBean {
 
     private static final long serialVersionUID = 5942566988949859847L;

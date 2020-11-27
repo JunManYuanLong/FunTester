@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.fun.base.bean.AbstractBean;
 import com.fun.base.exception.ParamException;
 import com.fun.utils.RString;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.slf4j.Logger;
@@ -20,6 +21,7 @@ import java.util.Vector;
 /**
  * socket客户端代码
  */
+@SuppressFBWarnings({"CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE", "DM_DEFAULT_ENCODING", "MS_SHOULD_BE_FINAL"})
 public class SocketClient extends WebSocketClient implements Serializable {
 
     private static final long serialVersionUID = 1306796619468953402L;

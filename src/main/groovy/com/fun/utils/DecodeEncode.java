@@ -3,6 +3,7 @@ package com.fun.utils;
 import com.fun.base.exception.FailException;
 import com.fun.config.Constant;
 import com.fun.frame.SourceCode;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,6 +23,7 @@ import java.util.zip.InflaterOutputStream;
 /**
  * 编码格式转码解码类
  */
+@SuppressFBWarnings("DM_DEFAULT_ENCODING")
 public class DecodeEncode extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(DecodeEncode.class);

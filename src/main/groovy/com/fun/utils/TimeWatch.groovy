@@ -3,10 +3,12 @@ package com.fun.utils
 import com.fun.frame.SourceCode
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * 时间观察者类，用于简单记录执行时间
  */
+@SuppressFBWarnings(["SE_TRANSIENT_FIELD_NOT_RESTORED","CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE"])
 class TimeWatch extends SourceCode implements Serializable {
 
     private static final long serialVersionUID = -4156600036913348727L;
@@ -104,10 +106,10 @@ class TimeWatch extends SourceCode implements Serializable {
         }
     }
 
-/**
- * 获取标记时间
- * @return
- */
+    /**
+     * 获取标记时间
+     * @return
+     */
     def getMarkNanoTime() {
         if (marks.containsKey(name)) {
             def diff = getNanoMark() - marks.get(name).getStartNano()
@@ -132,11 +134,11 @@ class TimeWatch extends SourceCode implements Serializable {
         }
     }
 
-/**
- * 获取某个标记的记录时间
- * @param name
- * @return
- */
+    /**
+     * 获取某个标记的记录时间
+     * @param name
+     * @return
+     */
     def getMarkNanoTime(String name) {
         if (marks.containsKey(name)) {
             def diff = getNanoMark() - marks.get(name).getStartNano()
@@ -147,20 +149,20 @@ class TimeWatch extends SourceCode implements Serializable {
     }
 
 
-/**
- * 获取记录时间
- * @return
- */
+    /**
+     * 获取记录时间
+     * @return
+     */
     def getTime() {
         def diff = Time.getTimeStamp() - startMillis
         logger.info(LINE + "观察者：{}，记录时间：{} ms", getName(), getFormatNumber(diff))
         diff
     }
 
-/**
- * 获取记录时间纳秒
- * @return
- */
+    /**
+     * 获取记录时间纳秒
+     * @return
+     */
     def getNanoTime() {
         long diff = getNanoMark() - startNano
         logger.info(LINE + "观察者：{}，记录时间：{} ns", getName(), getFormatNumber(diff))
@@ -244,7 +246,7 @@ class TimeWatch extends SourceCode implements Serializable {
      */
     class Mark implements Serializable {
 
-        private static final long serialVersionUID = -4156604036913335727L;
+        private static final long serialVersionUID = -41564036913335727L;
 
         public Mark(def name) {
             this.name = name

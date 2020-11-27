@@ -3,12 +3,14 @@ package com.fun.config
 import com.fun.frame.SourceCode
 import com.fun.utils.WriteRead
 import com.alibaba.fastjson.JSONObject
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 /**
  * 读取配置工具
  */
+@SuppressFBWarnings("MS_SHOULD_BE_FINAL")
 class PropertyUtils extends SourceCode {
 
     public static Logger logger = LoggerFactory.getLogger(PropertyUtils.class)

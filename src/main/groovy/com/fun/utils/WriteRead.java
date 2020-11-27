@@ -5,6 +5,7 @@ import com.fun.base.exception.FailException;
 import com.fun.base.exception.ParamException;
 import com.fun.config.Constant;
 import com.fun.frame.SourceCode;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@SuppressFBWarnings("DM_DEFAULT_ENCODING")
 public class WriteRead extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(WriteRead.class);

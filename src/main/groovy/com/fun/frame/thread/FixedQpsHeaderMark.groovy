@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger
 /**
  * 针对固定QPS模式的多线程对象的标记类
  */
+@edu.umd.cs.findbugs.annotations.SuppressFBWarnings("")
 class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, Serializable {
 
     private static final long serialVersionUID = -158942567078477L;
@@ -30,7 +31,7 @@ class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, S
         } else {
             ParamException.fail(threadBase.getClass().toString());
         }
-        return EMPTY;
+        EMPTY;
     }
 
     /**
@@ -44,12 +45,12 @@ class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, S
         base.removeHeaders(headerName);
         String value = 8 + EMPTY + num.getAndIncrement();
         base.addHeader(headerName, value);
-        return value;
+        value;
     }
 
     @Override
     public FixedQpsHeaderMark clone() {
-        return new FixedQpsHeaderMark(headerName);
+        new FixedQpsHeaderMark(headerName);
     }
 
     public FixedQpsHeaderMark(String headerName) {

@@ -4,6 +4,7 @@ import com.fun.base.exception.FailException;
 import com.fun.config.Constant;
 import com.fun.config.HttpClientConstant;
 import com.fun.utils.Regex;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpHost;
@@ -50,6 +51,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 连接池管理类
  */
+@SuppressFBWarnings({"MS_SHOULD_BE_FINAL", "MS_PKGPROTECT"})
 public class ClientManage {
 
     private static Logger logger = LoggerFactory.getLogger(ClientManage.class);

@@ -3,6 +3,7 @@ package com.fun.frame.execute;
 import com.fun.base.exception.FailException;
 import com.fun.config.Constant;
 import com.fun.frame.SourceCode;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +14,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressFBWarnings({"NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE", "NP_NULL_ON_SOME_PATH_EXCEPTION"})
 public class ExecuteSource extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(ExecuteSource.class);

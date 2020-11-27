@@ -3,12 +3,14 @@ package com.fun.base.bean
 import com.alibaba.fastjson.JSONObject
 import com.fun.base.interfaces.ReturnCode
 import com.fun.config.Constant
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 
 /**
  * 通用的返回体
  * 配合moco框架使用
  * @param < T >
  */
+@SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
 class Result<T> extends AbstractBean {
 
     private static final long serialVersionUID = -196371159847L;

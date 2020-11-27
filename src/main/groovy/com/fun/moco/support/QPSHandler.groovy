@@ -5,26 +5,26 @@ import com.github.dreamhead.moco.ResponseHandler
 import com.github.dreamhead.moco.handler.AbstractResponseHandler
 import com.github.dreamhead.moco.internal.SessionContext
 import com.github.dreamhead.moco.util.Idles
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 
 import java.util.concurrent.Semaphore
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 
 import static com.google.common.base.Preconditions.checkArgument
-
 /**
  * 固定QPS的接口实现类
  */
+@SuppressFBWarnings("LI_LAZY_INIT_STATIC")
 class QPSHandler extends AbstractResponseHandler {
 
-
-    private static final Semaphore semaphore = new Semaphore(1, true);
+    private static volatile Semaphore semaphore = new Semaphore(1, true);
     /**
      * 访问间隔,使用微秒控制
      */
-    private final int gap
+    private int gap
 
-    private final ResponseHandler handler
+    private ResponseHandler handler
 
     /**
      * 用于记录收到第一个请求的时间

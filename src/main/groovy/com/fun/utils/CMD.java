@@ -1,6 +1,7 @@
 package com.fun.utils;
 
 import com.fun.frame.SourceCode;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import java.nio.charset.Charset;
  */
 public class CMD extends SourceCode {
 
+    @SuppressFBWarnings("MS_SHOULD_BE_FINAL")
     public static Logger logger = LoggerFactory.getLogger(CMD.class);
 
     /**

@@ -13,6 +13,7 @@ import com.fun.utils.DecodeEncode;
 import com.fun.utils.Regex;
 import com.fun.utils.Time;
 import com.fun.utils.message.AlertOver;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.*;
 import org.apache.http.client.config.RequestConfig;
@@ -76,6 +77,7 @@ public class FanLibrary extends SourceCode {
     /**
      * 是否保存请求和响应
      */
+    @SuppressFBWarnings("MS_SHOULD_BE_FINAL")
     public static boolean SAVE_KEY = false;
 
     /**

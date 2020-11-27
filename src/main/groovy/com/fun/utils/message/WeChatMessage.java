@@ -2,10 +2,12 @@ package com.fun.utils.message;
 
 import com.fun.frame.SourceCode;
 import com.fun.base.interfaces.IMessage;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * 用户微信通知相关功能，不允许频繁多线程调用,暂时没有分级推送机制
  */
+@SuppressFBWarnings("URF_UNREAD_FIELD")
 public class WeChatMessage extends SourceCode implements IMessage {
     private String content;
 

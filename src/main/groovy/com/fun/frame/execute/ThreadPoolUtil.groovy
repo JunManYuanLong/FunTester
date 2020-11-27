@@ -52,5 +52,26 @@ class ThreadPoolUtil {
         return Executors.newCachedThreadPool();
     }
 
-
+/*获取线程安全的单例的线程池
+public static ThreadPoolExecutor getSingleThreadPoolExecutor(AtomicInteger atomicInteger) {
+        if (singleThreadPoolExecutor == null){
+            synchronized (objectLock){
+                if (singleThreadPoolExecutor == null){
+                    singleThreadPoolExecutor = new ThreadPoolExecutor(1, 1, 5,
+                            TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(100),
+                            new ThreadFactory() {
+                                @Override
+                                public Thread newThread(Runnable runnable) {
+                                    Thread thread = new Thread(runnable);
+                                    thread.setName("UserCenter-business-" + atomicInteger.getAndIncrement());
+                                    return thread;
+                                }
+                            },
+                        new ThreadPoolExecutor.CallerRunsPolicy());
+                }
+            }
+        }
+        return singleThreadPoolExecutor;
+    }
+    */
 }

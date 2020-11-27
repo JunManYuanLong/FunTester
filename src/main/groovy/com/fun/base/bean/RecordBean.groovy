@@ -1,11 +1,12 @@
 package com.fun.base.bean
 
-
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 /**
  * 测试记录的bean
  */
+@SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
 class RecordBean extends AbstractBean {
 
     private static final long serialVersionUID = -159594234325649847L;

@@ -2,6 +2,7 @@ package com.fun.frame.execute;
 
 import com.fun.frame.SourceCode;
 import com.fun.utils.FileUtil;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import groovy.lang.GroovyClassLoader;
 import groovy.lang.GroovyObject;
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import java.util.List;
 /**
  * groovy脚本执行类，用户执行上传的groovy脚本，功能简单，使用未做封装，将就用一下
  */
+@SuppressFBWarnings("NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE")
 public class ExecuteGroovy extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(ExecuteSource.class);

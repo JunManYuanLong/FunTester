@@ -207,7 +207,6 @@ public class MySqlTest extends SqlBase {
      * 确保所有的储存任务都结束
      */
     private static void check() {
-        int size = sqls.size();
         while (sqls.size() != 0) {
             sleep(100);
         }

@@ -3,11 +3,13 @@ package com.fun.db.mongodb;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.bson.Document;
 
 /**
  * mongo数据库配置对象，针对单个数据服务，单个身份验证
  */
+@SuppressFBWarnings("CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE")
 public class MongoObject extends MongoBase {
 
     String host;

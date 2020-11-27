@@ -1,6 +1,7 @@
 package com.fun.config;
 
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.http.Header;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import static com.fun.frame.httpclient.FanLibrary.getHeader;
 /**
  *
  */
+@SuppressFBWarnings({"MS_SHOULD_BE_FINAL", "MS_CANNOT_BE_FINAL"})
 public class HttpClientConstant {
 
     static PropertyUtils.Property propertyUtils = PropertyUtils.getProperties("http");

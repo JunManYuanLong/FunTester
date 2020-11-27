@@ -7,6 +7,7 @@ import com.alibaba.dubbo.config.utils.ReferenceConfigCache;
 import com.alibaba.dubbo.rpc.service.GenericService;
 import com.fun.config.PropertyUtils;
 import com.fun.utils.RString;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 public class DubboBase {
 
@@ -73,8 +74,9 @@ public class DubboBase {
     /**
      * 释放资源
      */
+    @SuppressFBWarnings("NP_ALWAYS_NULL")
     public void over() {
-        if (null == configCache) configCache.destroy(referenceConfig);
+        if (null != configCache) configCache.destroy(referenceConfig);
     }
 
 
