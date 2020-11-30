@@ -11,7 +11,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
  * @param < T >
  */
 @SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
-class Result<T> extends AbstractBean {
+class Result<T> extends AbstractBean implements Serializable{
 
     private static final long serialVersionUID = -196371159847L;
 

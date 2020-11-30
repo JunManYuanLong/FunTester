@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory
  * 请求信息封装类
  */
 @SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
-class RequestInfo extends AbstractBean {
+class RequestInfo extends AbstractBean implements Serializable{
 
     private static final long serialVersionUID = 5942566988949859847L;
 

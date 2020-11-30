@@ -11,9 +11,7 @@ import org.springframework.beans.BeanUtils
 /**
  * bean的基类
  */
-abstract class AbstractBean implements Serializable {
-
-    private static final long serialVersionUID = -1595942567071159847L;
+abstract class AbstractBean {
 
     static final Logger logger = LoggerFactory.getLogger(AbstractBean.class)
 
