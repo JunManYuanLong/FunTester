@@ -30,8 +30,14 @@ public class WebSocketFunClient extends WebSocketClient {
 
     public static Vector<WebSocketFunClient> socketClients = new Vector<>();
 
+    /**
+     * 存储收到的消息
+     */
     public LinkedList<String> msgs = new LinkedList<>();
 
+    /**
+     * 连接的url
+     */
     private String url;
 
     /**
@@ -46,10 +52,23 @@ public class WebSocketFunClient extends WebSocketClient {
         socketClients.add(this);
     }
 
+    /**
+     * 获取socketclient实例
+     *
+     * @param url
+     * @return
+     */
     public static WebSocketFunClient getInstance(String url) {
         return getInstance(url, Constant.DEFAULT_STRING + RString.getString(5));
     }
 
+    /**
+     * 获取socketclient实例
+     *
+     * @param url
+     * @param cname
+     * @return
+     */
     public static WebSocketFunClient getInstance(String url, String cname) {
         WebSocketFunClient client = null;
         try {
@@ -67,7 +86,7 @@ public class WebSocketFunClient extends WebSocketClient {
     }
 
     /**
-     * 收到消息时候调用的方法ç
+     * 收到消息时候调用的方法
      *
      * @param message
      */
@@ -86,26 +105,42 @@ public class WebSocketFunClient extends WebSocketClient {
      */
     @Override
     public void onClose(int code, String reason, boolean remote) {
-        logger.info("{} socket 连接关闭...  code码:{},原因:{},是否由远程服务关闭:{}", cname, code, reason, remote);
+        logger.info("{} socket 连接关闭,URL: {} ,code码:{},原因:{},是否由远程服务关闭:{}", cname, url, code, reason, remote);
     }
 
+    /**
+     * 关闭socketclient
+     */
     @Override
     public void close() {
         logger.warn("{}:socket连接关闭!", cname);
         super.close();
     }
 
+    /**
+     * 出错时候调用
+     *
+     * @param e
+     */
     @Override
     public void onError(Exception e) {
-        logger.error("{} socket异常!", cname, e);
+        logger.error("{} socket异常,URL: {}", cname, url, e);
     }
 
+    /**
+     * 发送消息
+     *
+     * @param text
+     */
     @Override
     public void send(String text) {
         logger.debug("{} 发送:{}", cname, text);
         super.send(text);
     }
 
+    /**
+     * 简历socket连接
+     */
     @Override
     public void connect() {
         logger.info("{} 开始连接...", cname);
@@ -158,18 +193,26 @@ public class WebSocketFunClient extends WebSocketClient {
     }
 
 
+    /**
+     * 重置连接
+     */
     @Override
     public void reconnect() {
         logger.info("{}重置连接并尝试重新连接!", cname);
         super.reconnect();
     }
 
+    /**
+     * 设置cname,多用于性能测试clone()之后
+     *
+     * @param cname
+     */
     public void setCname(String cname) {
         this.cname = cname;
     }
 
     /**
-     * 关闭所有连接
+     * 关闭所有socketclient
      */
     public static void closeAll() {
         socketClients.forEach(x ->
