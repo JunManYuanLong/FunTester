@@ -18,44 +18,47 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.util.Vector;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * socket客户端代码,限于WebSocket协议的测试
  */
 @SuppressFBWarnings({"CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE", "DM_DEFAULT_ENCODING", "MS_SHOULD_BE_FINAL"})
-public class SocketClient extends WebSocketClient {
+public class WebSocketFunClient extends WebSocketClient {
 
-    private static Logger logger = LoggerFactory.getLogger(SocketClient.class);
+    private static Logger logger = LoggerFactory.getLogger(WebSocketFunClient.class);
 
-    public static Vector<SocketClient> socketClients = new Vector<>();
+    public static Vector<WebSocketFunClient> socketClients = new Vector<>();
+
+    public static ConcurrentLinkedQueue<String> msgs = new ConcurrentLinkedQueue<>();
 
     /**
      * 客户端名称
      */
     private String cname;
 
-    private SocketClient(URI uri) {
+    private WebSocketFunClient(URI uri) {
         this(uri, Thread.currentThread().getName());
     }
 
-    private SocketClient(URI uri, String cname) {
+    private WebSocketFunClient(URI uri, String cname) {
         super(uri);
         this.cname = cname;
         socketClients.add(this);
     }
 
-    public static SocketClient getInstance(String url) {
+    public static WebSocketFunClient getInstance(String url) {
         return getInstance(url, Constant.DEFAULT_STRING + RString.getString(5));
     }
 
-    public static SocketClient getInstance(String url, String cname) {
+    public static WebSocketFunClient getInstance(String url, String cname) {
         URI uri = null;
         try {
             uri = new URI(url);
         } catch (URISyntaxException e) {
             ParamException.fail(cname + "创建socket client 失败! 原因:" + e.getMessage());
         }
-        return new SocketClient(uri, cname);
+        return new WebSocketFunClient(uri, cname);
     }
 
     @Override
@@ -71,11 +74,12 @@ public class SocketClient extends WebSocketClient {
      */
     @Override
     public void onMessage(String message) {
-        logger.info("收到: {}", message);
+        saveMsg(message);
+        logger.info("{}收到: {}", cname, message);
     }
 
     /**
-     * 关闭,存疑.线程结束会自动关闭.不可调用websocketclient中的clone()方法
+     * 关闭
      *
      * @param code   关闭code码,详情查看 {@link org.java_websocket.framing.CloseFrame}
      * @param reason 关闭原因
@@ -150,17 +154,39 @@ public class SocketClient extends WebSocketClient {
      * @return
      */
     @Override
-    public SocketClient clone() {
-        return new SocketClient(this.uri, this.cname + RString.getString(4));
+    public WebSocketFunClient clone() {
+        return new WebSocketFunClient(this.uri, this.cname + RString.getString(4));
     }
 
+
+    @Override
+    public void reconnect() {
+        logger.info("{}重置连接并尝试重新连接!", cname);
+        super.reconnect();
+    }
+
+    /**
+     * 关闭所有连接
+     */
     public static void closeAll() {
         socketClients.forEach(x ->
                 {
-                    if (!x.isClosed()) x.close();
+                    if (x != null && !x.isClosed()) x.close();
                 }
         );
         logger.info("关闭所有Socket客户端!");
+    }
+
+    /**
+     * 保存收到的信息,只保留最近的N条
+     *
+     * @param msg
+     */
+    public void saveMsg(String msg) {
+        synchronized (msgs) {
+            if (msgs.size() > 9) msgs.remove();
+        }
+        msgs.add(msg);
     }
 
 
