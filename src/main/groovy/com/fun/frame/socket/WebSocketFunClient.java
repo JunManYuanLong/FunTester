@@ -5,6 +5,7 @@ import com.fun.base.bean.AbstractBean;
 import com.fun.base.exception.FailException;
 import com.fun.base.exception.ParamException;
 import com.fun.config.Constant;
+import com.fun.config.SocketConstant;
 import com.fun.frame.SourceCode;
 import com.fun.utils.RString;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -59,7 +60,7 @@ public class WebSocketFunClient extends WebSocketClient {
      * @return
      */
     public static WebSocketFunClient getInstance(String url) {
-        return getInstance(url, Constant.DEFAULT_STRING + RString.getString(5));
+        return getInstance(url, Constant.DEFAULT_STRING + RString.getString(4));
     }
 
     /**
@@ -144,12 +145,12 @@ public class WebSocketFunClient extends WebSocketClient {
     @Override
     public void connect() {
         logger.info("{} 开始连接...", cname);
+        super.connect();
         int a = 0;
         while (true) {
             if (this.getReadyState() == ReadyState.OPEN) break;
-            if ((a++ > 3)) FailException.fail(cname + "连接重试失败!");
-            SourceCode.sleep(2);
-            super.connect();
+            if ((a++ > SocketConstant.MAX_WATI_TIMES)) FailException.fail(cname + "连接重试失败!");
+            SourceCode.sleep(SocketConstant.WAIT_INTERVAL);
         }
         logger.info("{} 连接成功!", cname);
     }
@@ -224,13 +225,13 @@ public class WebSocketFunClient extends WebSocketClient {
     }
 
     /**
-     * 保存收到的信息,只保留最近的N条
+     * 保存收到的信息,只保留最近的{@link SocketConstant}条
      *
      * @param msg
      */
     public void saveMsg(String msg) {
         synchronized (msgs) {
-            if (msgs.size() > 9) msgs.remove();
+            if (msgs.size() > SocketConstant.MAX_MSG_SIZE) msgs.remove();
             msgs.add(msg);
         }
     }

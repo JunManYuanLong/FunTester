@@ -81,6 +81,9 @@ public class ScoketIOFunClient extends SourceCode {
         });
     }
 
+
+
+
     public void addEventListener(String event, Emitter.Listener fn) {
         socket.on(event, fn);
     }
