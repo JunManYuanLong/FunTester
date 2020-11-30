@@ -17,8 +17,8 @@ import org.slf4j.LoggerFactory;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
+import java.util.LinkedList;
 import java.util.Vector;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * socket客户端代码,限于WebSocket协议的测试
@@ -30,20 +30,19 @@ public class WebSocketFunClient extends WebSocketClient {
 
     public static Vector<WebSocketFunClient> socketClients = new Vector<>();
 
-    public static ConcurrentLinkedQueue<String> msgs = new ConcurrentLinkedQueue<>();
+    public LinkedList<String> msgs = new LinkedList<>();
+
+    private String url;
 
     /**
      * 客户端名称
      */
     private String cname;
 
-    private WebSocketFunClient(URI uri) {
-        this(uri, Thread.currentThread().getName());
-    }
-
-    private WebSocketFunClient(URI uri, String cname) {
-        super(uri);
+    private WebSocketFunClient(String url, String cname) throws URISyntaxException {
+        super(new URI(url));
         this.cname = cname;
+        this.url = url;
         socketClients.add(this);
     }
 
@@ -52,13 +51,13 @@ public class WebSocketFunClient extends WebSocketClient {
     }
 
     public static WebSocketFunClient getInstance(String url, String cname) {
-        URI uri = null;
+        WebSocketFunClient client = null;
         try {
-            uri = new URI(url);
+            client = new WebSocketFunClient(url, cname);
         } catch (URISyntaxException e) {
             ParamException.fail(cname + "创建socket client 失败! 原因:" + e.getMessage());
         }
-        return new WebSocketFunClient(uri, cname);
+        return client;
     }
 
     @Override
@@ -155,7 +154,7 @@ public class WebSocketFunClient extends WebSocketClient {
      */
     @Override
     public WebSocketFunClient clone() {
-        return new WebSocketFunClient(this.uri, this.cname + RString.getString(4));
+        return getInstance(this.url, this.cname + RString.getString(4));
     }
 
 
@@ -163,6 +162,10 @@ public class WebSocketFunClient extends WebSocketClient {
     public void reconnect() {
         logger.info("{}重置连接并尝试重新连接!", cname);
         super.reconnect();
+    }
+
+    public void setCname(String cname) {
+        this.cname = cname;
     }
 
     /**
@@ -185,8 +188,8 @@ public class WebSocketFunClient extends WebSocketClient {
     public void saveMsg(String msg) {
         synchronized (msgs) {
             if (msgs.size() > 9) msgs.remove();
+            msgs.add(msg);
         }
-        msgs.add(msg);
     }
 
 
