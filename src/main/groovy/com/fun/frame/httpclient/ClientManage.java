@@ -174,7 +174,7 @@ public class ClientManage {
     private static HttpRequestRetryHandler getHttpRequestRetryHandler() {
         return new HttpRequestRetryHandler() {
             public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
-                logger.warn("请求发生错误！", exception);
+                logger.warn("请求发生错误:{}", exception.getMessage(), exception);
                 if (executionCount > HttpClientConstant.TRY_TIMES) return false;
                 HttpClientContext clientContext = HttpClientContext.adapt(context);
                 HttpRequestBase request = clientContext.getAttribute("http.request", HttpRequestBase.class);
