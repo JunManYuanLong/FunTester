@@ -116,6 +116,7 @@ public class WebSocketFunClient extends WebSocketClient {
     public void close() {
         logger.warn("{}:socket连接关闭!", cname);
         super.close();
+        socketClients.remove(this);
     }
 
     /**
@@ -184,17 +185,6 @@ public class WebSocketFunClient extends WebSocketClient {
     }
 
     /**
-     * 该方法用于性能测试中,clone多线程对象
-     *
-     * @return
-     */
-    @Override
-    public WebSocketFunClient clone() {
-        return getInstance(this.url, this.cname + RString.getString(4));
-    }
-
-
-    /**
      * 重置连接
      */
     @Override
@@ -213,6 +203,16 @@ public class WebSocketFunClient extends WebSocketClient {
     }
 
     /**
+     * 该方法用于性能测试中,clone多线程对象
+     *
+     * @return
+     */
+    @Override
+    public WebSocketFunClient clone() {
+        return getInstance(this.url, this.cname + RString.getString(4));
+    }
+
+    /**
      * 关闭所有socketclient
      */
     public static void closeAll() {
@@ -221,6 +221,7 @@ public class WebSocketFunClient extends WebSocketClient {
                     if (x != null && !x.isClosed()) x.close();
                 }
         );
+        socketClients.clear();
         logger.info("关闭所有Socket客户端!");
     }
 
