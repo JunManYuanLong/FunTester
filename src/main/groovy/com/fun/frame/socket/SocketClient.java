@@ -2,65 +2,70 @@ package com.fun.frame.socket;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fun.base.bean.AbstractBean;
+import com.fun.base.exception.FailException;
 import com.fun.base.exception.ParamException;
+import com.fun.config.Constant;
+import com.fun.frame.SourceCode;
 import com.fun.utils.RString;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.enums.ReadyState;
 import org.java_websocket.handshake.ServerHandshake;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.io.Serializable;
-import java.net.Socket;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.util.Vector;
 
 /**
- * socket客户端代码
+ * socket客户端代码,限于WebSocket协议的测试
  */
 @SuppressFBWarnings({"CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE", "DM_DEFAULT_ENCODING", "MS_SHOULD_BE_FINAL"})
-public class SocketClient extends WebSocketClient implements Serializable {
-
-    private static final long serialVersionUID = 1306796619468953402L;
+public class SocketClient extends WebSocketClient {
 
     private static Logger logger = LoggerFactory.getLogger(SocketClient.class);
 
-
     public static Vector<SocketClient> socketClients = new Vector<>();
 
-    private String name;
+    /**
+     * 客户端名称
+     */
+    private String cname;
 
     private SocketClient(URI uri) {
         this(uri, Thread.currentThread().getName());
     }
 
-    private SocketClient(URI uri, String name) {
+    private SocketClient(URI uri, String cname) {
         super(uri);
-        this.name = name;
+        this.cname = cname;
         socketClients.add(this);
     }
 
     public static SocketClient getInstance(String url) {
+        return getInstance(url, Constant.DEFAULT_STRING + RString.getString(5));
+    }
+
+    public static SocketClient getInstance(String url, String cname) {
         URI uri = null;
         try {
             uri = new URI(url);
         } catch (URISyntaxException e) {
-            ParamException.fail("创建socket client 失败! 原因:" + e.getMessage());
+            ParamException.fail(cname + "创建socket client 失败! 原因:" + e.getMessage());
         }
-        return new SocketClient(uri);
+        return new SocketClient(uri, cname);
     }
 
     @Override
     public void onOpen(ServerHandshake handshakedata) {
-        logger.info("开始建立socket连接...");
+        logger.info("{} 正在建立socket连接...", cname);
         handshakedata.iterateHttpFields().forEachRemaining(x -> logger.info("握手信息key: {} ,value: {}", x, handshakedata.getFieldValue(x)));
     }
 
     /**
-     * 收到消息时候调用的方法
+     * 收到消息时候调用的方法ç
      *
      * @param message
      */
@@ -78,26 +83,37 @@ public class SocketClient extends WebSocketClient implements Serializable {
      */
     @Override
     public void onClose(int code, String reason, boolean remote) {
-        logger.info("socket 连接关闭...;code码:{},原因:{},是否由远程服务关闭:{}", code, reason, remote);
-        try {
-            Socket socket = getSocket();
-            if (!socket.isClosed()) socket.close();
-        } catch (IOException e) {
-            logger.error("socket连接关闭失败!", e);
-        }finally {
-            socketClients.remove(this);
-        }
+        logger.info("{} socket 连接关闭...  code码:{},原因:{},是否由远程服务关闭:{}", cname, code, reason, remote);
+    }
+
+    @Override
+    public void close() {
+        logger.warn("{}:socket连接关闭!", cname);
+        super.close();
     }
 
     @Override
     public void onError(Exception e) {
-        logger.error("socket异常!", e);
+        logger.error("{} socket异常!", cname, e);
     }
 
     @Override
     public void send(String text) {
-        logger.debug("发送:{}", text);
+        logger.debug("{} 发送:{}", cname, text);
         super.send(text);
+    }
+
+    @Override
+    public void connect() {
+        logger.info("{} 开始连接...", cname);
+        int a = 0;
+        while (true) {
+            if (this.getReadyState() == ReadyState.OPEN) break;
+            if ((a++ > 3)) FailException.fail(cname + "连接重试失败!");
+            SourceCode.sleep(2);
+            super.connect();
+        }
+        logger.info("{} 连接成功!", cname);
     }
 
     /**
@@ -135,7 +151,16 @@ public class SocketClient extends WebSocketClient implements Serializable {
      */
     @Override
     public SocketClient clone() {
-        return new SocketClient(this.uri,this.name+ RString.getString(1));
+        return new SocketClient(this.uri, this.cname + RString.getString(4));
+    }
+
+    public static void closeAll() {
+        socketClients.forEach(x ->
+                {
+                    if (!x.isClosed()) x.close();
+                }
+        );
+        logger.info("关闭所有Socket客户端!");
     }
 
 
