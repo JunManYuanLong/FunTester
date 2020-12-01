@@ -17,6 +17,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Vector;
 
+/**
+ * 基于Socket.IO的Client封装对象
+ */
 public class ScoketIOFunClient extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(ScoketIOFunClient.class);
@@ -33,6 +36,9 @@ public class ScoketIOFunClient extends SourceCode {
 
     public Socket socket;
 
+    /**
+     * 监听事件记录
+     */
     public ConcurrentSet<String> events = new ConcurrentSet<>();
 
 
@@ -42,6 +48,13 @@ public class ScoketIOFunClient extends SourceCode {
         clients.add(this);
     }
 
+    /**
+     * 获取socketClient实例
+     *
+     * @param url
+     * @param cname
+     * @return
+     */
     public static ScoketIOFunClient getInstance(String url, String cname) {
         ScoketIOFunClient client = null;
         try {
@@ -127,11 +140,20 @@ public class ScoketIOFunClient extends SourceCode {
         this.socket.on(event, fn);
     }
 
+    /**
+     * 发送消息,暂不重载
+     *
+     * @param event
+     * @param objects
+     */
     public void send(String event, Object... objects) {
         events.add(event);
         this.socket.emit(event, objects);
     }
 
+    /**
+     * 关闭SocketClient
+     */
     public void close() {
         logger.info("{} socket链接关闭!", cname);
         clients.remove(this);
@@ -149,6 +171,11 @@ public class ScoketIOFunClient extends SourceCode {
         return Arrays.toString(objects);
     }
 
+    /**
+     * 该方法用于性能测试中,clone多线程对象
+     *
+     * @return
+     */
     @Override
     public ScoketIOFunClient clone() {
         return getInstance(this.url, this.cname + RString.getString(4));
@@ -166,6 +193,7 @@ public class ScoketIOFunClient extends SourceCode {
     public String getCname() {
         return cname;
     }
+
     public String getUrl() {
         return url;
     }
@@ -173,6 +201,7 @@ public class ScoketIOFunClient extends SourceCode {
     public void setUrl(String url) {
         this.url = url;
     }
+
     /**
      * 保存收到的信息,只保留最近的{@link SocketConstant}条
      *
