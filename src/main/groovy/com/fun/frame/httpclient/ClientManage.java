@@ -6,7 +6,6 @@ import com.fun.config.HttpClientConstant;
 import com.fun.utils.Regex;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpHost;
 import org.apache.http.NoHttpResponseException;
 import org.apache.http.client.HttpRequestRetryHandler;
@@ -180,37 +179,37 @@ public class ClientManage {
                 HttpRequestBase request = clientContext.getAttribute("http.request", HttpRequestBase.class);
                 logger.error(FunRequest.initFromRequest(request).toString());
                 if (exception instanceof NoHttpResponseException) {
-                    logger.warn("没有响应异常");
+//                    logger.warn("没有响应异常");
                     return true;
                 } else if (exception instanceof ConnectTimeoutException) {
-                    logger.warn("连接超时，重试");
+//                    logger.warn("连接超时，重试");
                     return true;
                 } else if (exception instanceof SSLHandshakeException) {
-                    logger.warn("本地证书异常");
+//                    logger.warn("本地证书异常");
                     return false;
                 } else if (exception instanceof InterruptedIOException) {
-                    logger.warn("IO中断异常");
+//                    logger.warn("IO中断异常");
                     return true;
                 } else if (exception instanceof UnknownHostException) {
-                    logger.warn("找不到服务器异常");
+//                    logger.warn("找不到服务器异常");
                     return false;
                 } else if (exception instanceof SSLException) {
-                    logger.warn("SSL异常");
+//                    logger.warn("SSL异常");
                     return false;
                 } else if (exception instanceof HttpHostConnectException) {
-                    logger.warn("主机连接异常");
+//                    logger.warn("主机连接异常");
                     return false;
                 } else if (exception instanceof SocketException) {
-                    logger.warn("socket异常");
+//                    logger.warn("socket异常");
                     return false;
                 } else {
-                    logger.warn("未记录的请求异常：{}", exception.getClass());
+                    logger.warn("未记录的请求异常:", exception);
                 }
 
                 // 如果请求是幂等的，则不重试
-                if (!(request instanceof HttpEntityEnclosingRequest)) {
-                    return false;
-                }
+//                if (!(request instanceof HttpEntityEnclosingRequest)) {
+//                    return false;
+//                }
                 return false;
             }
         };
