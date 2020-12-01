@@ -11,5 +11,12 @@ public class SocketConstant {
 
     public static int MAX_MSG_SIZE = 20;
 
+    public static int MAX_RETRY = 3;
+
+    public static int RETRY_DELAY = 1000;
+
+    public static int TIMEOUT = 1000;
+
+    public static String[] transports = {"websocket"};
 
 }

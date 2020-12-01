@@ -29,7 +29,7 @@ public class WebSocketFunClient extends WebSocketClient {
 
     private static Logger logger = LoggerFactory.getLogger(WebSocketFunClient.class);
 
-    public static Vector<WebSocketFunClient> socketClients = new Vector<>();
+    public static Vector<WebSocketFunClient> clients = new Vector<>();
 
     /**
      * 存储收到的消息
@@ -50,7 +50,7 @@ public class WebSocketFunClient extends WebSocketClient {
         super(new URI(url));
         this.cname = cname;
         this.url = url;
-        socketClients.add(this);
+        clients.add(this);
     }
 
     /**
@@ -116,7 +116,7 @@ public class WebSocketFunClient extends WebSocketClient {
     public void close() {
         logger.warn("{}:socket连接关闭!", cname);
         super.close();
-        socketClients.remove(this);
+        clients.remove(this);
     }
 
     /**
@@ -202,6 +202,18 @@ public class WebSocketFunClient extends WebSocketClient {
         this.cname = cname;
     }
 
+    public String getCname() {
+        return cname;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     /**
      * 该方法用于性能测试中,clone多线程对象
      *
@@ -210,19 +222,6 @@ public class WebSocketFunClient extends WebSocketClient {
     @Override
     public WebSocketFunClient clone() {
         return getInstance(this.url, this.cname + RString.getString(4));
-    }
-
-    /**
-     * 关闭所有socketclient
-     */
-    public static void closeAll() {
-        socketClients.forEach(x ->
-                {
-                    if (x != null && !x.isClosed()) x.close();
-                }
-        );
-        socketClients.clear();
-        logger.info("关闭所有Socket客户端!");
     }
 
     /**
@@ -235,6 +234,19 @@ public class WebSocketFunClient extends WebSocketClient {
             if (msgs.size() > SocketConstant.MAX_MSG_SIZE) msgs.remove();
             msgs.add(msg);
         }
+    }
+
+    /**
+     * 关闭所有socketclient
+     */
+    public static void closeAll() {
+        clients.forEach(x ->
+                {
+                    if (x != null && !x.isClosed()) x.close();
+                }
+        );
+        clients.clear();
+        logger.info("关闭所有Socket客户端!");
     }
 
 
