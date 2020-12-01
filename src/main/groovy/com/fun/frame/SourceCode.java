@@ -239,8 +239,8 @@ public class SourceCode extends Output {
      */
     public static boolean changeStringToBoolean(String text) {
         logger.debug("需要转化成的文本：{}", text);
-        if (text == null || !Regex.isMatch(text, "false|ture")) return false;
-        return true;
+        if (text == null || !Regex.isMatch(text.toLowerCase(), "false|ture")) return false;
+        return text.equalsIgnoreCase("true");
     }
 
     /**
