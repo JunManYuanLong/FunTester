@@ -278,7 +278,7 @@ public class ClientManage {
      * @param ip
      * @param port
      */
-    static void init(int timeout, int accepttime, int retrytimes, String ip, int port) {
+    public static void init(int timeout, int accepttime, int retrytimes, String ip, int port) {
         HttpClientConstant.CONNECT_REQUEST_TIMEOUT = timeout * 1000;
         HttpClientConstant.CONNECT_TIMEOUT = timeout * 1000;
         HttpClientConstant.SOCKET_TIMEOUT = timeout * 1000;
