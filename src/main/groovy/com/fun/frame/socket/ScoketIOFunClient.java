@@ -156,7 +156,6 @@ public class ScoketIOFunClient extends SourceCode {
      */
     public void close() {
         logger.info("{} socket链接关闭!", cname);
-        clients.remove(this);
         this.socket.close();
     }
 

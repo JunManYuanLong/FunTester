@@ -116,7 +116,6 @@ public class WebSocketFunClient extends WebSocketClient {
     public void close() {
         logger.warn("{}:socket连接关闭!", cname);
         super.close();
-        clients.remove(this);
     }
 
     /**
