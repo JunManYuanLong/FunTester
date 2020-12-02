@@ -279,11 +279,19 @@ public class SourceCode extends Output {
      */
     public static void sleep(int second) {
         try {
-            if (second > 30) Thread.sleep(second);
-            if (second <= 30) Thread.sleep(second * 1000);
+            Thread.sleep(second * 1000);
         } catch (InterruptedException e) {
             logger.warn("sleep发生错误！", e);
         }
+    }
+
+    /**
+     * 睡眠,提供更精准的休眠功能
+     *
+     * @param time
+     */
+    public static void sleep(double time) {
+        sleep((int) time * 1000);
     }
 
     /**
