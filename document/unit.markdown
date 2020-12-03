@@ -21,4 +21,5 @@
 - [单元测试框架spock和Mockito应用](https://mp.weixin.qq.com/s/s21Lts1UnG9HwOEVvgj-uw)
 - [Mockito框架Mock Void方法](https://mp.weixin.qq.com/s/R95wOMVyeDCHm3_Z0S2kqg)
 - [JsonPath工具类单元测试](https://mp.weixin.qq.com/s/1YtUWGk_sTjn9bHwAeT0Ew)
-
+- [Intellij静态代码扫描插件SpotBugs](https://mp.weixin.qq.com/s/8ivsMNOmT0LDfvcM06IGMg)
+- [SpotBugs注解SuppressWarnings在Java&Groovy中的应用](https://mp.weixin.qq.com/s/R0JoqmAqhUbRSjIJ61h_tg)

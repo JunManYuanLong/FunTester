@@ -46,6 +46,7 @@
 - [Java字符串到数组的转换--最后放大招](https://mp.weixin.qq.com/s/iMUYZYkJ5CjykwWqinNm5g)
 - [Java求数组的并集--最后放大招](https://mp.weixin.qq.com/s/bZ93SGakyiRbaRujhx4nvw)
 - [Java计算数组平均值--最后放大招](https://mp.weixin.qq.com/s/dxQaFHu2PyAbOK6jpEgEUQ)
+- [Math.abs()求绝对值返回负值BUG分享](https://mp.weixin.qq.com/s/RHzExuRqF1XsBtzGKzmgGA)
 
 ## Groovy
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)

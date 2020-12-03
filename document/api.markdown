@@ -1,6 +1,7 @@
 # 接口测试
 
-> 公众号：FunTester，原创分享爱好者，腾讯云、掘金社区、开源中国推荐，知乎八级原创作者，主要方向接口功能、自动化、性能测试，兼顾白盒测试，框架开发，业务开发。工作语言Java和Groovy，欢迎关注。
+> 公众号**FunTester**，非著名测试开发，文章记录学习和感悟，欢迎关注，交流成长。
+
 
 ## 接口测试
 
@@ -37,6 +38,8 @@
 - [HTTP异步连接池和多线程实践](https://mp.weixin.qq.com/s/8M348LuHakBe4GAEnnDPxw)
 - [socket接口开发和测试初探](https://mp.weixin.qq.com/s/uhmkbrMp91PP1pQjlEofOQ)
 - [IntelliJ中基于文本的HTTP客户端](https://mp.weixin.qq.com/s/-9qi_lLVVfxQKEFmcRYFtA)
+- [基于WebSocket的client封装](https://mp.weixin.qq.com/s/1lZvsuGEa6hiRHOgOT-Kmg)
+- [基于Socket.IO的Client封装](https://mp.weixin.qq.com/s/Ux90AXI9g85w7R5i3f9idg)
 
 ## 性能性能
 

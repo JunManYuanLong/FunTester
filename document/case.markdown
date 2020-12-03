@@ -3,6 +3,7 @@
 > FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的质变。
 
 ## 测试方案
+
 - [如何对消息队列做性能测试](https://mp.weixin.qq.com/s/MNt22aW3Op9VQ5OoMzPwBw)
 - [如何对修改密码接口进行压测](https://mp.weixin.qq.com/s/9CL_6-uZOlAh7oeo7NOpag)
 - [如何测试概率型业务接口](https://mp.weixin.qq.com/s/kUVffhjae3eYivrGqo6ZMg)
@@ -15,6 +16,7 @@
 - [绑定手机号性能测试](https://mp.weixin.qq.com/s/K5x1t1dKtIT2NKV6k4v5mw)
 
 ## BUG集锦
+
 - [一个MySQL索引引发的血案](https://mp.weixin.qq.com/s/KLSber-gPg53JVfsCa3Dtw)
 - [微软Zune闰年BUG分析](https://mp.weixin.qq.com/s/zpqAUcNcHaZjWUdUYH_loQ)
 - [“双花”BUG的测试分享](https://mp.weixin.qq.com/s/0dsBsssNfg-seJ_tu9zFaQ)
@@ -25,8 +27,10 @@
 - [超大对象导致Full GC超高的BUG分享](https://mp.weixin.qq.com/s/L15-0JW9WK-E005GeOG9WQ)
 - [访问权限导致toString返回空BUG分享](https://mp.weixin.qq.com/s/usDOcuJrXOmEKN-mVBzRKg)
 - [异常使用中的BUG](https://mp.weixin.qq.com/s/IG9Ar3IT7CrlSv4d0lCvgA)
+- [Math.abs()求绝对值返回负值BUG分享](https://mp.weixin.qq.com/s/RHzExuRqF1XsBtzGKzmgGA)
 
 ## 爬虫实践
+
 - [接口爬虫之网页表单数据提取](https://mp.weixin.qq.com/s/imJ5u67xhYQaEzv-O1in4g)
 - [httpclient爬虫爬取汉字拼音等信息](https://mp.weixin.qq.com/s/w-IvBxAsotmPA3pydpIo1w)
 - [httpclient爬虫爬取电影信息和下载地址实例](https://mp.weixin.qq.com/s/TB49X4S-ioyoW5CrzAnHcw)

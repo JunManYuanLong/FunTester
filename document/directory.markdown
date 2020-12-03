@@ -1,6 +1,6 @@
 # 总目录
 
-> 公众号：FunTester，原创分享爱好者，腾讯云、掘金社区、开源中国推荐，知乎八级原创作者，主要方向接口功能、自动化、性能测试，兼顾白盒测试，框架开发，业务开发。工作语言Java和Groovy，欢迎关注。
+> 公众号**FunTester**，非著名测试开发，文章记录学习和感悟，欢迎关注，交流成长。
 
 ## [GitHub地址](https://github.com/JunManYuanLong/FunTester)
 
@@ -40,6 +40,9 @@
 - [HTTP异步连接池和多线程实践](https://mp.weixin.qq.com/s/8M348LuHakBe4GAEnnDPxw)
 - [IntelliJ中基于文本的HTTP客户端](https://mp.weixin.qq.com/s/-9qi_lLVVfxQKEFmcRYFtA)
 - [socket接口开发和测试初探](https://mp.weixin.qq.com/s/uhmkbrMp91PP1pQjlEofOQ)
+- [IntelliJ中基于文本的HTTP客户端](https://mp.weixin.qq.com/s/-9qi_lLVVfxQKEFmcRYFtA)
+- [基于WebSocket的client封装](https://mp.weixin.qq.com/s/1lZvsuGEa6hiRHOgOT-Kmg)
+- [基于Socket.IO的Client封装](https://mp.weixin.qq.com/s/Ux90AXI9g85w7R5i3f9idg)
 
 ## 接口测试视频
 
@@ -86,6 +89,9 @@
 - [单元测试框架spock和Mockito应用](https://mp.weixin.qq.com/s/s21Lts1UnG9HwOEVvgj-uw)
 - [Mockito框架Mock Void方法](https://mp.weixin.qq.com/s/R95wOMVyeDCHm3_Z0S2kqg)
 - [JsonPath工具类单元测试](https://mp.weixin.qq.com/s/1YtUWGk_sTjn9bHwAeT0Ew)
+- [Intellij静态代码扫描插件SpotBugs](https://mp.weixin.qq.com/s/8ivsMNOmT0LDfvcM06IGMg)
+- [SpotBugs注解SuppressWarnings在Java&Groovy中的应用](https://mp.weixin.qq.com/s/R0JoqmAqhUbRSjIJ61h_tg)
+
 
 ## 性能测试
 
@@ -172,6 +178,7 @@
 - [Java字符串到数组的转换--最后放大招](https://mp.weixin.qq.com/s/iMUYZYkJ5CjykwWqinNm5g)
 - [Java求数组的并集--最后放大招](https://mp.weixin.qq.com/s/bZ93SGakyiRbaRujhx4nvw)
 - [Java计算数组平均值--最后放大招](https://mp.weixin.qq.com/s/dxQaFHu2PyAbOK6jpEgEUQ)
+- [Math.abs()求绝对值返回负值BUG分享](https://mp.weixin.qq.com/s/RHzExuRqF1XsBtzGKzmgGA)
 
 ## Groovy
 
@@ -263,6 +270,7 @@
 - [超大对象导致Full GC超高的BUG分享](https://mp.weixin.qq.com/s/L15-0JW9WK-E005GeOG9WQ)
 - [访问权限导致toString返回空BUG分享](https://mp.weixin.qq.com/s/usDOcuJrXOmEKN-mVBzRKg)
 - [异常使用中的BUG](https://mp.weixin.qq.com/s/IG9Ar3IT7CrlSv4d0lCvgA)
+- [Math.abs()求绝对值返回负值BUG分享](https://mp.weixin.qq.com/s/RHzExuRqF1XsBtzGKzmgGA)
 
 ## 爬虫实践
 
@@ -490,6 +498,7 @@
 - [高效Mobile DevOps步骤](https://mp.weixin.qq.com/s/-qc-d_zJ1C9H_Uvd8gJiBw)
 - [回归BUG](https://mp.weixin.qq.com/s/00j-acjPeKQ7uap62WpY3w)
 - [处理回归BUG最佳实践](https://mp.weixin.qq.com/s/R3O2NruPAA2gQf4-3R6aAQ)
+- [自动化测试实践清单](https://mp.weixin.qq.com/s/972WruGsYmkRroquBFoqMg)
 
 ## 大咖风采
 
@@ -607,3 +616,4 @@
 - [开源礼节](https://mp.weixin.qq.com/s/EyNules2f9NYdnYAX_NQSw)
 - [弱网测试：最低流畅网速是多少？](https://mp.weixin.qq.com/s/rCji6fZs9yYyk7GyIWvSiA)
 - [接口测试直播回顾](https://mp.weixin.qq.com/s/B8ih9sswaE-OWuVib6C16g)
+

@@ -114,6 +114,7 @@
 - [高效Mobile DevOps步骤](https://mp.weixin.qq.com/s/-qc-d_zJ1C9H_Uvd8gJiBw)
 - [回归BUG](https://mp.weixin.qq.com/s/00j-acjPeKQ7uap62WpY3w)
 - [处理回归BUG最佳实践](https://mp.weixin.qq.com/s/R3O2NruPAA2gQf4-3R6aAQ)
+- [自动化测试实践清单](https://mp.weixin.qq.com/s/972WruGsYmkRroquBFoqMg)
 
 ## 大咖风采
 
@@ -149,8 +150,3 @@
 - [开源礼节](https://mp.weixin.qq.com/s/EyNules2f9NYdnYAX_NQSw)
 - [弱网测试：最低流畅网速是多少？](https://mp.weixin.qq.com/s/rCji6fZs9yYyk7GyIWvSiA)
 - [接口测试直播回顾](https://mp.weixin.qq.com/s/B8ih9sswaE-OWuVib6C16g)
-
-
-![](http://pic.automancloud.com/0_Fotor.jpg)
-
-![](http://pic.automancloud.com/42387498274.jpeg)
