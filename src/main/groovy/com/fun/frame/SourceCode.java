@@ -278,6 +278,7 @@ public class SourceCode extends Output {
      * @param second 秒，可以是小数
      */
     public static void sleep(int second) {
+        if (second > 100) FailException.fail("休眠时间过长,请更换其他方式!");
         try {
             Thread.sleep(second * 1000);
         } catch (InterruptedException e) {
