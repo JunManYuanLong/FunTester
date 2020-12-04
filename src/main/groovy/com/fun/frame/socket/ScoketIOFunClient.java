@@ -117,7 +117,6 @@ public class ScoketIOFunClient extends SourceCode {
      * 开始建立socket连接
      */
     public void connect() {
-        this.socket.connect();
         logger.info("{} 开始连接...", cname);
         this.socket.connect();
         int a = 0;
