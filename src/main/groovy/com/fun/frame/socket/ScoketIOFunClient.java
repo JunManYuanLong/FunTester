@@ -105,6 +105,14 @@ public class ScoketIOFunClient extends SourceCode {
             logger.info("{} 连接错误,信息:{}", cname, initMsg(objects));
         });
         events.add(Socket.EVENT_CONNECT_ERROR);
+        this.socket.on(Socket.EVENT_PING, objects -> {
+            logger.info("{} ping消息:{}", cname, initMsg(objects));
+        });
+        events.add(Socket.EVENT_PING);
+        this.socket.on(Socket.EVENT_PONG, objects -> {
+            logger.info("{} ping消息:{}", cname, initMsg(objects));
+        });
+        events.add(Socket.EVENT_PONG);
         /*此处统一的message做记录*/
         this.socket.on(Socket.EVENT_MESSAGE, objects -> {
             String msg = initMsg(objects);
