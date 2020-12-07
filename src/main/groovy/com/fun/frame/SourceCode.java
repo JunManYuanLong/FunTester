@@ -292,7 +292,12 @@ public class SourceCode extends Output {
      * @param time
      */
     public static void sleep(double time) {
-        sleep((int) time * 1000);
+        if (time > 100) FailException.fail("休眠时间过长,请更换其他方式!");
+        try {
+            Thread.sleep((int) time * 1000);
+        } catch (InterruptedException e) {
+            logger.warn("sleep发生错误！", e);
+        }
     }
 
     /**
