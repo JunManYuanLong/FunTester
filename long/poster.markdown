@@ -6,6 +6,10 @@
 
 ps:有兴趣可以一起聊一聊文末和次条.
 
+转载事宜直接微信联系
+
+原创文章链接整理:https://gitee.com/fanapi/tester/blob/okay/document/directory.markdown,每周更新一次.
+
 |日期(周一)|状态|代号|
 |----|----|----|
 |12.7|已预订| L+C|
