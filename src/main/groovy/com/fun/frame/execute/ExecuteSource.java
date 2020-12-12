@@ -1,5 +1,6 @@
 package com.fun.frame.execute;
 
+import com.alibaba.fastjson.JSON;
 import com.fun.base.exception.FailException;
 import com.fun.config.Constant;
 import com.fun.frame.SourceCode;
@@ -12,6 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @SuppressFBWarnings({"NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE", "NP_NULL_ON_SOME_PATH_EXCEPTION"})
@@ -25,7 +27,6 @@ public class ExecuteSource extends SourceCode {
      * @param packageName
      */
     public static void executeAllMethodInPackage(String packageName) {
-        // String packageName = "najm.base";
         List<String> classNames = getClassName(packageName);
         if (classNames != null) {
             for (String className : classNames) {
@@ -37,7 +38,7 @@ public class ExecuteSource extends SourceCode {
 
 
     /**
-     * 执行一个类的方法内所有的方法，非 main，执行带参方法的代码已被注释
+     * 执行一个类的方法内所有的方法，非 main，执行带参方法的代码过滤
      *
      * @param path 类名
      */
@@ -50,18 +51,8 @@ public class ExecuteSource extends SourceCode {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Class<?> class1 = object.getClass();
-        Method[] methods = class1.getDeclaredMethods();
+        Method[] methods = c.getDeclaredMethods();
         for (Method method : methods) {
-            if (!method.getName().startsWith("testDemo")) // 排除 mian 方法
-                continue;
-//			output(class1.getName() + method.getName());
-//			第一个参数写的是方法名,第二个\第三个\...写的是方法参数列表中参数的类型
-//			try {
-//				method = c.getMethod(method.getName());
-//			} catch (NoSuchMethodException e) {
-//				e.printStackTrace();
-//			}
             try {
                 method.invoke(object);
             } catch (IllegalAccessException e) {
@@ -77,7 +68,68 @@ public class ExecuteSource extends SourceCode {
     }
 
     /**
-     * 获取当前类的所有用例方法名，已过滤
+     * 提供给命令行main方法使用
+     *
+     * @param params
+     */
+    public static void executeMethod(String... params) {
+        String[] ps = Arrays.copyOfRange(params, 1, params.length);
+        executeMethod(params[0], ps);
+    }
+
+    /**
+     * 执行具体的某一个方法,提供内部方法调用
+     *
+     * @param path
+     */
+    public static void executeMethod(String path, Object... paramsTpey) {
+        int length = paramsTpey.length;
+        if (length % 2 == 1) FailException.fail("参数个数错误,应该是偶数");
+        String className = path.substring(0, path.lastIndexOf("."));
+        String methodname = path.substring(className.length() + 1);
+        Class<?> c = null;
+        Object object = null;
+        try {
+            c = Class.forName(className);
+            object = c.newInstance();
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+            logger.warn("创建实例对象时错误:{}", className, e);
+        }
+        Method[] methods = c.getDeclaredMethods();
+        for (Method method : methods) {
+            if (!method.getName().equalsIgnoreCase(methodname)) continue;
+            try {
+                Class[] classs = new Class[length / 2];
+                for (int i = 0; i < paramsTpey.length; i = +2) {
+                    classs[i / 2] = Class.forName(paramsTpey[i].toString());//此处基础数据类型的参数会导致报错,但不影响下面的调用
+                }
+                method = c.getMethod(method.getName(), classs);
+            } catch (NoSuchMethodException | ClassNotFoundException e) {
+                logger.warn("方法属性处理错误!", e);
+            }
+            try {
+                Object[] ps = new Object[length / 2];
+                for (int i = 1; i < paramsTpey.length; i = +2) {
+                    String name = paramsTpey[i - 1].toString();
+                    String param = paramsTpey[i].toString();
+                    Object p = param;
+                    if (name.contains("Integer")) {
+                        p = new Integer(changeStringToInt(param));
+                    } else if (name.contains("JSON")) {
+                        p = JSON.parseObject(param);
+                    }
+                    ps[i / 2] = p;
+                }
+                method.invoke(object, ps);
+            } catch (IllegalAccessException | InvocationTargetException e) {
+                logger.warn("反射执行方法失败:{}", path, e);
+            }
+            break;
+        }
+    }
+
+    /**
+     * 获取当前类的所有用例方法名
      *
      * @param path
      * @return
@@ -92,11 +144,10 @@ public class ExecuteSource extends SourceCode {
         } catch (Exception e) {
             FailException.fail("初始化对象失败:" + path);
         }
-        Class<?> class1 = object.getClass();
-        Method[] all = class1.getDeclaredMethods();
+        Method[] all = c.getDeclaredMethods();
         for (int i = 0; i < all.length; i++) {
             String str = all[i].getName();
-            if (str.startsWith("testDemo")) methods.add(str);
+            methods.add(str);
         }
         return methods;
     }
