@@ -56,6 +56,7 @@ public class ScoketIOFunClient extends SourceCode {
      * @return
      */
     public static ScoketIOFunClient getInstance(String url, String cname) {
+        logger.info("Socket 连接: {},客户端名称: {}", url, cname);
         ScoketIOFunClient client = null;
         try {
             client = new ScoketIOFunClient(url, IO.socket(url, options));
