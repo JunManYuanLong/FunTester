@@ -43,6 +43,8 @@
 - [IntelliJ中基于文本的HTTP客户端](https://mp.weixin.qq.com/s/-9qi_lLVVfxQKEFmcRYFtA)
 - [基于WebSocket的client封装](https://mp.weixin.qq.com/s/1lZvsuGEa6hiRHOgOT-Kmg)
 - [基于Socket.IO的Client封装](https://mp.weixin.qq.com/s/Ux90AXI9g85w7R5i3f9idg)
+- [Socket.IO接口多用户测试实践](https://mp.weixin.qq.com/s/aCLaRZQs8zMK_ptJ-PjClw)
+- [Python版Socket.IO接口测试脚本](https://mp.weixin.qq.com/s/oXBP6Sx3yPqlmvV9uCUScw)
 
 ## 接口测试视频
 
@@ -218,6 +220,7 @@
 - [关于python版微信使用经验分享](https://mp.weixin.qq.com/s/19IaI6ETZAm_T4ePPlXqIg)
 - [python用递归筛选法求N以内的孪生质数（孪生素数）](https://mp.weixin.qq.com/s/rVY2pTl8So11WCvA9GrFbA)
 - [利用python wxpy和requests写一个自动应答微信机器人实例](https://mp.weixin.qq.com/s/Fni2kX5BRjdqOQ-glCLjRg)
+- [Python版Socket.IO接口测试脚本](https://mp.weixin.qq.com/s/oXBP6Sx3yPqlmvV9uCUScw)
 
 ---------------------------基础分割线--------------------------
 
@@ -616,4 +619,6 @@
 - [开源礼节](https://mp.weixin.qq.com/s/EyNules2f9NYdnYAX_NQSw)
 - [弱网测试：最低流畅网速是多少？](https://mp.weixin.qq.com/s/rCji6fZs9yYyk7GyIWvSiA)
 - [接口测试直播回顾](https://mp.weixin.qq.com/s/B8ih9sswaE-OWuVib6C16g)
+- [SpotBugs报错no Groovy library is defined解决办法](https://mp.weixin.qq.com/s/XxvuVS2TmlqT5-b22vObYQ)
+- [推荐好书：不要总是谦卑地弯着腰](https://mp.weixin.qq.com/s/mYNN9jSaikOF5aJEkb-Bug)
 
