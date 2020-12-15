@@ -8,14 +8,14 @@
 
 # [**文章目录传送门**](/document/directory.markdown)
 
-微信公众号：
+微信公众号FunTester：
 ===
 
-![](http://pic.automancloud.com/小树.png)
+![FunTester](http://pic.automancloud.com/小树.png)
 
 
 
 QQ群：340964272
 ===
 
-![](http://pic.automancloud.com/WechatIMG2651.jpg)
+![Tester终点站](http://pic.automancloud.com/WechatIMG2651.jpg)
