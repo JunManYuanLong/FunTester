@@ -45,6 +45,7 @@
 - [基于Socket.IO的Client封装](https://mp.weixin.qq.com/s/Ux90AXI9g85w7R5i3f9idg)
 - [Socket.IO接口多用户测试实践](https://mp.weixin.qq.com/s/aCLaRZQs8zMK_ptJ-PjClw)
 - [Python版Socket.IO接口测试脚本](https://mp.weixin.qq.com/s/oXBP6Sx3yPqlmvV9uCUScw)
+- [命令行如何执行jar包里面的方法](https://mp.weixin.qq.com/s/50oMEmVEnv5Vzlm1HOxuFw)
 
 ## 接口测试视频
 
@@ -131,6 +132,7 @@
 - [如何同时压测创建和删除接口](https://mp.weixin.qq.com/s/NCeoEF3DkEtpdaaQ365I0Q)
 - [固定QPS压测模式探索](https://mp.weixin.qq.com/s/S2h-zEUoik_CWs60RL6g7Q)
 - [固定QPS压测初试](https://mp.weixin.qq.com/s/ySlJmDIH3fFB4qEnL-ueMg)
+- [命令行如何执行jar包里面的方法](https://mp.weixin.qq.com/s/50oMEmVEnv5Vzlm1HOxuFw)
 
 # 语言合集
 
@@ -502,6 +504,7 @@
 - [回归BUG](https://mp.weixin.qq.com/s/00j-acjPeKQ7uap62WpY3w)
 - [处理回归BUG最佳实践](https://mp.weixin.qq.com/s/R3O2NruPAA2gQf4-3R6aAQ)
 - [自动化测试实践清单](https://mp.weixin.qq.com/s/972WruGsYmkRroquBFoqMg)
+- [自动化测试类型](https://mp.weixin.qq.com/s/GRkN8ozZiWNu21Y3KbVOBA)
 
 ## 大咖风采
 
