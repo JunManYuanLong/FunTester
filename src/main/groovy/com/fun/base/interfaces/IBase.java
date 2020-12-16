@@ -169,7 +169,7 @@ public interface IBase {
     /**
      * 记录请求
      */
-    void recordRequest();
+    void recordRequest(HttpRequestBase base);
 
     /**
      * 获取请求,用于并发
