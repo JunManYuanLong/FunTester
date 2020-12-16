@@ -69,12 +69,23 @@ public class ExecuteSource extends SourceCode {
 
     /**
      * 提供给命令行main方法使用
+     * <p>防止编译报错,用list绕一圈</p>
      *
      * @param params
      */
-    public static void executeMethod(String... params) {
-        String[] ps = Arrays.copyOfRange(params, 1, params.length);
-        executeMethod(params[0], ps);
+    public static void executeMethod(List<String> params) {
+        Object[] objects = params.subList(1, params.size()).toArray();
+        executeMethod(params.get(0), objects);
+    }
+
+    /**
+     * 提供给命令行main方法使用
+     * <p>防止编译报错,用list绕一圈</p>
+     *
+     * @param params
+     */
+    public static void executeMethod(String[] params) {
+        executeMethod(Arrays.asList(params));
     }
 
     /**
