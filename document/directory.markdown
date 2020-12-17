@@ -133,6 +133,7 @@
 - [固定QPS压测模式探索](https://mp.weixin.qq.com/s/S2h-zEUoik_CWs60RL6g7Q)
 - [固定QPS压测初试](https://mp.weixin.qq.com/s/ySlJmDIH3fFB4qEnL-ueMg)
 - [命令行如何执行jar包里面的方法](https://mp.weixin.qq.com/s/50oMEmVEnv5Vzlm1HOxuFw)
+- [链路压测中如何记录每一个耗时的请求](https://mp.weixin.qq.com/s/8sb5QZcKbBjTxCaXK5ajXA)
 
 # 语言合集
 
@@ -175,6 +176,8 @@
 - [Java中的自定义异常](https://mp.weixin.qq.com/s/nspIdxFP9qEDtagGN4gaMQ)
 - [Java文本块](https://mp.weixin.qq.com/s/GwasvpJsd7uLngvCr6KlQw)
 - [CountDownLatch类在性能测试中应用](https://mp.weixin.qq.com/s/uYBPPOjauR2h81l2uKMANQ)
+- [CyclicBarrier类在性能测试中应用](https://mp.weixin.qq.com/s/kvEHX3t_2xpMke9vwOdWrg)
+- [Phaser类在性能测试中应用](https://mp.weixin.qq.com/s/plxNnQq7yNQvHYEGpyY4uA)
 - [Java压缩/解压缩字符串](https://mp.weixin.qq.com/s/7vHNd5dEN93DPUqgS8od_A)
 - [Java删除空字符：Java8 & Java11](https://mp.weixin.qq.com/s/6dlgYgTFZsHuJ4Eaby5eyg)
 - [Java Stream中map和flatMap方法](https://mp.weixin.qq.com/s/0FG2o7VUAG6z8a_0je-1EQ)
