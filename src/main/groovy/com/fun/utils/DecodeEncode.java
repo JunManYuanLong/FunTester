@@ -218,7 +218,7 @@ public class DecodeEncode extends SourceCode {
     }
 
     /**
-     * 处理Unicode码转成utf-8
+     * 处理Unicode码转(\u6210\u529f)
      *
      * @param str
      * @return
@@ -234,6 +234,17 @@ public class DecodeEncode extends SourceCode {
             str = str.replace(group1, ch + Constant.EMPTY);
         }
         return str;
+    }
+
+    /**
+     * 处理Unicode码转成(\xe6\x88\x90\xe5\x8a\x9f")
+     *
+     * @param str
+     * @return
+     */
+    public static String unicodeToStringX(String str) {
+        str = str.replaceAll("\\\\x", "%");
+        return urlDecoderText(str, DEFAULT_CHARSET);
     }
 
 
