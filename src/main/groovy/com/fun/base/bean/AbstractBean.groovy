@@ -43,7 +43,7 @@ abstract class AbstractBean {
     }
 
     def initFrom(Object str) {
-        initFrom(JSON.toJSON(str))
+        initFrom(JSON.toJSONString(str))
     }
 
     def copyFrom(AbstractBean source) {
