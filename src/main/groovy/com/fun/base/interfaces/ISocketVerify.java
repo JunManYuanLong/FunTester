@@ -2,6 +2,9 @@ package com.fun.base.interfaces;
 
 import com.fun.base.bean.VerifyBean;
 
+/**
+ * Socket接口通用验证接口
+ */
 public interface ISocketVerify extends Runnable {
 
     /**
@@ -31,6 +34,16 @@ public interface ISocketVerify extends Runnable {
      * @param bean
      */
     public void remoreVerify(VerifyBean bean);
+
+    /**
+     * 清除所有验证对象,通常是未验证通过,可以区分未通过和已通过
+     */
+    public void removeAllVerify();
+
+    /**
+     * 保存verify队列的测试结果
+     */
+    public void saveResult();
 
 
 }
