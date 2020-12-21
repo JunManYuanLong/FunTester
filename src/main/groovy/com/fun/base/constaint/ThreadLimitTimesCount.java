@@ -66,7 +66,8 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase<T> {
                     executeNum++;
                     long diff = e - s;
                     t.add(diff);
-                    if (diff > HttpClientConstant.MAX_ACCEPT_TIME) marks.add(diff + CONNECTOR + threadmark);
+                    if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
+                        marks.add(diff + CONNECTOR + threadmark + CONNECTOR + Time.getNow());
                     if (status() || key) break;
                 } catch (Exception e) {
                     logger.warn("执行任务失败！", e);
@@ -83,7 +84,6 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase<T> {
         } finally {
             after();
         }
-
     }
 
     /**

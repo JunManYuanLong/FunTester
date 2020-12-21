@@ -20,7 +20,7 @@ public abstract class FixedQpsThread<T> extends ThreadBase<T> {
 
     public boolean isTimesMode;
 
-    public FixedQpsThread(T t, int limit, int qps, MarkThread markThread,boolean isTimesMode) {
+    public FixedQpsThread(T t, int limit, int qps, MarkThread markThread, boolean isTimesMode) {
         this.limit = limit;
         this.qps = qps;
         this.mark = markThread;
@@ -45,7 +45,7 @@ public abstract class FixedQpsThread<T> extends ThreadBase<T> {
             long diff = e - s;
             FixedQpsConcurrent.allTimes.add(diff);
             if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
-                FixedQpsConcurrent.marks.add(diff + CONNECTOR + threadmark);
+                FixedQpsConcurrent.marks.add(diff + CONNECTOR + threadmark + CONNECTOR + Time.getNow());
         } catch (Exception e) {
             FixedQpsConcurrent.errorTimes.getAndIncrement();
             logger.warn("执行任务失败！,标记:{}", threadmark, e);
