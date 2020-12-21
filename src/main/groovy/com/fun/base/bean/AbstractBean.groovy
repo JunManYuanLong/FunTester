@@ -35,7 +35,7 @@ abstract class AbstractBean {
      * 控制台打印，使用WARN记录，以便查看
      */
     def print() {
-        logger.info(this.getClass().toString() + "：" + this.toString());
+        logger.warn(this.getClass().toString() + "：" + this.toString());
     }
 
     def initFrom(String str) {
