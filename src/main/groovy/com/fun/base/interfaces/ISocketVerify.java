@@ -2,6 +2,8 @@ package com.fun.base.interfaces;
 
 import com.fun.base.bean.VerifyBean;
 
+import java.util.List;
+
 /**
  * Socket接口通用验证接口
  */
@@ -12,7 +14,7 @@ public interface ISocketVerify extends Runnable {
      *
      * @param msg
      */
-    public void initMsg(String msg);
+    public void initMsg(List<String> msg);
 
     /**
      * 执行一次现有消息的全部验证,是否有匹配

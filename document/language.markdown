@@ -84,3 +84,4 @@
 - [关于python版微信使用经验分享](https://mp.weixin.qq.com/s/19IaI6ETZAm_T4ePPlXqIg)
 - [python用递归筛选法求N以内的孪生质数（孪生素数）](https://mp.weixin.qq.com/s/rVY2pTl8So11WCvA9GrFbA)
 - [利用python wxpy和requests写一个自动应答微信机器人实例](https://mp.weixin.qq.com/s/Fni2kX5BRjdqOQ-glCLjRg)
+- [Python版Socket.IO接口测试脚本](https://mp.weixin.qq.com/s/oXBP6Sx3yPqlmvV9uCUScw)

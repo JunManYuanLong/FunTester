@@ -40,6 +40,9 @@
 - [IntelliJ中基于文本的HTTP客户端](https://mp.weixin.qq.com/s/-9qi_lLVVfxQKEFmcRYFtA)
 - [基于WebSocket的client封装](https://mp.weixin.qq.com/s/1lZvsuGEa6hiRHOgOT-Kmg)
 - [基于Socket.IO的Client封装](https://mp.weixin.qq.com/s/Ux90AXI9g85w7R5i3f9idg)
+- [Socket.IO接口多用户测试实践](https://mp.weixin.qq.com/s/aCLaRZQs8zMK_ptJ-PjClw)
+- [Python版Socket.IO接口测试脚本](https://mp.weixin.qq.com/s/oXBP6Sx3yPqlmvV9uCUScw)
+- [命令行如何执行jar包里面的方法](https://mp.weixin.qq.com/s/50oMEmVEnv5Vzlm1HOxuFw)
 
 ## 性能性能
 
@@ -80,6 +83,8 @@
 - [如何同时压测创建和删除接口](https://mp.weixin.qq.com/s/NCeoEF3DkEtpdaaQ365I0Q)
 - [固定QPS压测模式探索](https://mp.weixin.qq.com/s/S2h-zEUoik_CWs60RL6g7Q)
 - [固定QPS压测初试](https://mp.weixin.qq.com/s/ySlJmDIH3fFB4qEnL-ueMg)
+- [命令行如何执行jar包里面的方法](https://mp.weixin.qq.com/s/50oMEmVEnv5Vzlm1HOxuFw)
+- [链路压测中如何记录每一个耗时的请求](https://mp.weixin.qq.com/s/8sb5QZcKbBjTxCaXK5ajXA)
 
 ## 测试方案
 

@@ -1,11 +1,15 @@
 package com.fun.base.interfaces;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fun.frame.socket.ScoketIOFunClient;
+import com.fun.frame.socket.WebSocketFunClient;
 
 import java.util.List;
 
 /**
  * 对于基类base拓展Socket功能,暂时分成WebSocket和Socket.IO
+ * {@link ScoketIOFunClient}
+ * {@link WebSocketFunClient}
  */
 public interface ISocketClient {
 

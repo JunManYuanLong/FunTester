@@ -508,6 +508,7 @@
 - [处理回归BUG最佳实践](https://mp.weixin.qq.com/s/R3O2NruPAA2gQf4-3R6aAQ)
 - [自动化测试实践清单](https://mp.weixin.qq.com/s/972WruGsYmkRroquBFoqMg)
 - [自动化测试类型](https://mp.weixin.qq.com/s/GRkN8ozZiWNu21Y3KbVOBA)
+- [无脚本测试](https://mp.weixin.qq.com/s/PVBxk4KEwCmWkB6mOXJFlw)
 
 ## 大咖风采
 
@@ -589,6 +590,7 @@
 - [Selenium等待：sleep、隐式、显式和Fluent](https://mp.weixin.qq.com/s/73BobMq9M12rYMvzxNhRtA)
 - [Selenium自动化的JUnit参数化实践](https://mp.weixin.qq.com/s/WFu5rJaowxhAIcbEoEatkw)
 - [Selenium异常集锦](https://mp.weixin.qq.com/s/DDkaliSVthX-c_KKG-WwNA)
+- [Selenium自动化测试之前](https://mp.weixin.qq.com/s/DKjSnS9sP0SoHUw4OhOikw)
 
 ## APP性能
 
@@ -627,4 +629,5 @@
 - [接口测试直播回顾](https://mp.weixin.qq.com/s/B8ih9sswaE-OWuVib6C16g)
 - [SpotBugs报错no Groovy library is defined解决办法](https://mp.weixin.qq.com/s/XxvuVS2TmlqT5-b22vObYQ)
 - [推荐好书：不要总是谦卑地弯着腰](https://mp.weixin.qq.com/s/mYNN9jSaikOF5aJEkb-Bug)
+- [2020年FunTester自我总结](https://mp.weixin.qq.com/s/DeDY1JZUTk3cjjQfr3DJRg)
 
