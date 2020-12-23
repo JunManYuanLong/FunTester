@@ -125,7 +125,7 @@ public class ExecuteSource extends SourceCode {
                     String param = paramsTpey[i].toString();
                     Object p = param;
                     if (name.contains("Integer")) {
-                        p = new Integer(changeStringToInt(param));
+                        p = Integer.parseInt(param);
                     } else if (name.contains("JSON")) {
                         p = JSON.parseObject(param);
                     }
