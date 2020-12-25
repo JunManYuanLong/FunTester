@@ -33,6 +33,8 @@ public class Constant {
 
     public static final String PART = "|";
 
+    public static final String REG_PART = "\\|";
+
     public static final String SPACE_1 = " ";
 
     public static final String CONNECTOR = "_";

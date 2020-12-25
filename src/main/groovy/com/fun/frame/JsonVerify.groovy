@@ -270,28 +270,59 @@ class JsonVerify extends SourceCode implements Comparable {
      * @return
      */
     public boolean fit(String str) {
-        logger.info("verify对象:{},匹配的字符串:{}", extra, str)
-        OPS o = OPS.getInterfaces(str.charAt(0))
-        def res = str - o
+        logger.info("verify对象: {},匹配的字符串: {}", extra, str)
+        OPS o = OPS.getInstance(str.charAt(0))
+        def res = str.substring(1)
         switch (o) {
             case OPS.GREATER:
-                this > res
-                break
+                return this > res
             case OPS.LESS:
-                this < res
-                break
+                return this < res
             case OPS.EQUAL:
-                this == res
-                break
+                return this == res
+            case OPS.REGEX:
+                return this ==~ res
+            default:
+                ParamException.fail("参数错误!")
         }
     }
 
     /**
-     * 支持的操作符枚举类
+     * 判断是否符合操作后期望
+     * @param str
+     * @return
      */
-    private static enum OPS {
+    public boolean fitFun(String str) {
+        def split = str.split(REG_PART, 2)
+        def handle = split[0]
+        def ops = split[1]
+        HPS h = HPS.getInstance(handle.charAt(0))
+        def hr = handle.substring(1)
+        switch (h) {
+            case HPS.PLUS:
+                def n = getInstance((this + hr) as String)
+                return n.fit(ops)
+            case HPS.MINUS:
+                def n = getInstance((this - hr) as String)
+                return n.fit(ops)
+            case HPS.MUL:
+                def n = getInstance((this * hr) as String)
+                return n.fit(ops)
+            case HPS.DIV:
+                def n = getInstance((this / hr) as String)
+                return n.fit(ops)
+            default:
+                ParamException.fail("参数错误!")
+        }
 
-        GREATER, LESS, EQUAL;
+    }
+
+    /**
+     * 支持的判断类型的操作符枚举类
+     */
+    static enum OPS {
+
+        GREATER, LESS, EQUAL, REGEX;
 
         static OPS getInstance(char c) {
             switch (c) {
@@ -301,9 +332,35 @@ class JsonVerify extends SourceCode implements Comparable {
                     return LESS;
                 case '=':
                     return EQUAL;
+                case '~':
+                    return REGEX
                 default:
-                    ParamException.fail("操作符参数错误!")
+                    ParamException.fail("判断操作符参数错误!")
             }
         }
     }
+
+    /**
+     * 支持的运算类型的操作符枚举类
+     */
+    static enum HPS {
+
+        PLUS, MINUS, MUL, DIV
+
+        static HPS getInstance(char c) {
+            switch (c) {
+                case '+':
+                    return PLUS
+                case '-':
+                    return MINUS
+                case '*':
+                    return MUL
+                case '/':
+                    return DIV
+                default:
+                    ParamException.fail("运算操作符参数错误!")
+            }
+        }
+    }
+
 }

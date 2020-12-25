@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
  */
 public enum VerifyType {
 
-    CONTAIN, REGEX, JSONPATH;
+    CONTAIN, REGEX, JSONPATH, HANDLE;
 
     private static Logger logger = LoggerFactory.getLogger(VerifyType.class);
 
@@ -22,7 +22,7 @@ public enum VerifyType {
      */
     public static VerifyType getRequestType(String name) {
         logger.info("验证校验方式方式：{}", name);
-        if (StringUtils.isEmpty(name)) ParamException.fail(name + "参数错误!");
+        if (StringUtils.isEmpty(name)) ParamException.fail("参数不能为空!");
         name = name.toLowerCase();
         switch (name) {
             case "contain":
@@ -31,6 +31,8 @@ public enum VerifyType {
                 return REGEX;
             case "jsonpath":
                 return JSONPATH;
+            case "handle":
+                return HANDLE;
             default:
                 ParamException.fail(name + "参数错误!");
                 return null;

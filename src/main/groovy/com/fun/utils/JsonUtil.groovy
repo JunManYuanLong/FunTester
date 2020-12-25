@@ -55,6 +55,9 @@ import org.slf4j.LoggerFactory
  * noneof	left has no intersection with right [?(@.sizes noneof ['M', 'L'])]
  * size	size of left (array or string) should match right
  * empty	left (array or string) should be empty
+ *
+ * groovy需要  \$  Java不需要直接  $
+ *
  */
 class JsonUtil extends SourceCode {
 
