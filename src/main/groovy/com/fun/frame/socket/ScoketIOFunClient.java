@@ -86,7 +86,7 @@ public class ScoketIOFunClient extends SourceCode {
     }
 
     /**
-     * 注册通用的事件监听
+     * 注册通用的事件监听,需要脚本自己注册改监听
      * {@link io.socket.client.Socket}
      */
     public void init() {
