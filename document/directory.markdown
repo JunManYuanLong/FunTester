@@ -46,6 +46,7 @@
 - [Socket.IO接口多用户测试实践](https://mp.weixin.qq.com/s/aCLaRZQs8zMK_ptJ-PjClw)
 - [Python版Socket.IO接口测试脚本](https://mp.weixin.qq.com/s/oXBP6Sx3yPqlmvV9uCUScw)
 - [命令行如何执行jar包里面的方法](https://mp.weixin.qq.com/s/50oMEmVEnv5Vzlm1HOxuFw)
+- [JSON对象标记语法验证类](https://mp.weixin.qq.com/s/jSXmoEdMF7nWAqQuzJ5GiQ)
 
 ## 接口测试视频
 
@@ -307,6 +308,7 @@
 - [JsonPath工具类封装](https://mp.weixin.qq.com/s/KyuCuG5fVEExxBdGJO2LdA)
 - [JsonPath工具类单元测试](https://mp.weixin.qq.com/s/1YtUWGk_sTjn9bHwAeT0Ew)
 - [JsonPath验证类既Groovy重载操作符实践](https://mp.weixin.qq.com/s/5gc04CAsBY6pWxe5c2P41w)
+- [JSON对象标记语法验证类](https://mp.weixin.qq.com/s/jSXmoEdMF7nWAqQuzJ5GiQ)
 
 ## Jacoco覆盖率
 
@@ -509,6 +511,7 @@
 - [自动化测试实践清单](https://mp.weixin.qq.com/s/972WruGsYmkRroquBFoqMg)
 - [自动化测试类型](https://mp.weixin.qq.com/s/GRkN8ozZiWNu21Y3KbVOBA)
 - [无脚本测试](https://mp.weixin.qq.com/s/PVBxk4KEwCmWkB6mOXJFlw)
+- [自动化测试转型挑战及其解决方案](https://mp.weixin.qq.com/s/BixS6jRdF5N_nvmW3_OthQ)
 
 ## 大咖风采
 
