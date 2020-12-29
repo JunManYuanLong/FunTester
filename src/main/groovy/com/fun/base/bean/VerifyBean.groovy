@@ -44,6 +44,7 @@ class VerifyBean extends AbstractBean implements Serializable, Cloneable {
     }
 
     boolean verify() {
+        if (isVerify && result) return result
         isVerify = true
         try {
             switch (type) {
@@ -71,12 +72,17 @@ class VerifyBean extends AbstractBean implements Serializable, Cloneable {
                     ParamException.fail("验证类型参数错误!")
             }
         } catch (Exception e) {
-            logger.warn("验证出现问题!", e)
+            logger.warn("验证出现问题: {}", e.getMessage())
             result = false
         } finally {
             logger.info("verify对象 {} ,验证结果: {}", verify, result)
             result
         }
+    }
+
+    @Override
+    def print() {
+        logger.info("{} 验证结果: {}", des, result)
     }
 
     @Override

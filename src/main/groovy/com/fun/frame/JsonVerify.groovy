@@ -192,6 +192,11 @@ class JsonVerify extends SourceCode implements Comparable {
         num.toString() == n.toString()
     }
 
+    /**
+     * 此方法存在缺陷,在其他项目引入jar时,调用==会直接调用Java的
+     * @param s
+     * @return
+     */
     boolean equals(String s) {
         extra == s
     }
@@ -279,9 +284,9 @@ class JsonVerify extends SourceCode implements Comparable {
             case OPS.LESS:
                 return this < res
             case OPS.EQUAL:
-                return this == res
+                return extra == res
             case OPS.REGEX:
-                return this ==~ res
+                return extra ==~ res
             default:
                 ParamException.fail("参数错误!")
         }
