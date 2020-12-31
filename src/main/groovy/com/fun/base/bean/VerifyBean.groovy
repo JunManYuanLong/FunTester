@@ -9,6 +9,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 import static com.fun.config.Constant.REG_PART
+
 /**
  * 验证对象类
  */
@@ -43,40 +44,55 @@ class VerifyBean extends AbstractBean implements Serializable, Cloneable {
         this.type = VerifyType.getRequestType(split[0])
     }
 
+    /**
+     * 用于进行自身验证,会进行isverify和result记录
+     * @return
+     */
     boolean verify() {
         if (isVerify && result) return result
         isVerify = true
+        result = verify(value)
+        result
+    }
+
+    /**
+     * 用于进行对象外String验证,不会修改对象属性
+     * @param val
+     * @return
+     */
+    boolean verify(String val) {
+        boolean res
         try {
             switch (type) {
                 case VerifyType.CONTAIN:
-                    result = value.contains(verify)
-                    break
+                    res = val.contains(verify)
+                    return res
                 case VerifyType.REGEX:
-                    result = Regex.isRegex(value, verify)
-                    break
+                    res = Regex.isRegex(val, verify)
+                    return res
                 case VerifyType.JSONPATH:
                     def split = verify.split(REG_PART, 2)
                     def path = split[0]
                     def v = split[1]
-                    def instance = JsonUtil.getInstance(JSON.parseObject(value))
-                    result = instance.getVerify(path).fit(v)
-                    break
+                    def instance = JsonUtil.getInstance(JSON.parseObject(val))
+                    res instance.getVerify(path).fit(v)
+                    return res
                 case VerifyType.HANDLE:
                     def sp = verify.split(REG_PART, 2)
                     def path = sp[0]
                     def ve = sp[1]
-                    def instance = JsonUtil.getInstance(JSON.parseObject(value))
-                    result = instance.getVerify(path).fitFun(ve)
-                    break
+                    def instance = JsonUtil.getInstance(JSON.parseObject(val))
+                    res = instance.getVerify(path).fitFun(ve)
+                    return res
                 default:
                     ParamException.fail("验证类型参数错误!")
             }
         } catch (Exception e) {
             logger.warn("验证出现问题: {}", e.getMessage())
-            result = false
+            res = false
         } finally {
-            logger.info("verify对象 {} ,验证结果: {}", verify, result)
-            result
+            /*这里Groovy可以这么写,但是Java不能这么写,因为需要有返回值*/
+            logger.info("verify对象 {} ,验证结果: {}", verify, res)
         }
     }
 
@@ -89,4 +105,6 @@ class VerifyBean extends AbstractBean implements Serializable, Cloneable {
     public VerifyBean clone() throws CloneNotSupportedException {
         new VerifyBean(this.verify, this.value, this.des)
     }
+
+
 }
