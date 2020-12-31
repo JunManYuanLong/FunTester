@@ -24,16 +24,34 @@ public class ScoketIOFunClient extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(ScoketIOFunClient.class);
 
+    /**
+     * 通用配置
+     */
     public static IO.Options options = initOptions();
 
+    /**
+     * 所有的客户端
+     */
     public static Vector<ScoketIOFunClient> clients = new Vector<>();
 
+    /**
+     * 记录的消息
+     */
     public LinkedList<String> msgs = new LinkedList<>();
 
+    /**
+     * 客户端名称
+     */
     private String cname;
 
+    /**
+     * 连接的URL
+     */
     private String url;
 
+    /**
+     * Socket对象
+     */
     public Socket socket;
 
     /**
@@ -118,7 +136,7 @@ public class ScoketIOFunClient extends SourceCode {
         this.socket.on(Socket.EVENT_MESSAGE, objects -> {
             String msg = initMsg(objects);
             saveMsg(msg);
-            logger.info("{} 收到消息事件,信息:{}", cname, msg);
+            logger.info("{} 收到 {} 事件,信息:{}", cname, Socket.EVENT_MESSAGE, msg);
         });
     }
 
