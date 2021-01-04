@@ -91,7 +91,7 @@ public class FanLibrary extends SourceCode {
     public static HttpGet getHttpGet(String url, JSONObject args) {
         if (args == null || args.size() == 0) return getHttpGet(url);
         String uri = url + changeJsonToArguments(args);
-        return getHttpGet(uri.replace(" ", ""));
+        return getHttpGet(uri);
     }
 
     /**
@@ -102,12 +102,13 @@ public class FanLibrary extends SourceCode {
      * @return 返回get对象
      */
     public static HttpGet getHttpGet(String url) {
-        return new HttpGet(url);
+        return new HttpGet(url.replace(SPACE_1, EMPTY));
     }
 
     /**
      * 获取post对象，以form表单提交数据
      * <p>方法重载，文字信息form表单提交，文件信息二进制流提交，具体参照文件上传的方法主食，post请求可以不需要参数，暂时不支持其他参数类型，如果是公参需要在url里面展示，需要传一个json对象，一般默认args为get公参，params为post请求参数</p>
+     * 请求header参数类型为{@link HttpClientConstant#ContentType_FORM}
      *
      * @param url    请求地址
      * @param params 请求数据，form表单形式设置请求实体
@@ -128,12 +129,13 @@ public class FanLibrary extends SourceCode {
      * @return
      */
     public static HttpPost getHttpPost(String url) {
-        return new HttpPost(url.replace(" ", ""));
+        return new HttpPost(url.replace(SPACE_1, EMPTY));
     }
 
     /**
      * 获取httppost对象，json格式对象，传参时手动tostring
      * <p>新重载方法，适应post请求json传参，估计utf-8编码格式</p>
+     * 请求header参数类型为{@link HttpClientConstant#ContentType_JSON}
      *
      * @param url
      * @param params
@@ -149,6 +151,7 @@ public class FanLibrary extends SourceCode {
     /**
      * * 获取httppost对象，json格式对象，传参时手动tostring
      * <p>新重载方法，适应post请求json传参</p>
+     * 请求header参数类型为{@link HttpClientConstant#ContentType_JSON}
      *
      * @param url
      * @param args
@@ -443,7 +446,7 @@ public class FanLibrary extends SourceCode {
      * @return 返回拼接参数后的地址
      */
     public static String changeJsonToArguments(JSONObject argument) {
-        return argument == null || argument.isEmpty() ? EMPTY : argument.keySet().stream().map(x -> x.toString() + "=" + DecodeEncode.urlEncoderText(argument.getString(x.toString()))).collect(Collectors.joining("&", "?", "")).toString();
+        return argument == null || argument.isEmpty() ? EMPTY : argument.keySet().stream().map(x -> x.toString() + "=" + DecodeEncode.urlEncoderText(argument.getString(x.toString()))).collect(Collectors.joining("&", "?", EMPTY)).toString();
     }
 
     /**
@@ -531,19 +534,8 @@ public class FanLibrary extends SourceCode {
     public static RequestConfig getProxyConfig(String adress) {
         if (StringUtils.isBlank(adress) || !Regex.isMatch(adress, "((25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))):([0-9]|[1-9]\\d{1,3}|[1-5]\\d{4}|6[0-4]\\d{4}|65[0-4]\\d{2}|655[0-2]\\d|6553[0-5])"))
             ParamException.fail("adress格式错误:" + adress);
-        String[] split = adress.split(":");
+        String[] split = adress.split(":", 2);
         return ClientManage.getProxyRequestConfig(split[0], changeStringToInt(split[1]));
-    }
-
-    /**
-     * 通过IP和端口获取代理配置对象
-     *
-     * @param ip
-     * @param port
-     * @return
-     */
-    public static RequestConfig getProxyConfig(String ip, int port) {
-        return getProxyConfig(ip + ":" + port);
     }
 
     /**
