@@ -33,6 +33,9 @@ public class Constant {
 
     public static final String PART = "|";
 
+    /**
+     * 正则表达式中用到的{@link Constant#PART}
+     */
     public static final String REG_PART = "\\|";
 
     public static final String SPACE_1 = " ";

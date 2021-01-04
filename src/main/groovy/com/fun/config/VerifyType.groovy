@@ -8,9 +8,15 @@ import org.slf4j.LoggerFactory;
 /**
  * 通用验证类型,包含,正则,JsonPath三项
  */
-public enum VerifyType {
+enum VerifyType {
 
-    CONTAIN, REGEX, JSONPATH, HANDLE;
+    CONTAIN("contain"), REGEX("regex"), JSONPATH("jsonpatb"), HANDLE("handle");
+
+    String vname;
+
+    VerifyType(String vname) {
+        this.vname = vname;
+    }
 
     private static Logger logger = LoggerFactory.getLogger(VerifyType.class);
 
@@ -25,17 +31,16 @@ public enum VerifyType {
         if (StringUtils.isEmpty(name)) ParamException.fail("参数不能为空!");
         name = name.toLowerCase();
         switch (name) {
-            case "contain":
+            case CONTAIN.getVname():
                 return CONTAIN;
-            case "regex":
+            case REGEX.getVname():
                 return REGEX;
-            case "jsonpath":
+            case JSONPATH.getVname():
                 return JSONPATH;
-            case "handle":
+            case HANDLE.getVname():
                 return HANDLE;
             default:
                 ParamException.fail(name + "参数错误!");
-                return null;
         }
     }
 

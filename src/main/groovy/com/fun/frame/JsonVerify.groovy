@@ -43,7 +43,6 @@ class JsonVerify extends SourceCode implements Comparable {
 
     private JsonVerify(String value) {
         extra = value
-        logger.debug("构建verify对象:{}", extra)
         if (isNumber()) num = changeStringToDouble(extra)
     }
 
@@ -203,7 +202,7 @@ class JsonVerify extends SourceCode implements Comparable {
 
     @Override
     boolean equals(Object o) {
-        extra == o.toString()
+        this == o.toString()
     }
 
     /**
@@ -269,6 +268,16 @@ class JsonVerify extends SourceCode implements Comparable {
         extra
     }
 
+
+    /**
+     * 使用与switch-case方法判断
+     * @param o
+     * @return
+     */
+    boolean isCase(Object o) {
+        this == o
+    }
+
     /**
      * 判断是否符合期望
      * @param str
@@ -293,7 +302,7 @@ class JsonVerify extends SourceCode implements Comparable {
     }
 
     /**
-     * 判断是否符合操作后期望
+     * 判断是否符合操作后期望,通过{@link com.fun.config.Constant#REG_PART}分隔
      * @param str
      * @return
      */
@@ -327,22 +336,23 @@ class JsonVerify extends SourceCode implements Comparable {
      */
     static enum OPS {
 
-        GREATER("大于"), LESS("小于"), EQUAL("等于"), REGEX("正则")
-        String name
+        GREATER((char) '>'), LESS((char) '<'), EQUAL((char) '='), REGEX((char) '~')
 
-        OPS(String name) {
+        char name
+
+        OPS(char name) {
             this.name = name
         }
 
         static OPS getInstance(char c) {
             switch (c) {
-                case '>':
+                case GREATER.getName():
                     return GREATER;
-                case '<':
+                case LESS.getName():
                     return LESS;
-                case '=':
+                case EQUAL.getName():
                     return EQUAL;
-                case '~':
+                case REGEX.getName():
                     return REGEX
                 default:
                     ParamException.fail("判断操作符参数错误!")
@@ -355,28 +365,29 @@ class JsonVerify extends SourceCode implements Comparable {
      */
     static enum HPS {
 
-        PLUS("加"), MINUS("减"), MUL("乘"), DIV("除")
+        PLUS((char) '+'), MINUS((char) '-'), MUL((char) '*'), DIV((char) '/')
 
-        String name
+        char name
 
-        HPS(String name) {
+        HPS(char name) {
             this.name = name
         }
 
         static HPS getInstance(char c) {
             switch (c) {
-                case '+':
+                case PLUS.getName():
                     return PLUS
-                case '-':
+                case MINUS.getName():
                     return MINUS
-                case '*':
+                case MUL.getName():
                     return MUL
-                case '/':
+                case DIV.getName():
                     return DIV
                 default:
                     ParamException.fail("运算操作符参数错误!")
             }
         }
     }
+
 
 }
