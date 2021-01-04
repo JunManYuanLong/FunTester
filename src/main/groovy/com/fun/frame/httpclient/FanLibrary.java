@@ -6,6 +6,7 @@ import com.fun.base.bean.RequestInfo;
 import com.fun.base.exception.ParamException;
 import com.fun.base.exception.RequestException;
 import com.fun.base.interfaces.IBase;
+import com.fun.config.Constant;
 import com.fun.config.HttpClientConstant;
 import com.fun.db.mysql.MySqlTest;
 import com.fun.frame.SourceCode;
@@ -383,13 +384,14 @@ public class FanLibrary extends SourceCode {
 
     /**
      * 设置post接口上传表单，默认的编码格式
+     * 默认编码格式{@link Constant#DEFAULT_CHARSET}
      *
      * @param httpPost post请求
      * @param params   参数
      */
     private static void setFormHttpEntity(HttpPost httpPost, JSONObject params) {
         List<NameValuePair> formparams = new ArrayList<NameValuePair>();
-        params.keySet().forEach(x -> formparams.add(new BasicNameValuePair(x.toString(), params.getString(x.toString()))));
+        params.keySet().forEach(x -> formparams.add(new BasicNameValuePair(x, params.getString(x))));
         UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, DEFAULT_CHARSET);
         httpPost.setEntity(entity);
     }
@@ -486,9 +488,9 @@ public class FanLibrary extends SourceCode {
      * @return
      */
     public static JSONObject header2Json(List<Header> headers) {
-        JSONObject h = new JSONObject();
-        headers.forEach(x -> h.put(x.getName(), x.getValue()));
-        return h;
+        return new JSONObject() {{
+            headers.forEach(x -> put(x.getName(), x.getValue()));
+        }};
     }
 
     /**
