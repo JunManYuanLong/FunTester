@@ -469,7 +469,6 @@ public class FanLibrary extends SourceCode {
      * @return
      */
     public static Header getHeader(String name, String value) {
-        logger.debug("生成header的name：{}，value：{}", name, value);
         return new BasicHeader(name, value);
     }
 
@@ -572,7 +571,7 @@ public class FanLibrary extends SourceCode {
     }
 
     /**
-     * 获取最后一个发出的请求
+     * 获取最后一个发出的请求,用于进行性能测试用的,也可以由基类对象{@link IBase}实现
      *
      * @return
      */
@@ -587,7 +586,7 @@ public class FanLibrary extends SourceCode {
         try {
             ClientManage.httpsClient.close();
             ClientManage.httpAsyncClient.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             logger.warn("连接池关闭失败！", e);
         }
     }
