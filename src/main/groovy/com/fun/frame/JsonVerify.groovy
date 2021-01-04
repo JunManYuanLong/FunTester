@@ -327,7 +327,12 @@ class JsonVerify extends SourceCode implements Comparable {
      */
     static enum OPS {
 
-        GREATER, LESS, EQUAL, REGEX;
+        GREATER("大于"), LESS("小于"), EQUAL("等于"), REGEX("正则")
+        String name
+
+        OPS(String name) {
+            this.name = name
+        }
 
         static OPS getInstance(char c) {
             switch (c) {
@@ -350,7 +355,13 @@ class JsonVerify extends SourceCode implements Comparable {
      */
     static enum HPS {
 
-        PLUS, MINUS, MUL, DIV
+        PLUS("加"), MINUS("减"), MUL("乘"), DIV("除")
+
+        String name
+
+        HPS(String name) {
+            this.name = name
+        }
 
         static HPS getInstance(char c) {
             switch (c) {
