@@ -48,6 +48,7 @@
 - [命令行如何执行jar包里面的方法](https://mp.weixin.qq.com/s/50oMEmVEnv5Vzlm1HOxuFw)
 - [JSON对象标记语法验证类](https://mp.weixin.qq.com/s/jSXmoEdMF7nWAqQuzJ5GiQ)
 - [Socket接口异步验证实践](https://mp.weixin.qq.com/s/bnjHK3ZmEzHm3y-xaSVkTw)
+- [无数据驱动自动化测试](https://mp.weixin.qq.com/s/aCYRGxkzMogLbmACYo6ssw)
 
 ## 接口测试视频
 
@@ -517,6 +518,7 @@
 - [自动化测试类型](https://mp.weixin.qq.com/s/GRkN8ozZiWNu21Y3KbVOBA)
 - [无脚本测试](https://mp.weixin.qq.com/s/PVBxk4KEwCmWkB6mOXJFlw)
 - [自动化测试转型挑战及其解决方案](https://mp.weixin.qq.com/s/BixS6jRdF5N_nvmW3_OthQ)
+- [无数据驱动自动化测试](https://mp.weixin.qq.com/s/aCYRGxkzMogLbmACYo6ssw)
 
 ## 大咖风采
 

@@ -117,6 +117,8 @@
 - [自动化测试实践清单](https://mp.weixin.qq.com/s/972WruGsYmkRroquBFoqMg)
 - [自动化测试类型](https://mp.weixin.qq.com/s/GRkN8ozZiWNu21Y3KbVOBA)
 - [无脚本测试](https://mp.weixin.qq.com/s/PVBxk4KEwCmWkB6mOXJFlw)
+- [自动化测试转型挑战及其解决方案](https://mp.weixin.qq.com/s/BixS6jRdF5N_nvmW3_OthQ)
+- [无数据驱动自动化测试](https://mp.weixin.qq.com/s/aCYRGxkzMogLbmACYo6ssw)
 
 ## 大咖风采
 

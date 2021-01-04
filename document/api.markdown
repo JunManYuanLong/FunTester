@@ -43,6 +43,8 @@
 - [Socket.IO接口多用户测试实践](https://mp.weixin.qq.com/s/aCLaRZQs8zMK_ptJ-PjClw)
 - [Python版Socket.IO接口测试脚本](https://mp.weixin.qq.com/s/oXBP6Sx3yPqlmvV9uCUScw)
 - [命令行如何执行jar包里面的方法](https://mp.weixin.qq.com/s/50oMEmVEnv5Vzlm1HOxuFw)
+- [Socket接口异步验证实践](https://mp.weixin.qq.com/s/bnjHK3ZmEzHm3y-xaSVkTw)
+- [无数据驱动自动化测试](https://mp.weixin.qq.com/s/aCYRGxkzMogLbmACYo6ssw)
 
 ## 性能性能
 
@@ -85,6 +87,9 @@
 - [固定QPS压测初试](https://mp.weixin.qq.com/s/ySlJmDIH3fFB4qEnL-ueMg)
 - [命令行如何执行jar包里面的方法](https://mp.weixin.qq.com/s/50oMEmVEnv5Vzlm1HOxuFw)
 - [链路压测中如何记录每一个耗时的请求](https://mp.weixin.qq.com/s/8sb5QZcKbBjTxCaXK5ajXA)
+- [JSON对象标记语法验证类](https://mp.weixin.qq.com/s/jSXmoEdMF7nWAqQuzJ5GiQ)
+- [Socket接口异步验证实践](https://mp.weixin.qq.com/s/bnjHK3ZmEzHm3y-xaSVkTw)
+- [性能测试中集合点和多阶段同步问题初探](https://mp.weixin.qq.com/s/NlpD1WyMrcG1V5RYfY0Plg)
 
 ## 测试方案
 
