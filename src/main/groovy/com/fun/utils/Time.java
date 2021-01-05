@@ -56,7 +56,7 @@ public class Time extends SourceCode {
      * @return 返回时间戳，毫秒
      */
     public static long getUtcTimestamp(String time) {
-        long timestamp = getTimestamp(time);
+        long timestamp = getTimeStamp(time);
         long utc = timestamp - Calendar.getInstance().getTimeZone().getRawOffset();
         return utc;
     }
@@ -140,7 +140,7 @@ public class Time extends SourceCode {
      * @param time 传入时间，纯数字组成的时间
      * @return 返回时间戳，毫秒
      */
-    public static long getTimestamp(String time) {
+    public static long getTimeStamp(String time) {
         time = time.replaceAll("\\D*", EMPTY);
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
         try {
@@ -151,8 +151,8 @@ public class Time extends SourceCode {
         return TEST_ERROR_CODE;
     }
 
-    public static long getTimestamp(long time) {
-        return getTimestamp(time + EMPTY);
+    public static long getTimeStamp(long time) {
+        return getTimeStamp(time + EMPTY);
     }
 
     /**
