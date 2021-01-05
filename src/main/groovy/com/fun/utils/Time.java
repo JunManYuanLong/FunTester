@@ -177,9 +177,7 @@ public class Time extends SourceCode {
      */
     @Deprecated
     public static double getTimeDiffer(Date start, Date end) {
-        long time = end.getTime() - start.getTime();
-        double differ = (double) time / 1000;
-        return differ;
+        return getTimeDiffer(start.getTime(), end.getTime());
     }
 
     /**
@@ -190,7 +188,7 @@ public class Time extends SourceCode {
      * @return
      */
     public static double getTimeDiffer(long start, long end) {
-        return (end - start) * 1.0 / 1000;
+        return (end - start) / 1000.0;
     }
 
     /**
