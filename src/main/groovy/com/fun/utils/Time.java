@@ -1,5 +1,6 @@
 package com.fun.utils;
 
+import com.fun.config.Constant;
 import com.fun.frame.SourceCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -135,8 +136,8 @@ public class Time extends SourceCode {
     }
 
     /**
-     * 获取时间戳
-     *
+     * 获取时间戳,会替换掉所有非数字的字符
+     *默认返回{@link Constant#DEFAULT_LONG}
      * @param time 传入时间，纯数字组成的时间
      * @return 返回时间戳，毫秒
      */
@@ -148,11 +149,7 @@ public class Time extends SourceCode {
         } catch (ParseException e) {
             logger.warn("时间格式错误！", e);
         }
-        return TEST_ERROR_CODE;
-    }
-
-    public static long getTimeStamp(long time) {
-        return getTimeStamp(time + EMPTY);
+        return DEFAULT_LONG;
     }
 
     /**

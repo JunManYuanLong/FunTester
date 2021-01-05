@@ -62,6 +62,8 @@ public class Constant {
 
     public static final int TEST_ERROR_CODE = -2;
 
+    public static final long DEFAULT_LONG = 0L;
+
     public static final Properties SYSTEM_INFO = getSysInfo();
 
     private static Properties getSysInfo() {
