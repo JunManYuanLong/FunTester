@@ -297,7 +297,7 @@ class JsonVerify extends SourceCode implements Comparable {
             case OPS.REGEX:
                 return extra ==~ res
             default:
-                ParamException.fail("参数错误!")
+                ParamException.fail("判断字符串参数错误!")
         }
     }
 
@@ -326,7 +326,7 @@ class JsonVerify extends SourceCode implements Comparable {
                 def n = getInstance((this / hr) as String)
                 return n.fit(ops)
             default:
-                ParamException.fail("参数错误!")
+                ParamException.fail("运算操作字符串参数错误!")
         }
 
     }

@@ -47,11 +47,12 @@ import static java.util.stream.Collectors.toList;
 public class StatisticsUtil extends SourceCode {
 
     /**
-     * 将性能测试数据图表展示
+     * 将性能测试数据图表展示,需要等宽字体显示
      *
      * <p>
      * 将数据排序,然后按照循序分桶,选择桶中中位数作代码,通过二维数组转化成柱状图
      * </p>
+     *生成统计结果数组大小{@link com.fun.config.Constant#BUCKET_SIZE},小于{@link com.fun.config.Constant#BUCKET_SIZE}平方的数据量不予以统计
      *
      * @param data 性能测试数据,也可以其他统计数据
      * @return

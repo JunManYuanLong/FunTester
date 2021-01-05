@@ -80,7 +80,7 @@ public class ScoketIOFunClient extends SourceCode {
             client = new ScoketIOFunClient(url, IO.socket(url, options));
             client.setCname(cname);
         } catch (URISyntaxException e) {
-            FailException.fail();
+            FailException.fail(e);
         }
         return client;
     }

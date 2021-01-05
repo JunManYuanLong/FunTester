@@ -20,4 +20,14 @@ public class FailException extends RuntimeException {
         throw new FailException();
     }
 
+    /**
+     * 将检查异常修改为运行异常
+     *
+     * @param e
+     */
+    public static void fail(Exception e) {
+        throw new FailException(e.getMessage());
+    }
+
+
 }
