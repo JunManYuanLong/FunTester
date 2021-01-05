@@ -62,4 +62,10 @@ abstract class AbstractBean {
     String toString() {
         JSONObject.toJSONString(this)
     }
+
+    @Override
+    protected Object clone() {
+        initFrom(this)
+    }
+
 }
