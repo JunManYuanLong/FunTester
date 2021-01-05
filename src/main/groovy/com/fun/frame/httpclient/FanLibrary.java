@@ -533,7 +533,7 @@ public class FanLibrary extends SourceCode {
      * @return
      */
     public static RequestConfig getProxyConfig(String adress) {
-        if (StringUtils.isBlank(adress) || !Regex.isMatch(adress, "((25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))):([0-9]|[1-9]\\d{1,3}|[1-5]\\d{4}|6[0-4]\\d{4}|65[0-4]\\d{2}|655[0-2]\\d|6553[0-5])"))
+        if (StringUtils.isBlank(adress) || !Regex.isMatch(adress, Constant.HOST_REGEX))
             ParamException.fail("adress格式错误:" + adress);
         String[] split = adress.split(":", 2);
         return ClientManage.getProxyRequestConfig(split[0], changeStringToInt(split[1]));

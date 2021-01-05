@@ -111,6 +111,11 @@ public class ClientManage {
         return connManager;
     }
 
+    /**
+     * 获取异步连接池
+     *
+     * @return
+     */
     private static PoolingNHttpClientConnectionManager getNPool() {
         IOReactorConfig ioReactorConfig = IOReactorConfig.custom().setIoThreadCount(Runtime.getRuntime().availableProcessors()).setConnectTimeout(HttpClientConstant.CONNECT_REQUEST_TIMEOUT).setSoTimeout(HttpClientConstant.SOCKET_TIMEOUT).build();
         ConnectingIOReactor ioReactor = null;
@@ -179,33 +184,24 @@ public class ClientManage {
                 HttpRequestBase request = clientContext.getAttribute("http.request", HttpRequestBase.class);
                 logger.error(FunRequest.initFromRequest(request).toString());
                 if (exception instanceof NoHttpResponseException) {
-//                    logger.warn("没有响应异常");
                     return true;
                 } else if (exception instanceof ConnectTimeoutException) {
-//                    logger.warn("连接超时，重试");
                     return true;
                 } else if (exception instanceof SSLHandshakeException) {
-//                    logger.warn("本地证书异常");
                     return false;
                 } else if (exception instanceof InterruptedIOException) {
-//                    logger.warn("IO中断异常");
                     return true;
                 } else if (exception instanceof UnknownHostException) {
-//                    logger.warn("找不到服务器异常");
                     return false;
                 } else if (exception instanceof SSLException) {
-//                    logger.warn("SSL异常");
                     return false;
                 } else if (exception instanceof HttpHostConnectException) {
-//                    logger.warn("主机连接异常");
                     return false;
                 } else if (exception instanceof SocketException) {
-//                    logger.warn("socket异常");
                     return false;
                 } else {
                     logger.warn("未记录的请求异常:", exception);
                 }
-
                 // 如果请求是幂等的，则不重试
 //                if (!(request instanceof HttpEntityEnclosingRequest)) {
 //                    return false;
@@ -284,7 +280,7 @@ public class ClientManage {
         HttpClientConstant.SOCKET_TIMEOUT = timeout * 1000;
         HttpClientConstant.MAX_ACCEPT_TIME = accepttime * 1000;
         HttpClientConstant.TRY_TIMES = retrytimes;
-        requestConfig = StringUtils.isNoneBlank(ip) && Regex.isMatch(ip + ":" + port, "((25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))):([0-9]|[1-9]\\d{1,3}|[1-5]\\d{4}|6[0-4]\\d{4}|65[0-4]\\d{2}|655[0-2]\\d|6553[0-5])") ? getProxyRequestConfig(ip, port) : getRequestConfig();
+        requestConfig = StringUtils.isNoneBlank(ip) && Regex.isMatch(ip + ":" + port, Constant.HOST_REGEX) ? getProxyRequestConfig(ip, port) : getRequestConfig();
         httpsClient = getCloseableHttpsClients();
         httpRequestRetryHandler = getHttpRequestRetryHandler();
     }

@@ -73,6 +73,11 @@ public class Constant {
     public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     /**
+     * 校验IP+port的正确性
+     */
+    public static final String HOST_REGEX = "((25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))):([0-9]|[1-9]\\d{1,3}|[1-5]\\d{4}|6[0-4]\\d{4}|65[0-4]\\d{2}|655[0-2]\\d|6553[0-5])";
+
+    /**
      * UTF-8字符编码格式
      */
     public static final Charset UTF_8 = Consts.UTF_8;
