@@ -34,11 +34,11 @@ class PropertyUtils extends SourceCode {
         }
     }
 
-/**
- * 获取指定路径下的文件配置
- * @param filePath
- * @return
- */
+    /**
+     * 获取指定路径下的文件配置,过滤掉{@link com.fun.config.Constant#FILTER}
+     * @param filePath
+     * @return
+     */
     static Property getLocalProperties(String filePath) {
         logger.debug("读取配置文件：{}", filePath)
         try {
@@ -49,6 +49,11 @@ class PropertyUtils extends SourceCode {
         }
     }
 
+    /**
+     * 获取当前项目下的文件配置,过滤掉{@link com.fun.config.Constant#FILTER}
+     * @param propertyName
+     * @return
+     */
     static Property getPropertiesByFile(String propertyName) {
         logger.debug("读取配置文件：{}", propertyName)
         try {
@@ -59,9 +64,9 @@ class PropertyUtils extends SourceCode {
         }
     }
 
-/**
- * 配置项
- */
+    /**
+     * 配置项
+     */
     static class Property {
 
         Map<String, String> properties = new HashMap<>()
@@ -77,72 +82,72 @@ class PropertyUtils extends SourceCode {
             properties.putAll(json)
         }
 
-/**
- * 获取string类型
- * @param name
- * @return
- */
+    /**
+     * 获取string类型
+     * @param name
+     * @return
+     */
         String getProperty(String name) {
             PropertyUtils.logger.debug("获取配置项：{}", name)
             if (contain(name)) properties.get(name)
         }
 
-/**
- * 获取int值
- * @param name
- * @return
- */
+    /**
+     * 获取int值
+     * @param name
+     * @return
+     */
         int getPropertyInt(String name) {
             changeStringToInt(properties.get(name))
         }
-/**
- * 获取long值
- * @param name
- * @return
- */
+    /**
+     * 获取long值
+     * @param name
+     * @return
+     */
         int getPropertyLong(String name) {
             Long.valueOf(properties.get(name))
         }
 
-/**
- * 获取boolean值
- * @param name
- * @return
- */
+    /**
+     * 获取boolean值
+     * @param name
+     * @return
+     */
         boolean getPropertyBoolean(String name) {
             changeStringToBoolean(properties.get(name))
         }
 
-/**
- * 获取数组
- * @param name
- * @return
- */
+    /**
+     * 获取数组
+     * @param name
+     * @return
+     */
         String[] getArrays(String name) {
             getProperty(name).split(",")
         }
 
-/**
- * 返回配置文件的配置项的大小
- * @return
- */
+    /**
+     * 返回配置文件的配置项的大小
+     * @return
+     */
         int size() {
             properties.size()
         }
 
-/**
- * 输出所以配置项
- * @return
- */
+    /**
+     * 输出所以配置项
+     * @return
+     */
         def printAll() {
             output properties
         }
 
-/**
- * 是否有配置项
- * @param key
- * @return
- */
+    /**
+     * 是否有配置项
+     * @param key
+     * @return
+     */
         boolean contain(def key) {
             boolean var = properties.containsKey key asBoolean()
             if (!var) PropertyUtils.logger.error("配置{}未发现！", key)
