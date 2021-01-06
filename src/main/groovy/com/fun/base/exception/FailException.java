@@ -1,11 +1,16 @@
 package com.fun.base.exception;
 
+import com.fun.config.Constant;
+
+/**
+ * 自定义异常基类
+ */
 public class FailException extends RuntimeException {
 
     private static final long serialVersionUID = -7041169491254546905L;
 
     public FailException() {
-        super("FunTester");
+        super(Constant.DEFAULT_STRING);
     }
 
     protected FailException(String message) {
@@ -16,6 +21,9 @@ public class FailException extends RuntimeException {
         throw new FailException(message);
     }
 
+    /**
+     * 默认抛异常,多用于调试
+     */
     public static void fail() {
         throw new FailException();
     }

@@ -2,12 +2,15 @@ package com.fun.base.exception;
 
 import org.apache.http.client.methods.HttpRequestBase;
 
+/**
+ * 用于处理请求异常
+ */
 public class RequestException extends FailException {
 
     private static final long serialVersionUID = 7916010541762451964L;
 
     private RequestException() {
-        super("错误的请求!");
+        super();
     }
 
     private RequestException(HttpRequestBase request) {
