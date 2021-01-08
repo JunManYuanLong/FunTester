@@ -119,6 +119,7 @@
 - [无脚本测试](https://mp.weixin.qq.com/s/PVBxk4KEwCmWkB6mOXJFlw)
 - [自动化测试转型挑战及其解决方案](https://mp.weixin.qq.com/s/BixS6jRdF5N_nvmW3_OthQ)
 - [无数据驱动自动化测试](https://mp.weixin.qq.com/s/aCYRGxkzMogLbmACYo6ssw)
+- [为什么自动化测试在敏捷开发中很重要](https://mp.weixin.qq.com/s/AP0wUQZ09NvSqme8e09igQ)
 
 ## 大咖风采
 
@@ -157,3 +158,4 @@
 - [SpotBugs报错no Groovy library is defined解决办法](https://mp.weixin.qq.com/s/XxvuVS2TmlqT5-b22vObYQ)
 - [推荐好书：不要总是谦卑地弯着腰](https://mp.weixin.qq.com/s/mYNN9jSaikOF5aJEkb-Bug)
 - [2020年FunTester自我总结](https://mp.weixin.qq.com/s/DeDY1JZUTk3cjjQfr3DJRg)
+- [原创打油诗欣赏](https://mp.weixin.qq.com/s/3hPSDjH-3cWu6EVsjU0wOw)
