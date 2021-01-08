@@ -102,7 +102,7 @@ class VerifyBean extends AbstractBean implements Serializable, Cloneable {
     }
 
     @Override
-    public VerifyBean clone() throws CloneNotSupportedException {
+    public VerifyBean clone() {
         new VerifyBean(this.verify, this.value, this.des)
     }
 
