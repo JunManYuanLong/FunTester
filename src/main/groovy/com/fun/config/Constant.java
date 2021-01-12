@@ -42,6 +42,10 @@ public class Constant {
 
     public static final String CONNECTOR = "_";
 
+    public static final String QUOTE_DOUBLE = "\"";
+
+    public static final String QUOTE_SINGLE = "\'";
+
     private static final String[] PERCENT = {SPACE_1, "▁", "▂", "▃", "▄", "▅", "▅", "▇", "█"};
 
     /**
@@ -70,6 +74,9 @@ public class Constant {
         return System.getProperties();
     }
 
+    /**
+     * 默认的日志显示格式
+     */
     public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     /**
