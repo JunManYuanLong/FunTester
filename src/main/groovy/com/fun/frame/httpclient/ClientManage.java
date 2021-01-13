@@ -179,7 +179,7 @@ public class ClientManage {
         return new HttpRequestRetryHandler() {
             public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
                 logger.warn("请求发生错误:{}", exception.getMessage(), exception);
-                if (executionCount > HttpClientConstant.TRY_TIMES) return false;
+                if (executionCount + 1 > HttpClientConstant.TRY_TIMES) return false;
                 HttpClientContext clientContext = HttpClientContext.adapt(context);
                 HttpRequestBase request = clientContext.getAttribute("http.request", HttpRequestBase.class);
                 logger.error(FunRequest.initFromRequest(request).toString());
