@@ -198,7 +198,7 @@ public class Concurrent extends SourceCode {
         int sum = data.stream().mapToInt(x -> x).sum();
         String statistics = StatisticsUtil.statistics(data, desc, this.threadNum);
         double qps = 1000.0 * size * name / sum;
-        return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(executeTotal, errorTotal), getPercent(threadNum, failTotal), executeTotal, errorTotal, statistics);
+        return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(executeTotal, errorTotal), getPercent(threadNum, failTotal), executeTotal, statistics);
     }
 
 

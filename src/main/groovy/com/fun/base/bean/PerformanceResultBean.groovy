@@ -67,12 +67,7 @@ class PerformanceResultBean extends AbstractBean implements Serializable{
      */
     int executeTotal
 
-    /**
-     * 错误的总次数,方便极低数据的错误率
-     */
-    int errorTotal
-
-    PerformanceResultBean(String mark, String startTime, String endTime, int threads, int total, int rt, double qps, double errorRate, double failRate, int executeTotal,int errorTotal, String table) {
+    PerformanceResultBean(String mark, String startTime, String endTime, int threads, int total, int rt, double qps, double errorRate, double failRate, int executeTotal, String table) {
         this.mark = mark
         this.startTime = startTime
         this.endTime = endTime
@@ -83,7 +78,6 @@ class PerformanceResultBean extends AbstractBean implements Serializable{
         this.errorRate = errorRate
         this.failRate = failRate
         this.executeTotal = executeTotal
-        this.errorTotal = errorTotal
         this.table = table
         Output.output(this.toJson())
         Output.output(this.table)
