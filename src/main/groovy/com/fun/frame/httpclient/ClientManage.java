@@ -279,7 +279,7 @@ public class ClientManage {
         HttpClientConstant.CONNECT_TIMEOUT = timeout * 1000;
         HttpClientConstant.SOCKET_TIMEOUT = timeout * 1000;
         HttpClientConstant.MAX_ACCEPT_TIME = accepttime * 1000;
-        HttpClientConstant.TRY_TIMES = retrytimes;
+        HttpClientConstant.TRY_TIMES = retrytimes < 1 ? Constant.TEST_ERROR_CODE : retrytimes;
         requestConfig = StringUtils.isNoneBlank(ip) && Regex.isMatch(ip + ":" + port, Constant.HOST_REGEX) ? getProxyRequestConfig(ip, port) : getRequestConfig();
         httpsClient = getCloseableHttpsClients();
         httpRequestRetryHandler = getHttpRequestRetryHandler();
