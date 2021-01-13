@@ -158,7 +158,7 @@ public class FixedQpsConcurrent extends SourceCode {
         GCThread.stop();
         try {
             executorService.shutdown();
-            executorService.awaitTermination(10, TimeUnit.SECONDS);//此方法需要在shutdown方法执行之后执行
+            executorService.awaitTermination(HttpClientConstant.WAIT_TERMINATION_TIMEOUT, TimeUnit.SECONDS);//此方法需要在shutdown方法执行之后执行
         } catch (InterruptedException e) {
             logger.error("线程池等待任务结束失败!", e);
         }

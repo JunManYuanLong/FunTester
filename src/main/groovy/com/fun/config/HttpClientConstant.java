@@ -157,6 +157,11 @@ public class HttpClientConstant {
     public static final int THREADPOOL_MAX = 500;
 
     /**
+     * 关闭线程池最大等待时间
+     */
+    public static final int WAIT_TERMINATION_TIMEOUT = 10;
+
+    /**
      * 添加黑名单
      *
      * @param host
