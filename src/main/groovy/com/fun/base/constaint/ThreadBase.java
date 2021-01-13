@@ -2,6 +2,7 @@ package com.fun.base.constaint;
 
 import com.fun.base.interfaces.MarkThread;
 import com.fun.frame.SourceCode;
+import com.fun.frame.httpclient.FanLibrary;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -26,6 +27,7 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
 
     /**
      * 错误数
+     * <p>这里注意使用{@link FanLibrary#getHttpResponse(org.apache.http.client.methods.HttpRequestBase)}方法获取响应的功能封装方法,即使报错也不会抛异常.这样会导致errorNum错误数为零</p>
      */
     public int errorNum;
 

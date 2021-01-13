@@ -132,7 +132,7 @@ public class FixedQpsConcurrent extends SourceCode {
      * @param max
      */
     public void initPool(int core, int max) {
-        executorService = ThreadPoolUtil.createPool(core, max, 3);
+        executorService = ThreadPoolUtil.createPool(core, max, HttpClientConstant.THREAD_ALIVE_TIME);
     }
 
     /**
@@ -150,7 +150,7 @@ public class FixedQpsConcurrent extends SourceCode {
         new Thread(aidThread).start();
         while (true) {
             executorService.execute(threads.get(limit-- % queueLength).clone());
-            if (key ? true : isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > baseThread.limit) break;
+            if (key ? true : isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > limit) break;
             sleep(interval);
         }
         endTime = Time.getTimeStamp();
