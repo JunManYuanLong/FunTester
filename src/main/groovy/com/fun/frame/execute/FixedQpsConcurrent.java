@@ -184,13 +184,13 @@ public class FixedQpsConcurrent extends SourceCode {
      * @param name 线程数
      */
     public static PerformanceResultBean countQPS(int name, String desc, String start, String end, int executeNum, int errorNum) {
-        List<String> strings = WriteRead.readTxtFileByLine(Constant.DATA_Path + name + desc);
+        List<String> strings = WriteRead.readTxtFileByLine(Constant.DATA_Path + desc + name);
         int size = strings.size();
         List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
         int sum = data.stream().mapToInt(x -> x).sum();
         String statistics = StatisticsUtil.statistics(data, desc, name);
         double qps = executeNum * 1.0 / (Time.getTimeStamp(end) - Time.getTimeStamp(start)) * 1000;
-        return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(executeNum, errorNum), 0, executeNum, statistics);
+        return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(executeNum, errorNum), 0, executeNum, errorNum, statistics);
     }
 
 
