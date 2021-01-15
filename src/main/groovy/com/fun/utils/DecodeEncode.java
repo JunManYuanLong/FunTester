@@ -90,14 +90,33 @@ public class DecodeEncode extends SourceCode {
         return base64Decode(text, Constant.UTF_8);
     }
 
+    /**
+     * 对字符串进行解码,使用编码格式参数
+     *
+     * @param text
+     * @param charset
+     * @return
+     */
     public static String base64Decode(String text, Charset charset) {
         return new String(base64Byte(text.getBytes(charset)));
     }
 
+    /**
+     * 转换
+     *
+     * @param text
+     * @return
+     */
     public static byte[] base64Byte(byte[] text) {
         return Base64.getDecoder().decode(text);
     }
 
+    /**
+     * 获取字符串的字节数组
+     *
+     * @param text
+     * @return
+     */
     public static byte[] base64Byte(String text) {
         return base64Byte(text.getBytes());
     }
