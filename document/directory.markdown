@@ -2,7 +2,8 @@
 
 > 公众号**FunTester**，非著名测试开发，文章记录学习和感悟，欢迎关注，交流成长。
 
-## [GitHub地址](https://github.com/JunManYuanLong/FunTester)
+* `Gitee`地址*https://gitee.com/fanapi/tester*
+* `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
 
 # 接口测试
 
@@ -139,6 +140,8 @@
 - [链路压测中如何记录每一个耗时的请求](https://mp.weixin.qq.com/s/8sb5QZcKbBjTxCaXK5ajXA)
 - [Socket接口异步验证实践](https://mp.weixin.qq.com/s/bnjHK3ZmEzHm3y-xaSVkTw)
 - [性能测试中集合点和多阶段同步问题初探](https://mp.weixin.qq.com/s/NlpD1WyMrcG1V5RYfY0Plg)
+- [性能测试中标记请求参数实践](https://mp.weixin.qq.com/s/2FNMU-k_En26FCqWkYpvhQ)
+- [测试模型中理解压力测试和负载测试](https://mp.weixin.qq.com/s/smNLx3malzM3avkrn3EJiA)
 
 # 语言合集
 
@@ -521,6 +524,8 @@
 - [自动化测试转型挑战及其解决方案](https://mp.weixin.qq.com/s/BixS6jRdF5N_nvmW3_OthQ)
 - [无数据驱动自动化测试](https://mp.weixin.qq.com/s/aCYRGxkzMogLbmACYo6ssw)
 - [为什么自动化测试在敏捷开发中很重要](https://mp.weixin.qq.com/s/AP0wUQZ09NvSqme8e09igQ)
+- [测试模型中理解压力测试和负载测试](https://mp.weixin.qq.com/s/smNLx3malzM3avkrn3EJiA)
+- [移动测试工程师职业](https://mp.weixin.qq.com/s/dhtR4TbQNu5fWpmJkXGivw)
 
 ## 大咖风采
 
