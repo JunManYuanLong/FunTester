@@ -45,6 +45,7 @@
 - [命令行如何执行jar包里面的方法](https://mp.weixin.qq.com/s/50oMEmVEnv5Vzlm1HOxuFw)
 - [Socket接口异步验证实践](https://mp.weixin.qq.com/s/bnjHK3ZmEzHm3y-xaSVkTw)
 - [无数据驱动自动化测试](https://mp.weixin.qq.com/s/aCYRGxkzMogLbmACYo6ssw)
+- [白板点阵数据传输测试初探](https://mp.weixin.qq.com/s/EzFC-hIvgm7j7947TZU6BA)
 
 ## 性能性能
 
@@ -90,6 +91,8 @@
 - [JSON对象标记语法验证类](https://mp.weixin.qq.com/s/jSXmoEdMF7nWAqQuzJ5GiQ)
 - [Socket接口异步验证实践](https://mp.weixin.qq.com/s/bnjHK3ZmEzHm3y-xaSVkTw)
 - [性能测试中集合点和多阶段同步问题初探](https://mp.weixin.qq.com/s/NlpD1WyMrcG1V5RYfY0Plg)
+- [性能测试中标记请求参数实践](https://mp.weixin.qq.com/s/2FNMU-k_En26FCqWkYpvhQ)
+- [测试模型中理解压力测试和负载测试](https://mp.weixin.qq.com/s/smNLx3malzM3avkrn3EJiA)
 
 ## 测试方案
 

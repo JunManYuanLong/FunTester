@@ -50,6 +50,7 @@
 - [JSON对象标记语法验证类](https://mp.weixin.qq.com/s/jSXmoEdMF7nWAqQuzJ5GiQ)
 - [Socket接口异步验证实践](https://mp.weixin.qq.com/s/bnjHK3ZmEzHm3y-xaSVkTw)
 - [无数据驱动自动化测试](https://mp.weixin.qq.com/s/aCYRGxkzMogLbmACYo6ssw)
+- [白板点阵数据传输测试初探](https://mp.weixin.qq.com/s/EzFC-hIvgm7j7947TZU6BA)
 
 ## 接口测试视频
 
