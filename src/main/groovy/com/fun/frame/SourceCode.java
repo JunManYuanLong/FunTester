@@ -337,6 +337,27 @@ public class SourceCode extends Output {
     }
 
     /**
+     * 随机选择某一个值
+     *
+     * @param fs
+     * @param <F>
+     * @return
+     */
+    public static <F extends Number> F random(F... fs) {
+        return fs[getRandomInt(fs.length) - 1];
+    }
+
+    /**
+     * 随机选择某一个字符串
+     *
+     * @param fs
+     * @return
+     */
+    public static String random(String... fs) {
+        return fs[getRandomInt(fs.length) - 1];
+    }
+
+    /**
      * 获取一定范围内的随机值
      *
      * @param start 初始值
