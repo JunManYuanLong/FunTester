@@ -1,8 +1,12 @@
 package com.fun.base.bean
 
+import com.alibaba.fastjson.JSONObject
+import com.fun.base.interfaces.MarkRequest
+import com.fun.config.Constant
 import com.fun.config.RequestType
 import com.fun.config.SysInit
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
+import org.apache.http.Header
 import org.apache.http.HttpEntity
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase
 import org.apache.http.client.methods.HttpRequestBase
@@ -14,11 +18,16 @@ import org.slf4j.LoggerFactory
  * 请求信息封装类
  */
 @SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
-class RequestInfo extends AbstractBean implements Serializable{
+class RequestInfo extends AbstractBean implements Serializable {
 
     private static final long serialVersionUID = 5942566988949859847L;
 
     private static Logger logger = LoggerFactory.getLogger(RequestInfo.class)
+
+    /**
+     * 请求信息的标记字段,用于日志记录请求
+     */
+    private static MarkRequest mark;
 
     /**
      * 接口地址
@@ -61,12 +70,23 @@ class RequestInfo extends AbstractBean implements Serializable{
     boolean isBlack;
 
     /**
+     * 所有的请求header,会去重
+     */
+    JSONObject headers
+
+    /**
+     * 存一下
+     */
+    HttpRequestBase request
+
+    /**
      * 通过request获取请求的相关信息，并输出部分信息
      *
      * @param request
      */
     public RequestInfo(HttpRequestBase request) {
-        getRequestInfo request
+        this.request = request
+        getRequestInfo()
     }
 
     /**
@@ -75,7 +95,7 @@ class RequestInfo extends AbstractBean implements Serializable{
      * @param request 传入请求对象
      * @return 返回一个map，包含api_name,host_name,type，method，params
      */
-    private void getRequestInfo(HttpRequestBase request) {
+    private void getRequestInfo() {
         method = RequestType.getRequestType request.getMethod()
         uri = request.getURI().toString()// 获取uri
         getRequestUrl(uri)
@@ -90,6 +110,16 @@ class RequestInfo extends AbstractBean implements Serializable{
         } else if (method == RequestType.POST) {
             getPostRequestParams(request)
         }
+        List<Header> list = Arrays.asList(request.getAllHeaders())
+        headers = new JSONObject() {
+
+            {
+                list.each {
+                    put(it.name, it.value)
+                }
+            }
+        }
+
     }
 
     /**
@@ -120,6 +150,10 @@ class RequestInfo extends AbstractBean implements Serializable{
 
     boolean isBlack() {
         isBlack
+    }
+
+    public String mark() {
+        mark == null ? Constant.EMPTY : mark.mark(request)
     }
 
     @Override

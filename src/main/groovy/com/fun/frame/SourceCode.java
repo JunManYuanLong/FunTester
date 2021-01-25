@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -355,6 +356,17 @@ public class SourceCode extends Output {
      */
     public static String random(String... fs) {
         return fs[getRandomInt(fs.length) - 1];
+    }
+
+    /**
+     * 随机选择某一个对象
+     *
+     * @param list
+     * @param <F>
+     * @return
+     */
+    public static <F extends Object> F random(List<F> list) {
+        return list.get(getRandomInt(list.size()) - 1);
     }
 
     /**

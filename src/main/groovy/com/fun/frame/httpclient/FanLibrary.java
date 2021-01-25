@@ -64,7 +64,7 @@ public class FanLibrary extends SourceCode {
     public static void noHeader() {
         HEADER_KEY = false;
     }
-
+    
     /**
      * 最近发送的请求
      */
