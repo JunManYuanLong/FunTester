@@ -51,6 +51,7 @@
 - [Socket接口异步验证实践](https://mp.weixin.qq.com/s/bnjHK3ZmEzHm3y-xaSVkTw)
 - [无数据驱动自动化测试](https://mp.weixin.qq.com/s/aCYRGxkzMogLbmACYo6ssw)
 - [白板点阵数据传输测试初探](https://mp.weixin.qq.com/s/EzFC-hIvgm7j7947TZU6BA)
+- [基于Socket.IO的白板点阵坐标传输接口测试实践](https://mp.weixin.qq.com/s/pDAx4jwYvcRcdld5cKLAUw)
 
 ## 接口测试视频
 
