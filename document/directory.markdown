@@ -145,6 +145,13 @@
 - [性能测试中标记请求参数实践](https://mp.weixin.qq.com/s/2FNMU-k_En26FCqWkYpvhQ)
 - [测试模型中理解压力测试和负载测试](https://mp.weixin.qq.com/s/smNLx3malzM3avkrn3EJiA)
 
+
+> 公众号**FunTester**，非著名测试开发，文章记录学习和感悟，欢迎关注，交流成长。
+
+* `Gitee`地址*https://gitee.com/fanapi/tester*
+* `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
+
+
 # 语言合集
 
 ## Java
@@ -240,8 +247,6 @@
 - [利用python wxpy和requests写一个自动应答微信机器人实例](https://mp.weixin.qq.com/s/Fni2kX5BRjdqOQ-glCLjRg)
 - [Python版Socket.IO接口测试脚本](https://mp.weixin.qq.com/s/oXBP6Sx3yPqlmvV9uCUScw)
 
----------------------------基础分割线--------------------------
-
 
 ## 测开笔记
 
@@ -262,6 +267,12 @@
 - [我的开发日记（十五）](https://mp.weixin.qq.com/s/bwkvz2t6YItQD0O_BIxpHQ)
 - [这些年，我写过的BUG（一）](https://mp.weixin.qq.com/s/mVTmT1FdwWl1e0BaL7Ne1g)
 - [这些年，我写过的BUG（二）](https://mp.weixin.qq.com/s/NMz5n0ZMf6taGb-gr1BLyw)
+
+> 公众号**FunTester**，非著名测试开发，文章记录学习和感悟，欢迎关注，交流成长。
+
+* `Gitee`地址*https://gitee.com/fanapi/tester*
+* `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
+
 
 # 案例分享
 
@@ -404,7 +415,12 @@
 - [python plotly制作接口响应耗时的时间序列表（Time Series ）](https://mp.weixin.qq.com/s/U8chcVzCjGTdT3T_X5v4kw)
 - [python使用plotly批量生成图表](https://mp.weixin.qq.com/s/l18WfWz-s6qQ1JKKuh_2AQ)
 
----------------------------升级分割线--------------------------
+
+
+> 公众号**FunTester**，非著名测试开发，文章记录学习和感悟，欢迎关注，交流成长。
+
+* `Gitee`地址*https://gitee.com/fanapi/tester*
+* `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
 
 
 # 无代码合集
@@ -528,6 +544,7 @@
 - [为什么自动化测试在敏捷开发中很重要](https://mp.weixin.qq.com/s/AP0wUQZ09NvSqme8e09igQ)
 - [测试模型中理解压力测试和负载测试](https://mp.weixin.qq.com/s/smNLx3malzM3avkrn3EJiA)
 - [移动测试工程师职业](https://mp.weixin.qq.com/s/dhtR4TbQNu5fWpmJkXGivw)
+- [远程测试工作挑战](https://mp.weixin.qq.com/s/LK-GEN4OtuWVGDuG8psmOQ)
 
 ## 大咖风采
 
