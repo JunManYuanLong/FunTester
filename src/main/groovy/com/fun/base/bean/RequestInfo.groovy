@@ -29,6 +29,10 @@ class RequestInfo extends AbstractBean implements Serializable {
      */
     private static MarkRequest mark;
 
+    public static void initMark(MarkRequest markRequest) {
+        mark = markRequest;
+    }
+
     /**
      * 接口地址
      */
@@ -155,6 +159,7 @@ class RequestInfo extends AbstractBean implements Serializable {
     public String mark() {
         mark == null ? Constant.EMPTY : mark.mark(request)
     }
+
 
     @Override
     public String toString() {
