@@ -19,9 +19,9 @@ import org.slf4j.LoggerFactory
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
- * 重写FanLibrary，使用面对对象思想
+ * 重写FanLibrary，使用面对对象思想,不用轻易使用set属性方法,可能存在BUG
  */
-@SuppressFBWarnings(["CN_IDIOM_NO_SUPER_CALL" , "SE_TRANSIENT_FIELD_NOT_RESTORED"])
+@SuppressFBWarnings(["CN_IDIOM_NO_SUPER_CALL", "SE_TRANSIENT_FIELD_NOT_RESTORED"])
 class FunRequest extends FanLibrary implements Serializable, Cloneable {
 
     private static final long serialVersionUID = -4153600036943378727L;
@@ -79,7 +79,6 @@ class FunRequest extends FanLibrary implements Serializable, Cloneable {
     /**
      * json参数
      */
-
     JSONObject json = new JSONObject()
 
     /**
@@ -291,6 +290,26 @@ class FunRequest extends FanLibrary implements Serializable, Cloneable {
         request
     }
 
+    FunRequest setHeaders(List<Header> headers) {
+        this.headers = headers
+        this
+    }
+
+    FunRequest setArgs(JSONObject args) {
+        this.args = args
+        this
+    }
+
+    FunRequest setParams(JSONObject params) {
+        this.params = params
+        this
+    }
+
+    FunRequest setJson(JSONObject json) {
+        this.json = json
+        this
+    }
+
     @Override
     FunRequest clone() {
         initFromRequest(this.getRequest())
@@ -312,11 +331,11 @@ class FunRequest extends FanLibrary implements Serializable, Cloneable {
     }
 
 
-/**
- * 从requestbase对象从初始化funrequest
- * @param base
- * @return
- */
+    /**
+     * 从requestbase对象从初始化funrequest
+     * @param base
+     * @return
+     */
     static FunRequest initFromRequest(HttpRequestBase base) {
         FunRequest request = null;
         String method = base.getMethod();
@@ -351,24 +370,25 @@ class FunRequest extends FanLibrary implements Serializable, Cloneable {
         (HttpRequestBase) RequestBuilder.copy(base).build()
     }
 
-/**
- * 拷贝HttpRequestBase对象
- * @param base
- * @return
- */
+    /**
+     * 拷贝HttpRequestBase对象
+     * @param base
+     * @return
+     */
     static HttpRequestBase cloneRequest(HttpRequestBase base) {
         initFromRequest(base).getRequest()
     }
 
-/**
- * 保存请求和响应
- * @param base
- * @param response
- */
+    /**
+     * 保存请求和响应
+     * @param base
+     * @param response
+     */
     public static void save(HttpRequestBase base, JSONObject response) {
         FunRequest request = initFromRequest(base)
         request.setResponse(response);
         Save.info("/request/" + Time.getDate().substring(8) + SPACE_1 + request.getUri().replace(OR, CONNECTOR).replaceAll("https*:_+", EMPTY), request.toString());
     }
+
 
 }
