@@ -27,8 +27,17 @@
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="5 MB"/>
             </Policies>
+            <!--            <CronTriggeringPolicy schedule="* * * * * ?"/>-->
             <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
-            <DefaultRolloverStrategy max="10"/>
+            <DefaultRolloverStrategy max="10">
+                <Delete basePath="log/$${date:yyyy-MM}/" maxDepth="2">
+                    <IfFileName glob="info*.log"/>
+                    <!--!Note: 这里的age必须和filePattern协调, 后者是精确到HH, 这里就要写成xH, xd就不起作用
+                    另外, 数字最好>2, 否则可能造成删除的时候, 最近的文件还处于被占用状态,导致删除不成功!-->
+                    <!--7天-->
+                    <IfLastModified age="7d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
         </RollingFile>
 
 
@@ -41,7 +50,15 @@
                 <SizeBasedTriggeringPolicy size="2 MB"/>
             </Policies>
             <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
-            <DefaultRolloverStrategy max="5"/>
+            <DefaultRolloverStrategy max="10">
+                <Delete basePath="log/$${date:yyyy-MM}/" maxDepth="2">
+                    <IfFileName glob="warn*.log"/>
+                    <!--!Note: 这里的age必须和filePattern协调, 后者是精确到HH, 这里就要写成xH, xd就不起作用
+                    另外, 数字最好>2, 否则可能造成删除的时候, 最近的文件还处于被占用状态,导致删除不成功!-->
+                    <!--7天-->
+                    <IfLastModified age="7d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
         </RollingFile>
     </appenders>
     <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
@@ -52,23 +69,23 @@
             <appender-ref ref="RollingFileWarn"/>
         </root>
     </loggers>
-<!--    异步日志记录的配置-->
-<!--    <Appenders>-->
-<!--        &lt;!&ndash; Async Loggers will auto-flush in batches, so switch off immediateFlush. &ndash;&gt;-->
-<!--        <RandomAccessFile name="RandomAccessFile" fileName="asyncWithLocation.log"-->
-<!--                          immediateFlush="false" append="false">-->
-<!--            <PatternLayout>-->
-<!--                <Pattern>%d %p %class{1.} [%t] %location %m %ex%n</Pattern>-->
-<!--            </PatternLayout>-->
-<!--        </RandomAccessFile>-->
-<!--    </Appenders>-->
-<!--    <Loggers>-->
-<!--        &lt;!&ndash; pattern layout actually uses location, so we need to include it &ndash;&gt;-->
-<!--        <AsyncLogger name="com.foo.Bar" level="trace" includeLocation="true">-->
-<!--            <AppenderRef ref="RandomAccessFile"/>-->
-<!--        </AsyncLogger>-->
-<!--        <Root level="info" includeLocation="true">-->
-<!--            <AppenderRef ref="RandomAccessFile"/>-->
-<!--        </Root>-->
-<!--    </Loggers>-->
+    <!--    异步日志记录的配置-->
+    <!--    <Appenders>-->
+    <!--        &lt;!&ndash; Async Loggers will auto-flush in batches, so switch off immediateFlush. &ndash;&gt;-->
+    <!--        <RandomAccessFile name="RandomAccessFile" fileName="asyncWithLocation.log"-->
+    <!--                          immediateFlush="false" append="false">-->
+    <!--            <PatternLayout>-->
+    <!--                <Pattern>%d %p %class{1.} [%t] %location %m %ex%n</Pattern>-->
+    <!--            </PatternLayout>-->
+    <!--        </RandomAccessFile>-->
+    <!--    </Appenders>-->
+    <!--    <Loggers>-->
+    <!--        &lt;!&ndash; pattern layout actually uses location, so we need to include it &ndash;&gt;-->
+    <!--        <AsyncLogger name="com.foo.Bar" level="trace" includeLocation="true">-->
+    <!--            <AppenderRef ref="RandomAccessFile"/>-->
+    <!--        </AsyncLogger>-->
+    <!--        <Root level="info" includeLocation="true">-->
+    <!--            <AppenderRef ref="RandomAccessFile"/>-->
+    <!--        </Root>-->
+    <!--    </Loggers>-->
 </configuration>
