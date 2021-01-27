@@ -75,7 +75,7 @@ class VerifyBean extends AbstractBean implements Serializable, Cloneable {
                     def path = split[0]
                     def v = split[1]
                     def instance = JsonUtil.getInstance(JSON.parseObject(val))
-                    res instance.getVerify(path).fit(v)
+                    res = instance.getVerify(path).fit(v)
                     return res
                 case VerifyType.HANDLE:
                     def sp = verify.split(REG_PART, 2)

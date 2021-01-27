@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
  */
 enum VerifyType {
 
-    CONTAIN("contain"), REGEX("regex"), JSONPATH("jsonpatb"), HANDLE("handle");
+    CONTAIN("contain"), REGEX("regex"), JSONPATH("jsonpath"), HANDLE("handle");
 
     String vname;
 
