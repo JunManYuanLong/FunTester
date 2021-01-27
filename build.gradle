@@ -128,12 +128,12 @@ task createDirs() {
 task copyFun(type: Copy) {
     from('/Users/fv/Documents/workspace/fun/build/libs')
     into('/Users/fv/Library/groovy-2.5.7/lib')
-    println "fun拷贝成功!"
+    println "拷贝fun.jar包到Groovy依赖成功!"
 }
 task copyOkay(type: Copy) {
     from('/Users/fv/Documents/workspace/okay_test/target/okay_test-1.0-SNAPSHOT.jar')
     into('/Users/fv/Library/groovy-2.5.7/lib')
-    println "okay拷贝成功!"
+    println "拷贝okay.jar包到Groovy依赖成功!"
 }
 
 task copyJarToGroovy(dependsOn: ['copyFun', 'copyOkay']) {}
