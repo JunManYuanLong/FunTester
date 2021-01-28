@@ -31,49 +31,41 @@ class FunRequest extends FanLibrary implements Serializable, Cloneable {
     /**
      * 请求类型，true为get，false为post
      */
-
     RequestType requestType
 
     /**
      * 请求对象
      */
-
     HttpRequestBase request
 
     /**
      * host地址
      */
-
     String host = EMPTY
 
     /**
      * 接口地址
      */
-
     String apiName = EMPTY
 
     /**
      * 请求地址,如果为空则由host和apiname拼接
      */
-
     String uri = EMPTY
 
     /**
      * header集合
      */
-
     List<Header> headers = new ArrayList<>()
 
     /**
      * get参数
      */
-
     JSONObject args = new JSONObject()
 
     /**
      * post参数,表单
      */
-
     JSONObject params = new JSONObject()
 
     /**
@@ -84,7 +76,6 @@ class FunRequest extends FanLibrary implements Serializable, Cloneable {
     /**
      * 响应,若没有这个参数,从将funrequest对象转换成json对象时会自动调用getresponse方法
      */
-
     JSONObject response = new JSONObject()
 
     /**
