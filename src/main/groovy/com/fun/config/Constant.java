@@ -1,6 +1,7 @@
 package com.fun.config;
 
-import com.fun.base.exception.FailException;
+import com.fun.utils.FileUtil;
+import com.fun.utils.Time;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.http.Consts;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import java.io.File;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.nio.charset.Charset;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -218,12 +220,12 @@ public class Constant {
         file.mkdir();
         mark.mkdir();
         data.mkdir();
-        int length = file.listFiles() == null ? 0 : file.listFiles().length;
-        int markNum = mark.listFiles() == null ? 0 : mark.listFiles().length;
-        int dataNum = data.listFiles() == null ? 0 : data.listFiles().length;
-        if (length > 100) FailException.fail("request日志记录量过多!");
-        if (markNum > 100) FailException.fail("mark日志记录量过多!");
-        if (dataNum > 100) FailException.fail("data日志记录量过多!");
+        List<String> allFile = FileUtil.getAllFile(DATA_Path);
+        allFile.addAll(FileUtil.getAllFile(MARK_Path));
+        allFile.addAll(FileUtil.getAllFile(REQUEST_Path));
+        allFile.stream().map(y -> new File(y)).forEach(x -> {
+            if (Time.getTimeStamp() - x.lastModified() > 7 * DAY) x.delete();
+        });
         logger.info("当前用户：{}，IP：{}，工作目录：{},系统编码格式:{},系统{}版本:{}", COMPUTER_USER_NAME, LOCAL_IP, WORK_SPACE, SYS_ENCODING, SYS_NAME, SYS_VERSION);
     }
 
