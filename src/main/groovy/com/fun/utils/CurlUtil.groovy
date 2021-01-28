@@ -7,12 +7,13 @@ import com.fun.frame.httpclient.FanLibrary
 import com.fun.frame.httpclient.FunRequest
 import org.apache.http.client.methods.HttpRequestBase
 import org.apache.http.Header
+
 /**
  * 通过将浏览器中复制的curl文本信息转化成HTTPrequestbase对象工具类
  */
 class CurlUtil extends SourceCode {
 
-    public static def filterWords = [".js", ".png", ".gif", ".css", ".ico", "list_unread", ".svg", ".htm", ".jpeg", ".ashx"]
+    private static def filterWords = [".js", ".png", ".gif", ".css", ".ico", "list_unread", ".svg", ".htm", ".jpeg", ".ashx"]
 
     /**
      * 从curl复制结果中获取请求
@@ -55,6 +56,14 @@ class CurlUtil extends SourceCode {
             base.url.contains(it)
         }) return
         base.type == RequestType.GET ? FunRequest.isGet().setUri(base.url).addHeader(base.headers).getRequest() : FunRequest.isPost().setUri(base.url).addHeader(base.headers).addParams(base.params).getRequest()
+    }
+
+    /**
+     * 添加URL过滤词汇
+     * @param w
+     */
+    public static void addFilterWord(String w) {
+        filterWords << w
     }
 
     /**
