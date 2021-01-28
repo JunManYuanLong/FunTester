@@ -193,16 +193,6 @@ public class Output extends Constant {
         return jsonObject;
     }
 
-    /**
-     * 格式化输出内容
-     *
-     * @param format
-     * @param o
-     */
-    public static void output(String format, Object... o) {
-        System.out.printf(format, o);
-    }
-
     public static void show(Map map) {
         new ConsoleTable(map);
     }
