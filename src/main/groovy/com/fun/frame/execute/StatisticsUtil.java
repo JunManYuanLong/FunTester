@@ -71,7 +71,7 @@ public class StatisticsUtil extends SourceCode {
                 result[i][j] = getManyString(map[j][BUCKET_SIZE - 1 - i], 2) + SPACE_1;
             }
         }
-        StringBuffer table = new StringBuffer(LINE + getManyString(TAB, 4) + ((title == null || title.length() == 0) ? DEFAULT_STRING : title.replaceAll("\\d{14}$", EMPTY)) + threadNum + LINE + LINE + TAB + ">>响应时间分布图,横轴排序分成桶的序号,纵轴每个桶的中位数<<" + LINE + TAB + TAB + "--<中位数数据最小值为:" + ints[0] + " ms,最大值:" + ints[BUCKET_SIZE - 1] + " ms>--" + LINE);
+        StringBuffer table = new StringBuffer(LINE + getManyString(TAB, 4) + ((title == null || title.length() == 0) ? DEFAULT_STRING : title.replaceAll("\\d{14}$", EMPTY)) + threadNum + LINE + LINE + TAB + ">>响应时间分布图,横轴:桶序号,纵轴:桶中位数<<" + LINE + TAB + TAB + "--<中位数数据最小值为:" + ints[0] + " ms,最大值:" + ints[BUCKET_SIZE - 1] + " ms>--" + LINE);
         range(BUCKET_SIZE).forEach(x -> table.append(Arrays.asList(result[x]).stream().collect(Collectors.joining()) + LINE));
         return table.toString();
     }
