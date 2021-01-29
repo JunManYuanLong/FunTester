@@ -45,12 +45,10 @@ public class GCThread extends SourceCode implements Runnable {
 
     @Override
     public void run() {
-        logger.info("gc回收线程开始了！");
         while (FLAG) {
             sleep(HttpClientConstant.LOOP_INTERVAL);
             ClientManage.recyclingConnection();
         }
-        logger.info("gc回收线程结束了！");
     }
 
     /**
