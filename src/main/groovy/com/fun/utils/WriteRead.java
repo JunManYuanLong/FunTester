@@ -181,7 +181,7 @@ public class WriteRead extends SourceCode {
                     bytesum += byteread;// 此处计算读取长度，byteread表示每次读取的长度
                     fileOutputStream.write(buffer, 0, byteread);// 此方法第一个参数是byte数组，第二次参数是开始位置，第三个参数是长度
                 }
-                logger.info("文件：{}，总大小是：", oldfile, getFormatNumber(bytesum));// 输出读取的总长度
+                logger.info("文件：{}，总大小是：", oldfile, formatLong(bytesum));// 输出读取的总长度
                 fileOutputStream.flush();// 强制缓存输出，防止数据丢失
             } catch (IOException e) {
                 FailException.fail("复制文件出错!" + e.getMessage());

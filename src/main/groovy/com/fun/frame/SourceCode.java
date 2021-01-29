@@ -175,9 +175,18 @@ public class SourceCode extends Output {
      */
     public static double getPercent(int total, int piece) {
         if (total == 0) return 0.00;
-        int s = (int) (piece * (1.0) / total * 10000);
-        double result = s * 1.0 / 100;
-        return result;
+        int s = (int) (piece * 1.0 / total * 10000);
+        return s * 1.0 / 100;
+    }
+
+    /**
+     * 获取百分比,string类型,拼接%符合,两位小数
+     *
+     * @param percent
+     * @return
+     */
+    public static String getPercent(double percent) {
+        return formatDouble(percent) + "%";
     }
 
     /**
@@ -186,8 +195,29 @@ public class SourceCode extends Output {
      * @param number
      * @return
      */
-    public static String getFormatNumber(Number number) {
-        DecimalFormat format = new DecimalFormat("#,###");
+    public static String formatLong(Number number) {
+        return formatNumber(number, "#,###");
+    }
+
+    /**
+     * 格式化数字格式,保留两位有效数字,使用去尾法
+     *
+     * @param number
+     * @return
+     */
+    public static String formatDouble(Number number) {
+        return formatNumber(number, "#.##");
+    }
+
+    /**
+     * 格式化数字格式
+     *
+     * @param number
+     * @param pattern
+     * @return
+     */
+    public static String formatNumber(Number number, String pattern) {
+        DecimalFormat format = new DecimalFormat(pattern);
         return format.format(number);
     }
 

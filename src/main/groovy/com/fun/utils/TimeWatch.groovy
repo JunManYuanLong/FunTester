@@ -100,7 +100,7 @@ class TimeWatch extends SourceCode implements Serializable {
     def getMarkTime() {
         if (marks.containsKey(name)) {
             def diff = Time.getTimeStamp() - marks.get(name).getStartMillis()
-            logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ms", name, name, getFormatNumber(diff))
+            logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ms", name, name, formatLong(diff))
         } else {
             logger.warn("没有默认标记！")
         }
@@ -113,7 +113,7 @@ class TimeWatch extends SourceCode implements Serializable {
     def getMarkNanoTime() {
         if (marks.containsKey(name)) {
             def diff = getNanoMark() - marks.get(name).getStartNano()
-            logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ns", name, name, getFormatNumber(diff))
+            logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ns", name, name, formatLong(diff))
         } else {
             logger.warn("没有默认标记！")
         }
@@ -128,7 +128,7 @@ class TimeWatch extends SourceCode implements Serializable {
     def getMarkTime(String name) {
         if (marks.containsKey(name)) {
             def diff = Time.getTimeStamp() - marks.get(name).getStartMillis()
-            logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ms", name, name, getFormatNumber(diff))
+            logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ms", name, name, formatLong(diff))
         } else {
             logger.warn("没有{}标记！", name)
         }
@@ -142,7 +142,7 @@ class TimeWatch extends SourceCode implements Serializable {
     def getMarkNanoTime(String name) {
         if (marks.containsKey(name)) {
             def diff = getNanoMark() - marks.get(name).getStartNano()
-            logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ns", name, name, getFormatNumber(diff))
+            logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ns", name, name, formatLong(diff))
         } else {
             logger.warn("没有{}标记！", name)
         }
@@ -155,7 +155,7 @@ class TimeWatch extends SourceCode implements Serializable {
      */
     def getTime() {
         def diff = Time.getTimeStamp() - startMillis
-        logger.info(LINE + "观察者：{}，记录时间：{} ms", getName(), getFormatNumber(diff))
+        logger.info(LINE + "观察者：{}，记录时间：{} ms", getName(), formatLong(diff))
         diff
     }
 
@@ -165,7 +165,7 @@ class TimeWatch extends SourceCode implements Serializable {
      */
     def getNanoTime() {
         long diff = getNanoMark() - startNano
-        logger.info(LINE + "观察者：{}，记录时间：{} ns", getName(), getFormatNumber(diff))
+        logger.info(LINE + "观察者：{}，记录时间：{} ns", getName(), formatLong(diff))
         diff
     }
 
@@ -177,7 +177,7 @@ class TimeWatch extends SourceCode implements Serializable {
     def getDiffTime(String name) {
         if (marks.containsKey(name)) {
             def diff = marks.get(name).getStartTimeMillis() - this.getStartTimeMillis()
-            logger.info(LINE + "观察者：{}和标记：{}记录时间差：{} ms", name, name, getFormatNumber(diff))
+            logger.info(LINE + "观察者：{}和标记：{}记录时间差：{} ms", name, name, formatLong(diff))
         } else {
             logger.warn("没有{}标记！", name)
         }
@@ -191,7 +191,7 @@ class TimeWatch extends SourceCode implements Serializable {
     def getDiffNanoTime(String name) {
         if (marks.containsKey(name)) {
             def diff = marks.get(name).getStartNano() - this.getStartTime()
-            logger.info(LINE + "观察者：{}和标记：{}记录时间差：{} ns", name, name, getFormatNumber(diff > 0 ? diff : -diff))
+            logger.info(LINE + "观察者：{}和标记：{}记录时间差：{} ns", name, name, formatLong(diff > 0 ? diff : -diff))
         } else {
             logger.warn("没有{}标记！", name)
         }
@@ -222,7 +222,7 @@ class TimeWatch extends SourceCode implements Serializable {
     def getDiffNanoTime(String first, String second) {
         if (marks.containsKey(first) && marks.containsKey(second)) {
             def diff = marks.get(second).getStartNano() - marks.get(first).getStartNano()
-            logger.info(LINE + "标记：{}和标记：{}记录时间差：{} ns", first, second, getFormatNumber(diff))
+            logger.info(LINE + "标记：{}和标记：{}记录时间差：{} ns", first, second, formatLong(diff))
         } else {
             logger.warn("没有{}标记！", first + TAB + second)
         }
