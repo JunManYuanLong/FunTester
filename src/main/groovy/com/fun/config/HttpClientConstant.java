@@ -139,7 +139,7 @@ public class HttpClientConstant {
     /**
      * 通用循环间隔时间,单位s
      */
-    public static final int LOOP_INTERVAL = 3;
+    public static final int LOOP_INTERVAL = 5;
 
     /**
      * 线程池,线程最大空闲时间
