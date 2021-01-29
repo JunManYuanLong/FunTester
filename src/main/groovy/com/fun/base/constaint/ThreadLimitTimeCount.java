@@ -33,7 +33,7 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase<T> {
     private static boolean key = false;
 
     /**
-     * 任务请求执行时间,单位是秒
+     * 任务请求执行时间,单位是ms秒
      */
     public int time;
 
@@ -106,7 +106,7 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase<T> {
     @Override
     protected void after() {
         super.after();
-        marks = new ArrayList<>();
+        marks = new ArrayList<>();//为了对象重用
         GCThread.stop();
     }
 

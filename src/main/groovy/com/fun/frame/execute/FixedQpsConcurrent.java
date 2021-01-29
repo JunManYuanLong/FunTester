@@ -180,7 +180,7 @@ public class FixedQpsConcurrent extends SourceCode {
     /**
      * 计算结果
      * <p>此结果仅供参考</p>
-     *
+     *由于fixQPS模型没有固定线程数,所以智能采取QPS=Q/T的计算,与concurrent有区别
      * @param name 线程数
      */
     public static PerformanceResultBean countQPS(int name, String desc, String start, String end, int executeNum, int errorNum) {
@@ -189,7 +189,7 @@ public class FixedQpsConcurrent extends SourceCode {
         List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
         int sum = data.stream().mapToInt(x -> x).sum();
         String statistics = StatisticsUtil.statistics(data, desc, name);
-        double qps = executeNum * 1.0 / (Time.getTimeStamp(end) - Time.getTimeStamp(start)) * 1000;
+        double qps = (executeNum * 1000_000 / (Time.getTimeStamp(end) - Time.getTimeStamp(start))) / 1000.0;
         return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(executeNum, errorNum), 0, executeNum, statistics);
     }
 

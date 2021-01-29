@@ -19,12 +19,11 @@ class PerformanceResultBean extends AbstractBean implements Serializable{
     /**
      * 开始时间
      */
-
     String startTime
+
     /**
      * 结束时间
      */
-
     String endTime
 
     /**

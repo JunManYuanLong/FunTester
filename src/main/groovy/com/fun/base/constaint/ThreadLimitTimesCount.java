@@ -103,7 +103,7 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase<T> {
     @Override
     protected void after() {
         super.after();
-        marks = new ArrayList<>();
+        marks = new ArrayList<>();//为了对象重用
         GCThread.stop();
     }
 

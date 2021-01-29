@@ -140,15 +140,18 @@ public class Concurrent extends SourceCode {
      * 默认取list中thread对象,丢入线程池,完成多线程执行,如果没有threadname,name默认采用desc+线程数作为threadname,去除末尾的日期
      */
     public PerformanceResultBean start() {
+        Progress progress = new Progress(threads.get(0), desc.replaceAll("\\d{14}$", EMPTY));
+        new Thread(progress).start();
         startTime = Time.getTimeStamp();
         for (int i = 0; i < threadNum; i++) {
-            ThreadBase thread = getThread(i);
+            ThreadBase thread = threads.get(i);
             if (StringUtils.isBlank(thread.threadName)) thread.threadName = desc.replaceAll("\\d{14}$", EMPTY) + i;
             thread.setCountDownLatch(countDownLatch);
             executorService.execute(thread);
         }
         shutdownService(executorService, countDownLatch);
         endTime = Time.getTimeStamp();
+        progress.stop();
         threads.forEach(x -> {
             if (x.status()) failTotal++;
             errorTotal += x.errorNum;
@@ -181,13 +184,11 @@ public class Concurrent extends SourceCode {
         return countQPS(threadNum, desc, Time.getTimeByTimestamp(startTime), Time.getTimeByTimestamp(endTime));
     }
 
-    ThreadBase getThread(int i) {
-        return threads.get(i);
-    }
 
     /**
      * 计算结果
      * <p>此结果仅供参考</p>
+     * 此处因为start和end的不准确问题,所以采用改计算方法,与fixQPS有区别
      *
      * @param name 线程数
      */
@@ -197,8 +198,9 @@ public class Concurrent extends SourceCode {
         List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
         int sum = data.stream().mapToInt(x -> x).sum();
         String statistics = StatisticsUtil.statistics(data, desc, this.threadNum);
-        double qps = 1000.0 * size * name / sum;
-        return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(executeTotal, errorTotal), getPercent(threadNum, failTotal), executeTotal, statistics);
+        int rt = sum / size;
+        double qps = (1000_000 * name / rt) / 1000.0;
+        return new PerformanceResultBean(desc, start, end, name, size, rt, qps, getPercent(executeTotal, errorTotal), getPercent(threadNum, failTotal), executeTotal, statistics);
     }
 
 
