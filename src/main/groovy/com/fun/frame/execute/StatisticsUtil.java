@@ -1,7 +1,9 @@
 package com.fun.frame.execute;
 
 import com.fun.frame.SourceCode;
+import com.fun.utils.StringUtil;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -52,7 +54,7 @@ public class StatisticsUtil extends SourceCode {
      * <p>
      * 将数据排序,然后按照循序分桶,选择桶中中位数作代码,通过二维数组转化成柱状图
      * </p>
-     *生成统计结果数组大小{@link com.fun.config.Constant#BUCKET_SIZE},小于{@link com.fun.config.Constant#BUCKET_SIZE}平方的数据量不予以统计
+     * 生成统计结果数组大小{@link com.fun.config.Constant#BUCKET_SIZE},小于{@link com.fun.config.Constant#BUCKET_SIZE}平方的数据量不予以统计
      *
      * @param data 性能测试数据,也可以其他统计数据
      * @return
@@ -71,7 +73,7 @@ public class StatisticsUtil extends SourceCode {
                 result[i][j] = getManyString(map[j][BUCKET_SIZE - 1 - i], 2) + SPACE_1;
             }
         }
-        StringBuffer table = new StringBuffer(LINE + getManyString(TAB, 4) + ((title == null || title.length() == 0) ? DEFAULT_STRING : title.replaceAll("\\d{14}$", EMPTY)) + threadNum + LINE + LINE + TAB + ">>响应时间分布图,横轴:桶序号,纵轴:桶中位数<<" + LINE + TAB + TAB + "--<中位数数据最小值为:" + ints[0] + " ms,最大值:" + ints[BUCKET_SIZE - 1] + " ms>--" + LINE);
+        StringBuffer table = new StringBuffer(LINE + StringUtil.center(((StringUtils.isEmpty(title)) ? DEFAULT_STRING : title.replaceAll("\\d{14}$", EMPTY) + threadNum), BUCKET_SIZE * 3) + LINE + LINE + StringUtil.center("Response Time: x-serial num,y-median", BUCKET_SIZE * 3) + LINE + StringUtil.center("min median:" + ints[0] + " ms,max:" + ints[BUCKET_SIZE - 1] + " ms", BUCKET_SIZE * 3) + LINE);
         range(BUCKET_SIZE).forEach(x -> table.append(Arrays.asList(result[x]).stream().collect(Collectors.joining()) + LINE));
         return table.toString();
     }
@@ -84,7 +86,7 @@ public class StatisticsUtil extends SourceCode {
      * @param length
      * @return
      */
-    public static String[] getPercent(int part, int total, int length) {
+    private static String[] getPercent(int part, int total, int length) {
         int i = part * 8 * length / total;
         int prefix = i / 8;
         int suffix = i % 8;
