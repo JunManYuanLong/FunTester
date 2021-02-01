@@ -215,15 +215,5 @@ public class Concurrent extends SourceCode {
         return countQPS(name, desc, Time.getDate(), Time.getDate());
     }
 
-    /**
-     * 后期计算用
-     *
-     * @param name
-     * @return
-     */
-    public PerformanceResultBean countQPS(int name) {
-        return countQPS(name, EMPTY, Time.getDate(), Time.getDate());
-    }
-
 
 }
