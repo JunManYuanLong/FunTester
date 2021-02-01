@@ -58,7 +58,7 @@ public class Constant {
     /**
      * 统计性能数据的分桶数
      */
-    public static final int BUCKET_SIZE = 23;
+    public static final int BUCKET_SIZE = 32;
 
     /**
      * 读写配置文件过滤的文本
@@ -211,6 +211,10 @@ public class Constant {
 
     public static String getPercent(int i) {
         return PERCENT[i % 9];
+    }
+
+    public static String getPart(int i) {
+        return PARTS[i % 9];
     }
 
     /**
