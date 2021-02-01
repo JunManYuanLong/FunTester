@@ -2,6 +2,7 @@ package com.fun.base.bean
 
 import com.fun.db.mysql.MySqlTest
 import com.fun.frame.Output
+import com.fun.utils.DecodeEncode
 
 /**
  * 性能测试结果集
@@ -77,9 +78,9 @@ class PerformanceResultBean extends AbstractBean implements Serializable{
         this.errorRate = errorRate
         this.failRate = failRate
         this.executeTotal = executeTotal
-        this.table = table
+        this.table = DecodeEncode.zipBase64(table)
         Output.output(this.toJson())
-        Output.output(this.table)
+        Output.output(table)
         MySqlTest.savePerformanceBean(this)
     }
 
