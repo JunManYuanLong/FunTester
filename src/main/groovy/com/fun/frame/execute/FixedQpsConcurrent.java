@@ -141,6 +141,8 @@ public class FixedQpsConcurrent extends SourceCode {
      */
     public PerformanceResultBean start() {
         key = false;
+        Progress progress = new Progress(threads.get(0), desc.replaceAll("\\d{14}$", EMPTY));
+        new Thread(progress).start();
         boolean isTimesMode = baseThread.isTimesMode;
         int limit = baseThread.limit;
         int qps = baseThread.qps;
@@ -155,6 +157,7 @@ public class FixedQpsConcurrent extends SourceCode {
         }
         endTime = Time.getTimeStamp();
         aidThread.stop();
+        progress.stop();
         GCThread.stop();
         try {
             executorService.shutdown();

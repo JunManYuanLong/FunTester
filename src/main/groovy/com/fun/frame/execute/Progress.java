@@ -23,14 +23,29 @@ public class Progress extends SourceCode implements Runnable {
      */
     private boolean st = true;
 
+    /**
+     * 是否次数模型
+     */
     public boolean isTimesMode;
 
+    /**
+     * 多线程任务基类对象,本类中不处理,只用来获取值,若使用的话请调用clone()方法
+     */
     private ThreadBase base;
 
-    public int limit;
+    /**
+     * 限制条件
+     */
+    private int limit;
 
+    /**
+     * 非精确时间,误差可以忽略
+     */
     private long startTime = Time.getTimeStamp();
 
+    /**
+     * 描述
+     */
     private String taskDesc;
 
     public Progress(ThreadBase base, String desc) {
