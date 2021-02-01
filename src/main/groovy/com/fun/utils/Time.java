@@ -47,7 +47,9 @@ public class Time extends SourceCode {
      * @return
      */
     public static String getUtcDate() {
-        return getYearNum() + "-" + (getMonthNum() < 10 ? "0" + getMonthNum() : getMonthNum()) + "-" + (getDayNum() < 10 ? "0" + getDayNum() : getDayNum());
+        int month = getMonth();
+        int day = getDay();
+        return getYear() + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day);
     }
 
     /**
@@ -86,7 +88,7 @@ public class Time extends SourceCode {
      *
      * @return
      */
-    public static int getMonthNum() {
+    public static int getMonth() {
         return getCalendar().get(Calendar.MONTH) + 1;
     }
 
@@ -95,7 +97,7 @@ public class Time extends SourceCode {
      *
      * @return
      */
-    public static int getDayNum() {
+    public static int getDay() {
         return getCalendar().get(Calendar.DAY_OF_MONTH);
     }
 
@@ -104,8 +106,21 @@ public class Time extends SourceCode {
      *
      * @return
      */
-    public static int getYearNum() {
+    public static int getYear() {
         return getCalendar().get(Calendar.YEAR);
+    }
+
+
+    public static int getHour() {
+        return getCalendar().get(Calendar.HOUR_OF_DAY);
+    }
+
+    public static int getMinute() {
+        return getCalendar().get(Calendar.MINUTE);
+    }
+
+    public static int getSecond() {
+        return getCalendar().get(Calendar.SECOND);
     }
 
     /**
@@ -115,7 +130,7 @@ public class Time extends SourceCode {
      */
     public static Calendar getCalendar() {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date(getTimeStamp() - calendar.getTimeZone().getRawOffset()));
+        calendar.setTime(new Date(getTimeStamp()));
         return calendar;
     }
 
@@ -125,19 +140,24 @@ public class Time extends SourceCode {
      * @return 返回当前时间
      */
     public static String getNow() {
-        Date time = new Date();
-        SimpleDateFormat now = new SimpleDateFormat("yyyyMMddHHmmss");
-        String c = now.format(time);
-        return c;
+        return getNow("yyyyMMddHHmmss");
     }
 
-    public static String getHour() {
-        return getNow().substring(0, 10);
+    public static String markDate() {
+        return getNow("ddHHmm");
     }
+
+    public static String getNow(String format) {
+        Date time = new Date();
+        SimpleDateFormat now = new SimpleDateFormat(format);
+        return now.format(time);
+    }
+
 
     /**
      * 获取时间戳,会替换掉所有非数字的字符
-     *默认返回{@link Constant#DEFAULT_LONG}
+     * 默认返回{@link Constant#DEFAULT_LONG}
+     *
      * @param time 传入时间，纯数字组成的时间
      * @return 返回时间戳，毫秒
      */
@@ -194,10 +214,7 @@ public class Time extends SourceCode {
      * @return
      */
     public static String getDate() {
-        Date time = new Date();
-        SimpleDateFormat now = new SimpleDateFormat(DATE_FORMAT);
-        String c = now.format(time);
-        return c;
+        return getNow(DATE_FORMAT);
     }
 
 
