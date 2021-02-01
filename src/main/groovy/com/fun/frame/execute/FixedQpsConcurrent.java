@@ -68,7 +68,7 @@ public class FixedQpsConcurrent extends SourceCode {
     /**
      * 任务描述
      */
-    public String desc = DEFAULT_STRING;
+    public String desc;
 
     /**
      * 任务集
@@ -82,28 +82,13 @@ public class FixedQpsConcurrent extends SourceCode {
 
     /**
      * @param thread 线程任务
-     */
-    public FixedQpsConcurrent(FixedQpsThread thread) {
-        this(thread, DEFAULT_STRING);
-    }
-
-    /**
-     * @param threads 线程组
-     */
-    public FixedQpsConcurrent(List<FixedQpsThread> threads) {
-        this(threads, DEFAULT_STRING);
-    }
-
-    /**
-     * @param thread 线程任务
      * @param desc   任务描述
      */
     public FixedQpsConcurrent(FixedQpsThread thread, String desc) {
-        this();
+        this(desc);
         this.queueLength = 1;
         threads.add(thread);
         baseThread = thread;
-        this.desc = desc + Time.getNow();
     }
 
     /**
@@ -111,18 +96,22 @@ public class FixedQpsConcurrent extends SourceCode {
      * @param desc    任务描述
      */
     public FixedQpsConcurrent(List<FixedQpsThread> threads, String desc) {
-        this();
+        this(desc);
         this.threads = threads;
         baseThread = threads.get(0);
         this.queueLength = threads.size();
-        this.desc = desc + Time.getNow();
     }
 
     /**
      * 初始化连接池
      */
-    private FixedQpsConcurrent() {
+    private FixedQpsConcurrent(String desc) {
+        this.desc = StatisticsUtil.getFileName(desc);
         executorService = ThreadPoolUtil.createPool(HttpClientConstant.THREADPOOL_CORE, HttpClientConstant.THREADPOOL_MAX, HttpClientConstant.THREAD_ALIVE_TIME);
+    }
+
+    private FixedQpsConcurrent() {
+
     }
 
     /**
@@ -141,7 +130,7 @@ public class FixedQpsConcurrent extends SourceCode {
      */
     public PerformanceResultBean start() {
         key = false;
-        Progress progress = new Progress(threads.get(0), desc.replaceAll("\\d{14}$", EMPTY));
+        Progress progress = new Progress(threads.get(0), StatisticsUtil.getTrueName(desc));
         new Thread(progress).start();
         boolean isTimesMode = baseThread.isTimesMode;
         int limit = baseThread.limit;
@@ -171,7 +160,7 @@ public class FixedQpsConcurrent extends SourceCode {
 
     private PerformanceResultBean over() {
         key = true;
-        Save.saveLongList(allTimes, "data/" + desc + queueLength);
+        Save.saveLongList(allTimes, DATA_Path.replace(LONG_Path, EMPTY) + StatisticsUtil.getFileName(queueLength, desc));
         Save.saveStringListSync(marks, MARK_Path.replace(LONG_Path, EMPTY) + desc);
         allTimes = new Vector<>();
         marks = new Vector<>();
@@ -183,11 +172,12 @@ public class FixedQpsConcurrent extends SourceCode {
     /**
      * 计算结果
      * <p>此结果仅供参考</p>
-     *由于fixQPS模型没有固定线程数,所以智能采取QPS=Q/T的计算,与concurrent有区别
+     * 由于fixQPS模型没有固定线程数,所以智能采取QPS=Q/T的计算,与concurrent有区别
+     *
      * @param name 线程数
      */
     public static PerformanceResultBean countQPS(int name, String desc, String start, String end, int executeNum, int errorNum) {
-        List<String> strings = WriteRead.readTxtFileByLine(Constant.DATA_Path + desc + name);
+        List<String> strings = WriteRead.readTxtFileByLine(Constant.DATA_Path + StatisticsUtil.getFileName(name, desc));
         int size = strings.size();
         List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
         int sum = data.stream().mapToInt(x -> x).sum();
@@ -207,17 +197,6 @@ public class FixedQpsConcurrent extends SourceCode {
     public PerformanceResultBean countQPS(int name, String desc) {
         return countQPS(name, desc, Time.getDate(), Time.getDate(), 0, 0);
     }
-
-    /**
-     * 后期计算用
-     *
-     * @param name
-     * @return
-     */
-    public PerformanceResultBean countQPS(int name) {
-        return countQPS(name, EMPTY, Time.getDate(), Time.getDate(), 0, 0);
-    }
-
 
     /**
      * 补偿线程

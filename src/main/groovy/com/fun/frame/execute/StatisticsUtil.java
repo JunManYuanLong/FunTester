@@ -1,7 +1,8 @@
 package com.fun.frame.execute;
 
-import com.fun.frame.SourceCode;
+import com.fun.config.Constant;
 import com.fun.utils.StringUtil;
+import com.fun.utils.Time;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -10,43 +11,45 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.fun.frame.SourceCode.getManyString;
+import static com.fun.frame.SourceCode.range;
 import static java.util.stream.Collectors.toList;
 
 /**
  * 用于性能测试数据统计工具类,主要是统计常用指标QPS,rt,时间,以及图形化输出测试结果
  *
  * <p>                  Demo
- *
- *     				FunTester300线程
- *
- * 	>>响应时间分布图,横轴排序分成桶的序号,纵轴每个桶的中位数<<
- * 		--<中位数数据最小值为:55 ms,最大值:1255 ms>--
- *                                                                   ██
- *                                                                   ██
- *                                                                   ██
- *                                                                   ██
- *                                                                   ██
- *                                                                ▃▃ ██
- *                                                       ▃▃ ▅▅ ▇▇ ██ ██
- *                                                    ▇▇ ██ ██ ██ ██ ██
- *                                                 ▃▃ ██ ██ ██ ██ ██ ██
- *                                              ▁▁ ██ ██ ██ ██ ██ ██ ██
- *                                           ▁▁ ██ ██ ██ ██ ██ ██ ██ ██
- *                                           ██ ██ ██ ██ ██ ██ ██ ██ ██
- *                                        ▇▇ ██ ██ ██ ██ ██ ██ ██ ██ ██
- *                                     ▇▇ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
- *                                     ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
- *                               ▃▃ ▇▇ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
- *                            ▃▃ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
- *                         ▂▂ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
- *                         ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
- *                      ▅▅ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
- *                   ▃▃ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
- *       ▁▁ ▂▂ ▃▃ ▄▄ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
+ * <p>
+ * FunTester300线程
+ * <p>
+ * >>响应时间分布图,横轴排序分成桶的序号,纵轴每个桶的中位数<<
+ * --<中位数数据最小值为:55 ms,最大值:1255 ms>--
+ * ██
+ * ██
+ * ██
+ * ██
+ * ██
+ * ▃▃ ██
+ * ▃▃ ▅▅ ▇▇ ██ ██
+ * ▇▇ ██ ██ ██ ██ ██
+ * ▃▃ ██ ██ ██ ██ ██ ██
+ * ▁▁ ██ ██ ██ ██ ██ ██ ██
+ * ▁▁ ██ ██ ██ ██ ██ ██ ██ ██
+ * ██ ██ ██ ██ ██ ██ ██ ██ ██
+ * ▇▇ ██ ██ ██ ██ ██ ██ ██ ██ ██
+ * ▇▇ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
+ * ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
+ * ▃▃ ▇▇ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
+ * ▃▃ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
+ * ▂▂ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
+ * ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
+ * ▅▅ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
+ * ▃▃ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
+ * ▁▁ ▂▂ ▃▃ ▄▄ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
  * ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██
  * </p>
  */
-public class StatisticsUtil extends SourceCode {
+public class StatisticsUtil extends Constant {
 
     /**
      * 将性能测试数据图表展示,需要等宽字体显示
@@ -92,6 +95,38 @@ public class StatisticsUtil extends SourceCode {
         int suffix = i % 8;
         String s = getManyString(getPercent(8), prefix) + (prefix == length ? EMPTY : getPercent(suffix) + getManyString(SPACE_1, length - prefix - 1));
         return s.split(EMPTY);
+    }
+
+
+    /**
+     * 统一处理压测原始数据保存文件名
+     *
+     * @param thread
+     * @param desc
+     * @return
+     */
+    public static String getFileName(int thread, String desc) {
+        return desc + COMMA + thread;
+    }
+
+    /**
+     * 用于处理初始化concurrent的desc,主要处理后缀
+     *
+     * @param desc
+     * @return
+     */
+    public static String getFileName(String desc) {
+        return desc + Time.markDate();
+    }
+
+    /**
+     * 用于
+     *
+     * @param desc
+     * @return
+     */
+    public static String getTrueName(String desc) {
+        return desc.replaceAll("\\d{6}$", EMPTY);
     }
 
 

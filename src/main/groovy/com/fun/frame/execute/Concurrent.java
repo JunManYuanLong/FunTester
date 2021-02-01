@@ -40,7 +40,7 @@ public class Concurrent extends SourceCode {
     /**
      * 任务描述
      */
-    public String desc = DEFAULT_STRING;
+    public String desc;
 
     /**
      * 任务集
@@ -92,28 +92,11 @@ public class Concurrent extends SourceCode {
     /**
      * @param thread    线程任务
      * @param threadNum 线程数
-     */
-    public Concurrent(ThreadBase thread, int threadNum) {
-        this(threadNum);
-        range(threadNum).forEach(x -> threads.add(thread.clone()));
-    }
-
-    /**
-     * @param threads 线程组
-     */
-    public Concurrent(List<ThreadBase> threads) {
-        this(threads.size());
-        this.threads = threads;
-    }
-
-    /**
-     * @param thread    线程任务
-     * @param threadNum 线程数
      * @param desc      任务描述
      */
     public Concurrent(ThreadBase thread, int threadNum, String desc) {
-        this(thread, threadNum);
-        this.desc = desc + Time.getNow();
+        this(threadNum, desc);
+        range(threadNum).forEach(x -> threads.add(thread.clone()));
     }
 
     /**
@@ -121,12 +104,13 @@ public class Concurrent extends SourceCode {
      * @param desc    任务描述
      */
     public Concurrent(List<ThreadBase> threads, String desc) {
-        this(threads);
-        this.desc = desc + Time.getNow();
+        this(threads.size(), desc);
+        this.threads = threads;
     }
 
-    private Concurrent(int threadNum) {
+    private Concurrent(int threadNum, String desc) {
         this.threadNum = threadNum;
+        this.desc = StatisticsUtil.getFileName(desc);
         executorService = ThreadPoolUtil.createFixedPool(threadNum);
         countDownLatch = new CountDownLatch(threadNum);
     }
@@ -140,12 +124,12 @@ public class Concurrent extends SourceCode {
      * 默认取list中thread对象,丢入线程池,完成多线程执行,如果没有threadname,name默认采用desc+线程数作为threadname,去除末尾的日期
      */
     public PerformanceResultBean start() {
-        Progress progress = new Progress(threads.get(0), desc.replaceAll("\\d{14}$", EMPTY));
+        Progress progress = new Progress(threads.get(0), StatisticsUtil.getTrueName(desc));
         new Thread(progress).start();
         startTime = Time.getTimeStamp();
         for (int i = 0; i < threadNum; i++) {
             ThreadBase thread = threads.get(i);
-            if (StringUtils.isBlank(thread.threadName)) thread.threadName = desc.replaceAll("\\d{14}$", EMPTY) + i;
+            if (StringUtils.isBlank(thread.threadName)) thread.threadName = StatisticsUtil.getTrueName(desc) + i;
             thread.setCountDownLatch(countDownLatch);
             executorService.execute(thread);
         }
@@ -177,7 +161,7 @@ public class Concurrent extends SourceCode {
     }
 
     private PerformanceResultBean over() {
-        Save.saveLongList(allTimes, "data/" + desc + threadNum);
+        Save.saveLongList(allTimes, DATA_Path.replace(LONG_Path, EMPTY) + StatisticsUtil.getFileName(threadNum, desc));
         Save.saveStringListSync(Concurrent.requestMark, MARK_Path.replace(LONG_Path, EMPTY) + desc);
         allTimes = new Vector<>();
         requestMark = new Vector<>();
@@ -193,11 +177,11 @@ public class Concurrent extends SourceCode {
      * @param name 线程数
      */
     public PerformanceResultBean countQPS(int name, String desc, String start, String end) {
-        List<String> strings = WriteRead.readTxtFileByLine(Constant.DATA_Path + desc + name);
+        List<String> strings = WriteRead.readTxtFileByLine(Constant.DATA_Path + StatisticsUtil.getFileName(name, desc));
         int size = strings.size();
         List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
         int sum = data.stream().mapToInt(x -> x).sum();
-        String statistics = StatisticsUtil.statistics(data, desc, this.threadNum);
+        String statistics = StatisticsUtil.statistics(data, desc, threadNum);
         int rt = sum / size;
         double qps = (1000_000 * name / rt) / 1000.0;
         return new PerformanceResultBean(desc, start, end, name, size, rt, qps, getPercent(executeTotal, errorTotal), getPercent(threadNum, failTotal), executeTotal, statistics);
