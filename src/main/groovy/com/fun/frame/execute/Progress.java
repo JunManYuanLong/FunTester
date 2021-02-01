@@ -19,6 +19,16 @@ public class Progress extends SourceCode implements Runnable {
     private static Logger logger = LoggerFactory.getLogger(Progress.class);
 
     /**
+     * 进度条的长度
+     */
+    private static final int LENGTH = 67;
+
+    /**
+     * 标志符号
+     */
+    private static final String ONE = getPart(3);
+
+    /**
      * 总开关,是否运行,默认true
      */
     private boolean st = true;
@@ -79,12 +89,12 @@ public class Progress extends SourceCode implements Runnable {
         while (st) {
             sleep(HttpClientConstant.LOOP_INTERVAL);
             if (isTimesMode) {
-                pro = (int) (base.executeNum * 1.0 / limit * BUCKET_SIZE * 2);
+                pro = (int) (base.executeNum * 1.0 / limit * LENGTH);
             } else {
-                pro = (int) ((Time.getTimeStamp() - startTime) * 1.0 / limit * BUCKET_SIZE * 2);
+                pro = (int) ((Time.getTimeStamp() - startTime) * 1.0 / limit * LENGTH);
             }
-            if (pro >= BUCKET_SIZE * 2) break;
-            logger.info("{}测试进度:{}  {}", taskDesc, getManyString(getPercent(8), pro), getPercent(getPercent(BUCKET_SIZE * 2, pro)));
+            if (pro >= LENGTH) break;
+            logger.info("{}进度:{}  {}", taskDesc, getManyString(ONE, pro), getPercent(getPercent(LENGTH, pro)));
         }
     }
 
@@ -93,7 +103,7 @@ public class Progress extends SourceCode implements Runnable {
      */
     public void stop() {
         st = false;
-        logger.info("{}测试进度:{}  {}", taskDesc, getManyString(getPercent(8), BUCKET_SIZE * 2), "100%");
+        logger.info("{}进度:{}  {}", taskDesc, getManyString(ONE, LENGTH), "100%");
     }
 
 
