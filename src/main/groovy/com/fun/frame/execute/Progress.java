@@ -49,12 +49,15 @@ public class Progress extends SourceCode implements Runnable {
     private String taskDesc;
 
     public Progress(ThreadBase base, String desc) {
-        this(base);
         this.base = base;
         this.taskDesc = desc;
+        init();
     }
 
-    private Progress(ThreadBase base) {
+    /**
+     * 初始化对象,对istimesMode和limit赋值
+     */
+    private void init() {
         if (base instanceof ThreadLimitTimeCount) {
             this.isTimesMode = false;
             this.limit = ((ThreadLimitTimeCount) base).time;
