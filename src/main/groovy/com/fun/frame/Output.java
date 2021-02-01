@@ -6,7 +6,7 @@ import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.fun.base.bean.AbstractBean;
 import com.fun.config.Constant;
-import com.fun.utils.Emoji;
+import com.fun.utils.StringUtil;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -158,7 +158,7 @@ public class Output extends Constant {
             char piece = jsonStr.charAt(i);// 获取当前字符
             // 如果上一个字符是断行，则在本行开始按照level数值添加标记符，排除第一行
             if ('\n' == jsonResultStr.charAt(jsonResultStr.length() - 1)) {
-                jsonResultStr.append(Emoji.getSerialEmoji(level) + " . ");
+                jsonResultStr.append(StringUtil.getSerialEmoji(level) + " . ");
                 IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(". . "));//没有采用sourcecode的getmanystring
             }
             char last = i == 0 ? '{' : jsonStr.charAt(i - 1);
@@ -180,7 +180,7 @@ public class Output extends Constant {
 //                    jsonResultStr.append(LINE);
                     jsonResultStr.append(("\"0123456789le]}{[,".contains(last + EMPTY) && "}],".contains(next + EMPTY) ? LINE : EMPTY));
                     if (next != ']') level--;//解决jsonarray:[{
-                    jsonResultStr.append(level == 0 ? "" : Emoji.getSerialEmoji(level) + " . ");
+                    jsonResultStr.append(level == 0 ? "" : StringUtil.getSerialEmoji(level) + " . ");
                     IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(". . "));//没有采用sourcecode的getmanystring
                     jsonResultStr.append(piece);
                     break;

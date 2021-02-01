@@ -6,7 +6,7 @@ import com.alibaba.dubbo.config.RegistryConfig;
 import com.alibaba.dubbo.config.utils.ReferenceConfigCache;
 import com.alibaba.dubbo.rpc.service.GenericService;
 import com.fun.config.PropertyUtils;
-import com.fun.utils.RString;
+import com.fun.utils.StringUtil;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 public class DubboBase {
@@ -67,7 +67,7 @@ public class DubboBase {
             // 声明为泛化接口
             referenceConfig.setGeneric(true);
         }
-        configCache = ReferenceConfigCache.getCache(RString.getChinese(5));
+        configCache = ReferenceConfigCache.getCache(StringUtil.getChinese(5));
         return configCache.get(referenceConfig);
     }
 

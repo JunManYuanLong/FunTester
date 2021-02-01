@@ -7,7 +7,7 @@ import com.fun.base.exception.ParamException;
 import com.fun.config.Constant;
 import com.fun.config.SocketConstant;
 import com.fun.frame.SourceCode;
-import com.fun.utils.RString;
+import com.fun.utils.StringUtil;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.enums.ReadyState;
@@ -60,7 +60,7 @@ public class WebSocketFunClient extends WebSocketClient {
      * @return
      */
     public static WebSocketFunClient getInstance(String url) {
-        return getInstance(url, Constant.DEFAULT_STRING + RString.getString(4));
+        return getInstance(url, Constant.DEFAULT_STRING + StringUtil.getString(4));
     }
 
     /**
@@ -220,7 +220,7 @@ public class WebSocketFunClient extends WebSocketClient {
      */
     @Override
     public WebSocketFunClient clone() {
-        return getInstance(this.url, this.cname + RString.getString(4));
+        return getInstance(this.url, this.cname + StringUtil.getString(4));
     }
 
     /**

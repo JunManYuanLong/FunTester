@@ -3,7 +3,7 @@ package com.fun.frame.socket;
 import com.fun.base.exception.FailException;
 import com.fun.config.SocketConstant;
 import com.fun.frame.SourceCode;
-import com.fun.utils.RString;
+import com.fun.utils.StringUtil;
 import io.netty.util.internal.ConcurrentSet;
 import io.socket.client.IO;
 import io.socket.client.Socket;
@@ -203,7 +203,7 @@ public class ScoketIOFunClient extends SourceCode {
      */
     @Override
     public ScoketIOFunClient clone() {
-        return getInstance(this.url, this.cname + RString.getString(4));
+        return getInstance(this.url, this.cname + StringUtil.getString(4));
     }
 
     /**

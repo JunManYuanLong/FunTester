@@ -4,7 +4,7 @@ import com.fun.base.constaint.ThreadBase;
 import com.fun.base.exception.ParamException;
 import com.fun.base.interfaces.MarkRequest;
 import com.fun.frame.SourceCode;
-import com.fun.utils.RString;
+import com.fun.utils.StringUtil;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.http.client.methods.HttpRequestBase;
 
@@ -60,7 +60,7 @@ public class HeaderMark extends SourceCode implements MarkRequest, Cloneable, Se
 
     public HeaderMark(String headerName) {
         this.headerName = headerName;
-        this.m = DEFAULT_STRING.toLowerCase() + RString.getStringWithoutNum(5) + threadName.getAndIncrement();
+        this.m = DEFAULT_STRING.toLowerCase() + StringUtil.getStringWithoutNum(5) + threadName.getAndIncrement();
     }
 
     public HeaderMark() {
