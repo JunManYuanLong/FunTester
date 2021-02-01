@@ -278,9 +278,7 @@ public class Output extends Constant {
          * @return
          */
         public String getCel(int colum, String content) {
-            Integer integer = rowLength.get(colum);
-            int i = integer - content.length();
-            return (colum == 0 ? LINE + PART : PART) + getManyString(SPACE_1, i / 2) + content + getManyString(SPACE_1, i - i / 2) + (rowLength.size() - colum == 1 ? PART : EMPTY);
+            return (colum == 0 ? LINE + PART : PART) + StringUtil.center(content, rowLength.get(colum)) + (rowLength.size() - colum == 1 ? PART : EMPTY);
         }
 
         /**
