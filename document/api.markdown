@@ -46,6 +46,7 @@
 - [Socket接口异步验证实践](https://mp.weixin.qq.com/s/bnjHK3ZmEzHm3y-xaSVkTw)
 - [无数据驱动自动化测试](https://mp.weixin.qq.com/s/aCYRGxkzMogLbmACYo6ssw)
 - [白板点阵数据传输测试初探](https://mp.weixin.qq.com/s/EzFC-hIvgm7j7947TZU6BA)
+- [基于Socket.IO的白板点阵坐标传输接口测试实践](https://mp.weixin.qq.com/s/pDAx4jwYvcRcdld5cKLAUw)
 
 ## 性能性能
 
@@ -93,6 +94,9 @@
 - [性能测试中集合点和多阶段同步问题初探](https://mp.weixin.qq.com/s/NlpD1WyMrcG1V5RYfY0Plg)
 - [性能测试中标记请求参数实践](https://mp.weixin.qq.com/s/2FNMU-k_En26FCqWkYpvhQ)
 - [测试模型中理解压力测试和负载测试](https://mp.weixin.qq.com/s/smNLx3malzM3avkrn3EJiA)
+- [重放浏览器单个请求性能测试实践](https://mp.weixin.qq.com/s/a10hxCrIzS4TV9JwmDSI3Q)
+- [重放浏览器多个请求性能测试实践](https://mp.weixin.qq.com/s/Hm1Kpp1PMrZ5rYFW8l2GlA)
+- [性能测试中异步展示测试进度](https://mp.weixin.qq.com/s/AOERJbEc4ATJqhjvnxgQoA)
 
 ## 测试方案
 

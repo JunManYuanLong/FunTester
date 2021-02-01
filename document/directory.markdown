@@ -144,6 +144,9 @@
 - [性能测试中集合点和多阶段同步问题初探](https://mp.weixin.qq.com/s/NlpD1WyMrcG1V5RYfY0Plg)
 - [性能测试中标记请求参数实践](https://mp.weixin.qq.com/s/2FNMU-k_En26FCqWkYpvhQ)
 - [测试模型中理解压力测试和负载测试](https://mp.weixin.qq.com/s/smNLx3malzM3avkrn3EJiA)
+- [重放浏览器单个请求性能测试实践](https://mp.weixin.qq.com/s/a10hxCrIzS4TV9JwmDSI3Q)
+- [重放浏览器多个请求性能测试实践](https://mp.weixin.qq.com/s/Hm1Kpp1PMrZ5rYFW8l2GlA)
+- [性能测试中异步展示测试进度](https://mp.weixin.qq.com/s/AOERJbEc4ATJqhjvnxgQoA)
 
 
 > 公众号**FunTester**，非著名测试开发，文章记录学习和感悟，欢迎关注，交流成长。
@@ -205,6 +208,7 @@
 - [Math.abs()求绝对值返回负值BUG分享](https://mp.weixin.qq.com/s/RHzExuRqF1XsBtzGKzmgGA)
 - [Java代理模式初探](https://mp.weixin.qq.com/s/SBL_K2PQez3vDHhtAN9NLg)
 - [Socket接口异步验证实践](https://mp.weixin.qq.com/s/bnjHK3ZmEzHm3y-xaSVkTw)
+- [性能测试中异步展示测试进度](https://mp.weixin.qq.com/s/AOERJbEc4ATJqhjvnxgQoA)
 
 ## Groovy
 

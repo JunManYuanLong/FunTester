@@ -47,8 +47,12 @@
 - [Java求数组的并集--最后放大招](https://mp.weixin.qq.com/s/bZ93SGakyiRbaRujhx4nvw)
 - [Java计算数组平均值--最后放大招](https://mp.weixin.qq.com/s/dxQaFHu2PyAbOK6jpEgEUQ)
 - [Math.abs()求绝对值返回负值BUG分享](https://mp.weixin.qq.com/s/RHzExuRqF1XsBtzGKzmgGA)
+- [Java代理模式初探](https://mp.weixin.qq.com/s/SBL_K2PQez3vDHhtAN9NLg)
+- [Socket接口异步验证实践](https://mp.weixin.qq.com/s/bnjHK3ZmEzHm3y-xaSVkTw)
+- [性能测试中异步展示测试进度](https://mp.weixin.qq.com/s/AOERJbEc4ATJqhjvnxgQoA)
 
 ## Groovy
+
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)
 - [groovy使用stream语法递归筛选法求N以内的质数](https://mp.weixin.qq.com/s/TsrVn1cuQUrU6wj9OnR-FQ)
 - [使用Groovy进行Bash（shell）操作](https://mp.weixin.qq.com/s/fgCTlZUF3QeNj6jzq1ZgGg)
@@ -77,6 +81,7 @@
 - [Groovy重载操作符（终极版）](https://mp.weixin.qq.com/s/4oYGJ2B2Y1AqxsIj8v5nZA)
 - [Groovy小记it关键字和IDE报错](https://mp.weixin.qq.com/s/cIMHzkvKtH0a0ewkiBnV8g)
 - [JsonPath验证类既Groovy重载操作符实践](https://mp.weixin.qq.com/s/5gc04CAsBY6pWxe5c2P41w)
+- [Groovy枚举类初始化异常分析](https://mp.weixin.qq.com/s/koFhpBZM1MFYYxCNxUKPyQ)
 
 ## Python
 - [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/xs6Q7uk5l8Gxoagh-sY0uQ)
