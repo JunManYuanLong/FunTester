@@ -154,11 +154,9 @@ public class SourceCode extends Output {
      * @return
      */
     public static JSONObject getSimpleJson(String key, Object value) {
-        if (StringUtils.isBlank(key)) return null;
-        JSONObject result = new JSONObject(1) {{
+        return StringUtils.isBlank(key) ? null : new JSONObject(1) {{
             put(key, value);
         }};
-        return result;
     }
 
     /**
