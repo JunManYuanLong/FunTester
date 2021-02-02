@@ -173,6 +173,27 @@ class StringUtil extends SourceCode {
         str.center(size)
     }
 
+    /**
+     * 返回一个居左的文本
+     * @param str
+     * @param size
+     * @return
+     */
+    public static String left(String str, int size) {
+        str.padLeft(size)
+    }
+
+    /**
+     * 返回一个居右的文本
+     * @param str
+     * @param size
+     * @return
+     */
+    public static String right(String str, int size) {
+        str.padRight(size)
+    }
+
+
 //这个是添加新的的emoji表情的方法
 //    public static void main(String[] args) {
 //        String aa = "";
