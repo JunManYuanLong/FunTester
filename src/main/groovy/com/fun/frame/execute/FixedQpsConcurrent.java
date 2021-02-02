@@ -166,7 +166,7 @@ public class FixedQpsConcurrent extends SourceCode {
         marks = new Vector<>();
         int executeNum = executeTimes.getAndSet(0);
         int errorNum = errorTimes.getAndSet(0);
-        return countQPS(queueLength, desc, Time.getTimeByTimestamp(startTime), Time.getTimeByTimestamp(endTime), executeNum, errorNum);
+        return countQPS(queueLength, desc, startTime, endTime, executeNum, errorNum);
     }
 
     /**
@@ -176,26 +176,14 @@ public class FixedQpsConcurrent extends SourceCode {
      *
      * @param name 线程数
      */
-    public static PerformanceResultBean countQPS(int name, String desc, String start, String end, int executeNum, int errorNum) {
+    public static PerformanceResultBean countQPS(int name, String desc, long start, long end, int executeNum, int errorNum) {
         List<String> strings = WriteRead.readTxtFileByLine(Constant.DATA_Path + StatisticsUtil.getFileName(name, desc));
         int size = strings.size();
         List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
         int sum = data.stream().mapToInt(x -> x).sum();
         String statistics = StatisticsUtil.statistics(data, desc, name);
-        double qps = (executeNum * 1000_000 / (Time.getTimeStamp(end) - Time.getTimeStamp(start))) / 1000.0;
-        return new PerformanceResultBean(desc, start, end, name, size, sum / size, qps, getPercent(executeNum, errorNum), 0, executeNum, statistics);
-    }
-
-
-    /**
-     * 用于做后期的计算
-     *
-     * @param name
-     * @param desc
-     * @return
-     */
-    public PerformanceResultBean countQPS(int name, String desc) {
-        return countQPS(name, desc, Time.getDate(), Time.getDate(), 0, 0);
+        double qps = (executeNum * 1000_000 / (end - start)) / 1000.0;
+        return new PerformanceResultBean(desc, Time.getTimeByTimestamp(start), Time.getTimeByTimestamp(end), name, size, sum / size, qps, getPercent(executeNum, errorNum), 0, executeNum, statistics);
     }
 
     /**
