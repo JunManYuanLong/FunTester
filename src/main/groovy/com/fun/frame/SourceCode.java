@@ -127,8 +127,7 @@ public class SourceCode extends Output {
         JSONObject args = new JSONObject();
         Arrays.stream(objects).forEach(x -> {
             String[] split = x.toString().split(regex, 2);
-            args.put(split[0], split[1]);
-            logger.debug("key:[{}],value:[{}]", split[0], split[1]);
+            args.put(split[0], isInteger(split[1]) ? changeStringToInt(split[1]) : isDouble(split[1]) ? changeStringToDouble(split[1]) : split[1]);
         });
         return args;
     }
@@ -147,6 +146,13 @@ public class SourceCode extends Output {
         return changeArraysToJson(content, "=");
     }
 
+    /**
+     * 获取一个简单的JSON对象
+     *
+     * @param key
+     * @param value
+     * @return
+     */
     public static JSONObject getSimpleJson(String key, Object value) {
         if (StringUtils.isBlank(key)) return null;
         JSONObject result = new JSONObject(1) {{
@@ -301,6 +307,14 @@ public class SourceCode extends Output {
         if (StringUtils.isEmpty(text) || text.equals("-0")) return false;
         if (text.equals("0")) return true;
         return Regex.isMatch(text, "-{0,1}(([1-9][0-9]*)|0)(.\\d+){0,1}");
+    }
+
+    public static boolean isInteger(String str) {
+        return isNumber(str) && !str.contains(".");
+    }
+
+    public static boolean isDouble(String str) {
+        return isNumber(str) && str.contains(".");
     }
 
     /**
