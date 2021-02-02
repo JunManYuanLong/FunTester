@@ -39,7 +39,6 @@ public class Join extends SourceCode {
      */
     public static String join(Iterable<?> iterable, String separator, String prefix, String suffix) {
         return prefix + join(iterable, separator) + suffix;
-//        return list.stream().map(x -> x.toString()).collect(Collectors.joining(separator, prefix, suffix)).toString();
     }
 
     /**
@@ -52,7 +51,6 @@ public class Join extends SourceCode {
     public static String join(Iterable<?> iterable, String separator) {
         return StringUtils.join(iterable, separator);
     }
-
 
     /**
      * 把数组添加用间隔符连接
