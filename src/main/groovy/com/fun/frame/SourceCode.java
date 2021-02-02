@@ -118,7 +118,7 @@ public class SourceCode extends Output {
      * <p>
      * split方法默认limit=2
      * </p>
-     *
+     *  int和double使用数字类型,其他使用字符串类型
      * @param objects
      * @param regex   分隔的regex表达式
      * @return
@@ -308,7 +308,7 @@ public class SourceCode extends Output {
     }
 
     public static boolean isInteger(String str) {
-        return isNumber(str) && !str.contains(".");
+        return isNumber(str) && !str.contains(".") && str.length() < 11;
     }
 
     public static boolean isDouble(String str) {
