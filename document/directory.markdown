@@ -549,6 +549,7 @@
 - [测试模型中理解压力测试和负载测试](https://mp.weixin.qq.com/s/smNLx3malzM3avkrn3EJiA)
 - [移动测试工程师职业](https://mp.weixin.qq.com/s/dhtR4TbQNu5fWpmJkXGivw)
 - [远程测试工作挑战](https://mp.weixin.qq.com/s/LK-GEN4OtuWVGDuG8psmOQ)
+- [自动化测试用例的原子性](https://mp.weixin.qq.com/s/jA5WMHwJcu88nHXWoMBAdQ)
 
 ## 大咖风采
 
