@@ -1,7 +1,7 @@
 package com.fun.frame;
 
 import com.fun.base.exception.FailException;
-import com.fun.utils.WriteRead;
+import com.fun.utils.RWUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -34,7 +34,7 @@ public class Save extends SourceCode {
             boolean delete = dirFile.delete();
             if (!delete) FailException.fail("删除文件失败!" + name);
         }
-        WriteRead.writeText(dirFile, content);
+        RWUtil.writeText(dirFile, content);
         logger.info("数据保存成功！文件名：{}{}", LONG_Path, name);
     }
 

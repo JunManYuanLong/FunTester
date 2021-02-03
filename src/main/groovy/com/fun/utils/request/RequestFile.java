@@ -3,7 +3,7 @@ package com.fun.utils.request;
 import com.fun.config.Constant;
 import com.fun.config.RequestType;
 import com.fun.frame.httpclient.FanLibrary;
-import com.fun.utils.WriteRead;
+import com.fun.utils.RWUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.slf4j.Logger;
@@ -60,7 +60,7 @@ public class RequestFile extends FanLibrary {
     private void getInfo() {
         String filePath = Constant.WORK_SPACE + this.name;
         logger.info("配置文件地址：" + filePath);
-        this.info = WriteRead.readTxtByJson(filePath);
+        this.info = RWUtil.readTxtByJson(filePath);
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.fun.utils
 
 import com.alibaba.fastjson.JSONObject
+import com.fun.config.Constant
 import com.fun.config.RequestType
 import com.fun.frame.SourceCode
 import com.fun.frame.httpclient.FanLibrary
@@ -11,7 +12,7 @@ import org.apache.http.Header
 /**
  * 通过将浏览器中复制的curl文本信息转化成HTTPrequestbase对象工具类
  */
-class CurlUtil extends SourceCode {
+class CurlUtil extends Constant{
 
     private static def filterWords = [".js", ".png", ".gif", ".css", ".ico", "list_unread", ".svg", ".htm", ".jpeg", ".ashx"]
 
@@ -21,8 +22,8 @@ class CurlUtil extends SourceCode {
      * @return
      */
     public static List<HttpRequestBase> getRequests(String path) {
-        def fileinfo = WriteRead.readTxtFileByLine(path.contains(OR) ? path : LONG_Path + path).stream().map {it.trim()}
-        def requests = []
+        def fileinfo = RWUtil.readTxtFileByLine(path.contains(OR) ? path : LONG_Path + path).stream().map {it.trim()}
+        List<HttpRequestBase> requests = []
         def base = new CurlRequestBase()
         fileinfo.each {
             if (it.startsWith("curl")) {
@@ -34,7 +35,7 @@ class CurlUtil extends SourceCode {
                 def split = it.split(" ", 2)[1].split(": ")
                 base.headers << FanLibrary.getHeader(split[0].substring(1), split[1].substring(0, split[1].lastIndexOf("'")))
             } else if (it.startsWith("--data-raw")) {
-                base.params = getJson(it.substring(it.indexOf("'") + 1, it.lastIndexOf("'")).split("&"))
+                base.params = SourceCode.getJson(it.substring(it.indexOf("'") + 1, it.lastIndexOf("'")).split("&"))
                 base.type = RequestType.POST
             } else if (it.startsWith("--compressed")) {
                 requests << getRequest(base)

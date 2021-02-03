@@ -16,10 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 文件读写类,与{@link FileUtil}有功能上的重合,原因在与Java和Groovy的不兼容问题.
+ */
 @SuppressFBWarnings("DM_DEFAULT_ENCODING")
-public class WriteRead extends SourceCode {
+public class RWUtil extends SourceCode {
 
-    private static Logger logger = LoggerFactory.getLogger(WriteRead.class);
+    private static Logger logger = LoggerFactory.getLogger(RWUtil.class);
 
     /**
      * 读取文件信息，返回json数据
@@ -136,14 +139,21 @@ public class WriteRead extends SourceCode {
         return readTxtFileByLine(filePath, EMPTY, true).stream().map(x -> changeStringToDouble(x)).collect(Collectors.toList());
     }
 
+
+    public static void down(String url) {
+        String name = url.substring(url.lastIndexOf("/") + 1);
+        down(url, name);
+    }
+
     /**
      * 通过url下载图片
      *
      * @param url
-     * @param file
+     * @param name
      */
-    public static void download(String url, File file) {
-        logger.debug("下载链接：{}，存储文件名：{}", url, file.getAbsolutePath());
+    public static void down(String url, String name) {
+        File file = new File(name);
+        logger.info("下载链接：{}，存储文件名：{}", url, file.getAbsolutePath());
         if (!file.exists())
             try {
                 file.createNewFile();

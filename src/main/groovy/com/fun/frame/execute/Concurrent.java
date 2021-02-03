@@ -6,7 +6,7 @@ import com.fun.config.Constant;
 import com.fun.frame.Save;
 import com.fun.frame.SourceCode;
 import com.fun.utils.Time;
-import com.fun.utils.WriteRead;
+import com.fun.utils.RWUtil;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -177,7 +177,7 @@ public class Concurrent extends SourceCode {
      * @param name 线程数
      */
     public PerformanceResultBean countQPS(int name, String desc, String start, String end) {
-        List<String> strings = WriteRead.readTxtFileByLine(Constant.DATA_Path + StatisticsUtil.getFileName(name, desc));
+        List<String> strings = RWUtil.readTxtFileByLine(Constant.DATA_Path + StatisticsUtil.getFileName(name, desc));
         int size = strings.size();
         List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
         int sum = data.stream().mapToInt(x -> x).sum();

@@ -122,7 +122,6 @@ class StringUtil extends SourceCode {
         num.length() > 2 ? num : getManyString(capeChineses[0] + EMPTY, 3 - num.length()) + num
     }
 
-
     /**
      * 随机获取emoji表情数
      *
@@ -134,23 +133,13 @@ class StringUtil extends SourceCode {
     }
 
     /**
-     * 获取核表情
-     *
-     * @return
-     */
-    public static String getEmoji() {
-        return EMOJIS[0];
-    }
-
-    /**
      * 获取序号符号
      *
      * @param i
      * @return
      */
     public static String getSerialEmoji(int i) {
-        if (i < 0 || i > 20) return EMOJIS[0];
-        return SERIAL[i];
+        (i < 0 || i > 20) ? EMOJIS[0] : SERIAL[i];
     }
 
     /**
@@ -159,7 +148,7 @@ class StringUtil extends SourceCode {
      * @return
      */
     public static String getEmojis() {
-        return EMOJIS[getRandomInt(EMOJIS.length - 1)];
+        EMOJIS[getRandomInt(EMOJIS.length - 1)];
     }
 
 

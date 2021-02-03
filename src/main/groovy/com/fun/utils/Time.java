@@ -110,7 +110,6 @@ public class Time extends SourceCode {
         return getCalendar().get(Calendar.YEAR);
     }
 
-
     public static int getHour() {
         return getCalendar().get(Calendar.HOUR_OF_DAY);
     }

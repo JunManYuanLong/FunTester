@@ -1,7 +1,7 @@
 package com.fun.config
 
 import com.fun.frame.SourceCode
-import com.fun.utils.WriteRead
+import com.fun.utils.RWUtil
 import com.alibaba.fastjson.JSONObject
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.slf4j.Logger
@@ -42,7 +42,7 @@ class PropertyUtils extends SourceCode {
     static Property getLocalProperties(String filePath) {
         logger.debug("读取配置文件：{}", filePath)
         try {
-            new Property(WriteRead.readTxtByJson(filePath, FILTER))
+            new Property(RWUtil.readTxtByJson(filePath, FILTER))
         } catch (MissingResourceException e) {
             logger.warn("找不到配置文件", e)
             new Property()

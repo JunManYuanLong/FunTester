@@ -1,6 +1,6 @@
 package com.fun.utils;
 
-import com.fun.frame.SourceCode;
+import com.fun.config.Constant;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -12,7 +12,7 @@ import java.nio.charset.Charset;
 /**
  * 执行命令的类
  */
-public class CMD extends SourceCode {
+public class CMD extends Constant {
 
     @SuppressFBWarnings("MS_SHOULD_BE_FINAL")
     public static Logger logger = LoggerFactory.getLogger(CMD.class);
@@ -48,11 +48,11 @@ public class CMD extends SourceCode {
              BufferedReader errorReader = new BufferedReader(streamReader)) {
             String line = "";
             while ((line = reader.readLine()) != null) {// 循环读取
-                output(line);// 输出
+                logger.info(line);// 输出
             }
             String eline = "";
             while ((eline = errorReader.readLine()) != null) {// 循环读取
-                output(eline);// 输出
+                logger.info(eline);// 输出
             }
             return 0;
         } catch (IOException e) {

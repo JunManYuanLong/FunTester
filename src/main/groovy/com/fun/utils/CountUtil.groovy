@@ -1,12 +1,18 @@
 package com.fun.utils
 
-import com.fun.frame.SourceCode
+
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 import java.util.stream.Collectors
+
 /**
  * 统计出现次数相关类
  */
-class CountTool extends SourceCode {
+class CountUtil {
+
+    private static Logger logger = LoggerFactory.getLogger(CountUtil.class)
+
     /**
      * 统计数据出现的次数
      *
@@ -28,26 +34,26 @@ class CountTool extends SourceCode {
         counts.put(object, Integer.valueOf(counts.getOrDefault(object, 0) + num))
     }
 
-/**
- * 统计某个list里面某个元素出现的次数
- * @param list
- * @param str
- * @return
- */
+    /**
+     * 统计某个list里面某个元素出现的次数
+     * @param list
+     * @param str
+     * @return
+     */
     static def count(List list, def str) {
-        list.count { s -> s.toString().equals(str.toString()) }
+        list.count {s -> s.toString().equals(str.toString())}
     }
 
-/**
- * 统计某个list里面各个元素出现的次数
- * collect,是一个map<object,integer>对象
- * @param list
- * @return
- */
+    /**
+     * 统计某个list里面各个元素出现的次数
+     * collect,是一个map<object,integer>对象
+     * @param list
+     * @return
+     */
     static def count(List list) {
-        list.stream().collect(Collectors.groupingBy { x -> x }).each {
+        list.stream().collect(Collectors.groupingBy {x -> x}).each {
             it.setValue(it.value.size())
-            output("元素：${it.key}，次数：${it.value}")
+            logger.info("元素：${it.key}，次数：${it.value}")
         }
     }
 }

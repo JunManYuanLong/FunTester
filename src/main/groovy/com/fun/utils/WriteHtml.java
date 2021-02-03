@@ -1,13 +1,11 @@
 package com.fun.utils;
 
-import com.fun.frame.SourceCode;
-
 import java.util.List;
 
 /**
  * 生成表格封装类
  */
-public class WriteHtml extends SourceCode {
+public class WriteHtml {
 
     /**
      * 获取表格头部信息
@@ -60,5 +58,6 @@ public class WriteHtml extends SourceCode {
         }
         return body;
     }
+
 
 }

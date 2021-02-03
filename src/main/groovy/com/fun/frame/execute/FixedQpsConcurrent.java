@@ -8,7 +8,7 @@ import com.fun.frame.Save;
 import com.fun.frame.SourceCode;
 import com.fun.frame.httpclient.GCThread;
 import com.fun.utils.Time;
-import com.fun.utils.WriteRead;
+import com.fun.utils.RWUtil;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -177,7 +177,7 @@ public class FixedQpsConcurrent extends SourceCode {
      * @param name 线程数
      */
     public static PerformanceResultBean countQPS(int name, String desc, long start, long end, int executeNum, int errorNum) {
-        List<String> strings = WriteRead.readTxtFileByLine(Constant.DATA_Path + StatisticsUtil.getFileName(name, desc));
+        List<String> strings = RWUtil.readTxtFileByLine(Constant.DATA_Path + StatisticsUtil.getFileName(name, desc));
         int size = strings.size();
         List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
         int sum = data.stream().mapToInt(x -> x).sum();

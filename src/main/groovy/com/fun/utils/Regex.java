@@ -26,8 +26,7 @@ public class Regex extends SourceCode {
      * @return
      */
     public static boolean isRegex(String text, String regex) {
-        if (StringUtils.isAnyBlank(text, regex)) ParamException.fail("正则参数错误!");
-        return Pattern.compile(regex).matcher(text).find();
+        return matcher(text, regex).find();
     }
 
     /**
@@ -38,8 +37,19 @@ public class Regex extends SourceCode {
      * @return
      */
     public static boolean isMatch(String text, String regex) {
+        return matcher(text, regex).matches();
+    }
+
+    /**
+     * 获取匹配对象
+     *
+     * @param text
+     * @param regex
+     * @return
+     */
+    private static Matcher matcher(String text, String regex) {
         if (StringUtils.isAnyBlank(text, regex)) ParamException.fail("正则参数错误!");
-        return Pattern.compile(regex).matcher(text).matches();
+        return Pattern.compile(regex).matcher(text);
     }
 
     /**
@@ -50,9 +60,8 @@ public class Regex extends SourceCode {
      * @return
      */
     public static List<String> regexAll(String text, String regex) {
-        if (StringUtils.isAnyBlank(text, regex)) ParamException.fail("正则参数错误!");
+        Matcher matcher = matcher(text, regex);
         List<String> result = new ArrayList<>();
-        Matcher matcher = Pattern.compile(regex).matcher(text);
         while (matcher.find()) {
             result.add(matcher.group());
         }

@@ -1,8 +1,8 @@
 package com.fun.utils;
 
-import com.fun.frame.SourceCode;
 import com.sun.management.HotSpotDiagnosticMXBean;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.management.MBeanServer;
 import java.lang.management.ManagementFactory;
@@ -10,9 +10,9 @@ import java.lang.management.ManagementFactory;
 /**
  * 获取JVM内存转储文件的工具类
  */
-public class HeapDumper extends SourceCode {
+public class HeapDumper {
 
-    private static Logger logger = getLogger(HeapDumper.class);
+    private static Logger logger = LoggerFactory.getLogger(HeapDumper.class);
 
     /**
      * 这是HotSpot Diagnostic MBean的名称

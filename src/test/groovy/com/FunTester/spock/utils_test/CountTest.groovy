@@ -1,6 +1,6 @@
 package com.FunTester.spock.utils_test
 
-import com.fun.utils.CountTool
+import com.fun.utils.CountUtil
 import org.slf4j.Logger
 import spock.lang.Shared
 import spock.lang.Specification
@@ -31,7 +31,7 @@ class CountTest extends Specification {
     def "测试统计数字出现次数"() {
         given:
         def list = [3, 2, 1, 2, 3, 3]
-        def count = CountTool.count(list)
+        def count = CountUtil.count(list)
 
         expect:
         num == count.get(key)
@@ -46,7 +46,7 @@ class CountTest extends Specification {
     def "测试统计数字出现次数，使用数组"() {
         given:
         def list = [3, 2, 1, 2, 3, 3]
-        def count = CountTool.count(list)
+        def count = CountUtil.count(list)
 
         expect:
         num == count.get(num)
@@ -58,11 +58,11 @@ class CountTest extends Specification {
     def "测试map统计数据"() {
         given:
         def count = new HashMap()
-        CountTool.count(count, 2)
+        CountUtil.count(count, 2)
 
         expect:
         1 == count.get(2)
-        1 == CountTool.count(count, 2)
+        1 == CountUtil.count(count, 2)
         2 == count.get(2)
     }
 

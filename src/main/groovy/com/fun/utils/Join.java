@@ -1,10 +1,9 @@
 package com.fun.utils;
 
-import com.fun.frame.SourceCode;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
-public class Join extends SourceCode {
+public class Join {
 
     /**
      * 把字符串每个字符用分隔器连接起来

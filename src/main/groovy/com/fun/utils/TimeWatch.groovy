@@ -1,5 +1,6 @@
 package com.fun.utils
 
+import com.fun.config.Constant
 import com.fun.frame.SourceCode
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -9,7 +10,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
  * 时间观察者类，用于简单记录执行时间
  */
 @SuppressFBWarnings(["SE_TRANSIENT_FIELD_NOT_RESTORED","CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE"])
-class TimeWatch extends SourceCode implements Serializable {
+class TimeWatch extends Constant implements Serializable {
 
     private static final long serialVersionUID = -4156600036913348727L;
 
