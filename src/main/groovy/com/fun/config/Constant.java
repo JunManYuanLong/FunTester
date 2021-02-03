@@ -233,7 +233,7 @@ public class Constant {
         allFile.addAll(FileUtil.getAllFile(MARK_Path));
         allFile.addAll(FileUtil.getAllFile(REQUEST_Path));
         allFile.stream().map(y -> new File(y)).forEach(x -> {
-            if (Time.getTimeStamp() - x.lastModified() > 7 * DAY) x.delete();
+            if (Time.getTimeStamp() - x.lastModified() > 3 * DAY) x.delete();
         });
         logger.info("当前用户：{}，IP：{}，工作目录：{},系统编码格式:{},系统{}版本:{}", COMPUTER_USER_NAME, LOCAL_IP, WORK_SPACE, SYS_ENCODING, SYS_NAME, SYS_VERSION);
     }
