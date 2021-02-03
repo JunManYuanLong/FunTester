@@ -76,7 +76,7 @@ public class StatisticsUtil extends Constant {
                 result[i][j] = getManyString(map[j][BUCKET_SIZE - 1 - i], 2) + SPACE_1;
             }
         }
-        StringBuffer table = new StringBuffer(LINE + StringUtil.center(((StringUtils.isEmpty(title)) ? DEFAULT_STRING : title.replaceAll("\\d{14}$", EMPTY) + threadNum), BUCKET_SIZE * 3) + LINE + LINE + StringUtil.center("Response Time: x-serial num,y-median", BUCKET_SIZE * 3) + LINE + StringUtil.center("min median:" + ints[0] + " ms,max:" + ints[BUCKET_SIZE - 1] + " ms", BUCKET_SIZE * 3) + LINE);
+        StringBuffer table = new StringBuffer(LINE + StringUtil.center(((StringUtils.isEmpty(title)) ? DEFAULT_STRING : title.replaceAll("\\d{14}$", EMPTY) + threadNum), BUCKET_SIZE * 3) + LINE + LINE + StringUtil.center("Response Time: x-serial num, y-median", BUCKET_SIZE * 3) + LINE + StringUtil.center("min median:" + ints[0] + " ms,max:" + ints[BUCKET_SIZE - 1] + " ms", BUCKET_SIZE * 3) + LINE);
         range(BUCKET_SIZE).forEach(x -> table.append(Arrays.asList(result[x]).stream().collect(Collectors.joining()) + LINE));
         return table.toString();
     }
