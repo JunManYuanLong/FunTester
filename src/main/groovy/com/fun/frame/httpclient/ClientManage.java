@@ -178,8 +178,20 @@ public class ClientManage {
     private static HttpRequestRetryHandler getHttpRequestRetryHandler() {
         return new HttpRequestRetryHandler() {
             public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
+                boolean log = log(exception, executionCount, context);
+                if (log) logger.warn("请求发生重试! 次数: {}", executionCount + 1);
+                return log;
+            }
+
+            /**绕一圈,记录重试信息,避免错误日志影响观感
+             * @param exception
+             * @param executionCount
+             * @param context
+             * @return
+             */
+            private boolean log(IOException exception, int executionCount, HttpContext context) {
                 if (executionCount + 1 > HttpClientConstant.TRY_TIMES) return false;
-                logger.warn("请求发生错误:{}", exception.getMessage(), exception);
+                logger.warn("请求发生错误:{}", exception.getMessage());
                 HttpClientContext clientContext = HttpClientContext.adapt(context);
                 HttpRequestBase request = clientContext.getAttribute("http.request", HttpRequestBase.class);
                 logger.error(FunRequest.initFromRequest(request).toString());
