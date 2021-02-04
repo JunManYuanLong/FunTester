@@ -6,19 +6,18 @@ import com.fun.config.HttpClientConstant;
 import com.fun.utils.Regex;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpHost;
 import org.apache.http.NoHttpResponseException;
 import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.ConnectionConfig;
 import org.apache.http.config.MessageConstraints;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
-import org.apache.http.conn.ConnectTimeoutException;
-import org.apache.http.conn.HttpHostConnectException;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
@@ -33,10 +32,14 @@ import org.apache.http.impl.nio.reactor.IOReactorConfig;
 import org.apache.http.nio.reactor.ConnectingIOReactor;
 import org.apache.http.nio.reactor.IOReactorException;
 import org.apache.http.protocol.HttpContext;
+import org.apache.http.protocol.HttpCoreContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.net.ssl.*;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLException;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.net.SocketException;
@@ -193,13 +196,12 @@ public class ClientManage {
                 if (executionCount + 1 > HttpClientConstant.TRY_TIMES) return false;
                 logger.warn("请求发生错误:{}", exception.getMessage());
                 HttpClientContext clientContext = HttpClientContext.adapt(context);
-                HttpRequestBase request = clientContext.getAttribute("http.request", HttpRequestBase.class);
-                logger.error(FunRequest.initFromRequest(request).toString());
+                final Object request = clientContext.getAttribute(HttpCoreContext.HTTP_REQUEST);
+                if (request instanceof HttpUriRequest) {
+                    HttpUriRequest uriRequest = (HttpUriRequest) request;
+                    logger.warn("请求失败接口URI:{}", uriRequest.getURI().toString());
+                }
                 if (exception instanceof NoHttpResponseException) {
-                    return true;
-                } else if (exception instanceof ConnectTimeoutException) {
-                    return true;
-                } else if (exception instanceof SSLHandshakeException) {
                     return false;
                 } else if (exception instanceof InterruptedIOException) {
                     return true;
@@ -207,18 +209,16 @@ public class ClientManage {
                     return false;
                 } else if (exception instanceof SSLException) {
                     return false;
-                } else if (exception instanceof HttpHostConnectException) {
-                    return false;
                 } else if (exception instanceof SocketException) {
                     return false;
                 } else {
-                    logger.warn("未记录的请求异常:", exception);
+                    logger.warn("未记录的请求异常:{}", exception.getClass().getName());
                 }
-                // 如果请求是幂等的，则不重试
-//                if (!(request instanceof HttpEntityEnclosingRequest)) {
-//                    return false;
-//                }
-                return false;
+                // 如果请求是幂等的，则不重试,HttpEntityEnclosingRequest类以及子类都是非幂等性的
+                if (!(request instanceof HttpEntityEnclosingRequest)) {
+                    return false;
+                }
+                return true;
             }
         };
     }
