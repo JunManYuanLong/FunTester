@@ -21,7 +21,7 @@ public class Progress extends SourceCode implements Runnable {
     /**
      * 进度条的长度
      */
-    private static final double LENGTH = 67;
+    private static final int LENGTH = 67;
 
     /**
      * 标志符号
@@ -99,7 +99,7 @@ public class Progress extends SourceCode implements Runnable {
      */
     public void stop() {
         st = false;
-        logger.info("{}进度:{}  {}", taskDesc, getManyString(ONE, (int) LENGTH), "100%");
+        logger.info("{}进度:{}  {}", taskDesc, getManyString(ONE, LENGTH), "100%");
     }
 
 
