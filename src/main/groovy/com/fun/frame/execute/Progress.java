@@ -21,7 +21,7 @@ public class Progress extends SourceCode implements Runnable {
     /**
      * 进度条的长度
      */
-    private static final int LENGTH = 67;
+    private static final double LENGTH = 67;
 
     /**
      * 标志符号
@@ -85,16 +85,12 @@ public class Progress extends SourceCode implements Runnable {
 
     @Override
     public void run() {
-        int pro = 0;
+        double pro = 0;
         while (st) {
             sleep(HttpClientConstant.LOOP_INTERVAL);
-            if (isTimesMode) {
-                pro = (int) (base.executeNum * 1.0 / limit * LENGTH);
-            } else {
-                pro = (int) ((Time.getTimeStamp() - startTime) * 1.0 / limit * LENGTH);
-            }
+            pro = isTimesMode ? base.executeNum * 1.0 / limit : (Time.getTimeStamp() - startTime) * 1.0 / limit;
             if (pro >= LENGTH) break;
-            logger.info("{}进度:{}  {}", taskDesc, getManyString(ONE, pro), getPercent(getPercent(LENGTH, pro)));
+            logger.info("{}进度:{}  {}", taskDesc, getManyString(ONE, (int) (pro * LENGTH)), getPercent(pro * 100));
         }
     }
 
@@ -103,7 +99,7 @@ public class Progress extends SourceCode implements Runnable {
      */
     public void stop() {
         st = false;
-        logger.info("{}进度:{}  {}", taskDesc, getManyString(ONE, LENGTH), "100%");
+        logger.info("{}进度:{}  {}", taskDesc, getManyString(ONE, (int) LENGTH), "100%");
     }
 
 

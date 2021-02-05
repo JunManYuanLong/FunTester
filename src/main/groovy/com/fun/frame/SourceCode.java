@@ -118,7 +118,8 @@ public class SourceCode extends Output {
      * <p>
      * split方法默认limit=2
      * </p>
-     *  int和double使用数字类型,其他使用字符串类型
+     * int和double使用数字类型,其他使用字符串类型
+     *
      * @param objects
      * @param regex   分隔的regex表达式
      * @return
@@ -186,7 +187,7 @@ public class SourceCode extends Output {
     /**
      * 获取百分比,string类型,拼接%符合,两位小数
      *
-     * @param percent
+     * @param percent 这里传的需要计算好的百分比,实际比例*100,而不是比例
      * @return
      */
     public static String getPercent(double percent) {
