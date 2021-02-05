@@ -1,6 +1,6 @@
 # 总目录
 
-> 公众号**FunTester**，非著名测试开发，文章记录学习和感悟，欢迎关注，交流成长。
+> 公众号**FunTester**，[优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)非著名测试开发，文章记录学习和感悟，欢迎关注，交流成长。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -146,10 +146,11 @@
 - [测试模型中理解压力测试和负载测试](https://mp.weixin.qq.com/s/smNLx3malzM3avkrn3EJiA)
 - [重放浏览器单个请求性能测试实践](https://mp.weixin.qq.com/s/a10hxCrIzS4TV9JwmDSI3Q)
 - [重放浏览器多个请求性能测试实践](https://mp.weixin.qq.com/s/Hm1Kpp1PMrZ5rYFW8l2GlA)
+- [重放浏览器请求多链路性能测试实践](https://mp.weixin.qq.com/s/9YSBLAyHVw8Z6IfK-nJTpQ)
 - [性能测试中异步展示测试进度](https://mp.weixin.qq.com/s/AOERJbEc4ATJqhjvnxgQoA)
 
 
-> 公众号**FunTester**，非著名测试开发，文章记录学习和感悟，欢迎关注，交流成长。
+> 公众号**FunTester**，[优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)非著名测试开发，文章记录学习和感悟，欢迎关注，交流成长。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -272,7 +273,7 @@
 - [这些年，我写过的BUG（一）](https://mp.weixin.qq.com/s/mVTmT1FdwWl1e0BaL7Ne1g)
 - [这些年，我写过的BUG（二）](https://mp.weixin.qq.com/s/NMz5n0ZMf6taGb-gr1BLyw)
 
-> 公众号**FunTester**，非著名测试开发，文章记录学习和感悟，欢迎关注，交流成长。
+> 公众号**FunTester**，[优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)非著名测试开发，文章记录学习和感悟，欢迎关注，交流成长。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -292,6 +293,9 @@
 - [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
 - [绑定手机号性能测试](https://mp.weixin.qq.com/s/K5x1t1dKtIT2NKV6k4v5mw)
 - [手机号验证码登录性能测试](https://mp.weixin.qq.com/s/i-j8fJAdcsJ7v8XPOnPDAw)
+- [重放浏览器单个请求性能测试实践](https://mp.weixin.qq.com/s/a10hxCrIzS4TV9JwmDSI3Q)
+- [重放浏览器多个请求性能测试实践](https://mp.weixin.qq.com/s/Hm1Kpp1PMrZ5rYFW8l2GlA)
+- [重放浏览器请求多链路性能测试实践](https://mp.weixin.qq.com/s/9YSBLAyHVw8Z6IfK-nJTpQ)
 
 ## BUG集锦
 
@@ -421,7 +425,7 @@
 
 
 
-> 公众号**FunTester**，非著名测试开发，文章记录学习和感悟，欢迎关注，交流成长。
+> 公众号**FunTester**，[优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)非著名测试开发，文章记录学习和感悟，欢迎关注，交流成长。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -672,4 +676,4 @@
 - [推荐好书：不要总是谦卑地弯着腰](https://mp.weixin.qq.com/s/mYNN9jSaikOF5aJEkb-Bug)
 - [2020年FunTester自我总结](https://mp.weixin.qq.com/s/DeDY1JZUTk3cjjQfr3DJRg)
 - [原创打油诗欣赏](https://mp.weixin.qq.com/s/3hPSDjH-3cWu6EVsjU0wOw)
-
+- [优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)
