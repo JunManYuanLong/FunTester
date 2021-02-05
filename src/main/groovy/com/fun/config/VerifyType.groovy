@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 通用验证类型,包含,正则,JsonPath三项
+ * 通用验证类型,包含,正则,JsonPath,handle四项
  */
 enum VerifyType {
 
