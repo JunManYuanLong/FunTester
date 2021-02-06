@@ -60,7 +60,7 @@ public class HeaderMark extends SourceCode implements MarkRequest, Cloneable, Se
 
     public HeaderMark(String headerName) {
         this.headerName = headerName;
-        this.m = DEFAULT_STRING.toLowerCase() + StringUtil.getStringWithoutNum(5) + threadName.getAndIncrement();
+        this.m = DEFAULT_STRING + StringUtil.getStringWithoutNum(4) + threadName.getAndIncrement();
     }
 
     public HeaderMark() {
