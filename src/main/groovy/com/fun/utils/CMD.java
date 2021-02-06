@@ -1,6 +1,5 @@
 package com.fun.utils;
 
-import com.fun.config.Constant;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -9,10 +8,12 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.nio.charset.Charset;
 
+import static com.fun.config.Constant.*;
+
 /**
  * 执行命令的类
  */
-public class CMD extends Constant {
+public class CMD {
 
     @SuppressFBWarnings("MS_SHOULD_BE_FINAL")
     private static Logger logger = LoggerFactory.getLogger(CMD.class);
@@ -50,7 +51,7 @@ public class CMD extends Constant {
             while ((line = reader.readLine()) != null) {// 循环读取
                 logger.info(line);// 输出
             }
-            String eline = "";
+            String eline = EMPTY;
             while ((eline = errorReader.readLine()) != null) {// 循环读取
                 logger.info(eline);// 输出
             }
