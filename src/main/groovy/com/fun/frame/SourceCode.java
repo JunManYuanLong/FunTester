@@ -47,21 +47,6 @@ public class SourceCode extends Output {
     };
 
     /**
-     * 获取日志记录的logger
-     *
-     * @param name
-     * @return
-     */
-    public static Logger getLogger(String name) {
-        if (!StringUtils.isNoneEmpty(name)) return logger;
-        return LoggerFactory.getLogger(name);
-    }
-
-    public static Logger getLogger(Class name) {
-        return LoggerFactory.getLogger(name);
-    }
-
-    /**
      * 获取当前时间戳10位int 类型的数据
      *
      * @return
