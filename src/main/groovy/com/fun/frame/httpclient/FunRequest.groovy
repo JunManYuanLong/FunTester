@@ -26,7 +26,7 @@ class FunRequest extends FanLibrary implements Serializable, Cloneable {
 
     private static final long serialVersionUID = -4153600036943378727L;
 
-    static Logger logger = LoggerFactory.getLogger(FunRequest.class)
+    private static Logger logger = LoggerFactory.getLogger(FunRequest.class)
 
     /**
      * 请求类型，true为get，false为post

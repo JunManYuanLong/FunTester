@@ -15,7 +15,7 @@ import java.nio.charset.Charset;
 public class CMD extends Constant {
 
     @SuppressFBWarnings("MS_SHOULD_BE_FINAL")
-    public static Logger logger = LoggerFactory.getLogger(CMD.class);
+    private static Logger logger = LoggerFactory.getLogger(CMD.class);
 
     /**
      * 执行cmd命令，控制台信息编码方式

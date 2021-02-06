@@ -22,17 +22,35 @@ public class ExecuteGroovy extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(ExecuteSource.class);
 
+    /**
+     * 路径
+     */
     private String path;
 
+    /**
+     * 文件名
+     */
     private String name;
 
-    private List<String> files = new ArrayList<>();//所有脚本
+    /**
+     * 所有的脚本文件
+     */
+    private List<String> files = new ArrayList<>();
 
+    /**
+     * Groovy类加载器
+     */
     private GroovyClassLoader loader = new GroovyClassLoader(getClass().getClassLoader());
 
-    private GroovyObject groovyObject;//groovy对象
+    /**
+     * Groovy对象
+     */
+    private GroovyObject groovyObject;
 
-    private Class<?> groovyClass;//执行类
+    /**
+     * 加载类
+     */
+    private Class<?> groovyClass;
 
 
     public ExecuteGroovy(String path, String name) {
