@@ -38,7 +38,13 @@ public class SourceCode extends Output {
         SourceCode.iMessage = iMessage;
     }
 
-    private static Random random = new Random();
+    private static ThreadLocal<Random> random = new ThreadLocal() {
+        @Override
+        protected Random initialValue() {
+            return new Random();
+        }
+
+    };
 
     /**
      * 获取日志记录的logger
@@ -365,7 +371,7 @@ public class SourceCode extends Output {
      * @return 随机数
      */
     public static int getRandomInt(int num) {
-        return random.nextInt(num) + 1;
+        return random.get().nextInt(num) + 1;
     }
 
     /**
@@ -377,7 +383,7 @@ public class SourceCode extends Output {
      */
     public static int getRandomIntRange(int start, int end) {
         if (end <= start) return TEST_ERROR_CODE;
-        return new Random().nextInt(end - start) + start;
+        return random.get().nextInt(end - start) + start;
     }
 
     /**
@@ -429,7 +435,7 @@ public class SourceCode extends Output {
      * @return 随机数
      */
     public static double getRandomDouble() {
-        return random.nextDouble();
+        return random.get().nextDouble();
     }
 
     /**

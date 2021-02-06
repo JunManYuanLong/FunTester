@@ -1,13 +1,12 @@
 package com.fun.utils
 
-import com.fun.frame.SourceCode
+
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-
 /**
  * 文件读写类,与{@link RWUtil}有功能上的重合,原因在与Java和Groovy的不兼容问题.
  */
-class FileUtil extends SourceCode {
+class FileUtil {
 
     private static Logger logger = LoggerFactory.getLogger(FileUtil.class)
 

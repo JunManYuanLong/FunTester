@@ -24,10 +24,27 @@ public class ScoketIOFunClient extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(ScoketIOFunClient.class);
 
-    /**
-     * 通用配置
-     */
-    public static IO.Options options = initOptions();
+    public static ThreadLocal<IO.Options> options = new ThreadLocal() {
+
+        /**
+         * 通用配置,初始化连接选项的方法,默认采取重置
+         *
+         * @return
+         */
+        @Override
+        public IO.Options initialValue() {
+            IO.Options options = new IO.Options();
+            options.transports = SocketConstant.transports;
+            //失败重试次数
+            options.reconnectionAttempts = SocketConstant.MAX_RETRY;
+            //失败重连的时间间隔
+            options.reconnectionDelay = SocketConstant.RETRY_DELAY;
+            //连接超时时间(ms)
+            options.timeout = SocketConstant.TIMEOUT;
+            return options;
+        }
+
+    };
 
     /**
      * 所有的客户端
@@ -77,30 +94,12 @@ public class ScoketIOFunClient extends SourceCode {
         logger.info("Socket 连接: {},客户端名称: {}", url, cname);
         ScoketIOFunClient client = null;
         try {
-            client = new ScoketIOFunClient(url, IO.socket(url, options));
+            client = new ScoketIOFunClient(url, IO.socket(url, options.get()));
             client.setCname(cname);
         } catch (URISyntaxException e) {
             FailException.fail(e);
         }
         return client;
-    }
-
-
-    /**
-     * 初始化连接选项的方法,默认采取重置
-     *
-     * @return
-     */
-    public static IO.Options initOptions() {
-        IO.Options options = new IO.Options();
-        options.transports = SocketConstant.transports;
-        //失败重试次数
-        options.reconnectionAttempts = SocketConstant.MAX_RETRY;
-        //失败重连的时间间隔
-        options.reconnectionDelay = SocketConstant.RETRY_DELAY;
-        //连接超时时间(ms)
-        options.timeout = SocketConstant.TIMEOUT;
-        return options;
     }
 
     /**

@@ -9,12 +9,12 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 /**
  * 时间观察者类，用于简单记录执行时间
  */
-@SuppressFBWarnings(["SE_TRANSIENT_FIELD_NOT_RESTORED","CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE"])
+@SuppressFBWarnings(["SE_TRANSIENT_FIELD_NOT_RESTORED", "CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE"])
 class TimeWatch extends Constant implements Serializable {
 
     private static final long serialVersionUID = -4156600036913348727L;
 
-    static Logger logger = LoggerFactory.getLogger(TimeWatch.class)
+    private static Logger logger = LoggerFactory.getLogger(TimeWatch.class)
 
     /**
      * 默认的名称

@@ -10,9 +10,56 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * 时间相关功能工具类
+ */
 public class Time extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(Time.class);
+
+    /**
+     * 默认的日志显示格式
+     */
+    private static ThreadLocal<SimpleDateFormat> DEFAULT_FORMAT = new ThreadLocal() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        }
+    };
+
+    /**
+     * 纯数字的日期格式
+     */
+    private static ThreadLocal<SimpleDateFormat> NUM_FORMAT = new ThreadLocal() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyyMMddHHmmss");
+        }
+    };
+
+    /**
+     * 标记日期格式,选用ddHHmm
+     */
+    private static ThreadLocal<SimpleDateFormat> MARK_FORMAT = new ThreadLocal() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("ddHHmm");
+        }
+    };
+
+    /**
+     * 获取calendar类对象，默认UTC时间
+     *
+     * @return
+     */
+    private static ThreadLocal<Calendar> calendar = new ThreadLocal() {
+        @Override
+        protected Calendar initialValue() {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date());
+            return calendar;
+        }
+    };
 
     /**
      * 获取时间戳，13位long类型
@@ -80,16 +127,16 @@ public class Time extends SourceCode {
      * @return
      */
     public static int getWeeksNum() {
-        return getCalendar().get(Calendar.WEEK_OF_YEAR);
+        return calendar.get().get(Calendar.WEEK_OF_YEAR);
     }
 
     /**
-     * 获取月份
+     * 获取月份,获取值+1,索引从0开始的
      *
      * @return
      */
     public static int getMonth() {
-        return getCalendar().get(Calendar.MONTH) + 1;
+        return calendar.get().get(Calendar.MONTH) + 1;
     }
 
     /**
@@ -98,7 +145,7 @@ public class Time extends SourceCode {
      * @return
      */
     public static int getDay() {
-        return getCalendar().get(Calendar.DAY_OF_MONTH);
+        return calendar.get().get(Calendar.DAY_OF_MONTH);
     }
 
     /**
@@ -107,30 +154,19 @@ public class Time extends SourceCode {
      * @return
      */
     public static int getYear() {
-        return getCalendar().get(Calendar.YEAR);
+        return calendar.get().get(Calendar.YEAR);
     }
 
     public static int getHour() {
-        return getCalendar().get(Calendar.HOUR_OF_DAY);
+        return calendar.get().get(Calendar.HOUR_OF_DAY);
     }
 
     public static int getMinute() {
-        return getCalendar().get(Calendar.MINUTE);
+        return calendar.get().get(Calendar.MINUTE);
     }
 
     public static int getSecond() {
-        return getCalendar().get(Calendar.SECOND);
-    }
-
-    /**
-     * 获取calendar类对象，默认UTC时间
-     *
-     * @return
-     */
-    public static Calendar getCalendar() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date(getTimeStamp()));
-        return calendar;
+        return calendar.get().get(Calendar.SECOND);
     }
 
     /**
@@ -139,19 +175,20 @@ public class Time extends SourceCode {
      * @return 返回当前时间
      */
     public static String getNow() {
-        return getNow("yyyyMMddHHmmss");
+        return getNow(NUM_FORMAT.get());
     }
 
     public static String markDate() {
-        return getNow("ddHHmm");
+        return getNow(MARK_FORMAT.get());
     }
 
     public static String getNow(String format) {
-        Date time = new Date();
-        SimpleDateFormat now = new SimpleDateFormat(format);
-        return now.format(time);
+        return getNow(new SimpleDateFormat(format));
     }
 
+    public static String getNow(SimpleDateFormat now) {
+        return now.format(new Date());
+    }
 
     /**
      * 获取时间戳,会替换掉所有非数字的字符
@@ -162,9 +199,8 @@ public class Time extends SourceCode {
      */
     public static long getTimeStamp(String time) {
         time = time.replaceAll("\\D*", EMPTY);
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
         try {
-            return format.parse(time).getTime();
+            return NUM_FORMAT.get().parse(time).getTime();
         } catch (ParseException e) {
             logger.warn("时间格式错误！", e);
         }
@@ -179,8 +215,7 @@ public class Time extends SourceCode {
      */
     public static String getTimeByTimestamp(long time) {
         Date now = new Date(time);
-        SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
-        String nowTime = format.format(now);
+        String nowTime = DEFAULT_FORMAT.get().format(now);
         return nowTime;
     }
 
@@ -213,7 +248,7 @@ public class Time extends SourceCode {
      * @return
      */
     public static String getDate() {
-        return getNow(DATE_FORMAT);
+        return getNow(DEFAULT_FORMAT.get());
     }
 
 
