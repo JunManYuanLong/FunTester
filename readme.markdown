@@ -1,12 +1,15 @@
 # 分支简介
 
-此分支夹杂很多groovy完成的功能，优化了一些BUG，增加了一些有趣的功能
+该分支为主分支,其他分支停止更新.
 
 ## [GitHub地址](https://github.com/JunManYuanLong/FunTester)
 
 联系地址：FunTester@88.com
 
 # [**文章目录传送门**](/document/directory.markdown)
+
+
+![腾讯云+社区权威认证](http://pic.automancloud.com/WechatIMG833.jpg)
 
 微信公众号FunTester：
 ===
