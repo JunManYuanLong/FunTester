@@ -1,8 +1,61 @@
+# 升级篇
+
+> **FunTester**，[腾讯云年度作者，优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)，非著名测试开发，欢迎关注。
+
+* `Gitee`地址*https://gitee.com/fanapi/tester*
+* `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
+
+
+# 案例分享
+
+## 测试方案
+
+- [如何对消息队列做性能测试](https://mp.weixin.qq.com/s/MNt22aW3Op9VQ5OoMzPwBw)
+- [如何对修改密码接口进行压测](https://mp.weixin.qq.com/s/9CL_6-uZOlAh7oeo7NOpag)
+- [如何测试概率型业务接口](https://mp.weixin.qq.com/s/kUVffhjae3eYivrGqo6ZMg)
+- [如何测试非固定型概率算法P=p(1+0.1*N)](https://mp.weixin.qq.com/s/sgg8v-Bi-_sUDJXwuTCMGg)
+- [性能测试中标记每个请求](https://mp.weixin.qq.com/s/PokvzoLdVf_y9inlVXHJHQ)
+- [如何对N个接口按比例压测](https://mp.weixin.qq.com/s/GZxbH4GjDkk4BLqnUj1_kw)
+- [多种登录方式定量性能测试方案](https://mp.weixin.qq.com/s/WuZ2h2rr0rNBgEvQVioacA)
+- [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
+- [绑定手机号性能测试](https://mp.weixin.qq.com/s/K5x1t1dKtIT2NKV6k4v5mw)
+- [手机号验证码登录性能测试](https://mp.weixin.qq.com/s/i-j8fJAdcsJ7v8XPOnPDAw)
+- [重放浏览器单个请求性能测试实践](https://mp.weixin.qq.com/s/a10hxCrIzS4TV9JwmDSI3Q)
+- [重放浏览器多个请求性能测试实践](https://mp.weixin.qq.com/s/Hm1Kpp1PMrZ5rYFW8l2GlA)
+- [重放浏览器请求多链路性能测试实践](https://mp.weixin.qq.com/s/9YSBLAyHVw8Z6IfK-nJTpQ)
+
+## BUG集锦
+
+- [一个MySQL索引引发的血案](https://mp.weixin.qq.com/s/KLSber-gPg53JVfsCa3Dtw)
+- [微软Zune闰年BUG分析](https://mp.weixin.qq.com/s/zpqAUcNcHaZjWUdUYH_loQ)
+- [“双花”BUG的测试分享](https://mp.weixin.qq.com/s/0dsBsssNfg-seJ_tu9zFaQ)
+- [iOS 11计算器1+2+3=24真的是bug么？](https://mp.weixin.qq.com/s/nokQhe_Hqcq-o7pZJmFlqQ)
+- [不要在遍历的时候删除](https://mp.weixin.qq.com/s/MIczbEpbOrADL0_V7ZUhlg)
+- [连开100年会员会怎样](https://mp.weixin.qq.com/s/mZw-SFIxFFbE-o8UeXhdfg)
+- [异步查询转同步加redis业务实现的BUG分享](https://mp.weixin.qq.com/s/ni3f6QTxw0K-0I3epvEYOA)
+- [Java服务端两个常见的并发错误](https://mp.weixin.qq.com/s/5VvCox3eY6sQDsuaKB4ZIw)
+- [超大对象导致Full GC超高的BUG分享](https://mp.weixin.qq.com/s/L15-0JW9WK-E005GeOG9WQ)
+- [访问权限导致toString返回空BUG分享](https://mp.weixin.qq.com/s/usDOcuJrXOmEKN-mVBzRKg)
+- [异常使用中的BUG](https://mp.weixin.qq.com/s/IG9Ar3IT7CrlSv4d0lCvgA)
+- [Math.abs()求绝对值返回负值BUG分享](https://mp.weixin.qq.com/s/RHzExuRqF1XsBtzGKzmgGA)
+
+## 爬虫实践
+
+- [接口爬虫之网页表单数据提取](https://mp.weixin.qq.com/s/imJ5u67xhYQaEzv-O1in4g)
+- [httpclient爬虫爬取汉字拼音等信息](https://mp.weixin.qq.com/s/w-IvBxAsotmPA3pydpIo1w)
+- [httpclient爬虫爬取电影信息和下载地址实例](https://mp.weixin.qq.com/s/TB49X4S-ioyoW5CrzAnHcw)
+- [httpclient 多线程爬虫实例](https://mp.weixin.qq.com/s/nXL-MP4Y6CN2hgZQefWEeQ)
+- [groovy爬虫练习之——企业信息](https://mp.weixin.qq.com/s/1TisDceIL1-Luqz_wOqAiw)
+- [httpclient 爬虫实例——爬取三级中学名](https://mp.weixin.qq.com/s/Dd7U30aHYauqBFxJdxaiyg)
+- [电子书网站爬虫实践](https://mp.weixin.qq.com/s/KGW0dIS5NTLgxyhSjxDiOw)
+- [groovy爬虫实例——历史上的今天](https://mp.weixin.qq.com/s/5LDUvpU6t_GZ09uhZr224A)
+- [爬取720万条城市历史天气数据](https://mp.weixin.qq.com/s/vOyKpeGlJSJp9bQ8NIMe2A)
+- [记一次失败的爬虫](https://mp.weixin.qq.com/s/SMylrZLXDGw5f1xKI9ObnA)
+- [爬虫实践--CBA历年比赛数据](https://mp.weixin.qq.com/s/mM_QSQddabU5im_O6iVR-Q)
+
 # 工具合集
 
-> FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的质变。
-
-## JSonpath
+## JsonPath合集
 
 - [JsonPath实践（一）](https://mp.weixin.qq.com/s/Cq0_v_ptbGd4f5y8HIsq7w)
 - [JsonPath实践（二）](https://mp.weixin.qq.com/s/w_iJTiuQahIw6U00CJVJZg)
@@ -13,6 +66,7 @@
 - [JsonPath工具类封装](https://mp.weixin.qq.com/s/KyuCuG5fVEExxBdGJO2LdA)
 - [JsonPath工具类单元测试](https://mp.weixin.qq.com/s/1YtUWGk_sTjn9bHwAeT0Ew)
 - [JsonPath验证类既Groovy重载操作符实践](https://mp.weixin.qq.com/s/5gc04CAsBY6pWxe5c2P41w)
+- [JSON对象标记语法验证类](https://mp.weixin.qq.com/s/jSXmoEdMF7nWAqQuzJ5GiQ)
 
 ## Jacoco覆盖率
 
@@ -40,7 +94,6 @@
 ## moco API
 
 - [解决moco框架API在post请求json参数情况下query失效的问题](https://mp.weixin.qq.com/s/V5lXoepEBtPJrSUHA0Uz5A)
-- [解决moco框架API在cycle方法缺失的问题](https://mp.weixin.qq.com/s/so77Gai7vQZSLvB7rzsxfw)
 - [给moco API添加limit功能](https://mp.weixin.qq.com/s/pXJECi15ieNLmA0uIqEqfA)
 - [给moco API添加random功能](https://mp.weixin.qq.com/s/YTcbFbFaWB5arW_fubgTTQ)
 - [解决moco框架API在cycle方法缺失的问题](https://mp.weixin.qq.com/s/YfsPa7eW8WV65CDbPooBPg)
@@ -54,6 +107,7 @@
 
 ## 工具类
 
+- [java网格输出的类](https://mp.weixin.qq.com/s/BJTJu0LGjn7Hc9J1yT04KQ)
 - [java使用poi写入excel文档的一种解决方案](https://mp.weixin.qq.com/s/Ft56gd1B9CPrQs2zq4Cpug)
 - [java使用poi读取excel文档的一种解决方案](https://mp.weixin.qq.com/s/ltZGx9J7E8DTer0D-pfQ2Q)
 - [MongoDB操作类封装](https://mp.weixin.qq.com/s/u-RHOE5XrjOEkelWIxdplw)

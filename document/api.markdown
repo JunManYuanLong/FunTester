@@ -1,11 +1,13 @@
+# 接口篇
+
+> **FunTester**，[腾讯云年度作者，优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)，非著名测试开发，欢迎关注。
+
+* `Gitee`地址*https://gitee.com/fanapi/tester*
+* `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
+
 # 接口测试
 
-> 公众号**FunTester**，非著名测试开发，文章记录学习和感悟，欢迎关注，交流成长。
-
-
-## 接口测试
-
-接口功能和自动化过程中遇到的坑，大多是基础的功能实现Demo和测试痛点的解决方案。
+## 接口功能测试
 
 - [开源测试服务](https://mp.weixin.qq.com/s/ZOs0cp_vt6_iiundHaKk4g)
 - [使用springboot+mybatis数据库存储服务化](https://mp.weixin.qq.com/s/N_5tHW1JJLZlxCaDI2PvyQ)
@@ -24,7 +26,7 @@
 - [使用httpclient中EntityUtils类解析entity遇到socket closed错误的原因](https://mp.weixin.qq.com/s/RJnuOa2K6aRCElJafkFeug)
 - [httpclient接口测试中重试控制器设置](https://mp.weixin.qq.com/s/hknNdq_ybQ1MoXh_dI3JVA)
 - [拼接GET请求的参数](https://mp.weixin.qq.com/s/EGw_97scexH_3m2Uc8Ye5A)
-- [httpclient上传文件方法封装](https://mp.weixin.qq.com/s/HIrwl5ullvEmn_UuyLKkRg)
+- [httpclient上传文件方法的封装](https://mp.weixin.qq.com/s/HIrwl5ullvEmn_UuyLKkRg)
 - [接口批量上传文件的实例](https://mp.weixin.qq.com/s/wZwkWchXXC6iddX1oVEnZQ)
 - [httpclient发送https协议请求以及javax.net.ssl.SSLHandshakeException解决办法](https://mp.weixin.qq.com/s/uSHhKRrL2f9USKpSykkpkQ)
 - [API测试基础](https://mp.weixin.qq.com/s/bkbUEa9CF21xMYSlhPcULw)
@@ -33,9 +35,11 @@
 - [如何统一接口测试的功能、自动化和性能测试用例](https://mp.weixin.qq.com/s/1xqtXNVw7BdUa03nVcsMTg)
 - [如何选择API测试工具](https://mp.weixin.qq.com/s/m2TNJDiqAAWYV9L6UP-29w)
 - [初学者的API测试技巧](https://mp.weixin.qq.com/s/_uk6dw5Q7CfS-gXGH-TZEQ)
+- [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
 - [多项目登录互踢测试用例](https://mp.weixin.qq.com/s/Nn_CUy_j7j6bUwHSkO0pCQ)
 - [httpclient使用HTTP代理实践](https://mp.weixin.qq.com/s/24IJwJ1TJWHdfj0PzSjmvw)
 - [HTTP异步连接池和多线程实践](https://mp.weixin.qq.com/s/8M348LuHakBe4GAEnnDPxw)
+- [IntelliJ中基于文本的HTTP客户端](https://mp.weixin.qq.com/s/-9qi_lLVVfxQKEFmcRYFtA)
 - [socket接口开发和测试初探](https://mp.weixin.qq.com/s/uhmkbrMp91PP1pQjlEofOQ)
 - [IntelliJ中基于文本的HTTP客户端](https://mp.weixin.qq.com/s/-9qi_lLVVfxQKEFmcRYFtA)
 - [基于WebSocket的client封装](https://mp.weixin.qq.com/s/1lZvsuGEa6hiRHOgOT-Kmg)
@@ -43,73 +47,11 @@
 - [Socket.IO接口多用户测试实践](https://mp.weixin.qq.com/s/aCLaRZQs8zMK_ptJ-PjClw)
 - [Python版Socket.IO接口测试脚本](https://mp.weixin.qq.com/s/oXBP6Sx3yPqlmvV9uCUScw)
 - [命令行如何执行jar包里面的方法](https://mp.weixin.qq.com/s/50oMEmVEnv5Vzlm1HOxuFw)
+- [JSON对象标记语法验证类](https://mp.weixin.qq.com/s/jSXmoEdMF7nWAqQuzJ5GiQ)
 - [Socket接口异步验证实践](https://mp.weixin.qq.com/s/bnjHK3ZmEzHm3y-xaSVkTw)
 - [无数据驱动自动化测试](https://mp.weixin.qq.com/s/aCYRGxkzMogLbmACYo6ssw)
 - [白板点阵数据传输测试初探](https://mp.weixin.qq.com/s/EzFC-hIvgm7j7947TZU6BA)
 - [基于Socket.IO的白板点阵坐标传输接口测试实践](https://mp.weixin.qq.com/s/pDAx4jwYvcRcdld5cKLAUw)
-
-## 性能性能
-
-性能测试是做接口性能测试过程中使用的测试策略以及Groovy脚本实现，以及性能测试工具的实现，如timewatch和netdata汉化，欢迎关注“FunTester”。
-
-- [Linux性能监控软件netdata中文汉化版](https://mp.weixin.qq.com/s/7VG7gHx7FUvsuNtBTJpjWA)
-- [性能测试框架](https://mp.weixin.qq.com/s/3_09j7-5ex35u30HQRyWug)
-- [性能测试框架第二版](https://mp.weixin.qq.com/s/JPyGQ2DRC6EVBmZkxAoVWA)
-- [性能测试框架第三版](https://mp.weixin.qq.com/s/Mk3PoH7oJX7baFmbeLtl_w)
-- [一个时间计数器timewatch辅助性能测试](https://mp.weixin.qq.com/s/-YZ04n2kyfO0q2QaKHX_0Q)
-- [如何在Linux命令行界面愉快进行性能测试](https://mp.weixin.qq.com/s/fwGqBe1SpA2V0lPfAOd04Q)
-- [Mac+httpclient高并发配置实例](https://mp.weixin.qq.com/s/r4a-vGz0pxeZBPPH3phujw)
-- [单点登录性能测试方案](https://mp.weixin.qq.com/s/sv8FnvIq44dFEq63LpOD2A)
-- [如何对单行多次update接口进行压测](https://mp.weixin.qq.com/s/Ly1Y4iPGgL6FNRsbOTv0sg)
-- [如何对消息队列做性能测试](https://mp.weixin.qq.com/s/MNt22aW3Op9VQ5OoMzPwBw)
-- [如何对修改密码接口进行压测](https://mp.weixin.qq.com/s/9CL_6-uZOlAh7oeo7NOpag)
-- [如何对多行单次update接口进行压测](https://mp.weixin.qq.com/s/Fsqw7vlw6K9EKa_XJwGIgQ)
-- [如何获取JVM堆转储文件](https://mp.weixin.qq.com/s/qCg7nsXVvT1q-9yquQOfWA)
-- [性能测试中标记每个请求](https://mp.weixin.qq.com/s/PokvzoLdVf_y9inlVXHJHQ)
-- [如何对N个接口按比例压测](https://mp.weixin.qq.com/s/GZxbH4GjDkk4BLqnUj1_kw)
-- [如何性能测试中进行业务验证](https://mp.weixin.qq.com/s/OEvRy1bS2Yq_w1kGiidmng)
-- [性能测试中记录每一个耗时请求](https://mp.weixin.qq.com/s/VXcp4uIMm8mRgqe8fVhuCQ)
-- [线程安全类在性能测试中应用](https://mp.weixin.qq.com/s/0-Y63wXqIugVC8RiKldHvg)
-- [利用微基准测试修正压测结果](https://mp.weixin.qq.com/s/dmO33qhOBrTByw_NshS-uA)
-- [性能测试如何减少本机误差](https://mp.weixin.qq.com/s/S6b_wwSowVolp1Uu6sEIOA)
-- [服务端性能优化之异步查询转同步](https://mp.weixin.qq.com/s/okYP2aOPfkWj2FjZcAtQNA)
-- [服务端性能优化之双重检查锁](https://mp.weixin.qq.com/s/-bOyHBcqFlJY3c0PEZaWgQ)
-- [多种登录方式定量性能测试方案](https://mp.weixin.qq.com/s/WuZ2h2rr0rNBgEvQVioacA)
-- [性能测试中图形化输出测试数据](https://mp.weixin.qq.com/s/EMvpYIsszdwBJFPIxztTvA)
-- [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
-- [6个重要的JVM性能参数](https://mp.weixin.qq.com/s/b1QnapiAVn0HD5DQU9JrIw)
-- [手机号验证码登录性能测试](https://mp.weixin.qq.com/s/i-j8fJAdcsJ7v8XPOnPDAw)
-- [绑定手机号性能测试](https://mp.weixin.qq.com/s/K5x1t1dKtIT2NKV6k4v5mw)
-- [终止性能测试并输出报告](https://mp.weixin.qq.com/s/II4-UbKDikctmS_vRT-xLg)
-- [CountDownLatch类在性能测试中应用](https://mp.weixin.qq.com/s/uYBPPOjauR2h81l2uKMANQ)
-- [CyclicBarrier类在性能测试中应用](https://mp.weixin.qq.com/s/kvEHX3t_2xpMke9vwOdWrg)
-- [Phaser类在性能测试中应用](https://mp.weixin.qq.com/s/plxNnQq7yNQvHYEGpyY4uA)
-- [如何同时压测创建和删除接口](https://mp.weixin.qq.com/s/NCeoEF3DkEtpdaaQ365I0Q)
-- [固定QPS压测模式探索](https://mp.weixin.qq.com/s/S2h-zEUoik_CWs60RL6g7Q)
-- [固定QPS压测初试](https://mp.weixin.qq.com/s/ySlJmDIH3fFB4qEnL-ueMg)
-- [命令行如何执行jar包里面的方法](https://mp.weixin.qq.com/s/50oMEmVEnv5Vzlm1HOxuFw)
-- [链路压测中如何记录每一个耗时的请求](https://mp.weixin.qq.com/s/8sb5QZcKbBjTxCaXK5ajXA)
-- [JSON对象标记语法验证类](https://mp.weixin.qq.com/s/jSXmoEdMF7nWAqQuzJ5GiQ)
-- [Socket接口异步验证实践](https://mp.weixin.qq.com/s/bnjHK3ZmEzHm3y-xaSVkTw)
-- [性能测试中集合点和多阶段同步问题初探](https://mp.weixin.qq.com/s/NlpD1WyMrcG1V5RYfY0Plg)
-- [性能测试中标记请求参数实践](https://mp.weixin.qq.com/s/2FNMU-k_En26FCqWkYpvhQ)
-- [测试模型中理解压力测试和负载测试](https://mp.weixin.qq.com/s/smNLx3malzM3avkrn3EJiA)
-- [重放浏览器单个请求性能测试实践](https://mp.weixin.qq.com/s/a10hxCrIzS4TV9JwmDSI3Q)
-- [重放浏览器多个请求性能测试实践](https://mp.weixin.qq.com/s/Hm1Kpp1PMrZ5rYFW8l2GlA)
-- [性能测试中异步展示测试进度](https://mp.weixin.qq.com/s/AOERJbEc4ATJqhjvnxgQoA)
-
-## 测试方案
-
-- [如何对消息队列做性能测试](https://mp.weixin.qq.com/s/MNt22aW3Op9VQ5OoMzPwBw)
-- [如何对修改密码接口进行压测](https://mp.weixin.qq.com/s/9CL_6-uZOlAh7oeo7NOpag)
-- [如何测试概率型业务接口](https://mp.weixin.qq.com/s/kUVffhjae3eYivrGqo6ZMg)
-- [如何测试非固定型概率算法P=p(1+0.1*N)](https://mp.weixin.qq.com/s/sgg8v-Bi-_sUDJXwuTCMGg)
-- [性能测试中标记每个请求](https://mp.weixin.qq.com/s/PokvzoLdVf_y9inlVXHJHQ)
-- [如何对N个接口按比例压测](https://mp.weixin.qq.com/s/GZxbH4GjDkk4BLqnUj1_kw)
-- [多种登录方式定量性能测试方案](https://mp.weixin.qq.com/s/WuZ2h2rr0rNBgEvQVioacA)
-- [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
-- [手机号验证码登录性能测试](https://mp.weixin.qq.com/s/i-j8fJAdcsJ7v8XPOnPDAw)
-- [绑定手机号性能测试](https://mp.weixin.qq.com/s/K5x1t1dKtIT2NKV6k4v5mw)
 
 ## 接口测试视频
 
@@ -130,3 +72,80 @@
 - [定时和定量压测模式实现--视频讲解](https://mp.weixin.qq.com/s/l_4wCjVM1fAVRHgEPrcrwg)
 - [基于HTTP请求的多线程实现类--视频讲解](https://mp.weixin.qq.com/s/8SG1xtzq8ArY84Bxm_SNow)
 
+# 单元&白盒
+
+- [Maven和Gradle中配置单元测试框架Spock](https://mp.weixin.qq.com/s/kL5keijAAZwmq_DO1NDBtw)
+- [Groovy单元测试框架spock基础功能Demo](https://mp.weixin.qq.com/s/fQCyIyeQANbu2YP2ML6_8Q)
+- [Groovy单元测试框架spock数据驱动Demo](https://mp.weixin.qq.com/s/uCAB7Mxt1JZW229aKp-uVQ)
+- [人生苦短？试试Groovy进行单元测试](https://mp.weixin.qq.com/s/ahyP-YQTzigeq_5N8byC4g)
+- [模糊断言](https://mp.weixin.qq.com/s/OlJpqHkwpY6-yyELvQ9cIw)
+- [使用WireMock进行更好的集成测试](https://mp.weixin.qq.com/s/oMuVZOOQmuxSygJWH2_QHg)
+- [如何测试这个方法--功能篇](https://mp.weixin.qq.com/s/4zrwkc6ccozUGjOGV563dQ)
+- [如何测试这个方法--性能篇](https://mp.weixin.qq.com/s/QXl9_9Bj5c191oxkXmByUA)
+- [单元测试用例](https://mp.weixin.qq.com/s/UFEXJ1aXOvJUYp49iVLr5w)
+- [关于测试覆盖率](https://mp.weixin.qq.com/s/E15D785fkaWH7-YhiE5gPw)
+- [JUnit 5和Selenium基础（一）](https://mp.weixin.qq.com/s/ehBRf7st-OxeuvI_0yW3OQ)
+- [JUnit 5和Selenium基础（二）](https://mp.weixin.qq.com/s/Gt82cPmS2iX-DhKXTXiy8g)
+- [JUnit 5和Selenium基础（三）](https://mp.weixin.qq.com/s/8YkonXTYgAV5-pLs9yEAVw)
+- [浅谈单元测试](https://mp.weixin.qq.com/s/mJM9qXQepSYQ9vLBnBEs3Q)
+- [Spock 2.0 M1版本初探](https://mp.weixin.qq.com/s/nyYh2QzER03kIk-w9P9GNw)
+- [Java并发BUG基础篇](https://mp.weixin.qq.com/s/NR4vYx81HtgAEqH2Q93k2Q)
+- [Java并发BUG提升篇](https://mp.weixin.qq.com/s/GCRRe8hJpe1QJtxq9VBEhg)
+- [集成测试、单元测试、系统测试](https://mp.weixin.qq.com/s/LRkxMasRvmDYRVb0_aybtA)
+- [从单元测试标准中学习](https://mp.weixin.qq.com/s/x0TyMAdPBWYL7JSPAmoQsw)
+- [白盒测试扫盲](https://mp.weixin.qq.com/s/s_FvGZTC42GEjaWzroz1eA)
+- [Mock System.in和检查System.out](https://mp.weixin.qq.com/s/1ly3uXCZsukmIylN6F5GxQ)
+- [单元测试框架spock和Mockito应用](https://mp.weixin.qq.com/s/s21Lts1UnG9HwOEVvgj-uw)
+- [Mockito框架Mock Void方法](https://mp.weixin.qq.com/s/R95wOMVyeDCHm3_Z0S2kqg)
+- [JsonPath工具类单元测试](https://mp.weixin.qq.com/s/1YtUWGk_sTjn9bHwAeT0Ew)
+- [Intellij静态代码扫描插件SpotBugs](https://mp.weixin.qq.com/s/8ivsMNOmT0LDfvcM06IGMg)
+- [SpotBugs注解SuppressWarnings在Java&Groovy中的应用](https://mp.weixin.qq.com/s/R0JoqmAqhUbRSjIJ61h_tg)
+
+
+## 性能测试
+
+- [Linux性能监控软件netdata中文汉化版](https://mp.weixin.qq.com/s/7VG7gHx7FUvsuNtBTJpjWA)
+- [性能测试框架](https://mp.weixin.qq.com/s/3_09j7-5ex35u30HQRyWug)
+- [性能测试框架第二版](https://mp.weixin.qq.com/s/JPyGQ2DRC6EVBmZkxAoVWA)
+- [性能测试框架第三版](https://mp.weixin.qq.com/s/Mk3PoH7oJX7baFmbeLtl_w)
+- [一个时间计数器timewatch辅助性能测试](https://mp.weixin.qq.com/s/-YZ04n2kyfO0q2QaKHX_0Q)
+- [如何在Linux命令行界面愉快进行性能测试](https://mp.weixin.qq.com/s/fwGqBe1SpA2V0lPfAOd04Q)
+- [Mac+httpclient高并发配置实例](https://mp.weixin.qq.com/s/r4a-vGz0pxeZBPPH3phujw)
+- [单点登录性能测试方案](https://mp.weixin.qq.com/s/sv8FnvIq44dFEq63LpOD2A)
+- [如何对消息队列做性能测试](https://mp.weixin.qq.com/s/MNt22aW3Op9VQ5OoMzPwBw)
+- [如何对修改密码接口进行压测](https://mp.weixin.qq.com/s/9CL_6-uZOlAh7oeo7NOpag)
+- [如何对单行多次update接口进行压测](https://mp.weixin.qq.com/s/Ly1Y4iPGgL6FNRsbOTv0sg)
+- [如何对多行单次update接口进行压测](https://mp.weixin.qq.com/s/Fsqw7vlw6K9EKa_XJwGIgQ)
+- [如何获取JVM堆转储文件](https://mp.weixin.qq.com/s/qCg7nsXVvT1q-9yquQOfWA)
+- [性能测试中标记每个请求](https://mp.weixin.qq.com/s/PokvzoLdVf_y9inlVXHJHQ)
+- [如何对N个接口按比例压测](https://mp.weixin.qq.com/s/GZxbH4GjDkk4BLqnUj1_kw)
+- [如何性能测试中进行业务验证](https://mp.weixin.qq.com/s/OEvRy1bS2Yq_w1kGiidmng)
+- [性能测试中记录每一个耗时请求](https://mp.weixin.qq.com/s/VXcp4uIMm8mRgqe8fVhuCQ)
+- [线程安全类在性能测试中应用](https://mp.weixin.qq.com/s/0-Y63wXqIugVC8RiKldHvg)
+- [利用微基准测试修正压测结果](https://mp.weixin.qq.com/s/dmO33qhOBrTByw_NshS-uA)
+- [性能测试如何减少本机误差](https://mp.weixin.qq.com/s/S6b_wwSowVolp1Uu6sEIOA)
+- [服务端性能优化之异步查询转同步](https://mp.weixin.qq.com/s/okYP2aOPfkWj2FjZcAtQNA)
+- [服务端性能优化之双重检查锁](https://mp.weixin.qq.com/s/-bOyHBcqFlJY3c0PEZaWgQ)
+- [多种登录方式定量性能测试方案](https://mp.weixin.qq.com/s/WuZ2h2rr0rNBgEvQVioacA)
+- [性能测试中图形化输出测试数据](https://mp.weixin.qq.com/s/EMvpYIsszdwBJFPIxztTvA)
+- [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
+- [手机号验证码登录性能测试](https://mp.weixin.qq.com/s/i-j8fJAdcsJ7v8XPOnPDAw)
+- [绑定手机号性能测试](https://mp.weixin.qq.com/s/K5x1t1dKtIT2NKV6k4v5mw)
+- [终止性能测试并输出报告](https://mp.weixin.qq.com/s/II4-UbKDikctmS_vRT-xLg)
+- [CountDownLatch类在性能测试中应用](https://mp.weixin.qq.com/s/uYBPPOjauR2h81l2uKMANQ)
+- [CyclicBarrier类在性能测试中应用](https://mp.weixin.qq.com/s/kvEHX3t_2xpMke9vwOdWrg)
+- [Phaser类在性能测试中应用](https://mp.weixin.qq.com/s/plxNnQq7yNQvHYEGpyY4uA)
+- [如何同时压测创建和删除接口](https://mp.weixin.qq.com/s/NCeoEF3DkEtpdaaQ365I0Q)
+- [固定QPS压测模式探索](https://mp.weixin.qq.com/s/S2h-zEUoik_CWs60RL6g7Q)
+- [固定QPS压测初试](https://mp.weixin.qq.com/s/ySlJmDIH3fFB4qEnL-ueMg)
+- [命令行如何执行jar包里面的方法](https://mp.weixin.qq.com/s/50oMEmVEnv5Vzlm1HOxuFw)
+- [链路压测中如何记录每一个耗时的请求](https://mp.weixin.qq.com/s/8sb5QZcKbBjTxCaXK5ajXA)
+- [Socket接口异步验证实践](https://mp.weixin.qq.com/s/bnjHK3ZmEzHm3y-xaSVkTw)
+- [性能测试中集合点和多阶段同步问题初探](https://mp.weixin.qq.com/s/NlpD1WyMrcG1V5RYfY0Plg)
+- [性能测试中标记请求参数实践](https://mp.weixin.qq.com/s/2FNMU-k_En26FCqWkYpvhQ)
+- [测试模型中理解压力测试和负载测试](https://mp.weixin.qq.com/s/smNLx3malzM3avkrn3EJiA)
+- [重放浏览器单个请求性能测试实践](https://mp.weixin.qq.com/s/a10hxCrIzS4TV9JwmDSI3Q)
+- [重放浏览器多个请求性能测试实践](https://mp.weixin.qq.com/s/Hm1Kpp1PMrZ5rYFW8l2GlA)
+- [重放浏览器请求多链路性能测试实践](https://mp.weixin.qq.com/s/9YSBLAyHVw8Z6IfK-nJTpQ)
+- [性能测试中异步展示测试进度](https://mp.weixin.qq.com/s/AOERJbEc4ATJqhjvnxgQoA)
+- [ThreadLocal在链路性能测试中实践](https://mp.weixin.qq.com/s/3qhNdHHSStELzNraQSpcew)

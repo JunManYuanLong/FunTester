@@ -1,8 +1,15 @@
+# 基础篇
+
+> **FunTester**，[腾讯云年度作者，优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)，非著名测试开发，欢迎关注。
+
+* `Gitee`地址*https://gitee.com/fanapi/tester*
+* `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
+
+
 # 语言合集
 
-> FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的质变。
-
 ## Java
+
 - [java一行代码打印心形](https://mp.weixin.qq.com/s/QPSryoSbViVURpSa9QXtpg)
 - [操作的原子性与线程安全](https://mp.weixin.qq.com/s/QU3llkGLepX2VCch8Y9GKw)
 - [快看，i++真的不安全](https://mp.weixin.qq.com/s/-CdWdROKSEq_ZiLX2kWxzA)
@@ -12,12 +19,13 @@
 - [传参传的到底是什么?](https://mp.weixin.qq.com/s/p_pEQwE6h6q7PprkW-kjbg)
 - [json里面put了null会怎么样？](https://mp.weixin.qq.com/s/gQVROe01I3JzIqNdTSHpDQ)
 - [主线程都结束了，为何进程还在执行](https://mp.weixin.qq.com/s/q2v5JU5dtmNEol7I7IVY-Q)
-- [java用递归筛选法求N以内的孪生质数（孪生素数）](https://mp.weixin.qq.com/s/PSdCb-DrgMPb4WpJJMexmQ)
 - [java测试框架如何执行groovy脚本文件](https://mp.weixin.qq.com/s/0GYt1l3_z5-1qzBNl6_PzA)
+- [java用递归筛选法求N以内的孪生质数（孪生素数）](https://mp.weixin.qq.com/s/PSdCb-DrgMPb4WpJJMexmQ)
 - [从JVM堆内存分析验证深浅拷贝](https://mp.weixin.qq.com/s/SdYDnoau1rjjvPC2SUymBg)
 - [如何学习Java基础](https://mp.weixin.qq.com/s/FCPStkYoJF67NYln4Lc6xg)
 - [如何保存HTTPrequestbase和CloseableHttpResponse](https://mp.weixin.qq.com/s/gRY8HRQHCh0PfyS7Q22IwA)
 - [如何在匿名thread子类中保证线程安全](https://mp.weixin.qq.com/s/GCXx_-ummi0JfZQ7GTIxig)
+- [Java服务端两个常见的并发错误](https://mp.weixin.qq.com/s/5VvCox3eY6sQDsuaKB4ZIw)
 - [Java中interface属性和实例方法](https://mp.weixin.qq.com/s/vrKkM6522tgw3v_cL7R8HA)
 - [服务端性能优化之双重检查锁](https://mp.weixin.qq.com/s/-bOyHBcqFlJY3c0PEZaWgQ)
 - [Java并发BUG基础篇](https://mp.weixin.qq.com/s/NR4vYx81HtgAEqH2Q93k2Q)
@@ -29,8 +37,8 @@
 - [如何使用“dd MM”解析日期](https://mp.weixin.qq.com/s/v9ooAj3dKu53JXgxB482HA)
 - [Java和Groovy正则使用](https://mp.weixin.qq.com/s/DT3BKE3ZcCKf6TLzGc5wbg)
 - [运行越来越快的Java热点代码](https://mp.weixin.qq.com/s/AP0BcDEjDuaouaB0RXJOoQ)
-- [ArrayList浅、深拷贝](https://mp.weixin.qq.com/s/kYsBzFsCyDPUssdV3MDqLA)
 - [6个重要的JVM性能参数](https://mp.weixin.qq.com/s/b1QnapiAVn0HD5DQU9JrIw)
+- [ArrayList浅、深拷贝](https://mp.weixin.qq.com/s/kYsBzFsCyDPUssdV3MDqLA)
 - [Java性能测试中两种锁的实现](https://mp.weixin.qq.com/s/j9dGFvYzCJ0AGwYUtTrTsw)
 - [测试如何处理Java异常](https://mp.weixin.qq.com/s/H00GWiATOD8QHJu3UewrBw)
 - [创建Java守护线程](https://mp.weixin.qq.com/s/_UjWdvq8QWYTshr4SeniBg)
@@ -39,6 +47,8 @@
 - [Java中的自定义异常](https://mp.weixin.qq.com/s/nspIdxFP9qEDtagGN4gaMQ)
 - [Java文本块](https://mp.weixin.qq.com/s/GwasvpJsd7uLngvCr6KlQw)
 - [CountDownLatch类在性能测试中应用](https://mp.weixin.qq.com/s/uYBPPOjauR2h81l2uKMANQ)
+- [CyclicBarrier类在性能测试中应用](https://mp.weixin.qq.com/s/kvEHX3t_2xpMke9vwOdWrg)
+- [Phaser类在性能测试中应用](https://mp.weixin.qq.com/s/plxNnQq7yNQvHYEGpyY4uA)
 - [Java压缩/解压缩字符串](https://mp.weixin.qq.com/s/7vHNd5dEN93DPUqgS8od_A)
 - [Java删除空字符：Java8 & Java11](https://mp.weixin.qq.com/s/6dlgYgTFZsHuJ4Eaby5eyg)
 - [Java Stream中map和flatMap方法](https://mp.weixin.qq.com/s/0FG2o7VUAG6z8a_0je-1EQ)
@@ -50,6 +60,8 @@
 - [Java代理模式初探](https://mp.weixin.qq.com/s/SBL_K2PQez3vDHhtAN9NLg)
 - [Socket接口异步验证实践](https://mp.weixin.qq.com/s/bnjHK3ZmEzHm3y-xaSVkTw)
 - [性能测试中异步展示测试进度](https://mp.weixin.qq.com/s/AOERJbEc4ATJqhjvnxgQoA)
+- [Java中的ThreadLocal功能演示](https://mp.weixin.qq.com/s/n92k1JswHKrqT7Y_CD9Q0w)
+- [ThreadLocal在链路性能测试中实践](https://mp.weixin.qq.com/s/3qhNdHHSStELzNraQSpcew)
 
 ## Groovy
 
@@ -79,14 +91,36 @@
 - [删除List中null的N种方法--最后放大招](https://mp.weixin.qq.com/s/4mfskN781dybyL59dbSbeQ)
 - [混合Java函数和Groovy闭包](https://mp.weixin.qq.com/s/FAIzGgLSX2u7RKbOGs3lGA)
 - [Groovy重载操作符（终极版）](https://mp.weixin.qq.com/s/4oYGJ2B2Y1AqxsIj8v5nZA)
+- [JsonPath工具类单元测试](https://mp.weixin.qq.com/s/1YtUWGk_sTjn9bHwAeT0Ew)
 - [Groovy小记it关键字和IDE报错](https://mp.weixin.qq.com/s/cIMHzkvKtH0a0ewkiBnV8g)
 - [JsonPath验证类既Groovy重载操作符实践](https://mp.weixin.qq.com/s/5gc04CAsBY6pWxe5c2P41w)
 - [Groovy枚举类初始化异常分析](https://mp.weixin.qq.com/s/koFhpBZM1MFYYxCNxUKPyQ)
 
 ## Python
-- [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/xs6Q7uk5l8Gxoagh-sY0uQ)
+
 - [python使用filter方法递归筛选法求N以内的质数（素数）--附一行打印心形标记的代码解析](https://mp.weixin.qq.com/s/D8RfpdIi8smCL8TAzBcNpA)
 - [关于python版微信使用经验分享](https://mp.weixin.qq.com/s/19IaI6ETZAm_T4ePPlXqIg)
 - [python用递归筛选法求N以内的孪生质数（孪生素数）](https://mp.weixin.qq.com/s/rVY2pTl8So11WCvA9GrFbA)
 - [利用python wxpy和requests写一个自动应答微信机器人实例](https://mp.weixin.qq.com/s/Fni2kX5BRjdqOQ-glCLjRg)
 - [Python版Socket.IO接口测试脚本](https://mp.weixin.qq.com/s/oXBP6Sx3yPqlmvV9uCUScw)
+
+
+## 测开笔记
+
+- [我的开发日记（一）](https://mp.weixin.qq.com/s/eQgpOKbXsU9vOmxp0Xiklg)
+- [我的开发日记（二）](https://mp.weixin.qq.com/s/XuffL3ZmKKOgHDtH_cEYOw)
+- [我的开发日记（三）](https://mp.weixin.qq.com/s/a-I0agh6nWp8RLlcmbgf5w)
+- [我的开发日记（四）](https://mp.weixin.qq.com/s/QukXd00Mx_dbkgiXys0FNg)
+- [我的开发日记（五）](https://mp.weixin.qq.com/s/6P3nScsVW6MfMcyIqcA1AQ)
+- [我的开发日记（六）](https://mp.weixin.qq.com/s/Gz2QmukONNldSy9Fd29u5w)
+- [我的开发日记（七）](https://mp.weixin.qq.com/s/MjZ-nFXfQkHMsXS0fX1c1w)
+- [我的开发日记（八）](https://mp.weixin.qq.com/s/6ZhNcFm-gR5dhKQjEkE3Rg)
+- [我的开发日记（九）](https://mp.weixin.qq.com/s/VfD2T3orojGxnylr3Q5UeA)
+- [我的开发日记（十）](https://mp.weixin.qq.com/s/6DWth40LGbAraJi05G16Pw)
+- [我的开发日记（十一）](https://mp.weixin.qq.com/s/nsX5A-P6QbePHDN_Pse0_A)
+- [我的开发日记（十二）](https://mp.weixin.qq.com/s/XA1KJXBP3Zl-XFswXxUtvg)
+- [我的开发日记（十三）](https://mp.weixin.qq.com/s/_QPUu5pUlg4A_AlC5wOGkA)
+- [我的开发日记（十四）](https://mp.weixin.qq.com/s/Qy1YKAb3wqW_Ip2FwH7Otw)
+- [我的开发日记（十五）](https://mp.weixin.qq.com/s/bwkvz2t6YItQD0O_BIxpHQ)
+- [这些年，我写过的BUG（一）](https://mp.weixin.qq.com/s/mVTmT1FdwWl1e0BaL7Ne1g)
+- [这些年，我写过的BUG（二）](https://mp.weixin.qq.com/s/NMz5n0ZMf6taGb-gr1BLyw)

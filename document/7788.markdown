@@ -1,9 +1,12 @@
+# 7788篇
+
+> **FunTester**，[腾讯云年度作者，优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)，非著名测试开发，欢迎关注。
+
+* `Gitee`地址*https://gitee.com/fanapi/tester*
+* `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
+
+
 # 无代码合集
-
-
-> FunTester，一个就知道瞎掰呼的核弹派测试人员，量变引起的质变。
-
-## [GitHub地址](https://github.com/JunManYuanLong/FunTester)
 
 ## 理论鸡汤
 
@@ -22,7 +25,7 @@
 - [17种软件测试人员常用的高效技能-上](https://mp.weixin.qq.com/s/vrM_LxQMgTSdJxaPnD_CqQ)
 - [17种软件测试人员常用的高效技能-下](https://mp.weixin.qq.com/s/uyWdVm74TYKb62eIRKL7nQ)
 - [手动测试存在的重要原因](https://mp.weixin.qq.com/s/mW5vryoJIkeskZLkBPFe0Q)
-- [编写测试用例的17个技巧](https://mp.weixin.qq.com/s/2OPKYEQkl3o1M9fenF-uMA)
+- [编写测试用例的技巧](https://mp.weixin.qq.com/s/zZAh_XXXGOyhlm6ebzs06Q)
 - [成为自动化测试的7种技能](https://mp.weixin.qq.com/s/e-HAGMO0JLR7VBBWLvk0dQ)
 - [功能测试与非功能测试](https://mp.weixin.qq.com/s/oJ6PJs1zO0LOQSTRF6M6WA)
 - [自动化和手动测试，保持平衡！](https://mp.weixin.qq.com/s/mMr_4C98W_FOkks2i2TiCg)
@@ -45,6 +48,7 @@
 - [测试人员常用借口](https://mp.weixin.qq.com/s/0k_Ciud2sOpRb5PPiVzECw)
 - [测试自动化的边缘DevTestOps](https://mp.weixin.qq.com/s/kCySRYdCS11CA-lF30AtQA)
 - [筛选自动化测试用例的技巧](https://mp.weixin.qq.com/s/SWNopZLwgpj9yYsVEHEspw)
+- [什么阻碍手动测试发挥价值](https://mp.weixin.qq.com/s/t0VAVyA3ywQsHzaqzSILOw)
 - [未来的QA测试工程师](https://mp.weixin.qq.com/s/ngL4sbEjZm7OFAyyWyQ3nQ)
 - [Web安全检查](https://mp.weixin.qq.com/s/SewUV3GMaNKD2P7g64ctYQ)
 - [关于可用性测试](https://mp.weixin.qq.com/s/aUIg40scOWzbRR89ojJWLg)
@@ -62,17 +66,16 @@
 - [自动化新手要避免的坑（上）](https://mp.weixin.qq.com/s/MjcX40heTRhEgCFhInoqYQ)
 - [自动化新手要避免的坑（下）](https://mp.weixin.qq.com/s/azDUo1IO5JgkJIS9n1CMRg)
 - [如何成为全栈自动化工程师](https://mp.weixin.qq.com/s/j2rQ3COFhg939KLrgKr_bg)
-- [API自动化测试指南](https://mp.weixin.qq.com/s/uy_Vn_ZVUEu3YAI1gW2T_A)
-- [API测试基础](https://mp.weixin.qq.com/s/bkbUEa9CF21xMYSlhPcULw)
 - [左移测试](https://mp.weixin.qq.com/s/8zXkWV4ils17hUqlXIpXSw)
-- [从单元测试标准中学习](https://mp.weixin.qq.com/s/x0TyMAdPBWYL7JSPAmoQsw)
 - [选择手动测试还是自动化测试？](https://mp.weixin.qq.com/s/4haRrfSIp5Plgm_GN98lRA)
+- [从单元测试标准中学习](https://mp.weixin.qq.com/s/x0TyMAdPBWYL7JSPAmoQsw)
 - [负载测试很重要](https://mp.weixin.qq.com/s/2q7kNQVJuNwB948ks463CA)
 - [白盒测试扫盲](https://mp.weixin.qq.com/s/s_FvGZTC42GEjaWzroz1eA)
 - [自动化测试项目为何失败](https://mp.weixin.qq.com/s/KFJXuLjjs1hii47C1BH8PA)
 - [简化测试用例](https://mp.weixin.qq.com/s/BhwfDqhN9yoa3Iul_Eu5TA)
 - [敏捷测试二三事](https://mp.weixin.qq.com/s/bKkGWJA3JhvdCjgg6-AVEQ)
 - [软件测试中的虚拟化](https://mp.weixin.qq.com/s/zHyJiNFgHIo2ZaPFXsxQMg)
+- [新词：QA-Ops](https://mp.weixin.qq.com/s/detcY6OVYmzOTUxfwN6CFQ)
 - [生产环境中进行自动化测试](https://mp.weixin.qq.com/s/JKEGRLOlgpINUxs-6mohzA)
 - [所谓UI测试](https://mp.weixin.qq.com/s/wDvUy_BhQZCSCqrlC2j1qA)
 - [预上线环境失败的原因](https://mp.weixin.qq.com/s/jva0Jb2OMarERmTn7Kh2Ng)
@@ -100,11 +103,13 @@
 - [测试开发工程师工作技巧](https://mp.weixin.qq.com/s/TvrUCisja5Zbq-NIwy_2fQ)
 - [敏捷回归测试](https://mp.weixin.qq.com/s/_bBQFggkZTTEqcb9R_68OA)
 - [制定质量管理计划指南](https://mp.weixin.qq.com/s/ztXYE8EtwlkUdxnk1cjKVg)
+- [质量管理计划的基本要素](https://mp.weixin.qq.com/s/v8lOioYn01S1F0ex4mmljA)
 - [质量保障的方法和实践](https://mp.weixin.qq.com/s/hU_YCaZB-0a09dOCAVgcpw)
 - [为什么测试覆盖率如此重要](https://mp.weixin.qq.com/s/0evyuiU2kdXDgMDnDKjORg)
 - [自动化测试框架](https://mp.weixin.qq.com/s/vu6p_rQd3vFKDYu8JDJ0Rg)
 - [敏捷中的端到端测试](https://mp.weixin.qq.com/s/cdi4xnEzDLpl9ncQguLuAQ)
 - [自动化测试灵魂三问：是什么、为什么和做什么](https://mp.weixin.qq.com/s/geOejJx79-jTwafG9aXwqA)
+- [基于代码的自动化和无代码自动化](https://mp.weixin.qq.com/s/8Dopihqs4XzpU-sN-I94kw)
 - [物联网测试](https://mp.weixin.qq.com/s/B_JI4DANxoOq4HurxZC65Q)
 - [功能测试知多少](https://mp.weixin.qq.com/s/vTxZLwlvlfIBv892Ji-oLQ)
 - [如何选择自动化测试工具](https://mp.weixin.qq.com/s/yJo-d9bAZDs1Lcp8j7ISRg)
@@ -120,6 +125,10 @@
 - [自动化测试转型挑战及其解决方案](https://mp.weixin.qq.com/s/BixS6jRdF5N_nvmW3_OthQ)
 - [无数据驱动自动化测试](https://mp.weixin.qq.com/s/aCYRGxkzMogLbmACYo6ssw)
 - [为什么自动化测试在敏捷开发中很重要](https://mp.weixin.qq.com/s/AP0wUQZ09NvSqme8e09igQ)
+- [测试模型中理解压力测试和负载测试](https://mp.weixin.qq.com/s/smNLx3malzM3avkrn3EJiA)
+- [移动测试工程师职业](https://mp.weixin.qq.com/s/dhtR4TbQNu5fWpmJkXGivw)
+- [远程测试工作挑战](https://mp.weixin.qq.com/s/LK-GEN4OtuWVGDuG8psmOQ)
+- [自动化测试用例的原子性](https://mp.weixin.qq.com/s/jA5WMHwJcu88nHXWoMBAdQ)
 
 ## 大咖风采
 
@@ -127,7 +136,90 @@
 - [Android App 测试工具及知识大集合](https://mp.weixin.qq.com/s/Xk9rCW8whXOTAQuCfhZqTg)
 - [Android App常规测试内容](https://mp.weixin.qq.com/s/tweeoS5wTqK3k7R2TVuDXA)
 - [JVM的对象和堆](https://mp.weixin.qq.com/s/iNDpTz3gBK3By_bvUnrWOA)
-- [JVM虚拟机面试大全](https://mp.weixin.qq.com/s/WPll-3ZvYrS7J7Cl8MuzhA)
+ 
+# UI自动化
+
+## UI自动化
+
+- [自动化测试中java多线程的使用实例](https://mp.weixin.qq.com/s/BNSLaIdcTPTNj1tKpGf6fw)
+- [自动化测试中递归函数的应用](https://mp.weixin.qq.com/s/86602zV9zYblhCRMiUlwdA)
+
+## UiAutomator
+
+- [android uiautomator一个画心形图案的方法--代码的浪漫](https://mp.weixin.qq.com/s/byfAKHxD2i83VHnuaNgIZA)
+- [android UiAutomator了解源码解决控件bonds\[0,0\]无法点击](https://mp.weixin.qq.com/s/nu2ftXNUSG2_kmZjyhEcVA)
+- [android UiAutomator在清除文本时遇到中文的解决办法](https://mp.weixin.qq.com/s/cNGNCoXsYBSk-MWTWLxF4g)
+- [android UiAutomator获取当前页面某类控件个数的方法](https://mp.weixin.qq.com/s/njb19Sq_Kg4SusAS_eEuug)
+- [android uiautomator自定义监听示例--一个弹出权限设置的监听](https://mp.weixin.qq.com/s/OKKZOf51yq6qY5D6PvN-gg)
+- [如何在Mac OS上使用UiAutomator快速调试类](https://mp.weixin.qq.com/s/jm9d_42jp_BSlv-IW0BpzQ)
+- [UiAutomator测试中如何恢复手机输入法](https://mp.weixin.qq.com/s/o4-zCgbdq6OsHRK9XT14QA)
+- [android UiAutomator基本api的二次封装](https://mp.weixin.qq.com/s/_3jGg3ZYoeyAkjZpy8gWfQ)
+- [android UiAutomator让运行失败的用例重新运行](https://mp.weixin.qq.com/s/tMOPbt1w9tRaKEuIZYKCyg)
+- [利用UiAutomator写一个首页刷新的稳定性测试脚本](https://mp.weixin.qq.com/s/au9hAScsqUdcrh_usu8Pfg)
+- [android UiAutomator长按实现控制按住控件时间的方法](https://mp.weixin.qq.com/s/lOvxAOMh6mmIh3CEV6Fduw)
+- [android UiAutomator自定义快速调试类](https://mp.weixin.qq.com/s/iP2dTOeVkFMzU3dQ06R9GA)
+- [利用UiAutomator写一个自动遍历渠道包关键功能的脚本](https://mp.weixin.qq.com/s/0vg2OlfTy0y4T6sWUG-olA)
+- [android UiAutomator如何根据颜色判断控件的状态](https://mp.weixin.qq.com/s/kldsD3OZ4mJZ5yYQXfXxLw)
+- [android UiAutomator控制多台手机同时运行用例的方法](https://mp.weixin.qq.com/s/z9vgpOQP0wQffmG4C_oBWg)
+- [android UiAutomator使用递归函数写一个让屏幕一闪一闪提醒的方法](https://mp.weixin.qq.com/s/AzXjePdmsgs6QsICZOdPyw)
+- [android UiAutomator获取视频播放进度的方法](https://mp.weixin.qq.com/s/ho070zX9rrLPmh8bZe_HgQ)
+
+
+## Selenium
+
+- [selenium2java截图保存桌面](https://mp.weixin.qq.com/s/OUfwsIo635coGONRNccYlg)
+- [selenium2java调用JavaScript方法封装](https://mp.weixin.qq.com/s/t-Xs2Hr9TM2bjDiOqQX2mA)
+- [selenium2java利用mysq解决向浏览器插入cookies时token过期问题](https://mp.weixin.qq.com/s/oAAkDKUGytQjxJLFkod-AQ)
+- [selenium2java 遇到有三个窗口用例的处理办法](https://mp.weixin.qq.com/s/6AJBanVKYwlsNcvsu_25QQ)
+- [selenium2java通过第三方登录绕过知乎登陆验证码](https://mp.weixin.qq.com/s/A5uTtxlg4l4pru2z7v1cug)
+- [selenium2java使用select处理下拉框示例](https://mp.weixin.qq.com/s/FFor451WzuUzINeclGN-Ng)
+- [selenium2java爬虫示例](https://mp.weixin.qq.com/s/vSZzpzEqsCtASSx6iHqxVA)
+- [selenium2java写一个设置秒杀价的脚本](https://mp.weixin.qq.com/s/1ocIOYt3gdGIJrd9v2shhg)
+- [selenium2java基本方法二次封装](https://mp.weixin.qq.com/s/2GaXigt13wa6JgxJkcef5g)
+- [selenium2java一个弹框上传时间日期大杂烩测试用例](https://mp.weixin.qq.com/s/Z8ZeZ-zFy0q0a-e_epT1Kg)
+- [selenium2java造数据例子](https://mp.weixin.qq.com/s/ACO2O5f7Po4Qn242lopMBg)
+- [selenium2java让浏览器停止加载的方法](https://mp.weixin.qq.com/s/aBQdGYys3Bpyf6yigGOCIA)
+- [selenium2java写一个强制刷新页面的方法](https://mp.weixin.qq.com/s/VWW7cH5WSDmw_eCabUh9LQ)
+- [selenium2java通过接口获取并注入cookies](https://mp.weixin.qq.com/s/luLHWxPWSekuDMbnKsfJvg)
+- [Selenium编写自动化用例的8种技巧](https://mp.weixin.qq.com/s/8wRHc_krXNfWclNeOJDNPg)
+- [JUnit中用于Selenium测试的中实践](https://mp.weixin.qq.com/s/KG4sltQMCfH2MGXkRdtnwA)
+- [您如何使用Selenium来计算自动化测试的投资回报率？](https://mp.weixin.qq.com/s/DVSEm0DhoAvYfTWIniabJg)
+- [Selenium 4 Java的最佳测试框架](https://mp.weixin.qq.com/s/MlNyv-kb03gRTcYllxUreA)
+- [Selenium 4.0 Alpha更新日志](https://mp.weixin.qq.com/s/tU7sm-pcbpRNwDU9D3OVTQ)
+- [Selenium 4.0 Alpha更新实践](https://mp.weixin.qq.com/s/yT9wpO5o5aWBUus494TIHw)
+- [JUnit 5和Selenium基础（一）](https://mp.weixin.qq.com/s/ehBRf7st-OxeuvI_0yW3OQ)
+- [JUnit 5和Selenium基础（二）](https://mp.weixin.qq.com/s/Gt82cPmS2iX-DhKXTXiy8g)
+- [JUnit 5和Selenium基础（三）](https://mp.weixin.qq.com/s/8YkonXTYgAV5-pLs9yEAVw)
+- [如何在跨浏览器测试中提高效率](https://mp.weixin.qq.com/s/MB_Wv7yQ6i9BztAZtL4grA)
+- [Selenium Python使用技巧（一）](https://mp.weixin.qq.com/s/39v8tXG3xig63d-ioEAi8Q)
+- [Selenium Python使用技巧（二）](https://mp.weixin.qq.com/s/uDM3y9zoVjaRmJJJTNs6Vw)
+- [Selenium Python使用技巧（三）](https://mp.weixin.qq.com/s/J7-CO-UDspUGSpB8isjsmQ)
+- [Selenium并行测试基础](https://mp.weixin.qq.com/s/OfXipd7YtqL2AdGAQ5cIMw)
+- [Selenium并行测试最佳实践](https://mp.weixin.qq.com/s/-RsQZaT5pH8DHPvm0L8Hjw)
+- [维护Selenium测试自动化的最佳实践](https://mp.weixin.qq.com/s/EMD1aWuzOSfT7j3KeXhJcA)
+- [Selenium自动化测试技巧](https://mp.weixin.qq.com/s/EzrpFaBSVITO2Y2UvYvw0w)
+- [Selenium自动化：代码测试与无代码测试](https://mp.weixin.qq.com/s/gtmLpQ5FCeuzh1SB5mxuvg)
+- [Selenium处理下拉列表](https://mp.weixin.qq.com/s/E2txSVAmDzYIEZWnyAND4g)
+- [Selenium自动化常见问题](https://mp.weixin.qq.com/s/edoxu-QaD0SOw1VqrhCZWA)
+- [Selenium4 IDE，它终于来了](https://mp.weixin.qq.com/s/XNotlZvFpmBmBQy1pYifOw)
+- [Selenium4 IDE特性：无代码趋势和SIDE Runner](https://mp.weixin.qq.com/s/G0S9K0jHsN0P_jxdMME-cg)
+- [Selenium4 IDE特性：弹性测试、循环和逻辑判断](https://mp.weixin.qq.com/s/o4_jIyi9O7s4S3CbTzl5rQ)
+- [Selenium自动化最佳实践技巧（上）](https://mp.weixin.qq.com/s/lZww1azmncMMMHRY0_yKqA)
+- [Selenium自动化最佳实践技巧（中）](https://mp.weixin.qq.com/s/9D0lUZ-XKHiukNeRqp6zOQ)
+- [Selenium自动化最佳实践技巧（下）](https://mp.weixin.qq.com/s/opVik2ZxmTBurIBoa4yipQ)
+- [Selenium等待：sleep、隐式、显式和Fluent](https://mp.weixin.qq.com/s/73BobMq9M12rYMvzxNhRtA)
+- [Selenium自动化的JUnit参数化实践](https://mp.weixin.qq.com/s/WFu5rJaowxhAIcbEoEatkw)
+- [Selenium异常集锦](https://mp.weixin.qq.com/s/DDkaliSVthX-c_KKG-WwNA)
+- [Selenium自动化测试之前](https://mp.weixin.qq.com/s/DKjSnS9sP0SoHUw4OhOikw)
+
+## APP性能
+
+- [使用monkey测试时，一个控制WiFi状态的多线程类](https://mp.weixin.qq.com/s/P8HVtzHBlj_FcDAAHFKBDg)
+- [java执行和停止Logcat命令及多线程实现](https://mp.weixin.qq.com/s/sUYibRc-muxQoxi48QiaRg)
+- [APP性能测试中获取CPU和PSS数据多线程实现](https://mp.weixin.qq.com/s/NiJSZ8VxpdnarbDJjcJziA)
+- [统计APP启动时间和进入首页时间的多线程类](https://mp.weixin.qq.com/s/IMs6vd3H-HF65Vb-zPwDhw)
+- [如何获取手机性能测试数据FPS](https://mp.weixin.qq.com/s/qZy5AQkNpUXRJk46BHVzaQ)
+- [一个循环启动APP并保持WiFi常开的多线程类](https://mp.weixin.qq.com/s/OgdT4IffDyAdkKmO2SS9iQ)
 
 ## 杂乱
 
@@ -159,3 +251,4 @@
 - [推荐好书：不要总是谦卑地弯着腰](https://mp.weixin.qq.com/s/mYNN9jSaikOF5aJEkb-Bug)
 - [2020年FunTester自我总结](https://mp.weixin.qq.com/s/DeDY1JZUTk3cjjQfr3DJRg)
 - [原创打油诗欣赏](https://mp.weixin.qq.com/s/3hPSDjH-3cWu6EVsjU0wOw)
+- [优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)
