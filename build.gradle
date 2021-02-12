@@ -13,7 +13,7 @@ plugins {
     id 'java'
 }
 
-group 'tester'
+group 'FunTester'
 version '1.0'
 
 apply plugin: 'groovy'

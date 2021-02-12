@@ -8,7 +8,7 @@ import spock.lang.Specification
 class ArgsUtilTest extends Specification {
 
     @Shared
-    Logger logger = com.fun.frame.SourceCode.getLogger(this.getClass().getName())
+    Logger logger = com.funtester.frame.SourceCode.getLogger(this.getClass().getName())
 
     def setupSpec() {
         logger.info "测试类开始! ${logger.getName()}"

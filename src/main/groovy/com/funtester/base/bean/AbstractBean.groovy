@@ -1,0 +1,71 @@
+package com.funtester.base.bean
+
+import com.alibaba.fastjson.JSON
+import com.alibaba.fastjson.JSONObject
+import com.fun.frame.Save
+import com.fun.frame.SourceCode
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+import org.springframework.beans.BeanUtils
+
+/**
+ * bean的基类
+ */
+abstract class AbstractBean {
+
+    static final Logger logger = LoggerFactory.getLogger(AbstractBean.class)
+
+    /**
+     * 将bean转化为json，为了进行数据处理和打印
+     *
+     * @return
+     */
+    JSONObject toJson() {
+        JSONObject.parseObject(JSONObject.toJSONString(this))
+    }
+
+    /**
+     * 文本形式保存
+     */
+    def save() {
+        Save.saveJson(this.toJson(), this.getClass().toString() + SourceCode.getMark());
+    }
+
+    /**
+     * 控制台打印，使用WARN记录，以便查看
+     */
+    def print() {
+        logger.warn(this.getClass().toString() + "：" + this.toString());
+    }
+
+    def initFrom(String str) {
+        JSONObject.parseObject(str, this.getClass())
+    }
+
+    def initFrom(Object str) {
+        initFrom(JSON.toJSONString(str))
+    }
+
+    def copyFrom(AbstractBean source) {
+        BeanUtils.copyProperties(source, this)
+    }
+
+    def copyTo(AbstractBean target) {
+        BeanUtils.copyProperties(this, target)
+    }
+
+    /**
+     * 这里bean的属性必需是可以访问的,不然会返回空json串
+     * @return
+     */
+    @Override
+    String toString() {
+        JSONObject.toJSONString(this)
+    }
+
+    @Override
+    protected Object clone() {
+        initFrom(this)
+    }
+
+}

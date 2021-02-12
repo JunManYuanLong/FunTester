@@ -1,6 +1,6 @@
 package com.FunTester.mockito.practise;
 
-import com.fun.frame.SourceCode;
+import com.funtester.frame.SourceCode;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

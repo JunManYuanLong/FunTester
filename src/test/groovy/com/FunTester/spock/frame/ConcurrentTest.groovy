@@ -8,7 +8,7 @@ import spock.lang.Specification
 class ConcurrentTest extends Specification {
 
     @Shared
-    Logger logger = com.fun.frame.SourceCode.getLogger(this.getClass().getName())
+    Logger logger = com.funtester.frame.SourceCode.getLogger(this.getClass().getName())
     @Shared
     Concurrent concurrent = new Concurrent()
 
