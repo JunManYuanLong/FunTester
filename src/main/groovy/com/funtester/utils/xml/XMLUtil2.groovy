@@ -1,7 +1,7 @@
 package com.funtester.utils.xml
 
-import com.fun.base.exception.FailException
-import com.fun.frame.SourceCode
+
+import com.funtester.base.exception.FailException
 import org.dom4j.*
 import org.dom4j.io.SAXReader
 import org.slf4j.Logger
@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory
 /**
  * 基于dom4j解析xml工具类
  */
-class XMLUtil2 extends SourceCode {
+class XMLUtil2 {
 
     private static Logger logger = LoggerFactory.getLogger(XMLUtil2.class)
 

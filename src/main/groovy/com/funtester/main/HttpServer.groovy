@@ -1,8 +1,8 @@
 package com.funtester.main
 
-import com.fun.base.bean.Result
-import com.fun.moco.MocoResponse
-import com.fun.moco.MocoServer
+import com.funtester.base.bean.Result
+import com.funtester.moco.MocoResponse
+import com.funtester.moco.MocoServer
 
 import static com.github.dreamhead.moco.Moco.from
 

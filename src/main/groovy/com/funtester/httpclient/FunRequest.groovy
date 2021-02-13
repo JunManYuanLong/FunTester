@@ -1,12 +1,12 @@
-package com.funtester.frame.httpclient
+package com.funtester.httpclient
 
 import com.alibaba.fastjson.JSONObject
-import com.fun.base.bean.RequestInfo
-import com.fun.base.exception.RequestException
-import com.fun.config.HttpClientConstant
-import com.fun.config.RequestType
-import com.fun.frame.Save
-import com.fun.utils.Time
+import com.funtester.base.bean.RequestInfo
+import com.funtester.base.exception.RequestException
+import com.funtester.config.HttpClientConstant
+import com.funtester.config.RequestType
+import com.funtester.frame.Save
+import com.funtester.utils.Time
 import org.apache.commons.lang3.StringUtils
 import org.apache.http.Header
 import org.apache.http.HttpEntity
@@ -19,10 +19,10 @@ import org.slf4j.LoggerFactory
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
- * 重写FanLibrary，使用面对对象思想,不用轻易使用set属性方法,可能存在BUG
+ * 重写FunLibrary，使用面对对象思想,不用轻易使用set属性方法,可能存在BUG
  */
 @SuppressFBWarnings(["CN_IDIOM_NO_SUPER_CALL", "SE_TRANSIENT_FIELD_NOT_RESTORED"])
-class FunRequest extends FanLibrary implements Serializable, Cloneable {
+class FunRequest extends FunLibrary implements Serializable, Cloneable {
 
     private static final long serialVersionUID = -4153600036943378727L;
 
@@ -268,10 +268,10 @@ class FunRequest extends FanLibrary implements Serializable, Cloneable {
             uri = host + apiName
         switch (requestType) {
             case RequestType.GET:
-                request = FanLibrary.getHttpGet(uri, args)
+                request = FunLibrary.getHttpGet(uri, args)
                 break
             case RequestType.POST:
-                request = !params.isEmpty() ? FanLibrary.getHttpPost(uri + changeJsonToArguments(args), params) : !json.isEmpty() ? getHttpPost(uri + changeJsonToArguments(args), json.toString()) : getHttpPost(uri + changeJsonToArguments(args))
+                request = !params.isEmpty() ? FunLibrary.getHttpPost(uri + changeJsonToArguments(args), params) : !json.isEmpty() ? getHttpPost(uri + changeJsonToArguments(args), json.toString()) : getHttpPost(uri + changeJsonToArguments(args))
                 break
         }
         for (Header header in headers) {

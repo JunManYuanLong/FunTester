@@ -1,8 +1,7 @@
 package com.funtester.utils.xml
 
 
-import com.fun.base.exception.FailException
-import com.fun.frame.SourceCode
+import com.funtester.base.exception.FailException
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.w3c.dom.Document
@@ -15,10 +14,12 @@ import javax.xml.parsers.DocumentBuilder
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.parsers.ParserConfigurationException
 
+import static com.funtester.frame.SourceCode.range
+
 /**
  * 基于dom解析xml文件工具类
  */
-class XMLUtil extends SourceCode {
+class XMLUtil {
 
     private static Logger logger = LoggerFactory.getLogger(XMLUtil.class)
 

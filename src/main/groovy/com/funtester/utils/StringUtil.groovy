@@ -1,6 +1,6 @@
 package com.funtester.utils
 
-import com.fun.frame.SourceCode
+import com.funtester.frame.SourceCode
 
 import java.util.stream.Collectors
 

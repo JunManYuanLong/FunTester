@@ -5,7 +5,7 @@ import com.funtester.base.bean.VerifyBean;
 import java.util.List;
 
 /**
- * Socket接口通用验证接口
+ * Socket接口通用验证接口,暂时无用
  */
 public interface ISocketVerify extends Runnable {
 

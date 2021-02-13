@@ -1,9 +1,10 @@
 package com.funtester.utils
 
 import com.alibaba.fastjson.JSONObject
-import com.fun.base.exception.ParamException
-import com.fun.frame.JsonVerify
-import com.fun.frame.SourceCode
+import com.funtester.base.exception.ParamException
+import com.funtester.config.Constant
+import com.funtester.frame.JsonVerify
+import com.funtester.frame.SourceCode
 import com.jayway.jsonpath.JsonPath
 import com.jayway.jsonpath.JsonPathException
 import org.slf4j.Logger
@@ -59,7 +60,7 @@ import org.slf4j.LoggerFactory
  * groovy需要  \$  Java不需要直接  $
  *
  */
-class JsonUtil extends SourceCode {
+class JsonUtil {
 
     private static Logger logger = LoggerFactory.getLogger(JsonUtil.class)
 
@@ -87,7 +88,7 @@ class JsonUtil extends SourceCode {
      */
     String getString(String path) {
         def object = get(path)
-        object == null ? EMPTY : object.toString()
+        object == null ? Constant.EMPTY : object.toString()
     }
 
 
@@ -97,7 +98,7 @@ class JsonUtil extends SourceCode {
      * @return
      */
     int getInt(String path) {
-        changeStringToInt(getString(path))
+        SourceCode.changeStringToInt(getString ( path))
     }
 
     /**
@@ -106,7 +107,7 @@ class JsonUtil extends SourceCode {
      * @return
      */
     int getBoolean(String path) {
-        changeStringToBoolean(getString(path))
+        SourceCode.changeStringToBoolean(getString(path))
     }
 
     /**
@@ -115,7 +116,7 @@ class JsonUtil extends SourceCode {
      * @return
      */
     int getLong(String path) {
-        changeStringToLong(getString(path))
+        SourceCode.changeStringToLong(getString(path))
     }
     
     /**
@@ -124,7 +125,7 @@ class JsonUtil extends SourceCode {
      * @return
      */
     double getDouble(String path) {
-        changeStringToDouble(getString(path))
+        SourceCode.changeStringToDouble(getString(path))
     }
 
     /**

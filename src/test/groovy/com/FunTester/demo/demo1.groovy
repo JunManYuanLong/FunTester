@@ -1,6 +1,6 @@
 package com.FunTester.demo
 
-import com.fun.frame.SourceCode
+import com.funtester.frame.SourceCode
 
 class demo1 extends SourceCode {
 

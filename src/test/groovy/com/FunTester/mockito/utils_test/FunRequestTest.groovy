@@ -1,10 +1,9 @@
 package com.FunTester.mockito.utils_test
 
-
-import com.fun.config.RequestType
-import com.fun.frame.SourceCode
-import com.fun.frame.httpclient.FanLibrary
-import com.fun.frame.httpclient.FunRequest
+import com.funtester.config.RequestType
+import com.funtester.frame.SourceCode
+import com.funtester.httpclient.FunLibrary
+import com.funtester.httpclient.FunRequest
 import org.apache.http.Header
 import org.apache.http.client.methods.HttpPost
 import org.apache.http.client.methods.HttpRequestBase
@@ -12,9 +11,8 @@ import org.slf4j.Logger
 import spock.lang.Shared
 import spock.lang.Specification
 
-import static com.fun.frame.Output.output
-import static com.fun.frame.SourceCode.getJson
-import static com.fun.frame.SourceCode.getLogger
+import static com.funtester.frame.Output.output
+import static com.funtester.frame.SourceCode.getJson
 import static org.mockito.ArgumentMatchers.anyInt
 import static org.mockito.Mockito.*
 
@@ -86,8 +84,8 @@ class FunRequestTest extends Specification implements Serializable {
 
     def "测试拷贝请求的功能"() {
         given:
-        HttpPost httpPost = FanLibrary.getHttpPost("https://cn.bing.com/search", SourceCode.getJson("q=fun"));
-        FanLibrary.getHttpResponse(httpPost);
+        HttpPost httpPost = FunLibrary.getHttpPost("https://cn.bing.com/search", SourceCode.getJson("q=fun"));
+        FunLibrary.getHttpResponse(httpPost);
 
 //        FunRequest.save(httpPost, getJson("3242=234"));
 
@@ -95,8 +93,8 @@ class FunRequestTest extends Specification implements Serializable {
 
         HttpRequestBase base = FunRequest.doCopy(httpPost);
 
-        FanLibrary.getHttpResponse(httpRequestBase);
-        FanLibrary.getHttpResponse(base);
+        FunLibrary.getHttpResponse(httpRequestBase);
+        FunLibrary.getHttpResponse(base);
 
 
 
@@ -106,8 +104,8 @@ class FunRequestTest extends Specification implements Serializable {
 
     def "测试拷贝GET请求的功能"() {
         given:
-        def re = FanLibrary.getHttpGet("https://cn.bing.com/search", SourceCode.getJson("q=fun"));
-        FanLibrary.getHttpResponse(re);
+        def re = FunLibrary.getHttpGet("https://cn.bing.com/search", SourceCode.getJson("q=fun"));
+        FunLibrary.getHttpResponse(re);
 
 //        FunRequest.save(httpPost, getJson("3242=234"));
 
@@ -115,8 +113,8 @@ class FunRequestTest extends Specification implements Serializable {
 
         HttpRequestBase base = FunRequest.doCopy(re);
 
-        FanLibrary.getHttpResponse(httpRequestBase);
-        FanLibrary.getHttpResponse(base);
+        FunLibrary.getHttpResponse(httpRequestBase);
+        FunLibrary.getHttpResponse(base);
 
 
 
@@ -125,11 +123,11 @@ class FunRequestTest extends Specification implements Serializable {
 
     def "测试get请求的url,save功能"() {
         given:
-        def re = FanLibrary.getHttpGet("https://cn.bing.com/search", SourceCode.getJson("q=fun"));
+        def re = FunLibrary.getHttpGet("https://cn.bing.com/search", SourceCode.getJson("q=fun"));
 
         HttpRequestBase httpRequestBase = FunRequest.cloneRequest(re);
 
-        def response = FanLibrary.getHttpResponse(re)
+        def response = FunLibrary.getHttpResponse(re)
 
         FunRequest.save(re, response)
 

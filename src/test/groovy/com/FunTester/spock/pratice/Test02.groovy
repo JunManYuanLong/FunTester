@@ -1,14 +1,14 @@
 package com.FunTester.spock.pratice
 
-import com.fun.config.PropertyUtils
-import com.fun.frame.SourceCode
+import com.funtester.config.PropertyUtils
+import com.funtester.frame.SourceCode
 import org.slf4j.Logger
 import spock.lang.Shared
 import spock.lang.Specification
 
-import static com.fun.config.Constant.EMPTY
-import static com.fun.config.Constant.getLongFile
-import static com.fun.frame.SourceCode.*
+import static com.funtester.config.Constant.EMPTY
+import static com.funtester.config.Constant.getLongFile
+import static com.funtester.frame.SourceCode.*
 
 class Test02 extends Specification {
 

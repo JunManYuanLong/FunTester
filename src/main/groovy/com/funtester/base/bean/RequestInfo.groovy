@@ -1,10 +1,10 @@
 package com.funtester.base.bean
 
 import com.alibaba.fastjson.JSONObject
-import com.fun.base.interfaces.MarkRequest
-import com.fun.config.Constant
-import com.fun.config.RequestType
-import com.fun.config.SysInit
+import com.funtester.base.interfaces.MarkRequest
+import com.funtester.config.Constant
+import com.funtester.config.RequestType
+import com.funtester.config.SysInit
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.apache.http.Header
 import org.apache.http.HttpEntity

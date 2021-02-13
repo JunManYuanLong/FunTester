@@ -1,7 +1,7 @@
 package com.funtester.frame;
 
 import com.alibaba.fastjson.JSONObject;
-import com.funtester.frame.httpclient.FanLibrary;
+import com.funtester.httpclient.FunLibrary;
 import com.funtester.utils.Regex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +53,7 @@ public class ResponseVerify extends SourceCode {
      * @return
      */
     public int getCode() {
-        return FanLibrary.getiBase().checkCode(verifyJson, null);
+        return FunLibrary.getiBase().checkCode(verifyJson, null);
     }
 
 

@@ -101,7 +101,7 @@ jar {
         configurations.runtime.collect {zipTree(it)}
     }
     manifest {
-        attributes 'Main-Class': 'com.fun.main.Blog'
+        attributes 'Main-Class': 'com.funtester.main.Blog'
     }
 }
 

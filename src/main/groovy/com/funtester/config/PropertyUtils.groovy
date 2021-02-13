@@ -1,7 +1,7 @@
 package com.funtester.config
 
 import com.alibaba.fastjson.JSONObject
-import com.fun.utils.RWUtil
+import com.funtester.utils.RWUtil
 import com.funtester.frame.SourceCode
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.slf4j.Logger

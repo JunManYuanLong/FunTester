@@ -1,6 +1,6 @@
 package com.FunTester.demo
 
-import com.fun.frame.SourceCode
+import com.funtester.frame.SourceCode
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 

@@ -4,7 +4,7 @@ import org.slf4j.Logger
 import spock.lang.Shared
 import spock.lang.Specification
 
-import static com.fun.frame.SourceCode.getLogger
+import static com.funtester.frame.SourceCode.getLogger
 
 class WriteReadTest extends Specification{
     @Shared

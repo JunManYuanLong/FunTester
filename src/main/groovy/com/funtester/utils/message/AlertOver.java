@@ -1,6 +1,6 @@
 package com.funtester.utils.message;
 
-import com.funtester.frame.httpclient.FanLibrary;
+import com.funtester.httpclient.FunLibrary;
 import com.funtester.base.bean.RequestInfo;
 import com.funtester.base.interfaces.IMessage;
 import com.funtester.db.mysql.MySqlTest;
@@ -11,7 +11,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AlertOver extends FanLibrary implements IMessage {
+public class AlertOver extends FunLibrary implements IMessage {
 
     private static Logger logger = LoggerFactory.getLogger(AlertOver.class);
 

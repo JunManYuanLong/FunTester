@@ -1,14 +1,12 @@
 package com.FunTester.spock.utils_test
 
 import com.alibaba.fastjson.JSON
-import com.fun.utils.JsonUtil
+import com.funtester.utils.JsonUtil
 import org.slf4j.Logger
 import spock.lang.Shared
 import spock.lang.Specification
 
 import java.util.concurrent.atomic.AtomicInteger
-
-import static com.fun.frame.SourceCode.getLogger
 
 public class JsonUtilTest extends Specification {
 

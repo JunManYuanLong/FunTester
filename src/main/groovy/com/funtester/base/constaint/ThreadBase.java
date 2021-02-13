@@ -2,7 +2,7 @@ package com.funtester.base.constaint;
 
 import com.funtester.base.interfaces.MarkThread;
 import com.funtester.frame.SourceCode;
-import com.funtester.frame.httpclient.FanLibrary;
+import com.funtester.httpclient.FunLibrary;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -27,7 +27,7 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable {
 
     /**
      * 错误数
-     * <p>这里注意使用{@link FanLibrary#getHttpResponse(org.apache.http.client.methods.HttpRequestBase)}方法获取响应的功能封装方法,即使报错也不会抛异常.这样会导致errorNum错误数为零</p>
+     * <p>这里注意使用{@link FunLibrary#getHttpResponse(org.apache.http.client.methods.HttpRequestBase)}方法获取响应的功能封装方法,即使报错也不会抛异常.这样会导致errorNum错误数为零</p>
      */
     public int errorNum;
 

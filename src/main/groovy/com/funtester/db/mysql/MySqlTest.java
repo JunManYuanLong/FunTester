@@ -6,7 +6,7 @@ import com.funtester.base.bean.RecordBean;
 import com.funtester.base.bean.RequestInfo;
 import com.funtester.config.SqlConstant;
 import com.funtester.config.SysInit;
-import com.funtester.frame.httpclient.FanLibrary;
+import com.funtester.httpclient.FunLibrary;
 import com.funtester.utils.DecodeEncode;
 import com.funtester.utils.Time;
 import com.funtester.utils.message.AlertOver;
@@ -243,10 +243,10 @@ public class MySqlTest extends SqlBase {
     public static void sendWork(String sql) {
         if (!SqlConstant.flag) return;
         logger.debug("记录SQL：{}", sql);
-        FanLibrary.noHeader();
+        FunLibrary.noHeader();
         JSONObject argss = new JSONObject();
         argss.put("sql", DecodeEncode.urlEncoderText(sql));
-        FanLibrary.getHttpResponse(FanLibrary.getHttpPost(SqlConstant.MYSQL_SERVER_PATH, argss));
+        FunLibrary.getHttpResponse(FunLibrary.getHttpPost(SqlConstant.MYSQL_SERVER_PATH, argss));
     }
 
     /**
@@ -255,9 +255,9 @@ public class MySqlTest extends SqlBase {
      * @param requestBean
      */
     public static void sendWork(RecordBean requestBean) {
-        FanLibrary.noHeader();
+        FunLibrary.noHeader();
         if (SqlConstant.flag)
-            FanLibrary.getHttpResponse(FanLibrary.getHttpPost(SqlConstant.MYSQL_SERVER_PATH, requestBean.toJson()));
+            FunLibrary.getHttpResponse(FunLibrary.getHttpPost(SqlConstant.MYSQL_SERVER_PATH, requestBean.toJson()));
     }
 
     /**

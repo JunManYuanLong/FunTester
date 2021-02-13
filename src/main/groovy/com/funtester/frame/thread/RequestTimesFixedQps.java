@@ -2,9 +2,9 @@ package com.funtester.frame.thread;
 
 import com.funtester.base.constaint.FixedQpsThread;
 import com.funtester.base.interfaces.MarkRequest;
-import com.funtester.frame.httpclient.FanLibrary;
-import com.funtester.frame.httpclient.FunRequest;
-import com.funtester.frame.httpclient.GCThread;
+import com.funtester.httpclient.FunLibrary;
+import com.funtester.httpclient.FunRequest;
+import com.funtester.httpclient.GCThread;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.slf4j.Logger;
@@ -31,7 +31,7 @@ public class RequestTimesFixedQps<T> extends FixedQpsThread<HttpRequestBase> {
 
     @Override
     protected void doing() throws Exception {
-        FanLibrary.executeSimlple(t);
+        FunLibrary.executeSimlple(t);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.funtester.frame.socket;
+package com.funtester.socket;
 
 import com.funtester.base.exception.FailException;
 import com.funtester.config.SocketConstant;

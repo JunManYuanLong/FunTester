@@ -1,11 +1,11 @@
 package com.FunTester.spock.utils_test
 
-import com.fun.utils.CountUtil
+import com.funtester.utils.CountUtil
 import org.slf4j.Logger
 import spock.lang.Shared
 import spock.lang.Specification
 
-import static com.fun.frame.SourceCode.getLogger
+import static com.funtester.frame.SourceCode.getLogger
 
 class CountTest extends Specification {
 

@@ -6,7 +6,7 @@ import com.funtester.config.Constant;
 import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.Save;
 import com.funtester.frame.SourceCode;
-import com.funtester.frame.httpclient.GCThread;
+import com.funtester.httpclient.GCThread;
 import com.funtester.utils.Time;
 import com.funtester.utils.RWUtil;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;

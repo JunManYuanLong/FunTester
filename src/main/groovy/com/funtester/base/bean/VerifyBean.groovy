@@ -1,14 +1,14 @@
 package com.funtester.base.bean
 
 import com.alibaba.fastjson.JSON
-import com.fun.base.exception.ParamException
-import com.fun.config.VerifyType
-import com.fun.utils.JsonUtil
-import com.fun.utils.Regex
+import com.funtester.base.exception.ParamException
+import com.funtester.config.VerifyType
+import com.funtester.utils.JsonUtil
+import com.funtester.utils.Regex
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-import static com.fun.config.Constant.REG_PART
+import static com.funtester.config.Constant.REG_PART
 
 /**
  * 验证对象类

@@ -3,7 +3,7 @@ package com.funtester.base.constaint;
 import com.funtester.base.interfaces.MarkThread;
 import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.execute.Concurrent;
-import com.funtester.frame.httpclient.GCThread;
+import com.funtester.httpclient.GCThread;
 import com.funtester.utils.Time;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.slf4j.Logger;

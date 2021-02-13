@@ -1,18 +1,18 @@
 package com.funtester.utils
 
 import com.alibaba.fastjson.JSONObject
-import com.fun.config.Constant
-import com.fun.config.RequestType
-import com.fun.frame.SourceCode
-import com.fun.frame.httpclient.FanLibrary
-import com.fun.frame.httpclient.FunRequest
-import org.apache.http.client.methods.HttpRequestBase
+import com.funtester.config.Constant
+import com.funtester.config.RequestType
+import com.funtester.frame.SourceCode
+import com.funtester.httpclient.FunLibrary
+import com.funtester.httpclient.FunRequest
 import org.apache.http.Header
+import org.apache.http.client.methods.HttpRequestBase
 
 /**
  * 通过将浏览器中复制的curl文本信息转化成HTTPrequestbase对象工具类
  */
-class CurlUtil extends Constant{
+class CurlUtil {
 
     private static def filterWords = [".js", ".png", ".gif", ".css", ".ico", "list_unread", ".svg", ".htm", ".jpeg", ".ashx"]
 
@@ -22,7 +22,7 @@ class CurlUtil extends Constant{
      * @return
      */
     public static List<HttpRequestBase> getRequests(String path) {
-        def fileinfo = RWUtil.readTxtFileByLine(path.contains(OR) ? path : LONG_Path + path).stream().map {it.trim()}
+        def fileinfo = RWUtil.readTxtFileByLine(path.contains(Constant.OR) ? path : Constant.LONG_Path + path).stream().map {it.trim()}
         List<HttpRequestBase> requests = []
         def base = new CurlRequestBase()
         fileinfo.each {
@@ -33,7 +33,7 @@ class CurlUtil extends Constant{
                 base.url = value.substring(value.indexOf('h'), value.lastIndexOf("'"))
             } else if (it.startsWith("-H")) {
                 def split = it.split(" ", 2)[1].split(": ")
-                base.headers << FanLibrary.getHeader(split[0].substring(1), split[1].substring(0, split[1].lastIndexOf("'")))
+                base.headers << FunLibrary.getHeader(split[0].substring(1), split[1].substring(0, split[1].lastIndexOf("'")))
             } else if (it.startsWith("--data-raw")) {
                 base.params = SourceCode.getJson(it.substring(it.indexOf("'") + 1, it.lastIndexOf("'")).split("&"))
                 base.type = RequestType.POST

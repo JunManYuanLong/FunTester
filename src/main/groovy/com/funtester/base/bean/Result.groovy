@@ -1,8 +1,8 @@
 package com.funtester.base.bean
 
 import com.alibaba.fastjson.JSONObject
-import com.fun.base.interfaces.ReturnCode
-import com.fun.config.Constant
+import com.funtester.base.interfaces.ReturnCode
+import com.funtester.config.Constant
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 
 /**

@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.funtester.config.Constant.DEFAULT_CHARSET;
-import static com.funtester.frame.httpclient.FanLibrary.getHeader;
+import static com.funtester.httpclient.FunLibrary.getHeader;
 
 /**
  *

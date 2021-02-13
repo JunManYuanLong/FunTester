@@ -1,6 +1,6 @@
 package com.FunTester.spock.frame
 
-import com.fun.frame.execute.Concurrent
+import com.funtester.frame.execute.Concurrent
 import org.slf4j.Logger
 import spock.lang.Shared
 import spock.lang.Specification

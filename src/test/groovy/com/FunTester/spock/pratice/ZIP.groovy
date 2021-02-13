@@ -1,11 +1,11 @@
 package com.FunTester.spock.pratice
 
-import com.fun.utils.DecodeEncode
+import com.funtester.utils.DecodeEncode
 import org.slf4j.Logger
 import spock.lang.Shared
 import spock.lang.Specification
 
-import static com.fun.frame.SourceCode.getLogger
+import static com.funtester.frame.SourceCode.getLogger
 
 class ZIP extends Specification {
 

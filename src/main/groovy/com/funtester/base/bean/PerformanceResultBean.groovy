@@ -1,8 +1,8 @@
 package com.funtester.base.bean
 
-import com.fun.db.mysql.MySqlTest
-import com.fun.frame.Output
-import com.fun.utils.DecodeEncode
+import com.funtester.db.mysql.MySqlTest
+import com.funtester.frame.Output
+import com.funtester.utils.DecodeEncode
 
 /**
  * 性能测试结果集

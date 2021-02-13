@@ -1,6 +1,7 @@
 package com.funtester.utils.xml
 
-import com.fun.base.bean.AbstractBean
+
+import com.funtester.base.bean.AbstractBean
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 
 /**

@@ -1,7 +1,7 @@
 package com.FunTester.mockito.practise;
 
 import com.funtester.frame.SourceCode;
-import com.funtester.frame.httpclient.FunRequest;
+import com.funtester.httpclient.FunRequest;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;

@@ -1,6 +1,6 @@
 package com.FunTester.spock.utils_test
 
-import com.fun.utils.ArgsUtil
+import com.funtester.utils.ArgsUtil
 import org.slf4j.Logger
 import spock.lang.Shared
 import spock.lang.Specification

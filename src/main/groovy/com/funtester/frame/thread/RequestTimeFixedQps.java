@@ -2,16 +2,16 @@ package com.funtester.frame.thread;
 
 import com.funtester.base.constaint.FixedQpsThread;
 import com.funtester.base.interfaces.MarkRequest;
-import com.funtester.frame.httpclient.FanLibrary;
-import com.funtester.frame.httpclient.FunRequest;
-import com.funtester.frame.httpclient.GCThread;
+import com.funtester.httpclient.FunLibrary;
+import com.funtester.httpclient.FunRequest;
+import com.funtester.httpclient.GCThread;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @SuppressFBWarnings("CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE")
-public class RequestTimeFixedQps<T extends HttpRequestBase> extends FixedQpsThread<HttpRequestBase> {
+public class RequestTimeFixedQps<T> extends FixedQpsThread<HttpRequestBase> {
 
     private static Logger logger = LoggerFactory.getLogger(RequestTimeFixedQps.class);
 
@@ -31,7 +31,7 @@ public class RequestTimeFixedQps<T extends HttpRequestBase> extends FixedQpsThre
 
     @Override
     protected void doing() throws Exception {
-        FanLibrary.executeSimlple(t);
+        FunLibrary.executeSimlple(t);
     }
 
     @Override

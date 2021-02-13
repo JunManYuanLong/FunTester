@@ -1,7 +1,7 @@
 package com.funtester.main
 
-import com.fun.moco.MocoServer
-import com.fun.utils.ArgsUtil
+import com.funtester.moco.MocoServer
+import com.funtester.utils.ArgsUtil
 import com.github.dreamhead.moco.MocoMount
 
 class Blog extends MocoServer {

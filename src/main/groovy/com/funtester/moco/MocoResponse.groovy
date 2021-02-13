@@ -1,11 +1,11 @@
 package com.funtester.moco
 
-import com.fun.base.bean.Result
-import com.fun.moco.support.CycleHandler
-import com.fun.moco.support.DelayHandler
-import com.fun.moco.support.LimitHandler
-import com.fun.moco.support.QPSHandler
-import com.fun.moco.support.RandomHandler
+import com.funtester.base.bean.Result
+import com.funtester.moco.support.CycleHandler
+import com.funtester.moco.support.DelayHandler
+import com.funtester.moco.support.LimitHandler
+import com.funtester.moco.support.QPSHandler
+import com.funtester.moco.support.RandomHandler
 import com.github.dreamhead.moco.ResponseHandler
 import com.github.dreamhead.moco.procedure.LatencyProcedure
 import com.google.common.collect.FluentIterable

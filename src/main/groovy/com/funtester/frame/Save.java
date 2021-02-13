@@ -12,10 +12,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import static com.funtester.config.Constant.*;
+
 /**
  * 用来保存数据的类，如果文件已经存在会删除原来的文件
  */
-public class Save extends SourceCode {
+public class Save {
 
     private static Logger logger = LoggerFactory.getLogger(Save.class);
 

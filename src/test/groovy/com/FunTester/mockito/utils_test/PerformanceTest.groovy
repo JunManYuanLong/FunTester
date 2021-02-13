@@ -1,22 +1,21 @@
 package com.FunTester.mockito.utils_test
 
-import com.fun.base.constaint.ThreadBase
-import com.fun.base.constaint.ThreadLimitTimesCount
-import com.fun.base.interfaces.MarkThread
-import com.fun.config.HttpClientConstant
-import com.fun.frame.SourceCode
-import com.fun.frame.httpclient.FanLibrary
-import com.fun.frame.thread.HeaderMark
-import com.fun.frame.thread.RequestThreadTime
-import com.fun.frame.thread.RequestThreadTimes
+import com.funtester.base.constaint.ThreadBase
+import com.funtester.base.constaint.ThreadLimitTimesCount
+import com.funtester.base.interfaces.MarkThread
+import com.funtester.config.HttpClientConstant
+import com.funtester.frame.SourceCode
+import com.funtester.frame.httpclient.FunLibrary
+import com.funtester.frame.thread.HeaderMark
+import com.funtester.frame.thread.RequestThreadTime
+import com.funtester.frame.thread.RequestThreadTimes
 import org.apache.http.client.methods.HttpGet
 import org.slf4j.Logger
 import spock.lang.Shared
 import spock.lang.Specification
 
-import static com.fun.config.Constant.EMPTY
-import static com.fun.config.Constant.TEST_ERROR_CODE
-import static com.fun.frame.SourceCode.getLogger
+import static com.funtester.config.Constant.EMPTY
+import static com.funtester.config.Constant.TEST_ERROR_CODE
 
 class PerformanceTest extends Specification {
 
@@ -41,9 +40,9 @@ class PerformanceTest extends Specification {
 
     def "测试并发情况下记录响应标记符的"() {
         given:
-        HttpGet httpGet = FanLibrary.getHttpGet("https://cn.bing.com/");
+        HttpGet httpGet = FunLibrary.getHttpGet("https://cn.bing.com/");
         MarkThread mark = new HeaderMark("requestid")
-        FanLibrary.getHttpResponse(httpGet);
+        FunLibrary.getHttpResponse(httpGet);
         HttpClientConstant.MAX_ACCEPT_TIME = -1
         RequestThreadTimes threadTimes = new RequestThreadTimes(httpGet, 2, mark);
 //        new Concurrent(threadTimes * 2,"测试并发情况下记录响应标记符的").start();
@@ -52,9 +51,9 @@ class PerformanceTest extends Specification {
 
     def "测试并发情况下记录响应标记符的,按照时间压测"() {
         given:
-        HttpGet httpGet = FanLibrary.getHttpGet("https://cn.bing.com/");
+        HttpGet httpGet = FunLibrary.getHttpGet("https://cn.bing.com/");
         MarkThread mark = new HeaderMark("requestid")
-        FanLibrary.getHttpResponse(httpGet);
+        FunLibrary.getHttpResponse(httpGet);
         HttpClientConstant.MAX_ACCEPT_TIME = -1
         RequestThreadTime threadTimes = new RequestThreadTime(httpGet, 1, mark);
 //        new Concurrent(threadTimes * 2).start();

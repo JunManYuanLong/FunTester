@@ -1,9 +1,9 @@
 package com.funtester.frame.thread
 
-import com.fun.base.constaint.ThreadBase
-import com.fun.base.exception.ParamException
-import com.fun.base.interfaces.MarkRequest
-import com.fun.frame.SourceCode
+import com.funtester.base.constaint.ThreadBase
+import com.funtester.base.exception.ParamException
+import com.funtester.base.interfaces.MarkRequest
+import com.funtester.frame.SourceCode
 import org.apache.http.client.methods.HttpRequestBase
 
 import java.util.concurrent.atomic.AtomicInteger

@@ -1,4 +1,4 @@
-package com.funtester.frame.httpclient;
+package com.funtester.httpclient;
 
 import com.funtester.base.exception.FailException;
 import com.funtester.config.Constant;

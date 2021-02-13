@@ -1,6 +1,6 @@
 package com.funtester.config;
 
-import com.fun.base.exception.ParamException;
+import com.funtester.base.exception.ParamException;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

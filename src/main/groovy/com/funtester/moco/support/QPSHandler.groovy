@@ -1,6 +1,6 @@
 package com.funtester.moco.support
 
-import com.fun.frame.SourceCode
+import com.funtester.frame.SourceCode
 import com.github.dreamhead.moco.ResponseHandler
 import com.github.dreamhead.moco.handler.AbstractResponseHandler
 import com.github.dreamhead.moco.internal.SessionContext

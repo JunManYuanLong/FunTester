@@ -1,4 +1,4 @@
-package com.funtester.frame.socket;
+package com.funtester.socket;
 
 import com.alibaba.fastjson.JSONObject;
 import com.funtester.base.bean.AbstractBean;

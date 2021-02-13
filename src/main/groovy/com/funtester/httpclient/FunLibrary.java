@@ -1,4 +1,4 @@
-package com.funtester.frame.httpclient;
+package com.funtester.httpclient;
 
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
@@ -45,9 +45,9 @@ import java.util.stream.Collectors;
 /**
  * 请求相关类，采用统一的静态方法，在登录后台管理页面是自动化设置cookie，其他公参由各自的base类实现header
  */
-public class FanLibrary extends SourceCode {
+public class FunLibrary extends SourceCode {
 
-    private static Logger logger = LoggerFactory.getLogger(FanLibrary.class);
+    private static Logger logger = LoggerFactory.getLogger(FunLibrary.class);
 
     /**
      * ibase实现类，需要用来校验响应是否正确的响应体，获取响应的code码，code码默认-2，对于不同的项目ibase的isright方法不一样
@@ -477,7 +477,7 @@ public class FanLibrary extends SourceCode {
     }
 
     public static void setiBase(IBase iBase) {
-        FanLibrary.iBase = iBase;
+        FunLibrary.iBase = iBase;
     }
 
     /**

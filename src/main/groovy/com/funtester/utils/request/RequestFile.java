@@ -2,7 +2,7 @@ package com.funtester.utils.request;
 
 import com.funtester.config.Constant;
 import com.funtester.config.RequestType;
-import com.funtester.frame.httpclient.FanLibrary;
+import com.funtester.httpclient.FunLibrary;
 import com.funtester.utils.RWUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.client.methods.HttpRequestBase;
@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
  * 从文件中读取接口相关参数，用来发送请求，实现接口请求的配置化
  * <p>从当前路径下获取后缀为.log的文件，以文件名为准读取文件内容</p>
  */
-public class RequestFile extends FanLibrary {
+public class RequestFile extends FunLibrary {
 
     private static Logger logger = LoggerFactory.getLogger(RequestFile.class);
 

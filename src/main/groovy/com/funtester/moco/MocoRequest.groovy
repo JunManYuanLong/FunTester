@@ -1,11 +1,11 @@
 package com.funtester.moco
 
-import com.fun.frame.SourceCode
+import com.funtester.frame.SourceCode
 import com.github.dreamhead.moco.RequestMatcher
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-import static com.fun.moco.support.JsonExtractor.queryJson
+import static com.funtester.moco.support.JsonExtractor.queryJson
 import static com.github.dreamhead.moco.Moco.*
 
 /**

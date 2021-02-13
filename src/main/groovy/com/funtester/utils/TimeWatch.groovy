@@ -1,15 +1,20 @@
 package com.funtester.utils
 
-import com.fun.config.Constant
+
+import com.funtester.frame.SourceCode
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
+import static com.funtester.config.Constant.LINE
+import static com.funtester.config.Constant.TAB
+import static com.funtester.frame.SourceCode.formatLong
+import static com.funtester.frame.SourceCode.getNanoMark
 /**
  * 时间观察者类，用于简单记录执行时间
  */
 @SuppressFBWarnings(["SE_TRANSIENT_FIELD_NOT_RESTORED", "CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE"])
-class TimeWatch extends Constant implements Serializable {
+class TimeWatch implements Serializable {
 
     private static final long serialVersionUID = -4156600036913348727L;
 
@@ -70,7 +75,7 @@ class TimeWatch extends Constant implements Serializable {
      * 重置
      */
     def reset() {
-        startNano = getNanoMark()
+        startNano = SourceCode.getNanoMark()
         startMillis = Time.getTimeStamp()
         this
     }
@@ -176,7 +181,7 @@ class TimeWatch extends Constant implements Serializable {
      */
     def getDiffTime(String name) {
         if (marks.containsKey(name)) {
-            def diff = marks.get(name).getStartTimeMillis() - this.getStartTimeMillis()
+            def diff = marks.get(name).getStartMillis() - this.getStartMillis()
             logger.info(LINE + "观察者：{}和标记：{}记录时间差：{} ms", name, name, formatLong(diff))
         } else {
             logger.warn("没有{}标记！", name)
@@ -190,7 +195,7 @@ class TimeWatch extends Constant implements Serializable {
      */
     def getDiffNanoTime(String name) {
         if (marks.containsKey(name)) {
-            def diff = marks.get(name).getStartNano() - this.getStartTime()
+            def diff = marks.get(name).getStartNano() - this.getStartNano()
             logger.info(LINE + "观察者：{}和标记：{}记录时间差：{} ns", name, name, formatLong(diff > 0 ? diff : -diff))
         } else {
             logger.warn("没有{}标记！", name)

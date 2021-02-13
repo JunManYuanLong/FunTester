@@ -2,7 +2,7 @@ package com.funtester.base.exception;
 
 import com.alibaba.fastjson.JSONObject;
 import com.funtester.frame.SourceCode;
-import com.funtester.frame.httpclient.FunRequest;
+import com.funtester.httpclient.FunRequest;
 import org.apache.http.client.methods.HttpRequestBase;
 
 /**

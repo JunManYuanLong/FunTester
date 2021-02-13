@@ -5,8 +5,8 @@ import org.slf4j.Logger
 import spock.lang.Shared
 import spock.lang.Specification
 
-import static com.fun.config.Constant.SPACE_1
-import static com.fun.frame.SourceCode.getLogger
+import static com.funtester.config.Constant.SPACE_1
+import static com.funtester.frame.SourceCode.getLogger
 import static org.mockito.AdditionalAnswers.returnsFirstArg
 import static org.mockito.Matchers.anyInt
 import static org.mockito.Mockito.*

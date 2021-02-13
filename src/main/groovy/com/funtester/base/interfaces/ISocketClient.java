@@ -1,8 +1,8 @@
 package com.funtester.base.interfaces;
 
 import com.alibaba.fastjson.JSONObject;
-import com.funtester.frame.socket.ScoketIOFunClient;
-import com.funtester.frame.socket.WebSocketFunClient;
+import com.funtester.socket.ScoketIOFunClient;
+import com.funtester.socket.WebSocketFunClient;
 
 import java.util.List;
 
@@ -45,7 +45,7 @@ public interface ISocketClient {
     /**
      * 克隆对象,性能测试中需要
      */
-    void clone();
+    ISocketClient clone();
 
     /**
      * 是否已连接
