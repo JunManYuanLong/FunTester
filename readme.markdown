@@ -16,4 +16,9 @@
 # [**7788篇**](/document/7788.markdown)
 
 [FunTester测试框架架构图](http://pic.automancloud.com/structure.png)
+
 [FunTester测试项目架构图](http://pic.automancloud.com/project.png)
+
+![FunTester测试框架架构图](http://pic.automancloud.com/structure.png)
+
+![FunTester测试项目架构图](http://pic.automancloud.com/project.png)
