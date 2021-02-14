@@ -14,6 +14,3 @@
 # [**基础篇**](/document/base.markdown)
 # [**升级篇**](/document/update.markdown)
 # [**7788篇**](/document/7788.markdown)
-
-
-![FunTester架构图Ô](http://pic.automancloud.com/structure.png)
