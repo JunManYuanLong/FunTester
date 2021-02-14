@@ -16,4 +16,4 @@
 # [**7788篇**](/document/7788.markdown)
 
 
-!(FunTester架构图)[/structure.png]
+!(FunTester架构图)[structure.png]
