@@ -14,3 +14,6 @@
 # [**基础篇**](/document/base.markdown)
 # [**升级篇**](/document/update.markdown)
 # [**7788篇**](/document/7788.markdown)
+
+
+!(FunTester架构图)[/blob/okay/structure.png]
