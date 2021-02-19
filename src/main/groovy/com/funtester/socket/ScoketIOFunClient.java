@@ -147,6 +147,7 @@ public class ScoketIOFunClient extends SourceCode {
         this.socket.connect();
         int a = 0;
         while (true) {
+            this.socket.connect();
             if (this.socket.connected()) break;
             if ((a++ > SocketConstant.MAX_RETRY)) FailException.fail(cname + "连接重试失败!");
             SourceCode.sleep(SocketConstant.WAIT_INTERVAL);

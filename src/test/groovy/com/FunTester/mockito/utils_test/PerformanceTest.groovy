@@ -5,10 +5,10 @@ import com.funtester.base.constaint.ThreadLimitTimesCount
 import com.funtester.base.interfaces.MarkThread
 import com.funtester.config.HttpClientConstant
 import com.funtester.frame.SourceCode
-import com.funtester.frame.httpclient.FunLibrary
 import com.funtester.frame.thread.HeaderMark
 import com.funtester.frame.thread.RequestThreadTime
 import com.funtester.frame.thread.RequestThreadTimes
+import com.funtester.httpclient.FunLibrary
 import org.apache.http.client.methods.HttpGet
 import org.slf4j.Logger
 import spock.lang.Shared

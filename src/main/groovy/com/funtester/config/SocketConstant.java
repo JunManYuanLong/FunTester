@@ -42,7 +42,7 @@ public class SocketConstant {
     /**
      * 请求超时
      */
-    public static int TIMEOUT = 1000;
+    public static int TIMEOUT = 10000;
 
     public static String[] transports = {"websocket"};
 

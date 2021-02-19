@@ -13,7 +13,7 @@ plugins {
     id 'java'
 }
 
-group 'FunTester'
+group 'funtester'
 version '1.0'
 
 apply plugin: 'groovy'
@@ -126,7 +126,7 @@ task createDirs() {
     }
 }
 task copyFun(type: Copy) {
-    from('/Users/fv/Documents/workspace/fun/build/libs')
+    from('/Users/fv/Documents/workspace/funtester/build/libs')
     into('/Users/fv/Library/groovy-2.5.7/lib')
     println "拷贝fun.jar包到Groovy依赖成功!"
 }
