@@ -6,6 +6,7 @@ import com.funtester.utils.Time;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -63,22 +64,58 @@ public class StatisticsUtil extends Constant {
      * @return
      */
     public static String statistics(List<Integer> data, String title, int threadNum) {
-        int size = data.size();//获取总数据量大小
-        Collections.sort(data);
-        if (size < BUCKET_SIZE * BUCKET_SIZE) return EMPTY;//过滤少量数据
-        int[] ints = range(1, BUCKET_SIZE + 1).map(x -> data.get(size * x / BUCKET_SIZE - size / BUCKET_SIZE / 2)).toArray();//获取取样点数据数组
-        int largest = ints[BUCKET_SIZE - 1];//获取最大值
-        String[][] map = Arrays.asList(ArrayUtils.toObject(ints)).stream().map(x -> getPercent(x, largest, BUCKET_SIZE)).collect(toList()).toArray(new String[BUCKET_SIZE][BUCKET_SIZE]);//转换成string二维数组
-        String[][] result = new String[BUCKET_SIZE][BUCKET_SIZE];
+        if (data.size() < BUCKET_SIZE * BUCKET_SIZE) return "数据量太少,无法绘图!";//过滤少量数据
+        List<Integer> nums = batchNums(data);
+        return draw(nums, StringUtil.center(((StringUtils.isEmpty(title)) ? DEFAULT_STRING : getTrueName(title) + TAB + (threadNum == 0 ? EMPTY : threadNum) + " threds"), BUCKET_SIZE * 3) + LINE + LINE + StringUtil.center("Response Time: x-serial num, y-median", BUCKET_SIZE * 3) + LINE + StringUtil.center("min median:" + nums.get(0) + " ms,max:" + nums.get(BUCKET_SIZE - 1) + " ms", BUCKET_SIZE * 3));
+    }
+
+    /**
+     * 根据数组画图,无序亦可
+     *
+     * @param data
+     * @param title
+     * @return
+     */
+    public static String draw(int[] data, String title) {
+        List<Integer> integers = Arrays.asList(ArrayUtils.toObject(data));
+        return draw(integers, title);
+    }
+
+    /**
+     * 根据数组画图,无序亦可
+     *
+     * @param data
+     * @param title
+     * @return
+     */
+    public static String draw(List<Integer> data, String title) {
+        int largest = Collections.max(data);
+        int buket = data.size();
+        String[][] map = data.stream().map(x -> getPercent(x, largest, buket)).collect(toList()).toArray(new String[buket][buket]);//转换成string二维数组
+        String[][] result = new String[buket][buket];
         /*将二维数组反转成竖排*/
-        for (int i = 0; i < BUCKET_SIZE; i++) {
-            for (int j = 0; j < BUCKET_SIZE; j++) {
-                result[i][j] = getManyString(map[j][BUCKET_SIZE - 1 - i], 2) + SPACE_1;
+        for (int i = 0; i < buket; i++) {
+            for (int j = 0; j < buket; j++) {
+                result[i][j] = getManyString(map[j][buket - 1 - i], 2) + SPACE_1;
             }
         }
-        StringBuffer table = new StringBuffer(LINE + StringUtil.center(((StringUtils.isEmpty(title)) ? DEFAULT_STRING : title.replaceAll("\\d{14}$", EMPTY) + threadNum), BUCKET_SIZE * 3) + LINE + LINE + StringUtil.center("Response Time: x-serial num, y-median", BUCKET_SIZE * 3) + LINE + StringUtil.center("min median:" + ints[0] + " ms,max:" + ints[BUCKET_SIZE - 1] + " ms", BUCKET_SIZE * 3) + LINE);
-        range(BUCKET_SIZE).forEach(x -> table.append(Arrays.asList(result[x]).stream().collect(Collectors.joining()) + LINE));
+        StringBuffer table = new StringBuffer(LINE + StringUtil.center(title, buket) + LINE);
+        range(buket).forEach(x -> table.append(Arrays.asList(result[x]).stream().collect(Collectors.joining()) + LINE));
         return table.toString();
+    }
+
+    /**
+     * 分割数组,变成可以图形化的数组
+     *
+     * @param data
+     * @return
+     */
+    public static List<Integer> batchNums(List<Integer> data) {
+        int size = data.size();//获取总数据量大小
+        Collections.sort(data);
+        return new ArrayList<Integer>() {{
+            range(1, BUCKET_SIZE + 1).forEach(x -> add(data.get(size * x / BUCKET_SIZE - size / BUCKET_SIZE / 2)));
+        }};
     }
 
     /**
@@ -120,12 +157,13 @@ public class StatisticsUtil extends Constant {
     }
 
     /**
-     * 用于
+     * 用于处理title,除去标记数字
      *
      * @param desc
      * @return
      */
     public static String getTrueName(String desc) {
+        if (StringUtils.isEmpty(desc)) return EMPTY;
         return desc.replaceAll("\\d{6}$", EMPTY);
     }
 
