@@ -106,7 +106,7 @@ public class StatisticsUtil extends Constant {
      * @return
      */
     public static String getFileName(int thread, String desc) {
-        return desc + COMMA + thread;
+        return desc + CONNECTOR + thread;
     }
 
     /**

@@ -329,7 +329,7 @@ public class SourceCode extends Output {
     public static void sleep(double time) {
         if (time > 100) FailException.fail("休眠时间过长,请更换其他方式!");
         try {
-            Thread.sleep((int) (time * 1000));
+            Thread.sleep((long) (time * 1000));
         } catch (InterruptedException e) {
             logger.warn("sleep发生错误！", e);
         }
