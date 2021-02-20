@@ -278,6 +278,7 @@
 - [这些年，我写过的BUG（一）](https://mp.weixin.qq.com/s/mVTmT1FdwWl1e0BaL7Ne1g)
 - [这些年，我写过的BUG（二）](https://mp.weixin.qq.com/s/NMz5n0ZMf6taGb-gr1BLyw)
 - [FunTester测试框架架构图初探](https://mp.weixin.qq.com/s/bcMbVDkWbHSXjZFDeFyJsQ)
+- [FunTester测试项目架构图初探](https://mp.weixin.qq.com/s/wqb8FXRbEXrhDuZounmNXA)
 
 > **FunTester**，[腾讯云年度作者，优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)，非著名测试开发，欢迎关注。
 
