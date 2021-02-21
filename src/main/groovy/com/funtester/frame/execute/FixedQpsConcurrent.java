@@ -187,7 +187,7 @@ public class FixedQpsConcurrent extends SourceCode {
     }
 
     /**
-     * 补偿线程
+     * 补偿线程,如果超过一半QPS量,才会进行补偿,补偿速率为每秒20个
      */
     class AidThread implements Runnable {
 
@@ -207,11 +207,11 @@ public class FixedQpsConcurrent extends SourceCode {
                     sleep(HttpClientConstant.LOOP_INTERVAL);
                     int actual = executeTimes.get();
                     int qps = baseThread.qps;
-                    long expect = (Time.getTimeStamp() - FixedQpsConcurrent.this.startTime) / 1000 * qps;
+                    long expect = (Time.getTimeStamp() - FixedQpsConcurrent.this.startTime) / 2000 * qps;
                     if (expect > actual + qps) {
                         logger.info("期望执行数:{},实际执行数:{},设置QPS:{}", expect, actual, qps);
                         range((int) expect - actual).forEach(x -> {
-                            sleep(0.1);
+                            sleep(0.05);
                             if (!executorService.isShutdown()) {
                                 executorService.execute(threads.get(this.i++ % queueLength).clone());
                             }
