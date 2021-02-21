@@ -308,7 +308,7 @@ public class SourceCode extends Output {
     }
 
     /**
-     * 线程休眠，超过30，单位是毫秒，小于等于30，单位是秒,此方法不适用于groovy脚本，groovy默认单位统一ms
+     * 线程休眠,单位是秒
      *
      * @param second 秒，可以是小数
      */
@@ -324,7 +324,7 @@ public class SourceCode extends Output {
     /**
      * 睡眠,提供更精准的休眠功能
      *
-     * @param time
+     * @param time 单位s
      */
     public static void sleep(double time) {
         if (time > 100) FailException.fail("休眠时间过长,请更换其他方式!");
