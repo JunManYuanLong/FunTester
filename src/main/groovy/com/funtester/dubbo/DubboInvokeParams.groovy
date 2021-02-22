@@ -1,8 +1,6 @@
 package com.funtester.dubbo
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 
-@SuppressFBWarnings("EI_EXPOSE_REP")
 class DubboInvokeParams {
 
     int length

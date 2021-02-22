@@ -2,7 +2,6 @@ package com.funtester.config;
 
 import com.funtester.utils.FileUtil;
 import com.funtester.utils.Time;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.http.Consts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +16,6 @@ import java.util.Properties;
 /**
  * 常量类
  */
-@SuppressFBWarnings({"MS_SHOULD_BE_FINAL", "NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE", "NS_DANGEROUS_NON_SHORT_CIRCUIT", "RV_RETURN_VALUE_IGNORED_BAD_PRACTICE"})
 public class Constant {
 
     private static Logger logger = LoggerFactory.getLogger(Constant.class);

@@ -6,7 +6,6 @@ import com.alibaba.fastjson.JSONException
 import com.alibaba.fastjson.JSONObject
 import com.funtester.base.exception.ParamException
 import com.funtester.utils.JsonUtil
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -15,7 +14,6 @@ import org.slf4j.LoggerFactory
  * 数字统一采用double类型,无法操作的String对象的方法返回empty
  * 操作符现在支持['>', '<', '=']三种,暂无增加计划
  */
-@SuppressFBWarnings(["HE_EQUALS_USE_HASHCODE", "EQ_UNUSUAL", "MS_SHOULD_BE_FINAL"])
 class JsonVerify extends SourceCode implements Comparable {
 
     public static Logger logger = LoggerFactory.getLogger(JsonVerify.class)

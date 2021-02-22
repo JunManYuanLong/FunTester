@@ -9,7 +9,6 @@ import com.funtester.frame.SourceCode;
 import com.funtester.httpclient.GCThread;
 import com.funtester.utils.Time;
 import com.funtester.utils.RWUtil;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +24,6 @@ import static java.util.stream.Collectors.toList;
 /**
  * 并发类，用于启动压力脚本
  */
-@SuppressFBWarnings({"ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD", "MS_SHOULD_BE_FINAL", "MS_PKGPROTECT"})
 public class FixedQpsConcurrent extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(FixedQpsConcurrent.class);
@@ -36,7 +34,6 @@ public class FixedQpsConcurrent extends SourceCode {
 
     public static AtomicInteger errorTimes = new AtomicInteger(0);
 
-    @SuppressFBWarnings("MS_CANNOT_BE_FINAL")
     public static Vector<String> marks = new Vector<>();
 
     /**
@@ -47,7 +44,6 @@ public class FixedQpsConcurrent extends SourceCode {
     /**
      * 用于记录所有请求时间
      */
-    @SuppressFBWarnings("MS_CANNOT_BE_FINAL")
     public static Vector<Long> allTimes = new Vector<>();
 
     /**

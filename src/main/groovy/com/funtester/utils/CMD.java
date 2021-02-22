@@ -1,6 +1,5 @@
 package com.funtester.utils;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +14,6 @@ import static com.funtester.config.Constant.*;
  */
 public class CMD {
 
-    @SuppressFBWarnings("MS_SHOULD_BE_FINAL")
     private static Logger logger = LoggerFactory.getLogger(CMD.class);
 
     /**

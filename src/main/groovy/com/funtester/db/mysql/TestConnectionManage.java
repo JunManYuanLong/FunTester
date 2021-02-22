@@ -1,7 +1,6 @@
 package com.funtester.db.mysql;
 
 import com.funtester.config.SqlConstant;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,7 +10,6 @@ import java.sql.SQLException;
  * 测试数据存储数据库连接管理类
  * <p>放弃使用该方式存储，换成springboot数据库服务</p>
  */
-@SuppressFBWarnings("MS_SHOULD_BE_FINAL")
 @Deprecated
 public class TestConnectionManage extends SqlBase {
 

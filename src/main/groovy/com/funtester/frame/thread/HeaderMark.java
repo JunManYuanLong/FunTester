@@ -5,18 +5,15 @@ import com.funtester.base.exception.ParamException;
 import com.funtester.base.interfaces.MarkRequest;
 import com.funtester.frame.SourceCode;
 import com.funtester.utils.StringUtil;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.http.client.methods.HttpRequestBase;
 
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@SuppressFBWarnings("CN_IDIOM_NO_SUPER_CALL")
 public class HeaderMark extends SourceCode implements MarkRequest, Cloneable, Serializable {
 
     private static final long serialVersionUID = -1595942567071153477L;
 
-    @SuppressFBWarnings("MS_SHOULD_BE_FINAL")
     public static AtomicInteger threadName = new AtomicInteger(getRandomIntRange(1000, 9000));
 
     String headerName;

@@ -3,7 +3,6 @@ package com.funtester.db.mysql;
 import com.funtester.config.SqlConstant;
 import com.funtester.frame.Output;
 import com.funtester.frame.SourceCode;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -19,7 +18,6 @@ public class MySqlObject {
     /**
      * 标记多少辅助线程存活数量
      */
-    @SuppressFBWarnings("MS_SHOULD_BE_FINAL")
     public static AtomicInteger threadNum = new AtomicInteger(0);
     /**
      * 标记连接使用

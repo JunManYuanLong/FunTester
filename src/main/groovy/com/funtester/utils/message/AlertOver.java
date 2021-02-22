@@ -6,7 +6,6 @@ import com.funtester.base.interfaces.IMessage;
 import com.funtester.db.mysql.MySqlTest;
 import com.funtester.config.SysInit;
 import com.alibaba.fastjson.JSONObject;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.http.client.methods.HttpPost;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -98,7 +97,6 @@ public class AlertOver extends FunLibrary implements IMessage {
      *
      * @return
      */
-    @SuppressFBWarnings("DLS_DEAD_LOCAL_STORE")
     public void sendMessage(String source) {
         if (SysInit.isBlack(murl)) return;
         String url = "https://api.alertover.com/v1/alert";

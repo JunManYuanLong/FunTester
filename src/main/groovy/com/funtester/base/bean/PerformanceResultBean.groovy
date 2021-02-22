@@ -7,7 +7,6 @@ import com.funtester.utils.DecodeEncode
 /**
  * 性能测试结果集
  */
-@edu.umd.cs.findbugs.annotations.SuppressFBWarnings(value = "SE_TRANSIENT_FIELD_NOT_RESTORED")
 class PerformanceResultBean extends AbstractBean implements Serializable{
 
     private static final long serialVersionUID = -1595942562342357L;

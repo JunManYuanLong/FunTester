@@ -3,14 +3,12 @@ package com.funtester.config
 import com.alibaba.fastjson.JSONObject
 import com.funtester.utils.RWUtil
 import com.funtester.frame.SourceCode
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 /**
  * 读取配置工具
  */
-@SuppressFBWarnings("MS_SHOULD_BE_FINAL")
 class PropertyUtils extends SourceCode {
 
     public static Logger logger = LoggerFactory.getLogger(PropertyUtils.class)

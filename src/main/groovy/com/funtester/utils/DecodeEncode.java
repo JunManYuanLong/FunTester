@@ -2,7 +2,6 @@ package com.funtester.utils;
 
 import com.funtester.base.exception.FailException;
 import com.funtester.config.Constant;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +21,6 @@ import java.util.zip.InflaterOutputStream;
 /**
  * 编码格式转码解码类
  */
-@SuppressFBWarnings("DM_DEFAULT_ENCODING")
 public class DecodeEncode extends Constant{
 
     private static Logger logger = LoggerFactory.getLogger(DecodeEncode.class);

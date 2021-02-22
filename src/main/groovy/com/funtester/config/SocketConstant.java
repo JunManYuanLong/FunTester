@@ -1,11 +1,9 @@
 package com.funtester.config;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * socket测试相关的配置
  */
-@SuppressFBWarnings("MS_SHOULD_BE_FINAL")
 public class SocketConstant {
 
     /* WebSocket独享配置     */

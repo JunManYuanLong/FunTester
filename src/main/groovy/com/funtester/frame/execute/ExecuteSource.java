@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.funtester.base.exception.FailException;
 import com.funtester.config.Constant;
 import com.funtester.frame.SourceCode;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@SuppressFBWarnings({"NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE", "NP_NULL_ON_SOME_PATH_EXCEPTION"})
 public class ExecuteSource extends SourceCode {
 
     private static Logger logger = LoggerFactory.getLogger(ExecuteSource.class);

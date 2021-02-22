@@ -4,7 +4,6 @@ import com.funtester.base.exception.FailException;
 import com.funtester.config.SocketConstant;
 import com.funtester.frame.SourceCode;
 import com.funtester.utils.StringUtil;
-import io.netty.util.internal.ConcurrentSet;
 import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
@@ -13,9 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.URISyntaxException;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * 基于Socket.IO的Client封装对象
@@ -74,7 +71,7 @@ public class ScoketIOFunClient extends SourceCode {
     /**
      * 监听事件记录
      */
-    public ConcurrentSet<String> events = new ConcurrentSet<>();
+    public Set<String> events = new HashSet<>();
 
 
     private ScoketIOFunClient(String url, Socket socket) {

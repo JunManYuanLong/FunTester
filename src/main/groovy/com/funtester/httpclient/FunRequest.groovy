@@ -16,12 +16,10 @@ import org.apache.http.client.methods.RequestBuilder
 import org.apache.http.util.EntityUtils
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * 重写FunLibrary，使用面对对象思想,不用轻易使用set属性方法,可能存在BUG
  */
-@SuppressFBWarnings(["CN_IDIOM_NO_SUPER_CALL", "SE_TRANSIENT_FIELD_NOT_RESTORED"])
 class FunRequest extends FunLibrary implements Serializable, Cloneable {
 
     private static final long serialVersionUID = -4153600036943378727L;

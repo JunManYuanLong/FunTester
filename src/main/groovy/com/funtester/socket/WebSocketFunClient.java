@@ -8,7 +8,6 @@ import com.funtester.config.Constant;
 import com.funtester.config.SocketConstant;
 import com.funtester.frame.SourceCode;
 import com.funtester.utils.StringUtil;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.enums.ReadyState;
 import org.java_websocket.handshake.ServerHandshake;
@@ -24,7 +23,6 @@ import java.util.Vector;
 /**
  * socket客户端代码,限于WebSocket协议的测试
  */
-@SuppressFBWarnings({"CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE", "DM_DEFAULT_ENCODING", "MS_SHOULD_BE_FINAL"})
 public class WebSocketFunClient extends WebSocketClient {
 
     private static Logger logger = LoggerFactory.getLogger(WebSocketFunClient.class);

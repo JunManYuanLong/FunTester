@@ -7,7 +7,6 @@ import com.funtester.frame.Save;
 import com.funtester.frame.SourceCode;
 import com.funtester.utils.Time;
 import com.funtester.utils.RWUtil;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,13 +69,11 @@ public class Concurrent extends SourceCode {
     /**
      * 用于记录所有请求时间
      */
-    @SuppressFBWarnings("MS_CANNOT_BE_FINAL")
     public static Vector<Long> allTimes = new Vector<>();
 
     /**
      * 记录所有markrequest的信息
      */
-    @SuppressFBWarnings("MS_CANNOT_BE_FINAL")
     public static Vector<String> requestMark = new Vector<>();
 
     /**

@@ -1,11 +1,9 @@
 package com.funtester.config;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  *
  */
-@SuppressFBWarnings("MS_SHOULD_BE_FINAL")
 public class SqlConstant {
 
     static PropertyUtils.Property propertyUtils = PropertyUtils.getProperties("mysql");

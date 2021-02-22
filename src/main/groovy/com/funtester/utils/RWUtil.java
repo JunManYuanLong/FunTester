@@ -5,7 +5,6 @@ import com.funtester.base.exception.FailException;
 import com.funtester.base.exception.ParamException;
 import com.funtester.config.Constant;
 import com.funtester.frame.SourceCode;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +18,6 @@ import java.util.stream.Collectors;
 /**
  * 文件读写类,与{@link FileUtil}有功能上的重合,原因在与Java和Groovy的不兼容问题.
  */
-@SuppressFBWarnings("DM_DEFAULT_ENCODING")
 public class RWUtil {
 
     private static Logger logger = LoggerFactory.getLogger(RWUtil.class);

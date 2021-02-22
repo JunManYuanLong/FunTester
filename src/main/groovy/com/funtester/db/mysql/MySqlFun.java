@@ -2,7 +2,6 @@ package com.funtester.db.mysql;
 
 import com.funtester.base.interfaces.IMySqlBasic;
 import com.funtester.config.SqlConstant;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,7 +11,6 @@ import java.sql.Statement;
  * mysql操作的基础类
  * <p>用于存储数据，多用于爬虫</p>
  */
-@SuppressFBWarnings("URF_UNREAD_FIELD")
 @Deprecated
 public class MySqlFun extends SqlBase implements IMySqlBasic {
 
