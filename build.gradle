@@ -19,7 +19,7 @@ version '1.0'
 apply plugin: 'groovy'
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'distribution'   //打包tar包用到的插件
+//apply plugin: 'distribution'   //打包tar包用到的插件
 
 idea {
     module {
@@ -65,17 +65,15 @@ dependencies {
     compile group: 'org.apache.httpcomponents', name: 'httpasyncclient', version: '4.1.4'
     compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.8.0'
     compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
-    compile group: 'com.sun.jna', name: 'jna', version: '3.0.9'
+//    compile group: 'com.sun.jna', name: 'jna', version: '3.0.9'
     compile group: 'com.alibaba', name: 'fastjson', version: '1.2.62'
     compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.9.0'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.12.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.12.1'
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
-    compile group: 'org.slf4j', name: 'jcl-over-slf4j', version: '1.7.25'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
-    compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.0'
-    compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.0'
+//    compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.0'
+//    compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.0'
     compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.5.7'
     compile group: 'redis.clients', name: 'jedis', version: '3.0.1'
     compile group: 'com.alibaba', name: 'dubbo', version: '2.5.3'
@@ -172,22 +170,22 @@ task prepareFile(dependsOn: [
 ]) {}//如果没有内容的话,可以不需要大括号
 //还有一种写法表示task之间的依赖:prepareFile.dependsOn createDirs,copyLibs,copyConf,copyBin,copyDep
 //指定打包的tar包的名字，以及文件来源目录
-distributions {
-    monitor {
-        baseName = 'azkaban-monitor'
-        contents {
-            from {'build/package'}
-        }
-    }
-}
+//distributions {
+//    monitor {
+//        baseName = 'azkaban-monitor'
+//        contents {
+//            from {'build/package'}
+//        }
+//    }
+//}
 
 //distribution 插件的特性
-monitorDistTar.dependsOn 'prepareFile'
-monitorDistTar.compression = Compression.NONE
-monitorDistTar.extension = 'tar'
+//monitorDistTar.dependsOn 'prepareFile'
+//monitorDistTar.compression = Compression.NONE
+//monitorDistTar.extension = 'tar'
 
 //定义一个task，先build 然后再打包tar包
-task buildTar(dependsOn: [
-        'build',
-        monitorDistTar
-]) {}
+//task buildTar(dependsOn: [
+//        'build',
+//        monitorDistTar
+//]) {}
