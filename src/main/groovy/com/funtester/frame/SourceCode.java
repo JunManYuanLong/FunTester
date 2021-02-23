@@ -7,9 +7,11 @@ import com.funtester.base.exception.ParamException;
 import com.funtester.base.interfaces.IMessage;
 import com.funtester.utils.Regex;
 import com.funtester.utils.Time;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.CollectionUtils;
 
 import java.io.*;
 import java.text.DecimalFormat;
@@ -389,6 +391,7 @@ public class SourceCode extends Output {
      * @return
      */
     public static String random(String... fs) {
+        if (ArrayUtils.isEmpty(fs)) ParamException.fail("数组不能为空!");
         return fs[getRandomInt(fs.length) - 1];
     }
 
@@ -400,6 +403,7 @@ public class SourceCode extends Output {
      * @return
      */
     public static <F extends Object> F random(List<F> list) {
+        if (CollectionUtils.isEmpty(list)) ParamException.fail("数组不能为空!");
         return list.get(getRandomInt(list.size()) - 1);
     }
 
