@@ -69,7 +69,7 @@ public class ScoketIOFunClient extends SourceCode {
     public Socket socket;
 
     /**
-     * 监听事件记录
+     * 监听事件记录,此处使用量很小,故而不考虑线程安全
      */
     public Set<String> events = new HashSet<>();
 
