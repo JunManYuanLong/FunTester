@@ -63,7 +63,7 @@ public class FunLibrary extends SourceCode {
     public static void noHeader() {
         HEADER_KEY = false;
     }
-    
+
     /**
      * 最近发送的请求
      */
@@ -352,12 +352,12 @@ public class FunLibrary extends SourceCode {
             int data_size = content.length();
             res.putAll(getJsonResponse(content, setCookies));
             int code = iBase == null ? -2 : iBase.checkCode(res, requestInfo);
-            if (iBase != null && !iBase.isRight(res))
-                new AlertOver("响应状态码错误：" + status, "状态码错误：" + status, requestInfo.getUrl(), requestInfo).sendSystemMessage();
+//            if (iBase != null && !iBase.isRight(res))
+//                new AlertOver("响应状态码错误：" + status, "状态码错误：" + status, requestInfo.getUrl(), requestInfo).sendSystemMessage();
             MySqlTest.saveApiTestDate(requestInfo, data_size, elapsed_time, status, getMark(), code, LOCAL_IP, COMPUTER_USER_NAME);
-            if (SAVE_KEY) FunRequest.save(request, res);
+//            if (SAVE_KEY) FunRequest.save(request, res);
         } catch (Exception e) {
-            logger.warn("获取请求相应失败！", e);
+            logger.warn("获取请求相应失败！请求内容:{}", FunRequest.initFromRequest(request).toString(), e);
             if (!requestInfo.isBlack())
                 new AlertOver("接口请求失败", requestInfo.toString(), requestInfo.getUrl(), requestInfo).sendSystemMessage();
         } finally {
