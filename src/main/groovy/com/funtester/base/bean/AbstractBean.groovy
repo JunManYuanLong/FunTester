@@ -6,7 +6,6 @@ import com.funtester.frame.Save
 import com.funtester.frame.SourceCode
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.beans.BeanUtils
 
 /**
  * bean的基类
@@ -47,11 +46,11 @@ abstract class AbstractBean {
     }
 
     def copyFrom(AbstractBean source) {
-        BeanUtils.copyProperties(source, this)
+        JSON.parseObject(JSON.toJSONString(source), source.class)
     }
 
     def copyTo(AbstractBean target) {
-        BeanUtils.copyProperties(this, target)
+        JSON.parseObject(JSON.toJSONString(this, target.class))
     }
 
     /**
