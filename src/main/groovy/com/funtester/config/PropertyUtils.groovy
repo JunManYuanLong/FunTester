@@ -6,6 +6,8 @@ import com.funtester.frame.SourceCode
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
+import java.util.stream.Stream
+
 /**
  * 读取配置工具
  */
@@ -116,7 +118,17 @@ class PropertyUtils extends SourceCode {
          * @return
          */
         String[] getArrays(String name) {
-            getProperty(name).split(",")
+            getProperty(name).split(COMMA)
+        }
+
+        /**
+         * 获取数字类型的数组
+         * @param name
+         * @return
+         */
+        Integer[] getIntArray(String name) {
+            def split = getProperty(name).split(COMMA)
+            Stream.of(split).map { x -> x as Integer }.toArray()
         }
 
         /**

@@ -15,12 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -89,9 +85,8 @@ public class MySqlTest extends SqlBase {
      * @param computerName
      */
     public static void saveApiTestDate(RequestInfo requestInfo, int data_size, long expend_time, int status, int mark, int code, String localIP, String computerName) {
-        logger.debug("请求信息：{}", requestInfo.toString());
         logger.info("请求uri：{},耗时：{} ms, {}", requestInfo.getUri(), expend_time, requestInfo.mark());
-        if (SysInit.isBlack(requestInfo.getHost())) return;
+        if (StringUtils.isEmpty(SqlConstant.REQUEST_TABLE) || SysInit.isBlack(requestInfo.getHost())) return;
         String sql = String.format("INSERT INTO " + SqlConstant.REQUEST_TABLE + " (domain,api,data_size,expend_time,status,type,method,code,local_ip,local_name,create_time) VALUES ('%s','%s',%d,%d,%d,'%s','%s',%d,'%s','%s','%s');", requestInfo.getHost(), requestInfo.getApiName(), data_size, expend_time, status, requestInfo.getType(), requestInfo.getMethod().getName(), code, localIP, computerName, Time.getDate());
 //        RecordBean requestBean = new RecordBean();
 //        requestBean.setApi(requestInfo.getApiName());
@@ -163,22 +158,22 @@ public class MySqlTest extends SqlBase {
      *
      * @return
      */
-    public static List<String> getAllCaseName() {
-        List<String> list = new ArrayList<>();
-        if (SqlConstant.CLASS_TABLE == null) return list;
-        String sql = "SELECT * FROM " + SqlConstant.CLASS_TABLE + " WHERE flag = 1 ORDER BY create_time DESC;";
-        TestConnectionManage.getQueryConnection();
-        ResultSet resultSet = executeQuerySql(connection0, statement0, sql);
-        try {
-            while (resultSet != null && resultSet.next()) {
-                String className = resultSet.getString("class");
-                list.add(className);
-            }
-        } catch (SQLException e) {
-            logger.warn(sql, e);
-        }
-        return list;
-    }
+//    public static List<String> getAllCaseName() {
+//        List<String> list = new ArrayList<>();
+//        if (SqlConstant.CLASS_TABLE == null) return list;
+//        String sql = "SELECT * FROM " + SqlConstant.CLASS_TABLE + " WHERE flag = 1 ORDER BY create_time DESC;";
+//        TestConnectionManage.getQueryConnection();
+//        ResultSet resultSet = executeQuerySql(connection0, statement0, sql);
+//        try {
+//            while (resultSet != null && resultSet.next()) {
+//                String className = resultSet.getString("class");
+//                list.add(className);
+//            }
+//        } catch (SQLException e) {
+//            logger.warn(sql, e);
+//        }
+//        return list;
+//    }
 
     /**
      * 获取用例状态
@@ -186,32 +181,32 @@ public class MySqlTest extends SqlBase {
      * @param name
      * @return
      */
-    public static boolean getCaseStatus(String name) {
-        if (SqlConstant.CLASS_TABLE == null) return false;
-        String sql = "SELECT flag FROM " + SqlConstant.CLASS_TABLE + " WHERE class = \"" + name + "\";";
-        TestConnectionManage.getQueryConnection();
-        ResultSet resultSet = executeQuerySql(connection0, statement0, sql);
-        try {
-            if (resultSet != null && resultSet.next()) {
-                int flag = resultSet.getInt(1);
-                return flag == 1 ? true : false;
-            }
-        } catch (SQLException e) {
-            logger.warn(sql, e);
-        }
-        return false;
-    }
+//    public static boolean getCaseStatus(String name) {
+//        if (SqlConstant.CLASS_TABLE == null) return false;
+//        String sql = "SELECT flag FROM " + SqlConstant.CLASS_TABLE + " WHERE class = \"" + name + "\";";
+//        TestConnectionManage.getQueryConnection();
+//        ResultSet resultSet = executeQuerySql(connection0, statement0, sql);
+//        try {
+//            if (resultSet != null && resultSet.next()) {
+//                int flag = resultSet.getInt(1);
+//                return flag == 1 ? true : false;
+//            }
+//        } catch (SQLException e) {
+//            logger.warn(sql, e);
+//        }
+//        return false;
+//    }
 
 
     /**
      * 确保所有的储存任务都结束
      */
-    private static void check() {
-        while (sqls.size() != 0) {
-            sleep(100);
-        }
-        TestConnectionManage.stopAllThread();
-    }
+//    private static void check() {
+//        while (sqls.size() != 0) {
+//            sleep(100);
+//        }
+//        TestConnectionManage.stopAllThread();
+//    }
 
     /**
      * 执行sql语句，非query语句，并不关闭连接
@@ -219,20 +214,20 @@ public class MySqlTest extends SqlBase {
      * @param sql
      * @param key
      */
-    static void executeUpdateSql(String sql, boolean key) {
-        int size = getWaitWorkNum();
-        if (size % 3 == 1 && size > MySqlObject.getThreadNum() * (SqlConstant.MYSQL_WORK_PER_THREAD + 1) && size < SqlConstant.MYSQL_MAX_WAIT_WORK)
-            new Thread(new AidThread()).start();
-        if (key) {
-            TestConnectionManage.getUpdateConnection1();
-            executeUpdateSql(connection1, statement1, sql);
-            TestConnectionManage.updateLastUpdate1();
-        } else {
-            TestConnectionManage.getUpdateConnection2();
-            executeUpdateSql(connection2, statement2, sql);
-            TestConnectionManage.updateLastUpdate2();
-        }
-    }
+//    static void executeUpdateSql(String sql, boolean key) {
+//        int size = getWaitWorkNum();
+//        if (size % 3 == 1 && size > MySqlObject.getThreadNum() * (SqlConstant.MYSQL_WORK_PER_THREAD + 1) && size < SqlConstant.MYSQL_MAX_WAIT_WORK)
+//            new Thread(new AidThread()).start();
+//        if (key) {
+//            TestConnectionManage.getUpdateConnection1();
+//            executeUpdateSql(connection1, statement1, sql);
+//            TestConnectionManage.updateLastUpdate1();
+//        } else {
+//            TestConnectionManage.getUpdateConnection2();
+//            executeUpdateSql(connection2, statement2, sql);
+//            TestConnectionManage.updateLastUpdate2();
+//        }
+//    }
 
     /**
      * 发送数据库任务，暂时用请求服务器接口
@@ -307,34 +302,34 @@ public class MySqlTest extends SqlBase {
      * @param sql
      * @return
      */
-    public static ResultSet executeQuerySql(String sql) {
-        TestConnectionManage.getQueryConnection();
-        return executeQuerySql(connection0, statement0, sql);
-    }
+//    public static ResultSet executeQuerySql(String sql) {
+//        TestConnectionManage.getQueryConnection();
+//        return executeQuerySql(connection0, statement0, sql);
+//    }
 
 
     /**
      * 关闭数据库链接的方法，供外部使用
      */
-    public static void mySqlOver() {
-        mySqlQueryOver();
-    }
+//    public static void mySqlOver() {
+//        mySqlQueryOver();
+//    }
 
     /**
      * 关闭update连接
      */
-    static void mySqlUpdateOver() {
-        check();
-        mySqlOver(connection1, statement1);
-        mySqlOver(connection2, statement2);
-    }
+//    static void mySqlUpdateOver() {
+//        check();
+//        mySqlOver(connection1, statement1);
+//        mySqlOver(connection2, statement2);
+//    }
 
     /**
      * 关闭query连接
      */
-    public static void mySqlQueryOver() {
-        mySqlOver(connection0, statement0);
-    }
+//    public static void mySqlQueryOver() {
+//        mySqlOver(connection0, statement0);
+//    }
 
 
 }
