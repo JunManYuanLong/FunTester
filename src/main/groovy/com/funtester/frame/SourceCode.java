@@ -11,7 +11,6 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.CollectionUtils;
 
 import java.io.*;
 import java.text.DecimalFormat;
@@ -403,7 +402,7 @@ public class SourceCode extends Output {
      * @return
      */
     public static <F extends Object> F random(List<F> list) {
-        if (CollectionUtils.isEmpty(list)) ParamException.fail("数组不能为空!");
+        if (list == null || list.isEmpty()) ParamException.fail("数组不能为空!");
         return list.get(getRandomInt(list.size()) - 1);
     }
 
