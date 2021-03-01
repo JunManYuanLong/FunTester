@@ -89,7 +89,7 @@ public class Progress extends SourceCode implements Runnable {
         while (st) {
             sleep(HttpClientConstant.LOOP_INTERVAL);
             pro = isTimesMode ? base.executeNum == 0 ? FixedQpsConcurrent.executeTimes.get() * 1.0 / limit : base.executeNum * 1.0 / limit : (Time.getTimeStamp() - startTime) * 1.0 / limit;
-            if (pro >= LENGTH) break;
+            if (pro > 0.9) break;
             if (st)
                 logger.info("{}进度:{}  {}", taskDesc, getManyString(ONE, (int) (pro * LENGTH)), getPercent(pro * 100));
         }
