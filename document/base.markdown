@@ -62,6 +62,7 @@
 - [性能测试中异步展示测试进度](https://mp.weixin.qq.com/s/AOERJbEc4ATJqhjvnxgQoA)
 - [Java中的ThreadLocal功能演示](https://mp.weixin.qq.com/s/n92k1JswHKrqT7Y_CD9Q0w)
 - [ThreadLocal在链路性能测试中实践](https://mp.weixin.qq.com/s/3qhNdHHSStELzNraQSpcew)
+- [歪解字符串中连续出现次数最多问题](https://mp.weixin.qq.com/s/xBy4iB4qLd4WQgCsVVuemw)
 
 ## Groovy
 
@@ -124,3 +125,5 @@
 - [我的开发日记（十五）](https://mp.weixin.qq.com/s/bwkvz2t6YItQD0O_BIxpHQ)
 - [这些年，我写过的BUG（一）](https://mp.weixin.qq.com/s/mVTmT1FdwWl1e0BaL7Ne1g)
 - [这些年，我写过的BUG（二）](https://mp.weixin.qq.com/s/NMz5n0ZMf6taGb-gr1BLyw)
+- [FunTester测试框架架构图初探](https://mp.weixin.qq.com/s/bcMbVDkWbHSXjZFDeFyJsQ)
+- [FunTester测试项目架构图初探](https://mp.weixin.qq.com/s/wqb8FXRbEXrhDuZounmNXA)

@@ -150,7 +150,7 @@
 - [性能测试中异步展示测试进度](https://mp.weixin.qq.com/s/AOERJbEc4ATJqhjvnxgQoA)
 - [ThreadLocal在链路性能测试中实践](https://mp.weixin.qq.com/s/3qhNdHHSStELzNraQSpcew)
 - [Socket接口固定QPS性能测试实践](https://mp.weixin.qq.com/s/I9-14L8THxvtX1NJY0KPfw)
-
+- [单链路性能测试实践](https://mp.weixin.qq.com/s/4xHLP-GZwrNu5cFKdfsB6g)
 
 > **FunTester**，[腾讯云年度作者，优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)，非著名测试开发，欢迎关注。
 
@@ -562,6 +562,8 @@
 - [移动测试工程师职业](https://mp.weixin.qq.com/s/dhtR4TbQNu5fWpmJkXGivw)
 - [远程测试工作挑战](https://mp.weixin.qq.com/s/LK-GEN4OtuWVGDuG8psmOQ)
 - [自动化测试用例的原子性](https://mp.weixin.qq.com/s/jA5WMHwJcu88nHXWoMBAdQ)
+- [可测性经验分享](https://mp.weixin.qq.com/s/iRtUjESYS3sh3YTD-BWjdA)
+- [敏捷中的回归测试的优化【译】](https://mp.weixin.qq.com/s/nDiZZgA1PIiAUCG_xwA2rA)
 
 ## 大咖风采
 
@@ -569,7 +571,7 @@
 - [Android App 测试工具及知识大集合](https://mp.weixin.qq.com/s/Xk9rCW8whXOTAQuCfhZqTg)
 - [Android App常规测试内容](https://mp.weixin.qq.com/s/tweeoS5wTqK3k7R2TVuDXA)
 - [JVM的对象和堆](https://mp.weixin.qq.com/s/iNDpTz3gBK3By_bvUnrWOA)
- 
+
 # UI自动化
 
 ## UI自动化
@@ -686,3 +688,4 @@
 - [原创打油诗欣赏](https://mp.weixin.qq.com/s/3hPSDjH-3cWu6EVsjU0wOw)
 - [优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)
 - [假期思考题](https://mp.weixin.qq.com/s/3DOnkmYDlwk-XKg4ge3ZUw)
+- [甩锅技能+1](https://mp.weixin.qq.com/s/nMwlfXZoDcRRPHcTKpvfNg)
