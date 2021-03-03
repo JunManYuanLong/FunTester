@@ -22,10 +22,10 @@
                      filePattern="log/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
             <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
             <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
-            <PatternLayout pattern="%d{HH:mm:ss} %t %-4level %l - %m%n"/>
+            <PatternLayout pattern="%d{dd HH:mm:ss} %t %-4level %l - %m%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
-                <SizeBasedTriggeringPolicy size="5 MB"/>
+                <SizeBasedTriggeringPolicy size="8 MB"/>
             </Policies>
             <!--            <CronTriggeringPolicy schedule="* * * * * ?"/>-->
             <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
@@ -44,10 +44,10 @@
         <RollingFile name="RollingFileWarn" fileName="log/warn.log"
                      filePattern="log/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log">
             <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
-            <PatternLayout pattern="%d{HH:mm:ss} %t %-4level %l - %m%n"/>
+            <PatternLayout pattern="%d{dd HH:mm:ss} %t %-4level %l - %m%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
-                <SizeBasedTriggeringPolicy size="2 MB"/>
+                <SizeBasedTriggeringPolicy size="5 MB"/>
             </Policies>
             <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
             <DefaultRolloverStrategy max="10">
