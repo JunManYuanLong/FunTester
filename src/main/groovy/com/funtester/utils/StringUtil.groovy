@@ -40,7 +40,7 @@ class StringUtil extends SourceCode {
         def re = new StringBuffer()
         if (i < 1) return re
         for (int j in 1..i) {
-            re.append(getChar())
+            re << getChar()
         }
         re.toString()
     }
@@ -71,7 +71,7 @@ class StringUtil extends SourceCode {
         def re = new StringBuffer()
         if (i < 1) return re
         for (int j in 1..i) {
-            re.append(getWord())
+            re << getWord()
         }
         re.toString()
     }
@@ -107,7 +107,7 @@ class StringUtil extends SourceCode {
      */
     static String getChinese(int i) {
         if (i <= 0) return "〇〇〇"
-        String num = (i + EMPTY).collect {x -> chineses[changeStringToInt(x)]}.join()
+        String num = (i + EMPTY).collect { x -> chineses[changeStringToInt(x)] }.join()
         num.length() > 2 ? num : getManyString(chineses[0] + EMPTY, 3 - num.length()) + num
     }
 
@@ -118,7 +118,7 @@ class StringUtil extends SourceCode {
      */
     static String getCapeChinese(int i) {
         if (i <= 0) return "零零零"
-        def num = (i + EMPTY).collect {x -> capeChineses[changeStringToInt(x)]}.join()
+        def num = (i + EMPTY).collect { x -> capeChineses[changeStringToInt(x)] }.join()
         num.length() > 2 ? num : getManyString(capeChineses[0] + EMPTY, 3 - num.length()) + num
     }
 
@@ -129,7 +129,7 @@ class StringUtil extends SourceCode {
      * @return
      */
     public static String getEmojis(int size) {
-        range(size).map {x -> getEmojis()}.collect(Collectors.toString());
+        range(size).map { x -> getEmojis() }.collect(Collectors.toString());
     }
 
     /**
