@@ -180,7 +180,7 @@ public class ClientManage {
         return new HttpRequestRetryHandler() {
             public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
                 boolean log = log(exception, executionCount, context);
-                if (log) logger.warn("请求发生重试! 次数: {}", executionCount + 1);
+                if (log) logger.warn("请求发生重试! 次数: {}", executionCount);
                 return log;
             }
 
