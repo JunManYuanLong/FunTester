@@ -107,8 +107,8 @@ class RequestInfo extends AbstractBean implements Serializable {
         isBlack = SysInit.isBlack(host)
         type = url.substring(0, url.indexOf("//") - 1)// 获取协议类型
         if (method == RequestType.GET) {
-            if (!uri.contains("?")) return
-            params = uri.substring(uri.indexOf("?") + 1)
+            if (!uri.contains(UNKNOW)) return
+            params = uri.substring(uri.indexOf(UNKNOW) + 1)
         } else if (method == RequestType.POST) {
             getPostRequestParams(request)
         }
@@ -130,7 +130,7 @@ class RequestInfo extends AbstractBean implements Serializable {
      * @param uri
      */
     private void getRequestUrl(String uri) {
-        url = uri.contains("?") ? uri.substring(0, uri.indexOf("?")) : uri
+        url = uri.contains(UNKNOW) ? uri.substring(0, uri.indexOf(UNKNOW)) : uri
     }
 
     /**

@@ -29,6 +29,8 @@ public class Constant {
 
     public static final String COMMA = ",";
 
+    public static final String UNKNOW = "?";
+
     public static final String OR = "/";
 
     public static final String PART = "|";
