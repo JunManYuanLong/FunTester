@@ -178,5 +178,11 @@ public interface IBase {
      */
     HttpRequestBase getRequest();
 
+    /**
+     * 输出JSON格式的响应结果,用于统一屏蔽打印或者不打印响应内容
+     *
+     * @param response
+     */
+    public void output(JSONObject response);
 
 }
