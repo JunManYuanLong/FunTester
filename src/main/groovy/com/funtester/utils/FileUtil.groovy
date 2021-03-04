@@ -1,12 +1,13 @@
 package com.funtester.utils
 
-
+import com.funtester.config.Constant
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+
 /**
  * 文件读写类,与{@link RWUtil}有功能上的重合,原因在与Java和Groovy的不兼容问题.
  */
-class FileUtil {
+class FileUtil extends Constant {
 
     private static Logger logger = LoggerFactory.getLogger(FileUtil.class)
 
@@ -43,6 +44,16 @@ class FileUtil {
     }
 
     /**
+     * 下载文件,目前只要针对图片
+     * @param url
+     * @return
+     */
+    static def down(String url) {
+        def tuple = handlePicName(url)
+        down(tuple.first, tuple.second);
+    }
+
+    /**
      * 获取文件夹下所有文件的绝对路径的方法，递归，排除了Linux系统的隐藏文件
      *
      * @param path
@@ -68,4 +79,17 @@ class FileUtil {
         }
         return list
     }
+
+    /**
+     * 处理下载网络图片的时候明文件的问题
+     * @param name
+     * @return
+     */
+    static Tuple2 handlePicName(String url) {
+        url -= ".webp"
+        String name = url.substring(url.lastIndexOf("/") + 1);
+        if (name.contains(UNKNOW)) name = name.substring(0, name.indexOf(UNKNOW))
+        return new Tuple2<String, String>(url, name)
+    }
+
 }

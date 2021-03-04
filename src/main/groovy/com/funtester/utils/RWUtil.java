@@ -5,6 +5,7 @@ import com.funtester.base.exception.FailException;
 import com.funtester.base.exception.ParamException;
 import com.funtester.config.Constant;
 import com.funtester.frame.SourceCode;
+import groovy.lang.Tuple2;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +19,7 @@ import java.util.stream.Collectors;
 /**
  * 文件读写类,与{@link FileUtil}有功能上的重合,原因在与Java和Groovy的不兼容问题.
  */
-public class RWUtil {
+public class RWUtil extends Constant {
 
     private static Logger logger = LoggerFactory.getLogger(RWUtil.class);
 
@@ -138,9 +139,14 @@ public class RWUtil {
     }
 
 
+    /**
+     * 下载文件,目前只要针对图片
+     *
+     * @param url
+     */
     public static void down(String url) {
-        String name = url.substring(url.lastIndexOf("/") + 1);
-        down(url, name);
+        Tuple2 tuple2 = FileUtil.handlePicName(url);
+        down(tuple2.getFirst().toString(), tuple2.getSecond().toString());
     }
 
     /**
