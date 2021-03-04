@@ -183,6 +183,6 @@ public interface IBase {
      *
      * @param response
      */
-    public void output(JSONObject response);
+    public void print(JSONObject response);
 
 }
