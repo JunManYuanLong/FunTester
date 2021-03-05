@@ -153,3 +153,4 @@
 - [Socket接口固定QPS性能测试实践](https://mp.weixin.qq.com/s/I9-14L8THxvtX1NJY0KPfw)
 - [单链路性能测试实践](https://mp.weixin.qq.com/s/4xHLP-GZwrNu5cFKdfsB6g)
 - [链路性能测试中参数多样性方法分享](https://mp.weixin.qq.com/s/I1pm0fulNrj_S-YkNz-gEA)
+- [链路测试中参数流转图](https://mp.weixin.qq.com/s/xyo9HXBLoXgLW6MSFH3V6w)

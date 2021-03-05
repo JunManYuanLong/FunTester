@@ -63,6 +63,7 @@
 - [Java中的ThreadLocal功能演示](https://mp.weixin.qq.com/s/n92k1JswHKrqT7Y_CD9Q0w)
 - [ThreadLocal在链路性能测试中实践](https://mp.weixin.qq.com/s/3qhNdHHSStELzNraQSpcew)
 - [歪解字符串中连续出现次数最多问题](https://mp.weixin.qq.com/s/xBy4iB4qLd4WQgCsVVuemw)
+- [Java&Groovy下载文件对比](https://mp.weixin.qq.com/s/T9WUynej2yOZhCkDUhaLYw)
 
 ## Groovy
 
@@ -96,6 +97,7 @@
 - [Groovy小记it关键字和IDE报错](https://mp.weixin.qq.com/s/cIMHzkvKtH0a0ewkiBnV8g)
 - [JsonPath验证类既Groovy重载操作符实践](https://mp.weixin.qq.com/s/5gc04CAsBY6pWxe5c2P41w)
 - [Groovy枚举类初始化异常分析](https://mp.weixin.qq.com/s/koFhpBZM1MFYYxCNxUKPyQ)
+- [Java&Groovy下载文件对比](https://mp.weixin.qq.com/s/T9WUynej2yOZhCkDUhaLYw)
 
 ## Python
 
