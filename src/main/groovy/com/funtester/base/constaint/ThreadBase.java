@@ -4,6 +4,7 @@ import com.funtester.base.interfaces.MarkThread;
 import com.funtester.frame.SourceCode;
 import com.funtester.httpclient.FunLibrary;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.stream.Collectors;
@@ -13,7 +14,9 @@ import java.util.stream.Collectors;
  *
  * @param <T> 必需实现Serializable
  */
-public abstract class ThreadBase<T> extends SourceCode implements Runnable {
+public abstract class ThreadBase<T> extends SourceCode implements Runnable, Serializable {
+
+    private static final long serialVersionUID = -1282879464717720145L;
 
     /**
      * 线程的名字

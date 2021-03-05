@@ -11,13 +11,16 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.Serializable;
 import java.net.URISyntaxException;
 import java.util.*;
 
 /**
  * 基于Socket.IO的Client封装对象
  */
-public class ScoketIOFunClient extends SourceCode {
+public class ScoketIOFunClient extends SourceCode implements Serializable {
+
+    private static final long serialVersionUID = -7229704711068396512L;
 
     private static Logger logger = LoggerFactory.getLogger(ScoketIOFunClient.class);
 

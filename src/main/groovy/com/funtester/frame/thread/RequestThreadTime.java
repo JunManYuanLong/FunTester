@@ -14,6 +14,8 @@ import org.slf4j.LoggerFactory;
  */
 public class RequestThreadTime<T> extends ThreadLimitTimeCount<HttpRequestBase> {
 
+    private static final long serialVersionUID = -6554503654885966097L;
+
     private static Logger logger = LoggerFactory.getLogger(RequestThreadTime.class);
 
     /**

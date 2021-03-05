@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
  */
 public class UpdateSqlThread extends ThreadLimitTimesCount<String> {
 
+    private static final long serialVersionUID = 5808571085138930143L;
+
     private static Logger logger = LoggerFactory.getLogger(UpdateSqlThread.class);
 
     IMySqlBasic base;

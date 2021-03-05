@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 
 public class RequestTimesFixedQps<T> extends FixedQpsThread<HttpRequestBase> {
 
+    private static final long serialVersionUID = 679065222134424087L;
+
     private static Logger logger = LoggerFactory.getLogger(RequestTimesFixedQps.class);
 
     private RequestTimesFixedQps() {

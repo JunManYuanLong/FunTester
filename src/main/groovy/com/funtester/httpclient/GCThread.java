@@ -1,17 +1,13 @@
 package com.funtester.httpclient;
 
 import com.funtester.config.HttpClientConstant;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static com.funtester.frame.SourceCode.sleep;
 
 /**
  * 从连接池中回收连接的多线程类
  */
-public class GCThread  implements Runnable {
-
-    private static Logger logger = LoggerFactory.getLogger(GCThread.class);
+public class GCThread implements Runnable {
 
     /**
      * 资源回收线程

@@ -12,6 +12,8 @@ import java.sql.SQLException;
  */
 public class QuerySqlThread extends ThreadLimitTimesCount {
 
+    private static final long serialVersionUID = 879371247008746883L;
+
     private static Logger logger = LoggerFactory.getLogger(QuerySqlThread.class);
 
     String sql;

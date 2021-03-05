@@ -21,6 +21,8 @@ import java.util.List;
  */
 public abstract class ThreadLimitTimeCount<T> extends ThreadBase<T> {
 
+    private static final long serialVersionUID = -7017995186493855741L;
+
     private static final Logger logger = LoggerFactory.getLogger(ThreadLimitTimeCount.class);
 
     public List<String> marks = new ArrayList<>();

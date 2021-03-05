@@ -14,7 +14,9 @@ import org.slf4j.LoggerFactory;
  */
 public class RequestThreadTimes<T extends HttpRequestBase> extends ThreadLimitTimesCount<HttpRequestBase> {
 
-    static Logger logger = LoggerFactory.getLogger(RequestThreadTimes.class);
+    private static final long serialVersionUID = 84690314667174004L;
+
+    private static Logger logger = LoggerFactory.getLogger(RequestThreadTimes.class);
 
     /**
      * 单请求多线程多次任务构造方法
