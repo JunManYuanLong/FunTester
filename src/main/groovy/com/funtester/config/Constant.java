@@ -69,7 +69,7 @@ public class Constant {
 
     public static final String RESPONSE_CODE = "code";
 
-    public static final String RESPOINSE_CONTENT = "content";
+    public static final String RESPONSE_CONTENT = "content";
 
     public static final int TEST_ERROR_CODE = -2;
 

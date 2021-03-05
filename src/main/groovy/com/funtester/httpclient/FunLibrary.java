@@ -285,7 +285,7 @@ public class FunLibrary extends SourceCode {
             jsonObject = JSONObject.parseObject(content);
         } catch (JSONException e) {
             jsonObject = new JSONObject() {{
-                put(RESPOINSE_CONTENT, content);
+                put(RESPONSE_CONTENT, content);
                 put(RESPONSE_CODE, TEST_ERROR_CODE);
             }};
             logger.warn("响应体非json格式，已经自动转换成json格式！");
