@@ -69,6 +69,19 @@ public class Regex extends SourceCode {
     }
 
     /**
+     * 获取第一个匹配对象
+     *
+     * @param text
+     * @param regex
+     * @return
+     */
+    public static String findFirst(String text, String regex) {
+        Matcher matcher = matcher(text, regex);
+        if (matcher.find()) return matcher.group();
+        return EMPTY;
+    }
+
+    /**
      * 获取匹配项，不包含文字信息，会删除regex的内容
      * <p>不保证完全正确</p>
      *
