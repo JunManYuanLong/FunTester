@@ -75,6 +75,15 @@ public class Output extends Constant {
         its.forEachRemaining(x -> output(x.toString()));
     }
 
+    /**
+     * 输出无序集合
+     *
+     * @param its
+     */
+    public static void output(Iterable its) {
+        its.forEach(x -> output(x.toString()));
+    }
+
     public static void output(Map map) {
         if (map == null || map.size() == 0) {
             logger.warn("怎么空了呢！");
