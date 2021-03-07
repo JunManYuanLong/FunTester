@@ -27,7 +27,7 @@ class RequestInfo extends AbstractBean implements Serializable {
      */
     private static MarkRequest mark;
 
-    public static void initMark(MarkRequest markRequest) {
+    static void initMark(MarkRequest markRequest) {
         mark = markRequest;
     }
 
@@ -86,7 +86,7 @@ class RequestInfo extends AbstractBean implements Serializable {
      *
      * @param request
      */
-    public RequestInfo(HttpRequestBase request) {
+    RequestInfo(HttpRequestBase request) {
         this.request = request
         getRequestInfo()
     }
@@ -154,13 +154,13 @@ class RequestInfo extends AbstractBean implements Serializable {
         isBlack
     }
 
-    public String mark() {
+    String mark() {
         mark == null ? Constant.EMPTY : mark.mark(request)
     }
 
 
     @Override
-    public String toString() {
+    String toString() {
         this.toJson().toString()
     }
 }

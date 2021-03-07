@@ -42,7 +42,7 @@ class TimeWatch implements Serializable {
      * 无参创建方法，默认名称
      * @return
      */
-    public static TimeWatch create() {
+    static TimeWatch create() {
         final TimeWatch timeWatch = new TimeWatch()
         timeWatch.start()
     }
@@ -52,7 +52,7 @@ class TimeWatch implements Serializable {
      * @param name
      * @return
      */
-    public static TimeWatch create(def name) {
+    static TimeWatch create(def name) {
         final TimeWatch timeWatch = new TimeWatch()
         timeWatch.start()
     }
@@ -232,12 +232,12 @@ class TimeWatch implements Serializable {
     }
 
     @Override
-    public String toString() {
+    String toString() {
         return "时间观察者：" + this.name
     }
 
     @Override
-    public TimeWatch clone() {
+    TimeWatch clone() {
         TimeWatch watch = new TimeWatch()
         watch.name = getName() + "_c"
         watch.startMillis = this.getStartMillis()
@@ -251,7 +251,7 @@ class TimeWatch implements Serializable {
 
         private static final long serialVersionUID = -41564036913335727L;
 
-        public Mark(def name) {
+        Mark(def name) {
             this.name = name
             reset()
         }

@@ -13,7 +13,7 @@ import java.util.stream.Stream
  */
 class PropertyUtils extends SourceCode {
 
-    public static Logger logger = LoggerFactory.getLogger(PropertyUtils.class)
+    private static Logger logger = LoggerFactory.getLogger(PropertyUtils.class)
 
     /**
      * 获取指定.properties配置文件中所以的数据

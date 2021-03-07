@@ -128,7 +128,7 @@ class StringUtil extends SourceCode {
      * @param size
      * @return
      */
-    public static String getEmojis(int size) {
+    static String getEmojis(int size) {
         range(size).map { x -> getEmojis() }.collect(Collectors.toString());
     }
 
@@ -138,7 +138,7 @@ class StringUtil extends SourceCode {
      * @param i
      * @return
      */
-    public static String getSerialEmoji(int i) {
+    static String getSerialEmoji(int i) {
         (i < 0 || i > 20) ? EMOJIS[0] : SERIAL[i];
     }
 
@@ -147,7 +147,7 @@ class StringUtil extends SourceCode {
      *
      * @return
      */
-    public static String getEmojis() {
+    static String getEmojis() {
         EMOJIS[getRandomInt(EMOJIS.length - 1)];
     }
 
@@ -158,7 +158,7 @@ class StringUtil extends SourceCode {
      * @param size
      * @return
      */
-    public static String center(String str, int size) {
+    static String center(String str, int size) {
         str.center(size)
     }
 
@@ -168,7 +168,7 @@ class StringUtil extends SourceCode {
      * @param size
      * @return
      */
-    public static String left(String str, int size) {
+    static String left(String str, int size) {
         str.padLeft(size)
     }
 
@@ -178,13 +178,13 @@ class StringUtil extends SourceCode {
      * @param size
      * @return
      */
-    public static String right(String str, int size) {
+    static String right(String str, int size) {
         str.padRight(size)
     }
 
 
 //这个是添加新的的emoji表情的方法
-//    public static void main(String[] args) {
+//    static void main(String[] args) {
 //        String aa = "";
 //        String aaa = EMPTY;
 //        for (int i = 0; i < aa.length(); i += 2) {

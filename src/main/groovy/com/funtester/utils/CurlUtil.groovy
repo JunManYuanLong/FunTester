@@ -21,7 +21,7 @@ class CurlUtil {
      * @param path
      * @return
      */
-    public static List<HttpRequestBase> getRequests(String path) {
+    static List<HttpRequestBase> getRequests(String path) {
         def fileinfo = RWUtil.readTxtFileByLine(path.contains(Constant.OR) ? path : Constant.LONG_Path + path).stream().map {it.trim()}
         List<HttpRequestBase> requests = []
         def base = new CurlRequestBase()
@@ -63,7 +63,7 @@ class CurlUtil {
      * 添加URL过滤词汇
      * @param w
      */
-    public static void addFilterWord(String w) {
+    static void addFilterWord(String w) {
         filterWords << w
     }
 

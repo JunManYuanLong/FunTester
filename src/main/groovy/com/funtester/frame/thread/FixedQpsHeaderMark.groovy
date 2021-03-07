@@ -15,12 +15,12 @@ class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, S
 
     private static final long serialVersionUID = -158942567078477L;
 
-    public static volatile AtomicInteger num = new AtomicInteger(10000);
+    private static volatile AtomicInteger num = new AtomicInteger(10000);
 
     String headerName;
 
     @Override
-    public String mark(ThreadBase threadBase) {
+    String mark(ThreadBase threadBase) {
         if (threadBase instanceof RequestTimesFixedQps) {
             RequestTimesFixedQps<HttpRequestBase> req = (RequestTimesFixedQps<HttpRequestBase>) threadBase;
             return mark(req.t);
@@ -40,7 +40,7 @@ class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, S
      * @return
      */
     @Override
-    public String mark(HttpRequestBase base) {
+    String mark(HttpRequestBase base) {
         base.removeHeaders(headerName);
         String value = 8 + EMPTY + num.getAndIncrement();
         base.addHeader(headerName, value);
@@ -48,11 +48,11 @@ class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, S
     }
 
     @Override
-    public FixedQpsHeaderMark clone() {
+    FixedQpsHeaderMark clone() {
         new FixedQpsHeaderMark(headerName);
     }
 
-    public FixedQpsHeaderMark(String headerName) {
+    FixedQpsHeaderMark(String headerName) {
         this.headerName = headerName;
     }
 

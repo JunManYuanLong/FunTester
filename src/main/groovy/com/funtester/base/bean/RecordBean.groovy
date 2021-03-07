@@ -33,7 +33,7 @@ class RecordBean extends AbstractBean implements Serializable{
 
     String create_time;
 
-    public static RecordBean get() {
+    static RecordBean get() {
         new RecordBean()
     }
 

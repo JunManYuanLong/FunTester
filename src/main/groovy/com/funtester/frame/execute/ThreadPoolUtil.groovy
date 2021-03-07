@@ -53,7 +53,7 @@ class ThreadPoolUtil {
     }
 
 /*获取线程安全的单例的线程池
-public static ThreadPoolExecutor getSingleThreadPoolExecutor(AtomicInteger atomicInteger) {
+static ThreadPoolExecutor getSingleThreadPoolExecutor(AtomicInteger atomicInteger) {
         if (singleThreadPoolExecutor == null){
             synchronized (objectLock){
                 if (singleThreadPoolExecutor == null){
@@ -61,7 +61,7 @@ public static ThreadPoolExecutor getSingleThreadPoolExecutor(AtomicInteger atomi
                             TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(100),
                             new ThreadFactory() {
                                 @Override
-                                public Thread newThread(Runnable runnable) {
+                                Thread newThread(Runnable runnable) {
                                     Thread thread = new Thread(runnable);
                                     thread.setName("UserCenter-business-" + atomicInteger.getAndIncrement());
                                     return thread;

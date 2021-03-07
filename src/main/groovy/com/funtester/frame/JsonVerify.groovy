@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory
  */
 class JsonVerify extends SourceCode implements Comparable {
 
-    public static Logger logger = LoggerFactory.getLogger(JsonVerify.class)
+    private static Logger logger = LoggerFactory.getLogger(JsonVerify.class)
 
     /**
      * 验证文本
@@ -281,7 +281,7 @@ class JsonVerify extends SourceCode implements Comparable {
      * @param str
      * @return
      */
-    public boolean fit(String str) {
+    boolean fit(String str) {
         logger.info("verify对象: {},匹配的字符串: {}", extra, str)
         OPS o = OPS.getInstance(str.charAt(0))
         def res = str.substring(1)
@@ -304,7 +304,7 @@ class JsonVerify extends SourceCode implements Comparable {
      * @param str
      * @return
      */
-    public boolean fitFun(String str) {
+    boolean fitFun(String str) {
         def split = str.split(REG_PART, 2)
         def handle = split[0]
         def ops = split[1]

@@ -14,7 +14,7 @@ class Attr extends AbstractBean implements Serializable{
 
     String value
 
-    public Attr(String name, String value) {
+    Attr(String name, String value) {
         this.name = name
         this.value = value
     }

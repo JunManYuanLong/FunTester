@@ -190,7 +190,7 @@ class FunRequest extends FunLibrary implements Serializable, Cloneable {
      * @param header
      * @return
      */
-    public FunRequest addHeader(Header header) {
+    FunRequest addHeader(Header header) {
         headers.add(header)
         this
     }
@@ -305,7 +305,7 @@ class FunRequest extends FunLibrary implements Serializable, Cloneable {
     }
 
     @Override
-    public String toString() {
+    String toString() {
         return "{" +
                 "requestType='" + requestType.getName() + '\'' +
                 ", host='" + host + '\'' +
@@ -373,7 +373,7 @@ class FunRequest extends FunLibrary implements Serializable, Cloneable {
      * @param base
      * @param response
      */
-    public static void save(HttpRequestBase base, JSONObject response) {
+    static void save(HttpRequestBase base, JSONObject response) {
         FunRequest request = initFromRequest(base)
         request.setResponse(response);
         Save.info("/request/" + Time.getDate().substring(8) + SPACE_1 + request.getUri().replace(OR, CONNECTOR).replaceAll("https*:_+", EMPTY), request.toString());
