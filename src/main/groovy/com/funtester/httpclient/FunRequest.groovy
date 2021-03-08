@@ -6,6 +6,7 @@ import com.funtester.base.exception.RequestException
 import com.funtester.config.HttpClientConstant
 import com.funtester.config.RequestType
 import com.funtester.frame.Save
+import com.funtester.frame.SourceCode
 import com.funtester.utils.Time
 import org.apache.commons.lang3.StringUtils
 import org.apache.http.Header
@@ -20,9 +21,9 @@ import org.slf4j.LoggerFactory
 /**
  * 重写FunLibrary，使用面对对象思想,不用轻易使用set属性方法,可能存在BUG
  */
-class FunRequest extends FunLibrary implements Serializable, Cloneable {
+class FunRequest extends SourceCode implements Serializable, Cloneable {
 
-    private static final long serialVersionUID = -4153600036943378727L;
+    private static final long serialVersionUID = -4153600036943378727L
 
     private static Logger logger = LoggerFactory.getLogger(FunRequest.class)
 
@@ -261,7 +262,7 @@ class FunRequest extends FunLibrary implements Serializable, Cloneable {
      * @return
      */
     HttpRequestBase getRequest() {
-        if (request != null) request;
+        if (request != null) request
         if (StringUtils.isEmpty(uri))
             uri = host + apiName
         switch (requestType) {
@@ -316,9 +317,46 @@ class FunRequest extends FunLibrary implements Serializable, Cloneable {
                 ", params=" + params.toString() +
                 ", json=" + json.toString() +
                 ", response=" + getResponse().toString() +
-                '}';
+                '}'
     }
 
+    /**
+     * 将请求对象转成curl命令行
+     * @return
+     */
+    String toCurl() {
+        StringBuffer curl = new StringBuffer("curl -w HTTPcode%{http_code}:代理返回code%{http_connect}:数据类型%{content_type}:DNS解析时间%{time_namelookup}:%{time_redirect}:连接建立完成时间%{time_pretransfer}:连接时间%{time_connect}:开始传输时间%{time_starttransfer}:总时间%{time_total}:下载速度%{speed_download}:speed_upload%{speed_upload} ")
+        if (requestType == RequestType.GET) curl << " -G"
+        headers.each {
+            curl << " -H '${it.getName()}:${it.getValue().replace(SPACE_1,EMPTY)}'"
+        }
+        switch (requestType) {
+            case RequestType.GET:
+                args.each {
+                    curl << " -d '${it.key}=${it.value}'"
+                }
+                break
+            case RequestType.POST:
+                if (!params.isEmpty()) {
+                    curl << " -H Content-Type:application/x-www-form-urlencoded"
+                    params.each {
+                        curl << " -F '${it.key}=${it.value}'"
+                    }
+                }
+                if (!json.isEmpty()) {
+                    curl << " -H \"Content-Type:application/json\"" //此处多余,防止从外部构建curl命令
+                    json.each {
+                        curl << " -d '${it.key}=${it.value}'"
+                    }
+                }
+                break
+            default:
+                break
+        }
+        curl << " ${uri}"
+//        curl << " --compressed" //这里防止生成多个curl请求,批量生成有用
+        curl.toString()
+    }
 
     /**
      * 从requestbase对象从初始化funrequest
@@ -326,33 +364,33 @@ class FunRequest extends FunLibrary implements Serializable, Cloneable {
      * @return
      */
     static FunRequest initFromRequest(HttpRequestBase base) {
-        FunRequest request = null;
-        String method = base.getMethod();
-        RequestType requestType = RequestType.getRequestType(method);
-        String uri = base.getURI().toString();
-        List<Header> headers = Arrays.asList(base.getAllHeaders());
+        FunRequest request = null
+        String method = base.getMethod()
+        RequestType requestType = RequestType.getRequestType(method)
+        String uri = base.getURI().toString()
+        List<Header> headers = Arrays.asList(base.getAllHeaders())
         if (requestType == requestType.GET) {
-            request = FunRequest.isGet().setUri(uri).addHeaders(headers);
+            request = isGet().setUri(uri).addHeaders(headers)
         } else if (requestType == RequestType.POST) {
-            HttpPost post = (HttpPost) base;
-            HttpEntity entity = post.getEntity();
-            String value = entity.getContentType().getValue();
-            String content = null;
+            HttpPost post = (HttpPost) base
+            HttpEntity entity = post.getEntity()
+            String value = entity.getContentType().getValue()
+            String content = null
             try {
-                content = EntityUtils.toString(entity);
+                content = EntityUtils.toString(entity)
             } catch (IOException e) {
                 logger.error("解析响应失败!", e)
-                fail();
+                fail()
             }
             if (value.equalsIgnoreCase(HttpClientConstant.ContentType_TEXT.getValue()) || value.equalsIgnoreCase(HttpClientConstant.ContentType_JSON.getValue())) {
-                request = FunRequest.isPost().setUri(uri).addHeaders(headers).addJson(JSONObject.parseObject(content));
+                request = isPost().setUri(uri).addHeaders(headers).addJson(JSONObject.parseObject(content))
             } else if (value.equalsIgnoreCase(HttpClientConstant.ContentType_FORM.getValue())) {
-                request = FunRequest.isPost().setUri(uri).addHeaders(headers).addParams(getJson(content.split("&")));
+                request = isPost().setUri(uri).addHeaders(headers).addParams(getJson(content.split("&")))
             }
         } else {
-            RequestException.fail("不支持的请求类型!");
+            RequestException.fail("不支持的请求类型!")
         }
-        return request;
+        return request
     }
 
     static HttpRequestBase doCopy(HttpRequestBase base) {
@@ -375,8 +413,8 @@ class FunRequest extends FunLibrary implements Serializable, Cloneable {
      */
     static void save(HttpRequestBase base, JSONObject response) {
         FunRequest request = initFromRequest(base)
-        request.setResponse(response);
-        Save.info("/request/" + Time.getDate().substring(8) + SPACE_1 + request.getUri().replace(OR, CONNECTOR).replaceAll("https*:_+", EMPTY), request.toString());
+        request.setResponse(response)
+        Save.info("/request/" + Time.getDate().substring(8) + SPACE_1 + request.getUri().replace(OR, CONNECTOR).replaceAll("https*:_+", EMPTY), request.toString())
     }
 
 

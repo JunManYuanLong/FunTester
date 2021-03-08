@@ -1,5 +1,6 @@
 package com.funtester.utils;
 
+import com.funtester.config.Constant;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,12 +8,10 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.nio.charset.Charset;
 
-import static com.funtester.config.Constant.*;
-
 /**
  * 执行命令的类
  */
-public class CMD {
+public class CMD extends Constant {
 
     private static Logger logger = LoggerFactory.getLogger(CMD.class);
 
@@ -31,6 +30,14 @@ public class CMD {
      * @param cmd 需要执行的命令
      */
     public static int execCmd(String cmd, Charset charset) {
+        return execCmd(cmd, charset, false, EMPTY);
+    }
+
+    public static int execCmd(String cmd, boolean filter, String mark) {
+        return execCmd(cmd, DEFAULT_CHARSET, false, EMPTY);
+    }
+
+    public static int execCmd(String cmd, Charset charset, boolean filter, String mark) {
         logger.info("执行命令：{}", cmd);
         Process p = null;// 通过runtime类执行cmd命令
         try {
@@ -43,11 +50,11 @@ public class CMD {
              InputStreamReader inputStreamReader = new InputStreamReader(input, charset);
              BufferedReader reader = new BufferedReader(inputStreamReader);
              InputStream errorInput = p.getErrorStream();
-             InputStreamReader streamReader = new InputStreamReader(errorInput,charset.name());
+             InputStreamReader streamReader = new InputStreamReader(errorInput, charset.name());
              BufferedReader errorReader = new BufferedReader(streamReader)) {
-            String line = "";
+            String line = EMPTY;
             while ((line = reader.readLine()) != null) {// 循环读取
-                logger.info(line);// 输出
+                if (!filter || (line.contains(mark))) logger.info(line);
             }
             String eline = EMPTY;
             while ((eline = errorReader.readLine()) != null) {// 循环读取
@@ -55,7 +62,8 @@ public class CMD {
             }
             return 0;
         } catch (IOException e) {
-            logger.warn("执行" + cmd + "失败！", e);
+            logger.warn("执行命令:{}失败！", cmd, e);
+            p.destroy();
             return 1;
         }
     }
@@ -88,4 +96,5 @@ public class CMD {
             return stringBuffer.toString();
         }
     }
+
 }
