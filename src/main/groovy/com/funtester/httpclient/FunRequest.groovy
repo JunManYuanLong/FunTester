@@ -251,7 +251,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
      * @return
      */
     JSONObject getResponse() {
-        response = response.isEmpty() ? getHttpResponse(request == null ? getRequest() : request) : response
+        response = response.isEmpty() ? FunLibrary.getHttpResponse(request == null ? getRequest() : request) : response
         response
     }
 
@@ -270,7 +270,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
                 request = FunLibrary.getHttpGet(uri, args)
                 break
             case RequestType.POST:
-                request = !params.isEmpty() ? FunLibrary.getHttpPost(uri + changeJsonToArguments(args), params) : !json.isEmpty() ? getHttpPost(uri + changeJsonToArguments(args), json.toString()) : getHttpPost(uri + changeJsonToArguments(args))
+                request = !params.isEmpty() ? FunLibrary.getHttpPost(uri + FunLibrary.changeJsonToArguments(args), params) : !json.isEmpty() ? FunLibrary.getHttpPost(uri + FunLibrary.changeJsonToArguments(args), json.toString()) : FunLibrary.getHttpPost(uri + FunLibrary.changeJsonToArguments(args))
                 break
         }
         for (Header header in headers) {
@@ -312,7 +312,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
                 ", host='" + host + '\'' +
                 ", apiName='" + apiName + '\'' +
                 ", uri='" + uri + '\'' +
-                ", headers=" + header2Json(headers).toString() +
+                ", headers=" + FunLibrary.header2Json(headers).toString() +
                 ", args=" + args.toString() +
                 ", params=" + params.toString() +
                 ", json=" + json.toString() +
