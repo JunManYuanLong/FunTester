@@ -130,7 +130,7 @@
 - [多种登录方式定量性能测试方案](https://mp.weixin.qq.com/s/WuZ2h2rr0rNBgEvQVioacA)
 - [性能测试中图形化输出测试数据](https://mp.weixin.qq.com/s/EMvpYIsszdwBJFPIxztTvA)
 - [压测中测量异步写入接口的延迟](https://mp.weixin.qq.com/s/odvK1iYgg4eRVtOOPbq15w)
-- [手机号验证码登录性能测试](https://mp.weixin.qq.com/s/i-j8fJAdcsJ7v8XPOnPDAw)
+- [手机号验证码登录性能测试](https://mp.weixin.qq.com/s/i-j008fJAdcsJ7v8XPOnPDAw)
 - [绑定手机号性能测试](https://mp.weixin.qq.com/s/K5x1t1dKtIT2NKV6k4v5mw)
 - [终止性能测试并输出报告](https://mp.weixin.qq.com/s/II4-UbKDikctmS_vRT-xLg)
 - [CountDownLatch类在性能测试中应用](https://mp.weixin.qq.com/s/uYBPPOjauR2h81l2uKMANQ)
