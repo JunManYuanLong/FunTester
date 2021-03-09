@@ -316,7 +316,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
                 ", args=" + args.toString() +
                 ", params=" + params.toString() +
                 ", json=" + json.toString() +
-                ", response=" + getResponse().toString() +
+                ", response=" + response.toString() +
                 '}'
     }
 
@@ -328,7 +328,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
         StringBuffer curl = new StringBuffer("curl -w HTTPcode%{http_code}:代理返回code%{http_connect}:数据类型%{content_type}:DNS解析时间%{time_namelookup}:%{time_redirect}:连接建立完成时间%{time_pretransfer}:连接时间%{time_connect}:开始传输时间%{time_starttransfer}:总时间%{time_total}:下载速度%{speed_download}:speed_upload%{speed_upload} ")
         if (requestType == RequestType.GET) curl << " -G"
         headers.each {
-            curl << " -H '${it.getName()}:${it.getValue().replace(SPACE_1,EMPTY)}'"
+            curl << " -H '${it.getName()}:${it.getValue().replace(SPACE_1, EMPTY)}'"
         }
         switch (requestType) {
             case RequestType.GET:
@@ -354,8 +354,17 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
                 break
         }
         curl << " ${uri}"
-//        curl << " --compressed" //这里防止生成多个curl请求,批量生成有用
+        //        curl << " --compressed" //这里防止生成多个curl请求,批量生成有用
         curl.toString()
+    }
+
+    /**
+     * 将请求对象转成curl命令行
+     * @param requestBase
+     * @return
+     */
+    static String reqToCurl(HttpRequestBase requestBase) {
+        initFromRequest(requestBase).toCurl()
     }
 
     /**
