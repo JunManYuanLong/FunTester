@@ -337,6 +337,7 @@
 - [爬取720万条城市历史天气数据](https://mp.weixin.qq.com/s/vOyKpeGlJSJp9bQ8NIMe2A)
 - [记一次失败的爬虫](https://mp.weixin.qq.com/s/SMylrZLXDGw5f1xKI9ObnA)
 - [爬虫实践--CBA历年比赛数据](https://mp.weixin.qq.com/s/mM_QSQddabU5im_O6iVR-Q)
+- [图片爬虫实践](https://mp.weixin.qq.com/s/u5bRSyKsmn3TcjqEEqRJpw)
 
 # 工具合集
 
@@ -407,6 +408,7 @@
 - [基于DOM的XML文件解析类](https://mp.weixin.qq.com/s/scRj7OAhvJYL3mx_hCFp4A)
 - [XML文件解析实践（DOM解析）](https://mp.weixin.qq.com/s/V2DG3osaPNUJzFNDQgqM-w)
 - [基于DOM4J的XML文件解析类](https://mp.weixin.qq.com/s/K5R7iMXouTn4g0p14T7iAQ)
+- [将HTTP请求对象转成curl命令行](https://mp.weixin.qq.com/s/861uMAMMWtINjy4Z99WA6w)
 
 ## 构建工具
 
