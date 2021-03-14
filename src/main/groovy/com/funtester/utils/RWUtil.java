@@ -83,6 +83,7 @@ public class RWUtil extends Constant {
 
     /**
      * 分行读取txt文档，默认使用utf-8编码格式
+     * <p>line.contains(content) == key</p>
      *
      * @param filePath 文件路径
      * @param content  过滤文本
@@ -91,7 +92,7 @@ public class RWUtil extends Constant {
      */
     public static List<String> readTxtFileByLine(String filePath, String content, boolean key) {
         if (StringUtils.isEmpty(filePath) || !new File(filePath).exists() || new File(filePath).isDirectory())
-            ParamException.fail("配置文件信息错误!" + filePath);
+            ParamException.fail("文件信息错误!" + filePath);
         logger.debug("读取文件名：{}", filePath);
         List<String> lines = new ArrayList<>();
         try {
