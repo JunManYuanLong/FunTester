@@ -1,6 +1,6 @@
 # 升级篇
 
-> **FunTester**，[腾讯云年度作者，优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)，非著名测试开发，欢迎关注。
+> **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，非著名测试开发er，欢迎关注。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -23,6 +23,7 @@
 - [重放浏览器单个请求性能测试实践](https://mp.weixin.qq.com/s/a10hxCrIzS4TV9JwmDSI3Q)
 - [重放浏览器多个请求性能测试实践](https://mp.weixin.qq.com/s/Hm1Kpp1PMrZ5rYFW8l2GlA)
 - [重放浏览器请求多链路性能测试实践](https://mp.weixin.qq.com/s/9YSBLAyHVw8Z6IfK-nJTpQ)
+- [Socket接口固定QPS性能测试实践](https://mp.weixin.qq.com/s/I9-14L8THxvtX1NJY0KPfw)
 
 ## BUG集锦
 
@@ -52,6 +53,7 @@
 - [爬取720万条城市历史天气数据](https://mp.weixin.qq.com/s/vOyKpeGlJSJp9bQ8NIMe2A)
 - [记一次失败的爬虫](https://mp.weixin.qq.com/s/SMylrZLXDGw5f1xKI9ObnA)
 - [爬虫实践--CBA历年比赛数据](https://mp.weixin.qq.com/s/mM_QSQddabU5im_O6iVR-Q)
+- [图片爬虫实践](https://mp.weixin.qq.com/s/u5bRSyKsmn3TcjqEEqRJpw)
 
 # 工具合集
 
@@ -122,6 +124,7 @@
 - [基于DOM的XML文件解析类](https://mp.weixin.qq.com/s/scRj7OAhvJYL3mx_hCFp4A)
 - [XML文件解析实践（DOM解析）](https://mp.weixin.qq.com/s/V2DG3osaPNUJzFNDQgqM-w)
 - [基于DOM4J的XML文件解析类](https://mp.weixin.qq.com/s/K5R7iMXouTn4g0p14T7iAQ)
+- [将HTTP请求对象转成curl命令行](https://mp.weixin.qq.com/s/861uMAMMWtINjy4Z99WA6w)
 
 ## 构建工具
 

@@ -1,6 +1,6 @@
 # 基础篇
 
-> **FunTester**，[腾讯云年度作者，优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)，非著名测试开发，欢迎关注。
+> **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，非著名测试开发er，欢迎关注。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -64,6 +64,8 @@
 - [ThreadLocal在链路性能测试中实践](https://mp.weixin.qq.com/s/3qhNdHHSStELzNraQSpcew)
 - [歪解字符串中连续出现次数最多问题](https://mp.weixin.qq.com/s/xBy4iB4qLd4WQgCsVVuemw)
 - [Java&Groovy下载文件对比](https://mp.weixin.qq.com/s/T9WUynej2yOZhCkDUhaLYw)
+- [线程同步类CyclicBarrier在性能测试集合点应用](https://mp.weixin.qq.com/s/K2YySxX9T4v_rzbvIbIHJA)
+- [Java线程同步三剑客](https://mp.weixin.qq.com/s/cAmd11-HdwXNU3tp4TiDLg)
 
 ## Groovy
 

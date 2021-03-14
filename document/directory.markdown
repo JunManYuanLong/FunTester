@@ -1,6 +1,6 @@
 # 总目录
 
-> **FunTester**，[腾讯云年度作者，优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)，非著名测试开发，欢迎关注。
+> **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，非著名测试开发er，欢迎关注。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -153,8 +153,9 @@
 - [单链路性能测试实践](https://mp.weixin.qq.com/s/4xHLP-GZwrNu5cFKdfsB6g)
 - [链路性能测试中参数多样性方法分享](https://mp.weixin.qq.com/s/I1pm0fulNrj_S-YkNz-gEA)
 - [链路测试中参数流转图](https://mp.weixin.qq.com/s/xyo9HXBLoXgLW6MSFH3V6w)
+- [线程同步类CyclicBarrier在性能测试集合点应用](https://mp.weixin.qq.com/s/K2YySxX9T4v_rzbvIbIHJA)
 
-> **FunTester**，[腾讯云年度作者，优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)，非著名测试开发，欢迎关注。
+> **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，非著名测试开发er，欢迎关注。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -218,6 +219,8 @@
 - [ThreadLocal在链路性能测试中实践](https://mp.weixin.qq.com/s/3qhNdHHSStELzNraQSpcew)
 - [歪解字符串中连续出现次数最多问题](https://mp.weixin.qq.com/s/xBy4iB4qLd4WQgCsVVuemw)
 - [Java&Groovy下载文件对比](https://mp.weixin.qq.com/s/T9WUynej2yOZhCkDUhaLYw)
+- [线程同步类CyclicBarrier在性能测试集合点应用](https://mp.weixin.qq.com/s/K2YySxX9T4v_rzbvIbIHJA)
+- [Java线程同步三剑客](https://mp.weixin.qq.com/s/cAmd11-HdwXNU3tp4TiDLg)
 
 ## Groovy
 
@@ -284,7 +287,7 @@
 - [FunTester测试框架架构图初探](https://mp.weixin.qq.com/s/bcMbVDkWbHSXjZFDeFyJsQ)
 - [FunTester测试项目架构图初探](https://mp.weixin.qq.com/s/wqb8FXRbEXrhDuZounmNXA)
 
-> **FunTester**，[腾讯云年度作者，优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)，非著名测试开发，欢迎关注。
+> **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，非著名测试开发er，欢迎关注。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -439,7 +442,7 @@
 
 
 
-> **FunTester**，[腾讯云年度作者，优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)，非著名测试开发，欢迎关注。
+> **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，非著名测试开发er，欢迎关注。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -570,6 +573,7 @@
 - [自动化测试用例的原子性](https://mp.weixin.qq.com/s/jA5WMHwJcu88nHXWoMBAdQ)
 - [可测性经验分享](https://mp.weixin.qq.com/s/iRtUjESYS3sh3YTD-BWjdA)
 - [敏捷中的回归测试的优化【译】](https://mp.weixin.qq.com/s/nDiZZgA1PIiAUCG_xwA2rA)
+- [敏捷的主要优势【译】](https://mp.weixin.qq.com/s/zkI85TLI37XrPFaQ-pZYMA)
 
 ## 大咖风采
 
@@ -693,5 +697,6 @@
 - [2020年FunTester自我总结](https://mp.weixin.qq.com/s/DeDY1JZUTk3cjjQfr3DJRg)
 - [原创打油诗欣赏](https://mp.weixin.qq.com/s/3hPSDjH-3cWu6EVsjU0wOw)
 - [优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)
+- [Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)
 - [假期思考题](https://mp.weixin.qq.com/s/3DOnkmYDlwk-XKg4ge3ZUw)
 - [甩锅技能+1](https://mp.weixin.qq.com/s/nMwlfXZoDcRRPHcTKpvfNg)

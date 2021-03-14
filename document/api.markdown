@@ -1,7 +1,7 @@
 # 接口篇
 
-----
-##### **FunTester**，[腾讯云社区钦定年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)，非著名测试开发er，欢迎关注。
+
+##### **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，非著名测试开发er，欢迎关注。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -154,3 +154,4 @@
 - [单链路性能测试实践](https://mp.weixin.qq.com/s/4xHLP-GZwrNu5cFKdfsB6g)
 - [链路性能测试中参数多样性方法分享](https://mp.weixin.qq.com/s/I1pm0fulNrj_S-YkNz-gEA)
 - [链路测试中参数流转图](https://mp.weixin.qq.com/s/xyo9HXBLoXgLW6MSFH3V6w)
+- [线程同步类CyclicBarrier在性能测试集合点应用](https://mp.weixin.qq.com/s/K2YySxX9T4v_rzbvIbIHJA)
