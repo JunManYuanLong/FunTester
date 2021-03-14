@@ -89,6 +89,7 @@ public class Regex extends SourceCode {
      * @param regex
      * @return
      */
+    @Deprecated
     public static String getRegex(String text, String regex) {
         if (StringUtils.isAnyBlank(text, regex)) ParamException.fail("正则参数错误!");
         String result = EMPTY;
