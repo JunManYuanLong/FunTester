@@ -588,6 +588,7 @@
 
 - [自动化测试中java多线程的使用实例](https://mp.weixin.qq.com/s/BNSLaIdcTPTNj1tKpGf6fw)
 - [自动化测试中递归函数的应用](https://mp.weixin.qq.com/s/86602zV9zYblhCRMiUlwdA)
+- [Appium 2.0速览](https://mp.weixin.qq.com/s/mHHSZKYZXQby8YiQBP57hA)
 
 ## UiAutomator
 
