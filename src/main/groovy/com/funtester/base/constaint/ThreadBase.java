@@ -69,15 +69,6 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable, Seri
     }
 
     /**
-     * groovy无法直接访问t，所以写了这个方法,如果报错可以忽略,直接运行,兴许可以成功的
-     *
-     * @return
-     */
-    public String getTString() {
-        return t.toString();
-    }
-
-    /**
      * 记录所有超时的请求标记
      */
     public List<String> marks = new ArrayList<>();
@@ -106,8 +97,8 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable, Seri
      * 运行待测方法后的处理
      */
     protected void after() {
-        costs.clear();//这里如果用new 可能会比较慢,据资料说,new的时候会生成一个同等大小的list,数据量大的时候会造成额外消耗
-        marks.clear();
+        costs = new ArrayList<>();
+        marks = new ArrayList<>();
         if (countDownLatch != null)
             countDownLatch.countDown();
     }
@@ -137,8 +128,8 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable, Seri
      * 用于对象拷贝之后,清空存储列表
      */
     public void initBase() {
-        this.costs.clear();
-        this.marks.clear();
+        this.costs = new ArrayList<>();
+        this.marks = new ArrayList<>();
     }
 
     /**
