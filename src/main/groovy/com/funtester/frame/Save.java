@@ -47,7 +47,6 @@ public class Save {
         List<String> list = new ArrayList<>();
         data.forEach(num -> list.add(num.toString()));
         saveStringList(list, name.toString());
-        data.clear();
     }
 
     /**
