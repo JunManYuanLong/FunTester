@@ -1,5 +1,6 @@
 package com.funtester.frame.thread;
 
+import com.funtester.base.constaint.ThreadBase;
 import com.funtester.base.constaint.ThreadLimitTimesCount;
 import com.funtester.base.interfaces.IMySqlBasic;
 import org.slf4j.Logger;
@@ -40,6 +41,11 @@ public class QuerySqlThread extends ThreadLimitTimesCount {
     protected void after() {
         super.after();
         base.mySqlOver();
+    }
+
+    @Override
+    public ThreadBase clone() {
+        return null;
     }
 
 
