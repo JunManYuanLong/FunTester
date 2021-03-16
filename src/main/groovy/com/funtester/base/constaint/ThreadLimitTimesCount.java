@@ -8,9 +8,6 @@ import com.funtester.utils.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 请求时间限制的多线程类,限制每个线程执行的次数
  *
@@ -25,11 +22,6 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase<T> {
     private static final long serialVersionUID = -4617192188292407063L;
 
     private static final Logger logger = LoggerFactory.getLogger(ThreadLimitTimesCount.class);
-
-    /**
-     * 记录所有超时的请求标记
-     */
-    public List<String> marks = new ArrayList<>();
 
     /**
      * 全局的时间终止开关
@@ -55,7 +47,6 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase<T> {
     public void run() {
         try {
             before();
-            List<Long> t = new ArrayList<>();
             long ss = Time.getTimeStamp();
             for (int i = 0; i < times; i++) {
                 try {
@@ -64,8 +55,8 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase<T> {
                     doing();
                     long e = Time.getTimeStamp();
                     executeNum++;
-                    long diff = e - s;
-                    t.add(diff);
+                    int diff =(int) (e - s);
+                    costs.add(diff);
                     if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
                         marks.add(diff + CONNECTOR + threadmark + CONNECTOR + Time.getNow());
                     if (status() || key) break;
@@ -77,7 +68,7 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase<T> {
             }
             long ee = Time.getTimeStamp();
             logger.info("线程:{},执行次数：{}，错误次数: {},总耗时：{} s", threadName, times, errorNum, (ee - ss) / 1000.0);
-            Concurrent.allTimes.addAll(t);
+            Concurrent.allTimes.addAll(costs);
             Concurrent.requestMark.addAll(marks);
         } catch (Exception e) {
             logger.warn("执行任务失败！", e);
@@ -103,7 +94,6 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase<T> {
     @Override
     protected void after() {
         super.after();
-        marks = new ArrayList<>();//为了对象重用
         GCThread.stop();
     }
 

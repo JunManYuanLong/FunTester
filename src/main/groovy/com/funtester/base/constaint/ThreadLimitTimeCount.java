@@ -51,18 +51,16 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase<T> {
     public void run() {
         try {
             before();
-            List<Long> t = new ArrayList<>();
             long ss = Time.getTimeStamp();
-            long et = ss;
             while (true) {
                 try {
                     threadmark = mark == null ? EMPTY : this.mark.mark(this);
                     long s = Time.getTimeStamp();
                     doing();
-                    et = Time.getTimeStamp();
+                    long et = Time.getTimeStamp();
                     executeNum++;
-                    long diff = et - s;
-                    t.add(diff);
+                    int diff =(int) (et - s);
+                    costs.add(diff);
                     if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
                         marks.add(diff + CONNECTOR + threadmark + CONNECTOR + Time.getNow());
                     if ((et - ss) > time || status() || key) break;
@@ -74,7 +72,7 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase<T> {
             }
             long ee = Time.getTimeStamp();
             logger.info("线程:{},执行次数：{}, 失败次数: {},总耗时: {} s", threadName, executeNum, errorNum, (ee - ss) / 1000.0);
-            Concurrent.allTimes.addAll(t);
+            Concurrent.allTimes.addAll(costs);
             Concurrent.requestMark.addAll(marks);
         } catch (Exception e) {
             logger.warn("执行任务失败！", e);
@@ -106,7 +104,6 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase<T> {
     @Override
     protected void after() {
         super.after();
-        marks = new ArrayList<>();//为了对象重用
         GCThread.stop();
     }
 

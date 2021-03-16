@@ -5,6 +5,7 @@ import com.funtester.frame.SourceCode;
 import com.funtester.httpclient.FunLibrary;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.stream.Collectors;
@@ -54,7 +55,8 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable, Seri
 
     /**
      * 用于设置访问资源,用于闭包中无法访问包外实例对象的情况,这里还有一个用处就是在标记线程对象的时候,用到了这个t(参数标记模式中)
-     * @since 2020年10月19日,统一用来设置HTTPrequestbase对象.同样可以用于执行SQL和redis查询语句或者对象,暂未使用dubbo尝试
+     *
+     * @since 2020年10月19日, 统一用来设置HTTPrequestbase对象.同样可以用于执行SQL和redis查询语句或者对象, 暂未使用dubbo尝试
      */
     public T t;
 
@@ -69,6 +71,17 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable, Seri
     public String getTString() {
         return t.toString();
     }
+
+    /**
+     * 记录所有超时的请求标记
+     */
+    public List<String> marks = new ArrayList<>();
+
+    /**
+     * 用于存储请求耗时集合
+     * 2021年03月16日,将统计集合提取为对象属性,用于外部访问,可用于取样器实现
+     */
+    public List<Integer> costs = new ArrayList<>();
 
     /**
      * 运行待测方法的之前的准备
@@ -86,6 +99,8 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable, Seri
      * 运行待测方法后的处理
      */
     protected void after() {
+        costs.clear();//这里如果用new 可能会比较慢,据资料说,new的时候会生成一个同等大小的list,数据量大的时候会造成额外消耗
+        marks.clear();
         if (countDownLatch != null)
             countDownLatch.countDown();
     }

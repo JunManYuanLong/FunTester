@@ -69,7 +69,7 @@ public class Concurrent extends SourceCode {
     /**
      * 用于记录所有请求时间
      */
-    public static Vector<Long> allTimes = new Vector<>();
+    public static Vector<Integer> allTimes = new Vector<>();
 
     /**
      * 记录所有markrequest的信息
@@ -158,10 +158,11 @@ public class Concurrent extends SourceCode {
     }
 
     private PerformanceResultBean over() {
-        Save.saveLongList(allTimes, DATA_Path.replace(LONG_Path, EMPTY) + StatisticsUtil.getFileName(threadNum, desc));
+        Save.saveIntegerList(allTimes, DATA_Path.replace(LONG_Path, EMPTY) + StatisticsUtil.getFileName(threadNum, desc));
         Save.saveStringListSync(Concurrent.requestMark, MARK_Path.replace(LONG_Path, EMPTY) + desc);
-        allTimes = new Vector<>();
-        requestMark = new Vector<>();
+        /*这里如果用new 可能会比较慢,据资料说,new的时候会生成一个同等大小的list,数据量大的时候会造成额外消耗*/
+        allTimes.clear();
+        requestMark.clear();
         return countQPS(threadNum, desc, Time.getTimeByTimestamp(startTime), Time.getTimeByTimestamp(endTime));
     }
 
