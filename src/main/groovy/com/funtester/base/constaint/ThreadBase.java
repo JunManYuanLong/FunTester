@@ -20,6 +20,11 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable, Seri
     private static final long serialVersionUID = -1282879464717720145L;
 
     /**
+     * 全局的时间终止开关,true表示终止,false表示不终止.
+     */
+    private static boolean ABORT = false;
+
+    /**
      * 线程的名字
      */
     public String threadName;
@@ -86,7 +91,9 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable, Seri
     /**
      * 运行待测方法的之前的准备
      */
-    protected abstract void before();
+    public void before() {
+        ABORT = false;
+    }
 
     /**
      * 待测方法
@@ -118,14 +125,20 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable, Seri
      * 拷贝对象方法,用于统计单一对象多线程调用时候的请求数和成功数,对于<T>的复杂情况,需要将T类型也重写clone方法
      *
      * <p>
-     * 此处若具体实现类而非虚拟类建议自己写clone方法
+     * 此处若具体实现类而非虚拟类建议自己写clone方法,子类重写需注意{@link ThreadBase#initBase()}方法调用
      * </p>
      *
      * @return
      */
     @Override
-    public ThreadBase clone() {
-        return deepClone(this);
+    public abstract ThreadBase clone();
+
+    /**
+     * 用于对象拷贝之后,清空存储列表
+     */
+    public void initBase() {
+        this.costs.clear();
+        this.marks.clear();
     }
 
     /**
@@ -150,5 +163,21 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable, Seri
         return range(num).mapToObj(x -> this.clone()).collect(Collectors.toList());
     }
 
+
+    /**
+     * 用于在某些情况下提前终止测试
+     */
+    public static void stop() {
+        ABORT = true;
+    }
+
+    /**
+     * true表示终止,false表示不终止.
+     *
+     * @return
+     */
+    public static boolean needAbort() {
+        return ABORT;
+    }
 
 }

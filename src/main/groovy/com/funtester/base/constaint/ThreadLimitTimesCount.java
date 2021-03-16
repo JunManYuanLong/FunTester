@@ -23,10 +23,6 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase<T> {
 
     private static final Logger logger = LoggerFactory.getLogger(ThreadLimitTimesCount.class);
 
-    /**
-     * 全局的时间终止开关
-     */
-    private static boolean key = false;
 
     /**
      * 任务请求执行次数
@@ -59,7 +55,7 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase<T> {
                     costs.add(diff);
                     if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
                         marks.add(diff + CONNECTOR + threadmark + CONNECTOR + Time.getNow());
-                    if (status() || key) break;
+                    if (status() || ThreadBase.needAbort()) break;
                 } catch (Exception e) {
                     logger.warn("执行任务失败！", e);
                     logger.warn("执行失败对象的标记:{}", threadmark);
@@ -82,7 +78,7 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase<T> {
      */
     @Override
     public void before() {
-        key = false;
+        super.before();
     }
 
     @Override
@@ -97,13 +93,6 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase<T> {
         GCThread.stop();
     }
 
-
-    /**
-     * 用于在某些情况下提前终止测试
-     */
-    public static void stopAllThread() {
-        key = true;
-    }
 
 
 }

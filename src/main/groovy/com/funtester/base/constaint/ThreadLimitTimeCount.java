@@ -28,11 +28,6 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase<T> {
     public List<String> marks = new ArrayList<>();
 
     /**
-     * 全局的时间终止开关
-     */
-    private static boolean key = false;
-
-    /**
      * 任务请求执行时间,单位是ms秒
      */
     public int time;
@@ -63,7 +58,7 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase<T> {
                     costs.add(diff);
                     if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
                         marks.add(diff + CONNECTOR + threadmark + CONNECTOR + Time.getNow());
-                    if ((et - ss) > time || status() || key) break;
+                    if ((et - ss) > time || status() || ThreadBase.needAbort()) break;
                 } catch (Exception e) {
                     logger.warn("执行任务失败！", e);
                     logger.warn("执行失败对象的标记:{}", threadmark);
@@ -82,12 +77,7 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase<T> {
 
     }
 
-    /**
-     * 用于在某些情况下提前终止测试
-     */
-    public static void stopAllThread() {
-        key = true;
-    }
+
 
     public boolean status() {
         return errorNum > 10;
@@ -98,7 +88,7 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase<T> {
      */
     @Override
     public void before() {
-        key = false;
+        super.before();
     }
 
     @Override
