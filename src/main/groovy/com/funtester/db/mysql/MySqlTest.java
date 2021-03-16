@@ -5,20 +5,13 @@ import com.funtester.base.bean.PerformanceResultBean;
 import com.funtester.base.bean.RecordBean;
 import com.funtester.base.bean.RequestInfo;
 import com.funtester.config.SqlConstant;
-import com.funtester.config.SysInit;
-import com.funtester.httpclient.FunLibrary;
-import com.funtester.utils.DecodeEncode;
-import com.funtester.utils.Time;
-import com.funtester.utils.message.AlertOver;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.Statement;
-import java.util.Iterator;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -86,8 +79,8 @@ public class MySqlTest extends SqlBase {
      */
     public static void saveApiTestDate(RequestInfo requestInfo, int data_size, long expend_time, int status, int mark, int code, String localIP, String computerName) {
         logger.info("请求uri：{},耗时：{} ms, {}", requestInfo.getUri(), expend_time, requestInfo.mark());
-        if (StringUtils.isEmpty(SqlConstant.REQUEST_TABLE) || SysInit.isBlack(requestInfo.getHost())) return;
-        String sql = String.format("INSERT INTO " + SqlConstant.REQUEST_TABLE + " (domain,api,data_size,expend_time,status,type,method,code,local_ip,local_name,create_time) VALUES ('%s','%s',%d,%d,%d,'%s','%s',%d,'%s','%s','%s');", requestInfo.getHost(), requestInfo.getApiName(), data_size, expend_time, status, requestInfo.getType(), requestInfo.getMethod().getName(), code, localIP, computerName, Time.getDate());
+//        if (StringUtils.isEmpty(SqlConstant.REQUEST_TABLE) || SysInit.isBlack(requestInfo.getHost())) return;
+//        String sql = String.format("INSERT INTO " + SqlConstant.REQUEST_TABLE + " (domain,api,data_size,expend_time,status,type,method,code,local_ip,local_name,create_time) VALUES ('%s','%s',%d,%d,%d,'%s','%s',%d,'%s','%s','%s');", requestInfo.getHost(), requestInfo.getApiName(), data_size, expend_time, status, requestInfo.getType(), requestInfo.getMethod().getName(), code, localIP, computerName, Time.getDate());
 //        RecordBean requestBean = new RecordBean();
 //        requestBean.setApi(requestInfo.getApiName());
 //        requestBean.setDomain(requestInfo.getHost());
@@ -101,7 +94,7 @@ public class MySqlTest extends SqlBase {
 //        requestBean.setLocal_name(computerName);
 //        requestBean.setCreate_time(Time.getDate());
 //        RecordBean.get().setApi(requestInfo.getApiName()).setDomain(requestInfo.getHost()).setType(requestInfo.getType()).setExpend_time(expend_time).setData_size(data_size).setStatus(status).setMethod(requestInfo.getMethod().getName()).setCode(code).setLocal_ip(localIP).setLocal_name(computerName).setCreate_time(Time.getDate());
-        sendWork(sql);
+//        sendWork(sql);
     }
 
     /**
@@ -122,19 +115,19 @@ public class MySqlTest extends SqlBase {
      * @param result 测试结果
      */
     public static void saveTestResult(String label, JSONObject result) {
-        if (SqlConstant.RESULT_TABLE == null) return;
-        String data = result.toString();
-        Iterator<String> iterator = result.keySet().iterator();
-        int abc = 1;
-        while (iterator.hasNext() && abc == 1) {
-            String key = iterator.next().toString();
-            String value = result.getString(key);
-            if (value.equals("false")) abc = 2;
-        }
-        if (abc != 1) new AlertOver("用例失败！", label + "测试结果：" + abc + LINE + data).sendBusinessMessage();
-        logger.info(label + LINE + "测试结果：" + (abc == 1 ? "通过" : "失败") + LINE + data);
-        String sql = String.format("INSERT INTO " + SqlConstant.RESULT_TABLE + " (result,label,params,local_ip,computer_name,create_time) VALUES (%d,'%s','%s','%s','%s','%s')", abc, label, data, LOCAL_IP, COMPUTER_USER_NAME, Time.getDate());
-        sendWork(sql);
+//        if (SqlConstant.RESULT_TABLE == null) return;
+//        String data = result.toString();
+//        Iterator<String> iterator = result.keySet().iterator();
+//        int abc = 1;
+//        while (iterator.hasNext() && abc == 1) {
+//            String key = iterator.next().toString();
+//            String value = result.getString(key);
+//            if (value.equals("false")) abc = 2;
+//        }
+//        if (abc != 1) new AlertOver("用例失败！", label + "测试结果：" + abc + LINE + data).sendBusinessMessage();
+//        logger.info(label + LINE + "测试结果：" + (abc == 1 ? "通过" : "失败") + LINE + data);
+//        String sql = String.format("INSERT INTO " + SqlConstant.RESULT_TABLE + " (result,label,params,local_ip,computer_name,create_time) VALUES (%d,'%s','%s','%s','%s','%s')", abc, label, data, LOCAL_IP, COMPUTER_USER_NAME, Time.getDate());
+//        sendWork(sql);
     }
 
     /**
@@ -147,10 +140,10 @@ public class MySqlTest extends SqlBase {
      * @param computerName
      */
     public static void saveAlertOverMessage(RequestInfo requestInfo, String type, String title, String localIP, String computerName) {
-        String host_name = requestInfo.getHost();
-        if (SysInit.isBlack(host_name) || SqlConstant.ALERTOVER_TABLE == null) return;
-        String sql = String.format("INSERT INTO alertover (type,title,host_name,api_name,local_ip,computer_name,create_time) VALUES('%s','%s','%s','%s','%s','%s','%s');", type, title, host_name, requestInfo.getApiName(), localIP, computerName, Time.getDate());
-        sendWork(sql);
+//        String host_name = requestInfo.getHost();
+//        if (SysInit.isBlack(host_name) || SqlConstant.ALERTOVER_TABLE == null) return;
+//        String sql = String.format("INSERT INTO alertover (type,title,host_name,api_name,local_ip,computer_name,create_time) VALUES('%s','%s','%s','%s','%s','%s','%s');", type, title, host_name, requestInfo.getApiName(), localIP, computerName, Time.getDate());
+//        sendWork(sql);
     }
 
     /**
@@ -236,12 +229,12 @@ public class MySqlTest extends SqlBase {
      * @return
      */
     public static void sendWork(String sql) {
-        if (!SqlConstant.flag) return;
-        logger.debug("记录SQL：{}", sql);
-        FunLibrary.noHeader();
-        JSONObject argss = new JSONObject();
-        argss.put("sql", DecodeEncode.urlEncoderText(sql));
-        FunLibrary.getHttpResponse(FunLibrary.getHttpPost(SqlConstant.MYSQL_SERVER_PATH, argss));
+//        if (!SqlConstant.flag) return;
+//        logger.debug("记录SQL：{}", sql);
+//        FunLibrary.noHeader();
+//        JSONObject argss = new JSONObject();
+//        argss.put("sql", DecodeEncode.urlEncoderText(sql));
+//        FunLibrary.getHttpResponse(FunLibrary.getHttpPost(SqlConstant.MYSQL_SERVER_PATH, argss));
     }
 
     /**
@@ -250,9 +243,9 @@ public class MySqlTest extends SqlBase {
      * @param requestBean
      */
     public static void sendWork(RecordBean requestBean) {
-        FunLibrary.noHeader();
-        if (SqlConstant.flag)
-            FunLibrary.getHttpResponse(FunLibrary.getHttpPost(SqlConstant.MYSQL_SERVER_PATH, requestBean.toJson()));
+//        FunLibrary.noHeader();
+//        if (SqlConstant.flag)
+//            FunLibrary.getHttpResponse(FunLibrary.getHttpPost(SqlConstant.MYSQL_SERVER_PATH, requestBean.toJson()));
     }
 
     /**
@@ -262,12 +255,12 @@ public class MySqlTest extends SqlBase {
      * @return
      */
     public static boolean addWork(String sql) {
-        try {
-            sqls.put(sql);
-        } catch (InterruptedException e) {
-            logger.warn("添加数据库存储任务失败！", e);
-            return false;
-        }
+//        try {
+//            sqls.put(sql);
+//        } catch (InterruptedException e) {
+//            logger.warn("添加数据库存储任务失败！", e);
+//            return false;
+//        }
         return true;
     }
 
@@ -277,14 +270,15 @@ public class MySqlTest extends SqlBase {
      * @return
      */
     static String getWork() {
-        String sql = null;
-        try {
-            sql = sqls.poll(SqlConstant.MYSQLWORK_TIMEOUT, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-            logger.warn("获取存储任务失败！", e);
-        } finally {
-            return sql;
-        }
+//        String sql = null;
+//        try {
+//            sql = sqls.poll(SqlConstant.MYSQLWORK_TIMEOUT, TimeUnit.MILLISECONDS);
+//        } catch (InterruptedException e) {
+//            logger.warn("获取存储任务失败！", e);
+//        } finally {
+//            return sql;
+//        }
+        return EMPTY;
     }
 
     /**

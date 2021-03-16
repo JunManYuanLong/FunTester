@@ -1,12 +1,8 @@
 package com.funtester.utils.message;
 
-import com.funtester.httpclient.FunLibrary;
 import com.funtester.base.bean.RequestInfo;
 import com.funtester.base.interfaces.IMessage;
-import com.funtester.db.mysql.MySqlTest;
-import com.funtester.config.SysInit;
-import com.alibaba.fastjson.JSONObject;
-import org.apache.http.client.methods.HttpPost;
+import com.funtester.httpclient.FunLibrary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,10 +54,10 @@ public class AlertOver extends FunLibrary implements IMessage {
      * 发送系统异常
      */
     public void sendSystemMessage() {
-        if (SysInit.isBlack(murl) || true) return;
-        sendMessage(system);
-        MySqlTest.saveAlertOverMessage(requestInfo, "system", title, LOCAL_IP, COMPUTER_USER_NAME);
-        logger.info("发送系统错误提醒，title：{}，ip：{}，computer：{}", title, LOCAL_IP, COMPUTER_USER_NAME);
+//        if (SysInit.isBlack(murl)) return;
+//        sendMessage(system);
+//        MySqlTest.saveAlertOverMessage(requestInfo, "system", title, LOCAL_IP, COMPUTER_USER_NAME);
+//        logger.info("发送系统错误提醒，title：{}，ip：{}，computer：{}", title, LOCAL_IP, COMPUTER_USER_NAME);
     }
 
     /**
@@ -98,18 +94,18 @@ public class AlertOver extends FunLibrary implements IMessage {
      * @return
      */
     public void sendMessage(String source) {
-        if (SysInit.isBlack(murl)) return;
-        String url = "https://api.alertover.com/v1/alert";
-        String receiver = testGroup;//测试组ID
-        JSONObject jsonObject = new JSONObject();// 新建json数组
-        jsonObject.put("frame", source);// 添加发送源id
-        jsonObject.put("receiver", receiver);// 添加接收组id
-        jsonObject.put("content", content);// 发送内容
-        jsonObject.put("title", title);// 发送标题
-        jsonObject.put("url", murl);// 发送标题
-        jsonObject.put("sound", "pianobar");// 发送声音
-        logger.debug("消息详情：{}", jsonObject.toString());
-        HttpPost httpPost = getHttpPost(url, jsonObject);
+//        if (SysInit.isBlack(murl)) return;
+//        String url = "https://api.alertover.com/v1/alert";
+//        String receiver = testGroup;//测试组ID
+//        JSONObject jsonObject = new JSONObject();// 新建json数组
+//        jsonObject.put("frame", source);// 添加发送源id
+//        jsonObject.put("receiver", receiver);// 添加接收组id
+//        jsonObject.put("content", content);// 发送内容
+//        jsonObject.put("title", title);// 发送标题
+//        jsonObject.put("url", murl);// 发送标题
+//        jsonObject.put("sound", "pianobar");// 发送声音
+//        logger.debug("消息详情：{}", jsonObject.toString());
+//        HttpPost httpPost = getHttpPost(url, jsonObject);
         /*取消发送*/
 //        getHttpResponse(httpPost);
     }
