@@ -42,7 +42,7 @@ public abstract class FixedQpsThread<T> extends ThreadBase<T> {
             long s = Time.getTimeStamp();
             doing();
             long e = Time.getTimeStamp();
-            long diff = e - s;
+            int diff = (int) (e - s);
             FixedQpsConcurrent.allTimes.add(diff);
             if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
                 FixedQpsConcurrent.marks.add(diff + CONNECTOR + threadmark + CONNECTOR + Time.getNow());
@@ -58,13 +58,5 @@ public abstract class FixedQpsThread<T> extends ThreadBase<T> {
     public void before() {
 
     }
-
-    /**
-     * 子类必需实现改方法,不然调用deepclone方法会报错
-     *
-     * @return
-     */
-    public abstract FixedQpsThread clone();
-
 
 }

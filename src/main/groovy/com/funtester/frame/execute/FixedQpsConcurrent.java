@@ -44,7 +44,7 @@ public class FixedQpsConcurrent extends SourceCode {
     /**
      * 用于记录所有请求时间
      */
-    public static Vector<Long> allTimes = new Vector<>();
+    public static Vector<Integer> allTimes = new Vector<>();
 
     /**
      * 开始时间
@@ -156,7 +156,7 @@ public class FixedQpsConcurrent extends SourceCode {
 
     private PerformanceResultBean over() {
         key = true;
-        Save.saveLongList(allTimes, DATA_Path.replace(LONG_Path, EMPTY) + StatisticsUtil.getFileName(queueLength, desc));
+        Save.saveIntegerList(allTimes, DATA_Path.replace(LONG_Path, EMPTY) + StatisticsUtil.getFileName(queueLength, desc));
         Save.saveStringListSync(marks, MARK_Path.replace(LONG_Path, EMPTY) + desc);
         allTimes = new Vector<>();
         marks = new Vector<>();
