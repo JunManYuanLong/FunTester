@@ -9,11 +9,13 @@
 
 联系地址：FunTester@88.com
 
-# [**550+原创文章**](/document/directory.markdown)
+# [**570+原创文章**](/document/directory.markdown)
 # [**接口篇**](/document/api.markdown)
 # [**基础篇**](/document/base.markdown)
 # [**升级篇**](/document/update.markdown)
 # [**7788篇**](/document/7788.markdown)
+
+* 文章链接可能无法访问,各位看官移步GitHub地址即可.
 
 [FunTester测试框架架构图](http://pic.automancloud.com/structure.html)
 
