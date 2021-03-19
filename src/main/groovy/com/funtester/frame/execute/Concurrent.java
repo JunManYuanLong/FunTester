@@ -121,7 +121,7 @@ public class Concurrent extends SourceCode {
      * 默认取list中thread对象,丢入线程池,完成多线程执行,如果没有threadname,name默认采用desc+线程数作为threadname,去除末尾的日期
      */
     public PerformanceResultBean start() {
-        Progress progress = new Progress(threads.get(0), StatisticsUtil.getTrueName(desc));
+        Progress progress = new Progress(threads, StatisticsUtil.getTrueName(desc));
         new Thread(progress).start();
         startTime = Time.getTimeStamp();
         for (int i = 0; i < threadNum; i++) {

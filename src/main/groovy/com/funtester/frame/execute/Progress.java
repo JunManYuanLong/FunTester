@@ -7,16 +7,44 @@ import com.funtester.base.constaint.ThreadLimitTimesCount;
 import com.funtester.base.exception.ParamException;
 import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.SourceCode;
+import com.funtester.utils.StringUtil;
 import com.funtester.utils.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
+
 /**
  * 用于异步展示性能测试进度的多线程类
+ *
+ * @param <F> 多线程任务{@link ThreadBase}对象的实现子类
  */
-public class Progress extends SourceCode implements Runnable {
+public class Progress<F extends ThreadBase> extends SourceCode implements Runnable {
 
     private static Logger logger = LoggerFactory.getLogger(Progress.class);
+
+    /**
+     * 会长
+     */
+    private static final String SUFFIX = "QPS变化曲线";
+
+    /**
+     * 记录每一次获取QPS的值,可能用于结果展示
+     */
+    public List<Integer> qs = new ArrayList<>();
+
+    /**
+     * 多线程任务类对象
+     */
+    private List<F> threads;
+
+    /**
+     * 线程数,用于计算实时QPS
+     */
+    private int threadNum;
 
     /**
      * 进度条的长度
@@ -36,12 +64,22 @@ public class Progress extends SourceCode implements Runnable {
     /**
      * 是否次数模型
      */
-    public boolean isTimesMode;
+    private boolean isTimesMode;
+
+    /**
+     * 用于区分固定QPS请求模型,这里不计算固定QPS模型中的实时QPS
+     */
+    private boolean canCount;
 
     /**
      * 多线程任务基类对象,本类中不处理,只用来获取值,若使用的话请调用clone()方法
      */
-    private ThreadBase base;
+    private F base;
+
+    /**
+     * 在固定QPS模式中使用
+     */
+    private AtomicInteger excuteNum;
 
     /**
      * 限制条件
@@ -58,9 +96,32 @@ public class Progress extends SourceCode implements Runnable {
      */
     private String taskDesc;
 
-    public Progress(ThreadBase base, String desc) {
-        this.base = base;
+    /**
+     * 固定线程模型
+     *
+     * @param threads
+     * @param desc
+     */
+    public Progress(final List<F> threads, String desc) {
+        this.threads = threads;
+        this.threadNum = threads.size();
         this.taskDesc = desc;
+        this.base = threads.get(0);
+        init();
+    }
+
+    /**
+     * 适配固定QPS模型
+     *
+     * @param threads
+     * @param desc
+     * @param excuteNum
+     */
+    public Progress(final List<F> threads, String desc, final AtomicInteger excuteNum) {
+        this.threads = threads;
+        this.threadNum = threads.size();
+        this.taskDesc = desc;
+        this.base = threads.get(0);
         init();
     }
 
@@ -70,12 +131,15 @@ public class Progress extends SourceCode implements Runnable {
     private void init() {
         if (base instanceof ThreadLimitTimeCount) {
             this.isTimesMode = false;
+            this.canCount = true;
             this.limit = ((ThreadLimitTimeCount) base).time;
         } else if (base instanceof ThreadLimitTimesCount) {
             this.isTimesMode = true;
+            this.canCount = true;
             this.limit = ((ThreadLimitTimesCount) base).times;
         } else if (base instanceof FixedQpsThread) {
             FixedQpsThread fix = (FixedQpsThread) base;
+            this.canCount = false;
             this.isTimesMode = fix.isTimesMode;
             this.limit = fix.limit;
         } else {
@@ -91,8 +155,32 @@ public class Progress extends SourceCode implements Runnable {
             pro = isTimesMode ? base.executeNum == 0 ? FixedQpsConcurrent.executeTimes.get() * 1.0 / limit : base.executeNum * 1.0 / limit : (Time.getTimeStamp() - startTime) * 1.0 / limit;
             if (pro > 0.95) break;
             if (st)
-                logger.info("{}进度:{}  {}", taskDesc, getManyString(ONE, (int) (pro * LENGTH)), getPercent(pro * 100));
+                logger.info("{}进度:{}  {} ,当前QPS: {}", taskDesc, getManyString(ONE, (int) (pro * LENGTH)), getPercent(pro * 100), getQPS());
         }
+    }
+
+    /**
+     * 获取某一个时刻的QPS
+     *
+     * @return
+     */
+    private int getQPS() {
+        int qps = 0;
+        if (canCount) {
+            List<Integer> times = new ArrayList<>();
+            for (int i = 0; i < threadNum; i++) {
+                List<Integer> costs = threads.get(i).costs;
+                int size = costs.size();
+                if (size < 3) continue;
+                times.add(costs.get(size - 1));
+                times.add(costs.get(size - 2));
+            }
+            qps = times.isEmpty() ? 0 : (int) (1000 * threadNum / (times.stream().collect(Collectors.summarizingInt(x -> x)).getAverage()));
+        } else {
+            qps = excuteNum.get() / (int) (Time.getTimeStamp() - startTime);
+        }
+        qs.add(qps);
+        return qps;
     }
 
     /**
@@ -101,7 +189,22 @@ public class Progress extends SourceCode implements Runnable {
     public void stop() {
         st = false;
         logger.info("{}进度:{}  {}", taskDesc, getManyString(ONE, LENGTH), "100%");
+        printQPS();
     }
 
+    /**
+     * 打印QPS变化曲线
+     */
+    private void printQPS() {
+        int size = qs.size();
+        if (size < 5) return;
+        if (size <= BUCKET_SIZE) {
+            output(StatisticsUtil.draw(qs, StringUtil.center(taskDesc + SUFFIX, size * 3)) + LINE + LINE);
+        } else {
+            double v = size * 1.0 / BUCKET_SIZE;
+            List<Integer> qpss = range(BUCKET_SIZE).mapToObj(x -> qs.get((int) (x * v))).collect(Collectors.toList());
+            output(StatisticsUtil.draw(qpss, StringUtil.center(taskDesc + SUFFIX, BUCKET_SIZE * 3) + LINE + LINE));
+        }
+    }
 
 }

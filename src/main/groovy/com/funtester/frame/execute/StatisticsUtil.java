@@ -71,7 +71,9 @@ public class StatisticsUtil extends Constant {
 
     /**
      * 根据数组画图,无序亦可
-     *
+     * <p>
+     *     此处注意title处理调用center方法的时候,需要data.size()乘以3才是正确的长度,一个长度包含一个空格和两个特殊字符
+     * </p>
      * @param data
      * @param title
      * @return
@@ -83,6 +85,9 @@ public class StatisticsUtil extends Constant {
 
     /**
      * 根据数组画图,无序亦可
+     * <p>
+     *     此处注意title处理调用center方法的时候,需要data.size()乘以3才是正确的长度,一个长度包含一个空格和两个特殊字符
+     * </p>
      *
      * @param data
      * @param title

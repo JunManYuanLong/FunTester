@@ -126,7 +126,7 @@ public class FixedQpsConcurrent extends SourceCode {
      */
     public PerformanceResultBean start() {
         key = false;
-        Progress progress = new Progress(threads.get(0), StatisticsUtil.getTrueName(desc));
+        Progress progress = new Progress(threads, StatisticsUtil.getTrueName(desc), executeTimes);
         new Thread(progress).start();
         boolean isTimesMode = baseThread.isTimesMode;
         int limit = baseThread.limit;
