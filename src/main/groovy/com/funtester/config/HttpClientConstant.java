@@ -130,11 +130,6 @@ public class HttpClientConstant {
     public static List<String> BLACK_HOSTS = new ArrayList<>();
 
     /**
-     * 公共的header集合
-     */
-    public static List<Header> COMMON_HEADER = Arrays.asList(USER_AGENT, CONNECTION);
-
-    /**
      * 通用循环间隔时间,单位s
      */
     public static final int LOOP_INTERVAL = 5;

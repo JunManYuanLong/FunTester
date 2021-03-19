@@ -54,25 +54,9 @@ public class FunLibrary extends SourceCode {
     private static IBase iBase;
 
     /**
-     * 打印请求头和响应头，一次有效，在请求之前使用该方法
-     */
-    public static void printHeader() {
-        HEADER_KEY = true;
-    }
-
-    public static void noHeader() {
-        HEADER_KEY = false;
-    }
-
-    /**
      * 最近发送的请求
      */
     private static HttpRequestBase lastRequest;
-
-    /**
-     * 是否显示请求所有header的开关
-     */
-    static boolean HEADER_KEY = false;
 
     /**
      * 是否保存请求和响应
@@ -236,19 +220,12 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 发送请求之前，配置请求管理器，设置IP，user_agent和cookie
+     * 发送请求之前，目前修改为止增加一个connection请求头
      *
      * @param request
      */
     protected static void beforeRequest(HttpRequestBase request) {
-        if (HEADER_KEY) {
-            output(LINE + "===========request header===========");
-            output(Arrays.asList(request.getAllHeaders()));
-        }
-        HttpClientConstant.COMMON_HEADER.forEach(header -> {
-            if (!request.containsHeader(header.getName()))
-                request.addHeader(header);
-        });
+        request.addHeader(HttpClientConstant.CONNECTION);
     }
 
     /**
@@ -258,10 +235,6 @@ public class FunLibrary extends SourceCode {
      * @return
      */
     private static JSONObject afterResponse(CloseableHttpResponse response) {
-        if (HEADER_KEY) {
-            output(LINE + "===========response header===========");
-            output(Arrays.asList(response.getAllHeaders()));
-        }
         JSONObject cookies = new JSONObject();
         List<Header> headers = Arrays.asList(response.getHeaders("Set-Cookie"));
         if (headers.size() == 0) return cookies;
@@ -355,13 +328,11 @@ public class FunLibrary extends SourceCode {
 //            if (iBase != null && !iBase.isRight(res))
 //                new AlertOver("响应状态码错误：" + status, "状态码错误：" + status, requestInfo.getUrl(), requestInfo).sendSystemMessage();
             MySqlTest.saveApiTestDate(requestInfo, data_size, elapsed_time, status, getMark(), code, LOCAL_IP, COMPUTER_USER_NAME);
-//            if (SAVE_KEY) FunRequest.save(request, res);
         } catch (Exception e) {
             logger.warn("获取请求相应失败！请求内容:{}", FunRequest.initFromRequest(request).toString(), e);
             if (!requestInfo.isBlack())
                 new AlertOver("接口请求失败", requestInfo.toString(), requestInfo.getUrl(), requestInfo).sendSystemMessage();
         } finally {
-            HEADER_KEY = false;
             if (!requestInfo.isBlack()) {
                 lastRequest = request;
             }
