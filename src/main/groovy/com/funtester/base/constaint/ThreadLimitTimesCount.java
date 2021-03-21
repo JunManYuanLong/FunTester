@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
  *
  * @param <T> 闭包参数传递使用,Groovy脚本会有一些兼容问题,部分对象需要tostring获取参数值
  */
-public abstract class ThreadLimitTimesCount<T> extends ThreadBase<T> {
+public abstract class ThreadLimitTimesCount<F> extends ThreadBase<F> {
 
     private static final long serialVersionUID = -4617192188292407063L;
 
@@ -29,9 +29,9 @@ public abstract class ThreadLimitTimesCount<T> extends ThreadBase<T> {
      */
     public int times;
 
-    public ThreadLimitTimesCount(T t, int times, MarkThread markThread) {
+    public ThreadLimitTimesCount(F f, int times, MarkThread markThread) {
         this.times = times;
-        this.t = t;
+        this.f = f;
         this.mark = markThread;
     }
 

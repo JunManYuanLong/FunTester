@@ -19,7 +19,7 @@ import java.util.List;
  *
  * @param <T> 闭包参数传递使用,Groovy脚本会有一些兼容问题,部分对象需要tostring获取参数值
  */
-public abstract class ThreadLimitTimeCount<T> extends ThreadBase<T> {
+public abstract class ThreadLimitTimeCount<F> extends ThreadBase<F> {
 
     private static final long serialVersionUID = -7017995186493855741L;
 
@@ -32,9 +32,9 @@ public abstract class ThreadLimitTimeCount<T> extends ThreadBase<T> {
      */
     public int time;
 
-    public ThreadLimitTimeCount(T t, int time, MarkThread markThread) {
+    public ThreadLimitTimeCount(F f, int time, MarkThread markThread) {
         this.time = time * 1000;
-        this.t = t;
+        this.f = f;
         this.mark = markThread;
     }
 

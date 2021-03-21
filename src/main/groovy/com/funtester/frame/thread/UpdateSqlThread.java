@@ -19,13 +19,13 @@ public class UpdateSqlThread extends ThreadLimitTimesCount<String> {
 
     public UpdateSqlThread(IMySqlBasic base, String sql, int times) {
         this.times = times;
-        this.t = sql;
+        this.f = sql;
         this.base = base;
     }
 
     @Override
     protected void doing() {
-        base.executeUpdateSql(t);
+        base.executeUpdateSql(f);
     }
 
     @Override

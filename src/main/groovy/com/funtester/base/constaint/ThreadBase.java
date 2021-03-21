@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  *
  * @param <T> 必需实现Serializable
  */
-public abstract class ThreadBase<T> extends SourceCode implements Runnable, Serializable {
+public abstract class ThreadBase<F> extends SourceCode implements Runnable, Serializable {
 
     private static final long serialVersionUID = -1282879464717720145L;
 
@@ -63,7 +63,7 @@ public abstract class ThreadBase<T> extends SourceCode implements Runnable, Seri
      *
      * @since 2020年10月19日, 统一用来设置HTTPrequestbase对象.同样可以用于执行SQL和redis查询语句或者对象, 暂未使用dubbo尝试
      */
-    public T t;
+    public F f;
 
     protected ThreadBase() {
     }

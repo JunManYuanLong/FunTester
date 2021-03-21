@@ -25,11 +25,11 @@ public class HeaderMark extends SourceCode implements MarkRequest, Cloneable, Se
     @Override
     public String mark(ThreadBase threadBase) {
         if (threadBase instanceof RequestThreadTime) {
-            RequestThreadTime<HttpRequestBase> req = (RequestThreadTime<HttpRequestBase>) threadBase;
-            return mark(req.t);
+            RequestThreadTime req = (RequestThreadTime) threadBase;
+            return mark(req.f);
         } else if (threadBase instanceof RequestThreadTimes) {
-            RequestThreadTimes<HttpRequestBase> req = (RequestThreadTimes<HttpRequestBase>) threadBase;
-            return mark(req.t);
+            RequestThreadTimes req = (RequestThreadTimes) threadBase;
+            return mark(req.f);
         } else {
             ParamException.fail(threadBase.getClass().toString());
         }

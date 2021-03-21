@@ -22,10 +22,10 @@ class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, S
     @Override
     String mark(ThreadBase threadBase) {
         if (threadBase instanceof RequestTimesFixedQps) {
-            RequestTimesFixedQps<HttpRequestBase> req = (RequestTimesFixedQps<HttpRequestBase>) threadBase;
+            RequestTimesFixedQps req = (RequestTimesFixedQps) threadBase;
             return mark(req.t);
         } else if (threadBase instanceof RequestTimeFixedQps) {
-            RequestThreadTimes<HttpRequestBase> req = (RequestTimeFixedQps<HttpRequestBase>) threadBase;
+            RequestThreadTimes req = (RequestTimeFixedQps) threadBase;
             return mark(req.t);
         } else {
             ParamException.fail(threadBase.getClass().toString());

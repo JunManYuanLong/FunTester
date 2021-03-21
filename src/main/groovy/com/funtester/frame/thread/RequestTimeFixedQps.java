@@ -9,7 +9,7 @@ import org.apache.http.client.methods.HttpRequestBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RequestTimeFixedQps<T> extends FixedQpsThread<HttpRequestBase> {
+public class RequestTimeFixedQps extends FixedQpsThread<HttpRequestBase> {
 
     private static final long serialVersionUID = -64206522585960792L;
 
@@ -31,13 +31,13 @@ public class RequestTimeFixedQps<T> extends FixedQpsThread<HttpRequestBase> {
 
     @Override
     protected void doing() throws Exception {
-        FunLibrary.executeSimlple(t);
+        FunLibrary.executeSimlple(f);
     }
 
     @Override
     public RequestTimeFixedQps clone() {
         RequestTimeFixedQps newone = new RequestTimeFixedQps();
-        newone.t = FunRequest.cloneRequest(this.t);
+        newone.f = FunRequest.cloneRequest(this.f);
         newone.mark = this.mark == null ? null : this.mark.clone();
         newone.qps = this.qps;
         newone.isTimesMode = this.isTimesMode;

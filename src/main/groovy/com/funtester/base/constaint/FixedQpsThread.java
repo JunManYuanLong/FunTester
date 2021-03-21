@@ -7,7 +7,7 @@ import com.funtester.utils.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class FixedQpsThread<T> extends ThreadBase<T> {
+public abstract class FixedQpsThread<F> extends ThreadBase<F> {
 
     private static Logger logger = LoggerFactory.getLogger(FixedQpsThread.class);
 
@@ -20,11 +20,11 @@ public abstract class FixedQpsThread<T> extends ThreadBase<T> {
 
     public boolean isTimesMode;
 
-    public FixedQpsThread(T t, int limit, int qps, MarkThread markThread, boolean isTimesMode) {
+    public FixedQpsThread(F f, int limit, int qps, MarkThread markThread, boolean isTimesMode) {
         this.limit = limit;
         this.qps = qps;
         this.mark = markThread;
-        this.t = t;
+        this.f = f;
         this.isTimesMode = isTimesMode;
     }
 

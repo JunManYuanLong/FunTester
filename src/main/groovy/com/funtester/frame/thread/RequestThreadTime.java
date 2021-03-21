@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 /**
  * http请求多线程类
  */
-public class RequestThreadTime<T> extends ThreadLimitTimeCount<HttpRequestBase> {
+public class RequestThreadTime extends ThreadLimitTimeCount<HttpRequestBase> {
 
     private static final long serialVersionUID = -6554503654885966097L;
 
@@ -49,7 +49,7 @@ public class RequestThreadTime<T> extends ThreadLimitTimeCount<HttpRequestBase> 
 
     @Override
     protected void doing() throws Exception {
-        FunLibrary.executeSimlple(t);
+        FunLibrary.executeSimlple(f);
     }
 
 
@@ -57,7 +57,7 @@ public class RequestThreadTime<T> extends ThreadLimitTimeCount<HttpRequestBase> 
     public RequestThreadTime clone() {
         RequestThreadTime threadTime = new RequestThreadTime();
         threadTime.time = this.time;
-        threadTime.t = FunRequest.cloneRequest(t);
+        threadTime.f = FunRequest.cloneRequest(f);
         threadTime.mark = mark == null ? null : mark.clone();
         return threadTime;
     }
