@@ -1,6 +1,6 @@
 # 总目录
 
-> **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，非著名测试开发er，欢迎关注。
+> **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -154,8 +154,11 @@
 - [链路性能测试中参数多样性方法分享](https://mp.weixin.qq.com/s/I1pm0fulNrj_S-YkNz-gEA)
 - [链路测试中参数流转图](https://mp.weixin.qq.com/s/xyo9HXBLoXgLW6MSFH3V6w)
 - [线程同步类CyclicBarrier在性能测试集合点应用](https://mp.weixin.qq.com/s/K2YySxX9T4v_rzbvIbIHJA)
+- [链路压测中各接口性能统计](https://mp.weixin.qq.com/s/Deyop0mMpHrRWj9JTHzayw)
+- [性能测试框架中QPS取样器实现](https://mp.weixin.qq.com/s/4-5WhwwE1oRQ7cMUDv7J2w)
+- [链路压测中的支路问题初探](https://mp.weixin.qq.com/s/9iN9XndRPH4vIgc0-jVpUA)
 
-> **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，非著名测试开发er，欢迎关注。
+> **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -287,7 +290,7 @@
 - [FunTester测试框架架构图初探](https://mp.weixin.qq.com/s/bcMbVDkWbHSXjZFDeFyJsQ)
 - [FunTester测试项目架构图初探](https://mp.weixin.qq.com/s/wqb8FXRbEXrhDuZounmNXA)
 
-> **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，非著名测试开发er，欢迎关注。
+> **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -344,7 +347,7 @@
 
 # 工具合集
 
-## JsonPath合集
+## JSON合集
 
 - [JsonPath实践（一）](https://mp.weixin.qq.com/s/Cq0_v_ptbGd4f5y8HIsq7w)
 - [JsonPath实践（二）](https://mp.weixin.qq.com/s/w_iJTiuQahIw6U00CJVJZg)
@@ -356,6 +359,7 @@
 - [JsonPath工具类单元测试](https://mp.weixin.qq.com/s/1YtUWGk_sTjn9bHwAeT0Ew)
 - [JsonPath验证类既Groovy重载操作符实践](https://mp.weixin.qq.com/s/5gc04CAsBY6pWxe5c2P41w)
 - [JSON对象标记语法验证类](https://mp.weixin.qq.com/s/jSXmoEdMF7nWAqQuzJ5GiQ)
+- [使用jq处理JSON数据（一）](https://mp.weixin.qq.com/s/45-ztTx2scbNY5u7NQzeIA)
 
 ## Jacoco覆盖率
 
@@ -442,7 +446,7 @@
 
 
 
-> **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，非著名测试开发er，欢迎关注。
+> **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -574,6 +578,7 @@
 - [可测性经验分享](https://mp.weixin.qq.com/s/iRtUjESYS3sh3YTD-BWjdA)
 - [敏捷中的回归测试的优化【译】](https://mp.weixin.qq.com/s/nDiZZgA1PIiAUCG_xwA2rA)
 - [敏捷的主要优势【译】](https://mp.weixin.qq.com/s/zkI85TLI37XrPFaQ-pZYMA)
+- [2021年自动化测试流行趋势【译】](https://mp.weixin.qq.com/s/dIZxkNT6mjgRukLBy0AJ6Q)
 
 ## 大咖风采
 
@@ -699,5 +704,6 @@
 - [原创打油诗欣赏](https://mp.weixin.qq.com/s/3hPSDjH-3cWu6EVsjU0wOw)
 - [优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)
 - [Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)
+- [GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)
 - [假期思考题](https://mp.weixin.qq.com/s/3DOnkmYDlwk-XKg4ge3ZUw)
 - [甩锅技能+1](https://mp.weixin.qq.com/s/nMwlfXZoDcRRPHcTKpvfNg)
