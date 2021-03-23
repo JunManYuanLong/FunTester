@@ -7,7 +7,7 @@ import com.funtester.utils.DecodeEncode
 /**
  * 性能测试结果集
  */
-class PerformanceResultBean extends AbstractBean implements Serializable{
+class PerformanceResultBean extends AbstractBean implements Serializable {
 
     private static final long serialVersionUID = -1595942562342357L;
 
@@ -47,9 +47,19 @@ class PerformanceResultBean extends AbstractBean implements Serializable{
     int rt
 
     /**
-     * 吞吐量
+     * 吞吐量,公式为QPS=Thead/avg(time)
      */
     double qps
+
+    /**
+     * 通过QPS=count(r)/T公式计算得到的QPS,在固定QPS模式中,这个值来源于预设QPS
+     */
+    double qps2
+
+    /**
+     * 理论误差,两种统计模式
+     */
+    String deviation
 
     /**
      * 错误率
@@ -66,7 +76,7 @@ class PerformanceResultBean extends AbstractBean implements Serializable{
      */
     int executeTotal
 
-    PerformanceResultBean(String mark, String startTime, String endTime, int threads, int total, int rt, double qps, double errorRate, double failRate, int executeTotal, String table) {
+    PerformanceResultBean(String mark, String startTime, String endTime, int threads, int total, int rt, double qps, double qps2, double errorRate, double failRate, int executeTotal, String table) {
         this.mark = mark
         this.startTime = startTime
         this.endTime = endTime
@@ -74,13 +84,14 @@ class PerformanceResultBean extends AbstractBean implements Serializable{
         this.total = total
         this.rt = rt
         this.qps = qps
+        this.qps2 = qps2
         this.errorRate = errorRate
         this.failRate = failRate
         this.executeTotal = executeTotal
         this.table = DecodeEncode.zipBase64(table)
+        this.deviation = com.funtester.frame.SourceCode.getPercent(Math.abs(qps - qps2) / Math.max(qps, qps2))
         Output.output(this.toJson())
         Output.output(table)
         MySqlTest.savePerformanceBean(this)
     }
-
 }

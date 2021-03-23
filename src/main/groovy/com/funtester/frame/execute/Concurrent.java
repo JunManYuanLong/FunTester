@@ -180,8 +180,12 @@ public class Concurrent extends SourceCode {
         int sum = data.stream().mapToInt(x -> x).sum();
         String statistics = StatisticsUtil.statistics(data, desc, threadNum);
         int rt = sum / size;
-        double qps = (1000_000 * name / rt) / 1000.0;
-        return new PerformanceResultBean(desc, start, end, name, size, rt, qps, getPercent(executeTotal, errorTotal), getPercent(threadNum, failTotal), executeTotal, statistics);
+        double qps = 1000.0 * name / rt;
+        double qps2 = (executeTotal + errorTotal) * 1000.0 / (endTime - startTime);
+        output(executeTotal);
+        output(startTime);
+        output(endTime);
+        return new PerformanceResultBean(desc, start, end, name, size, rt, qps, qps2, getPercent(executeTotal, errorTotal), getPercent(threadNum, failTotal), executeTotal, statistics);
     }
 
 
