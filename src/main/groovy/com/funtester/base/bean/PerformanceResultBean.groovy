@@ -89,9 +89,10 @@ class PerformanceResultBean extends AbstractBean implements Serializable {
         this.failRate = failRate
         this.executeTotal = executeTotal
         this.table = DecodeEncode.zipBase64(table)
-        this.deviation = com.funtester.frame.SourceCode.getPercent(Math.abs(qps - qps2) / Math.max(qps, qps2))
+        this.deviation = com.funtester.frame.SourceCode.getPercent(Math.abs(qps - qps2) * 100 / Math.max(qps, qps2))
         Output.output(this.toJson())
         Output.output(table)
         MySqlTest.savePerformanceBean(this)
     }
+
 }
