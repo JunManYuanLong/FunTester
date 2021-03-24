@@ -579,6 +579,7 @@
 - [敏捷中的回归测试的优化【译】](https://mp.weixin.qq.com/s/nDiZZgA1PIiAUCG_xwA2rA)
 - [敏捷的主要优势【译】](https://mp.weixin.qq.com/s/zkI85TLI37XrPFaQ-pZYMA)
 - [2021年自动化测试流行趋势【译】](https://mp.weixin.qq.com/s/dIZxkNT6mjgRukLBy0AJ6Q)
+- [敏捷团队的自动化测试【译】](https://mp.weixin.qq.com/s/5BvzQvdssTyp8voC9J9www)
 
 ## 大咖风采
 
@@ -707,3 +708,4 @@
 - [GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)
 - [假期思考题](https://mp.weixin.qq.com/s/3DOnkmYDlwk-XKg4ge3ZUw)
 - [甩锅技能+1](https://mp.weixin.qq.com/s/nMwlfXZoDcRRPHcTKpvfNg)
+- [不要浪费自己的求知欲](https://mp.weixin.qq.com/s/WO0aQqmhU_xGUpWvYwOqUA)
