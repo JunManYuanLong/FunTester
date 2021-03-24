@@ -199,11 +199,11 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
         int size = qs.size();
         if (size < 5) return;
         if (size <= BUCKET_SIZE) {
-            output(StatisticsUtil.draw(qs, StringUtil.center(taskDesc + SUFFIX, size * 3)) + LINE + LINE);
+            output(StatisticsUtil.draw(qs, StringUtil.center(taskDesc + SUFFIX, size * 3)));
         } else {
             double v = size * 1.0 / BUCKET_SIZE;
             List<Integer> qpss = range(BUCKET_SIZE).mapToObj(x -> qs.get((int) (x * v))).collect(Collectors.toList());
-            output(StatisticsUtil.draw(qpss, StringUtil.center(taskDesc + SUFFIX, BUCKET_SIZE * 3) + LINE + LINE));
+            output(StatisticsUtil.draw(qpss, StringUtil.center(taskDesc + SUFFIX, BUCKET_SIZE * 3)));
         }
     }
 

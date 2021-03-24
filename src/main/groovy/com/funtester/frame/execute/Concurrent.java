@@ -182,9 +182,6 @@ public class Concurrent extends SourceCode {
         int rt = sum / size;
         double qps = 1000.0 * name / rt;
         double qps2 = (executeTotal + errorTotal) * 1000.0 / (endTime - startTime);
-        output(executeTotal);
-        output(startTime);
-        output(endTime);
         return new PerformanceResultBean(desc, start, end, name, size, rt, qps, qps2, getPercent(executeTotal, errorTotal), getPercent(threadNum, failTotal), executeTotal, statistics);
     }
 

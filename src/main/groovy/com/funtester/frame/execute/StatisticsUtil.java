@@ -72,8 +72,9 @@ public class StatisticsUtil extends Constant {
     /**
      * 根据数组画图,无序亦可
      * <p>
-     *     此处注意title处理调用center方法的时候,需要data.size()乘以3才是正确的长度,一个长度包含一个空格和两个特殊字符
+     * 此处注意title处理调用center方法的时候,需要data.size()乘以3才是正确的长度,一个长度包含一个空格和两个特殊字符
      * </p>
+     *
      * @param data
      * @param title
      * @return
@@ -86,7 +87,7 @@ public class StatisticsUtil extends Constant {
     /**
      * 根据数组画图,无序亦可
      * <p>
-     *     此处注意title处理调用center方法的时候,需要data.size()乘以3才是正确的长度,一个长度包含一个空格和两个特殊字符
+     * 此处注意title处理调用center方法的时候,需要data.size()乘以3才是正确的长度,一个长度包含一个空格和两个特殊字符
      * </p>
      *
      * @param data
@@ -104,7 +105,7 @@ public class StatisticsUtil extends Constant {
                 result[i][j] = getManyString(map[j][buket - 1 - i], 2) + SPACE_1;
             }
         }
-        StringBuffer table = new StringBuffer(LINE + StringUtil.center(title, buket) + LINE);
+        StringBuffer table = new StringBuffer(LINE + StringUtil.center(title, buket) + LINE + LINE);
         range(buket).forEach(x -> table.append(Arrays.asList(result[x]).stream().collect(Collectors.joining()) + LINE));
         return table.toString();
     }
