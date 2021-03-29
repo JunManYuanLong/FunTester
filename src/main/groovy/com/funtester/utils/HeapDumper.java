@@ -1,8 +1,8 @@
 package com.funtester.utils;
 
 import com.sun.management.HotSpotDiagnosticMXBean;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.management.MBeanServer;
 import java.lang.management.ManagementFactory;
@@ -12,7 +12,7 @@ import java.lang.management.ManagementFactory;
  */
 public class HeapDumper {
 
-    private static Logger logger = LoggerFactory.getLogger(HeapDumper.class);
+    private static Logger logger = LogManager.getLogger(HeapDumper.class);
 
     /**
      * 这是HotSpot Diagnostic MBean的名称

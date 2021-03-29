@@ -7,7 +7,7 @@ import com.funtester.frame.SourceCode;
  */
 public class RedisPool extends SourceCode {
 
-//    static Logger logger = LoggerFactory.getLogger(RedisPool.class);
+//    static Logger logger = LogManager.getLogger(RedisPool.class);
 //
 //    static PropertyUtils.Property property = PropertyUtils.getProperties("redis");
 //

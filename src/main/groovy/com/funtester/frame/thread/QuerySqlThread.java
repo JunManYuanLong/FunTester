@@ -3,8 +3,8 @@ package com.funtester.frame.thread;
 import com.funtester.base.constaint.ThreadBase;
 import com.funtester.base.constaint.ThreadLimitTimesCount;
 import com.funtester.base.interfaces.IMySqlBasic;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
 
@@ -15,7 +15,7 @@ public class QuerySqlThread extends ThreadLimitTimesCount {
 
     private static final long serialVersionUID = 879371247008746883L;
 
-    private static Logger logger = LoggerFactory.getLogger(QuerySqlThread.class);
+    private static Logger logger = LogManager.getLogger(QuerySqlThread.class);
 
     String sql;
 

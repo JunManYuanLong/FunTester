@@ -3,12 +3,12 @@ package com.funtester.utils.message;
 import com.funtester.base.bean.RequestInfo;
 import com.funtester.base.interfaces.IMessage;
 import com.funtester.httpclient.FunLibrary;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class AlertOver extends FunLibrary implements IMessage {
 
-    private static Logger logger = LoggerFactory.getLogger(AlertOver.class);
+    private static Logger logger = LogManager.getLogger(AlertOver.class);
 
     String title;
 

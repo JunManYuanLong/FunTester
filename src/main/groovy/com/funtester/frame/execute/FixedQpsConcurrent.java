@@ -9,8 +9,8 @@ import com.funtester.frame.SourceCode;
 import com.funtester.httpclient.GCThread;
 import com.funtester.utils.Time;
 import com.funtester.utils.RWUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ import static java.util.stream.Collectors.toList;
  */
 public class FixedQpsConcurrent extends SourceCode {
 
-    private static Logger logger = LoggerFactory.getLogger(FixedQpsConcurrent.class);
+    private static Logger logger = LogManager.getLogger(FixedQpsConcurrent.class);
 
     public static boolean key = false;
 

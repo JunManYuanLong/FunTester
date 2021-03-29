@@ -9,8 +9,8 @@ import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.SourceCode;
 import com.funtester.utils.StringUtil;
 import com.funtester.utils.Time;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
  */
 public class Progress<F extends ThreadBase> extends SourceCode implements Runnable {
 
-    private static Logger logger = LoggerFactory.getLogger(Progress.class);
+    private static Logger logger = LogManager.getLogger(Progress.class);
 
     /**
      * 会长

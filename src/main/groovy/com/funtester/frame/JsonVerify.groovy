@@ -6,8 +6,8 @@ import com.alibaba.fastjson.JSONException
 import com.alibaba.fastjson.JSONObject
 import com.funtester.base.exception.ParamException
 import com.funtester.utils.JsonUtil
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 
 /**
  * 操作符重写类,用于匹配JSonpath验证语法,基本重载的方法以及各种比较方法,每个方法重载三次,参数为double,String,verify
@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory
  */
 class JsonVerify extends SourceCode implements Comparable {
 
-    private static Logger logger = LoggerFactory.getLogger(JsonVerify.class)
+    private static Logger logger = LogManager.getLogger(JsonVerify.class)
 
     /**
      * 验证文本

@@ -5,17 +5,15 @@ import com.funtester.base.exception.ParamException
 import com.funtester.config.VerifyType
 import com.funtester.utils.JsonUtil
 import com.funtester.utils.Regex
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-
-import static com.funtester.config.Constant.REG_PART
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 
 /**
  * 验证对象类
  */
 class VerifyBean extends AbstractBean implements Serializable, Cloneable {
 
-    private static Logger logger = LoggerFactory.getLogger(VerifyBean.class)
+    private static Logger logger = LogManager.getLogger(VerifyBean.class)
 
     private static final long serialVersionUID = -1595942567071153982L;
 

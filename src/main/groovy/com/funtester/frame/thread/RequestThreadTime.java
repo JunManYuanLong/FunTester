@@ -6,8 +6,8 @@ import com.funtester.httpclient.FunLibrary;
 import com.funtester.httpclient.FunRequest;
 import com.funtester.httpclient.GCThread;
 import org.apache.http.client.methods.HttpRequestBase;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * http请求多线程类
@@ -16,7 +16,7 @@ public class RequestThreadTime extends ThreadLimitTimeCount<HttpRequestBase> {
 
     private static final long serialVersionUID = -6554503654885966097L;
 
-    private static Logger logger = LoggerFactory.getLogger(RequestThreadTime.class);
+    private static Logger logger = LogManager.getLogger(RequestThreadTime.class);
 
     /**
      * 单请求多线程多次任务构造方法

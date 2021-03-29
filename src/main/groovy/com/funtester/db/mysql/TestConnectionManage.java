@@ -7,7 +7,7 @@ package com.funtester.db.mysql;
 @Deprecated
 public class TestConnectionManage extends SqlBase {
 
-//    static Logger logger = LoggerFactory.getLogger(TestConnectionManage.class);
+//    static Logger logger = LogManager.getLogger(TestConnectionManage.class);
 //
 //    public static ExecuteThread executeThread1 = new ExecuteThread(true);
 //

@@ -6,7 +6,7 @@ package com.funtester.socket;
 public class WebSocketFunClient {
 //public class WebSocketFunClient extends WebSocketClient {
 
-//    private static Logger logger = LoggerFactory.getLogger(WebSocketFunClient.class);
+//    private static Logger logger = LogManager.getLogger(WebSocketFunClient.class);
 //
 //    public static Vector<WebSocketFunClient> clients = new Vector<>();
 //

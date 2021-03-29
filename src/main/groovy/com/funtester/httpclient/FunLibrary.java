@@ -29,8 +29,8 @@ import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ import java.util.stream.Collectors;
  */
 public class FunLibrary extends SourceCode {
 
-    private static Logger logger = LoggerFactory.getLogger(FunLibrary.class);
+    private static Logger logger = LogManager.getLogger(FunLibrary.class);
 
     /**
      * ibase实现类，需要用来校验响应是否正确的响应体，获取响应的code码，code码默认-2，对于不同的项目ibase的isright方法不一样

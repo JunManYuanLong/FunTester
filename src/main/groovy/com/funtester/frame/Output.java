@@ -9,8 +9,8 @@ import com.funtester.config.Constant;
 import com.funtester.utils.StringUtil;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -19,7 +19,7 @@ import java.util.stream.IntStream;
 @SuppressWarnings("all")
 public class Output extends Constant {
 
-    private static Logger logger = LoggerFactory.getLogger(Output.class);
+    private static Logger logger = LogManager.getLogger(Output.class);
 
     private static final String UP = "~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~";
 

@@ -1,7 +1,8 @@
 package com.funtester.base.bean
 
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
+
 /**
  * 测试记录的bean
  */
@@ -9,7 +10,7 @@ class RecordBean extends AbstractBean implements Serializable{
 
     private static final long serialVersionUID = -159594234325649847L;
 
-    static Logger logger = LoggerFactory.getLogger(RecordBean.class)
+    static Logger logger = LogManager.getLogger(RecordBean.class)
 
     String domain;
 

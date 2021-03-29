@@ -2,8 +2,8 @@ package com.funtester.utils
 
 
 import com.funtester.frame.SourceCode
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 
 import static com.funtester.config.Constant.LINE
 import static com.funtester.config.Constant.TAB
@@ -16,7 +16,7 @@ class TimeWatch implements Serializable {
 
     private static final long serialVersionUID = -4156600036913348727L;
 
-    private static Logger logger = LoggerFactory.getLogger(TimeWatch.class)
+    private static Logger logger = LogManager.getLogger(TimeWatch.class)
 
     /**
      * 默认的名称

@@ -8,7 +8,7 @@ import com.funtester.frame.SourceCode;
  */
 public class DubboUtil extends SourceCode {
 //
-//    public static Logger logger = LoggerFactory.getLogger(DubboUtil.class);
+//    public static Logger logger = LogManager.getLogger(DubboUtil.class);
 //
 //    public static DubboInvokeParams initDubboInvokeParams(DubboParamBase... params) {
 //        DubboInvokeParams invokeParams = new DubboInvokeParams(params.length);

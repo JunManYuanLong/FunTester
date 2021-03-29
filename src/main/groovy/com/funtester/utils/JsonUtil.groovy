@@ -51,7 +51,7 @@ package com.funtester.utils
  */
 class JsonUtil {
 
-//    private static Logger logger = LoggerFactory.getLogger(JsonUtil.class)
+//    private static Logger logger = LogManager.getLogger(JsonUtil.class)
 //
 //    /**
 //     * 用户构建对象,获取verify对象

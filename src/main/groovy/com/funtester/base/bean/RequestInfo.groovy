@@ -10,8 +10,8 @@ import org.apache.http.HttpEntity
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase
 import org.apache.http.client.methods.HttpRequestBase
 import org.apache.http.util.EntityUtils
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 
 /**
  * 请求信息封装类
@@ -20,7 +20,7 @@ class RequestInfo extends AbstractBean implements Serializable {
 
     private static final long serialVersionUID = 5942566988949859847L;
 
-    private static Logger logger = LoggerFactory.getLogger(RequestInfo.class)
+    private static Logger logger = LogManager.getLogger(RequestInfo.class)
 
     /**
      * 请求信息的标记字段,用于日志记录请求

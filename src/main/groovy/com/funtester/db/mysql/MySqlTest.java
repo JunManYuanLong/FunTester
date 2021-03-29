@@ -6,8 +6,8 @@ import com.funtester.base.bean.RecordBean;
 import com.funtester.base.bean.RequestInfo;
 import com.funtester.config.SqlConstant;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class MySqlTest extends SqlBase {
 
-    private static Logger logger = LoggerFactory.getLogger(MySqlTest.class);
+    private static Logger logger = LogManager.getLogger(MySqlTest.class);
 
     /**
      * 控台statement1和statement均衡

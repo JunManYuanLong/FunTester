@@ -5,15 +5,15 @@ import com.alibaba.fastjson.JSONObject
 import com.funtester.config.Constant
 import com.funtester.frame.Save
 import com.funtester.frame.SourceCode
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 
 /**
  * bean的基类
  */
 abstract class AbstractBean extends Constant{
 
-    static final Logger logger = LoggerFactory.getLogger(AbstractBean.class)
+    static final Logger logger = LogManager.getLogger(AbstractBean.class)
 
     /**
      * 将bean转化为json，为了进行数据处理和打印

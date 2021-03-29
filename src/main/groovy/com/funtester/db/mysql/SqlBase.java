@@ -7,7 +7,7 @@ import com.funtester.frame.SourceCode;
  */
 public class SqlBase extends SourceCode {
 
-//    private static Logger logger = LoggerFactory.getLogger(SqlBase.class);
+//    private static Logger logger = LogManager.getLogger(SqlBase.class);
 //
 //    /**
 //     * 获取数据库连接

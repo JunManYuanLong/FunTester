@@ -10,7 +10,7 @@ import com.funtester.frame.SourceCode;
 public class AidThread extends SourceCode {
 //public class AidThread extends SourceCode implements Runnable {
 
-//    private static Logger logger = LoggerFactory.getLogger(AidThread.class);
+//    private static Logger logger = LogManager.getLogger(AidThread.class);
 //
 //    @Override
 //    public void run() {

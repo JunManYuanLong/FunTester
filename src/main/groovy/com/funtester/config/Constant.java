@@ -3,8 +3,8 @@ package com.funtester.config;
 import com.funtester.utils.FileUtil;
 import com.funtester.utils.Time;
 import org.apache.http.Consts;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.net.InetAddress;
@@ -18,7 +18,7 @@ import java.util.Properties;
  */
 public class Constant {
 
-    private static Logger logger = LoggerFactory.getLogger(Constant.class);
+    private static Logger logger = LogManager.getLogger(Constant.class);
 
     /*常用的常量*/
     public static final String LINE = "\r\n";

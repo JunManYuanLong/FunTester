@@ -3,8 +3,8 @@ package com.funtester.utils;
 import com.funtester.base.exception.ParamException;
 import com.funtester.frame.SourceCode;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  */
 public class Regex extends SourceCode {
 
-    private static Logger logger = LoggerFactory.getLogger(Regex.class);
+    private static Logger logger = LogManager.getLogger(Regex.class);
 
     /**
      * 正则校验文本是否匹配

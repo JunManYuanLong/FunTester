@@ -4,7 +4,7 @@ package com.funtester.utils.xml
  */
 class XMLUtil2 {
 
-//    private static Logger logger = LoggerFactory.getLogger(XMLUtil2.class)
+//    private static Logger logger = LogManager.getLogger(XMLUtil2.class)
 //
 //    /**
 //     * 解析xml文件

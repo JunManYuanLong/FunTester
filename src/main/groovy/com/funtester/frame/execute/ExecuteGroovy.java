@@ -4,8 +4,8 @@ import com.funtester.frame.SourceCode;
 import com.funtester.utils.FileUtil;
 import groovy.lang.GroovyClassLoader;
 import groovy.lang.GroovyObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class ExecuteGroovy extends SourceCode {
 
-    private static Logger logger = LoggerFactory.getLogger(ExecuteSource.class);
+    private static Logger logger = LogManager.getLogger(ExecuteSource.class);
 
     /**
      * 路径

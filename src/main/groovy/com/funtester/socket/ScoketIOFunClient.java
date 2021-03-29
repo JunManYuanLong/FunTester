@@ -8,7 +8,7 @@ public class ScoketIOFunClient {
 
 //    private static final long serialVersionUID = -7229704711068396512L;
 //
-//    private static Logger logger = LoggerFactory.getLogger(ScoketIOFunClient.class);
+//    private static Logger logger = LogManager.getLogger(ScoketIOFunClient.class);
 //
 //    public static ThreadLocal<IO.Options> options = new ThreadLocal() {
 //

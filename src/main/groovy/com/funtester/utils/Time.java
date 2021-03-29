@@ -2,8 +2,8 @@ package com.funtester.utils;
 
 import com.funtester.config.Constant;
 import com.funtester.frame.SourceCode;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class Time extends SourceCode {
 
-    private static Logger logger = LoggerFactory.getLogger(Time.class);
+    private static Logger logger = LogManager.getLogger(Time.class);
 
     /**
      * 默认的日志显示格式

@@ -5,8 +5,8 @@ import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.execute.Concurrent;
 import com.funtester.httpclient.GCThread;
 import com.funtester.utils.Time;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * 请求时间限制的多线程类,限制每个线程执行的次数
@@ -15,13 +15,13 @@ import org.slf4j.LoggerFactory;
  * 通常在测试某项用例固定时间的场景下使用,可以提前终止测试用例
  * </p>
  *
- * @param <T> 闭包参数传递使用,Groovy脚本会有一些兼容问题,部分对象需要tostring获取参数值
+ * @param <F> 闭包参数传递使用,Groovy脚本会有一些兼容问题,部分对象需要tostring获取参数值
  */
 public abstract class ThreadLimitTimesCount<F> extends ThreadBase<F> {
 
     private static final long serialVersionUID = -4617192188292407063L;
 
-    private static final Logger logger = LoggerFactory.getLogger(ThreadLimitTimesCount.class);
+    private static final Logger logger = LogManager.getLogger(ThreadLimitTimesCount.class);
 
 
     /**

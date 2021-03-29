@@ -1,15 +1,15 @@
 package com.funtester.config;
 
 import com.funtester.frame.SourceCode;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * 存放一些系统初始化的方法，可被外部调用
  */
 public class SysInit extends SourceCode{
 
-    private static Logger logger = LoggerFactory.getLogger(SysInit.class);
+    private static Logger logger = LogManager.getLogger(SysInit.class);
 
     /**
      * 是否是黑名单的host

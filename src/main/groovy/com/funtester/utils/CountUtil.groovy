@@ -1,8 +1,7 @@
 package com.funtester.utils
 
-
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 
 import java.util.stream.Collectors
 
@@ -11,7 +10,7 @@ import java.util.stream.Collectors
  */
 class CountUtil {
 
-    private static Logger logger = LoggerFactory.getLogger(CountUtil.class)
+    private static Logger logger = LogManager.getLogger(CountUtil.class)
 
     /**
      * 统计数据出现的次数

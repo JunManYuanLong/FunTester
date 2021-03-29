@@ -5,8 +5,8 @@ import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.execute.Concurrent;
 import com.funtester.httpclient.GCThread;
 import com.funtester.utils.Time;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public abstract class ThreadLimitTimeCount<F> extends ThreadBase<F> {
 
     private static final long serialVersionUID = -7017995186493855741L;
 
-    private static final Logger logger = LoggerFactory.getLogger(ThreadLimitTimeCount.class);
+    private static final Logger logger = LogManager.getLogger(ThreadLimitTimeCount.class);
 
     public List<String> marks = new ArrayList<>();
 

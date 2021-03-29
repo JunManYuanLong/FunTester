@@ -4,12 +4,12 @@ import com.funtester.base.interfaces.MarkThread;
 import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.execute.FixedQpsConcurrent;
 import com.funtester.utils.Time;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public abstract class FixedQpsThread<F> extends ThreadBase<F> {
 
-    private static Logger logger = LoggerFactory.getLogger(FixedQpsThread.class);
+    private static Logger logger = LogManager.getLogger(FixedQpsThread.class);
 
     public int qps;
 

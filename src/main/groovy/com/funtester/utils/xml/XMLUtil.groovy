@@ -4,7 +4,7 @@ package com.funtester.utils.xml
  */
 class XMLUtil {
 
-//    private static Logger logger = LoggerFactory.getLogger(XMLUtil.class)
+//    private static Logger logger = LogManager.getLogger(XMLUtil.class)
 //
 //    /**
 //     *  解析某个节点(根节点)信息

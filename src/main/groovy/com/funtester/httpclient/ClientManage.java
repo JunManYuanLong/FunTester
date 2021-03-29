@@ -32,8 +32,8 @@ import org.apache.http.nio.reactor.ConnectingIOReactor;
 import org.apache.http.nio.reactor.IOReactorException;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.protocol.HttpCoreContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLException;
@@ -54,7 +54,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class ClientManage {
 
-    private static Logger logger = LoggerFactory.getLogger(ClientManage.class);
+    private static Logger logger = LogManager.getLogger(ClientManage.class);
 
     /**
      * ssl验证

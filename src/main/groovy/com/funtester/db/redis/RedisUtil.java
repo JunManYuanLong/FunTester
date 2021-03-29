@@ -15,7 +15,7 @@ public class RedisUtil extends RedisPool {
 //     */
 //    private static int index;
 //
-//    private static Logger logger = LoggerFactory.getLogger(RedisUtil.class);
+//    private static Logger logger = LogManager.getLogger(RedisUtil.class);
 //
 //    /**
 //     * 获取jedis操作对象，回收资源方法close，3.0以后废弃了其他方法，默认连接第一个数据库

@@ -4,8 +4,8 @@ import com.funtester.base.exception.FailException;
 import com.funtester.utils.RWUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import static com.funtester.config.Constant.*;
  */
 public class Save {
 
-    private static Logger logger = LoggerFactory.getLogger(Save.class);
+    private static Logger logger = LogManager.getLogger(Save.class);
 
     /**
      * 保存信息，每次回删除文件，默认当前工作空间

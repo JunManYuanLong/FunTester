@@ -9,8 +9,8 @@ import com.funtester.utils.Regex;
 import com.funtester.utils.Time;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.text.DecimalFormat;
@@ -25,7 +25,7 @@ import java.util.stream.IntStream;
 
 public class SourceCode extends Output {
 
-    private static Logger logger = LoggerFactory.getLogger(SourceCode.class);
+    private static Logger logger = LogManager.getLogger(SourceCode.class);
 
     private static Scanner scanner;
 

@@ -1,19 +1,22 @@
 package com.funtester.java;
 
-import com.funtester.frame.SourceCode;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class Te extends SourceCode {
 
-    private static final Logger logger = LoggerFactory.getLogger(Te.class);
+public class Te {
+
+    private static final Logger logger = LogManager.getLogger(Te.class);
 
     public static void main(String[] args) {
-        output(3);
+//        output(3);
         logger.info("32423");
         logger.warn("32423");
         logger.error("32423");
-        output(getJson("3243=432","32442424=32423"));
+//        output(getJson("3243=432","32442424=32423"));
+
+
+
     }
 
 }

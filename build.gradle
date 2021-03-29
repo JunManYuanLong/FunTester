@@ -70,7 +70,7 @@ dependencies {
 //    compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.9.0'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.12.1'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.12.1'
+//    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.12.1'
 //    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
 //    compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.0'
 //    compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.0'

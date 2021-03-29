@@ -3,8 +3,8 @@ package com.funtester.frame;
 import com.alibaba.fastjson.JSONObject;
 import com.funtester.httpclient.FunLibrary;
 import com.funtester.utils.Regex;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class ResponseVerify extends SourceCode {
 
-    private static Logger logger = LoggerFactory.getLogger(ResponseVerify.class);
+    private static Logger logger = LogManager.getLogger(ResponseVerify.class);
 
     /**
      * 断言的json对象

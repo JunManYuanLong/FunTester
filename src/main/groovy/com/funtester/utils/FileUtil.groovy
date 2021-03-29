@@ -1,15 +1,15 @@
 package com.funtester.utils
 
 import com.funtester.config.Constant
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 
 /**
  * 文件读写类,与{@link RWUtil}有功能上的重合,原因在与Java和Groovy的不兼容问题.
  */
 class FileUtil extends Constant {
 
-    private static Logger logger = LoggerFactory.getLogger(FileUtil.class)
+    private static Logger logger = LogManager.getLogger(FileUtil.class)
 
     /**
      * 拷贝文件

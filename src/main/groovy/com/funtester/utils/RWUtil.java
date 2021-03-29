@@ -7,8 +7,8 @@ import com.funtester.config.Constant;
 import com.funtester.frame.SourceCode;
 import groovy.lang.Tuple2;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.net.URL;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  */
 public class RWUtil extends Constant {
 
-    private static Logger logger = LoggerFactory.getLogger(RWUtil.class);
+    private static Logger logger = LogManager.getLogger(RWUtil.class);
 
     /**
      * 读取文件信息，返回json数据

@@ -15,8 +15,8 @@ import org.apache.http.client.methods.HttpPost
 import org.apache.http.client.methods.HttpRequestBase
 import org.apache.http.client.methods.RequestBuilder
 import org.apache.http.util.EntityUtils
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 
 /**
  * 重写FunLibrary，使用面对对象思想,不用轻易使用set属性方法,可能存在BUG
@@ -25,7 +25,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
 
     private static final long serialVersionUID = -4153600036943378727L
 
-    private static Logger logger = LoggerFactory.getLogger(FunRequest.class)
+    private static Logger logger = LogManager.getLogger(FunRequest.class)
 
     /**
      * 请求类型，true为get，false为post

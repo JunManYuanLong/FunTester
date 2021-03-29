@@ -6,14 +6,14 @@ import com.funtester.httpclient.FunLibrary;
 import com.funtester.httpclient.FunRequest;
 import com.funtester.httpclient.GCThread;
 import org.apache.http.client.methods.HttpRequestBase;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class RequestTimeFixedQps extends FixedQpsThread<HttpRequestBase> {
 
     private static final long serialVersionUID = -64206522585960792L;
 
-    private static Logger logger = LoggerFactory.getLogger(RequestTimeFixedQps.class);
+    private static Logger logger = LogManager.getLogger(RequestTimeFixedQps.class);
 
     private RequestTimeFixedQps() {
 

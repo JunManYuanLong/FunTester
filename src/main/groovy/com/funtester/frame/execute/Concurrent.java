@@ -8,8 +8,8 @@ import com.funtester.frame.SourceCode;
 import com.funtester.utils.Time;
 import com.funtester.utils.RWUtil;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import static java.util.stream.Collectors.toList;
  */
 public class Concurrent extends SourceCode {
 
-    private static Logger logger = LoggerFactory.getLogger(Concurrent.class);
+    private static Logger logger = LogManager.getLogger(Concurrent.class);
 
     /**
      * 开始时间

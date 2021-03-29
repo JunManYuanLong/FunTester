@@ -1,9 +1,9 @@
 package com.funtester.config;
 
 import com.funtester.base.exception.ParamException;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.lang3.StringUtils
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger;
 
 /**
  * 通用验证类型,包含,正则,JsonPath,handle四项
@@ -18,7 +18,7 @@ enum VerifyType {
         this.vname = vname;
     }
 
-    private static Logger logger = LoggerFactory.getLogger(VerifyType.class);
+    private static Logger logger = LogManager.getLogger(VerifyType.class);
 
     /**
      * 获取验证类型,不区分大小写

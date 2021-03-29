@@ -7,7 +7,7 @@ import com.funtester.frame.SourceCode;
  */
 public class EmailUtil extends SourceCode {
 
-//    private static Logger logger = LoggerFactory.getLogger(EmailUtil.class);
+//    private static Logger logger = LogManager.getLogger(EmailUtil.class);
 //
 //    private static Session session;
 //

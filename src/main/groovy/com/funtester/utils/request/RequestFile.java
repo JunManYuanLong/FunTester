@@ -6,8 +6,8 @@ import com.funtester.httpclient.FunLibrary;
 import com.funtester.utils.RWUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.client.methods.HttpRequestBase;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 /**
@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
  */
 public class RequestFile extends FunLibrary {
 
-    private static Logger logger = LoggerFactory.getLogger(RequestFile.class);
+    private static Logger logger = LogManager.getLogger(RequestFile.class);
 
     String url;
 
