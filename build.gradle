@@ -74,8 +74,8 @@ dependencies {
 //    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
 //    compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.0'
 //    compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.0'
-    //这只是其实一种方式,增加Groovy支持
-//    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.5.7'
+    //这只是其实一种方式,增加Groovy支持,如果不添加无法打包
+    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.5.7'
 //    compile group: 'redis.clients', name: 'jedis', version: '3.0.1'
 //    compile group: 'com.alibaba', name: 'dubbo', version: '2.5.3'
 //    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
