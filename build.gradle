@@ -71,7 +71,7 @@ dependencies {
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.12.1'
 //    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.12.1'
-//    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
 //    compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.0'
 //    compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.0'
     //这只是其实一种方式,增加Groovy支持,如果不添加无法打包
@@ -115,14 +115,18 @@ task createDirs() {
         }
     }
 }
+
+//用来拷贝FunTester框架jar包
 task copyFun(type: Copy) {
-    from('/Users/fv/Documents/workspace/funtester/build/libs')
-    into('/Users/fv/Library/groovy-2.5.7/lib')
+    from('/Users/oker/IdeaProjects/funtester/build/libs')
+    into('/Users/oker/Library/groovy-2.5.7/lib')
     println "拷贝fun.jar包到Groovy依赖成功!"
 }
+
+//用来拷贝项目jar包
 task copyOkay(type: Copy) {
-    from('/Users/fv/Documents/workspace/okay_test/target/okay_test-1.0-SNAPSHOT.jar')
-    into('/Users/fv/Library/groovy-2.5.7/lib')
+//    from('/Users/fv/Documents/workspace/okay_test/target/okay_test-1.0-SNAPSHOT.jar')
+//    into('/Users/fv/Library/groovy-2.5.7/lib')
     println "拷贝okay.jar包到Groovy依赖成功!"
 }
 
