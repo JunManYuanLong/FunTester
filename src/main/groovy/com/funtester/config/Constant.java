@@ -1,7 +1,5 @@
 package com.funtester.config;
 
-import com.funtester.utils.FileUtil;
-import com.funtester.utils.Time;
 import org.apache.http.Consts;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,7 +8,6 @@ import java.io.File;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.nio.charset.Charset;
-import java.util.List;
 import java.util.Properties;
 
 /**
@@ -224,12 +221,12 @@ public class Constant {
         file.mkdir();
         mark.mkdir();
         data.mkdir();
-        List<String> allFile = FileUtil.getAllFile(DATA_Path);
-        allFile.addAll(FileUtil.getAllFile(MARK_Path));
-        allFile.addAll(FileUtil.getAllFile(REQUEST_Path));
-        allFile.stream().map(y -> new File(y)).forEach(x -> {
-            if (Time.getTimeStamp() - x.lastModified() > 3 * DAY) x.delete();
-        });
+//        List<String> allFile = FileUtil.getAllFile(DATA_Path);
+//        allFile.addAll(FileUtil.getAllFile(MARK_Path));
+//        allFile.addAll(FileUtil.getAllFile(REQUEST_Path));
+//        allFile.stream().map(y -> new File(y)).forEach(x -> {
+//            if (Time.getTimeStamp() - x.lastModified() > 3 * DAY) x.delete();
+//        });
         logger.info("当前用户：{}，IP：{}，工作目录：{},系统编码格式:{},系统{}版本:{}", COMPUTER_USER_NAME, LOCAL_IP, WORK_SPACE, SYS_ENCODING, SYS_NAME, SYS_VERSION);
     }
 
