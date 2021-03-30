@@ -72,7 +72,7 @@ public class FunLibrary extends SourceCode {
      * @return 返回get对象
      */
     public static HttpGet getHttpGet(String url, JSONObject args) {
-        if (args == null || args.size() == 0) return getHttpGet(url);
+        if (args == null || args.isEmpty()) return getHttpGet(url);
         String uri = url + changeJsonToArguments(args);
         return getHttpGet(uri);
     }
@@ -99,7 +99,7 @@ public class FunLibrary extends SourceCode {
      */
     public static HttpPost getHttpPost(String url, JSONObject params) {
         HttpPost httpPost = getHttpPost(url);
-        setFormHttpEntity(httpPost, params);
+        if (params != null && !params.isEmpty()) setFormHttpEntity(httpPost, params);
         httpPost.addHeader(HttpClientConstant.ContentType_FORM);
         return httpPost;
     }
@@ -126,7 +126,8 @@ public class FunLibrary extends SourceCode {
      */
     public static HttpPost getHttpPost(String url, String params) {
         HttpPost httpPost = getHttpPost(url);
-        httpPost.setEntity(new StringEntity(params, DEFAULT_CHARSET.toString()));
+        if (StringUtils.isNotBlank(params))
+            httpPost.setEntity(new StringEntity(params, DEFAULT_CHARSET.toString()));
         httpPost.addHeader(HttpClientConstant.ContentType_JSON);
         return httpPost;
     }
@@ -183,7 +184,7 @@ public class FunLibrary extends SourceCode {
      */
     public static HttpPost getHttpPost(String url, JSONObject params, File file) {
         HttpPost httpPost = getHttpPost(url);
-        setMultipartEntityEntity(httpPost, params, file);
+        if (params != null && !params.isEmpty()) setMultipartEntityEntity(httpPost, params, file);
         return httpPost;
     }
 
@@ -324,7 +325,7 @@ public class FunLibrary extends SourceCode {
             String content = getContent(response);
             int data_size = content.length();
             res.putAll(getJsonResponse(content, setCookies));
-            int code = iBase == null ? -2 : iBase.checkCode(res, requestInfo);
+            int code = iBase == null ? TEST_ERROR_CODE : iBase.checkCode(res, requestInfo);
 //            if (iBase != null && !iBase.isRight(res))
 //                new AlertOver("响应状态码错误：" + status, "状态码错误：" + status, requestInfo.getUrl(), requestInfo).sendSystemMessage();
             MySqlTest.saveApiTestDate(requestInfo, data_size, elapsed_time, status, getMark(), code, LOCAL_IP, COMPUTER_USER_NAME);
