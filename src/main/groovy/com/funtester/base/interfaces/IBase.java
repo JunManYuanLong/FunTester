@@ -2,7 +2,6 @@ package com.funtester.base.interfaces;
 
 import com.alibaba.fastjson.JSONObject;
 import com.funtester.base.bean.RequestInfo;
-import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
@@ -193,12 +192,5 @@ public interface IBase {
      * @param request
      */
     public void printHeader(HttpRequestBase request);
-
-    /**
-     * 打印所有的响应header,此处功能与print响应类似,需要用一个开关控制
-     *
-     * @param response
-     */
-    public void printHeader(CloseableHttpResponse response);
 
 }
