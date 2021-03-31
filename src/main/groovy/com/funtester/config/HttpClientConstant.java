@@ -3,10 +3,6 @@ package com.funtester.config;
 
 import org.apache.http.Header;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import static com.funtester.config.Constant.DEFAULT_CHARSET;
 import static com.funtester.httpclient.FunLibrary.getHeader;
 
@@ -67,24 +63,9 @@ public class HttpClientConstant {
     public static int MAX_LINE_LENGTH = 10000;
 
     /**
-     * 设置的本机ip
-     */
-    public static String IP = SysInit.getRandomIP();
-
-    /**
      * 连接header设置
      */
     public static Header CONNECTION = getHeader("Connection", getProperty("Connection"));
-
-    public static Header CLIENT_IP = getHeader("Client-Ip", IP);
-
-    public static Header HTTP_X_FORWARDED_FOR = getHeader("HTTP_X_FORWARDED_FOR", IP);
-
-    public static Header WL_Proxy_Client_IP = getHeader("WL-Proxy-Client-IP", IP);
-
-    public static Header Proxy_Client_IP = getHeader("Proxy-Client-IP", IP);
-
-    public static Header X_FORWARDED_FOR = getHeader("X-FORWARDED-FOR", IP);
 
     public static Header ContentType_JSON = getHeader("Content-Type", "application/json; charset=" + DEFAULT_CHARSET.toString());
 
@@ -125,11 +106,6 @@ public class HttpClientConstant {
     public static String SSL_VERSION = getProperty("ssl_v");
 
     /**
-     * 域名黑名单
-     */
-    public static List<String> BLACK_HOSTS = new ArrayList<>();
-
-    /**
      * 通用循环间隔时间,单位s
      */
     public static final int LOOP_INTERVAL = 5;
@@ -153,18 +129,5 @@ public class HttpClientConstant {
      * 关闭线程池最大等待时间
      */
     public static final int WAIT_TERMINATION_TIMEOUT = 10;
-
-    /**
-     * 添加黑名单
-     *
-     * @param host
-     */
-    public static void addBlackHost(String host) {
-        BLACK_HOSTS.add(host);
-    }
-
-    static {
-        BLACK_HOSTS.addAll(Arrays.asList(getProperty("black_host").split(",")));
-    }
 
 }

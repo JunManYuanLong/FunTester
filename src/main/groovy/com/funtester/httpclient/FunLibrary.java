@@ -13,7 +13,6 @@ import com.funtester.frame.SourceCode;
 import com.funtester.utils.DecodeEncode;
 import com.funtester.utils.Regex;
 import com.funtester.utils.Time;
-import com.funtester.utils.message.AlertOver;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.*;
 import org.apache.http.client.config.RequestConfig;
@@ -54,7 +53,7 @@ public class FunLibrary extends SourceCode {
     private static IBase iBase;
 
     /**
-     * 最近发送的请求
+     * 最近发送的请求,由于验证较少,可以由{@link com.funtester.base.interfaces.IBase#recordRequest}以及{@link com.funtester.base.interfaces.IBase#getRequest}两个方法实现
      */
     private static HttpRequestBase lastRequest;
 
@@ -331,12 +330,9 @@ public class FunLibrary extends SourceCode {
             MySqlTest.saveApiTestDate(requestInfo, data_size, elapsed_time, status, getMark(), code, LOCAL_IP, COMPUTER_USER_NAME);
         } catch (Exception e) {
             logger.warn("获取请求相应失败！请求内容:{}", FunRequest.initFromRequest(request).toString(), e);
-            if (!requestInfo.isBlack())
-                new AlertOver("接口请求失败", requestInfo.toString(), requestInfo.getUrl(), requestInfo).sendSystemMessage();
+//            new AlertOver("接口请求失败", requestInfo.toString(), requestInfo.getUrl(), requestInfo).sendSystemMessage();
         } finally {
-            if (!requestInfo.isBlack()) {
-                lastRequest = request;
-            }
+            lastRequest = request;
         }
         return res;
     }

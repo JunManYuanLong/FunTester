@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject
 import com.funtester.base.interfaces.MarkRequest
 import com.funtester.config.Constant
 import com.funtester.config.RequestType
-import com.funtester.config.SysInit
 import org.apache.http.Header
 import org.apache.http.HttpEntity
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase
@@ -12,7 +11,6 @@ import org.apache.http.client.methods.HttpRequestBase
 import org.apache.http.util.EntityUtils
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
-
 /**
  * 请求信息封装类
  */
@@ -67,11 +65,6 @@ class RequestInfo extends AbstractBean implements Serializable {
     String params
 
     /**
-     * host是否是黑名单
-     */
-    boolean isBlack;
-
-    /**
      * 所有的请求header,会去重
      */
     JSONObject headers
@@ -104,7 +97,6 @@ class RequestInfo extends AbstractBean implements Serializable {
         String one = url.substring(url.indexOf("//") + 2)// 删除掉http://
         apiName = one.substring(one.indexOf("/"))// 获取接口名
         host = one.substring(0, one.indexOf("/"))// 获取host地址
-        isBlack = SysInit.isBlack(host)
         type = url.substring(0, url.indexOf("//") - 1)// 获取协议类型
         if (method == RequestType.GET) {
             if (!uri.contains(UNKNOW)) return
@@ -148,10 +140,6 @@ class RequestInfo extends AbstractBean implements Serializable {
             logger.warn("获取post请求参数时异常！")
             params = "entity类型：" + entity.getClass()
         }
-    }
-
-    boolean isBlack() {
-        isBlack
     }
 
     String mark() {
