@@ -99,6 +99,7 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
     protected void after() {
         costs = new ArrayList<>();
         marks = new ArrayList<>();
+        stop();
         if (countDownLatch != null)
             countDownLatch.countDown();
     }
