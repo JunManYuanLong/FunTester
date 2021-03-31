@@ -20,7 +20,7 @@ public class SqlConstant {
     /**
      * 数据库默认连接设置
      */
-    public static final String SQLARGS = "?useUnicode=true&characterEncoding=utf-8&useOldAliasMetadataBehavior=true";
+    public static final String SQLARGS = "?useUnicode=true&characterEncoding=utf-8&useOldAliasMetadataBehavior=true&useSSL=false";
 
     /**
      * 测试数据库
