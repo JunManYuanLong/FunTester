@@ -41,7 +41,7 @@ public interface IMySqlBasic {
     /**
      * 关闭数据库连接
      */
-    void mySqlOver();
+    void over();
 
     /**
      * 初始化数据库连接

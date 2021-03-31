@@ -92,7 +92,7 @@ public class MySqlFun extends SqlBase implements IMySqlBasic {
      * 关闭query连接
      */
     @Override
-    public void mySqlOver() {
+    public void over() {
         SqlBase.mySqlOver(connection, statement);
     }
 
