@@ -97,7 +97,7 @@ public class SqlBase extends SourceCode {
      * @param connection
      * @param statement
      */
-    public static void mySqlOver(Connection connection, Statement statement) {
+    public static void close(Connection connection, Statement statement) {
         try {
             if (connection == null || connection.isClosed()) return;
             statement.close();

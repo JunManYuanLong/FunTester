@@ -11,7 +11,7 @@ import java.sql.Statement;
  * mysql操作的基础类
  * <p>用于存储数据，多用于爬虫</p>
  */
-public class MySqlFun extends SqlBase implements IMySqlBasic {
+public class FunMySql extends SqlBase implements IMySqlBasic {
 
     String url;
 
@@ -33,7 +33,7 @@ public class MySqlFun extends SqlBase implements IMySqlBasic {
      * @param user     用户名
      * @param password 密码
      */
-    public MySqlFun(String url, String database, String user, String password) {
+    public FunMySql(String url, String database, String user, String password) {
         this.url = url;
         this.database = database;
         this.user = user;
@@ -93,7 +93,7 @@ public class MySqlFun extends SqlBase implements IMySqlBasic {
      */
     @Override
     public void over() {
-        SqlBase.mySqlOver(connection, statement);
+        SqlBase.close(connection, statement);
     }
 
     @Override
