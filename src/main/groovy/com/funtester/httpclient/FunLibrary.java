@@ -295,6 +295,7 @@ public class FunLibrary extends SourceCode {
      * @return
      */
     public static int getStatus(CloseableHttpResponse response, JSONObject res) {
+        //TODO:处理非200响应状态码
         int status = response.getStatusLine().getStatusCode();
         if (status != HttpStatus.SC_OK) logger.warn("响应状态码错误：{}", status);
         if (status == HttpStatus.SC_MOVED_TEMPORARILY)
@@ -327,7 +328,7 @@ public class FunLibrary extends SourceCode {
             int code = iBase == null ? TEST_ERROR_CODE : iBase.checkCode(res, requestInfo);
 //            if (iBase != null && !iBase.isRight(res))
 //                new AlertOver("响应状态码错误：" + status, "状态码错误：" + status, requestInfo.getUrl(), requestInfo).sendSystemMessage();
-            MySqlTest.saveApiTestDate(requestInfo, data_size, elapsed_time, status, getMark(), code, LOCAL_IP, COMPUTER_USER_NAME);
+            MySqlTest.saveApiTestDate(requestInfo, data_size, elapsed_time, status, getMark(), code, COMPUTER_USER_NAME);
         } catch (Exception e) {
             logger.warn("获取请求相应失败！请求内容:{}", FunRequest.initFromRequest(request).toString(), e);
 //            new AlertOver("接口请求失败", requestInfo.toString(), requestInfo.getUrl(), requestInfo).sendSystemMessage();

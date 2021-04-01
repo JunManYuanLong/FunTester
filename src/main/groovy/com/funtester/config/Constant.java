@@ -5,8 +5,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.nio.charset.Charset;
 import java.util.Properties;
 
@@ -159,11 +157,6 @@ public class Constant {
     public static final int EXECUTE_GAP_TIME = 10;
 
     /**
-     * 本机ip，程序初始化会赋值
-     */
-    public static final String LOCAL_IP = getLocalIp();
-
-    /**
      * 本机用户名，程序初始化会赋值
      */
     public static final String COMPUTER_USER_NAME = SYSTEM_INFO.getOrDefault("user.name", DEFAULT_STRING).toString();
@@ -175,21 +168,6 @@ public class Constant {
     public static final String SYS_VERSION = SYSTEM_INFO.get("os.version").toString();
 
     public static final String SYS_NAME = SYSTEM_INFO.get("os.name").toString();
-
-
-    /**
-     * 获取本机IP
-     *
-     * @return
-     */
-    public static String getLocalIp() {
-        try {
-            return InetAddress.getLocalHost().getHostAddress();
-        } catch (UnknownHostException e) {
-            logger.warn("获取本机IP失败！", e);
-            return EMPTY;
-        }
-    }
 
     /**
      * 直接获取long目录下的文件
@@ -227,7 +205,7 @@ public class Constant {
 //        allFile.stream().map(y -> new File(y)).forEach(x -> {
 //            if (Time.getTimeStamp() - x.lastModified() > 3 * DAY) x.delete();
 //        });
-        logger.info("当前用户：{}，IP：{}，工作目录：{},系统编码格式:{},系统{}版本:{}", COMPUTER_USER_NAME, LOCAL_IP, WORK_SPACE, SYS_ENCODING, SYS_NAME, SYS_VERSION);
+        logger.info("当前用户：{}，工作目录：{},系统编码格式:{},系统{}版本:{}", COMPUTER_USER_NAME, WORK_SPACE, SYS_ENCODING, SYS_NAME, SYS_VERSION);
     }
 
 }
