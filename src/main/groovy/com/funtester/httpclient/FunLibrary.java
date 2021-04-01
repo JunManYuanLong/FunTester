@@ -17,10 +17,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.http.*;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.client.methods.*;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -184,7 +181,43 @@ public class FunLibrary extends SourceCode {
     public static HttpPost getHttpPost(String url, JSONObject params, File file) {
         HttpPost httpPost = getHttpPost(url);
         if (params != null && !params.isEmpty()) setMultipartEntityEntity(httpPost, params, file);
+        httpPost.addHeader(HttpClientConstant.ContentType_FORM);
         return httpPost;
+    }
+
+    /**
+     * 获取HTTPput请求,JSON传参格式
+     *
+     * @param url
+     * @param params
+     * @return
+     */
+    public static HttpPut getHttpPut(String url, JSONObject params) {
+        HttpPut httpPut = getHttpPut(url);
+        if (params != null && !params.isEmpty())
+            httpPut.setEntity(new StringEntity(params.toString(), DEFAULT_CHARSET.toString()));
+        httpPut.addHeader(HttpClientConstant.ContentType_JSON);
+        return httpPut;
+    }
+
+    /**
+     * 获取HTTPput请求对象
+     *
+     * @param url
+     * @return
+     */
+    public static HttpPut getHttpPut(String url) {
+        return new HttpPut(url.replace(SPACE_1, EMPTY));
+    }
+
+    /**
+     * 获取HTTPdelete对象
+     *
+     * @param url
+     * @return
+     */
+    public static HttpDelete getHttpDelete(String url) {
+        return new HttpDelete(url);
     }
 
     /**
