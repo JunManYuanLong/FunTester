@@ -1,6 +1,10 @@
 package com.funtester.config;
 
 
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,7 +13,7 @@ import org.apache.logging.log4j.Logger;
  */
 public enum RequestType {
 
-    GET("get"), POST("post"), FUN("fun");
+    GET(HttpGet.METHOD_NAME), POST(HttpPost.METHOD_NAME), FUN(Constant.DEFAULT_STRING),PUT(HttpPut.METHOD_NAME),DELETE(HttpDelete.METHOD_NAME);
 
     static Logger logger = LogManager.getLogger(RequestType.class);
 

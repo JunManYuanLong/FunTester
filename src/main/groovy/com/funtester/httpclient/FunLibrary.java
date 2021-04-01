@@ -303,19 +303,19 @@ public class FunLibrary extends SourceCode {
 
 
     /**
-     * 根据响应获取响应实体
+     * 解析实体,不区分请求还是响应
      *
-     * @param response
+     * @param entity
      * @return
      */
-    public static String getContent(HttpResponse response) {
-        HttpEntity entity = response.getEntity();// 获取响应实体
+    public static String getContent(HttpEntity entity) {
         String content = EMPTY;
         try {
             content = EntityUtils.toString(entity, DEFAULT_CHARSET);// 用string接收响应实体
             EntityUtils.consume(entity);// 消耗响应实体，并关闭相关资源占用
-        } catch (Exception e1) {
-            logger.warn("解析响应实体异常！", e1);
+        } catch (Exception e) {
+            logger.warn("解析响应实体异常！", e);
+            fail();
         }
         return content;
     }
@@ -355,7 +355,7 @@ public class FunLibrary extends SourceCode {
             long elapsed_time = end - start;
             int status = getStatus(response, res);
             JSONObject setCookies = afterResponse(response);
-            String content = getContent(response);
+            String content = getContent(response.getEntity());
             int data_size = content.length();
             res.putAll(getJsonResponse(content, setCookies));
             int code = iBase == null ? TEST_ERROR_CODE : iBase.checkCode(res, requestInfo);
@@ -501,7 +501,7 @@ public class FunLibrary extends SourceCode {
         try (CloseableHttpResponse response = ClientManage.httpsClient.execute(request);) {
             if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK)
                 RequestException.fail("响应状态码错误:" + response.getStatusLine().getStatusCode());
-            return getContent(response);
+            return getContent(response.getEntity());
         }
     }
 
@@ -550,7 +550,7 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 异步发送请求获取影响Demo
+     * 异步发送请求获取响应Demo
      * <p>经过测试没卵用</p>
      *
      * @param request
@@ -561,8 +561,8 @@ public class FunLibrary extends SourceCode {
         if (!ClientManage.httpAsyncClient.isRunning()) ClientManage.httpAsyncClient.start();
         Future<HttpResponse> execute = ClientManage.httpAsyncClient.execute(request, null);
         try {
-            HttpResponse httpResponse = execute.get();
-            String content = getContent(httpResponse);
+            HttpResponse response = execute.get();
+            String content = getContent(response.getEntity());
             return getJsonResponse(content, null);
         } catch (Exception e) {
             logger.error("异步请求获取响应失败!", e);

@@ -12,9 +12,9 @@ import org.apache.commons.lang3.StringUtils
 import org.apache.http.Header
 import org.apache.http.HttpEntity
 import org.apache.http.client.methods.HttpPost
+import org.apache.http.client.methods.HttpPut
 import org.apache.http.client.methods.HttpRequestBase
 import org.apache.http.client.methods.RequestBuilder
-import org.apache.http.util.EntityUtils
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
@@ -68,7 +68,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
     JSONObject params = new JSONObject()
 
     /**
-     * json参数
+     * json参数,用于POST和put
      */
     JSONObject json = new JSONObject()
 
@@ -102,6 +102,22 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
      */
     static FunRequest isPost() {
         new FunRequest(RequestType.POST)
+    }
+
+    /**
+     * 获取put请求对象
+     * @return
+     */
+    static FunRequest isPut() {
+        new FunRequest(RequestType.PUT)
+    }
+
+    /**
+     * 获取delete请求对象
+     * @return
+     */
+    static FunRequest isDelete() {
+        new FunRequest(RequestType.DELETE)
     }
 
     /**
@@ -272,6 +288,14 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
             case RequestType.POST:
                 request = !params.isEmpty() ? FunLibrary.getHttpPost(uri + FunLibrary.changeJsonToArguments(args), params) : !json.isEmpty() ? FunLibrary.getHttpPost(uri + FunLibrary.changeJsonToArguments(args), json.toString()) : FunLibrary.getHttpPost(uri + FunLibrary.changeJsonToArguments(args))
                 break
+            case RequestType.PUT:
+                request = FunLibrary.getHttpPut(uri, json)
+                break
+            case RequestType.DELETE:
+                request = FunLibrary.getHttpDelete(uri)
+                break
+            default:
+                break
         }
         for (Header header in headers) {
             request.addHeader(header)
@@ -375,8 +399,8 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
     static FunRequest initFromRequest(HttpRequestBase base) {
         FunRequest request = null
         String method = base.getMethod()
-        RequestType requestType = RequestType.getRequestType(method)
         String uri = base.getURI().toString()
+        RequestType requestType = RequestType.getRequestType(method)
         List<Header> headers = Arrays.asList(base.getAllHeaders())
         if (requestType == requestType.GET) {
             request = isGet().setUri(uri).addHeaders(headers)
@@ -384,18 +408,18 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
             HttpPost post = (HttpPost) base
             HttpEntity entity = post.getEntity()
             String value = entity.getContentType().getValue()
-            String content = null
-            try {
-                content = EntityUtils.toString(entity)
-            } catch (IOException e) {
-                logger.error("解析响应失败!", e)
-                fail()
-            }
+            String content = FunLibrary.getContent(entity)
             if (value.equalsIgnoreCase(HttpClientConstant.ContentType_TEXT.getValue()) || value.equalsIgnoreCase(HttpClientConstant.ContentType_JSON.getValue())) {
                 request = isPost().setUri(uri).addHeaders(headers).addJson(JSONObject.parseObject(content))
             } else if (value.equalsIgnoreCase(HttpClientConstant.ContentType_FORM.getValue())) {
                 request = isPost().setUri(uri).addHeaders(headers).addParams(getJson(content.split("&")))
             }
+        } else if (requestType == RequestType.PUT) {
+            HttpPut put = (HttpPut) base
+            String content = FunLibrary.getContent(put.getEntity())
+            request = isPut().setUri(uri).addHeaders(headers).setJson(JSONObject.parseObject(content))
+        } else if (requestType == RequestType.DELETE) {
+            request = isDelete().setUri(uri)
         } else {
             RequestException.fail("不支持的请求类型!")
         }
