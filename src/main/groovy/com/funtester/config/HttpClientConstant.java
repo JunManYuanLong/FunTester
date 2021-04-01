@@ -63,6 +63,11 @@ public class HttpClientConstant {
     public static int MAX_LINE_LENGTH = 10000;
 
     /**
+     * 处理文件参数时候的关键字
+     */
+    public static final String FILE_UPLOAD_KEY = "file";
+
+    /**
      * 连接header设置
      */
     public static Header CONNECTION = getHeader("Connection", getProperty("Connection"));

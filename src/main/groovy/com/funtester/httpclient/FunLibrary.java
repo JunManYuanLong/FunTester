@@ -60,7 +60,7 @@ public class FunLibrary extends SourceCode {
     public static boolean SAVE_KEY = false;
 
     /**
-     * 方法已重载，获取get对象
+     * 方法已重载，获取{@link HttpGet}对象
      * <p>方法重载，主要区别参数，会自动进行urlencode操作</p>
      *
      * @param url  表示请求地址
@@ -74,7 +74,7 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 方法已重载，获取get对象
+     * 方法已重载，获取{@link HttpGet}对象
      * <p>方法重载，主要区别参数，会自动进行urlencode操作</p>
      *
      * @param url 表示请求地址
@@ -85,7 +85,7 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 获取post对象，以form表单提交数据
+     * 获取{@link HttpPost}对象，以form表单提交数据
      * <p>方法重载，文字信息form表单提交，文件信息二进制流提交，具体参照文件上传的方法主食，post请求可以不需要参数，暂时不支持其他参数类型，如果是公参需要在url里面展示，需要传一个json对象，一般默认args为get公参，params为post请求参数</p>
      * 请求header参数类型为{@link HttpClientConstant#ContentType_FORM}
      *
@@ -101,7 +101,7 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 获取httppost对象，没有参数设置
+     * 获取{@link HttpPost}对象，没有参数设置
      * <p>方法重载，文字信息form表单提交，文件信息二进制流提交，具体参照文件上传的方法主食，post请求可以不需要参数，暂时不支持其他参数类型，如果是公参需要在url里面展示，需要传一个json对象，一般默认args为get公参，params为post请求参数</p>
      *
      * @param url
@@ -112,8 +112,8 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 获取httppost对象，json格式对象，传参时手动tostring
-     * <p>新重载方法，适应post请求json传参，估计utf-8编码格式</p>
+     * 获取{@link HttpPost}对象，{@link JSONObject}格式对象，传参时手动{@link JSONObject#toString()}方法,现在大多数情况下由{@link IBase}项目基础类完成
+     * <p>新重载方法，适应{@link HttpPost}请求{@link JSONObject}传参，默认{@link Constant#DEFAULT_CHARSET}编码格式</p>
      * 请求header参数类型为{@link HttpClientConstant#ContentType_JSON}
      *
      * @param url
@@ -129,8 +129,8 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * * 获取httppost对象，json格式对象，传参时手动tostring
-     * <p>新重载方法，适应post请求json传参</p>
+     * * 获取{@link HttpPost}对象，{@link JSONObject}格式对象，传参时手动{@link JSONObject#toString()}方法,现在大多数情况下由{@link IBase}项目基础类完成
+     * <p>新重载方法，适应{@link HttpPost}请求{@link HttpClientConstant#ContentType_JSON}传参</p>
      * 请求header参数类型为{@link HttpClientConstant#ContentType_JSON}
      *
      * @param url
@@ -142,8 +142,8 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 获取 httppost 请求对象
-     * <p>方法重载，文字信息form表单提交，文件信息二进制流提交，具体参照文件上传的方法主食，post请求可以不需要参数，暂时不支持其他参数类型，如果是公参需要在url里面展示，需要传一个json对象，一般默认args为get公参，params为post请求参数</p>
+     * 获取{@link HttpPost}请求对象
+     * <p>方法重载，文字信息{@link HttpClientConstant#ContentType_FORM}表单提交，文件信息二进制流提交，具体参照文件上传的方法主食，post请求可以不需要参数，暂时不支持其他参数类型，如果是公参需要在url里面展示，需要传一个{@link JSONObject}对象，一般默认args为{@link HttpGet}公参，params为{@link HttpPost}请求参数</p>
      *
      * @param url    请求地址
      * @param args   请求地址参数
@@ -156,8 +156,8 @@ public class FunLibrary extends SourceCode {
 
 
     /**
-     * 获取 httpPost 对象
-     * <p>方法重载，文字信息form表单提交，文件信息二进制流提交，具体参照文件上传的方法主食，post请求可以不需要参数，暂时不支持其他参数类型，如果是公参需要在url里面展示，需要传一个json对象，一般默认args为get公参，params为post请求参数</p>
+     * 获取 {@link HttpPost} 对象
+     * <p>方法重载，文字信息{@link HttpClientConstant#ContentType_FORM}表单提交，文件信息二进制流提交，具体参照文件上传的方法主食，post请求可以不需要参数，暂时不支持其他参数类型，如果是公参需要在url里面展示，需要传一个{@link JSONObject}对象，一般默认args为{@link HttpGet}公参，params为{@link HttpPost}请求参数</p>
      *
      * @param url    请求地址
      * @param args   请求通用参数
@@ -170,8 +170,8 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 获取 httpPost 对象
-     * <p>方法重载，文字信息form表单提交，文件信息二进制流提交，具体参照文件上传的方法主食，post请求可以不需要参数，暂时不支持其他参数类型，如果是公参需要在url里面展示，需要传一个json对象，一般默认args为get公参，params为post请求参数</p>
+     * 获取 {@link HttpPost} 对象
+     * <p>方法重载，文字信息{@link HttpClientConstant#ContentType_FORM}表单提交，文件信息二进制流提交，具体参照文件上传的方法主食，post请求可以不需要参数，暂时不支持其他参数类型，如果是公参需要在url里面展示，需要传一个{@link JSONObject}对象，一般默认args为{@link HttpGet}公参，params为{@link HttpPost}请求参数</p>
      *
      * @param url    请求地址
      * @param params 请求参数，其中二进制流必须是 file
@@ -186,7 +186,7 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 获取HTTPput请求,JSON传参格式
+     * 获取{@link HttpPut}请求,{@link JSONObject}传参格式
      *
      * @param url
      * @param params
@@ -201,7 +201,7 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 获取HTTPput请求对象
+     * 获取{@link HttpPut}请求对象
      *
      * @param url
      * @return
@@ -211,7 +211,7 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 获取HTTPdelete对象
+     * 获取{@link HttpDelete}对象
      *
      * @param url
      * @return
@@ -221,7 +221,21 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 设置二进制流实体，params 里面参数值为 file
+     * 设置{@link HttpPost}接口上传表单，默认的编码格式
+     * 默认编码格式{@link Constant#DEFAULT_CHARSET}
+     *
+     * @param httpPost post请求
+     * @param params   参数
+     */
+    private static void setFormHttpEntity(HttpPost httpPost, JSONObject params) {
+        List<NameValuePair> formparams = new ArrayList<NameValuePair>();
+        params.keySet().forEach(x -> formparams.add(new BasicNameValuePair(x, params.getString(x))));
+        UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, DEFAULT_CHARSET);
+        httpPost.setEntity(entity);
+    }
+
+    /**
+     * 设置二进制流实体，params 里面参数值为 {@link HttpClientConstant#FILE_UPLOAD_KEY}
      *
      * @param httpPost httpPsot 请求
      * @param params   请求参数
@@ -241,7 +255,7 @@ public class FunLibrary extends SourceCode {
         while (keys.hasNext()) {
             String key = keys.next();
             String value = params.getString(key);
-            if (value.equals("file")) {
+            if (value.equalsIgnoreCase(HttpClientConstant.FILE_UPLOAD_KEY)) {
                 builder.addBinaryBody(key, inputStream, ContentType.create(HttpClientConstant.CONTENTTYPE_MULTIPART_FORM), fileName);// 设置流参数
             } else {
                 StringBody body = new StringBody(value, ContentType.create(HttpClientConstant.CONTENTTYPE_TEXT, DEFAULT_CHARSET));// 设置普通参数
@@ -253,7 +267,7 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 发送请求之前，目前修改为止增加一个connection请求头
+     * 发送请求之前，目前修改为止增加一个{@link HttpClientConstant#CONNECTION}请求头
      *
      * @param request
      */
@@ -279,7 +293,7 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 根据解析好的content，转化json对象
+     * 根据解析好的content，转化{@link JSONObject}对象
      *
      * @param content
      * @return
@@ -303,7 +317,7 @@ public class FunLibrary extends SourceCode {
 
 
     /**
-     * 解析实体,不区分请求还是响应
+     * 解析{@link HttpEntity},不区分请求还是响应
      *
      * @param entity
      * @return
@@ -321,7 +335,7 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 获取响应状态，处理重定向的url
+     * 获取响应状态，暂不处理{@link HttpStatus#SC_MOVED_TEMPORARILY}
      *
      * @param response
      * @param res
@@ -380,20 +394,6 @@ public class FunLibrary extends SourceCode {
     private static boolean isRightRequest(HttpRequestBase request) {
         String url = request.getURI().toString().toLowerCase();
         return StringUtils.isNoneEmpty(url) && url.startsWith("http");
-    }
-
-    /**
-     * 设置post接口上传表单，默认的编码格式
-     * 默认编码格式{@link Constant#DEFAULT_CHARSET}
-     *
-     * @param httpPost post请求
-     * @param params   参数
-     */
-    private static void setFormHttpEntity(HttpPost httpPost, JSONObject params) {
-        List<NameValuePair> formparams = new ArrayList<NameValuePair>();
-        params.keySet().forEach(x -> formparams.add(new BasicNameValuePair(x, params.getString(x))));
-        UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, DEFAULT_CHARSET);
-        httpPost.setEntity(entity);
     }
 
     /**
