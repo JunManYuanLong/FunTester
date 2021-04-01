@@ -295,11 +295,11 @@ public class FunLibrary extends SourceCode {
      * @return
      */
     public static int getStatus(CloseableHttpResponse response, JSONObject res) {
-        //TODO:处理非200响应状态码
         int status = response.getStatusLine().getStatusCode();
-        if (status != HttpStatus.SC_OK) logger.warn("响应状态码错误：{}", status);
-        if (status == HttpStatus.SC_MOVED_TEMPORARILY)
-            res.put("location", response.getFirstHeader("Location").getValue());
+//        if (status == HttpStatus.SC_MOVED_TEMPORARILY) {
+//            res.put("location", response.getFirstHeader("Location").getValue());
+//        }
+        if (status != HttpStatus.SC_OK) RequestException.fail("响应状态码错误:" + response.getStatusLine().getStatusCode());
         return status;
     }
 
