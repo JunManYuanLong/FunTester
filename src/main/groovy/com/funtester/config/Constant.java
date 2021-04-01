@@ -56,6 +56,11 @@ public class Constant {
     public static final int BUCKET_SIZE = 32;
 
     /**
+     * 统计数据中的数量限制,小于该限制无法绘图
+     */
+    public static final int DRAW_LIMIT = BUCKET_SIZE ^ 2;
+
+    /**
      * 读写配置文件过滤的文本
      */
     public static final String FILTER = "##";

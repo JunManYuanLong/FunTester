@@ -64,7 +64,7 @@ public class StatisticsUtil extends Constant {
      * @return
      */
     public static String statistics(List<Integer> data, String title, int threadNum) {
-        if (data.size() < BUCKET_SIZE * BUCKET_SIZE) return "数据量太少,无法绘图!";//过滤少量数据
+        if (data.size() < DRAW_LIMIT) return "数据量太少,无法绘图! 应当大于 " + DRAW_LIMIT;//过滤少量数据
         List<Integer> nums = batchNums(data);
         return draw(nums, StringUtil.center(((StringUtils.isEmpty(title)) ? DEFAULT_STRING : getTrueName(title) + SPACE_1 + (threadNum == 0 ? EMPTY : threadNum) + " thread"), BUCKET_SIZE * 3) + LINE + LINE + StringUtil.center("Response Time: x-serial num, y-median", BUCKET_SIZE * 3) + LINE + StringUtil.center("min median:" + nums.get(0) + " ms,max:" + nums.get(BUCKET_SIZE - 1) + " ms", BUCKET_SIZE * 3));
     }
