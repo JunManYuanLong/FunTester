@@ -197,7 +197,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
      * @return
      */
     FunRequest addHeader(Object key, Object value) {
-        headers << getHeader(key.toString(), value.toString())
+        headers << FunLibrary.getHeader(key.toString(), value.toString())
         this
     }
 
@@ -230,7 +230,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
      * @return
      */
     FunRequest addCookies(JSONObject cookies) {
-        headers << getCookies(cookies)
+        headers << FunLibrary.getCookies(cookies)
         this
     }
 
@@ -241,7 +241,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
 
     FunRequest addHeaders(JSONObject headers) {
         headers.each {x ->
-            this.headers.add(getHeader(x.getKey().toString(), x.getValue().toString()))
+            this.headers.add(FunLibrary.getHeader(x.getKey().toString(), x.getValue().toString()))
         }
         this
     }
@@ -350,7 +350,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
      */
     String toCurl() {
         StringBuffer curl = new StringBuffer("curl -w HTTPcode%{http_code}:代理返回code%{http_connect}:数据类型%{content_type}:DNS解析时间%{time_namelookup}:%{time_redirect}:连接建立完成时间%{time_pretransfer}:连接时间%{time_connect}:开始传输时间%{time_starttransfer}:总时间%{time_total}:下载速度%{speed_download}:speed_upload%{speed_upload} ")
-        if (requestType == RequestType.GET) curl << " -G"
+        curl << " -X ${requestType.getName()} "
         headers.each {
             curl << " -H '${it.getName()}:${it.getValue().replace(SPACE_1, EMPTY)}'"
         }
