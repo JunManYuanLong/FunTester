@@ -39,7 +39,7 @@ class VerifyBean extends AbstractBean implements Serializable, Cloneable {
         this.des = des
         def split = verify.split(REG_PART, 2)
         this.verify = split[1]
-        this.type = VerifyType.getRequestType(split[0])
+        this.type = VerifyType.getInstance(split[0])
     }
 
     /**

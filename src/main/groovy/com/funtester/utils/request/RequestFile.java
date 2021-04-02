@@ -40,7 +40,7 @@ public class RequestFile extends FunLibrary {
         this.name = name;
         getInfo();
         this.url = this.info.getString("url");
-        requestType = RequestType.getRequestType(this.info.getString("requestType"));
+        requestType = RequestType.getInstance(this.info.getString("requestType"));
         getParams();
         headers = JSONObject.parseObject(this.info.getString("headers"));
     }

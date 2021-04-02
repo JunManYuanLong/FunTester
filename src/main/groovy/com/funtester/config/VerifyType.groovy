@@ -26,7 +26,7 @@ enum VerifyType {
      * @param name
      * @return
      */
-    static VerifyType getRequestType(String name) {
+    static VerifyType getInstance(String name) {
         logger.debug("验证校验方式方式：{}", name);
         if (StringUtils.isEmpty(name)) ParamException.fail("参数不能为空!");
         name = name.toLowerCase();
