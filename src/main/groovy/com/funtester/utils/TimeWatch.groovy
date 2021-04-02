@@ -247,7 +247,7 @@ class TimeWatch implements Serializable {
     /**
      * 标记类
      */
-    class Mark implements Serializable {
+    private class Mark implements Serializable {
 
         private static final long serialVersionUID = -41564036913335727L;
 
