@@ -309,7 +309,7 @@ public class SourceCode extends Output {
     }
 
     /**
-     * 线程休眠,单位是秒
+     * 线程休眠,单位是秒,groovy使用,不可靠,还是以ms为单位的
      *
      * @param second 秒，可以是小数
      */
