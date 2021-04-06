@@ -14,6 +14,11 @@ import java.io.File;
 public interface IBase {
 
     /**
+     * 登录
+     */
+    void login();
+
+    /**
      * 获取get请求对象
      *
      * @param url
@@ -132,11 +137,6 @@ public interface IBase {
      * @return
      */
     int checkCode(JSONObject response, RequestInfo requestInfo);
-
-    /**
-     * 登录
-     */
-    void login();
 
     /**
      * 设置header
