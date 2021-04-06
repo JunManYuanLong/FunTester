@@ -346,7 +346,8 @@ public class FunLibrary extends SourceCode {
 //        if (status == HttpStatus.SC_MOVED_TEMPORARILY) {
 //            res.put("location", response.getFirstHeader("Location").getValue());
 //        }
-        if (status != HttpStatus.SC_OK) RequestException.fail("响应状态码错误:" + response.getStatusLine().getStatusCode());
+        if (status != HttpStatus.SC_OK) logger.warn("响应状态码异常: {}", status);
+        res.put(DEFAULT_STRING, status);
         return status;
     }
 
@@ -373,12 +374,11 @@ public class FunLibrary extends SourceCode {
             int data_size = content.length();
             res.putAll(getJsonResponse(content, setCookies));
             int code = iBase == null ? TEST_ERROR_CODE : iBase.checkCode(res, requestInfo);
-//            if (iBase != null && !iBase.isRight(res))
-//                new AlertOver("响应状态码错误：" + status, "状态码错误：" + status, requestInfo.getUrl(), requestInfo).sendSystemMessage();
             MySqlTest.saveApiTestDate(requestInfo, data_size, elapsed_time, status, getMark(), code, COMPUTER_USER_NAME);
         } catch (Exception e) {
-            logger.warn("获取请求相应失败！请求内容:{}", FunRequest.initFromRequest(request).toString(), e);
-//            new AlertOver("接口请求失败", requestInfo.toString(), requestInfo.getUrl(), requestInfo).sendSystemMessage();
+            FunRequest funRequest = FunRequest.initFromRequest(request);
+            funRequest.setResponse(res);
+            logger.warn("获取请求相应失败！请求内容:{}", funRequest.toString(), e);
         } finally {
             lastRequest = request;
         }
