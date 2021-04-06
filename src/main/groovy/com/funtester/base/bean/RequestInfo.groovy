@@ -91,7 +91,7 @@ class RequestInfo extends AbstractBean implements Serializable {
      * @return 返回一个map，包含api_name,host_name,type，method，params
      */
     private void getRequestInfo() {
-        method = RequestType.getRequestType request.getMethod()
+        method = RequestType.getInstance request.getMethod()
         uri = request.getURI().toString()// 获取uri
         getRequestUrl(uri)
         String one = url.substring(url.indexOf("//") + 2)// 删除掉http://
