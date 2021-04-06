@@ -103,6 +103,30 @@ ext {
     }
     println "项目环境:" + profile
 }
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    println "拷贝源码!"
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    println "拷贝文档!"
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
 //因为打包配置,这里会执行
 task createDirs() {
     doLast {
