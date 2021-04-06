@@ -117,7 +117,7 @@ public interface IBase {
     /**
      * 校验响应正确性
      * <p>
-     * 用于处理响应结果，一般校验json的必要层级和响应码,只在{@link IBase}一层使用,不在框架中使用
+     * 用于处理响应结果，一般校验json的必要层级和响应码,只在{@link IBase}一层使用,不在框架中使用,在{@link IBase}中的实践,可以直接使用框架返回响应code进行判断,框架默认将业务code返回到响应中,key为{@link com.funtester.config.Constant#DEFAULT_STRING}
      * </p>
      *
      * @param response
