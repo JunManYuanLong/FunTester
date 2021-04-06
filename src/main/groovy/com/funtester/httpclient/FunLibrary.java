@@ -346,7 +346,6 @@ public class FunLibrary extends SourceCode {
 //        if (status == HttpStatus.SC_MOVED_TEMPORARILY) {
 //            res.put("location", response.getFirstHeader("Location").getValue());
 //        }
-        if (status != HttpStatus.SC_OK) logger.warn("响应状态码异常: {}", status);
         res.put(DEFAULT_STRING, status);
         return status;
     }
