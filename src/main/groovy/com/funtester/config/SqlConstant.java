@@ -6,7 +6,7 @@ package com.funtester.config;
  */
 public class SqlConstant {
 
-    static PropertyUtils.Property propertyUtils = PropertyUtils.getProperties("mysql");
+    static PropertyUtils.Property propertyUtils = PropertyUtils.getProperties("funsql");
 
     static String getProperty(String name) {
         return propertyUtils.getProperty(name);

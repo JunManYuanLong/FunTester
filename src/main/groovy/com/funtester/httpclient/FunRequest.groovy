@@ -400,19 +400,23 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
         FunRequest request = null
         String method = base.getMethod()
         String uri = base.getURI().toString()
-        RequestType requestType = RequestType.getRequestType(method)
+        RequestType requestType = RequestType.getInstance(method)
         List<Header> headers = Arrays.asList(base.getAllHeaders())
         if (requestType == requestType.GET) {
             request = isGet().setUri(uri).addHeaders(headers)
         } else if (requestType == RequestType.POST) {
             HttpPost post = (HttpPost) base
             HttpEntity entity = post.getEntity()
-            String value = entity.getContentType().getValue()
-            String content = FunLibrary.getContent(entity)
-            if (value.equalsIgnoreCase(HttpClientConstant.ContentType_TEXT.getValue()) || value.equalsIgnoreCase(HttpClientConstant.ContentType_JSON.getValue())) {
-                request = isPost().setUri(uri).addHeaders(headers).addJson(JSONObject.parseObject(content))
-            } else if (value.equalsIgnoreCase(HttpClientConstant.ContentType_FORM.getValue())) {
-                request = isPost().setUri(uri).addHeaders(headers).addParams(getJson(content.split("&")))
+            if (entity == null) {
+                request = isPost().setUri(uri).addHeader(headers)
+            } else {
+                String value = entity.getContentType().getValue()
+                String content = FunLibrary.getContent(entity)
+                if (value.equalsIgnoreCase(HttpClientConstant.ContentType_TEXT.getValue()) || value.equalsIgnoreCase(HttpClientConstant.ContentType_JSON.getValue())) {
+                    request = isPost().setUri(uri).addHeaders(headers).addJson(JSONObject.parseObject(content))
+                } else if (value.equalsIgnoreCase(HttpClientConstant.ContentType_FORM.getValue())) {
+                    request = isPost().setUri(uri).addHeaders(headers).addParams(getJson(content.split("&")))
+                }
             }
         } else if (requestType == RequestType.PUT) {
             HttpPut put = (HttpPut) base
