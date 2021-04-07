@@ -128,7 +128,7 @@ public class HttpClientConstant {
     /**
      * 线程池最大线程数
      */
-    public static final int THREADPOOL_MAX = 500;
+    public static final int THREADPOOL_MAX = 5000;
 
     /**
      * 关闭线程池最大等待时间
