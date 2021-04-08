@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
  * 从文件中读取接口相关参数，用来发送请求，实现接口请求的配置化
  * <p>从当前路径下获取后缀为.log的文件，以文件名为准读取文件内容</p>
  */
+@Deprecated
 public class RequestFile extends FunLibrary {
 
     private static Logger logger = LogManager.getLogger(RequestFile.class);

@@ -81,7 +81,7 @@ public class FunLibrary extends SourceCode {
      * @return 返回get对象
      */
     public static HttpGet getHttpGet(String url) {
-        return new HttpGet(url.replace(SPACE_1, EMPTY));
+        return new HttpGet(url);
     }
 
     /**
@@ -108,7 +108,7 @@ public class FunLibrary extends SourceCode {
      * @return
      */
     public static HttpPost getHttpPost(String url) {
-        return new HttpPost(url.replace(SPACE_1, EMPTY));
+        return new HttpPost(url);
     }
 
     /**
@@ -126,47 +126,6 @@ public class FunLibrary extends SourceCode {
             httpPost.setEntity(new StringEntity(params, DEFAULT_CHARSET.toString()));
         httpPost.addHeader(HttpClientConstant.ContentType_JSON);
         return httpPost;
-    }
-
-    /**
-     * * 获取{@link HttpPost}对象，{@link JSONObject}格式对象，传参时手动{@link JSONObject#toString()}方法,现在大多数情况下由{@link IBase}项目基础类完成
-     * <p>新重载方法，适应{@link HttpPost}请求{@link HttpClientConstant#ContentType_JSON}传参</p>
-     * 请求header参数类型为{@link HttpClientConstant#ContentType_JSON}
-     *
-     * @param url
-     * @param args
-     * @return
-     */
-    public static HttpPost getHttpPost(String url, JSONObject args, String params) {
-        return getHttpPost(url + changeJsonToArguments(args), params);
-    }
-
-    /**
-     * 获取{@link HttpPost}请求对象
-     * <p>方法重载，文字信息{@link HttpClientConstant#ContentType_FORM}表单提交，文件信息二进制流提交，具体参照文件上传的方法主食，post请求可以不需要参数，暂时不支持其他参数类型，如果是公参需要在url里面展示，需要传一个{@link JSONObject}对象，一般默认args为{@link HttpGet}公参，params为{@link HttpPost}请求参数</p>
-     *
-     * @param url    请求地址
-     * @param args   请求地址参数
-     * @param params 请求参数
-     * @return
-     */
-    public static HttpPost getHttpPost(String url, JSONObject args, JSONObject params) {
-        return getHttpPost(url + changeJsonToArguments(args), params);
-    }
-
-
-    /**
-     * 获取 {@link HttpPost} 对象
-     * <p>方法重载，文字信息{@link HttpClientConstant#ContentType_FORM}表单提交，文件信息二进制流提交，具体参照文件上传的方法主食，post请求可以不需要参数，暂时不支持其他参数类型，如果是公参需要在url里面展示，需要传一个{@link JSONObject}对象，一般默认args为{@link HttpGet}公参，params为{@link HttpPost}请求参数</p>
-     *
-     * @param url    请求地址
-     * @param args   请求通用参数
-     * @param params 请求参数，其中二进制流必须是 file
-     * @param file   文件
-     * @return
-     */
-    public static HttpPost getHttpPost(String url, JSONObject args, JSONObject params, File file) {
-        return getHttpPost(url + changeJsonToArguments(args), params, file);
     }
 
     /**
@@ -207,7 +166,7 @@ public class FunLibrary extends SourceCode {
      * @return
      */
     public static HttpPut getHttpPut(String url) {
-        return new HttpPut(url.replace(SPACE_1, EMPTY));
+        return new HttpPut(url);
     }
 
     /**
@@ -218,6 +177,32 @@ public class FunLibrary extends SourceCode {
      */
     public static HttpDelete getHttpDelete(String url) {
         return new HttpDelete(url);
+    }
+
+
+    /**
+     * 获取{@link HttpPatch}对象
+     *
+     * @param url
+     * @return
+     */
+    public static HttpPatch getHttpPatch(String url) {
+        return new HttpPatch(url);
+    }
+
+    /**
+     * 获取{@link HttpPatch}对象
+     *
+     * @param url
+     * @param params
+     * @return
+     */
+    public static HttpPatch getHttpPatch(String url, JSONObject params) {
+        HttpPatch httpPatch = getHttpPatch(url);
+        if (params != null && !params.isEmpty())
+            httpPatch.setEntity(new StringEntity(params.toString(), DEFAULT_CHARSET.toString()));
+        httpPatch.addHeader(HttpClientConstant.ContentType_JSON);
+        return httpPatch;
     }
 
     /**

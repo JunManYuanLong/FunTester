@@ -11,6 +11,7 @@ import org.apache.http.client.methods.HttpRequestBase
 import org.apache.http.util.EntityUtils
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+
 /**
  * 请求信息封装类
  */
@@ -92,16 +93,21 @@ class RequestInfo extends AbstractBean implements Serializable {
      */
     private void getRequestInfo() {
         method = RequestType.getInstance request.getMethod()
-        uri = request.getURI().toString()// 获取uri
+        uri = request.getURI().toString() // 获取uri
         getRequestUrl(uri)
-        String one = url.substring(url.indexOf("//") + 2)// 删除掉http://
-        apiName = one.substring(one.indexOf("/"))// 获取接口名
-        host = one.substring(0, one.indexOf("/"))// 获取host地址
-        type = url.substring(0, url.indexOf("//") - 1)// 获取协议类型
+        String one = url.substring(url.indexOf("//") + 2)
+        // 删除掉http://
+        apiName = one.substring(one.indexOf("/")) // 获取接口名
+        host = one.substring(0, one.indexOf("/")) // 获取host地址
+        type = url.substring(0, url.indexOf("//") - 1) // 获取协议类型
         if (method == RequestType.GET) {
             if (!uri.contains(UNKNOW)) return
             params = uri.substring(uri.indexOf(UNKNOW) + 1)
         } else if (method == RequestType.POST) {
+            getPostRequestParams(request)
+        } else if (method == RequestType.PUT) {
+            getPostRequestParams(request)
+        } else if (method == RequestType.PATCH) {
             getPostRequestParams(request)
         }
         List<Header> list = Arrays.asList(request.getAllHeaders())
@@ -131,11 +137,12 @@ class RequestInfo extends AbstractBean implements Serializable {
      * @param request
      */
     private void getPostRequestParams(HttpEntityEnclosingRequestBase request) {
-        HttpEntity entity = request.getEntity()// 获取实体
+        HttpEntity entity = request.getEntity()
+        // 获取实体
         if (entity == null) return
         try {
-            params = EntityUtils.toString(entity)// 解析实体
-            EntityUtils.consume(entity)// 确保实体消耗
+            params = EntityUtils.toString(entity) // 解析实体
+            EntityUtils.consume(entity) // 确保实体消耗
         } catch (Exception e) {
             logger.warn("获取post请求参数时异常！")
             params = "entity类型：" + entity.getClass()
