@@ -28,7 +28,7 @@ public class FixedQpsConcurrent extends SourceCode {
 
     private static Logger logger = LogManager.getLogger(FixedQpsConcurrent.class);
 
-    public static boolean key = false;
+    public static boolean needAbord = false;
 
     public static AtomicInteger executeTimes = new AtomicInteger(0);
 
@@ -125,19 +125,31 @@ public class FixedQpsConcurrent extends SourceCode {
      * 默认取list中thread对象,丢入线程池,完成多线程执行,如果没有threadname,name默认采用desc+线程数作为threadname,去除末尾的日期
      */
     public PerformanceResultBean start() {
-        key = false;
+        needAbord = false;
         Progress progress = new Progress(threads, StatisticsUtil.getTrueName(desc), executeTimes);
         new Thread(progress).start();
         boolean isTimesMode = baseThread.isTimesMode;
         int limit = baseThread.limit;
         int qps = baseThread.qps;
         long interval = 1_000_000_000 / qps;//此处单位1s=1000ms,1ms=1000000ns
+
+        int runupTotal = qps * 5;
+        double diffTime = 2 * (Constant.RUNUP_TIME / 5 * interval - interval);
+        double piece = diffTime / runupTotal;
+        for (int i = runupTotal; i > 0; i--) {
+            executorService.execute(threads.get(limit-- % queueLength).clone());
+            sleep(interval + i * piece);
+        }
+        allTimes = new Vector<>();
+        marks = new Vector<>();
+        executeTimes.getAndSet(0);
+        errorTimes.getAndSet(0);
         startTime = Time.getTimeStamp();
         AidThread aidThread = new AidThread();
         new Thread(aidThread).start();
         while (true) {
             executorService.execute(threads.get(limit-- % queueLength).clone());
-            if (key ? true : isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > limit) break;
+            if (needAbord || (isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > limit)) break;
             sleep(interval);
         }
         endTime = Time.getTimeStamp();
@@ -155,7 +167,7 @@ public class FixedQpsConcurrent extends SourceCode {
     }
 
     private PerformanceResultBean over() {
-        key = true;
+        needAbord = true;
         Save.saveIntegerList(allTimes, DATA_Path.replace(LONG_Path, EMPTY) + StatisticsUtil.getFileName(queueLength, desc));
         Save.saveStringListSync(marks, MARK_Path.replace(LONG_Path, EMPTY) + desc);
         allTimes = new Vector<>();

@@ -162,6 +162,11 @@ public class Constant {
     public static final int EXECUTE_GAP_TIME = 10;
 
     /**
+     * 性能测试启动时间
+     */
+    public static final double RUNUP_TIME = 10.0;
+
+    /**
      * 本机用户名，程序初始化会赋值
      */
     public static final String COMPUTER_USER_NAME = SYSTEM_INFO.getOrDefault("user.name", DEFAULT_STRING).toString();

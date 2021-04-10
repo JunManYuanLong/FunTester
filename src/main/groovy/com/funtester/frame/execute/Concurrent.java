@@ -128,6 +128,7 @@ public class Concurrent extends SourceCode {
             ThreadBase thread = threads.get(i);
             if (StringUtils.isBlank(thread.threadName)) thread.threadName = StatisticsUtil.getTrueName(desc) + i;
             thread.setCountDownLatch(countDownLatch);
+            sleep(RUNUP_TIME / threadNum);
             executorService.execute(thread);
         }
         shutdownService(executorService, countDownLatch);
