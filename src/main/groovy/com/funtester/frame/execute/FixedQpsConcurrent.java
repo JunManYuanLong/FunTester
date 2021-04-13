@@ -126,24 +126,23 @@ public class FixedQpsConcurrent extends SourceCode {
      */
     public PerformanceResultBean start() {
         needAbord = false;
-        Progress progress = new Progress(threads, StatisticsUtil.getTrueName(desc), executeTimes);
-        new Thread(progress).start();
         boolean isTimesMode = baseThread.isTimesMode;
         int limit = baseThread.limit;
         int qps = baseThread.qps;
         long interval = 1_000_000_000 / qps;//此处单位1s=1000ms,1ms=1000000ns
-
         int runupTotal = qps * 5;
         double diffTime = 2 * (Constant.RUNUP_TIME / 5 * interval - interval);
         double piece = diffTime / runupTotal;
         for (int i = runupTotal; i > 0; i--) {
             executorService.execute(threads.get(limit-- % queueLength).clone());
-            sleep(interval + i * piece);
+            sleep((long) (interval + i * piece));
         }
         allTimes = new Vector<>();
         marks = new Vector<>();
         executeTimes.getAndSet(0);
         errorTimes.getAndSet(0);
+        Progress progress = new Progress(threads, StatisticsUtil.getTrueName(desc), executeTimes);
+        new Thread(progress).start();
         startTime = Time.getTimeStamp();
         AidThread aidThread = new AidThread();
         new Thread(aidThread).start();
