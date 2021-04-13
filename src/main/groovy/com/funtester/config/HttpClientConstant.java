@@ -86,9 +86,9 @@ public class HttpClientConstant {
     public static int TRY_TIMES = propertyUtils.getPropertyInt("TRY_TIMES");
 
     /**
-     * 关闭超时的链接
+     * 关闭超时的链接,单位s
      */
-    public static int IDLE_TIMEOUT = 5;
+    public static int IDLE_TIMEOUT = 10;
 
     /**
      * 在设置请求contenttype参数，表示请求以io流发送数据
@@ -113,26 +113,26 @@ public class HttpClientConstant {
     /**
      * 通用循环间隔时间,单位s
      */
-    public static final int LOOP_INTERVAL = 5;
+    public static int LOOP_INTERVAL = 3;
 
     /**
      * 线程池,线程最大空闲时间
      */
-    public static final int THREAD_ALIVE_TIME = 3;
+    public static int THREAD_ALIVE_TIME = 10;
 
     /**
      * 线程池核心线程数
      */
-    public static final int THREADPOOL_CORE = 20;
+    public static int THREADPOOL_CORE = 20;
 
     /**
      * 线程池最大线程数
      */
-    public static final int THREADPOOL_MAX = 5000;
+    public static int THREADPOOL_MAX = 5000;
 
     /**
      * 关闭线程池最大等待时间
      */
-    public static final int WAIT_TERMINATION_TIMEOUT = 10;
+    public static int WAIT_TERMINATION_TIMEOUT = 10;
 
 }
