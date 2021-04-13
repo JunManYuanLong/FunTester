@@ -477,16 +477,13 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 简单发送请求
+     * 简单发送请求,此处不用{@link CloseableHttpResponse#close()}也能释放连接
      *
      * @param request
      */
     public static String executeSimlple(HttpRequestBase request) throws IOException {
-        try (CloseableHttpResponse response = ClientManage.httpsClient.execute(request);) {
-            if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK)
-                RequestException.fail("响应状态码错误:" + response.getStatusLine().getStatusCode());
-            return getContent(response.getEntity());
-        }
+        CloseableHttpResponse response = ClientManage.httpsClient.execute(request);
+        return getContent(response.getEntity());
     }
 
     /**
