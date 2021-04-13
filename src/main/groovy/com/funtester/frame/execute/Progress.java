@@ -121,6 +121,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
         this.threads = threads;
         this.threadNum = threads.size();
         this.taskDesc = desc;
+        this.excuteNum = excuteNum;
         this.base = threads.get(0);
         init();
     }
