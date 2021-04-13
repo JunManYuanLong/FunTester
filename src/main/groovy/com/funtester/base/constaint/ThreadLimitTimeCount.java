@@ -1,7 +1,6 @@
 package com.funtester.base.constaint;
 
 import com.funtester.base.interfaces.MarkThread;
-import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.execute.Concurrent;
 import com.funtester.httpclient.GCThread;
 import com.funtester.utils.Time;
@@ -49,19 +48,15 @@ public abstract class ThreadLimitTimeCount<F> extends ThreadBase<F> {
             long ss = Time.getTimeStamp();
             while (true) {
                 try {
-                    threadmark = mark == null ? EMPTY : this.mark.mark(this);
                     long s = Time.getTimeStamp();
                     doing();
                     long et = Time.getTimeStamp();
                     executeNum++;
                     int diff =(int) (et - s);
                     costs.add(diff);
-                    if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
-                        marks.add(diff + CONNECTOR + threadmark + CONNECTOR + Time.getNow());
-                    if ((et - ss) > time || status() || ThreadBase.needAbort()) break;
+                    if ((et - ss) > time || ThreadBase.needAbort()) break;
                 } catch (Exception e) {
                     logger.warn("执行任务失败！", e);
-                    logger.warn("执行失败对象的标记:{}", threadmark);
                     errorNum++;
                 }
             }
@@ -75,20 +70,6 @@ public abstract class ThreadLimitTimeCount<F> extends ThreadBase<F> {
             after();
         }
 
-    }
-
-
-
-    public boolean status() {
-        return errorNum > 10;
-    }
-
-    /**
-     * 运行待测方法的之前的准备
-     */
-    @Override
-    public void before() {
-        super.before();
     }
 
     @Override

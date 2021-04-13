@@ -1,7 +1,6 @@
 package com.funtester.base.constaint;
 
 import com.funtester.base.interfaces.MarkThread;
-import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.execute.FixedQpsConcurrent;
 import com.funtester.utils.Time;
 import org.apache.logging.log4j.LogManager;
@@ -36,27 +35,15 @@ public abstract class FixedQpsThread<F> extends ThreadBase<F> {
     @Override
     public void run() {
         try {
-            before();
-            threadmark = this.mark == null ? EMPTY : this.mark.mark(this);
             long s = Time.getTimeStamp();
             doing();
             long e = Time.getTimeStamp();
             FixedQpsConcurrent.executeTimes.getAndIncrement();
-            int diff = (int) (e - s);
-            FixedQpsConcurrent.allTimes.add(diff);
-            if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
-                FixedQpsConcurrent.marks.add(diff + CONNECTOR + threadmark + CONNECTOR + Time.getNow());
+            FixedQpsConcurrent.allTimes.add((int) (e - s));
         } catch (Exception e) {
+            logger.warn("任务执行失败!", e);
             FixedQpsConcurrent.errorTimes.getAndIncrement();
-            logger.warn("执行任务失败！,标记:{}", threadmark, e);
-        } finally {
-            after();
         }
-    }
-
-    @Override
-    public void before() {
-
     }
 
 }

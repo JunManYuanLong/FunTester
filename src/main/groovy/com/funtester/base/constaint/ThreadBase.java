@@ -134,7 +134,7 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
     }
 
     /**
-     * 线程任务是否需要提前关闭,默认返回false
+     * 线程任务是否需要提前关闭,默认返回false,不再统一实现,内部静态类中实现
      * <p>
      * 一般用于单线程错误率过高的情况
      * </p>
