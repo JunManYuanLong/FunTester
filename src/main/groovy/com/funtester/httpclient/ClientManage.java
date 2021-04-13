@@ -268,7 +268,7 @@ public class ClientManage {
      */
     public static void recyclingConnection() {
         connManager.closeExpiredConnections();
-        connManager.closeIdleConnections(HttpClientConstant.IDLE_TIMEOUT, TimeUnit.MILLISECONDS);
+        connManager.closeIdleConnections(HttpClientConstant.IDLE_TIMEOUT, TimeUnit.SECONDS);
     }
 
     /**
