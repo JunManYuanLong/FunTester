@@ -22,7 +22,6 @@ public abstract class ThreadLimitTimesCount<F> extends ThreadBase<F> {
 
     private static final Logger logger = LogManager.getLogger(ThreadLimitTimesCount.class);
 
-
     /**
      * 任务请求执行次数
      */
@@ -45,15 +44,19 @@ public abstract class ThreadLimitTimesCount<F> extends ThreadBase<F> {
             long ss = Time.getTimeStamp();
             for (int i = 0; i < times; i++) {
                 try {
+//                    threadmark = mark == null ? EMPTY : this.mark.mark(this);
                     long s = Time.getTimeStamp();
                     doing();
                     long e = Time.getTimeStamp();
                     executeNum++;
-                    int diff = (int) (e - s);
+                    int diff =(int) (e - s);
                     costs.add(diff);
+//                    if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
+//                        marks.add(diff + CONNECTOR + threadmark + CONNECTOR + Time.getNow());
                     if (ThreadBase.needAbort()) break;
                 } catch (Exception e) {
                     logger.warn("执行任务失败！", e);
+//                    logger.warn("执行失败对象的标记:{}", threadmark);
                     errorNum++;
                 }
             }
@@ -66,14 +69,6 @@ public abstract class ThreadLimitTimesCount<F> extends ThreadBase<F> {
         } finally {
             after();
         }
-    }
-
-    /**
-     * 运行待测方法的之前的准备
-     */
-    @Override
-    public void before() {
-        super.before();
     }
 
     @Override
