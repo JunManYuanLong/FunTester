@@ -164,7 +164,7 @@ public class Constant {
     /**
      * 性能测试启动时间
      */
-    public static double RUNUP_TIME = 20.0;
+    public static double RUNUP_TIME = 30.0;
 
     /**
      * 固定QPS启动之前运行的次数控制时间,总次数会等于QPS*该时间
