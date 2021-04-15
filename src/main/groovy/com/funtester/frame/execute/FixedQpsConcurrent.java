@@ -136,19 +136,19 @@ public class FixedQpsConcurrent extends SourceCode {
      * 默认取list中thread对象,丢入线程池,完成多线程执行,如果没有threadname,name默认采用desc+线程数作为threadname,去除末尾的日期
      */
     public PerformanceResultBean start() {
-        needAbord = false;
         boolean isTimesMode = baseThread.isTimesMode;
         int limit = baseThread.limit;
         int qps = baseThread.qps;
         executeThread = qps / 500 + 1;
         interval = 1_000_000_000 / qps;//此处单位1s=1000ms,1ms=1000000ns
-        int runupTotal = qps * PREFIX_RUN;
-        double diffTime = 2 * (Constant.RUNUP_TIME / PREFIX_RUN * interval - interval);
-        double piece = diffTime / runupTotal;
+        int runupTotal = qps * PREFIX_RUN;//计算总的请求量
+        double diffTime = 2 * (Constant.RUNUP_TIME / PREFIX_RUN * interval - interval);//计算最大时间间隔和最小时间间隔差值
+        double piece = diffTime / runupTotal;//计算每一次请求时间增量
         for (int i = runupTotal; i > 0; i--) {
             executorService.execute(threads.get(limit-- % queueLength).clone());
             sleep((long) (interval + i * piece));
         }
+        sleep(1.0);
         allTimes = new Vector<>();
         marks = new Vector<>();
         executeTimes.getAndSet(0);

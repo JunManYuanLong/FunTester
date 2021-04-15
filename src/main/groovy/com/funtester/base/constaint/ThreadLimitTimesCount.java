@@ -61,7 +61,7 @@ public abstract class ThreadLimitTimesCount<F> extends ThreadBase<F> {
                 }
             }
             long ee = Time.getTimeStamp();
-            logger.info("线程:{},执行次数：{}，错误次数: {},总耗时：{} s", threadName, times, errorNum, (ee - ss) / 1000.0);
+            logger.info("线程:{},执行次数：{}，错误次数: {},总耗时：{} s", threadName, executeNum, errorNum, (ee - ss) / 1000.0);
             Concurrent.allTimes.addAll(costs);
             Concurrent.requestMark.addAll(marks);
         } catch (Exception e) {
