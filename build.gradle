@@ -149,7 +149,7 @@ task copyFun(type: Copy) {
 
 //用来拷贝项目jar包
 task copyOkay(type: Copy) {
-    from('/Users/oker/IdeaProjects/oktest/target/oktest-1.0-SNAPSHOT-jar-with-dependencies.jar')
+    from('/Users/oker/IdeaProjects/oktest/target/oktest-1.0-SNAPSHOT-release.jar')
     into('/Users/oker/Library/groovy-2.5.7/lib')
     println "拷贝okay.jar包到Groovy依赖成功!"
 }
