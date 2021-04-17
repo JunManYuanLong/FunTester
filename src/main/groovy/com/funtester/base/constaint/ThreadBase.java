@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 /**
  * 多线程任务基类，可单独使用
  *
- * @param <T> 必需实现Serializable
+ * @param <F> 必需实现Serializable
  */
 public abstract class ThreadBase<F> extends SourceCode implements Runnable, Serializable {
 
@@ -129,6 +129,8 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
      * 用于对象拷贝之后,清空存储列表
      */
     public void initBase() {
+        this.executeNum = 0;
+        this.errorNum = 0;
         this.costs = new ArrayList<>();
         this.marks = new ArrayList<>();
     }

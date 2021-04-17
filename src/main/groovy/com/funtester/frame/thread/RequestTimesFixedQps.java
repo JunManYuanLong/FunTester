@@ -3,7 +3,6 @@ package com.funtester.frame.thread;
 import com.funtester.base.constaint.FixedQpsThread;
 import com.funtester.base.interfaces.MarkRequest;
 import com.funtester.httpclient.FunLibrary;
-import com.funtester.httpclient.FunRequest;
 import com.funtester.httpclient.GCThread;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.logging.log4j.LogManager;
@@ -37,7 +36,7 @@ public class RequestTimesFixedQps extends FixedQpsThread<HttpRequestBase> {
     @Override
     public RequestTimesFixedQps clone() {
         RequestTimesFixedQps newone = new RequestTimesFixedQps();
-        newone.f = FunRequest.cloneRequest(this.f);
+        newone.f = f;
         newone.mark = this.mark == null ? null : this.mark.clone();
         newone.qps = this.qps;
         newone.isTimesMode = this.isTimesMode;

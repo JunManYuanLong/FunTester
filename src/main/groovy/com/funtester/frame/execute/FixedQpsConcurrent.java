@@ -15,6 +15,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -55,6 +56,16 @@ public class FixedQpsConcurrent extends SourceCode {
      * 结束时间
      */
     public long endTime;
+
+    /**
+     * 初始间隔时间
+     */
+    public long interval;
+
+    /**
+     * 总执行线程数
+     */
+    public int executeThread;
 
     /**
      * 任务队列的长度,因为会循环去那队列的任务
@@ -125,37 +136,39 @@ public class FixedQpsConcurrent extends SourceCode {
      * 默认取list中thread对象,丢入线程池,完成多线程执行,如果没有threadname,name默认采用desc+线程数作为threadname,去除末尾的日期
      */
     public PerformanceResultBean start() {
-        needAbord = false;
         boolean isTimesMode = baseThread.isTimesMode;
         int limit = baseThread.limit;
         int qps = baseThread.qps;
-        long interval = 1_000_000_000 / qps;//此处单位1s=1000ms,1ms=1000000ns
-        int runupTotal = qps * 5;
-        double diffTime = 2 * (Constant.RUNUP_TIME / 5 * interval - interval);
-        double piece = diffTime / runupTotal;
+        executeThread = qps / 500 + 1;
+        interval = 1_000_000_000 / qps;//此处单位1s=1000ms,1ms=1000000ns
+        int runupTotal = qps * PREFIX_RUN;//计算总的请求量
+        double diffTime = 2 * (Constant.RUNUP_TIME / PREFIX_RUN * interval - interval);//计算最大时间间隔和最小时间间隔差值
+        double piece = diffTime / runupTotal;//计算每一次请求时间增量
         for (int i = runupTotal; i > 0; i--) {
             executorService.execute(threads.get(limit-- % queueLength).clone());
             sleep((long) (interval + i * piece));
         }
+        sleep(1.0);
         allTimes = new Vector<>();
         marks = new Vector<>();
         executeTimes.getAndSet(0);
         errorTimes.getAndSet(0);
+        logger.info("预热完成,开始测试!");
         Progress progress = new Progress(threads, StatisticsUtil.getTrueName(desc), executeTimes);
         new Thread(progress).start();
         startTime = Time.getTimeStamp();
         AidThread aidThread = new AidThread();
         new Thread(aidThread).start();
-        while (true) {
-            executorService.execute(threads.get(limit-- % queueLength).clone());
-            if (needAbord || (isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > limit)) break;
-            sleep(interval);
+        CountDownLatch countDownLatch = new CountDownLatch(executeThread);
+        for (int i = 0; i < executeThread; i++) {
+            new FunTester(countDownLatch).start();
         }
         endTime = Time.getTimeStamp();
         aidThread.stop();
         progress.stop();
         GCThread.stop();
         try {
+            countDownLatch.wait();
             executorService.shutdown();
             executorService.awaitTermination(HttpClientConstant.WAIT_TERMINATION_TIMEOUT, TimeUnit.SECONDS);//此方法需要在shutdown方法执行之后执行
         } catch (InterruptedException e) {
@@ -163,6 +176,40 @@ public class FixedQpsConcurrent extends SourceCode {
         }
         logger.info("总计执行 {} ，共用时：{} s,执行总数:{},错误数:{}!", baseThread.isTimesMode ? baseThread.limit + "次任务" : "秒", Time.getTimeDiffer(startTime, endTime), executeTimes, errorTimes);
         return over();
+    }
+
+    /**
+     * 执行请求生成和执行类
+     */
+    private class FunTester extends Thread {
+
+        FunTester(CountDownLatch countDownLatch) {
+            this.countDownLatch = countDownLatch;
+        }
+
+        CountDownLatch countDownLatch;
+
+        boolean isTimesMode = baseThread.isTimesMode;
+
+        int limit = baseThread.limit / executeThread;
+
+        long nanosec = interval * executeThread;
+
+        @Override
+        public void run() {
+            try {
+                while (true) {
+                    executorService.execute(threads.get(limit-- % queueLength).clone());
+                    if (needAbord || (isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > limit)) break;
+                    SourceCode.sleep(nanosec);
+                }
+            } catch (Exception e) {
+                logger.warn("任务发生器执行发生错误了!", e);
+            } finally {
+                countDownLatch.countDown();
+            }
+        }
+
     }
 
     private PerformanceResultBean over() {
@@ -216,10 +263,10 @@ public class FixedQpsConcurrent extends SourceCode {
                     int actual = executeTimes.get();
                     int qps = baseThread.qps;
                     long expect = (Time.getTimeStamp() - FixedQpsConcurrent.this.startTime) / 2000 * qps;
-                    if (expect > actual + qps) {
+                    if (expect > actual + qps % 500) {
                         logger.info("期望执行数:{},实际执行数:{},设置QPS:{}", expect, actual, qps);
                         range((int) expect - actual).forEach(x -> {
-                            sleep(0.05);
+                            sleep(0.02);
                             if (!executorService.isShutdown()) {
                                 executorService.execute(threads.get(this.i++ % queueLength).clone());
                             }

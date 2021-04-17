@@ -164,7 +164,12 @@ public class Constant {
     /**
      * 性能测试启动时间
      */
-    public static double RUNUP_TIME = 10.0;
+    public static double RUNUP_TIME = 30.0;
+
+    /**
+     * 固定QPS启动之前运行的次数控制时间,总次数会等于QPS*该时间
+     */
+    public static int PREFIX_RUN = 10;
 
     /**
      * 本机用户名，程序初始化会赋值
