@@ -157,6 +157,10 @@
 - [链路压测中各接口性能统计](https://mp.weixin.qq.com/s/Deyop0mMpHrRWj9JTHzayw)
 - [性能测试框架中QPS取样器实现](https://mp.weixin.qq.com/s/4-5WhwwE1oRQ7cMUDv7J2w)
 - [链路压测中的支路问题初探](https://mp.weixin.qq.com/s/9iN9XndRPH4vIgc0-jVpUA)
+- [性能测试误差分析文字版-上](https://mp.weixin.qq.com/s/QA1VmNiJGZbNKTUNkt_05w)
+- [性能测试误差分析文字版-下](https://mp.weixin.qq.com/s/JwT9G910gn3YGyjeBlafgg)
+- [性能测试误差统计实践](https://mp.weixin.qq.com/s/D0KAn8Ch4vOqXA_-pWXWhg)
+- [性能测试误差对比研究（一）](https://mp.weixin.qq.com/s/BC49_DLNbdbFGcGDFFuh6Q)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -224,6 +228,7 @@
 - [Java&Groovy下载文件对比](https://mp.weixin.qq.com/s/T9WUynej2yOZhCkDUhaLYw)
 - [线程同步类CyclicBarrier在性能测试集合点应用](https://mp.weixin.qq.com/s/K2YySxX9T4v_rzbvIbIHJA)
 - [Java线程同步三剑客](https://mp.weixin.qq.com/s/cAmd11-HdwXNU3tp4TiDLg)
+- [Intellij运行Java程序启动等待BUG分享](https://mp.weixin.qq.com/s/Y6-CapeSV9UofwggHu_XbQ)
 
 ## Groovy
 
@@ -239,6 +244,7 @@
 - [用Groovy处理JMeter变量](https://mp.weixin.qq.com/s/BxtweLrBUptM8r3LxmeM_Q)
 - [用Groovy在JMeter中执行命令行](https://mp.weixin.qq.com/s/VTip7tiLpwBOr1gUoZ0n8A)
 - [用Groovy处理JMeter中的请求参数](https://mp.weixin.qq.com/s/9pCUOXWpMwXR5ynvCMYJ7A)
+- [用Groovy记录JMeter请求和响应](https://mp.weixin.qq.com/s/Hr216Hi3SeSt3_HBpEzl5Q)
 - [Java和Groovy正则使用](https://mp.weixin.qq.com/s/DT3BKE3ZcCKf6TLzGc5wbg)
 - [Groovy中的元组](https://mp.weixin.qq.com/s/0-ka0-tv1vyKbiA6m44jRw)
 - [从Java到Groovy的八级进化论](https://mp.weixin.qq.com/s/QTrRHsD3w-zLGbn79y8yUg)
@@ -360,6 +366,7 @@
 - [JsonPath验证类既Groovy重载操作符实践](https://mp.weixin.qq.com/s/5gc04CAsBY6pWxe5c2P41w)
 - [JSON对象标记语法验证类](https://mp.weixin.qq.com/s/jSXmoEdMF7nWAqQuzJ5GiQ)
 - [使用jq处理JSON数据（一）](https://mp.weixin.qq.com/s/45-ztTx2scbNY5u7NQzeIA)
+- [使用jq处理JSON数据（二）](https://mp.weixin.qq.com/s/U1VwJGFVkrUyv3jMegapCg)
 
 ## Jacoco覆盖率
 
@@ -400,7 +407,6 @@
 
 ## 工具类
 
-- [java网格输出的类](https://mp.weixin.qq.com/s/BJTJu0LGjn7Hc9J1yT04KQ)
 - [java使用poi写入excel文档的一种解决方案](https://mp.weixin.qq.com/s/Ft56gd1B9CPrQs2zq4Cpug)
 - [java使用poi读取excel文档的一种解决方案](https://mp.weixin.qq.com/s/ltZGx9J7E8DTer0D-pfQ2Q)
 - [MongoDB操作类封装](https://mp.weixin.qq.com/s/u-RHOE5XrjOEkelWIxdplw)
@@ -709,3 +715,10 @@
 - [假期思考题](https://mp.weixin.qq.com/s/3DOnkmYDlwk-XKg4ge3ZUw)
 - [甩锅技能+1](https://mp.weixin.qq.com/s/nMwlfXZoDcRRPHcTKpvfNg)
 - [不要浪费自己的求知欲](https://mp.weixin.qq.com/s/WO0aQqmhU_xGUpWvYwOqUA)
+- [Intellij运行Java程序启动等待BUG分享](https://mp.weixin.qq.com/s/Y6-CapeSV9UofwggHu_XbQ)
+- [721法则推介](https://mp.weixin.qq.com/s/kyZB7S83jix9ivePxL3yCA)
+- [高潜力员工自检表](https://mp.weixin.qq.com/s/jvKrWz9sEzNyM1Pi1GbFtg)
+
+## 社区风采
+
+- [Linux文件系统和vim命令](https://mp.weixin.qq.com/s/xzModz-upKv5CbAjtWOxpw)
