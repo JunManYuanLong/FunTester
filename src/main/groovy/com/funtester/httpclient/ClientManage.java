@@ -97,11 +97,10 @@ public class ClientManage {
      * @return
      */
     private static PoolingHttpClientConnectionManager getPool() {
-        PoolingHttpClientConnectionManager connManager = null;
         // 采用绕过验证的方式处理https请求
         // 设置协议http和https对应的处理socket链接工厂的对象
         Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create().register("http", PlainConnectionSocketFactory.INSTANCE).register("https", new SSLConnectionSocketFactory(sslContext)).build();
-        connManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
+        PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
         // 消息约束
         MessageConstraints messageConstraints = MessageConstraints.custom().setMaxHeaderCount(HttpClientConstant.MAX_HEADER_COUNT).setMaxLineLength(HttpClientConstant.MAX_LINE_LENGTH).build();
         // 连接设置
