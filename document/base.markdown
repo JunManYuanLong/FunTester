@@ -1,6 +1,6 @@
 # 基础篇
 
-> **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，非著名测试开发er，欢迎关注。
+#### **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -66,6 +66,7 @@
 - [Java&Groovy下载文件对比](https://mp.weixin.qq.com/s/T9WUynej2yOZhCkDUhaLYw)
 - [线程同步类CyclicBarrier在性能测试集合点应用](https://mp.weixin.qq.com/s/K2YySxX9T4v_rzbvIbIHJA)
 - [Java线程同步三剑客](https://mp.weixin.qq.com/s/cAmd11-HdwXNU3tp4TiDLg)
+- [Intellij运行Java程序启动等待BUG分享](https://mp.weixin.qq.com/s/Y6-CapeSV9UofwggHu_XbQ)
 
 ## Groovy
 
@@ -81,6 +82,7 @@
 - [用Groovy处理JMeter变量](https://mp.weixin.qq.com/s/BxtweLrBUptM8r3LxmeM_Q)
 - [用Groovy在JMeter中执行命令行](https://mp.weixin.qq.com/s/VTip7tiLpwBOr1gUoZ0n8A)
 - [用Groovy处理JMeter中的请求参数](https://mp.weixin.qq.com/s/9pCUOXWpMwXR5ynvCMYJ7A)
+- [用Groovy记录JMeter请求和响应](https://mp.weixin.qq.com/s/Hr216Hi3SeSt3_HBpEzl5Q)
 - [Java和Groovy正则使用](https://mp.weixin.qq.com/s/DT3BKE3ZcCKf6TLzGc5wbg)
 - [Groovy中的元组](https://mp.weixin.qq.com/s/0-ka0-tv1vyKbiA6m44jRw)
 - [从Java到Groovy的八级进化论](https://mp.weixin.qq.com/s/QTrRHsD3w-zLGbn79y8yUg)

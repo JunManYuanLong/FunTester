@@ -161,6 +161,7 @@
 - [性能测试误差分析文字版-下](https://mp.weixin.qq.com/s/JwT9G910gn3YGyjeBlafgg)
 - [性能测试误差统计实践](https://mp.weixin.qq.com/s/D0KAn8Ch4vOqXA_-pWXWhg)
 - [性能测试误差对比研究（一）](https://mp.weixin.qq.com/s/BC49_DLNbdbFGcGDFFuh6Q)
+- [性能测试软启动初探](https://mp.weixin.qq.com/s/fk7LA7GtqR7wiKRAw2IYFA)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 

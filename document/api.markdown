@@ -1,7 +1,7 @@
 # 接口篇
 
 
-##### **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，非著名测试开发er，欢迎关注。
+##### **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -151,7 +151,15 @@
 - [性能测试中异步展示测试进度](https://mp.weixin.qq.com/s/AOERJbEc4ATJqhjvnxgQoA)
 - [ThreadLocal在链路性能测试中实践](https://mp.weixin.qq.com/s/3qhNdHHSStELzNraQSpcew)
 - [Socket接口固定QPS性能测试实践](https://mp.weixin.qq.com/s/I9-14L8THxvtX1NJY0KPfw)
-- [单链路性能测试实践](https://mp.weixin.qq.com/s/4xHLP-GZwrNu5cFKdfsB6g)
+- [单性能测试实践](https://mp.weixin.qq.com/s/4xHLP-GZwrNu5cFKdfsB6g)
 - [链路性能测试中参数多样性方法分享](https://mp.weixin.qq.com/s/I1pm0fulNrj_S-YkNz-gEA)
 - [链路测试中参数流转图](https://mp.weixin.qq.com/s/xyo9HXBLoXgLW6MSFH3V6w)
 - [线程同步类CyclicBarrier在性能测试集合点应用](https://mp.weixin.qq.com/s/K2YySxX9T4v_rzbvIbIHJA)
+- [链路压测中各接口性能统计](https://mp.weixin.qq.com/s/Deyop0mMpHrRWj9JTHzayw)
+- [性能测试框架中QPS取样器实现](https://mp.weixin.qq.com/s/4-5WhwwE1oRQ7cMUDv7J2w)
+- [链路压测中的支路问题初探](https://mp.weixin.qq.com/s/9iN9XndRPH4vIgc0-jVpUA)
+- [性能测试误差分析文字版-上](https://mp.weixin.qq.com/s/QA1VmNiJGZbNKTUNkt_05w)
+- [性能测试误差分析文字版-下](https://mp.weixin.qq.com/s/JwT9G910gn3YGyjeBlafgg)
+- [性能测试误差统计实践](https://mp.weixin.qq.com/s/D0KAn8Ch4vOqXA_-pWXWhg)
+- [性能测试误差对比研究（一）](https://mp.weixin.qq.com/s/BC49_DLNbdbFGcGDFFuh6Q)
+- [性能测试软启动初探](https://mp.weixin.qq.com/s/fk7LA7GtqR7wiKRAw2IYFA)

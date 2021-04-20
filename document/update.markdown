@@ -1,6 +1,6 @@
 # 升级篇
 
-> **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，非著名测试开发er，欢迎关注。
+#### **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
 * `GitHub`地址*https://github.com/JunManYuanLong/FunTester*
@@ -57,7 +57,7 @@
 
 # 工具合集
 
-## JsonPath合集
+## JSON合集
 
 - [JsonPath实践（一）](https://mp.weixin.qq.com/s/Cq0_v_ptbGd4f5y8HIsq7w)
 - [JsonPath实践（二）](https://mp.weixin.qq.com/s/w_iJTiuQahIw6U00CJVJZg)
@@ -69,6 +69,8 @@
 - [JsonPath工具类单元测试](https://mp.weixin.qq.com/s/1YtUWGk_sTjn9bHwAeT0Ew)
 - [JsonPath验证类既Groovy重载操作符实践](https://mp.weixin.qq.com/s/5gc04CAsBY6pWxe5c2P41w)
 - [JSON对象标记语法验证类](https://mp.weixin.qq.com/s/jSXmoEdMF7nWAqQuzJ5GiQ)
+- [使用jq处理JSON数据（一）](https://mp.weixin.qq.com/s/45-ztTx2scbNY5u7NQzeIA)
+- [使用jq处理JSON数据（二）](https://mp.weixin.qq.com/s/U1VwJGFVkrUyv3jMegapCg)
 
 ## Jacoco覆盖率
 
@@ -109,7 +111,6 @@
 
 ## 工具类
 
-- [java网格输出的类](https://mp.weixin.qq.com/s/BJTJu0LGjn7Hc9J1yT04KQ)
 - [java使用poi写入excel文档的一种解决方案](https://mp.weixin.qq.com/s/Ft56gd1B9CPrQs2zq4Cpug)
 - [java使用poi读取excel文档的一种解决方案](https://mp.weixin.qq.com/s/ltZGx9J7E8DTer0D-pfQ2Q)
 - [MongoDB操作类封装](https://mp.weixin.qq.com/s/u-RHOE5XrjOEkelWIxdplw)
