@@ -163,3 +163,4 @@
 - [性能测试误差统计实践](https://mp.weixin.qq.com/s/D0KAn8Ch4vOqXA_-pWXWhg)
 - [性能测试误差对比研究（一）](https://mp.weixin.qq.com/s/BC49_DLNbdbFGcGDFFuh6Q)
 - [性能测试软启动初探](https://mp.weixin.qq.com/s/fk7LA7GtqR7wiKRAw2IYFA)
+- [性能测试误差对比研究（二）](https://mp.weixin.qq.com/s/8oq9rSyCgxAiQAYrhHUCkg)

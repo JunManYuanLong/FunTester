@@ -162,6 +162,7 @@
 - [性能测试误差统计实践](https://mp.weixin.qq.com/s/D0KAn8Ch4vOqXA_-pWXWhg)
 - [性能测试误差对比研究（一）](https://mp.weixin.qq.com/s/BC49_DLNbdbFGcGDFFuh6Q)
 - [性能测试软启动初探](https://mp.weixin.qq.com/s/fk7LA7GtqR7wiKRAw2IYFA)
+- [性能测试误差对比研究（二）](https://mp.weixin.qq.com/s/8oq9rSyCgxAiQAYrhHUCkg)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -719,7 +720,9 @@
 - [Intellij运行Java程序启动等待BUG分享](https://mp.weixin.qq.com/s/Y6-CapeSV9UofwggHu_XbQ)
 - [721法则推介](https://mp.weixin.qq.com/s/kyZB7S83jix9ivePxL3yCA)
 - [高潜力员工自检表](https://mp.weixin.qq.com/s/jvKrWz9sEzNyM1Pi1GbFtg)
+- [学习笔记杂谈](https://mp.weixin.qq.com/s/OCpM0qfxD3wudZ00KQgKvg)
 
 ## 社区风采
 
 - [Linux文件系统和vim命令](https://mp.weixin.qq.com/s/xzModz-upKv5CbAjtWOxpw)
+- [Linux/Mac简单又强大的基础工具（一）](https://mp.weixin.qq.com/s/zk3MCiy01Z_JRyTvU1oDgg)
