@@ -153,7 +153,7 @@ public class FixedQpsConcurrent extends SourceCode {
         marks = new Vector<>();
         executeTimes.getAndSet(0);
         errorTimes.getAndSet(0);
-        logger.info("预热完成,开始测试!");
+        logger.info("=========预热完成,开始测试!=========");
         Progress progress = new Progress(threads, StatisticsUtil.getTrueName(desc), executeTimes);
         new Thread(progress).start();
         startTime = Time.getTimeStamp();

@@ -49,7 +49,7 @@ public abstract class ThreadLimitTimesCount<F> extends ThreadBase<F> {
                     doing();
                     long e = Time.getTimeStamp();
                     executeNum++;
-                    int diff =(int) (e - s);
+                    int diff = (int) (e - s);
                     costs.add(diff);
 //                    if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
 //                        marks.add(diff + CONNECTOR + threadmark + CONNECTOR + Time.getNow());
@@ -61,7 +61,8 @@ public abstract class ThreadLimitTimesCount<F> extends ThreadBase<F> {
                 }
             }
             long ee = Time.getTimeStamp();
-            logger.info("线程:{},执行次数：{}，错误次数: {},总耗时：{} s", threadName, executeNum, errorNum, (ee - ss) / 1000.0);
+            if ((ee - ss) / 1000 > RUNUP_TIME + 3)
+                logger.info("线程:{},执行次数：{}，错误次数: {},总耗时：{} s", threadName, executeNum, errorNum, (ee - ss) / 1000.0);
             Concurrent.allTimes.addAll(costs);
             Concurrent.requestMark.addAll(marks);
         } catch (Exception e) {
