@@ -232,6 +232,13 @@ public class ClientManage {
         return HttpAsyncClients.custom().setConnectionManager(NconnManager).setSSLHostnameVerifier(SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER).setSSLContext(sslContext).build();
     }
 
+    /**
+     * 获取HttpClient对象
+     * <p>
+     * 增加默认的请求控制器，和请求配置，连接控制器，取消了cookiestore，单独解析响应set-cookie和发送请求的header，适配多用户同时在线的情况
+     * </p>
+     * @return
+     */
     private static CloseableHttpClient getCloseableHttpsClients() {
         return HttpClients.custom().setConnectionManager(connManager).setRetryHandler(httpRequestRetryHandler).setDefaultRequestConfig(requestConfig).build();
     }
