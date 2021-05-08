@@ -1,5 +1,6 @@
 package com.funtester.httpclient
 
+import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONObject
 import com.funtester.base.bean.RequestInfo
 import com.funtester.base.exception.RequestException
@@ -17,7 +18,6 @@ import org.apache.http.client.methods.HttpRequestBase
 import org.apache.http.client.methods.RequestBuilder
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
-
 /**
  * 重写FunLibrary，使用面对对象思想,不用轻易使用set属性方法,可能存在BUG
  */
@@ -45,10 +45,10 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
     /**
      * 接口地址
      */
-    String apiName = EMPTY
+    String path = EMPTY
 
     /**
-     * 请求地址,如果为空则由host和apiname拼接
+     * 请求地址,如果为空则由host和path拼接
      */
     String uri = EMPTY
 
@@ -134,11 +134,11 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
     /**
      * 设置接口地址
      *
-     * @param apiName
+     * @param path
      * @return
      */
-    FunRequest setApiName(String apiName) {
-        this.apiName = apiName
+    FunRequest setpath(String path) {
+        this.path = path
         this
     }
 
@@ -280,7 +280,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
     HttpRequestBase getRequest() {
         if (request != null) request
         if (StringUtils.isEmpty(uri))
-            uri = host + apiName
+            uri = host + path
         switch (requestType) {
             case RequestType.GET:
                 request = FunLibrary.getHttpGet(uri, args)
@@ -294,11 +294,13 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
             case RequestType.DELETE:
                 request = FunLibrary.getHttpDelete(uri)
                 break
+            case RequestType.PATCH:
+                request = FunLibrary.getHttpPatch(uri, params)
             default:
                 break
         }
-        for (Header header in headers) {
-            request.addHeader(header)
+        for (Header it : headers) {
+            if (it.getName() != HttpClientConstant.ContentType_JSON.getName()) request.addHeader(it)
         }
         logger.debug("请求信息：{}", new RequestInfo(this.request).toString())
         request
@@ -334,7 +336,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
         return "{" +
                 "requestType='" + requestType.getName() + '\'' +
                 ", host='" + host + '\'' +
-                ", apiName='" + apiName + '\'' +
+                ", path='" + path + '\'' +
                 ", uri='" + uri + '\'' +
                 ", headers=" + FunLibrary.header2Json(headers).toString() +
                 ", args=" + args.toString() +
@@ -410,7 +412,8 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
             if (entity == null) {
                 request = isPost().setUri(uri).addHeader(headers)
             } else {
-                String value = entity.getContentType().getValue()
+                Header type = entity.getContentType()
+                String value = type == null ? EMPTY : type.getValue()
                 String content = FunLibrary.getContent(entity)
                 if (value.equalsIgnoreCase(HttpClientConstant.ContentType_TEXT.getValue()) || value.equalsIgnoreCase(HttpClientConstant.ContentType_JSON.getValue())) {
                     request = isPost().setUri(uri).addHeaders(headers).addJson(JSONObject.parseObject(content))
@@ -428,6 +431,27 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
             RequestException.fail("不支持的请求类型!")
         }
         return request
+    }
+
+    /**
+     * 从字符串中获取请求对象
+     * @param fun
+     * @return
+     */
+    static FunRequest initFromString(String fun) {
+        def f = JSON.parseObject(fun)
+        RequestType requestType = RequestType.getInstance(f.requestType)
+        def request = new FunRequest(requestType)
+        request.host = f.host
+        request.path = f.path
+        request.uri = f.uri
+        request.args = f.args
+        request.json = f.json
+        request.params = f.params
+        f.headers.each {
+            request.addHeader(it.name,it.value)
+        }
+        request
     }
 
     static HttpRequestBase doCopy(HttpRequestBase base) {
