@@ -68,7 +68,7 @@ public class HttpClientConstant {
     public static final String FILE_UPLOAD_KEY = "file";
 
     /**
-     * 连接header设置
+     * 连接header设置,这个会默认传输
      */
     public static Header CONNECTION = getHeader("Connection", getProperty("Connection"));
 
