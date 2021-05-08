@@ -163,6 +163,7 @@
 - [性能测试误差对比研究（一）](https://mp.weixin.qq.com/s/BC49_DLNbdbFGcGDFFuh6Q)
 - [性能测试软启动初探](https://mp.weixin.qq.com/s/fk7LA7GtqR7wiKRAw2IYFA)
 - [性能测试误差对比研究（二）](https://mp.weixin.qq.com/s/8oq9rSyCgxAiQAYrhHUCkg)
+- [性能测试误差对比研究（三）](https://mp.weixin.qq.com/s/RWfQxlcKnOb3Q2mG5PoITg)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -266,6 +267,8 @@
 - [JsonPath验证类既Groovy重载操作符实践](https://mp.weixin.qq.com/s/5gc04CAsBY6pWxe5c2P41w)
 - [Groovy枚举类初始化异常分析](https://mp.weixin.qq.com/s/koFhpBZM1MFYYxCNxUKPyQ)
 - [Java&Groovy下载文件对比](https://mp.weixin.qq.com/s/T9WUynej2yOZhCkDUhaLYw)
+- [反射执行Groovy类方法NoSuchMethodException解答](https://mp.weixin.qq.com/s/N0taBoB27CUXQ0vidK_55Q)
+- [Groovy反射invokeMethod传参实践](https://mp.weixin.qq.com/s/ltQqLg6_8V-WxsUh1ZslAQ)
 
 ## Python
 
@@ -369,6 +372,7 @@
 - [JSON对象标记语法验证类](https://mp.weixin.qq.com/s/jSXmoEdMF7nWAqQuzJ5GiQ)
 - [使用jq处理JSON数据（一）](https://mp.weixin.qq.com/s/45-ztTx2scbNY5u7NQzeIA)
 - [使用jq处理JSON数据（二）](https://mp.weixin.qq.com/s/U1VwJGFVkrUyv3jMegapCg)
+- [使用jq处理JSON数据（三）](https://mp.weixin.qq.com/s/NdCb0FKJhxHMAj3HgeMoTQ)
 
 ## Jacoco覆盖率
 
