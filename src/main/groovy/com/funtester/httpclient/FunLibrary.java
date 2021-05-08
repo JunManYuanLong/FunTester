@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.funtester.base.bean.RequestInfo;
 import com.funtester.base.exception.ParamException;
-import com.funtester.base.exception.RequestException;
 import com.funtester.base.interfaces.IBase;
 import com.funtester.config.Constant;
 import com.funtester.config.HttpClientConstant;
@@ -335,7 +334,6 @@ public class FunLibrary extends SourceCode {
      * @return 返回json类型的对象
      */
     public static JSONObject getHttpResponse(HttpRequestBase request) {
-        if (!isRightRequest(request)) RequestException.fail(request);
         JSONObject res = new JSONObject();
         RequestInfo requestInfo = new RequestInfo(request);
         long start = Time.getTimeStamp();
@@ -357,17 +355,6 @@ public class FunLibrary extends SourceCode {
             lastRequest = request;
         }
         return res;
-    }
-
-    /**
-     * 判断请求是否是正确的，目前主要过滤一些不完整的请求和超长的url
-     *
-     * @param request
-     * @return
-     */
-    private static boolean isRightRequest(HttpRequestBase request) {
-        String url = request.getURI().toString().toLowerCase();
-        return StringUtils.isNoneEmpty(url) && url.startsWith("http");
     }
 
     /**
