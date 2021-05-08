@@ -252,15 +252,6 @@ public class FunLibrary extends SourceCode {
     }
 
     /**
-     * 发送请求之前，目前修改为止增加一个{@link HttpClientConstant#CONNECTION}请求头
-     *
-     * @param request
-     */
-    protected static void beforeRequest(HttpRequestBase request) {
-        request.addHeader(HttpClientConstant.CONNECTION);
-    }
-
-    /**
      * 响应结束之后，处理响应头信息，如set-cookien内容
      *
      * @param response 响应内容
@@ -345,7 +336,6 @@ public class FunLibrary extends SourceCode {
      */
     public static JSONObject getHttpResponse(HttpRequestBase request) {
         if (!isRightRequest(request)) RequestException.fail(request);
-        beforeRequest(request);
         JSONObject res = new JSONObject();
         RequestInfo requestInfo = new RequestInfo(request);
         long start = Time.getTimeStamp();
