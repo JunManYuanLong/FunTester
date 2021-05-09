@@ -1,5 +1,6 @@
 # 总目录
 
+
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
@@ -725,15 +726,9 @@
 - [721法则推介](https://mp.weixin.qq.com/s/kyZB7S83jix9ivePxL3yCA)
 - [高潜力员工自检表](https://mp.weixin.qq.com/s/jvKrWz9sEzNyM1Pi1GbFtg)
 - [学习笔记杂谈](https://mp.weixin.qq.com/s/OCpM0qfxD3wudZ00KQgKvg)
+- [做最积极下班的那个](https://mp.weixin.qq.com/s/KIMyrqkqpryl3YeUSBAzmg)
 
 ## 社区风采
 
 - [Linux文件系统和vim命令](https://mp.weixin.qq.com/s/xzModz-upKv5CbAjtWOxpw)
 - [Linux/Mac简单又强大的基础工具（一）](https://mp.weixin.qq.com/s/zk3MCiy01Z_JRyTvU1oDgg)
-
-* 由于文章链接存在敏感词问题,请各位看官移步
-  
-## [GitHub地址](https://github.com/JunManYuanLong/FunTester/blob/okay/document/article.markdown)
-
-
-### 当然也可以关注**FunTester**公众号
