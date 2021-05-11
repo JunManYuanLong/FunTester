@@ -1,5 +1,6 @@
 # 总目录
 
+
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
@@ -164,6 +165,7 @@
 - [性能测试软启动初探](https://mp.weixin.qq.com/s/fk7LA7GtqR7wiKRAw2IYFA)
 - [性能测试误差对比研究（二）](https://mp.weixin.qq.com/s/8oq9rSyCgxAiQAYrhHUCkg)
 - [性能测试误差对比研究（三）](https://mp.weixin.qq.com/s/RWfQxlcKnOb3Q2mG5PoITg)
+- [分布式性能测试框架用例方案设想（一）](https://mp.weixin.qq.com/s/qvUD8kRkQa2bWm6Cvk2BoQ)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -725,6 +727,7 @@
 - [721法则推介](https://mp.weixin.qq.com/s/kyZB7S83jix9ivePxL3yCA)
 - [高潜力员工自检表](https://mp.weixin.qq.com/s/jvKrWz9sEzNyM1Pi1GbFtg)
 - [学习笔记杂谈](https://mp.weixin.qq.com/s/OCpM0qfxD3wudZ00KQgKvg)
+- [做最积极下班的那个](https://mp.weixin.qq.com/s/KIMyrqkqpryl3YeUSBAzmg)
 
 ## 社区风采
 

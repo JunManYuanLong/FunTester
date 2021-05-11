@@ -165,6 +165,7 @@
 - [性能测试软启动初探](https://mp.weixin.qq.com/s/fk7LA7GtqR7wiKRAw2IYFA)
 - [性能测试误差对比研究（二）](https://mp.weixin.qq.com/s/8oq9rSyCgxAiQAYrhHUCkg)
 - [性能测试误差对比研究（三）](https://mp.weixin.qq.com/s/RWfQxlcKnOb3Q2mG5PoITg)
+- [分布式性能测试框架用例方案设想（一）](https://mp.weixin.qq.com/s/qvUD8kRkQa2bWm6Cvk2BoQ)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
