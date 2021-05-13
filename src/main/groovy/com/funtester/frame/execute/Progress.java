@@ -1,9 +1,6 @@
 package com.funtester.frame.execute;
 
-import com.funtester.base.constaint.FixedQpsThread;
-import com.funtester.base.constaint.ThreadBase;
-import com.funtester.base.constaint.ThreadLimitTimeCount;
-import com.funtester.base.constaint.ThreadLimitTimesCount;
+import com.funtester.base.constaint.*;
 import com.funtester.base.exception.ParamException;
 import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.SourceCode;
@@ -133,11 +130,16 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
         if (base instanceof ThreadLimitTimeCount) {
             this.isTimesMode = false;
             this.canCount = true;
-            this.limit = ((ThreadLimitTimeCount) base).time;
+            this.limit = ((ThreadLimitTimeCount) base).limit;
         } else if (base instanceof ThreadLimitTimesCount) {
             this.isTimesMode = true;
             this.canCount = true;
-            this.limit = ((ThreadLimitTimesCount) base).times;
+            this.limit = ((ThreadLimitTimesCount) base).limit;
+        } else if (base instanceof LimitThread) {
+            LimitThread limitThread = (LimitThread) this.base;
+            this.isTimesMode = limitThread.isTimesMode;
+            this.limit = limitThread.limit;
+            this.canCount = true;
         } else if (base instanceof FixedQpsThread) {
             FixedQpsThread fix = (FixedQpsThread) base;
             this.canCount = false;

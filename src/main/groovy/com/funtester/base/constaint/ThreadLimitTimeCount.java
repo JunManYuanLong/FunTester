@@ -18,6 +18,7 @@ import java.util.List;
  *
  * @param <F> 闭包参数传递使用,Groovy脚本会有一些兼容问题,部分对象需要tostring获取参数值
  */
+@Deprecated
 public abstract class ThreadLimitTimeCount<F> extends ThreadBase<F> {
 
     private static final long serialVersionUID = -7017995186493855741L;
@@ -26,13 +27,9 @@ public abstract class ThreadLimitTimeCount<F> extends ThreadBase<F> {
 
     public List<String> marks = new ArrayList<>();
 
-    /**
-     * 任务请求执行时间,单位是ms秒
-     */
-    public int time;
-
     public ThreadLimitTimeCount(F f, int time, MarkThread markThread) {
-        this.time = time * 1000;
+        this.isTimesMode = false;
+        this.limit = time * 1000;
         this.f = f;
         this.mark = markThread;
     }
@@ -57,7 +54,7 @@ public abstract class ThreadLimitTimeCount<F> extends ThreadBase<F> {
                     costs.add(diff);
 //                    if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
 //                        marks.add(diff + CONNECTOR + threadmark + CONNECTOR + Time.getNow());
-                    if ((et - ss) > time || ThreadBase.needAbort()) break;
+                    if ((et - ss) > limit || ThreadBase.needAbort()) break;
                 } catch (Exception e) {
                     logger.warn("执行任务失败！", e);
 //                    logger.warn("执行失败对象的标记:{}", threadmark);

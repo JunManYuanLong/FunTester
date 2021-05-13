@@ -12,13 +12,6 @@ public abstract class FixedQpsThread<F> extends ThreadBase<F> {
 
     public int qps;
 
-    /**
-     * 根据属性isTimesMode判断,次数或者时间(单位ms)
-     */
-    public int limit;
-
-    public boolean isTimesMode;
-
     public FixedQpsThread(F f, int limit, int qps, MarkThread markThread, boolean isTimesMode) {
         this.limit = limit;
         this.qps = qps;
@@ -26,7 +19,6 @@ public abstract class FixedQpsThread<F> extends ThreadBase<F> {
         this.f = f;
         this.isTimesMode = isTimesMode;
     }
-
 
     protected FixedQpsThread() {
         super();

@@ -16,19 +16,16 @@ import org.apache.logging.log4j.Logger;
  *
  * @param <F> 闭包参数传递使用,Groovy脚本会有一些兼容问题,部分对象需要tostring获取参数值
  */
+@Deprecated
 public abstract class ThreadLimitTimesCount<F> extends ThreadBase<F> {
 
     private static final long serialVersionUID = -4617192188292407063L;
 
     private static final Logger logger = LogManager.getLogger(ThreadLimitTimesCount.class);
 
-    /**
-     * 任务请求执行次数
-     */
-    public int times;
-
     public ThreadLimitTimesCount(F f, int times, MarkThread markThread) {
-        this.times = times;
+        this.isTimesMode = true;
+        this.limit = times;
         this.f = f;
         this.mark = markThread;
     }
@@ -42,8 +39,10 @@ public abstract class ThreadLimitTimesCount<F> extends ThreadBase<F> {
         try {
             before();
             long ss = Time.getTimeStamp();
-            for (int i = 0; i < times; i++) {
+            int times = 0;
+            while (true) {
                 try {
+                    if (executeNum >= limit) break;
 //                    threadmark = mark == null ? EMPTY : this.mark.mark(this);
                     long s = Time.getTimeStamp();
                     doing();

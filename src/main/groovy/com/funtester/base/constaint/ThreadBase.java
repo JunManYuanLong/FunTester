@@ -25,6 +25,16 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
     private static boolean ABORT = false;
 
     /**
+     * 根据属性isTimesMode判断,次数或者时间(单位ms)
+     */
+    public int limit;
+
+    /**
+     * 测试模式,按照次数或者按照时间
+     */
+    public boolean isTimesMode;
+
+    /**
      * 线程的名字
      */
     public String threadName;
