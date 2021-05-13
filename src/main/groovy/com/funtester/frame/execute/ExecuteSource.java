@@ -24,6 +24,7 @@ public class ExecuteSource extends SourceCode {
      *
      * @param packageName
      */
+    @Deprecated
     public static void executeAllMethodInPackage(String packageName) {
         List<String> classNames = getClassName(packageName);
         if (classNames != null) {
@@ -47,18 +48,14 @@ public class ExecuteSource extends SourceCode {
             c = Class.forName(path);
             object = c.newInstance();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.warn("获取 {} 对象失败!", path, e);
         }
         Method[] methods = c.getDeclaredMethods();
         for (Method method : methods) {
             try {
                 method.invoke(object);
-            } catch (IllegalAccessException e) {
-                logger.warn("非法访问导致反射方法执行失败！", e);
-            } catch (InvocationTargetException e) {
-                logger.warn("反射调用目标异常导致方法执行失败！", e);
             } catch (Exception e) {
-                logger.warn("反射方法执行失败！", e);
+                logger.warn("方法 {} 执行失败！", method.getName(), e);
             } finally {
                 sleep(Constant.EXECUTE_GAP_TIME);
             }
@@ -66,32 +63,34 @@ public class ExecuteSource extends SourceCode {
     }
 
     /**
-     * 提供给命令行main方法使用
+     * 执行方法
      * <p>防止编译报错,用list绕一圈</p>
      *
      * @param params
      */
-    public static void executeMethod(List<String> params) {
+    public static Object executeMethod(List<String> params) {
         Object[] objects = params.subList(1, params.size()).toArray();
-        executeMethod(params.get(0), objects);
+        return executeMethod(params.get(0), objects);
     }
 
     /**
-     * 提供给命令行main方法使用
+     * 执行方法
      * <p>防止编译报错,用list绕一圈</p>
      *
      * @param params
      */
-    public static void executeMethod(String[] params) {
-        executeMethod(Arrays.asList(params));
+    public static Object executeMethod(String[] params) {
+        return executeMethod(Arrays.asList(params));
     }
 
     /**
      * 执行具体的某一个方法,提供内部方法调用
+     * <p>重载方法如果参数是基础数据类型会报错</p>
      *
      * @param path
+     * @param paramsTpey
      */
-    public static void executeMethod(String path, Object... paramsTpey) {
+    public static Object executeMethod(String path, Object... paramsTpey) {
         int length = paramsTpey.length;
         if (length % 2 == 1) FailException.fail("参数个数错误,应该是偶数");
         String className = path.substring(0, path.lastIndexOf("."));
@@ -109,16 +108,16 @@ public class ExecuteSource extends SourceCode {
             if (!method.getName().equalsIgnoreCase(methodname)) continue;
             try {
                 Class[] classs = new Class[length / 2];
-                for (int i = 0; i < paramsTpey.length; i = +2) {
+                for (int i = 0; i < paramsTpey.length; i +=2) {
                     classs[i / 2] = Class.forName(paramsTpey[i].toString());//此处基础数据类型的参数会导致报错,但不影响下面的调用
                 }
                 method = c.getMethod(method.getName(), classs);
             } catch (NoSuchMethodException | ClassNotFoundException e) {
-                logger.warn("方法属性处理错误!", e);
+                logger.warn("方法属性处理错误!");
             }
             try {
                 Object[] ps = new Object[length / 2];
-                for (int i = 1; i < paramsTpey.length; i = +2) {
+                for (int i = 1; i < paramsTpey.length; i +=2) {
                     String name = paramsTpey[i - 1].toString();
                     String param = paramsTpey[i].toString();
                     Object p = param;
@@ -135,6 +134,7 @@ public class ExecuteSource extends SourceCode {
             }
             break;
         }
+        return null;
     }
 
     /**
