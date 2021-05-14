@@ -18,7 +18,7 @@ public class UpdateSqlThread extends ThreadLimitTimesCount<String> {
     IMySqlBasic base;
 
     public UpdateSqlThread(IMySqlBasic base, String sql, int times) {
-        this.times = times;
+        this.limit = times;
         this.f = sql;
         this.base = base;
     }

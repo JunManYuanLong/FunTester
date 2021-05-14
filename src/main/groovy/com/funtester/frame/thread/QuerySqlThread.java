@@ -22,7 +22,7 @@ public class QuerySqlThread extends ThreadLimitTimesCount {
     IMySqlBasic base;
 
     public QuerySqlThread(IMySqlBasic base, String sql, int times) {
-        this.times = times;
+        this.limit = times;
         this.sql = sql;
         this.base = base;
     }

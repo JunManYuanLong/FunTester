@@ -60,7 +60,7 @@ public class RequestThreadTimes extends ThreadLimitTimesCount<HttpRequestBase> {
     @Override
     public RequestThreadTimes clone() {
         RequestThreadTimes threadTimes = new RequestThreadTimes();
-        threadTimes.times = this.times;
+        threadTimes.limit = this.limit;
         threadTimes.f = FunRequest.cloneRequest(f);
         threadTimes.mark = mark == null ? null : mark.clone();
         return threadTimes;
