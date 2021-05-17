@@ -9,19 +9,19 @@ import org.apache.logging.log4j.Logger;
 /**
  * 为了适应OK项目,新增类,后续{@link ThreadLimitTimeCount}和{@link ThreadLimitTimesCount}将会在某个时刻被弃用,会一直保留兼容旧用例
  */
-public abstract class LimitThread<F> extends ThreadBase<F> {
+public abstract class FixedThread<F> extends ThreadBase<F> {
 
     private static final long serialVersionUID = -4617192188292407063L;
 
     private static final Logger logger = LogManager.getLogger(ThreadLimitTimesCount.class);
 
-    public LimitThread(F f, int times, boolean isTimesMode) {
+    public FixedThread(F f, int times, boolean isTimesMode) {
         this.isTimesMode = isTimesMode;
         this.limit = times;
         this.f = f;
     }
 
-    protected LimitThread() {
+    protected FixedThread() {
         super();
     }
 

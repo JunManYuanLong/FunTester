@@ -111,9 +111,9 @@ public class HttpClientConstant {
     public static String SSL_VERSION = getProperty("ssl_v");
 
     /**
-     * 通用循环间隔时间,单位s
+     * 通用循环间隔时间,单位s,使用double防止Groovy脚本出错
      */
-    public static int LOOP_INTERVAL = 3;
+    public static double LOOP_INTERVAL = 3.0;
 
     /**
      * 线程池,线程最大空闲时间

@@ -6,13 +6,13 @@ import com.funtester.utils.Time;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public abstract class FixedQpsThread<F> extends ThreadBase<F> {
+public abstract class FixedQps<F> extends ThreadBase<F> {
 
-    private static Logger logger = LogManager.getLogger(FixedQpsThread.class);
+    private static Logger logger = LogManager.getLogger(FixedQps.class);
 
     public int qps;
 
-    public FixedQpsThread(F f, int limit, int qps, MarkThread markThread, boolean isTimesMode) {
+    public FixedQps(F f, int limit, int qps, MarkThread markThread, boolean isTimesMode) {
         this.limit = limit;
         this.qps = qps;
         this.mark = markThread;
@@ -20,7 +20,7 @@ public abstract class FixedQpsThread<F> extends ThreadBase<F> {
         this.isTimesMode = isTimesMode;
     }
 
-    protected FixedQpsThread() {
+    protected FixedQps() {
         super();
     }
 

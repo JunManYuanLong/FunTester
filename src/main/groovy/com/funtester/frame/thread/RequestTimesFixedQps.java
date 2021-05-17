@@ -1,6 +1,6 @@
 package com.funtester.frame.thread;
 
-import com.funtester.base.constaint.FixedQpsThread;
+import com.funtester.base.constaint.FixedQps;
 import com.funtester.base.interfaces.MarkRequest;
 import com.funtester.httpclient.FunLibrary;
 import com.funtester.httpclient.GCThread;
@@ -8,7 +8,7 @@ import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class RequestTimesFixedQps extends FixedQpsThread<HttpRequestBase> {
+public class RequestTimesFixedQps extends FixedQps<HttpRequestBase> {
 
     private static final long serialVersionUID = 679065222134424087L;
 

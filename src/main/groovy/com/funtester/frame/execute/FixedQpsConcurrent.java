@@ -1,7 +1,7 @@
 package com.funtester.frame.execute;
 
 import com.funtester.base.bean.PerformanceResultBean;
-import com.funtester.base.constaint.FixedQpsThread;
+import com.funtester.base.constaint.FixedQps;
 import com.funtester.config.Constant;
 import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.Save;
@@ -40,7 +40,7 @@ public class FixedQpsConcurrent extends SourceCode {
     /**
      * 基础任务对象
      */
-    public FixedQpsThread baseThread;
+    public FixedQps baseThread;
 
     /**
      * 用于记录所有请求时间
@@ -80,7 +80,7 @@ public class FixedQpsConcurrent extends SourceCode {
     /**
      * 任务集
      */
-    public List<FixedQpsThread> threads = new ArrayList<>();
+    public List<FixedQps> threads = new ArrayList<>();
 
     /**
      * 线程池
@@ -91,7 +91,7 @@ public class FixedQpsConcurrent extends SourceCode {
      * @param thread 线程任务
      * @param desc   任务描述
      */
-    public FixedQpsConcurrent(FixedQpsThread thread, String desc) {
+    public FixedQpsConcurrent(FixedQps thread, String desc) {
         this(desc);
         this.queueLength = 1;
         threads.add(thread);
@@ -102,7 +102,7 @@ public class FixedQpsConcurrent extends SourceCode {
      * @param threads 线程组
      * @param desc    任务描述
      */
-    public FixedQpsConcurrent(List<FixedQpsThread> threads, String desc) {
+    public FixedQpsConcurrent(List<FixedQps> threads, String desc) {
         this(desc);
         this.threads = threads;
         baseThread = threads.get(0);

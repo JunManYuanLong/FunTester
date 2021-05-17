@@ -135,13 +135,13 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
             this.isTimesMode = true;
             this.canCount = true;
             this.limit = ((ThreadLimitTimesCount) base).limit;
-        } else if (base instanceof LimitThread) {
-            LimitThread limitThread = (LimitThread) this.base;
+        } else if (base instanceof FixedThread) {
+            FixedThread limitThread = (FixedThread) this.base;
             this.isTimesMode = limitThread.isTimesMode;
             this.limit = limitThread.limit;
             this.canCount = true;
-        } else if (base instanceof FixedQpsThread) {
-            FixedQpsThread fix = (FixedQpsThread) base;
+        } else if (base instanceof FixedQps) {
+            FixedQps fix = (FixedQps) base;
             this.canCount = false;
             this.isTimesMode = fix.isTimesMode;
             this.limit = fix.limit;
