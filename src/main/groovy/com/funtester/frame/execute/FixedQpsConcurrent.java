@@ -7,8 +7,8 @@ import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.Save;
 import com.funtester.frame.SourceCode;
 import com.funtester.httpclient.GCThread;
-import com.funtester.utils.Time;
 import com.funtester.utils.RWUtil;
+import com.funtester.utils.Time;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -139,7 +139,7 @@ public class FixedQpsConcurrent extends SourceCode {
         boolean isTimesMode = baseThread.isTimesMode;
         int limit = baseThread.limit;
         int qps = baseThread.qps;
-        executeThread = qps / 500 + 1;
+        executeThread = qps / Constant.QPS_PER_THREAD + 1;
         interval = 1_000_000_000 / qps;//此处单位1s=1000ms,1ms=1000000ns
         int runupTotal = qps * PREFIX_RUN;//计算总的请求量
         double diffTime = 2 * (Constant.RUNUP_TIME / PREFIX_RUN * interval - interval);//计算最大时间间隔和最小时间间隔差值

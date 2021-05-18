@@ -167,6 +167,11 @@ public class Constant {
     public static double RUNUP_TIME = 30.0;
 
     /**
+     * 单个线程执行的最大QPS任务速率
+     */
+    public static int QPS_PER_THREAD = 250;
+
+    /**
      * 固定QPS启动之前运行的次数控制时间,总次数会等于QPS*该时间
      */
     public static int PREFIX_RUN = 10;
