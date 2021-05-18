@@ -18,6 +18,7 @@ import org.apache.http.client.methods.HttpRequestBase
 import org.apache.http.client.methods.RequestBuilder
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+
 /**
  * 重写FunLibrary，使用面对对象思想,不用轻易使用set属性方法,可能存在BUG
  */
@@ -440,6 +441,15 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
      */
     static FunRequest initFromString(String fun) {
         def f = JSON.parseObject(fun)
+        initFromJson(f)
+    }
+
+    /**
+     * 从JSON中初始化对象
+     * @param f
+     * @return
+     */
+    static FunRequest initFromJson(JSONObject f) {
         RequestType requestType = RequestType.getInstance(f.requestType)
         def request = new FunRequest(requestType)
         request.host = f.host
@@ -449,7 +459,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
         request.json = f.json
         request.params = f.params
         f.headers.each {
-            request.addHeader(it.name,it.value)
+            request.addHeader(it.name, it.value)
         }
         request
     }
