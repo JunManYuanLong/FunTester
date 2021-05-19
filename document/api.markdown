@@ -164,3 +164,6 @@
 - [性能测试误差对比研究（一）](https://mp.weixin.qq.com/s/BC49_DLNbdbFGcGDFFuh6Q)
 - [性能测试软启动初探](https://mp.weixin.qq.com/s/fk7LA7GtqR7wiKRAw2IYFA)
 - [性能测试误差对比研究（二）](https://mp.weixin.qq.com/s/8oq9rSyCgxAiQAYrhHUCkg)
+- [性能测试误差对比研究（三）](https://mp.weixin.qq.com/s/RWfQxlcKnOb3Q2mG5PoITg)
+- [性能测试误差对比研究（四）](https://mp.weixin.qq.com/s/z3vnBfWynZ0knITWmgzEow)
+- [分布式性能测试框架用例方案设想（一）](https://mp.weixin.qq.com/s/qvUD8kRkQa2bWm6Cvk2BoQ)

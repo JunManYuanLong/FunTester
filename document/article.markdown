@@ -161,10 +161,11 @@
 - [性能测试误差分析文字版-上](https://mp.weixin.qq.com/s/QA1VmNiJGZbNKTUNkt_05w)
 - [性能测试误差分析文字版-下](https://mp.weixin.qq.com/s/JwT9G910gn3YGyjeBlafgg)
 - [性能测试误差统计实践](https://mp.weixin.qq.com/s/D0KAn8Ch4vOqXA_-pWXWhg)
-- [性能测试误差对比研究（一）](https://mp.weixin.qq.com/s/BC49_DLNbdbFGcGDFFuh6Q)
 - [性能测试软启动初探](https://mp.weixin.qq.com/s/fk7LA7GtqR7wiKRAw2IYFA)
+- [性能测试误差对比研究（一）](https://mp.weixin.qq.com/s/BC49_DLNbdbFGcGDFFuh6Q)
 - [性能测试误差对比研究（二）](https://mp.weixin.qq.com/s/8oq9rSyCgxAiQAYrhHUCkg)
 - [性能测试误差对比研究（三）](https://mp.weixin.qq.com/s/RWfQxlcKnOb3Q2mG5PoITg)
+- [性能测试误差对比研究（四）](https://mp.weixin.qq.com/s/z3vnBfWynZ0knITWmgzEow)
 - [分布式性能测试框架用例方案设想（一）](https://mp.weixin.qq.com/s/qvUD8kRkQa2bWm6Cvk2BoQ)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
@@ -594,6 +595,7 @@
 - [敏捷的主要优势【译】](https://mp.weixin.qq.com/s/zkI85TLI37XrPFaQ-pZYMA)
 - [2021年自动化测试流行趋势【译】](https://mp.weixin.qq.com/s/dIZxkNT6mjgRukLBy0AJ6Q)
 - [敏捷团队的自动化测试【译】](https://mp.weixin.qq.com/s/5BvzQvdssTyp8voC9J9www)
+- [自动化测试框架的完整指南【译】](https://mp.weixin.qq.com/s/-EofRDhKLHlTHyh4vvppwg)
 
 ## 大咖风采
 
@@ -728,6 +730,7 @@
 - [高潜力员工自检表](https://mp.weixin.qq.com/s/jvKrWz9sEzNyM1Pi1GbFtg)
 - [学习笔记杂谈](https://mp.weixin.qq.com/s/OCpM0qfxD3wudZ00KQgKvg)
 - [做最积极下班的那个](https://mp.weixin.qq.com/s/KIMyrqkqpryl3YeUSBAzmg)
+- [五一学习心得](https://mp.weixin.qq.com/s/N2w3M1mwMJSMBA-EzccoCg)
 
 ## 社区风采
 

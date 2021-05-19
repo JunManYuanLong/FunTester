@@ -134,6 +134,7 @@
 - [敏捷的主要优势【译】](https://mp.weixin.qq.com/s/zkI85TLI37XrPFaQ-pZYMA)
 - [2021年自动化测试流行趋势【译】](https://mp.weixin.qq.com/s/dIZxkNT6mjgRukLBy0AJ6Q)
 - [敏捷团队的自动化测试【译】](https://mp.weixin.qq.com/s/5BvzQvdssTyp8voC9J9www)
+- [自动化测试框架的完整指南【译】](https://mp.weixin.qq.com/s/-EofRDhKLHlTHyh4vvppwg)
 
 ## 大咖风采
 
