@@ -7,6 +7,15 @@ buildscript {
 ////        maven { url 'http://maven.oschina.net/content/groups/public/' }
 //        google()
     }
+
+    gradle.taskGraph.whenReady {
+        tasks.each { task ->
+            if (task.name.toLowerCase().contains("test"))
+            {
+                task.enabled = false
+            }
+        }
+    }
 }
 
 plugins {
@@ -27,7 +36,9 @@ idea {
         downloadSources = true
     }
 }
-
+test {
+    exclude 'com/funtest/**'
+}
 sourceCompatibility = 1.8
 
 repositories {
@@ -143,14 +154,14 @@ task createDirs() {
 //用来拷贝FunTester框架jar包
 task copyFun(type: Copy) {
     from('/Users/oker/IdeaProjects/funtester/build/libs')
-    into('/Users/oker/Library/groovy-2.5.7/lib')
+    into('/Users/oker/Library/groovy-3.0.8/lib')
     println "拷贝fun.jar包到Groovy依赖成功!"
 }
 
 //用来拷贝项目jar包
 task copyOkay(type: Copy) {
     from('/Users/oker/IdeaProjects/oktest/target/oktest-1.0-SNAPSHOT-release.jar')
-    into('/Users/oker/Library/groovy-2.5.7/lib')
+    into('/Users/oker/Library/groovy-3.0.8/lib')
     println "拷贝okay.jar包到Groovy依赖成功!"
 }
 
