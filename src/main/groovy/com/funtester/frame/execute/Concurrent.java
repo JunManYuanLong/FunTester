@@ -139,8 +139,8 @@ public class Concurrent extends SourceCode {
         threads.forEach(f -> f.initBase());
         logger.info("=========预热完成,开始测试!=========");
         countDownLatch = new CountDownLatch(threadNum);
-        Progress progress = new Progress(threads, StatisticsUtil.getTrueName(desc));
-        new Thread(progress).start();
+        ThreadBase.progress = new Progress(threads, StatisticsUtil.getTrueName(desc));
+        new Thread(ThreadBase.progress).start();
         startTime = Time.getTimeStamp();
         for (int i = 0; i < threadNum; i++) {
             ThreadBase thread = threads.get(i);
@@ -150,7 +150,7 @@ public class Concurrent extends SourceCode {
         }
         shutdownService(executorService, countDownLatch);
         endTime = Time.getTimeStamp();
-        progress.stop();
+        ThreadBase.progress.stop();
         threads.forEach(x -> {
             if (x.status()) failTotal++;
             errorTotal += x.errorNum;
