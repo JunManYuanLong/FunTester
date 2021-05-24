@@ -2,6 +2,7 @@ package com.funtester.base.constaint;
 
 import com.funtester.base.interfaces.MarkThread;
 import com.funtester.frame.SourceCode;
+import com.funtester.frame.execute.Progress;
 import com.funtester.httpclient.FunLibrary;
 
 import java.io.Serializable;
@@ -22,7 +23,12 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
     /**
      * 全局的时间终止开关,true表示终止,false表示不终止.
      */
-    private static boolean ABORT = false;
+    private static boolean ABORT = true;
+
+    /**
+     * 用于记录当前执行状态信息
+     */
+    public static Progress progress;
 
     /**
      * 根据属性isTimesMode判断,次数或者时间(单位ms)
