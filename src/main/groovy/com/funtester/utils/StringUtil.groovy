@@ -159,7 +159,7 @@ class StringUtil extends SourceCode {
      * @return
      */
     static String center(String str, int size) {
-        str.center(size)
+        (str?:EMPTY).center(size)
     }
 
     /**
