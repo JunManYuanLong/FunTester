@@ -14,10 +14,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.text.DecimalFormat;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -219,15 +216,6 @@ public class SourceCode extends Output {
     }
 
     /**
-     * 获取随机IP地址
-     *
-     * @return
-     */
-    public static String getRandomIP() {
-        return getRandomInt(255) + "." + getRandomInt(255) + "." + getRandomInt(255) + "." + getRandomInt(255);
-    }
-
-    /**
      * 把string类型转化为int
      *
      * @param text 需要转化的文本
@@ -404,6 +392,32 @@ public class SourceCode extends Output {
     public static <F extends Object> F random(List<F> list) {
         if (list == null || list.isEmpty()) ParamException.fail("数组不能为空!");
         return list.get(getRandomInt(list.size()) - 1);
+    }
+
+    /**
+     * 根据不同的概率随机出一个对象
+     *
+     * @param count
+     * @param <F>
+     * @return
+     */
+    public static <F> F random(Map<F, Integer> count) {
+        List<F> keys = new ArrayList<>();
+        List<Integer> values = new ArrayList<>();
+        count.entrySet().forEach(f -> {
+            keys.add(f.getKey());
+            values.add(f.getValue());
+        });
+        int t = 0;
+        for (int i = 0; i < values.size(); i++) {
+            t = t + values.get(i);
+            values.set(i, t);
+        }
+        int r = getRandomInt(values.get(values.size() - 1));
+        for (int i = 0; i < values.size(); i++) {
+            if (r <= values.get(i)) return keys.get(i);
+        }
+        return null;
     }
 
     /**
