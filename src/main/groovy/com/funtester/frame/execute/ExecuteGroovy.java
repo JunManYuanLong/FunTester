@@ -72,7 +72,7 @@ public class ExecuteGroovy extends SourceCode {
      *
      * @param path 类文件路径
      * @param name 方法名
-     * @param args 貌似只支持一个参数,这里默认{@link String}
+     * @param args 这里默认{@link String}
      */
     public static Object executeFileMethod(String path, String name, Object... args) {
         try {
@@ -87,7 +87,7 @@ public class ExecuteGroovy extends SourceCode {
     }
 
     public static Object executeFileMethod(String path, String name) {
-        return executeFileMethod(path, name, null);
+        return executeFileMethod(path, name, MetaClassImpl.EMPTY_ARGUMENTS);
     }
 
     /**
@@ -124,7 +124,7 @@ public class ExecuteGroovy extends SourceCode {
     }
 
     public static void executeScriptMethod(String content, String name) {
-        executeScriptMethod(content, name, null);
+        executeScriptMethod(content, name, MetaClassImpl.EMPTY_ARGUMENTS);
     }
 
     /**
