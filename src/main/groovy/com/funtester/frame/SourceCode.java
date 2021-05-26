@@ -396,12 +396,13 @@ public class SourceCode extends Output {
 
     /**
      * 根据不同的概率随机出一个对象
+     * 消耗CPU多
      *
      * @param count
      * @param <F>
      * @return
      */
-    public static <F> F random(Map<F, Integer> count) {
+    public static <F> F randomCpu(Map<F, Integer> count) {
         List<F> keys = new ArrayList<>();
         List<Integer> values = new ArrayList<>();
         count.entrySet().forEach(f -> {
@@ -414,10 +415,33 @@ public class SourceCode extends Output {
             values.set(i, t);
         }
         int r = getRandomInt(values.get(values.size() - 1));
-        for (int i = 0; i < values.size(); i++) {
+        for (int i = 1; i < values.size(); i++) {
             if (r <= values.get(i)) return keys.get(i);
         }
         return null;
+    }
+
+    /**
+     * 根据不同的概率随机出一个对象
+     * 消耗内存多
+     *
+     * @param count
+     * @param <F>
+     * @return
+     */
+    public static <F> F randomMem(Map<F, Integer> count) {
+        List<F> keys = new ArrayList<>();
+        List<Integer> values = new ArrayList<>();
+        count.entrySet().forEach(f -> {
+            keys.add(f.getKey());
+            values.add(f.getValue());
+        });
+        for (int i = 0; i < values.size(); i++) {
+            for (int j = 0; j < values.get(i) - 1; j++) {
+                keys.add(keys.get(i));
+            }
+        }
+        return random(keys);
     }
 
     /**
