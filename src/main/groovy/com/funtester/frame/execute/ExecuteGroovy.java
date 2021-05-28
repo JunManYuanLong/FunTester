@@ -150,7 +150,7 @@ public class ExecuteGroovy extends SourceCode {
     }
 
     /**
-     * 直接执行33Groovy脚本,传参用{@link Binding}
+     * 直接执行Groovy脚本,传参用{@link Binding}
      *
      * @param filepath
      * @param binding
