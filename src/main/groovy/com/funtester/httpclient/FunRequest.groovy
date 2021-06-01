@@ -347,6 +347,15 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
                 '}'
     }
 
+
+    /**
+     * 将对象转化成JSON,用于接口参数解析
+     * @return
+     */
+    String toJson() {
+        JSON.toJSONString(this)
+    }
+
     /**
      * 将请求对象转成curl命令行
      * @return

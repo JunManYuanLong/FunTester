@@ -7,7 +7,6 @@ import com.funtester.frame.Save
 import com.funtester.frame.SourceCode
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
-
 /**
  * bean的基类
  */
