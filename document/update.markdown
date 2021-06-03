@@ -71,6 +71,8 @@
 - [JSON对象标记语法验证类](https://mp.weixin.qq.com/s/jSXmoEdMF7nWAqQuzJ5GiQ)
 - [使用jq处理JSON数据（一）](https://mp.weixin.qq.com/s/45-ztTx2scbNY5u7NQzeIA)
 - [使用jq处理JSON数据（二）](https://mp.weixin.qq.com/s/U1VwJGFVkrUyv3jMegapCg)
+- [使用jq处理JSON数据（三）](https://mp.weixin.qq.com/s/NdCb0FKJhxHMAj3HgeMoTQ)
+
 
 ## Jacoco覆盖率
 
@@ -108,6 +110,8 @@
 - [如何mock固定QPS的接口](https://mp.weixin.qq.com/s/yogj9Fni0KJkyQuKuDYlbA)
 - [mock延迟响应的接口](https://mp.weixin.qq.com/s/x_fu0InQpYIUJIQFi9a50g)
 - [moco固定QPS接口升级补偿机制](https://mp.weixin.qq.com/s/zAM91e_REo4edSPTLuHLOw)
+- [moco框架接口命中率统计实践](https://mp.weixin.qq.com/s/Fq7Sa6nu_GETMpEKy8zUZw)
+
 
 ## 工具类
 
