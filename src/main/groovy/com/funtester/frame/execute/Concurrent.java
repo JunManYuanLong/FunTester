@@ -136,6 +136,8 @@ public class Concurrent extends SourceCode {
         } catch (InterruptedException e) {
             FailException.fail("软启动性能测试失败!");
         }
+        allTimes = new Vector<>();
+        requestMark = new Vector<>();
         threads.forEach(f -> f.initBase());
         logger.info("=========预热完成,开始测试!=========");
         countDownLatch = new CountDownLatch(threadNum);
