@@ -31,18 +31,20 @@ public abstract class FixedThread<F> extends ThreadBase<F> {
             before();
             long ss = Time.getTimeStamp();
             int times = 0;
+            long et = ss;
             while (true) {
                 try {
+                    executeNum++;
                     long s = Time.getTimeStamp();
                     doing();
-                    long e = Time.getTimeStamp();
-                    executeNum++;
-                    int diff = (int) (e - s);
+                    et = Time.getTimeStamp();
+                    int diff = (int) (et - s);
                     costs.add(diff);
-                    if ((isTimesMode ? executeNum >= limit : (e - ss) >= limit) || ThreadBase.needAbort()) break;
                 } catch (Exception e) {
                     logger.warn("执行任务失败！", e);
                     errorNum++;
+                } finally {
+                    if ((isTimesMode ? executeNum >= limit : (et - ss) >= limit) || ThreadBase.needAbort()) break;
                 }
             }
             long ee = Time.getTimeStamp();
