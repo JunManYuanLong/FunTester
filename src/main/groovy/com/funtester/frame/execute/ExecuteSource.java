@@ -88,10 +88,10 @@ public class ExecuteSource extends SourceCode {
      * <p>重载方法如果参数是基础数据类型会报错</p>
      *
      * @param path
-     * @param paramsTpey
+     * @param paramsType
      */
-    public static Object executeMethod(String path, Object... paramsTpey) {
-        int length = paramsTpey.length;
+    public static Object executeMethod(String path, Object... paramsType) {
+        int length = paramsType.length;
         if (length % 2 == 1) FailException.fail("参数个数错误,应该是偶数");
         String className = path.substring(0, path.lastIndexOf("."));
         String methodname = path.substring(className.length() + 1);
@@ -108,8 +108,8 @@ public class ExecuteSource extends SourceCode {
             if (!method.getName().equalsIgnoreCase(methodname)) continue;
             try {
                 Class[] classs = new Class[length / 2];
-                for (int i = 0; i < paramsTpey.length; i +=2) {
-                    classs[i / 2] = Class.forName(paramsTpey[i].toString());//此处基础数据类型的参数会导致报错,但不影响下面的调用
+                for (int i = 0; i < paramsType.length; i +=2) {
+                    classs[i / 2] = Class.forName(paramsType[i].toString());//此处基础数据类型的参数会导致报错,但不影响下面的调用
                 }
                 method = c.getMethod(method.getName(), classs);
             } catch (NoSuchMethodException | ClassNotFoundException e) {
@@ -117,9 +117,9 @@ public class ExecuteSource extends SourceCode {
             }
             try {
                 Object[] ps = new Object[length / 2];
-                for (int i = 1; i < paramsTpey.length; i +=2) {
-                    String name = paramsTpey[i - 1].toString();
-                    String param = paramsTpey[i].toString();
+                for (int i = 1; i < paramsType.length; i +=2) {
+                    String name = paramsType[i - 1].toString();
+                    String param = paramsType[i].toString();
                     Object p = param;
                     if (name.contains("Integer")) {
                         p = Integer.parseInt(param);
