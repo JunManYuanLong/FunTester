@@ -1,6 +1,7 @@
 package com.funtester.httpclient
 
 import com.alibaba.fastjson.JSON
+import com.alibaba.fastjson.JSONArray
 import com.alibaba.fastjson.JSONObject
 import com.funtester.base.bean.RequestInfo
 import com.funtester.base.exception.RequestException
@@ -352,8 +353,19 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
      * 将对象转化成JSON,用于接口参数解析
      * @return
      */
-    String toJsonStr() {
-        JSON.toJSONString(this)
+    JSONObject toJson() {
+        def request = new JSONObject()
+        request.requestType = this.requestType
+        request.uri = this.uri
+        request.args = this.args
+        request.json = this.json
+        request.params = this.params
+        def head = new JSONArray()
+        this.headers.each {
+           head << new JSONObject(it.getName(),it.getValue())
+        }
+        request.headers = head
+        request
     }
 
     /**
@@ -461,8 +473,6 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
     static FunRequest initFromJson(JSONObject f) {
         RequestType requestType = RequestType.getInstance(f.requestType)
         def request = new FunRequest(requestType)
-        request.host = f.host
-        request.path = f.path
         request.uri = f.uri
         request.args = f.args
         request.json = f.json
