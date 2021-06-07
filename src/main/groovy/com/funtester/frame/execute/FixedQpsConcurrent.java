@@ -122,16 +122,6 @@ public class FixedQpsConcurrent extends SourceCode {
     }
 
     /**
-     * 重置连接池,用以改变并发能力
-     *
-     * @param core
-     * @param max
-     */
-    public void initPool(int core, int max) {
-        executorService = ThreadPoolUtil.createPool(core, max, HttpClientConstant.THREAD_ALIVE_TIME);
-    }
-
-    /**
      * 执行多线程任务
      * 默认取list中thread对象,丢入线程池,完成多线程执行,如果没有threadname,name默认采用desc+线程数作为threadname,去除末尾的日期
      */

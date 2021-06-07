@@ -22,14 +22,14 @@ class ThreadPoolUtil {
      * ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常。
      * ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
      * ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
-     *
+     * 当workqueue满了之后,线程池会创建新的
      * @param core 核心线程数
      * @param max 最大线程数
      * @param liveTime 空闲时间
      * @return
      */
-    static ThreadPoolExecutor createPool(int core = 5, int max = 20, int liveTime = 5) {
-        return new ThreadPoolExecutor(core, max, liveTime, TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>(1000));
+    static ThreadPoolExecutor createPool(int core = 200, int max = 1000, int liveTime = 5) {
+        return new ThreadPoolExecutor(core, max, liveTime, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(200));
 
     }
 
@@ -52,26 +52,26 @@ class ThreadPoolUtil {
         return Executors.newCachedThreadPool();
     }
 
-/*获取线程安全的单例的线程池
-static ThreadPoolExecutor getSingleThreadPoolExecutor(AtomicInteger atomicInteger) {
-        if (singleThreadPoolExecutor == null){
-            synchronized (objectLock){
-                if (singleThreadPoolExecutor == null){
-                    singleThreadPoolExecutor = new ThreadPoolExecutor(1, 1, 5,
-                            TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(100),
-                            new ThreadFactory() {
-                                @Override
-                                Thread newThread(Runnable runnable) {
-                                    Thread thread = new Thread(runnable);
-                                    thread.setName("UserCenter-business-" + atomicInteger.getAndIncrement());
-                                    return thread;
-                                }
-                            },
-                        new ThreadPoolExecutor.CallerRunsPolicy());
+    /*获取线程安全的单例的线程池
+    static ThreadPoolExecutor getSingleThreadPoolExecutor(AtomicInteger atomicInteger) {
+            if (singleThreadPoolExecutor == null){
+                synchronized (objectLock){
+                    if (singleThreadPoolExecutor == null){
+                        singleThreadPoolExecutor = new ThreadPoolExecutor(1, 1, 5,
+                                TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(100),
+                                new ThreadFactory() {
+                                    @Override
+                                    Thread newThread(Runnable runnable) {
+                                        Thread thread = new Thread(runnable);
+                                        thread.setName("UserCenter-business-" + atomicInteger.getAndIncrement());
+                                        return thread;
+                                    }
+                                },
+                            new ThreadPoolExecutor.CallerRunsPolicy());
+                    }
                 }
             }
+            return singleThreadPoolExecutor;
         }
-        return singleThreadPoolExecutor;
-    }
-    */
+        */
 }
