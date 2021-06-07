@@ -44,7 +44,8 @@ public abstract class FixedThread<F> extends ThreadBase<F> {
                     logger.warn("执行任务失败！", e);
                     errorNum++;
                 } finally {
-                    if ((isTimesMode ? executeNum >= limit : (et - ss) >= limit) || ThreadBase.needAbort()) break;
+                    if ((isTimesMode ? executeNum >= limit : (et - ss) >= limit) || ThreadBase.needAbort() || status())
+                        break;
                 }
             }
             long ee = Time.getTimeStamp();
@@ -57,6 +58,16 @@ public abstract class FixedThread<F> extends ThreadBase<F> {
         } finally {
             after();
         }
+    }
+
+    @Override
+    public boolean status() {
+        boolean b = errorNum > executeNum * 2 && errorNum > 10;
+        if (b) {
+            ThreadBase.stop();
+            logger.error("错误率过高,停止测试!");
+        }
+        return b;
     }
 
     @Override
