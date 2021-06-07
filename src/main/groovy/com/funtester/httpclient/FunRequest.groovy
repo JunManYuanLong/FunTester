@@ -362,7 +362,9 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
         request.params = this.params
         def head = new JSONArray()
         this.headers.each {
-           head << new JSONObject(it.getName(),it.getValue())
+            def h = new JSONObject()
+            h.put(it.getName(),it.getValue())
+            head << h
         }
         request.headers = head
         request
