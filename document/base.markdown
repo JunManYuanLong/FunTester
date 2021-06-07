@@ -102,6 +102,8 @@
 - [JsonPath验证类既Groovy重载操作符实践](https://mp.weixin.qq.com/s/5gc04CAsBY6pWxe5c2P41w)
 - [Groovy枚举类初始化异常分析](https://mp.weixin.qq.com/s/koFhpBZM1MFYYxCNxUKPyQ)
 - [Java&Groovy下载文件对比](https://mp.weixin.qq.com/s/T9WUynej2yOZhCkDUhaLYw)
+- [反射执行Groovy类方法NoSuchMethodException解答](https://mp.weixin.qq.com/s/N0taBoB27CUXQ0vidK_55Q)
+- [Groovy反射invokeMethod传参实践](https://mp.weixin.qq.com/s/ltQqLg6_8V-WxsUh1ZslAQ)
 
 ## Python
 
@@ -133,3 +135,4 @@
 - [这些年，我写过的BUG（二）](https://mp.weixin.qq.com/s/NMz5n0ZMf6taGb-gr1BLyw)
 - [FunTester测试框架架构图初探](https://mp.weixin.qq.com/s/bcMbVDkWbHSXjZFDeFyJsQ)
 - [FunTester测试项目架构图初探](https://mp.weixin.qq.com/s/wqb8FXRbEXrhDuZounmNXA)
+- [FunTester moco server框架架构图](https://mp.weixin.qq.com/s/xVNB3hlVm20HCeAxNJoW8A)

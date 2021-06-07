@@ -167,6 +167,10 @@
 - [性能测试误差对比研究（三）](https://mp.weixin.qq.com/s/RWfQxlcKnOb3Q2mG5PoITg)
 - [性能测试误差对比研究（四）](https://mp.weixin.qq.com/s/z3vnBfWynZ0knITWmgzEow)
 - [分布式性能测试框架用例方案设想（一）](https://mp.weixin.qq.com/s/qvUD8kRkQa2bWm6Cvk2BoQ)
+- [基于docker的分布式性能测试框架功能验证（一）](https://mp.weixin.qq.com/s/7aa4HN82As3Zmf4DIVwv1A)
+- [高QPS下的固定QPS模型](https://mp.weixin.qq.com/s/95ivpkGT2lvYEQpvSCpxEQ)
+- [分布式性能测试框架用例方案设想（二）](https://mp.weixin.qq.com/s/bs65VVvRoB0AGyyfwSgT0w)
+
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -303,6 +307,8 @@
 - [这些年，我写过的BUG（二）](https://mp.weixin.qq.com/s/NMz5n0ZMf6taGb-gr1BLyw)
 - [FunTester测试框架架构图初探](https://mp.weixin.qq.com/s/bcMbVDkWbHSXjZFDeFyJsQ)
 - [FunTester测试项目架构图初探](https://mp.weixin.qq.com/s/wqb8FXRbEXrhDuZounmNXA)
+- [FunTester moco server框架架构图](https://mp.weixin.qq.com/s/xVNB3hlVm20HCeAxNJoW8A)
+
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -413,6 +419,8 @@
 - [如何mock固定QPS的接口](https://mp.weixin.qq.com/s/yogj9Fni0KJkyQuKuDYlbA)
 - [mock延迟响应的接口](https://mp.weixin.qq.com/s/x_fu0InQpYIUJIQFi9a50g)
 - [moco固定QPS接口升级补偿机制](https://mp.weixin.qq.com/s/zAM91e_REo4edSPTLuHLOw)
+- [moco框架接口命中率统计实践](https://mp.weixin.qq.com/s/Fq7Sa6nu_GETMpEKy8zUZw)
+
 
 ## 工具类
 
@@ -596,6 +604,9 @@
 - [2021年自动化测试流行趋势【译】](https://mp.weixin.qq.com/s/dIZxkNT6mjgRukLBy0AJ6Q)
 - [敏捷团队的自动化测试【译】](https://mp.weixin.qq.com/s/5BvzQvdssTyp8voC9J9www)
 - [自动化测试框架的完整指南【译】](https://mp.weixin.qq.com/s/-EofRDhKLHlTHyh4vvppwg)
+- [测试自动化最佳实践【译】](https://mp.weixin.qq.com/s/Q7LIgKphZytdPcNCaMDXJw)
+- [小白自动化测试指南](https://mp.weixin.qq.com/s/XrSQFi4mxRm-B1u5V3Tn1w)
+
 
 ## 大咖风采
 
@@ -731,6 +742,8 @@
 - [学习笔记杂谈](https://mp.weixin.qq.com/s/OCpM0qfxD3wudZ00KQgKvg)
 - [做最积极下班的那个](https://mp.weixin.qq.com/s/KIMyrqkqpryl3YeUSBAzmg)
 - [五一学习心得](https://mp.weixin.qq.com/s/N2w3M1mwMJSMBA-EzccoCg)
+- [想点大事--法律是种思维方式](https://mp.weixin.qq.com/s/b0cCAleJPAQDX7c6jgD87Q)
+
 
 ## 社区风采
 
