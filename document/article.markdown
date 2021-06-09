@@ -170,7 +170,7 @@
 - [基于docker的分布式性能测试框架功能验证（一）](https://mp.weixin.qq.com/s/7aa4HN82As3Zmf4DIVwv1A)
 - [高QPS下的固定QPS模型](https://mp.weixin.qq.com/s/95ivpkGT2lvYEQpvSCpxEQ)
 - [分布式性能测试框架用例方案设想（二）](https://mp.weixin.qq.com/s/bs65VVvRoB0AGyyfwSgT0w)
-
+- [分布式性能测试框架单节点内测](https://mp.weixin.qq.com/s/IwEQGC2rOgcT7deCWW4wDw)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -309,7 +309,6 @@
 - [FunTester测试项目架构图初探](https://mp.weixin.qq.com/s/wqb8FXRbEXrhDuZounmNXA)
 - [FunTester moco server框架架构图](https://mp.weixin.qq.com/s/xVNB3hlVm20HCeAxNJoW8A)
 
-
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
 * `Gitee`地址*https://gitee.com/fanapi/tester*
@@ -420,7 +419,6 @@
 - [mock延迟响应的接口](https://mp.weixin.qq.com/s/x_fu0InQpYIUJIQFi9a50g)
 - [moco固定QPS接口升级补偿机制](https://mp.weixin.qq.com/s/zAM91e_REo4edSPTLuHLOw)
 - [moco框架接口命中率统计实践](https://mp.weixin.qq.com/s/Fq7Sa6nu_GETMpEKy8zUZw)
-
 
 ## 工具类
 
@@ -606,7 +604,7 @@
 - [自动化测试框架的完整指南【译】](https://mp.weixin.qq.com/s/-EofRDhKLHlTHyh4vvppwg)
 - [测试自动化最佳实践【译】](https://mp.weixin.qq.com/s/Q7LIgKphZytdPcNCaMDXJw)
 - [小白自动化测试指南](https://mp.weixin.qq.com/s/XrSQFi4mxRm-B1u5V3Tn1w)
-
+- [移动端测试策略【译】](https://mp.weixin.qq.com/s/jCOxGO3Br9Je7F8IWaQ2dg)
 
 ## 大咖风采
 
@@ -743,7 +741,6 @@
 - [做最积极下班的那个](https://mp.weixin.qq.com/s/KIMyrqkqpryl3YeUSBAzmg)
 - [五一学习心得](https://mp.weixin.qq.com/s/N2w3M1mwMJSMBA-EzccoCg)
 - [想点大事--法律是种思维方式](https://mp.weixin.qq.com/s/b0cCAleJPAQDX7c6jgD87Q)
-
 
 ## 社区风采
 
