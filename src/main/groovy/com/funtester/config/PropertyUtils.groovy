@@ -99,8 +99,8 @@ class PropertyUtils extends SourceCode {
          * @param name
          * @return
          */
-        int getPropertyLong(String name) {
-            Long.valueOf(properties.get(name))
+        long getPropertyLong(String name) {
+            changeStringToLong(properties.get(name))
         }
 
         /**
