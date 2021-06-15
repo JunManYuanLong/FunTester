@@ -15,9 +15,9 @@ public abstract class FixedThread<F> extends ThreadBase<F> {
 
     private static final Logger logger = LogManager.getLogger(ThreadLimitTimesCount.class);
 
-    public FixedThread(F f, int times, boolean isTimesMode) {
+    public FixedThread(F f, int limit, boolean isTimesMode) {
         this.isTimesMode = isTimesMode;
-        this.limit = times;
+        this.limit = limit;
         this.f = f;
     }
 
