@@ -158,7 +158,11 @@ public class Output extends Constant {
             output("json 对象是空的！");
             return jsonObject;
         }
-        String jsonStr = jsonObject.toString();// 先将json对象转化为string对象
+        outputJsonStr(jsonObject.toString());
+        return jsonObject;
+    }
+
+    public static void outputJsonStr(String jsonStr) {
         jsonStr = jsonStr.replaceAll("\\\\/", OR);
         int level = 0;// 用户标记层级
         StringBuffer jsonResultStr = new StringBuffer("＞  ");// 新建stringbuffer对象，用户接收转化好的string字符串
@@ -199,7 +203,6 @@ public class Output extends Constant {
             }
         }
         output(LINE + UP + " JSON " + UP + LINE + jsonResultStr.toString().replaceAll(LINE, LINE + "＞  ") + LINE + DOWN + " JSON " + DOWN);
-        return jsonObject;
     }
 
     public static void show(Map map) {

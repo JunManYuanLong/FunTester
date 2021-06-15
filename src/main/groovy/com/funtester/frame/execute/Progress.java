@@ -94,6 +94,11 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
     private String taskDesc;
 
     /**
+     * 运行信息,用于外部访问
+     */
+    public String runInfo;
+
+    /**
      * 固定线程模型
      *
      * @param threads
@@ -157,8 +162,10 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
             sleep(HttpClientConstant.LOOP_INTERVAL);
             pro = isTimesMode ? base.executeNum == 0 ? FixedQpsConcurrent.executeTimes.get() * 1.0 / limit : base.executeNum * 1.0 / limit : (Time.getTimeStamp() - startTime) * 1.0 / limit;
             if (pro > 0.95) break;
-            if (st)
-                logger.info("{}进度:{}  {} ,当前QPS: {}", taskDesc, getManyString(ONE, (int) (pro * LENGTH)), getPercent(pro * 100), getQPS());
+            if (st) {
+                runInfo = String.format("%s进度:%s  %s ,当前QPS: %d", taskDesc, getManyString(ONE, (int) (pro * LENGTH)), getPercent(pro * 100), getQPS());
+                logger.info(runInfo);
+            }
         }
     }
 
