@@ -170,7 +170,9 @@
 - [基于docker的分布式性能测试框架功能验证（一）](https://mp.weixin.qq.com/s/7aa4HN82As3Zmf4DIVwv1A)
 - [高QPS下的固定QPS模型](https://mp.weixin.qq.com/s/95ivpkGT2lvYEQpvSCpxEQ)
 - [分布式性能测试框架用例方案设想（二）](https://mp.weixin.qq.com/s/bs65VVvRoB0AGyyfwSgT0w)
+- [基于docker的分布式性能测试框架功能验证（二）](https://mp.weixin.qq.com/s/49fAcamsteo7yVjO8JmQrg)
 - [分布式性能测试框架单节点内测](https://mp.weixin.qq.com/s/IwEQGC2rOgcT7deCWW4wDw)
+- [分段随机实践—模拟线上流量](https://mp.weixin.qq.com/s/qUPhtG5lZIWx6oYrgwEuag)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -605,6 +607,7 @@
 - [测试自动化最佳实践【译】](https://mp.weixin.qq.com/s/Q7LIgKphZytdPcNCaMDXJw)
 - [小白自动化测试指南](https://mp.weixin.qq.com/s/XrSQFi4mxRm-B1u5V3Tn1w)
 - [移动端测试策略【译】](https://mp.weixin.qq.com/s/jCOxGO3Br9Je7F8IWaQ2dg)
+- [如何应对自动化测试挑战【译】](https://mp.weixin.qq.com/s/OP65x3MtzlTKKODLumpxwQ)
 
 ## 大咖风采
 
@@ -746,3 +749,5 @@
 
 - [Linux文件系统和vim命令](https://mp.weixin.qq.com/s/xzModz-upKv5CbAjtWOxpw)
 - [Linux/Mac简单又强大的基础工具（一）](https://mp.weixin.qq.com/s/zk3MCiy01Z_JRyTvU1oDgg)
+- [《漫画算法》读书心得（一）](https://mp.weixin.qq.com/s/eSB6TuDhT_0YO1VWb_wicA)
+- [Jmeter基于webscoket测试后台服务接口实战](https://mp.weixin.qq.com/s/yWwl1R-yaDWRpMQXtx_ebA)
