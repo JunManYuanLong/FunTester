@@ -61,14 +61,27 @@ public class RWUtil extends Constant {
      * @param filePath
      * @return
      */
-    public static String readTextByString(String filePath) {
+    public static String readTxtByString(String filePath) {
         if (StringUtils.isEmpty(filePath) || !new File(filePath).exists() || new File(filePath).isDirectory())
             ParamException.fail("配置文件信息错误!" + filePath);
         logger.debug("读取文件名：{}", filePath);
-        List<String> list = readTxtFileByLine(filePath);
-        StringBuffer all = new StringBuffer();
-        list.forEach(line -> all.append(line + Constant.LINE));
-        return all.toString();
+        File file = new File(filePath);
+        StringBuffer content = new StringBuffer();
+        if (file.isFile() && file.exists()) { // 判断文件是否存在
+            try (FileInputStream fileInputStream = new FileInputStream(file);
+                 InputStreamReader read = new InputStreamReader(fileInputStream, DEFAULT_CHARSET);
+                 BufferedReader bufferedReader = new BufferedReader(read, 1 * 1024 * 1024);) {
+                String line = null;
+                while ((line = bufferedReader.readLine()) != null) {
+                    content.append(line);
+                }
+            } catch (Exception e) {
+                logger.warn("读取文件内容出错", e);
+            }
+        } else {
+            logger.warn("找不到指定的文件：{}", filePath);
+        }
+        return content.toString();
     }
 
     /**
@@ -95,26 +108,21 @@ public class RWUtil extends Constant {
             ParamException.fail("文件信息错误!" + filePath);
         logger.debug("读取文件名：{}", filePath);
         List<String> lines = new ArrayList<>();
-        try {
-            String encoding = Constant.UTF_8.toString();
-            File file = new File(filePath);
-            if (file.isFile() && file.exists()) { // 判断文件是否存在
-                FileInputStream fileInputStream = new FileInputStream(file);
-                InputStreamReader read = new InputStreamReader(fileInputStream, encoding);// 考虑到编码格式
-                BufferedReader bufferedReader = new BufferedReader(read);
+        File file = new File(filePath);
+        if (file.isFile() && file.exists()) { // 判断文件是否存在
+            try (FileInputStream fileInputStream = new FileInputStream(file);
+                 InputStreamReader read = new InputStreamReader(fileInputStream, DEFAULT_CHARSET);
+                 BufferedReader bufferedReader = new BufferedReader(read, 3 * 1024 * 1024);) {
                 String line = null;
                 while ((line = bufferedReader.readLine()) != null) {
                     if (line.contains(content) == key)
                         lines.add(line);
                 }
-                bufferedReader.close();
-                read.close();
-                fileInputStream.close();
-            } else {
-                logger.warn("找不到指定的文件：{}", filePath);
+            } catch (Exception e) {
+                logger.warn("读取文件内容出错", e);
             }
-        } catch (Exception e) {
-            logger.warn("读取文件内容出错", e);
+        } else {
+            logger.warn("找不到指定的文件：{}", filePath);
         }
         return lines;
     }
