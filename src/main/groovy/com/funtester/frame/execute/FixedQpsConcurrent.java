@@ -131,18 +131,20 @@ public class FixedQpsConcurrent extends SourceCode {
         int qps = baseThread.qps;
         executeThread = qps / Constant.QPS_PER_THREAD + 1;
         interval = 1_000_000_000 / qps;//此处单位1s=1000ms,1ms=1000000ns
-        int runupTotal = qps * PREFIX_RUN;//计算总的请求量
-        double diffTime = 2 * (Constant.RUNUP_TIME / PREFIX_RUN * interval - interval);//计算最大时间间隔和最小时间间隔差值
-        double piece = diffTime / runupTotal;//计算每一次请求时间增量
-        for (int i = runupTotal; i > 0; i--) {
-            executorService.execute(threads.get(limit-- % queueLength).clone());
-            sleep((long) (interval + i * piece));
+        if (RUNUP_TIME > 0) {
+            int runupTotal = qps * PREFIX_RUN;//计算总的请求量
+            double diffTime = 2 * (Constant.RUNUP_TIME / PREFIX_RUN * interval - interval);//计算最大时间间隔和最小时间间隔差值
+            double piece = diffTime / runupTotal;//计算每一次请求时间增量
+            for (int i = runupTotal; i > 0; i--) {
+                executorService.execute(threads.get(limit-- % queueLength).clone());
+                sleep((long) (interval + i * piece));
+            }
+            sleep(1.0);
+            allTimes = new Vector<>();
+            marks = new Vector<>();
+            executeTimes.set(0);
+            errorTimes.set(0);
         }
-        sleep(1.0);
-        allTimes = new Vector<>();
-        marks = new Vector<>();
-        executeTimes.set(0);
-        errorTimes.set(0);
         logger.info("=========预热完成,开始测试!=========");
         Progress progress = new Progress(threads, StatisticsUtil.getTrueName(desc), executeTimes);
         new Thread(progress).start();

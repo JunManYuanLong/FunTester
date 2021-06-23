@@ -122,23 +122,25 @@ public class Concurrent extends SourceCode {
      * 默认取list中thread对象,丢入线程池,完成多线程执行,如果没有threadname,name默认采用desc+线程数作为threadname,去除末尾的日期
      */
     public PerformanceResultBean start() {
-        for (int i = 0; i < threadNum; i++) {
-            ThreadBase thread = threads.get(i);
-            if (StringUtils.isBlank(thread.threadName)) thread.threadName = StatisticsUtil.getTrueName(desc) + i;
-            thread.setCountDownLatch(countDownLatch);
-            sleep(RUNUP_TIME / threadNum);
-            executorService.execute(thread);
+        if (RUNUP_TIME > 0) {
+            for (int i = 0; i < threadNum; i++) {
+                ThreadBase thread = threads.get(i);
+                if (StringUtils.isBlank(thread.threadName)) thread.threadName = StatisticsUtil.getTrueName(desc) + i;
+                thread.setCountDownLatch(countDownLatch);
+                sleep(RUNUP_TIME / threadNum);
+                executorService.execute(thread);
+            }
+            sleep(1.0);
+            ThreadBase.stop();
+            try {
+                countDownLatch.await();
+            } catch (InterruptedException e) {
+                FailException.fail("软启动性能测试失败!");
+            }
+            allTimes = new Vector<>();
+            requestMark = new Vector<>();
+            threads.forEach(f -> f.initBase());
         }
-        sleep(1.0);
-        ThreadBase.stop();
-        try {
-            countDownLatch.await();
-        } catch (InterruptedException e) {
-            FailException.fail("软启动性能测试失败!");
-        }
-        allTimes = new Vector<>();
-        requestMark = new Vector<>();
-        threads.forEach(f -> f.initBase());
         logger.info("=========预热完成,开始测试!=========");
         countDownLatch = new CountDownLatch(threadNum);
         ThreadBase.progress = new Progress(threads, StatisticsUtil.getTrueName(desc));
