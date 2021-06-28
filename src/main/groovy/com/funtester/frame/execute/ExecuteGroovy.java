@@ -19,7 +19,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * groovy脚本执行类，用户执行上传的groovy脚本，功能简单，使用未做封装，将就用一下
+ * groovy脚本执行类，用户执行上传的groovy脚本，非反射执行功能
  * <p>
  * GroovyClassLoader
  * 用 Groovy 的 GroovyClassLoader ，动态地加载一个脚本并执行它的行为。GroovyClassLoader是一个定制的类装载器，
