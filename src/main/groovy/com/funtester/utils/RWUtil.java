@@ -73,7 +73,7 @@ public class RWUtil extends Constant {
                  BufferedReader bufferedReader = new BufferedReader(read, 1 * 1024 * 1024);) {
                 String line = null;
                 while ((line = bufferedReader.readLine()) != null) {
-                    content.append(line);
+                    content.append(line + LINE);
                 }
             } catch (Exception e) {
                 logger.warn("读取文件内容出错", e);
