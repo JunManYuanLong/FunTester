@@ -173,6 +173,7 @@
 - [基于docker的分布式性能测试框架功能验证（二）](https://mp.weixin.qq.com/s/49fAcamsteo7yVjO8JmQrg)
 - [分布式性能测试框架单节点内测](https://mp.weixin.qq.com/s/IwEQGC2rOgcT7deCWW4wDw)
 - [分段随机实践—模拟线上流量](https://mp.weixin.qq.com/s/qUPhtG5lZIWx6oYrgwEuag)
+- [性能测试框架对比初探](https://mp.weixin.qq.com/s/w46QciCvh6dPswBA42oiIQ)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -751,3 +752,4 @@
 - [Linux/Mac简单又强大的基础工具（一）](https://mp.weixin.qq.com/s/zk3MCiy01Z_JRyTvU1oDgg)
 - [《漫画算法》读书心得（一）](https://mp.weixin.qq.com/s/eSB6TuDhT_0YO1VWb_wicA)
 - [Jmeter基于webscoket测试后台服务接口实战](https://mp.weixin.qq.com/s/yWwl1R-yaDWRpMQXtx_ebA)
+- [FunTester分享会第二期视频回顾](https://mp.weixin.qq.com/s/sZ7WW1twRrTRH2ym59DnHw)
