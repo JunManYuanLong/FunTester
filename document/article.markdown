@@ -174,6 +174,8 @@
 - [分布式性能测试框架单节点内测](https://mp.weixin.qq.com/s/IwEQGC2rOgcT7deCWW4wDw)
 - [分段随机实践—模拟线上流量](https://mp.weixin.qq.com/s/qUPhtG5lZIWx6oYrgwEuag)
 - [性能测试框架对比初探](https://mp.weixin.qq.com/s/w46QciCvh6dPswBA42oiIQ)
+- [性能框架哪家强—JMeter、K6、locust、FunTester横向对比](https://mp.weixin.qq.com/s/BGs3ImdkRGFB-h3fxUktmw)
+- [分布式性能测试框架用例方案设想（三）](https://mp.weixin.qq.com/s/hkSn4g9Z3sfWIV9-dOiS7Q)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
