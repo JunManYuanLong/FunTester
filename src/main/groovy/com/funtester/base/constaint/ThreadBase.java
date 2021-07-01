@@ -21,7 +21,7 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
     private static final long serialVersionUID = -1282879464717720145L;
 
     /**
-     * 全局的时间终止开关,true表示终止,false表示不终止.
+     * 全局的时间终止开关,true表示终止,false表示不终止.程序运行中是false,结束运行是true,保障只有一个程序在运行
      */
     private static boolean ABORT = true;
 
