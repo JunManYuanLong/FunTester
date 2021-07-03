@@ -91,7 +91,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
     /**
      * 描述
      */
-    private String taskDesc;
+    public String taskDesc;
 
     /**
      * 运行信息,用于外部访问
