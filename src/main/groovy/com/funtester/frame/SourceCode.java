@@ -1,6 +1,7 @@
 package com.funtester.frame;
 
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.funtester.base.exception.FailException;
 import com.funtester.base.exception.ParamException;
@@ -487,6 +488,17 @@ public class SourceCode extends Output {
      */
     public static IntStream range(int num) {
         return IntStream.range(0, num);
+    }
+
+
+    /**
+     * 将对象转换成JSON
+     *
+     * @param o
+     * @return
+     */
+    public static JSONObject parse(Object o) {
+        return JSON.parseObject(JSON.toJSONString(o));
     }
 
     /**
