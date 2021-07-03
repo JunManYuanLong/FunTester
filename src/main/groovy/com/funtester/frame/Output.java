@@ -67,6 +67,11 @@ public class Output extends Constant {
         }
     }
 
+    /**
+     * 如遇到重复元素,会导致技术不准确
+     *
+     * @param list
+     */
     public static void output(List list) {
         list.forEach(x -> output("第" + (list.indexOf(x) + 1) + "个：" + x.toString()));
     }
