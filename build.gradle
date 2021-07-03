@@ -2,16 +2,15 @@ buildscript {
 
     repositories {
         maven {url 'http://maven.aliyun.com/nexus/content/groups/public/'}
-//        maven { url 'http://repo1.maven.apache.org/maven2/' }
-////        maven { url 'http://repo2.maven.org/maven2/' }
-////        maven { url 'http://maven.oschina.net/content/groups/public/' }
-//        google()
+        //        maven { url 'http://repo1.maven.apache.org/maven2/' }
+        ////        maven { url 'http://repo2.maven.org/maven2/' }
+        ////        maven { url 'http://maven.oschina.net/content/groups/public/' }
+        //        google()
     }
 
     gradle.taskGraph.whenReady {
-        tasks.each { task ->
-            if (task.name.toLowerCase().contains("test"))
-            {
+        tasks.each {task ->
+            if (task.name.toLowerCase().contains("test")) {
                 task.enabled = false
             }
         }
@@ -46,13 +45,13 @@ repositories {
     maven {
         url 'http://maven.aliyun.com/nexus/content/groups/public/'
     }
-//    maven {
-//        url 'http://repo2.maven.org/maven2/'
-//    }
-//    maven {
-//        url 'http://repo1.maven.apache.org/maven2/'
-//    }
-//    maven { url 'http://maven.oschina.net/content/groups/public/' }
+    //    maven {
+    //        url 'http://repo2.maven.org/maven2/'
+    //    }
+    //    maven {
+    //        url 'http://repo1.maven.apache.org/maven2/'
+    //    }
+    //    maven { url 'http://maven.oschina.net/content/groups/public/' }
 
     mavenCentral()
 }
@@ -74,25 +73,25 @@ dependencies {
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.5'
     compile group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.5'
     compile group: 'org.apache.httpcomponents', name: 'httpasyncclient', version: '4.1.4'
-//    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.8.0'
-//    compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
-//    compile group: 'com.sun.jna', name: 'jna', version: '3.0.9'
+    //    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.8.0'
+    //    compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
+    //    compile group: 'com.sun.jna', name: 'jna', version: '3.0.9'
     compile group: 'com.alibaba', name: 'fastjson', version: '1.2.62'
-//    compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.9.0'
+    //    compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.9.0'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.12.1'
-//    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.12.1'
+    //    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.12.1'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
-//    compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.0'
-//    compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.0'
+    //    compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.0'
+    //    compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.0'
     //这只是其实一种方式,增加Groovy支持,如果不添加无法打包
     compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '3.0.8'
-//    compile group: 'redis.clients', name: 'jedis', version: '3.0.1'
-//    compile group: 'com.alibaba', name: 'dubbo', version: '2.5.3'
-//    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
-//    compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
-//    compile group: 'org.java-websocket', name: 'Java-WebSocket', version: '1.5.1'
-//    compile group: 'io.socket', name: 'socket.io-client', version: '1.0.0'
+    //    compile group: 'redis.clients', name: 'jedis', version: '3.0.1'
+    //    compile group: 'com.alibaba', name: 'dubbo', version: '2.5.3'
+    //    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
+    //    compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
+    //    compile group: 'org.java-websocket', name: 'Java-WebSocket', version: '1.5.1'
+    //    compile group: 'io.socket', name: 'socket.io-client', version: '1.0.0'
 }
 
 jar {
@@ -101,9 +100,9 @@ jar {
         configurations.compile.collect {it.isDirectory() ? it : zipTree(it)}
         configurations.runtime.collect {zipTree(it)}
     }
-//    manifest {
-//        attributes 'Main-Class': 'com.funtester.main.Share'
-//    }
+    //    manifest {
+    //        attributes 'Main-Class': 'com.funtester.main.Share'
+    //    }
 }
 
 ext {
@@ -159,13 +158,19 @@ task copyFun(type: Copy) {
 }
 
 //用来拷贝项目jar包
-task copyOkay(type: Copy) {
+task copyOker(type: Copy) {
     from('/Users/oker/IdeaProjects/oktest/target/oktest-1.0-SNAPSHOT-release.jar')
     into('/Users/oker/Library/groovy-3.0.8/lib')
-    println "拷贝okay.jar包到Groovy依赖成功!"
+    println "拷贝oker.jar包到Groovy依赖成功!"
 }
 
-task copyJarToGroovy(dependsOn: ['copyFun', 'copyOkay']) {}
+task copyMoco(type: Copy) {
+    from('/Users/oker/IdeaProjects/moco_fun/build/libs/moco_FunTester-1.0-SNAPSHOT.jar')
+    into('/Users/oker/Library/groovy-3.0.8/lib')
+    println "拷贝moco.jar包到Groovy依赖成功!"
+}
+
+task copyJarToGroovy(dependsOn: ['copyFun', 'copyOker', 'copyMoco']) {}
 
 task copyLibs(type: Copy) {
     doLast {
@@ -187,7 +192,7 @@ task copyBin(type: Copy) {
     doLast {
         from('src/main/resources/bin')
         into('build/package/bin')
-        fileMode 0744//可能会失效,检查执行权限
+        fileMode 0744 //可能会失效,检查执行权限
         println "依赖脚本,并设置可执行权限成功!"
     }
 
@@ -207,7 +212,7 @@ task prepareFile(dependsOn: [
         'copyConf',
         'copyBin',
         'copyDep'
-]) {}//如果没有内容的话,可以不需要大括号
+]) {} //如果没有内容的话,可以不需要大括号
 //还有一种写法表示task之间的依赖:prepareFile.dependsOn createDirs,copyLibs,copyConf,copyBin,copyDep
 //指定打包的tar包的名字，以及文件来源目录
 //distributions {
