@@ -95,4 +95,7 @@ class PerformanceResultBean extends AbstractBean implements Serializable {
         MySqlTest.savePerformanceBean(this)
     }
 
+    PerformanceResultBean() {
+    }
+
 }
