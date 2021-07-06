@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 /**
@@ -23,7 +24,7 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
     /**
      * 全局的时间终止开关,true表示终止,false表示不终止.程序运行中是false,结束运行是true,保障只有一个程序在运行
      */
-    private static boolean ABORT = true;
+    private static AtomicBoolean ABORT = new AtomicBoolean(true);
 
     /**
      * 用于记录当前执行状态信息
@@ -99,7 +100,7 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
      * 运行待测方法的之前的准备
      */
     public void before() {
-        ABORT = false;
+        ABORT.set(false);
     }
 
     /**
@@ -178,16 +179,16 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
      * 用于在某些情况下提前终止测试
      */
     public static void stop() {
-        ABORT = true;
+        ABORT.set(true);
     }
 
     /**
-     * true表示终止,false表示不终止.
+     * true表示终止,false表示不终止.运行中false,非运行状态true
      *
      * @return
      */
     public static boolean needAbort() {
-        return ABORT;
+        return ABORT.get();
     }
 
 }
