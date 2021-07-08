@@ -176,6 +176,9 @@
 - [性能测试框架对比初探](https://mp.weixin.qq.com/s/w46QciCvh6dPswBA42oiIQ)
 - [性能框架哪家强—JMeter、K6、locust、FunTester横向对比](https://mp.weixin.qq.com/s/BGs3ImdkRGFB-h3fxUktmw)
 - [分布式性能测试框架用例方案设想（三）](https://mp.weixin.qq.com/s/hkSn4g9Z3sfWIV9-dOiS7Q)
+- [基于docker的分布式性能测试框架功能验证（三）](https://mp.weixin.qq.com/s/mBEuEWlrw_gwV0T6S93LKA)
+- [10万QPS，K6、Gatling和FunTester终极对决！](https://mp.weixin.qq.com/s/HZvBPUEaws72hlwb1QXzuw)
+- [DCS_FunTester分布式压测框架更新（一）](https://mp.weixin.qq.com/s/mT-traL5EbUxZ7K_qZSyew)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -755,3 +758,6 @@
 - [《漫画算法》读书心得（一）](https://mp.weixin.qq.com/s/eSB6TuDhT_0YO1VWb_wicA)
 - [Jmeter基于webscoket测试后台服务接口实战](https://mp.weixin.qq.com/s/yWwl1R-yaDWRpMQXtx_ebA)
 - [FunTester分享会第二期视频回顾](https://mp.weixin.qq.com/s/sZ7WW1twRrTRH2ym59DnHw)
+- [Tester专用名词：测试方案&测试计划&测试报告](https://mp.weixin.qq.com/s/w2IMNIl2qd5adxv4g6p9YA)
+- [初遇Postman，SayHi的三种方式](https://mp.weixin.qq.com/s/-UFIJ0ECPvm8LmiufNBwIg)
+- [如何学习Java【FunTester分享会第三期回顾】](https://mp.weixin.qq.com/s/ksXySWR5Lk3SrpiuSn_M1w)
