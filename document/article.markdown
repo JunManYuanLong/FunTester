@@ -614,6 +614,7 @@
 - [小白自动化测试指南](https://mp.weixin.qq.com/s/XrSQFi4mxRm-B1u5V3Tn1w)
 - [移动端测试策略【译】](https://mp.weixin.qq.com/s/jCOxGO3Br9Je7F8IWaQ2dg)
 - [如何应对自动化测试挑战【译】](https://mp.weixin.qq.com/s/OP65x3MtzlTKKODLumpxwQ)
+- [2021年移动APP四大测试趋势【译】](https://mp.weixin.qq.com/s/Zs6mknPG4_lJbcZSDV5Wpw)
 
 ## 大咖风采
 
@@ -697,6 +698,7 @@
 - [Selenium自动化的JUnit参数化实践](https://mp.weixin.qq.com/s/WFu5rJaowxhAIcbEoEatkw)
 - [Selenium异常集锦](https://mp.weixin.qq.com/s/DDkaliSVthX-c_KKG-WwNA)
 - [Selenium自动化测试之前](https://mp.weixin.qq.com/s/DKjSnS9sP0SoHUw4OhOikw)
+- [Selenium4前线快报](https://mp.weixin.qq.com/s/pjfD7c0k0U7hM0a2DbzOow)
 
 ## APP性能
 
@@ -761,3 +763,4 @@
 - [Tester专用名词：测试方案&测试计划&测试报告](https://mp.weixin.qq.com/s/w2IMNIl2qd5adxv4g6p9YA)
 - [初遇Postman，SayHi的三种方式](https://mp.weixin.qq.com/s/-UFIJ0ECPvm8LmiufNBwIg)
 - [如何学习Java【FunTester分享会第三期回顾】](https://mp.weixin.qq.com/s/ksXySWR5Lk3SrpiuSn_M1w)
+- [Airtest-android快速入门与实战](https://mp.weixin.qq.com/s/tBh8ko8vpfVn8bgDKVUAgg)
