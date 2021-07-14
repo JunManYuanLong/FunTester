@@ -44,7 +44,7 @@ public class FunLibrary extends SourceCode {
     private static Logger logger = LogManager.getLogger(FunLibrary.class);
 
     /**
-     * ibase实现类，需要用来校验响应是否正确的响应体，获取响应的code码，code码默认-2，对于不同的项目ibase的isright方法不一样
+     * ibase实现类，需要用来校验响应是否正确的响应体，获取响应的code码，code码默认-2，对于不同的项目{@link IBase#isRight(com.alibaba.fastjson.JSONObject)}方法不一样
      */
     private static IBase iBase;
 
@@ -150,11 +150,19 @@ public class FunLibrary extends SourceCode {
      * @param params
      * @return
      */
+    public static HttpPut getHttpPut(String url, String params) {
+        HttpPut httpPut = getHttpPut(url);
+        if (params != null && !params.isEmpty())
+            httpPut.setEntity(new StringEntity(params, DEFAULT_CHARSET.toString()));
+        httpPut.addHeader(HttpClientConstant.ContentType_JSON);
+        return httpPut;
+    }
+
     public static HttpPut getHttpPut(String url, JSONObject params) {
         HttpPut httpPut = getHttpPut(url);
         if (params != null && !params.isEmpty())
-            httpPut.setEntity(new StringEntity(params.toString(), DEFAULT_CHARSET.toString()));
-        httpPut.addHeader(HttpClientConstant.ContentType_JSON);
+            setFormHttpEntity(httpPut,params);
+        httpPut.addHeader(HttpClientConstant.ContentType_FORM);
         return httpPut;
     }
 
@@ -208,24 +216,24 @@ public class FunLibrary extends SourceCode {
      * 设置{@link HttpPost}接口上传表单，默认的编码格式
      * 默认编码格式{@link Constant#DEFAULT_CHARSET}
      *
-     * @param httpPost post请求
+     * @param request
      * @param params   参数
      */
-    private static void setFormHttpEntity(HttpPost httpPost, JSONObject params) {
+    private static void setFormHttpEntity(HttpEntityEnclosingRequestBase request, JSONObject params) {
         List<NameValuePair> formparams = new ArrayList<NameValuePair>();
         params.keySet().forEach(x -> formparams.add(new BasicNameValuePair(x, params.getString(x))));
         UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, DEFAULT_CHARSET);
-        httpPost.setEntity(entity);
+        request.setEntity(entity);
     }
 
     /**
      * 设置二进制流实体，params 里面参数值为 {@link HttpClientConstant#FILE_UPLOAD_KEY}
      *
-     * @param httpPost httpPsot 请求
+     * @param request
      * @param params   请求参数
      * @param file     文件
      */
-    private static void setMultipartEntityEntity(HttpPost httpPost, JSONObject params, File file) {
+    private static void setMultipartEntityEntity(HttpEntityEnclosingRequestBase request, JSONObject params, File file) {
         logger.debug("上传文件名：{}", file.getAbsolutePath());
         String fileName = file.getName();
         InputStream inputStream = null;
@@ -247,7 +255,7 @@ public class FunLibrary extends SourceCode {
             }
         }
         HttpEntity entity = builder.build();
-        httpPost.setEntity(entity);
+        request.setEntity(entity);
     }
 
     /**

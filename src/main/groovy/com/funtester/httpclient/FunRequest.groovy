@@ -291,7 +291,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
                 request = !params.isEmpty() ? FunLibrary.getHttpPost(uri + FunLibrary.changeJsonToArguments(args), params) : !json.isEmpty() ? FunLibrary.getHttpPost(uri + FunLibrary.changeJsonToArguments(args), json.toString()) : FunLibrary.getHttpPost(uri + FunLibrary.changeJsonToArguments(args))
                 break
             case RequestType.PUT:
-                request = FunLibrary.getHttpPut(uri, json)
+                request = !params.isEmpty() ? FunLibrary.getHttpPut(uri + FunLibrary.changeJsonToArguments(args), params) : !json.isEmpty() ? FunLibrary.getHttpPut(uri + FunLibrary.changeJsonToArguments(args), json.toString()) : FunLibrary.getHttpPut(uri + FunLibrary.changeJsonToArguments(args))
                 break
             case RequestType.DELETE:
                 request = FunLibrary.getHttpDelete(uri)
