@@ -7,7 +7,7 @@ import com.funtester.config.Constant
 /**
  * 通用的返回体
  * 配合moco框架使用
- * @param <T >
+ * @param < T >
  */
 class Result<T> extends AbstractBean implements Serializable {
 
@@ -74,7 +74,7 @@ class Result<T> extends AbstractBean implements Serializable {
     }
 
     static Result fail() {
-        new Result(Constant.TEST_ERROR_CODE)
+        new Result(Constant.TEST_ERROR_CODE, null)
     }
 
     static Result fail(ReturnCode errorCode) {
