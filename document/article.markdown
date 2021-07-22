@@ -247,6 +247,7 @@
 - [线程同步类CyclicBarrier在性能测试集合点应用](https://mp.weixin.qq.com/s/K2YySxX9T4v_rzbvIbIHJA)
 - [Java线程同步三剑客](https://mp.weixin.qq.com/s/cAmd11-HdwXNU3tp4TiDLg)
 - [Intellij运行Java程序启动等待BUG分享](https://mp.weixin.qq.com/s/Y6-CapeSV9UofwggHu_XbQ)
+- [又双叒叕一行代码：Map按值排序](https://mp.weixin.qq.com/s/D2_Xd_IsLEj2teVCrU9-Hw)
 
 ## Groovy
 
@@ -699,6 +700,7 @@
 - [Selenium异常集锦](https://mp.weixin.qq.com/s/DDkaliSVthX-c_KKG-WwNA)
 - [Selenium自动化测试之前](https://mp.weixin.qq.com/s/DKjSnS9sP0SoHUw4OhOikw)
 - [Selenium4前线快报](https://mp.weixin.qq.com/s/pjfD7c0k0U7hM0a2DbzOow)
+- [Selenium4 Alpha-7升级体验](https://mp.weixin.qq.com/s/XC0EwYhuN1zwHCuQS8oEGg)
 
 ## APP性能
 
