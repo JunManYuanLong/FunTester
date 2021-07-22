@@ -243,7 +243,7 @@ public class Time extends SourceCode {
     }
 
     /**
-     * 获取当前时间，返回date类型
+     * 获取当前时间,返回默认格式时间
      *
      * @return
      */
