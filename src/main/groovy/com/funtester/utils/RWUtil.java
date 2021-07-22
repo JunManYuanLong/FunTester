@@ -42,6 +42,11 @@ public class RWUtil extends Constant {
         return info;
     }
 
+    /**读取返回,过滤包含filter的文本
+     * @param filePath
+     * @param filter
+     * @return
+     */
     public static JSONObject readTxtByJson(String filePath, String filter) {
         if (StringUtils.isEmpty(filePath) || !new File(filePath).exists() || new File(filePath).isDirectory())
             ParamException.fail("配置文件信息错误!" + filePath);
