@@ -1,6 +1,7 @@
 package com.funtester.config
 
 import com.alibaba.fastjson.JSONObject
+import com.funtester.base.exception.FailException
 import com.funtester.utils.RWUtil
 import com.funtester.frame.SourceCode
 import org.apache.logging.log4j.LogManager
@@ -29,7 +30,7 @@ class PropertyUtils extends SourceCode {
         logger.debug("读取配置文件：{}", propertyName)
         try {
             new Property(ResourceBundle.getBundle(propertyName.trim()))
-        } catch (MissingResourceException e) {
+        } catch (Exception e) {
             getLocalProperties(WORK_SPACE + propertyName + ".properties")
         }
     }
@@ -43,9 +44,8 @@ class PropertyUtils extends SourceCode {
         logger.debug("读取配置文件：{}", filePath)
         try {
             new Property(RWUtil.readTxtByJson(filePath, FILTER))
-        } catch (MissingResourceException e) {
-            logger.warn("找不到配置文件", e)
-            new Property()
+        } catch (Exception e) {
+            FailException.fail(e)
         }
     }
 
@@ -94,6 +94,7 @@ class PropertyUtils extends SourceCode {
         int getPropertyInt(String name) {
             changeStringToInt(properties.get(name))
         }
+
         /**
          * 获取long值
          * @param name
@@ -128,7 +129,7 @@ class PropertyUtils extends SourceCode {
          */
         Integer[] getIntArray(String name) {
             def split = getProperty(name).split(COMMA)
-            Stream.of(split).map { x -> x as Integer }.toArray()
+            Stream.of(split).map {x -> x as Integer}.toArray()
         }
 
         /**
