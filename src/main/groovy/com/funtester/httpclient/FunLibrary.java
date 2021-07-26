@@ -161,7 +161,7 @@ public class FunLibrary extends SourceCode {
     public static HttpPut getHttpPut(String url, JSONObject params) {
         HttpPut httpPut = getHttpPut(url);
         if (params != null && !params.isEmpty())
-            setFormHttpEntity(httpPut,params);
+            setFormHttpEntity(httpPut, params);
         httpPut.addHeader(HttpClientConstant.ContentType_FORM);
         return httpPut;
     }
@@ -217,7 +217,7 @@ public class FunLibrary extends SourceCode {
      * 默认编码格式{@link Constant#DEFAULT_CHARSET}
      *
      * @param request
-     * @param params   参数
+     * @param params  参数
      */
     private static void setFormHttpEntity(HttpEntityEnclosingRequestBase request, JSONObject params) {
         List<NameValuePair> formparams = new ArrayList<NameValuePair>();
@@ -230,8 +230,8 @@ public class FunLibrary extends SourceCode {
      * 设置二进制流实体，params 里面参数值为 {@link HttpClientConstant#FILE_UPLOAD_KEY}
      *
      * @param request
-     * @param params   请求参数
-     * @param file     文件
+     * @param params  请求参数
+     * @param file    文件
      */
     private static void setMultipartEntityEntity(HttpEntityEnclosingRequestBase request, JSONObject params, File file) {
         logger.debug("上传文件名：{}", file.getAbsolutePath());
@@ -469,6 +469,16 @@ public class FunLibrary extends SourceCode {
     public static String executeSimlple(HttpRequestBase request) throws IOException {
         CloseableHttpResponse response = ClientManage.httpsClient.execute(request);
         return getContent(response.getEntity());
+    }
+
+    /**只发送要求,不解析响应
+     * 此处不用{@link CloseableHttpResponse#close()}也能释放连接
+     * @param request
+     * @throws IOException
+     */
+    public static void executeOnly(HttpRequestBase request) throws IOException {
+        CloseableHttpResponse response = ClientManage.httpsClient.execute(request);
+        EntityUtils.consume(response.getEntity());// 消耗响应实体，并关闭相关资源占用
     }
 
     /**
