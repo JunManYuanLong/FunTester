@@ -166,7 +166,7 @@ public class FixedQpsConcurrent extends SourceCode {
         } catch (InterruptedException e) {
             logger.error("线程池等待任务结束失败!", e);
         }
-        logger.info("总计执行 {} ，共用时：{} s,执行总数:{},错误数:{}!", baseThread.isTimesMode ? baseThread.limit + "次任务" : "秒", Time.getTimeDiffer(startTime, endTime), executeTimes, errorTimes);
+        logger.info("总计执行 {} ，共用时：{} s,执行总数:{},错误数:{}!", baseThread.isTimesMode ? baseThread.limit + "次任务" : "秒", Time.getTimeDiffer(startTime, endTime), formatLong(executeTimes), errorTimes);
         return over();
     }
 
