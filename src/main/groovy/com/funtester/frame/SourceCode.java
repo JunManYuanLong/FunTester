@@ -498,7 +498,11 @@ public class SourceCode extends Output {
      * @return
      */
     public static JSONObject parse(Object o) {
-        return JSON.parseObject(JSON.toJSONString(o));
+        return parse(JSON.toJSONString(o));
+    }
+
+    public static JSONObject parse(String o) {
+        return JSON.parseObject(o);
     }
 
     /**
