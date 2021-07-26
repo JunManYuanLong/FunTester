@@ -70,7 +70,7 @@ public class Concurrent extends SourceCode {
     /**
      * 用于记录所有请求时间
      */
-    public static Vector<Integer> allTimes = new Vector<>();
+    public static Vector<Short> allTimes = new Vector<>();
 
     /**
      * 记录所有markrequest的信息
@@ -160,7 +160,7 @@ public class Concurrent extends SourceCode {
             errorTotal += x.errorNum;
             executeTotal += x.executeNum;
         });
-        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{},失败数:{}", threadNum, Time.getTimeDiffer(startTime, endTime), executeTotal, errorTotal, failTotal);
+        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{},失败数:{}", threadNum, Time.getTimeDiffer(startTime, endTime), formatLong(executeTotal), errorTotal, failTotal);
         return over();
     }
 
@@ -197,7 +197,7 @@ public class Concurrent extends SourceCode {
      */
     public PerformanceResultBean countQPS(int name, String desc, String start, String end) {
         List<String> strings = RWUtil.readTxtFileByLine(Constant.DATA_Path + StatisticsUtil.getFileName(name, desc));
-        int size = strings.size();
+        int size = strings.size() == 0 ? 1 : strings.size();
         List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
         int sum = data.stream().mapToInt(x -> x).sum();
         String statistics = StatisticsUtil.statistics(data, desc, threadNum);
