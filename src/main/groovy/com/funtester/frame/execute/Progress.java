@@ -177,9 +177,9 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
     private int getQPS() {
         int qps = 0;
         if (canCount) {
-            List<Integer> times = new ArrayList<>();
+            List<Short> times = new ArrayList<>();
             for (int i = 0; i < threadNum; i++) {
-                List<Integer> costs = threads.get(i).costs;
+                List<Short> costs = threads.get(i).costs;
                 int size = costs.size();
                 if (size < 3) continue;
                 times.add(costs.get(size - 1));
