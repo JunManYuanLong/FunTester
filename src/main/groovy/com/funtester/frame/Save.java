@@ -52,7 +52,7 @@ public class Save {
     /**
      * 保存list数据到本地文件
      */
-    public static void saveIntegerList(Collection<Integer> data, String name) {
+    public static <T extends Number> void saveIntegerList(Collection<T> data, String name) {
         List<String> list = new ArrayList<>();
         data.forEach(num -> list.add(num.toString()));
         saveStringList(list, name);
