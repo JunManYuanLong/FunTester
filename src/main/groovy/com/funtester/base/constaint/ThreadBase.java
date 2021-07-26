@@ -94,7 +94,7 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
      * 用于存储请求耗时集合
      * 2021年03月16日,将统计集合提取为对象属性,用于外部访问,可用于取样器实现
      */
-    public List<Integer> costs = new ArrayList<>();
+    public List<Short> costs = new ArrayList<>();
 
     /**
      * 运行待测方法的之前的准备

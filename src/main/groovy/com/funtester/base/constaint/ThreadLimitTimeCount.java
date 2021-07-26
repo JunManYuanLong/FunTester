@@ -50,7 +50,7 @@ public abstract class ThreadLimitTimeCount<F> extends ThreadBase<F> {
                     doing();
                     long et = Time.getTimeStamp();
                     executeNum++;
-                    int diff = (int) (et - s);
+                    short diff = (short) (et - s);
                     costs.add(diff);
 //                    if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
 //                        marks.add(diff + CONNECTOR + threadmark + CONNECTOR + Time.getNow());
