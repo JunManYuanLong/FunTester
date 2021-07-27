@@ -7,7 +7,6 @@ import com.funtester.base.exception.ParamException;
 import com.funtester.base.interfaces.IBase;
 import com.funtester.config.Constant;
 import com.funtester.config.HttpClientConstant;
-import com.funtester.db.mysql.MySqlTest;
 import com.funtester.frame.SourceCode;
 import com.funtester.utils.DecodeEncode;
 import com.funtester.utils.Regex;
@@ -42,6 +41,11 @@ import java.util.stream.Collectors;
 public class FunLibrary extends SourceCode {
 
     private static Logger logger = LogManager.getLogger(FunLibrary.class);
+
+    /**
+     * 打印日志的key
+     */
+    public static boolean LOG_KEY = true;
 
     /**
      * ibase实现类，需要用来校验响应是否正确的响应体，获取响应的code码，code码默认-2，对于不同的项目{@link IBase#isRight(com.alibaba.fastjson.JSONObject)}方法不一样
@@ -354,7 +358,7 @@ public class FunLibrary extends SourceCode {
             int data_size = content.length();
             res.putAll(getJsonResponse(content, setCookies));
             int code = iBase == null ? TEST_ERROR_CODE : iBase.checkCode(res, requestInfo);
-            MySqlTest.saveApiTestDate(requestInfo, data_size, elapsed_time, status, getMark(), code, COMPUTER_USER_NAME);
+            if (LOG_KEY) logger.info("请求uri：{} , 耗时：{} ms , HTTPcode: {}", requestInfo.getUri(), elapsed_time, status);
         } catch (Exception e) {
             FunRequest funRequest = FunRequest.initFromRequest(request);
             funRequest.setResponse(res);
