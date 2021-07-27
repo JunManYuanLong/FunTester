@@ -5,7 +5,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.funtester.base.exception.FailException;
 import com.funtester.base.exception.ParamException;
-import com.funtester.base.interfaces.IMessage;
 import com.funtester.utils.Regex;
 import com.funtester.utils.Time;
 import org.apache.commons.lang3.ArrayUtils;
@@ -26,16 +25,6 @@ public class SourceCode extends Output {
     private static Logger logger = LogManager.getLogger(SourceCode.class);
 
     private static Scanner scanner;
-
-    private static IMessage iMessage;
-
-    public static IMessage getiMessage() {
-        return iMessage;
-    }
-
-    public static void setiMessage(IMessage iMessage) {
-        SourceCode.iMessage = iMessage;
-    }
 
     private static ThreadLocal<Random> random = new ThreadLocal() {
         @Override

@@ -1,7 +1,6 @@
 package com.funtester.utils;
 
 import com.funtester.config.Constant;
-import com.funtester.frame.SourceCode;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,7 +12,7 @@ import java.util.Date;
 /**
  * 时间相关功能工具类
  */
-public class Time extends SourceCode {
+public class Time {
 
     private static Logger logger = LogManager.getLogger(Time.class);
 
@@ -118,7 +117,7 @@ public class Time extends SourceCode {
      * @return
      */
     public static long getUtcTimestamp(long time) {
-        return getUtcTimestamp(time + EMPTY);
+        return getUtcTimestamp(time + Constant.EMPTY);
     }
 
     /**
@@ -198,13 +197,13 @@ public class Time extends SourceCode {
      * @return 返回时间戳，毫秒
      */
     public static long getTimeStamp(String time) {
-        time = time.replaceAll("\\D*", EMPTY);
+        time = time.replaceAll("\\D*", Constant.EMPTY);
         try {
             return NUM_FORMAT.get().parse(time).getTime();
         } catch (ParseException e) {
             logger.warn("时间格式错误！", e);
         }
-        return DEFAULT_LONG;
+        return Constant.DEFAULT_LONG;
     }
 
     /**
