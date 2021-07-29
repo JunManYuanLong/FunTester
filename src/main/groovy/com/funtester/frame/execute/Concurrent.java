@@ -129,6 +129,7 @@ public class Concurrent extends SourceCode {
                 thread.setCountDownLatch(countDownLatch);
                 sleep(RUNUP_TIME / threadNum);
                 executorService.execute(thread);
+                logger.info("已经启动了 {} 个线程!", i + 1);
             }
             sleep(1.0);
             ThreadBase.stop();

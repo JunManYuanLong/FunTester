@@ -207,7 +207,9 @@ public class ExecuteGroovy extends SourceCode {
             groovy.eval("def test(){return fun.toString()}", bind);
 
             /*下面是GroovyScriptEngine的使用*/
-            GroovyScriptEngine groovyScriptEngine = new GroovyScriptEngine("");
+//            GroovyScriptEngine engine = new GroovyScriptEngine(new URL[]{GroovyTest.class.getClassLoader().getResource("/")});
+//            new ClasspathResourceConnector(this.getClass())
+            GroovyScriptEngine groovyScriptEngine = new GroovyScriptEngine("");//此处写脚本所在路径
             Class a = groovyScriptEngine.loadScriptByName("a.groovy");
             Class b = groovyScriptEngine.loadScriptByName("b.groovy");
             GroovyObject groovyObject = (GroovyObject) a.newInstance();
