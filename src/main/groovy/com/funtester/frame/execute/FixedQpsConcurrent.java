@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.util.stream.Collectors.toList;
@@ -114,7 +113,8 @@ public class FixedQpsConcurrent extends SourceCode {
      */
     private FixedQpsConcurrent(String desc) {
         this.desc = StatisticsUtil.getFileName(desc);
-        executorService = ThreadPoolUtil.createPool(HttpClientConstant.THREADPOOL_CORE, HttpClientConstant.THREADPOOL_MAX, HttpClientConstant.THREAD_ALIVE_TIME);
+        if (executorService == null)
+            ThreadPoolUtil.createPool(HttpClientConstant.THREADPOOL_CORE, HttpClientConstant.THREADPOOL_MAX, HttpClientConstant.THREAD_ALIVE_TIME);
     }
 
     private FixedQpsConcurrent() {
@@ -132,12 +132,25 @@ public class FixedQpsConcurrent extends SourceCode {
         executeThread = qps / Constant.QPS_PER_THREAD + 1;
         interval = 1_000_000_000 / qps;//此处单位1s=1000ms,1ms=1000000ns
         if (RUNUP_TIME > 0) {
-            int runupTotal = qps * PREFIX_RUN;//计算总的请求量
-            double diffTime = 2 * (Constant.RUNUP_TIME / PREFIX_RUN * interval - interval);//计算最大时间间隔和最小时间间隔差值
-            double piece = diffTime / runupTotal;//计算每一次请求时间增量
-            for (int i = runupTotal; i > 0; i--) {
-                executorService.execute(threads.get(limit-- % queueLength).clone());
-                sleep((long) (interval + i * piece));
+            if (qps > 1000) {
+                double v = RUNUP_TIME / executeThread;
+                CountDownLatch countDownLatch = new CountDownLatch(executeThread);
+                for (int i = 0; i < executeThread; i++) {
+                    new FunTester(countDownLatch).start();
+                }
+                try {
+                    countDownLatch.wait();
+                } catch (InterruptedException e) {
+                    logger.error("软启动停止异常: {}", e);
+                }
+            } else {
+                int runupTotal = qps * PREFIX_RUN;//计算总的请求量
+                double diffTime = 2 * (Constant.RUNUP_TIME / PREFIX_RUN * interval - interval);//计算最大时间间隔和最小时间间隔差值
+                double piece = diffTime / runupTotal;//计算每一次请求时间增量
+                for (int i = runupTotal; i > 0; i--) {
+                    executorService.execute(threads.get(limit-- % queueLength).clone());
+                    sleep((long) (interval + i * piece));
+                }
             }
             sleep(1.0);
             allTimes = new Vector<>();
@@ -161,10 +174,10 @@ public class FixedQpsConcurrent extends SourceCode {
         GCThread.stop();
         try {
             countDownLatch.wait();
-            executorService.shutdown();
-            executorService.awaitTermination(HttpClientConstant.WAIT_TERMINATION_TIMEOUT, TimeUnit.SECONDS);//此方法需要在shutdown方法执行之后执行
+//            executorService.shutdown();
+//            executorService.awaitTermination(HttpClientConstant.WAIT_TERMINATION_TIMEOUT, TimeUnit.SECONDS);//此方法需要在shutdown方法执行之后执行
         } catch (InterruptedException e) {
-            logger.error("线程池等待任务结束失败!", e);
+            logger.error("等待任务结束失败", e);
         }
         logger.info("总计执行 {} ，共用时：{} s,执行总数:{},错误数:{}!", baseThread.isTimesMode ? baseThread.limit + "次任务" : "秒", Time.getTimeDiffer(startTime, endTime), formatLong(executeTimes), errorTimes);
         return over();
@@ -183,8 +196,14 @@ public class FixedQpsConcurrent extends SourceCode {
 
         boolean isTimesMode = baseThread.isTimesMode;
 
-        int limit = baseThread.limit / executeThread;
+        /**
+         * 计算每个线程所需要限制变量,时间 or 次数
+         */
+        int limit = isTimesMode ? baseThread.limit / executeThread : baseThread.limit;
 
+        /**
+         * 计算执行间隔,根据1/QPS结果,乘以线程数.
+         */
         long nanosec = interval * executeThread;
 
         @Override
@@ -192,7 +211,8 @@ public class FixedQpsConcurrent extends SourceCode {
             try {
                 while (true) {
                     executorService.execute(threads.get(limit-- % queueLength).clone());
-                    if (needAbord || (isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > limit)) break;
+                    if (needAbord || (isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > baseThread.limit))
+                        break;
                     SourceCode.sleep(nanosec);
                 }
             } catch (Exception e) {
