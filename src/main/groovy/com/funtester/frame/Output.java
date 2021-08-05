@@ -89,14 +89,6 @@ public class Output extends Constant {
         its.forEach(x -> output(x.toString()));
     }
 
-    public static void output(Map map) {
-        if (map == null || map.size() == 0) {
-            logger.warn("怎么空了呢！");
-        } else {
-            show(map);
-        }
-    }
-
     /**
      * 输出json数组
      *
