@@ -1,5 +1,6 @@
 package com.funtester.httpclient;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.funtester.base.bean.RequestInfo;
@@ -16,6 +17,7 @@ import org.apache.http.*;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
+import org.apache.http.concurrent.FutureCallback;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -61,6 +63,28 @@ public class FunLibrary extends SourceCode {
      * 是否保存请求和响应
      */
     public static boolean SAVE_KEY = false;
+
+    /**
+     * 异步请求打印日志的callback
+     */
+    public static final FutureCallback<HttpResponse> logCallback = new FutureCallback<HttpResponse>() {
+        @Override
+        public void completed(HttpResponse httpResponse) {
+            HttpEntity entity = httpResponse.getEntity();
+            String content = getContent(entity);
+            logger.info("响应结果:{}", content);
+        }
+
+        @Override
+        public void failed(Exception e) {
+            logger.warn("响应失败", e);
+        }
+
+        @Override
+        public void cancelled() {
+            logger.warn("取消执行");
+        }
+    };
 
     /**
      * 方法已重载，获取{@link HttpGet}对象
@@ -475,8 +499,10 @@ public class FunLibrary extends SourceCode {
         return getContent(response.getEntity());
     }
 
-    /**只发送要求,不解析响应
+    /**
+     * 只发送要求,不解析响应
      * 此处不用{@link CloseableHttpResponse#close()}也能释放连接
+     *
      * @param request
      * @throws IOException
      */
@@ -525,7 +551,6 @@ public class FunLibrary extends SourceCode {
      * @param request
      */
     public static void executeSync(HttpRequestBase request) {
-        if (!ClientManage.httpAsyncClient.isRunning()) ClientManage.httpAsyncClient.start();
         ClientManage.httpAsyncClient.execute(request, null);
     }
 
@@ -538,7 +563,6 @@ public class FunLibrary extends SourceCode {
      * @throws InterruptedException
      */
     public static JSONObject executeSyncWithResponse(HttpRequestBase request) {
-        if (!ClientManage.httpAsyncClient.isRunning()) ClientManage.httpAsyncClient.start();
         Future<HttpResponse> execute = ClientManage.httpAsyncClient.execute(request, null);
         try {
             HttpResponse response = execute.get();
@@ -548,6 +572,56 @@ public class FunLibrary extends SourceCode {
             logger.error("异步请求获取响应失败!", e);
         }
         return new JSONObject();
+    }
+
+    /**
+     * 异步请求,打印日志
+     *
+     * @param request
+     * @param response
+     */
+    public static void executeSyncWithLog(HttpRequestBase request) {
+        ClientManage.httpAsyncClient.execute(request, logCallback);
+    }
+
+    /**
+     * 异步请求,返回响应,引入第二个参数{@link JSONObject}
+     *
+     * @param request
+     * @param response
+     */
+    public static void executeSyncWithResponse(HttpRequestBase request, JSONObject response) {
+        ClientManage.httpAsyncClient.execute(request, new FunTester(response));
+    }
+
+    /**
+     * 异步请求,异步解析响应的FutureCallback实现类
+     */
+   private static class FunTester implements FutureCallback<HttpResponse> {
+
+        public FunTester(JSONObject response) {
+            this.response = response;
+        }
+
+        JSONObject response;
+
+        @Override
+        public void completed(HttpResponse result) {
+            HttpEntity entity = result.getEntity();
+            String content = getContent(entity);
+            response = JSON.parseObject(content);
+        }
+
+        @Override
+        public void failed(Exception e) {
+            logger.warn("响应失败", e);
+        }
+
+        @Override
+        public void cancelled() {
+            logger.warn("取消执行");
+        }
+
     }
 
     /**
