@@ -179,6 +179,7 @@
 - [基于docker的分布式性能测试框架功能验证（三）](https://mp.weixin.qq.com/s/mBEuEWlrw_gwV0T6S93LKA)
 - [10万QPS，K6、Gatling和FunTester终极对决！](https://mp.weixin.qq.com/s/HZvBPUEaws72hlwb1QXzuw)
 - [单机12万QPS——FunTester复仇记](https://mp.weixin.qq.com/s/4IBaEpj3TEHY_2ZdGOON0g)
+- [分布式请求放大器实现](https://mp.weixin.qq.com/s/JAzVyP2u9WicNXvVamBGYQ)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -248,6 +249,8 @@
 - [Java线程同步三剑客](https://mp.weixin.qq.com/s/cAmd11-HdwXNU3tp4TiDLg)
 - [Intellij运行Java程序启动等待BUG分享](https://mp.weixin.qq.com/s/Y6-CapeSV9UofwggHu_XbQ)
 - [又双叒叕一行代码：Map按值排序](https://mp.weixin.qq.com/s/D2_Xd_IsLEj2teVCrU9-Hw)
+- [getInteger还是getIntValue，这是一个问题](https://mp.weixin.qq.com/s/1GrgVEU6GEezmcSxOxGqZQ)
+- [Java测试框架九大法宝](https://mp.weixin.qq.com/s/PKK9NJm5UBU2HUFnNV9ysw)
 
 ## Groovy
 
@@ -702,6 +705,7 @@
 - [Selenium自动化测试之前](https://mp.weixin.qq.com/s/DKjSnS9sP0SoHUw4OhOikw)
 - [Selenium4前线快报](https://mp.weixin.qq.com/s/pjfD7c0k0U7hM0a2DbzOow)
 - [Selenium4 Alpha-7升级体验](https://mp.weixin.qq.com/s/XC0EwYhuN1zwHCuQS8oEGg)
+- [Selenium 4以后，再不相见的API](https://mp.weixin.qq.com/s/vJcGC3vdpoVCTj5uloMIIw)
 
 ## APP性能
 
@@ -767,3 +771,4 @@
 - [初遇Postman，SayHi的三种方式](https://mp.weixin.qq.com/s/-UFIJ0ECPvm8LmiufNBwIg)
 - [如何学习Java【FunTester分享会第三期回顾】](https://mp.weixin.qq.com/s/ksXySWR5Lk3SrpiuSn_M1w)
 - [Airtest-android快速入门与实战](https://mp.weixin.qq.com/s/tBh8ko8vpfVn8bgDKVUAgg)
+- [超万字回顾FunTester的前世今生](https://mp.weixin.qq.com/s/bEW6DK86qwgAWnjdkUGiZA)
