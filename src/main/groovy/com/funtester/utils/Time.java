@@ -106,7 +106,7 @@ public class Time {
      */
     public static long getUtcTimestamp(String time) {
         long timestamp = getTimeStamp(time);
-        long utc = timestamp - Calendar.getInstance().getTimeZone().getRawOffset();
+        long utc = timestamp + Calendar.getInstance().getTimeZone().getRawOffset();
         return utc;
     }
 

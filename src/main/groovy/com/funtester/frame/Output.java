@@ -13,6 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -68,12 +69,13 @@ public class Output extends Constant {
     }
 
     /**
-     * 如遇到重复元素,会导致技术不准确
+     * 如遇到重复元素,会导致技术不准确(已经解决了)
      *
      * @param list
      */
     public static void output(List list) {
-        list.forEach(x -> output("第" + (list.indexOf(x) + 1) + "个：" + x.toString()));
+        AtomicInteger integer = new AtomicInteger(1);
+        list.forEach(x -> output("第" + integer.getAndIncrement() + "个：" + x.toString()));
     }
 
     public static void output(Iterator its) {
