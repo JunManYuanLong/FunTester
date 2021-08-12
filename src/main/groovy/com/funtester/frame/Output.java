@@ -161,6 +161,15 @@ public class Output extends Constant {
         return jsonObject;
     }
 
+    /**
+     * 以JSON格式输出
+     *
+     * @param o
+     */
+    public static void outputJson(Object o) {
+        output(SourceCode.parse(o));
+    }
+
     public static void outputJsonStr(String jsonStr) {
         jsonStr = jsonStr.replaceAll("\\\\/", OR);
         int level = 0;// 用户标记层级

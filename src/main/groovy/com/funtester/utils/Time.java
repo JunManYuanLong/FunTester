@@ -197,7 +197,7 @@ public class Time {
      * @return 返回时间戳，毫秒
      */
     public static long getTimeStamp(String time) {
-        time = time.replaceAll("\\D*", Constant.EMPTY);
+        time = time.replaceAll("\\D*", Constant.EMPTY).substring(0,14);
         try {
             return NUM_FORMAT.get().parse(time).getTime();
         } catch (ParseException e) {
