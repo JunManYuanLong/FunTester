@@ -23,7 +23,7 @@ public class ExecuteSource extends SourceCode {
     private static Logger logger = LogManager.getLogger(ExecuteSource.class);
 
     /**
-     * 执行包内所有类的非 main 方法
+     * 执行包内所有类的方法
      *
      * @param packageName
      */
