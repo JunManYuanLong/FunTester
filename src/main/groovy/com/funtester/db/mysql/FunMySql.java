@@ -13,12 +13,24 @@ import java.sql.Statement;
  */
 public class FunMySql extends SqlBase implements IMySqlBasic {
 
+    /**
+     *  {@link SqlConstant#FUN_SQL_URL}会替换IP到URL
+     */
     String url;
 
+    /**
+     * 库
+     */
     String database;
 
+    /**
+     * 用户
+     */
     String user;
 
+    /**
+     * 密码
+     */
     String password;
 
     Connection connection;

@@ -1,7 +1,7 @@
 package com.funtester.frame.thread;
 
+import com.funtester.base.constaint.FixedThread;
 import com.funtester.base.constaint.ThreadBase;
-import com.funtester.base.constaint.ThreadLimitTimesCount;
 import com.funtester.base.interfaces.IMySqlBasic;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 /**
  * 数据库多线程类，query方法类，区别于updatethread
  */
-public class QuerySqlThread extends ThreadLimitTimesCount {
+public class QuerySqlThread extends FixedThread {
 
     private static final long serialVersionUID = 879371247008746883L;
 
