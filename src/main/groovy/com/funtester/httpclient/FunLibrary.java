@@ -550,8 +550,8 @@ public class FunLibrary extends SourceCode {
      *
      * @param request
      */
-    public static void executeSync(HttpRequestBase request) {
-        ClientManage.httpAsyncClient.execute(request, null);
+    public static Future<HttpResponse> executeSync(HttpRequestBase request) {
+       return executeSync(request, null);
     }
 
     /**
@@ -563,7 +563,7 @@ public class FunLibrary extends SourceCode {
      * @throws InterruptedException
      */
     public static JSONObject executeSyncWithResponse(HttpRequestBase request) {
-        Future<HttpResponse> execute = ClientManage.httpAsyncClient.execute(request, null);
+        Future<HttpResponse> execute = executeSync(request, null);
         try {
             HttpResponse response = execute.get();
             String content = getContent(response.getEntity());
@@ -578,10 +578,9 @@ public class FunLibrary extends SourceCode {
      * 异步请求,打印日志
      *
      * @param request
-     * @param response
      */
-    public static void executeSyncWithLog(HttpRequestBase request) {
-        ClientManage.httpAsyncClient.execute(request, logCallback);
+    public static Future executeSyncWithLog(HttpRequestBase request) {
+        return executeSync(request, logCallback);
     }
 
     /**
@@ -590,14 +589,24 @@ public class FunLibrary extends SourceCode {
      * @param request
      * @param response
      */
-    public static void executeSyncWithResponse(HttpRequestBase request, JSONObject response) {
-        ClientManage.httpAsyncClient.execute(request, new FunTester(response));
+    public static Future executeSyncWithResponse(HttpRequestBase request, JSONObject response) {
+        return executeSync(request, new FunTester(response));
+    }
+
+    /**
+     * 异步执行
+     *
+     * @param request
+     * @param callback
+     */
+    public static Future<HttpResponse> executeSync(HttpRequestBase request, FutureCallback callback) {
+        return ClientManage.httpAsyncClient.execute(request, callback);
     }
 
     /**
      * 异步请求,异步解析响应的FutureCallback实现类
      */
-   private static class FunTester implements FutureCallback<HttpResponse> {
+    private static class FunTester implements FutureCallback<HttpResponse> {
 
         public FunTester(JSONObject response) {
             this.response = response;

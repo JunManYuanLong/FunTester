@@ -237,6 +237,7 @@ public class ClientManage {
      * <p>
      * 增加默认的请求控制器，和请求配置，连接控制器，取消了cookiestore，单独解析响应set-cookie和发送请求的header，适配多用户同时在线的情况
      * </p>
+     *
      * @return
      */
     private static CloseableHttpClient getCloseableHttpsClients() {
@@ -275,6 +276,14 @@ public class ClientManage {
     public static void recyclingConnection() {
         connManager.closeExpiredConnections();
         connManager.closeIdleConnections(HttpClientConstant.IDLE_TIMEOUT, TimeUnit.SECONDS);
+    }
+
+    /**
+     * 启动异步请求客户端
+     */
+    public static synchronized void startAsync() {
+        if (!httpAsyncClient.isRunning())
+            httpAsyncClient.start();
     }
 
     /**
