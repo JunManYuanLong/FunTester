@@ -20,6 +20,9 @@ public class RedisBase {
 
     JedisPool pool;
 
+    /**
+     * 从0开始
+     */
     public int index;
 
     public RedisBase() {
@@ -89,6 +92,67 @@ public class RedisBase {
         } catch (Exception e) {
             logger.error("set key:{} value:{} error", key, value, e);
             return false;
+        }
+    }
+
+
+    /**
+     * 将key对应的value 加1
+     *
+     * @param key
+     * @return
+     */
+    public Long incr(String key) {
+        try (Jedis jedis = getJedis()) {
+            return jedis.incr(key);
+        } catch (Exception e) {
+            logger.error("setex key:{} value:{} error", key, e);
+            return null;
+        }
+    }
+
+    /**
+     * 将key对应的value 加 n
+     *
+     * @param key
+     * @param num
+     * @return
+     */
+    public Long incr(String key, int num) {
+        try (Jedis jedis = getJedis()) {
+            return jedis.incrBy(key, num);
+        } catch (Exception e) {
+            logger.error("setex key:{} value:{} error", key, e);
+            return null;
+        }
+    }
+
+    /**
+     * @param key
+     * @return
+     */
+    public Long decr(String key) {
+        try (Jedis jedis = getJedis()) {
+            return jedis.decr(key);
+        } catch (Exception e) {
+            logger.error("setex key:{} value:{} error", key, e);
+            return null;
+        }
+    }
+
+    /**
+     * 将key对应的value 减 n
+     *
+     * @param key
+     * @param num
+     * @return
+     */
+    public Long decr(String key, int num) {
+        try (Jedis jedis = getJedis()) {
+            return jedis.decrBy(key, num);
+        } catch (Exception e) {
+            logger.error("setex key:{} value:{} error", key, e);
+            return null;
         }
     }
 
@@ -447,7 +511,6 @@ public class RedisBase {
      * 返回集合 key 的基数(集合中元素的数量)
      *
      * @param key
-     * @param value
      * @return
      */
     public Long scard(String key) {
@@ -521,19 +584,22 @@ public class RedisBase {
         }
     }
 
-    /**移除集合 key 中的一个或多个 member 元素，不存在的 member 元素会被忽略
+    /**
+     * 移除集合 key 中的一个或多个 member 元素，不存在的 member 元素会被忽略
+     *
      * @param key
      * @param value
      * @return
      */
-    public Long srem(String key,String... value) {
+    public Long srem(String key, String... value) {
         try (Jedis jedis = getJedis()) {
-            return jedis.srem(key,value);
+            return jedis.srem(key, value);
         } catch (Exception e) {
             logger.error("get key:{} error", key, e);
             return null;
         }
     }
+
     /**
      * 是否存在key
      *

@@ -32,12 +32,12 @@ public class RedisPool extends SourceCode {
     /**
      * 获取实例的最大等待时间
      */
-    private static long MAX_WAIT = 5;
+    private static long MAX_WAIT = 5000;
 
     /**
      * redis连接的超时时间
      */
-    private static int TIMEOUT = 5;
+    private static int TIMEOUT = 5000;
 
     /**
      * 在borrow一个jedis实例的时候，是否要进行验证操作，如果赋值true。则得到的jedis实例肯定是可以用的
