@@ -41,7 +41,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
     /**
      * 线程数,用于计算实时QPS
      */
-    private int threadNum;
+    public int threadNum;
 
     /**
      * 进度条的长度
@@ -64,7 +64,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
     private boolean isTimesMode;
 
     /**
-     * 用于区分固定QPS请求模型,这里不计算固定QPS模型中的实时QPS
+     * 用于区分固定QPS请求模型,这里不计算固定QPS模型中的实时QPS,直接使用执行总数除以执行时间获取
      */
     private boolean canCount;
 
