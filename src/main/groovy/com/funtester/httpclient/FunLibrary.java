@@ -180,12 +180,19 @@ public class FunLibrary extends SourceCode {
      */
     public static HttpPut getHttpPut(String url, String params) {
         HttpPut httpPut = getHttpPut(url);
-        if (params != null && !params.isEmpty())
+        if (StringUtils.isNotBlank(params))
             httpPut.setEntity(new StringEntity(params, DEFAULT_CHARSET.toString()));
         httpPut.addHeader(HttpClientConstant.ContentType_JSON);
         return httpPut;
     }
 
+    /**
+     * 获取{@link HttpPut}请求,{@link JSONObject}表单格式
+     *
+     * @param url
+     * @param params
+     * @return
+     */
     public static HttpPut getHttpPut(String url, JSONObject params) {
         HttpPut httpPut = getHttpPut(url);
         if (params != null && !params.isEmpty())
@@ -336,7 +343,7 @@ public class FunLibrary extends SourceCode {
     public static String getContent(HttpEntity entity) {
         String content = EMPTY;
         try {
-            content = EntityUtils.toString(entity, DEFAULT_CHARSET);// 用string接收响应实体
+            if (entity != null) content = EntityUtils.toString(entity, DEFAULT_CHARSET);// 用string接收响应实体
             EntityUtils.consume(entity);// 消耗响应实体，并关闭相关资源占用
         } catch (Exception e) {
             logger.warn("解析响应实体异常！", e);
@@ -551,7 +558,7 @@ public class FunLibrary extends SourceCode {
      * @param request
      */
     public static Future<HttpResponse> executeSync(HttpRequestBase request) {
-       return executeSync(request, null);
+        return executeSync(request, null);
     }
 
     /**
