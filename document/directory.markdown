@@ -53,13 +53,15 @@
 - [无数据驱动自动化测试](https://mp.weixin.qq.com/s/aCYRGxkzMogLbmACYo6ssw)
 - [白板点阵数据传输测试初探](https://mp.weixin.qq.com/s/EzFC-hIvgm7j7947TZU6BA)
 - [基于Socket.IO的白板点阵坐标传输接口测试实践](https://mp.weixin.qq.com/s/pDAx4jwYvcRcdld5cKLAUw)
+- [插上NIO翅膀，FunTester飞上天](https://mp.weixin.qq.com/s/xnprWjuQWn16tO09JquXiA)
+- [Java NIO在接口自动化中应用](https://mp.weixin.qq.com/s/o6zBzAfJkB5SQafLD4m1cg)
 
 ## 接口测试视频
 
 - [FunTester测试框架视频讲解（序）](https://mp.weixin.qq.com/s/CJrHAAniDMyr5oDXYHpPcQ)
 - [获取HTTP请求对象--测试框架视频讲解](https://mp.weixin.qq.com/s/hG89sGf96GcPb2hGnludsw)
 - [发送请求和解析响应—测试框架视频解读](https://mp.weixin.qq.com/s/xUQ8o3YuZOChXZ2UGR1Kyw)
-- [json对象基本操作--视频讲解](https://mp.weixin.qq.com/s/MQtcIGKwWGEMb2XD3zmAIQ)
+- [JSONObject对象基本操作--视频讲解](https://mp.weixin.qq.com/s/MQtcIGKwWGEMb2XD3zmAIQ)
 - [GET请求实践--测试框架视频讲解](https://mp.weixin.qq.com/s/_ZEDmRPXe4SLjCgdwDtC7A)
 - [POST请求实践--视频演示](https://mp.weixin.qq.com/s/g0mLzMQ4Br2e592m3p68eg)
 - [如何处理header和cookie--视频演示](https://mp.weixin.qq.com/s/MkwzT9VPglSnOxY7geSUiQ)
@@ -251,6 +253,7 @@
 - [又双叒叕一行代码：Map按值排序](https://mp.weixin.qq.com/s/D2_Xd_IsLEj2teVCrU9-Hw)
 - [getInteger还是getIntValue，这是一个问题](https://mp.weixin.qq.com/s/1GrgVEU6GEezmcSxOxGqZQ)
 - [Java测试框架九大法宝](https://mp.weixin.qq.com/s/PKK9NJm5UBU2HUFnNV9ysw)
+- [Springboot通过@WebFilter日志双份打印BUG分享](https://mp.weixin.qq.com/s/xPvB8Q-Dl8d8TMNJRJplZA)
 
 ## Groovy
 
@@ -298,7 +301,7 @@
 - [Python版Socket.IO接口测试脚本](https://mp.weixin.qq.com/s/oXBP6Sx3yPqlmvV9uCUScw)
 
 
-## 测开笔记
+## FunTester笔记
 
 - [我的开发日记（一）](https://mp.weixin.qq.com/s/eQgpOKbXsU9vOmxp0Xiklg)
 - [我的开发日记（二）](https://mp.weixin.qq.com/s/XuffL3ZmKKOgHDtH_cEYOw)
@@ -321,6 +324,13 @@
 - [FunTester测试项目架构图初探](https://mp.weixin.qq.com/s/wqb8FXRbEXrhDuZounmNXA)
 - [FunTester moco server框架架构图](https://mp.weixin.qq.com/s/xVNB3hlVm20HCeAxNJoW8A)
 - [DCS_FunTester分布式压测框架更新（一）](https://mp.weixin.qq.com/s/mT-traL5EbUxZ7K_qZSyew)
+- [DCS_FunTester分布式压测框架更新（二）](https://mp.weixin.qq.com/s/P4HY6xNBEE-8Yuq9wrmCTA)
+- [DCS_FunTester分布式压测框架更新（三）](https://mp.weixin.qq.com/s/L3ICSd9uy3p3oTuUMRu7_Q)
+- [环境基础【FunTester框架教程】](https://mp.weixin.qq.com/s/YnHuH88Ib3NAW_4z239HAA)
+- [HTTP接口测试基础【FunTester框架教程】](https://mp.weixin.qq.com/s/xnjI5tqTobd4_3seBDvOHQ)
+- [超万字回顾FunTester的前世今生](https://mp.weixin.qq.com/s/bEW6DK86qwgAWnjdkUGiZA)
+- [居家费拖鞋【FunTester居家日记】](https://mp.weixin.qq.com/s/9hNE3uuv-KArYvrHBowCxQ)
+- [一起吐槽接口文档](https://mp.weixin.qq.com/s/kdFx8gpqX4sVDW5HbcLx1g)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -620,6 +630,7 @@
 - [移动端测试策略【译】](https://mp.weixin.qq.com/s/jCOxGO3Br9Je7F8IWaQ2dg)
 - [如何应对自动化测试挑战【译】](https://mp.weixin.qq.com/s/OP65x3MtzlTKKODLumpxwQ)
 - [2021年移动APP四大测试趋势【译】](https://mp.weixin.qq.com/s/Zs6mknPG4_lJbcZSDV5Wpw)
+- [LT浏览器——响应式网站测试利器](https://mp.weixin.qq.com/s/9V8QdTvRstOcrOIk4V6qNg)
 
 ## 大咖风采
 
@@ -772,3 +783,5 @@
 - [如何学习Java【FunTester分享会第三期回顾】](https://mp.weixin.qq.com/s/ksXySWR5Lk3SrpiuSn_M1w)
 - [Airtest-android快速入门与实战](https://mp.weixin.qq.com/s/tBh8ko8vpfVn8bgDKVUAgg)
 - [超万字回顾FunTester的前世今生](https://mp.weixin.qq.com/s/bEW6DK86qwgAWnjdkUGiZA)
+- [Http请求基础笔记【before接口测试】](https://mp.weixin.qq.com/s/GUXFZ-sdEYzSpw98k-P3pQ)
+- [安卓APP测试知识大全【面试储备】](https://mp.weixin.qq.com/s/ZTHukqpwD0JYTB1cndAOcA)
