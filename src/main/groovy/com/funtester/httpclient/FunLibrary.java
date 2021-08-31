@@ -452,7 +452,7 @@ public class FunLibrary extends SourceCode {
      * @return 返回拼接参数后的地址
      */
     public static String changeJsonToArguments(JSONObject argument) {
-        return argument == null || argument.isEmpty() ? EMPTY : argument.keySet().stream().map(x -> x.toString() + "=" + DecodeEncode.urlEncoderText(argument.getString(x.toString()))).collect(Collectors.joining("&", UNKNOW, EMPTY)).toString();
+        return argument == null || argument.isEmpty() ? EMPTY : argument.keySet().stream().filter(x -> argument.get(x) != null).map(x -> x.toString() + "=" + DecodeEncode.urlEncoderText(argument.getString(x.toString()))).collect(Collectors.joining("&", UNKNOW, EMPTY)).toString();
     }
 
     /**

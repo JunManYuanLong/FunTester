@@ -2,6 +2,7 @@ package com.funtester.utils;
 
 import com.funtester.base.exception.FailException;
 import com.funtester.config.Constant;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -44,7 +45,7 @@ public class DecodeEncode extends Constant{
     public static String urlEncoderText(String text, Charset charset) {
         String result = EMPTY;
         try {
-            result = java.net.URLEncoder.encode(text, charset.toString());
+            result = StringUtils.isBlank(text) ? result : java.net.URLEncoder.encode(text, charset.toString());
         } catch (UnsupportedEncodingException e) {
             logger.warn("数据格式错误！", e);
         }
