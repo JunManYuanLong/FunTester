@@ -98,7 +98,7 @@ class RequestInfo extends AbstractBean implements Serializable {
         String one = url.substring(url.indexOf("//") + 2)
         // 删除掉http://
         apiName = one.substring(one.indexOf("/")) // 获取接口名
-        host = one.substring(0, one.indexOf("/")) // 获取host地址
+        host = one.indexOf("/") == -1 ? one : one.substring(0, one.indexOf("/")) // 获取host地址
         type = url.substring(0, url.indexOf("//") - 1) // 获取协议类型
         if (method == RequestType.GET) {
             if (!uri.contains(UNKNOW)) return
