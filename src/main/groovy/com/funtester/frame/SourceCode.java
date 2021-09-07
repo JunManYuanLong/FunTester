@@ -81,7 +81,7 @@ public class SourceCode extends Output {
     public static String getInput() {
         scanner = new Scanner(System.in, DEFAULT_CHARSET.name());
         String next = scanner.next();
-        logger.debug("输、入内容：{}", next);
+        logger.debug("输入内容：{}", next);
         return next;
     }
 
