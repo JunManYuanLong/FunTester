@@ -47,7 +47,7 @@ public abstract class FixedThread<F> extends ThreadBase<F> {
                 }
             }
             long ee = Time.getTimeStamp();
-            if ((ee - ss) / 1000 > RUNUP_TIME + 3)
+            if ((ee - ss) / 1000 > RUNUP_TIME + 3)//区分软启动运行和正式运行
                 logger.info("线程:{},执行次数：{}，错误次数: {},总耗时：{} s", threadName, executeNum, errorNum, (ee - ss) / 1000.0);
             Concurrent.allTimes.addAll(costs);
             Concurrent.requestMark.addAll(marks);
