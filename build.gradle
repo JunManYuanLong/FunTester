@@ -162,7 +162,7 @@ task copyFun(type: Copy) {
 
 //用来拷贝项目jar包
 task copyOker(type: Copy) {
-    from('/Users/oker/IdeaProjects/hickwall-presses/hickwall-funtester/target/hickwall-funtester-0.0.1-SNAPSHOT.jar')
+    from('/Users/oker/IdeaProjects/hickwall-presses/target/hickwall-presses-0.0.1-SNAPSHOT.jar')
     into('/Users/oker/Library/groovy-3.0.8/lib')
     println "拷贝oker.jar包到Groovy依赖成功!"
 }

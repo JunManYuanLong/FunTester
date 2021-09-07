@@ -3,7 +3,6 @@ package com.funtester.httpclient;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
-import com.funtester.base.bean.RequestInfo;
 import com.funtester.base.exception.ParamException;
 import com.funtester.base.interfaces.IBase;
 import com.funtester.config.Constant;
@@ -48,21 +47,6 @@ public class FunLibrary extends SourceCode {
      * 打印日志的key
      */
     public static boolean LOG_KEY = true;
-
-    /**
-     * ibase实现类，需要用来校验响应是否正确的响应体，获取响应的code码，code码默认-2，对于不同的项目{@link IBase#isRight(com.alibaba.fastjson.JSONObject)}方法不一样
-     */
-    private static IBase iBase;
-
-    /**
-     * 最近发送的请求,由于验证较少,可以由{@link com.funtester.base.interfaces.IBase#recordRequest}以及{@link com.funtester.base.interfaces.IBase#getRequest}两个方法实现
-     */
-    private static HttpRequestBase lastRequest;
-
-    /**
-     * 是否保存请求和响应
-     */
-    public static boolean SAVE_KEY = false;
 
     /**
      * 异步请求打印日志的callback
@@ -378,24 +362,17 @@ public class FunLibrary extends SourceCode {
      */
     public static JSONObject getHttpResponse(HttpRequestBase request) {
         JSONObject res = new JSONObject();
-        RequestInfo requestInfo = new RequestInfo(request);
-        long start = Time.getTimeStamp();
+        long start = 0l;
+        if (LOG_KEY) start = Time.getTimeStamp();
         try (CloseableHttpResponse response = ClientManage.httpsClient.execute(request)) {
-            long end = Time.getTimeStamp();
-            long elapsed_time = end - start;
+            res.putAll(getJsonResponse(getContent(response.getEntity()), afterResponse(response)));
             int status = getStatus(response, res);
-            JSONObject setCookies = afterResponse(response);
-            String content = getContent(response.getEntity());
-            int data_size = content.length();
-            res.putAll(getJsonResponse(content, setCookies));
-            int code = iBase == null ? TEST_ERROR_CODE : iBase.checkCode(res, requestInfo);
-            if (LOG_KEY) logger.info("请求uri：{} , 耗时：{} ms , HTTPcode: {}", requestInfo.getUri(), elapsed_time, status);
+            if (LOG_KEY)
+                logger.info("请求uri：{} , 耗时：{} ms , HTTPcode: {}", request.getURI(), Time.getTimeStamp() - start, status, res);
         } catch (Exception e) {
             FunRequest funRequest = FunRequest.initFromRequest(request);
             funRequest.setResponse(res);
             logger.warn("获取请求相应失败！请求内容:{}", funRequest.toString(), e);
-        } finally {
-            lastRequest = request;
         }
         return res;
     }
@@ -474,14 +451,6 @@ public class FunLibrary extends SourceCode {
      */
     public static Header getHeader(String name, String value) {
         return new BasicHeader(name, value);
-    }
-
-    public static IBase getiBase() {
-        return iBase;
-    }
-
-    public static void setiBase(IBase iBase) {
-        FunLibrary.iBase = iBase;
     }
 
     /**
@@ -638,15 +607,6 @@ public class FunLibrary extends SourceCode {
             logger.warn("取消执行");
         }
 
-    }
-
-    /**
-     * 获取最后一个发出的请求,用于进行性能测试用的,也可以由基类对象{@link IBase}实现
-     *
-     * @return
-     */
-    public static HttpRequestBase getLastRequest() {
-        return lastRequest;
     }
 
     /**
