@@ -20,6 +20,8 @@ public class RedisBase {
 
     JedisPool pool;
 
+    String auth;
+
     /**
      * 从0开始
      */
@@ -43,6 +45,7 @@ public class RedisBase {
     public Jedis getJedis() {
         Jedis resource = pool.getResource();
         resource.select(index);
+        if (auth != null) resource.auth(auth);
         return resource;
     }
 
