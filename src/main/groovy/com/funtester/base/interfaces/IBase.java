@@ -167,7 +167,8 @@ public interface IBase {
 
 
     /**
-     * 记录请求
+     * 记录请求,已经改成了由项目框架自己实现记录最后请求的功能,FunTester不再提供该功能
+     * 获取{@link IBase#getRequest()}
      */
     void recordRequest(HttpRequestBase base);
 
