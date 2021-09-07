@@ -162,20 +162,15 @@ public class FixedQpsConcurrent extends SourceCode {
         Progress progress = new Progress(threads, StatisticsUtil.getTrueName(desc), executeTimes);
         new Thread(progress).start();
         startTime = Time.getTimeStamp();
-        AidThread aidThread = new AidThread();
-        new Thread(aidThread).start();
         CountDownLatch countDownLatch = new CountDownLatch(executeThread);
         for (int i = 0; i < executeThread; i++) {
             new FunTester(countDownLatch).start();
         }
         endTime = Time.getTimeStamp();
-        aidThread.stop();
         progress.stop();
         GCThread.stop();
         try {
             countDownLatch.wait();
-//            executorService.shutdown();
-//            executorService.awaitTermination(HttpClientConstant.WAIT_TERMINATION_TIMEOUT, TimeUnit.SECONDS);//此方法需要在shutdown方法执行之后执行
         } catch (InterruptedException e) {
             logger.error("等待任务结束失败", e);
         }
@@ -251,51 +246,6 @@ public class FixedQpsConcurrent extends SourceCode {
         double qps = executeNum * 1000.0 / (end - start);
         int qps2 = baseThread.qps;
         return new PerformanceResultBean(desc, Time.getTimeByTimestamp(start), Time.getTimeByTimestamp(end), name, size, sum / size, qps, qps2, getPercent(executeNum, errorNum), 0, executeNum, statistics);
-    }
-
-    /**
-     * 补偿线程,如果超过一半QPS量,才会进行补偿,补偿速率为每秒20个
-     */
-    class AidThread implements Runnable {
-
-        private boolean key = true;
-
-        int i;
-
-        public AidThread() {
-
-        }
-
-        @Override
-        public void run() {
-            logger.info("补偿线程开始!");
-            try {
-                while (key) {
-                    sleep(HttpClientConstant.LOOP_INTERVAL);
-                    int actual = executeTimes.get();
-                    int qps = baseThread.qps;
-                    long expect = (Time.getTimeStamp() - FixedQpsConcurrent.this.startTime) / 2000 * qps;
-                    if (expect > actual + qps % 500) {
-                        logger.info("期望执行数:{},实际执行数:{},设置QPS:{}", expect, actual, qps);
-                        range((int) expect - actual).forEach(x -> {
-                            sleep(0.02);
-                            if (!executorService.isShutdown()) {
-                                executorService.execute(threads.get(this.i++ % queueLength).clone());
-                            }
-                        });
-                    }
-                }
-                logger.info("补偿线程结束!");
-            } catch (Exception e) {
-                logger.error("补偿线程发生错误!", e);
-            }
-        }
-
-        public void stop() {
-            key = false;
-        }
-
-
     }
 
 
