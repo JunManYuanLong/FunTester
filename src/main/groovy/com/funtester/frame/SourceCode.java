@@ -15,6 +15,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.*;
 import java.text.DecimalFormat;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -25,14 +26,6 @@ public class SourceCode extends Output {
     private static Logger logger = LogManager.getLogger(SourceCode.class);
 
     private static Scanner scanner;
-
-    private static ThreadLocal<Random> random = new ThreadLocal() {
-        @Override
-        protected Random initialValue() {
-            return new Random();
-        }
-
-    };
 
     /**
      * 获取当前时间戳10位int 类型的数据
@@ -335,7 +328,17 @@ public class SourceCode extends Output {
      * @return 随机数
      */
     public static int getRandomInt(int num) {
-        return random.get().nextInt(num) + 1;
+        return ThreadLocalRandom.current().nextInt(num) + 1;
+    }
+
+    /**
+     * 获取随机数，获取1~num 的数字，包含 num
+     *
+     * @param num
+     * @return
+     */
+    public static long getRandomLong(long num) {
+        return ThreadLocalRandom.current().nextLong(num) + 1;
     }
 
     /**
@@ -347,7 +350,7 @@ public class SourceCode extends Output {
      */
     public static int getRandomIntRange(int start, int end) {
         if (end <= start) return TEST_ERROR_CODE;
-        return random.get().nextInt(end - start) + start;
+        return ThreadLocalRandom.current().nextInt(end - start) + start;
     }
 
     /**
@@ -455,7 +458,7 @@ public class SourceCode extends Output {
      * @return 随机数
      */
     public static double getRandomDouble() {
-        return random.get().nextDouble();
+        return ThreadLocalRandom.current().nextDouble();
     }
 
     /**
