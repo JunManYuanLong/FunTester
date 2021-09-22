@@ -182,6 +182,10 @@
 - [10万QPS，K6、Gatling和FunTester终极对决！](https://mp.weixin.qq.com/s/HZvBPUEaws72hlwb1QXzuw)
 - [单机12万QPS——FunTester复仇记](https://mp.weixin.qq.com/s/4IBaEpj3TEHY_2ZdGOON0g)
 - [分布式请求放大器实现](https://mp.weixin.qq.com/s/JAzVyP2u9WicNXvVamBGYQ)
+- [FunTester框架Redis压测预备](https://mp.weixin.qq.com/s/S58_UD2byWP3UNCZlp5c-w)
+- [FunTester测试框架Redis性能测试实践](https://mp.weixin.qq.com/s/ReuB40bb8S3AvBTD3qHpAQ)
+- [FunTester框架Redis性能测试之list操作](https://mp.weixin.qq.com/s/WBjPdpc4RNZ-rUXhS9qdSg)
+- [全链路压测流量模型](https://mp.weixin.qq.com/s/nSJKvRgrh87LJjDQRBUtdw)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -331,6 +335,9 @@
 - [超万字回顾FunTester的前世今生](https://mp.weixin.qq.com/s/bEW6DK86qwgAWnjdkUGiZA)
 - [居家费拖鞋【FunTester居家日记】](https://mp.weixin.qq.com/s/9hNE3uuv-KArYvrHBowCxQ)
 - [一起吐槽接口文档](https://mp.weixin.qq.com/s/kdFx8gpqX4sVDW5HbcLx1g)
+- [变怪OR变菜【FunTester居家日记】](https://mp.weixin.qq.com/s/wN6EGqrxUbrnmVybgJhR4Q)
+- [Jira API的踩坑记](https://mp.weixin.qq.com/s/Mw9AzcK8tlceXEgaKqLVeg)
+- [FunTester抄代码之路](https://mp.weixin.qq.com/s/aY9njB17FIGq8wuLL7ICeg)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -631,6 +638,8 @@
 - [如何应对自动化测试挑战【译】](https://mp.weixin.qq.com/s/OP65x3MtzlTKKODLumpxwQ)
 - [2021年移动APP四大测试趋势【译】](https://mp.weixin.qq.com/s/Zs6mknPG4_lJbcZSDV5Wpw)
 - [LT浏览器——响应式网站测试利器](https://mp.weixin.qq.com/s/9V8QdTvRstOcrOIk4V6qNg)
+- [自动化测试框架指南](https://mp.weixin.qq.com/s/hMC28BJxmDkvYPPdDvrXAA)
+- [建立测试自动化策略【译】](https://mp.weixin.qq.com/s/exvq_wgoXedjpNv1t24vhw)
 
 ## 大咖风采
 
@@ -729,7 +738,6 @@
 
 ## 杂乱
 
-- [测试窝，首页抄我七篇原创还拉黑，你们的良心不会痛吗？](https://mp.weixin.qq.com/s/ke5avkknkDMCLMAOGT7wiQ)
 - [如何优雅地屏蔽掉Google搜索结果中视频、新闻、图片等结果](https://mp.weixin.qq.com/s/Iu7pt4Qk3w9sJp3n_UVAeQ)
 - [测试玩梗--欢迎补充](https://mp.weixin.qq.com/s/y_QHbsjFCQVSCfj-A4Usmg)
 - [图解HTTP脑图](https://mp.weixin.qq.com/s/100Vm8FVEuXs0x6rDGTipw)
@@ -756,10 +764,6 @@
 - [SpotBugs报错no Groovy library is defined解决办法](https://mp.weixin.qq.com/s/XxvuVS2TmlqT5-b22vObYQ)
 - [推荐好书：不要总是谦卑地弯着腰](https://mp.weixin.qq.com/s/mYNN9jSaikOF5aJEkb-Bug)
 - [2020年FunTester自我总结](https://mp.weixin.qq.com/s/DeDY1JZUTk3cjjQfr3DJRg)
-- [原创打油诗欣赏](https://mp.weixin.qq.com/s/3hPSDjH-3cWu6EVsjU0wOw)
-- [优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)
-- [Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)
-- [GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)
 - [假期思考题](https://mp.weixin.qq.com/s/3DOnkmYDlwk-XKg4ge3ZUw)
 - [甩锅技能+1](https://mp.weixin.qq.com/s/nMwlfXZoDcRRPHcTKpvfNg)
 - [不要浪费自己的求知欲](https://mp.weixin.qq.com/s/WO0aQqmhU_xGUpWvYwOqUA)
@@ -770,6 +774,7 @@
 - [做最积极下班的那个](https://mp.weixin.qq.com/s/KIMyrqkqpryl3YeUSBAzmg)
 - [五一学习心得](https://mp.weixin.qq.com/s/N2w3M1mwMJSMBA-EzccoCg)
 - [想点大事--法律是种思维方式](https://mp.weixin.qq.com/s/b0cCAleJPAQDX7c6jgD87Q)
+- [把工作讲给家人听](https://mp.weixin.qq.com/s/CEH-FPPQU1b_UPz1oU0N3A)
 
 ## 社区风采
 
@@ -785,3 +790,6 @@
 - [超万字回顾FunTester的前世今生](https://mp.weixin.qq.com/s/bEW6DK86qwgAWnjdkUGiZA)
 - [Http请求基础笔记【before接口测试】](https://mp.weixin.qq.com/s/GUXFZ-sdEYzSpw98k-P3pQ)
 - [安卓APP测试知识大全【面试储备】](https://mp.weixin.qq.com/s/ZTHukqpwD0JYTB1cndAOcA)
+- [颇具年代感的《JMeter中文操作手册》](https://mp.weixin.qq.com/s/5Yx9nUkndsHQ0mdyuqUuHQ)
+- [Jira API的踩坑记](https://mp.weixin.qq.com/s/Mw9AzcK8tlceXEgaKqLVeg)
+- [140道面试题目（UI、Linux、MySQL、API、安全）](https://mp.weixin.qq.com/s/TNI0g_ldTY_t5oWfVgAvXg)
