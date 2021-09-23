@@ -107,7 +107,7 @@ class StringUtil extends SourceCode {
      */
     static String getChinese(int i) {
         if (i <= 0) return "〇〇〇"
-        String num = (i + EMPTY).collect { x -> chineses[changeStringToInt(x)] }.join()
+        String num = (i + EMPTY).collect {x -> chineses[changeStringToInt(x)]}.join()
         num.length() > 2 ? num : getManyString(chineses[0] + EMPTY, 3 - num.length()) + num
     }
 
@@ -118,7 +118,7 @@ class StringUtil extends SourceCode {
      */
     static String getCapeChinese(int i) {
         if (i <= 0) return "零零零"
-        def num = (i + EMPTY).collect { x -> capeChineses[changeStringToInt(x)] }.join()
+        def num = (i + EMPTY).collect {x -> capeChineses[changeStringToInt(x)]}.join()
         num.length() > 2 ? num : getManyString(capeChineses[0] + EMPTY, 3 - num.length()) + num
     }
 
@@ -129,7 +129,7 @@ class StringUtil extends SourceCode {
      * @return
      */
     static String getEmojis(int size) {
-        range(size).map { x -> getEmojis() }.collect(Collectors.toString());
+        range(size).mapToObj {x -> getEmojis()}.collect(Collectors.joining())
     }
 
     /**
@@ -159,7 +159,7 @@ class StringUtil extends SourceCode {
      * @return
      */
     static String center(String str, int size) {
-        (str?:EMPTY).center(size)
+        (str ?: EMPTY).center(size)
     }
 
     /**
@@ -183,22 +183,22 @@ class StringUtil extends SourceCode {
     }
 
 
-//这个是添加新的的emoji表情的方法
-//    static void main(String[] args) {
-//        String aa = "";
-//        String aaa = EMPTY;
-//        for (int i = 0; i < aa.length(); i += 2) {
-//            String abc = aa.substring(i, i + 2);
-//            aaa = aaa + "\"" + aa.substring(i, i + 2) + "\",";
-//        }
-//        output(aaa);
-//        aaa = EMPTY;
-//        int length = EMOJIS.length;
-//        HashSet<String> strings = new HashSet<>(Arrays.asList(EMOJIS));
-//        for (String string : strings) {
-//            aaa = aaa + "\"" + string + "\",";
-//        }
-//        output(aaa);
-//        output(length, strings.size());
-//    }
+    //这个是添加新的的emoji表情的方法
+    //    static void main(String[] args) {
+    //        String aa = "";
+    //        String aaa = EMPTY;
+    //        for (int i = 0; i < aa.length(); i += 2) {
+    //            String abc = aa.substring(i, i + 2);
+    //            aaa = aaa + "\"" + aa.substring(i, i + 2) + "\",";
+    //        }
+    //        output(aaa);
+    //        aaa = EMPTY;
+    //        int length = EMOJIS.length;
+    //        HashSet<String> strings = new HashSet<>(Arrays.asList(EMOJIS));
+    //        for (String string : strings) {
+    //            aaa = aaa + "\"" + string + "\",";
+    //        }
+    //        output(aaa);
+    //        output(length, strings.size());
+    //    }
 }
