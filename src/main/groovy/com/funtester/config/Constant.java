@@ -67,6 +67,11 @@ public class Constant {
 
     public static final String DEFAULT_STRING = "FunTester";
 
+    /**
+     * 默认控制台输入标记
+     */
+    public static String INTPUT_KEY = "FunTester";
+
     public static final String RESPONSE_CODE = "code";
 
     public static final String RESPONSE_CONTENT = "content";
