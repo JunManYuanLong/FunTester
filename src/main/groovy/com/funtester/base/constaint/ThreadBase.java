@@ -32,6 +32,11 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
     public static Progress progress;
 
     /**
+     * 单线程中断开关,用于动态调整并发压力,默认值false
+     */
+    private boolean interrunpt = false;
+
+    /**
      * 根据属性isTimesMode判断,次数或者时间(单位ms)
      */
     public int limit;
@@ -100,6 +105,7 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
      * 运行待测方法的之前的准备
      */
     public void before() {
+        //        TODO:增加线程管理
         ABORT.set(false);
     }
 
@@ -179,6 +185,7 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
      * 用于在某些情况下提前终止测试
      */
     public static void stop() {
+//        TODO:增加线程管理
         ABORT.set(true);
     }
 
@@ -189,6 +196,13 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
      */
     public static boolean needAbort() {
         return ABORT.get();
+    }
+
+    /**
+     * 线程终止,用于动态调节并发压力
+     */
+    public void abort() {
+        interrunpt = true;
     }
 
 }
