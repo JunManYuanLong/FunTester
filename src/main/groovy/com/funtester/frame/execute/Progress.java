@@ -150,6 +150,10 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
             this.canCount = false;
             this.isTimesMode = fix.isTimesMode;
             this.limit = fix.limit;
+        } else if (base instanceof HoldThread) {
+            this.isTimesMode = base.isTimesMode;
+            this.limit = base.limit;
+            this.canCount = true;
         } else {
             ParamException.fail("创建进度条对象失败!");
         }
@@ -185,7 +189,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
                 times.add(costs.get(size - 1));
                 times.add(costs.get(size - 2));
             }
-            qps = times.isEmpty() ? 0 : (int) (1000 * threadNum / (times.stream().collect(Collectors.summarizingInt(x -> x)).getAverage()));
+            qps = times.isEmpty() ? 0 : (int) (1000 * threadNum / (times.stream().collect(Collectors.summarizingInt(x -> x)).getAverage())) + 1;
         } else {
             qps = excuteNum.get() / (int) (Time.getTimeStamp() - startTime);
         }

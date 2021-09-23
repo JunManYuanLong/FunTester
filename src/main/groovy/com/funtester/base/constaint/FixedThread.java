@@ -59,16 +59,6 @@ public abstract class FixedThread<F> extends ThreadBase<F> {
     }
 
     @Override
-    public boolean status() {
-        boolean b = errorNum > executeNum * 2 && errorNum > 10;
-        if (b) {
-            ThreadBase.stop();
-            logger.error("错误率过高,停止测试!");
-        }
-        return b;
-    }
-
-    @Override
     protected void after() {
         super.after();
         GCThread.stop();
