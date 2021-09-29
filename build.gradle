@@ -1,13 +1,18 @@
 buildscript {
 
     repositories {
-        maven {url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        //        maven {url 'http://maven.aliyun.com/nexus/content/groups/public/'}
         //        maven { url 'http://repo1.maven.apache.org/maven2/' }
         ////        maven { url 'http://repo2.maven.org/maven2/' }
         ////        maven { url 'http://maven.oschina.net/content/groups/public/' }
         //        google()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
-
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
+    }
     gradle.taskGraph.whenReady {
         tasks.each {task ->
             if (task.name.toLowerCase().contains("test")) {
@@ -17,18 +22,20 @@ buildscript {
     }
 }
 
-plugins {
-    id 'java'
-}
-
 group 'funtester'
 version '1.0'
 
 apply plugin: 'groovy'
 apply plugin: 'java'
 apply plugin: 'idea'
-//apply plugin: 'distribution'   //打包tar包用到的插件
+apply plugin: "com.github.johnrengelman.shadow"
 
+//apply plugin: 'distribution'   //打包tar包用到的插件
+shadowJar {
+    baseName = 'funtester-1.0'
+    classifier = null
+    version = null
+}
 idea {
     module {
         downloadJavadoc = true
@@ -69,26 +76,26 @@ sourceSets {
     }
 }
 dependencies {
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
-    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.5'
-    implementation group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.5'
-    implementation group: 'org.apache.httpcomponents', name: 'httpasyncclient', version: '4.1.4'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.5'
+    compile group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.5'
+    compile group: 'org.apache.httpcomponents', name: 'httpasyncclient', version: '4.1.4'
     //    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.8.0'
     //    compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
     //    compile group: 'com.sun.jna', name: 'jna', version: '3.0.9'
-    implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.62'
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.62'
     //    compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.9.0'
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.12.1'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.12.1'
     //    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.12.1'
-    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
     //    compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.0'
     //    compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.0'
     //这只是其实一种方式,增加Groovy支持,如果不添加无法打包
-    implementation group: 'org.codehaus.groovy', name: 'groovy-all', version: '3.0.8'
+    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '3.0.8'
     compile group: 'redis.clients', name: 'jedis', version: '3.0.1'
     //处理报错Failed to load class "org.slf4j.impl.StaticLoggerBinder
-    testImplementation group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.32'
+    compile group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.32'
 
     //    compile group: 'com.alibaba', name: 'dubbo', version: '2.5.3'
     //    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
@@ -97,6 +104,7 @@ dependencies {
     //    compile group: 'io.socket', name: 'socket.io-client', version: '1.0.0'
 }
 
+//已失效
 jar {
     from {
         //添加依懒到打包文件
@@ -108,37 +116,37 @@ jar {
     //    }
 }
 
-ext {
-    if (project.hasProperty('profile')) {
-        profile = project['profile']
-    } else {
-        profile = "FunTester"
-    }
-    println "项目环境:" + profile
-}
-
-task sourcesJar(type: Jar, dependsOn: classes) {
-    println "拷贝源码!"
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    println "拷贝文档!"
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-tasks.withType(Javadoc) {
-    options.addStringOption('Xdoclint:none', '-quiet')
-    options.addStringOption('encoding', 'UTF-8')
-    options.addStringOption('charSet', 'UTF-8')
-}
-
-artifacts {
-    archives sourcesJar
-    archives javadocJar
-}
+//ext {
+//    if (project.hasProperty('profile')) {
+//        profile = project['profile']
+//    } else {
+//        profile = "FunTester"
+//    }
+//    println "项目环境:" + profile
+//}
+//
+//task sourcesJar(type: Jar, dependsOn: classes) {
+//    println "拷贝源码!"
+//    classifier = 'sources'
+//    from sourceSets.main.allSource
+//}
+//
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    println "拷贝文档!"
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+//
+//tasks.withType(Javadoc) {
+//    options.addStringOption('Xdoclint:none', '-quiet')
+//    options.addStringOption('encoding', 'UTF-8')
+//    options.addStringOption('charSet', 'UTF-8')
+//}
+//
+//artifacts {
+//    archives sourcesJar
+//    archives javadocJar
+//}
 
 //因为打包配置,这里会执行
 //task createDirs() {
@@ -175,47 +183,47 @@ task copyMoco(type: Copy) {
 
 task copyJarToGroovy(dependsOn: ['copyFun', 'copyOker', 'copyMoco']) {}
 
-task copyLibs(type: Copy) {
-    doLast {
-        from('build/libs')
-        into('build/package/lib')
-        println "依赖拷贝成功!"
-    }
-}
-
-task copyConf(type: Copy) {
-    doLast {
-        from('src/main/resources/' + profile)
-        into('build/package/conf')
-        println "从src/main/resources/" + profile + "拷贝配置文件"
-    }
-}
-
-task copyBin(type: Copy) {
-    doLast {
-        from('src/main/resources/bin')
-        into('build/package/bin')
-        fileMode 0744 //可能会失效,检查执行权限
-        println "依赖脚本,并设置可执行权限成功!"
-    }
-
-}
-// task 用来复制启动所依赖的jar包
-task copyDep(type: Copy) {
-    doLast {
-        from configurations.runtime
-        into 'build/package/lib'
-        println "复制启动所依赖的jar包成功!"
-    }
-}
-//把上述的task串联起来
-task prepareFile(dependsOn: [
-        'createDirs',
-        'copyLibs',
-        'copyConf',
-        'copyBin',
-        'copyDep'
-]) {} //如果没有内容的话,可以不需要大括号
+//task copyLibs(type: Copy) {
+//    doLast {
+//        from('build/libs')
+//        into('build/package/lib')
+//        println "依赖拷贝成功!"
+//    }
+//}
+//
+//task copyConf(type: Copy) {
+//    doLast {
+//        from('src/main/resources/' + profile)
+//        into('build/package/conf')
+//        println "从src/main/resources/" + profile + "拷贝配置文件"
+//    }
+//}
+//
+//task copyBin(type: Copy) {
+//    doLast {
+//        from('src/main/resources/bin')
+//        into('build/package/bin')
+//        fileMode 0744 //可能会失效,检查执行权限
+//        println "依赖脚本,并设置可执行权限成功!"
+//    }
+//
+//}
+//// task 用来复制启动所依赖的jar包
+//task copyDep(type: Copy) {
+//    doLast {
+//        from configurations.runtime
+//        into 'build/package/lib'
+//        println "复制启动所依赖的jar包成功!"
+//    }
+//}
+////把上述的task串联起来
+//task prepareFile(dependsOn: [
+//        'createDirs',
+//        'copyLibs',
+//        'copyConf',
+//        'copyBin',
+//        'copyDep'
+//]) {} //如果没有内容的话,可以不需要大括号
 //还有一种写法表示task之间的依赖:prepareFile.dependsOn createDirs,copyLibs,copyConf,copyBin,copyDep
 //指定打包的tar包的名字，以及文件来源目录
 //distributions {
