@@ -141,17 +141,17 @@ artifacts {
 }
 
 //因为打包配置,这里会执行
-task createDirs() {
-    doLast {
-        if (profile != "FunTester") {
-            file('build/package/lib').mkdirs()
-            file('build/package/bin').mkdirs()
-            file('build/package/logs').mkdirs()
-            file('build/package/conf').mkdirs()
-            println "文件夹创建成功!"
-        }
-    }
-}
+//task createDirs() {
+//    doLast {
+//        if (profile != "FunTester") {
+//            file('build/package/lib').mkdirs()
+//            file('build/package/bin').mkdirs()
+//            file('build/package/logs').mkdirs()
+//            file('build/package/conf').mkdirs()
+//            println "文件夹创建成功!"
+//        }
+//    }
+//}
 
 //用来拷贝FunTester框架jar包
 task copyFun(type: Copy) {

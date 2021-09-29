@@ -54,7 +54,7 @@ public class SourceCode extends Output {
     public static void waitForKey(Object key) {
         logger.warn("请输入“{}”继续运行！", key.toString());
         long start = Time.getTimeStamp();
-        scanner = new Scanner(System.in, DEFAULT_CHARSET.name());
+        scanner = scanner == null ? new Scanner(System.in, DEFAULT_CHARSET.name()) : scanner;
         while (scanner.hasNext()) {
             String next = scanner.next();
             if (next.equalsIgnoreCase(key.toString())) break;
@@ -72,7 +72,7 @@ public class SourceCode extends Output {
      * @return
      */
     public static String getInput() {
-        scanner = new Scanner(System.in, DEFAULT_CHARSET.name());
+        scanner = scanner == null ? new Scanner(System.in, DEFAULT_CHARSET.name()) : scanner;
         String next = scanner.next();
         logger.debug("输入内容：{}", next);
         return next;
@@ -82,7 +82,7 @@ public class SourceCode extends Output {
      * 关闭scanner，解决无法多次使用wait的BUG
      */
     public static void closeScanner() {
-        scanner.close();
+        if (scanner != null) scanner.close();
     }
 
     /**

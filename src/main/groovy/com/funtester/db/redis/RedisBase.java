@@ -130,7 +130,7 @@ public class RedisBase {
         }
     }
 
-    /**
+    /**将key对应的value 减 1
      * @param key
      * @return
      */
