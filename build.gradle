@@ -94,7 +94,7 @@ dependencies {
     compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '3.0.8'
     compile group: 'redis.clients', name: 'jedis', version: '3.0.1'
     //处理报错Failed to load class "org.slf4j.impl.StaticLoggerBinder
-    compile group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.32'
+    testCompile group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.32'
 
     //    compile group: 'com.alibaba', name: 'dubbo', version: '2.5.3'
     //    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'

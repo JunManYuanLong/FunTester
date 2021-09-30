@@ -67,6 +67,10 @@
 - [线程同步类CyclicBarrier在性能测试集合点应用](https://mp.weixin.qq.com/s/K2YySxX9T4v_rzbvIbIHJA)
 - [Java线程同步三剑客](https://mp.weixin.qq.com/s/cAmd11-HdwXNU3tp4TiDLg)
 - [Intellij运行Java程序启动等待BUG分享](https://mp.weixin.qq.com/s/Y6-CapeSV9UofwggHu_XbQ)
+- [又双叒叕一行代码：Map按值排序](https://mp.weixin.qq.com/s/D2_Xd_IsLEj2teVCrU9-Hw)
+- [getInteger还是getIntValue，这是一个问题](https://mp.weixin.qq.com/s/1GrgVEU6GEezmcSxOxGqZQ)
+- [Java测试框架九大法宝](https://mp.weixin.qq.com/s/PKK9NJm5UBU2HUFnNV9ysw)
+- [Springboot通过@WebFilter日志双份打印BUG分享](https://mp.weixin.qq.com/s/xPvB8Q-Dl8d8TMNJRJplZA)
 
 ## Groovy
 
@@ -104,6 +108,7 @@
 - [Java&Groovy下载文件对比](https://mp.weixin.qq.com/s/T9WUynej2yOZhCkDUhaLYw)
 - [反射执行Groovy类方法NoSuchMethodException解答](https://mp.weixin.qq.com/s/N0taBoB27CUXQ0vidK_55Q)
 - [Groovy反射invokeMethod传参实践](https://mp.weixin.qq.com/s/ltQqLg6_8V-WxsUh1ZslAQ)
+- [Groovy参数默认值在接口测试中应用](https://mp.weixin.qq.com/s/xmnmWHd_u0gBc4BxplYPuA)
 
 ## Python
 
@@ -114,7 +119,7 @@
 - [Python版Socket.IO接口测试脚本](https://mp.weixin.qq.com/s/oXBP6Sx3yPqlmvV9uCUScw)
 
 
-## 测开笔记
+## FunTester笔记
 
 - [我的开发日记（一）](https://mp.weixin.qq.com/s/eQgpOKbXsU9vOmxp0Xiklg)
 - [我的开发日记（二）](https://mp.weixin.qq.com/s/XuffL3ZmKKOgHDtH_cEYOw)
@@ -136,3 +141,14 @@
 - [FunTester测试框架架构图初探](https://mp.weixin.qq.com/s/bcMbVDkWbHSXjZFDeFyJsQ)
 - [FunTester测试项目架构图初探](https://mp.weixin.qq.com/s/wqb8FXRbEXrhDuZounmNXA)
 - [FunTester moco server框架架构图](https://mp.weixin.qq.com/s/xVNB3hlVm20HCeAxNJoW8A)
+- [DCS_FunTester分布式压测框架更新（一）](https://mp.weixin.qq.com/s/mT-traL5EbUxZ7K_qZSyew)
+- [DCS_FunTester分布式压测框架更新（二）](https://mp.weixin.qq.com/s/P4HY6xNBEE-8Yuq9wrmCTA)
+- [DCS_FunTester分布式压测框架更新（三）](https://mp.weixin.qq.com/s/L3ICSd9uy3p3oTuUMRu7_Q)
+- [环境基础【FunTester框架教程】](https://mp.weixin.qq.com/s/YnHuH88Ib3NAW_4z239HAA)
+- [HTTP接口测试基础【FunTester框架教程】](https://mp.weixin.qq.com/s/xnjI5tqTobd4_3seBDvOHQ)
+- [超万字回顾FunTester的前世今生](https://mp.weixin.qq.com/s/bEW6DK86qwgAWnjdkUGiZA)
+- [居家费拖鞋【FunTester居家日记】](https://mp.weixin.qq.com/s/9hNE3uuv-KArYvrHBowCxQ)
+- [一起吐槽接口文档](https://mp.weixin.qq.com/s/kdFx8gpqX4sVDW5HbcLx1g)
+- [变怪OR变菜【FunTester居家日记】](https://mp.weixin.qq.com/s/wN6EGqrxUbrnmVybgJhR4Q)
+- [Jira API的踩坑记](https://mp.weixin.qq.com/s/Mw9AzcK8tlceXEgaKqLVeg)
+- [FunTester抄代码之路](https://mp.weixin.qq.com/s/aY9njB17FIGq8wuLL7ICeg)

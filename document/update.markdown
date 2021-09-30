@@ -73,7 +73,6 @@
 - [使用jq处理JSON数据（二）](https://mp.weixin.qq.com/s/U1VwJGFVkrUyv3jMegapCg)
 - [使用jq处理JSON数据（三）](https://mp.weixin.qq.com/s/NdCb0FKJhxHMAj3HgeMoTQ)
 
-
 ## Jacoco覆盖率
 
 - [接口测试代码覆盖率（jacoco）方案分享](https://mp.weixin.qq.com/s/D73Sq6NLjeRKN8aCpGLOjQ)
@@ -99,6 +98,7 @@
 
 ## moco API
 
+- [FunTester moco server框架架构图](https://mp.weixin.qq.com/s/xVNB3hlVm20HCeAxNJoW8A)
 - [解决moco框架API在post请求json参数情况下query失效的问题](https://mp.weixin.qq.com/s/V5lXoepEBtPJrSUHA0Uz5A)
 - [给moco API添加limit功能](https://mp.weixin.qq.com/s/pXJECi15ieNLmA0uIqEqfA)
 - [给moco API添加random功能](https://mp.weixin.qq.com/s/YTcbFbFaWB5arW_fubgTTQ)
@@ -111,7 +111,6 @@
 - [mock延迟响应的接口](https://mp.weixin.qq.com/s/x_fu0InQpYIUJIQFi9a50g)
 - [moco固定QPS接口升级补偿机制](https://mp.weixin.qq.com/s/zAM91e_REo4edSPTLuHLOw)
 - [moco框架接口命中率统计实践](https://mp.weixin.qq.com/s/Fq7Sa6nu_GETMpEKy8zUZw)
-
 
 ## 工具类
 

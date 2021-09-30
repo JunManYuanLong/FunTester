@@ -186,6 +186,7 @@
 - [FunTester测试框架Redis性能测试实践](https://mp.weixin.qq.com/s/ReuB40bb8S3AvBTD3qHpAQ)
 - [FunTester框架Redis性能测试之list操作](https://mp.weixin.qq.com/s/WBjPdpc4RNZ-rUXhS9qdSg)
 - [全链路压测流量模型](https://mp.weixin.qq.com/s/nSJKvRgrh87LJjDQRBUtdw)
+- [FunTester框架Redis性能测试之map&INCR](https://mp.weixin.qq.com/s/SJtD4mxOUCSfcSTfhbA5Jw)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -295,6 +296,7 @@
 - [Java&Groovy下载文件对比](https://mp.weixin.qq.com/s/T9WUynej2yOZhCkDUhaLYw)
 - [反射执行Groovy类方法NoSuchMethodException解答](https://mp.weixin.qq.com/s/N0taBoB27CUXQ0vidK_55Q)
 - [Groovy反射invokeMethod传参实践](https://mp.weixin.qq.com/s/ltQqLg6_8V-WxsUh1ZslAQ)
+- [Groovy参数默认值在接口测试中应用](https://mp.weixin.qq.com/s/xmnmWHd_u0gBc4BxplYPuA)
 
 ## Python
 
@@ -640,6 +642,7 @@
 - [LT浏览器——响应式网站测试利器](https://mp.weixin.qq.com/s/9V8QdTvRstOcrOIk4V6qNg)
 - [自动化测试框架指南](https://mp.weixin.qq.com/s/hMC28BJxmDkvYPPdDvrXAA)
 - [建立测试自动化策略【译】](https://mp.weixin.qq.com/s/exvq_wgoXedjpNv1t24vhw)
+- [浏览器测试的三大挑战及解决方案【译】](https://mp.weixin.qq.com/s/jeEQ2FoLmN1zHXGwkKP4mg)
 
 ## 大咖风采
 
@@ -793,3 +796,5 @@
 - [颇具年代感的《JMeter中文操作手册》](https://mp.weixin.qq.com/s/5Yx9nUkndsHQ0mdyuqUuHQ)
 - [Jira API的踩坑记](https://mp.weixin.qq.com/s/Mw9AzcK8tlceXEgaKqLVeg)
 - [140道面试题目（UI、Linux、MySQL、API、安全）](https://mp.weixin.qq.com/s/TNI0g_ldTY_t5oWfVgAvXg)
+- [卷王本卷](https://mp.weixin.qq.com/s/tsmOEC9VHu6TPYfuyKEGyg)
+- [Postman进阶](https://mp.weixin.qq.com/s/97zmzMhmbwanNmUMlFR84g)

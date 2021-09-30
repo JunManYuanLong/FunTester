@@ -135,8 +135,14 @@
 - [2021年自动化测试流行趋势【译】](https://mp.weixin.qq.com/s/dIZxkNT6mjgRukLBy0AJ6Q)
 - [敏捷团队的自动化测试【译】](https://mp.weixin.qq.com/s/5BvzQvdssTyp8voC9J9www)
 - [自动化测试框架的完整指南【译】](https://mp.weixin.qq.com/s/-EofRDhKLHlTHyh4vvppwg)
-- [测试自动化最佳实践【译】](https://mp.weixin.qq.com/s/Q7LIgKphZytdPcNCaMDXJw)
 - [小白自动化测试指南](https://mp.weixin.qq.com/s/XrSQFi4mxRm-B1u5V3Tn1w)
+- [移动端测试策略【译】](https://mp.weixin.qq.com/s/jCOxGO3Br9Je7F8IWaQ2dg)
+- [如何应对自动化测试挑战【译】](https://mp.weixin.qq.com/s/OP65x3MtzlTKKODLumpxwQ)
+- [2021年移动APP四大测试趋势【译】](https://mp.weixin.qq.com/s/Zs6mknPG4_lJbcZSDV5Wpw)
+- [LT浏览器——响应式网站测试利器](https://mp.weixin.qq.com/s/9V8QdTvRstOcrOIk4V6qNg)
+- [自动化测试框架指南](https://mp.weixin.qq.com/s/hMC28BJxmDkvYPPdDvrXAA)
+- [建立测试自动化策略【译】](https://mp.weixin.qq.com/s/exvq_wgoXedjpNv1t24vhw)
+- [浏览器测试的三大挑战及解决方案【译】](https://mp.weixin.qq.com/s/jeEQ2FoLmN1zHXGwkKP4mg)
 
 ## 大咖风采
 
@@ -220,6 +226,9 @@
 - [Selenium自动化的JUnit参数化实践](https://mp.weixin.qq.com/s/WFu5rJaowxhAIcbEoEatkw)
 - [Selenium异常集锦](https://mp.weixin.qq.com/s/DDkaliSVthX-c_KKG-WwNA)
 - [Selenium自动化测试之前](https://mp.weixin.qq.com/s/DKjSnS9sP0SoHUw4OhOikw)
+- [Selenium4前线快报](https://mp.weixin.qq.com/s/pjfD7c0k0U7hM0a2DbzOow)
+- [Selenium4 Alpha-7升级体验](https://mp.weixin.qq.com/s/XC0EwYhuN1zwHCuQS8oEGg)
+- [Selenium 4以后，再不相见的API](https://mp.weixin.qq.com/s/vJcGC3vdpoVCTj5uloMIIw)
 
 ## APP性能
 
@@ -232,7 +241,6 @@
 
 ## 杂乱
 
-- [测试窝，首页抄我七篇原创还拉黑，你们的良心不会痛吗？](https://mp.weixin.qq.com/s/ke5avkknkDMCLMAOGT7wiQ)
 - [如何优雅地屏蔽掉Google搜索结果中视频、新闻、图片等结果](https://mp.weixin.qq.com/s/Iu7pt4Qk3w9sJp3n_UVAeQ)
 - [测试玩梗--欢迎补充](https://mp.weixin.qq.com/s/y_QHbsjFCQVSCfj-A4Usmg)
 - [图解HTTP脑图](https://mp.weixin.qq.com/s/100Vm8FVEuXs0x6rDGTipw)
@@ -259,10 +267,6 @@
 - [SpotBugs报错no Groovy library is defined解决办法](https://mp.weixin.qq.com/s/XxvuVS2TmlqT5-b22vObYQ)
 - [推荐好书：不要总是谦卑地弯着腰](https://mp.weixin.qq.com/s/mYNN9jSaikOF5aJEkb-Bug)
 - [2020年FunTester自我总结](https://mp.weixin.qq.com/s/DeDY1JZUTk3cjjQfr3DJRg)
-- [原创打油诗欣赏](https://mp.weixin.qq.com/s/3hPSDjH-3cWu6EVsjU0wOw)
-- [优秀讲师 | 腾讯云+社区权威认证](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)
-- [Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)
-- [GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)
 - [假期思考题](https://mp.weixin.qq.com/s/3DOnkmYDlwk-XKg4ge3ZUw)
 - [甩锅技能+1](https://mp.weixin.qq.com/s/nMwlfXZoDcRRPHcTKpvfNg)
 - [不要浪费自己的求知欲](https://mp.weixin.qq.com/s/WO0aQqmhU_xGUpWvYwOqUA)
@@ -270,12 +274,25 @@
 - [721法则推介](https://mp.weixin.qq.com/s/kyZB7S83jix9ivePxL3yCA)
 - [高潜力员工自检表](https://mp.weixin.qq.com/s/jvKrWz9sEzNyM1Pi1GbFtg)
 - [学习笔记杂谈](https://mp.weixin.qq.com/s/OCpM0qfxD3wudZ00KQgKvg)
-- [做最积极下班的那个](https://mp.weixin.qq.com/s/KIMyrqkqpryl3YeUSBAzmg)
-- [五一学习心得](https://mp.weixin.qq.com/s/N2w3M1mwMJSMBA-EzccoCg)
 - [想点大事--法律是种思维方式](https://mp.weixin.qq.com/s/b0cCAleJPAQDX7c6jgD87Q)
-
+- [把工作讲给家人听](https://mp.weixin.qq.com/s/CEH-FPPQU1b_UPz1oU0N3A)
 
 ## 社区风采
 
 - [Linux文件系统和vim命令](https://mp.weixin.qq.com/s/xzModz-upKv5CbAjtWOxpw)
 - [Linux/Mac简单又强大的基础工具（一）](https://mp.weixin.qq.com/s/zk3MCiy01Z_JRyTvU1oDgg)
+- [《漫画算法》读书心得（一）](https://mp.weixin.qq.com/s/eSB6TuDhT_0YO1VWb_wicA)
+- [Jmeter基于webscoket测试后台服务接口实战](https://mp.weixin.qq.com/s/yWwl1R-yaDWRpMQXtx_ebA)
+- [FunTester分享会第二期视频回顾](https://mp.weixin.qq.com/s/sZ7WW1twRrTRH2ym59DnHw)
+- [Tester专用名词：测试方案&测试计划&测试报告](https://mp.weixin.qq.com/s/w2IMNIl2qd5adxv4g6p9YA)
+- [初遇Postman，SayHi的三种方式](https://mp.weixin.qq.com/s/-UFIJ0ECPvm8LmiufNBwIg)
+- [如何学习Java【FunTester分享会第三期回顾】](https://mp.weixin.qq.com/s/ksXySWR5Lk3SrpiuSn_M1w)
+- [Airtest-android快速入门与实战](https://mp.weixin.qq.com/s/tBh8ko8vpfVn8bgDKVUAgg)
+- [超万字回顾FunTester的前世今生](https://mp.weixin.qq.com/s/bEW6DK86qwgAWnjdkUGiZA)
+- [Http请求基础笔记【before接口测试】](https://mp.weixin.qq.com/s/GUXFZ-sdEYzSpw98k-P3pQ)
+- [安卓APP测试知识大全【面试储备】](https://mp.weixin.qq.com/s/ZTHukqpwD0JYTB1cndAOcA)
+- [颇具年代感的《JMeter中文操作手册》](https://mp.weixin.qq.com/s/5Yx9nUkndsHQ0mdyuqUuHQ)
+- [Jira API的踩坑记](https://mp.weixin.qq.com/s/Mw9AzcK8tlceXEgaKqLVeg)
+- [140道面试题目（UI、Linux、MySQL、API、安全）](https://mp.weixin.qq.com/s/TNI0g_ldTY_t5oWfVgAvXg)
+- [卷王本卷](https://mp.weixin.qq.com/s/tsmOEC9VHu6TPYfuyKEGyg)
+- [Postman进阶](https://mp.weixin.qq.com/s/97zmzMhmbwanNmUMlFR84g)
