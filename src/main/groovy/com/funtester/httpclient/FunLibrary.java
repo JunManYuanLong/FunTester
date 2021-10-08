@@ -303,7 +303,7 @@ public class FunLibrary extends SourceCode {
     private static JSONObject getJsonResponse(String content, JSONObject cookies) {
         JSONObject jsonObject = new JSONObject();
         try {
-            if (StringUtils.isEmpty(content)) ParamException.fail("响应为空!");
+            if (StringUtils.isBlank(content)) ParamException.fail("响应为空!");
             jsonObject = JSONObject.parseObject(content);
         } catch (JSONException e) {
             jsonObject = new JSONObject() {{
