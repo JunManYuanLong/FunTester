@@ -115,7 +115,7 @@ public class Output extends Constant {
      *
      * @param arrays
      */
-    public static <T extends Number> void output(T[] nums) {
+    public static <F extends Number> void output(F[] nums) {
         if (ArrayUtils.isEmpty(nums)) return;
         Arrays.asList(nums).forEach(x -> output(x));
     }
@@ -124,10 +124,10 @@ public class Output extends Constant {
      * 泛型做输出数字对象
      *
      * @param x
-     * @param <T>
+     * @param <F>
      */
-    public static <T extends Number> void output(T x) {
-        output(x.toString());
+    public static <F extends Number> void output(F f) {
+        output(f.toString());
     }
 
     public static void output(Object o) {
@@ -214,11 +214,11 @@ public class Output extends Constant {
     }
 
     public static void show(Map map) {
-        new ConsoleTable(map);
+        new ConsoleFable(map);
     }
 
     public static void show(List<List<String>> rows) {
-        new ConsoleTable(rows);
+        new ConsoleFable(rows);
     }
 
     /**
@@ -235,12 +235,12 @@ public class Output extends Constant {
         }
     }
 
-    static class ConsoleTable extends SourceCode {
+    static class ConsoleFable extends SourceCode {
 
         List<Integer> rowLength = new ArrayList<>();
 
         public static void show(Map map) {
-            new ConsoleTable(map);
+            new ConsoleFable(map);
         }
 
         /**
@@ -248,7 +248,7 @@ public class Output extends Constant {
          *
          * @param map
          */
-        private ConsoleTable(Map map) {
+        private ConsoleFable(Map map) {
             Set set = map.keySet();
             int asInt0 = set.stream().mapToInt(key -> key.toString().length()).max().getAsInt();
             rowLength.add(asInt0 + 2);
@@ -269,7 +269,7 @@ public class Output extends Constant {
          *
          * @param rows
          */
-        private ConsoleTable(List<List<String>> rows) {
+        private ConsoleFable(List<List<String>> rows) {
             for (int i = 0; i < rows.size(); i++) {
                 List<String> line = rows.get(i);
                 for (int j = 0; j < line.size(); j++) {
@@ -298,7 +298,7 @@ public class Output extends Constant {
          * @return
          */
         public String getCel(int colum, String content) {
-            return (colum == 0 ? LINE + PART : PART) + StringUtil.center(content, rowLength.get(colum)) + (rowLength.size() - colum == 1 ? PART : EMPTY);
+            return (colum == 0 ? LINE + PART : PART) + StringUtil.center(content, rowLength.get(colum)) + (rowLength.size() - colum == 1 ? EMPTY : EMPTY);
         }
 
         /**
