@@ -56,6 +56,11 @@ public class Constant {
     public static final int BUCKET_SIZE = 32;
 
     /**
+     * 默认线程池的大小
+     */
+    public static final int POOL_SIZE = 16;
+
+    /**
      * 统计数据中的数量限制,小于该限制无法绘图
      */
     public static final int DRAW_LIMIT = BUCKET_SIZE * BUCKET_SIZE;
