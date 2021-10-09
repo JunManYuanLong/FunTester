@@ -5,9 +5,7 @@ import com.funtester.config.Constant;
 import com.funtester.config.HttpClientConstant;
 import com.funtester.utils.Regex;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpEntityEnclosingRequest;
-import org.apache.http.HttpHost;
-import org.apache.http.NoHttpResponseException;
+import org.apache.http.*;
 import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
@@ -269,6 +267,34 @@ public class ClientManage {
         return RequestConfig.custom().setConnectionRequestTimeout(HttpClientConstant.CONNECT_REQUEST_TIMEOUT).setConnectTimeout(HttpClientConstant.CONNECT_TIMEOUT).setSocketTimeout(HttpClientConstant.SOCKET_TIMEOUT).setCookieSpec(CookieSpecs.IGNORE_COOKIES).setRedirectsEnabled(false).setProxy(new HttpHost(ip, port)).build();
     }
 
+    /**
+     * 请求拦截器
+     *
+     * @return
+     */
+    public static HttpRequestInterceptor getHttpRequestInterceptor() {
+        return new HttpRequestInterceptor() {
+            @Override
+            public void process(HttpRequest httpRequest, HttpContext httpContext) throws HttpException, IOException {
+                logger.debug("请求拦截器成功!");
+            }
+        };
+    }
+
+
+    /**
+     * 响应拦截器
+     *
+     * @return
+     */
+    public static HttpResponseInterceptor getHttpResponseInterceptor() {
+        return new HttpResponseInterceptor() {
+            @Override
+            public void process(HttpResponse httpResponse, HttpContext httpContext) throws HttpException, IOException {
+                logger.debug("响应拦截器成功!");
+            }
+        };
+    }
 
     /**
      * 回收资源方法，关闭过期连接，关闭超时连接，用于另起线程回收连接池连接
