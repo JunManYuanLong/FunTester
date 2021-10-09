@@ -1,12 +1,29 @@
-package com.funtester.frame.execute;
+package com.funtester.frame.execute
 
-import java.util.concurrent.*;
+
+import java.util.concurrent.*
+import java.util.concurrent.atomic.AtomicInteger
 
 /**
  * Java线程池Demo
  */
 class ThreadPoolUtil {
 
+    private static AtomicInteger threadNum = new AtomicInteger(1)
+
+
+    private static volatile ExecutorService funPool;
+
+    private static volatile ThreadFactory FunFactory;
+
+
+    /**
+     * 异步执行任务
+     * @param runnable
+     */
+    static void executeSync(Runnable runnable) {
+        getFunPool().execute(runnable)
+    }
 
     /**
      * 重建可变线程池
@@ -29,7 +46,7 @@ class ThreadPoolUtil {
      * @return
      */
     static ThreadPoolExecutor createPool(int core = 200, int max = 1000, int liveTime = 5) {
-        return new ThreadPoolExecutor(core, max, liveTime, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(200));
+        return new ThreadPoolExecutor(core, max, liveTime, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(1000), getFactory());
 
     }
 
@@ -40,38 +57,53 @@ class ThreadPoolUtil {
      * @return
      */
     static ExecutorService createFixedPool(int size = 10) {
-        return Executors.newFixedThreadPool(size);
+        return createPool(size, size, 1);
     }
 
     /**
-     * 缓存线程池,无限长度
+     * 缓存线程池,默认最大长度256
      *
      * @return
      */
     static ExecutorService createCachePool() {
-        return Executors.newCachedThreadPool();
+        return createPool(0, 256, 1);
     }
 
-    /*获取线程安全的单例的线程池
-    static ThreadPoolExecutor getSingleThreadPoolExecutor(AtomicInteger atomicInteger) {
-            if (singleThreadPoolExecutor == null){
-                synchronized (objectLock){
-                    if (singleThreadPoolExecutor == null){
-                        singleThreadPoolExecutor = new ThreadPoolExecutor(1, 1, 5,
-                                TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(100),
-                                new ThreadFactory() {
-                                    @Override
-                                    Thread newThread(Runnable runnable) {
-                                        Thread thread = new Thread(runnable);
-                                        thread.setName("UserCenter-business-" + atomicInteger.getAndIncrement());
-                                        return thread;
-                                    }
-                                },
-                            new ThreadPoolExecutor.CallerRunsPolicy());
+    /**
+     * 获取异步任务连接池
+     * @return
+     */
+    static ExecutorService getFunPool() {
+        if (funPool == null) {
+            synchronized (ThreadPoolUtil.class) {
+                if (funPool == null) {
+                    funPool = createPool(0, 10, 1);
+                }
+            }
+        }
+        return funPool
+    }
+
+    /**
+     * 自定义{@link ThreadFactory}对象
+     * @return
+     */
+    static ThreadFactory getFactory() {
+        if (FunFactory == null) {
+            synchronized (ThreadPoolUtil.class) {
+                if (FunFactory == null) {
+                    FunFactory = new ThreadFactory() {
+
+                        @Override
+                        Thread newThread(Runnable runnable) {
+                            Thread thread = new Thread(runnable);
+                            thread.setName("FT-" + threadNum.getAndIncrement());
+                            return thread;
+                        }
                     }
                 }
             }
-            return singleThreadPoolExecutor;
         }
-        */
+        return FunFactory
+    }
 }
