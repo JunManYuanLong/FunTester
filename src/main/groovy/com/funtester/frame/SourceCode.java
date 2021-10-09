@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.funtester.base.exception.FailException;
 import com.funtester.base.exception.ParamException;
+import com.funtester.frame.execute.ThreadPoolUtil;
 import com.funtester.utils.Regex;
 import com.funtester.utils.Time;
 import org.apache.commons.lang3.ArrayUtils;
@@ -15,8 +16,10 @@ import org.apache.logging.log4j.Logger;
 import java.io.*;
 import java.text.DecimalFormat;
 import java.util.*;
+import java.util.concurrent.Phaser;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -495,6 +498,47 @@ public class SourceCode extends Output {
 
     public static JSONObject parse(String o) {
         return JSON.parseObject(o);
+    }
+
+
+    /**
+     * 异步执行某个代码块
+     * Java调用需要return,Groovy也不需要,语法兼容
+     *
+     * @param f
+     */
+    public static void fun(Supplier f) {
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                f.get();
+            }
+        };
+        ThreadPoolUtil.executeSync(runnable);
+    }
+
+    /**
+     * 异步执行代码块,使用{@link Phaser}进行多线程同步
+     *
+     * @param f
+     * @param phaser
+     */
+    public static void fun(Supplier f, Phaser phaser) {
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    phaser.register();
+                    f.get();
+                } catch (Exception e) {
+                    logger.warn("执行异步方法时发生错误!", e);
+                } finally {
+                    phaser.arriveAndDeregister();
+                }
+
+            }
+        };
+        ThreadPoolUtil.executeSync(runnable);
     }
 
     /**
