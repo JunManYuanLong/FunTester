@@ -29,7 +29,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -284,13 +283,13 @@ public class FunLibrary extends SourceCode {
      * @return
      */
     private static JSONObject afterResponse(CloseableHttpResponse response) {
+        Header[] setcookies = response.getHeaders("Set-Cookie");
+        if (setcookies.length == 0) return null;
         JSONObject cookies = new JSONObject();
-        List<Header> headers = Arrays.asList(response.getHeaders("Set-Cookie"));
-        if (headers.size() == 0) return cookies;
-        headers.forEach(x -> {
-            String[] split = x.getValue().split(";")[0].split("=", 2);
+        for (int i = 0; i < setcookies.length; i++) {
+            String[] split = setcookies[i].getValue().split(";")[0].split("=", 2);
             cookies.put(split[0], split[1]);
-        });
+        }
         return cookies;
     }
 
