@@ -48,6 +48,11 @@ public class FunLibrary extends SourceCode {
     public static boolean LOG_KEY = true;
 
     /**
+     * 是否需要处理响应头
+     */
+    public static boolean HEADER_HANDLE = false;
+
+    /**
      * 异步请求打印日志的callback
      */
     public static final FutureCallback<HttpResponse> logCallback = new FutureCallback<HttpResponse>() {
@@ -283,14 +288,20 @@ public class FunLibrary extends SourceCode {
      * @return
      */
     private static JSONObject afterResponse(CloseableHttpResponse response) {
-        Header[] setcookies = response.getHeaders("Set-Cookie");
-        if (setcookies.length == 0) return null;
-        JSONObject cookies = new JSONObject();
-        for (int i = 0; i < setcookies.length; i++) {
-            String[] split = setcookies[i].getValue().split(";")[0].split("=", 2);
-            cookies.put(split[0], split[1]);
+        if (!HEADER_HANDLE) return null;
+        Header[] allHeaders = response.getAllHeaders();
+        JSONObject hs = new JSONObject();
+        for (int i = 0; i < allHeaders.length; i++) {
+            Header header = allHeaders[i];
+            hs.compute(header.getName(), (x, y) -> {
+                if (y == null) {
+                    return header.getValue();
+                } else {
+                    return hs.getString(header.getName()) + PART + header.getValue();
+                }
+            });
         }
-        return cookies;
+        return hs;
     }
 
     /**
