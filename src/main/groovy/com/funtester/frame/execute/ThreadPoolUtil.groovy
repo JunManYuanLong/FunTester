@@ -1,5 +1,6 @@
 package com.funtester.frame.execute
 
+import com.funtester.config.Constant
 
 import java.util.concurrent.*
 import java.util.concurrent.atomic.AtomicInteger
@@ -46,7 +47,7 @@ class ThreadPoolUtil {
      * @return
      */
     static ThreadPoolExecutor createPool(int core = 200, int max = 1000, int liveTime = 5) {
-        return new ThreadPoolExecutor(core, max, liveTime, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(1000), getFactory());
+        return new ThreadPoolExecutor(core, max, liveTime, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(Constant.MAX_WAIT_TASK), getFactory());
 
     }
 
@@ -77,7 +78,7 @@ class ThreadPoolUtil {
         if (funPool == null) {
             synchronized (ThreadPoolUtil.class) {
                 if (funPool == null) {
-                    funPool = createPool(0, 10, 1);
+                    funPool = createPool(0, Constant.POOL_SIZE, 1);
                 }
             }
         }

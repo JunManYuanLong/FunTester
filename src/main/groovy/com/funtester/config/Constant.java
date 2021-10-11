@@ -61,6 +61,11 @@ public class Constant {
     public static final int POOL_SIZE = 16;
 
     /**
+     * 线程池最大等待队列长度
+     */
+    public static final int MAX_WAIT_TASK = 10_0000;
+
+    /**
      * 统计数据中的数量限制,小于该限制无法绘图
      */
     public static final int DRAW_LIMIT = BUCKET_SIZE * BUCKET_SIZE;
