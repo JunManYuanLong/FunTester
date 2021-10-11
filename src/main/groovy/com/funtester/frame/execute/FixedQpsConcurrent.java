@@ -139,7 +139,7 @@ public class FixedQpsConcurrent extends SourceCode {
                     new FunTester(countDownLatch).start();
                 }
                 try {
-                    countDownLatch.wait();
+                    countDownLatch.await();
                 } catch (InterruptedException e) {
                     logger.error("软启动停止异常: {}", e);
                 }
@@ -170,7 +170,7 @@ public class FixedQpsConcurrent extends SourceCode {
         progress.stop();
         GCThread.stop();
         try {
-            countDownLatch.wait();
+            countDownLatch.await();
         } catch (InterruptedException e) {
             logger.error("等待任务结束失败", e);
         }
