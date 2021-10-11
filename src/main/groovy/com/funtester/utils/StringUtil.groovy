@@ -163,7 +163,7 @@ class StringUtil extends SourceCode {
     }
 
     /**
-     * 返回一个居左的文本
+     * 返回一个居右的文本
      * @param str
      * @param size
      * @return
@@ -173,7 +173,7 @@ class StringUtil extends SourceCode {
     }
 
     /**
-     * 返回一个居右的文本
+     * 返回一个居左的文本
      * @param str
      * @param size
      * @return
