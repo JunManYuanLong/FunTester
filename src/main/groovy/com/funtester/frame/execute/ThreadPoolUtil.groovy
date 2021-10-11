@@ -1,6 +1,11 @@
 package com.funtester.frame.execute
 
 import com.funtester.config.Constant
+import com.funtester.config.HttpClientConstant
+import com.funtester.frame.SourceCode
+import com.funtester.utils.StringUtil
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 
 import java.util.concurrent.*
 import java.util.concurrent.atomic.AtomicInteger
@@ -9,6 +14,8 @@ import java.util.concurrent.atomic.AtomicInteger
  * Java线程池Demo
  */
 class ThreadPoolUtil {
+
+    private static final Logger logger = LogManager.getLogger(ThreadPoolUtil.class);
 
     private static AtomicInteger threadNum = new AtomicInteger(1)
 
@@ -46,9 +53,8 @@ class ThreadPoolUtil {
      * @param liveTime 空闲时间
      * @return
      */
-    static ThreadPoolExecutor createPool(int core = 200, int max = 1000, int liveTime = 5) {
-        return new ThreadPoolExecutor(core, max, liveTime, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(Constant.MAX_WAIT_TASK), getFactory());
-
+    static ThreadPoolExecutor createPool(int core = HttpClientConstant.THREADPOOL_CORE, int max = HttpClientConstant.THREADPOOL_MAX, int liveTime = HttpClientConstant.THREAD_ALIVE_TIME, BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(Constant.MAX_WAIT_TASK), ThreadFactory factory = getFactory(), RejectedExecutionHandler rejectedExecutionHandler = new ThreadPoolExecutor.AbortPolicy()) {
+        return new ThreadPoolExecutor(core, max, liveTime, TimeUnit.SECONDS, workQueue, factory, rejectedExecutionHandler);
     }
 
     /**
@@ -58,7 +64,7 @@ class ThreadPoolUtil {
      * @return
      */
     static ExecutorService createFixedPool(int size = 10) {
-        return createPool(size, size, 1);
+        return createPool(size, size);
     }
 
     /**
@@ -78,7 +84,8 @@ class ThreadPoolUtil {
         if (funPool == null) {
             synchronized (ThreadPoolUtil.class) {
                 if (funPool == null) {
-                    funPool = createPool(0, Constant.POOL_SIZE, 1);
+                    funPool = createFixedPool(Constant.POOL_SIZE);
+                    daemon()
                 }
             }
         }
@@ -98,7 +105,8 @@ class ThreadPoolUtil {
                         @Override
                         Thread newThread(Runnable runnable) {
                             Thread thread = new Thread(runnable);
-                            thread.setName("FT-" + threadNum.getAndIncrement());
+                            def increment = threadNum.getAndIncrement()
+                            thread.setName("FT-" + StringUtil.right(Constant.EMPTY+increment, 3));
                             return thread;
                         }
                     }
@@ -107,4 +115,51 @@ class ThreadPoolUtil {
         }
         return FunFactory
     }
+
+    /**
+     * 关闭异步线程池,不然会停不下来
+     */
+    static void shutFun() {
+        if (getFunPool().isShutdown()) return
+        logger.warn("异步线程池关闭!")
+        getFunPool().shutdown()
+    }
+
+
+    /**
+     * 执行daemon线程,保障main方法结束后关闭线程池
+     * @return
+     */
+    static boolean daemon() {
+        def thread = new Thread(new Runnable() {
+
+            @Override
+            void run() {
+                SourceCode.sleep(3.0)
+                while (checkMain()) {
+                    SourceCode.sleep(1.0)
+                }
+                ThreadPoolUtil.shutFun()
+            }
+        })
+        thread.setDaemon(true)
+        thread.start()
+        logger.info("守护线程开启!")
+    }
+
+    /**
+     * 检查main线程是否存活
+     * @return
+     */
+    static boolean checkMain() {
+        def count = Thread.activeCount()
+        def group = Thread.currentThread().getThreadGroup()
+        def threads = new Thread[count]
+        group.enumerate(threads)
+        threads.each {
+            if (it.getName() == "main") return true
+        }
+        false
+    }
+
 }

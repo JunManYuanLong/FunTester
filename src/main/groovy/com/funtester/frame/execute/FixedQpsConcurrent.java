@@ -114,7 +114,7 @@ public class FixedQpsConcurrent extends SourceCode {
     private FixedQpsConcurrent(String desc) {
         this.desc = StatisticsUtil.getFileName(desc);
         if (executorService == null)
-            ThreadPoolUtil.createPool(HttpClientConstant.THREADPOOL_CORE, HttpClientConstant.THREADPOOL_MAX, HttpClientConstant.THREAD_ALIVE_TIME);
+            ThreadPoolUtil.createFixedPool(HttpClientConstant.THREADPOOL_MAX);
     }
 
     private FixedQpsConcurrent() {

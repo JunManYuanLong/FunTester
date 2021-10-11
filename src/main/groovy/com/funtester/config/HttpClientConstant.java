@@ -118,7 +118,7 @@ public class HttpClientConstant {
     /**
      * 线程池,线程最大空闲时间
      */
-    public static int THREAD_ALIVE_TIME = 10;
+    public static int THREAD_ALIVE_TIME = 5;
 
     /**
      * 线程池核心线程数
