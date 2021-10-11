@@ -3,6 +3,7 @@ package com.funtester.frame.execute
 import com.funtester.config.Constant
 import com.funtester.config.HttpClientConstant
 import com.funtester.frame.SourceCode
+import com.funtester.httpclient.FunLibrary
 import com.funtester.utils.StringUtil
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
@@ -140,6 +141,7 @@ class ThreadPoolUtil {
                     SourceCode.sleep(1.0)
                 }
                 ThreadPoolUtil.shutFun()
+                FunLibrary.testOver()
             }
         })
         thread.setDaemon(true)
