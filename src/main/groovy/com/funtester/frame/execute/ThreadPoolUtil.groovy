@@ -70,11 +70,11 @@ class ThreadPoolUtil {
 
     /**
      * 缓存线程池,默认最大长度256
-     *
+     * {@link java.util.concurrent.SynchronousQueue}写入操作等待拉取操作.实际容量为0的队列
      * @return
      */
-    static ExecutorService createCachePool() {
-        return createPool(0, 256, 1);
+    static ExecutorService createCachePool(int max = 256) {
+        return createPool(0, max, 3, new SynchronousQueue<Runnable>())
     }
 
     /**
@@ -107,7 +107,7 @@ class ThreadPoolUtil {
                         Thread newThread(Runnable runnable) {
                             Thread thread = new Thread(runnable);
                             def increment = threadNum.getAndIncrement()
-                            thread.setName("FT-" + StringUtil.right(Constant.EMPTY+increment, 3));
+                            thread.setName("FT-" + StringUtil.right(Constant.EMPTY + increment, 3));
                             return thread;
                         }
                     }
@@ -136,7 +136,6 @@ class ThreadPoolUtil {
 
             @Override
             void run() {
-                SourceCode.sleep(3.0)
                 while (checkMain()) {
                     SourceCode.sleep(1.0)
                 }
@@ -145,8 +144,9 @@ class ThreadPoolUtil {
             }
         })
         thread.setDaemon(true)
+        thread.setName("FT-D")
         thread.start()
-        logger.info("守护线程开启!")
+        logger.info("守护线程:{}开启!", thread.getName())
     }
 
     /**
@@ -158,10 +158,36 @@ class ThreadPoolUtil {
         def group = Thread.currentThread().getThreadGroup()
         def threads = new Thread[count]
         group.enumerate(threads)
-        threads.each {
-            if (it.getName() == "main") return true
+        for (i in 0..<count) {
+            if (threads[i].getName() == "main")
+                return true
         }
         false
+    }
+
+    /**
+     * 保留方法,备用
+     */
+    static void getAllThread() {
+        ThreadGroup group = Thread.currentThread().getThreadGroup();
+        ThreadGroup topGroup = group;
+        // 遍历线程组树，获取根线程组
+        while (group != null) {
+            topGroup = group;
+            group = group.getParent();
+        }
+        // 激活的线程数再加一倍，防止枚举时有可能刚好有动态线程生成
+        int slackSize = topGroup.activeCount() * 2;
+        Thread[] slackThreads = new Thread[slackSize];
+        // 获取根线程组下的所有线程，返回的actualSize便是最终的线程数
+        int actualSize = topGroup.enumerate(slackThreads);
+        Thread[] atualThreads = new Thread[actualSize];
+        // 复制slackThreads中有效的值到atualThreads
+        System.arraycopy(slackThreads, 0, atualThreads, 0, actualSize);
+        System.out.println("Threads size is " + atualThreads.length);
+        for (Thread thread : atualThreads) {
+            System.out.println("Thread name : " + thread.getName());
+        }
     }
 
 }
