@@ -10,16 +10,16 @@ buildscript {
             url "https://plugins.gradle.org/m2/"
         }
     }
-//    dependencies {
-//        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
-//    }
-//    gradle.taskGraph.whenReady {
-//        tasks.each {task ->
-//            if (task.name.toLowerCase().contains("test")) {
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
+    }
+    gradle.taskGraph.whenReady {
+        tasks.each {task ->
+            if (task.name.toLowerCase().contains("test")) {
 //                task.enabled = false
-//            }
-//        }
-//    }
+            }
+        }
+    }
 }
 
 group 'funtester'
@@ -63,7 +63,7 @@ repositories {
 
 test {
     useJUnitPlatform()
-//    exclude "com/test/**"
+    exclude "com/test/**"
     testLogging {
         events "passed", "skipped", "failed"
     }
@@ -107,7 +107,7 @@ dependencies {
     //    compile group: 'io.socket', name: 'socket.io-client', version: '1.0.0'
 }
 
-//已失效
+//已失效,后期需要借助插件shadow完成
 jar {
     from {
         //添加依懒到打包文件
