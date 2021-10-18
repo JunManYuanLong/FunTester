@@ -130,9 +130,4 @@ public class HttpClientConstant {
      */
     public static int THREADPOOL_MAX = 1000;
 
-    /**
-     * 关闭线程池最大等待时间
-     */
-    public static int WAIT_TERMINATION_TIMEOUT = 10;
-
 }
