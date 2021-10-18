@@ -13,13 +13,13 @@ buildscript {
 //    dependencies {
 //        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
 //    }
-    gradle.taskGraph.whenReady {
-        tasks.each {task ->
-            if (task.name.toLowerCase().contains("test")) {
-                task.enabled = false
-            }
-        }
-    }
+//    gradle.taskGraph.whenReady {
+//        tasks.each {task ->
+//            if (task.name.toLowerCase().contains("test")) {
+//                task.enabled = false
+//            }
+//        }
+//    }
 }
 
 group 'funtester'
@@ -35,15 +35,14 @@ apply plugin: 'idea'
 //    classifier = null
 //    version = null
 //}
+
 idea {
     module {
         downloadJavadoc = true
         downloadSources = true
     }
 }
-test {
-    exclude 'com/funtest/**'
-}
+
 sourceCompatibility = 1.8
 
 repositories {
@@ -64,7 +63,10 @@ repositories {
 
 test {
     useJUnitPlatform()
-    exclude "com/test/**"
+//    exclude "com/test/**"
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
 
 sourceSets {
@@ -95,6 +97,8 @@ dependencies {
     compile group: 'redis.clients', name: 'jedis', version: '3.0.1'
     //处理报错Failed to load class "org.slf4j.impl.StaticLoggerBinder
     testCompile group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.32'
+
+    testCompile group: 'org.spockframework', name: 'spock-core', version: '2.0-groovy-3.0'
 
     //    compile group: 'com.alibaba', name: 'dubbo', version: '2.5.3'
     //    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
