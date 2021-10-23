@@ -64,7 +64,7 @@ class ThreadPoolUtil {
      * @param size
      * @return
      */
-    static ExecutorService createFixedPool(int size = 10) {
+    static ThreadPoolExecutor createFixedPool(int size = 10) {
         return createPool(size, size);
     }
 
@@ -73,7 +73,7 @@ class ThreadPoolUtil {
      * {@link java.util.concurrent.SynchronousQueue}写入操作等待拉取操作.实际容量为0的队列
      * @return
      */
-    static ExecutorService createCachePool(int max = 256) {
+    static ThreadPoolExecutor createCachePool(int max = 256) {
         return createPool(0, max, 3, new SynchronousQueue<Runnable>())
     }
 
@@ -81,7 +81,7 @@ class ThreadPoolUtil {
      * 获取异步任务连接池
      * @return
      */
-    static ExecutorService getFunPool() {
+    static ThreadPoolExecutor getFunPool() {
         if (funPool == null) {
             synchronized (ThreadPoolUtil.class) {
                 if (funPool == null) {

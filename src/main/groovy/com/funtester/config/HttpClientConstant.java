@@ -128,6 +128,6 @@ public class HttpClientConstant {
     /**
      * 线程池最大线程数
      */
-    public static int THREADPOOL_MAX = 1000;
+    public static int THREADPOOL_MAX = 2000;
 
 }

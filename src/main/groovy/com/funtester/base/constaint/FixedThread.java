@@ -13,7 +13,7 @@ public abstract class FixedThread<F> extends ThreadBase<F> {
 
     private static final long serialVersionUID = -4617192188292407063L;
 
-    private static final Logger logger = LogManager.getLogger(ThreadLimitTimesCount.class);
+    private static final Logger logger = LogManager.getLogger(FixedThread.class);
 
     public FixedThread(F f, int limit, boolean isTimesMode) {
         this.isTimesMode = isTimesMode;
@@ -64,5 +64,7 @@ public abstract class FixedThread<F> extends ThreadBase<F> {
         GCThread.stop();
     }
 
+    @Override
+    public abstract FixedThread clone();
 
 }
