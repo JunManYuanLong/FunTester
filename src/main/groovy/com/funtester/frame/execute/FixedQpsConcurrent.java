@@ -2,6 +2,7 @@ package com.funtester.frame.execute;
 
 import com.funtester.base.bean.PerformanceResultBean;
 import com.funtester.base.constaint.FixedQps;
+import com.funtester.base.constaint.ThreadBase;
 import com.funtester.config.Constant;
 import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.Save;
@@ -24,6 +25,7 @@ import static java.util.stream.Collectors.toList;
 /**
  * 并发类，用于启动压力脚本
  */
+@Deprecated
 public class FixedQpsConcurrent extends SourceCode {
 
     private static Logger logger = LogManager.getLogger(FixedQpsConcurrent.class);
@@ -137,8 +139,11 @@ public class FixedQpsConcurrent extends SourceCode {
                 double v = RUNUP_TIME / executeThread;
                 CountDownLatch countDownLatch = new CountDownLatch(executeThread);
                 for (int i = 0; i < executeThread; i++) {
+                    sleep(v);
                     new FunTester(countDownLatch).start();
                 }
+                sleep(1.0);
+                needAbord = true;
                 try {
                     countDownLatch.await();
                 } catch (InterruptedException e) {
@@ -154,6 +159,7 @@ public class FixedQpsConcurrent extends SourceCode {
                 }
             }
             sleep(1.0);
+            needAbord = false;
             allTimes = new Vector<>();
             marks = new Vector<>();
             executeTimes.set(0);
@@ -207,7 +213,7 @@ public class FixedQpsConcurrent extends SourceCode {
             try {
                 while (true) {
                     executorService.execute(threads.get(limit-- % queueLength).clone());
-                    if (needAbord || (isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > baseThread.limit))
+                    if (ThreadBase.needAbort() || (isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > baseThread.limit))
                         break;
                     SourceCode.sleep(nanosec);
                 }

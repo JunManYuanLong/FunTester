@@ -1,6 +1,7 @@
 package com.funtester.frame.execute;
 
 import com.funtester.base.bean.PerformanceResultBean;
+import com.funtester.base.constaint.FixedThread;
 import com.funtester.base.constaint.ThreadBase;
 import com.funtester.base.exception.FailException;
 import com.funtester.config.Constant;
@@ -45,7 +46,7 @@ public class Concurrent extends SourceCode {
     /**
      * 任务集
      */
-    public List<ThreadBase> threads = new ArrayList<>();
+    public List<FixedThread> threads = new ArrayList<>();
 
     /**
      * 线程数
@@ -92,7 +93,7 @@ public class Concurrent extends SourceCode {
      * @param threadNum 线程数
      * @param desc      任务描述
      */
-    public Concurrent(ThreadBase thread, int threadNum, String desc) {
+    public Concurrent(FixedThread thread, int threadNum, String desc) {
         this(threadNum, desc);
         range(threadNum).forEach(x -> threads.add(thread.clone()));
     }
@@ -101,7 +102,7 @@ public class Concurrent extends SourceCode {
      * @param threads 线程组
      * @param desc    任务描述
      */
-    public Concurrent(List<ThreadBase> threads, String desc) {
+    public Concurrent(List<FixedThread> threads, String desc) {
         this(threads.size(), desc);
         this.threads = threads;
     }

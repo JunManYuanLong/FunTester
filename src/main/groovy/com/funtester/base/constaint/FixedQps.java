@@ -6,6 +6,7 @@ import com.funtester.utils.Time;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+@Deprecated
 public abstract class FixedQps<F> extends ThreadBase<F> {
 
     private static Logger logger = LogManager.getLogger(FixedQps.class);
