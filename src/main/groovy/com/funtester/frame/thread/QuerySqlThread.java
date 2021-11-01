@@ -1,7 +1,6 @@
 package com.funtester.frame.thread;
 
 import com.funtester.base.constaint.FixedThread;
-import com.funtester.base.constaint.ThreadBase;
 import com.funtester.base.interfaces.IMySqlBasic;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -44,7 +43,7 @@ public class QuerySqlThread extends FixedThread {
     }
 
     @Override
-    public ThreadBase clone() {
+    public FixedThread clone() {
         return null;
     }
 
