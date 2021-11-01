@@ -77,7 +77,7 @@ public class SourceCode extends Output {
     public static String getInput() {
         scanner = scanner == null ? new Scanner(System.in, DEFAULT_CHARSET.name()) : scanner;
         String next = scanner.next();
-        logger.debug("输入内容：{}", next);
+        logger.info("输入内容：{}", next);
         return next;
     }
 
