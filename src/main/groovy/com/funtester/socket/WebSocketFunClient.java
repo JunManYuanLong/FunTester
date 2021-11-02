@@ -19,6 +19,7 @@ import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.util.LinkedList;
 import java.util.Vector;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * socket客户端代码,限于WebSocket协议的测试
@@ -28,6 +29,8 @@ public class WebSocketFunClient extends WebSocketClient {
     private static Logger logger = LogManager.getLogger(WebSocketFunClient.class);
 
     public static Vector<WebSocketFunClient> clients = new Vector<>();
+
+    private static AtomicInteger index = new AtomicInteger(0);
 
     /**
      * 存储收到的消息
@@ -58,7 +61,7 @@ public class WebSocketFunClient extends WebSocketClient {
      * @return
      */
     public static WebSocketFunClient getInstance(String url) {
-        return getInstance(url, Constant.DEFAULT_STRING + StringUtil.getString(4));
+        return getInstance(url, Constant.DEFAULT_STRING + Constant.CONNECTOR + index.getAndIncrement());
     }
 
     /**
