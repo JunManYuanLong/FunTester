@@ -146,7 +146,7 @@ public class Concurrent extends SourceCode {
         logger.info("=========预热完成,开始测试!=========");
         countDownLatch = new CountDownLatch(threadNum);
         ThreadBase.progress = new Progress(threads, StatisticsUtil.getTrueName(desc));
-        new Thread(ThreadBase.progress).start();
+        new Thread(ThreadBase.progress,"progress").start();
         startTime = Time.getTimeStamp();
         for (int i = 0; i < threadNum; i++) {
             ThreadBase thread = threads.get(i);

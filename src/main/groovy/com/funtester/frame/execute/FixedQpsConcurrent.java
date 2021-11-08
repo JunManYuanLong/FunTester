@@ -167,7 +167,7 @@ public class FixedQpsConcurrent extends SourceCode {
         }
         logger.info("=========预热完成,开始测试!=========");
         Progress progress = new Progress(threads, StatisticsUtil.getTrueName(desc), executeTimes);
-        new Thread(progress).start();
+        new Thread(ThreadBase.progress,"progress").start();
         startTime = Time.getTimeStamp();
         CountDownLatch countDownLatch = new CountDownLatch(executeThread);
         for (int i = 0; i < executeThread; i++) {

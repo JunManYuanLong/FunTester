@@ -132,7 +132,7 @@ public class HoldConcurrent extends SourceCode {
         funtester.start();
         ThreadBase.progress = new Progress(threads, StatisticsUtil.getTrueName(desc));
         ThreadBase.progress.threadNum = 0;
-        new Thread(ThreadBase.progress).start();
+        new Thread(ThreadBase.progress,"progress").start();
         startTime = Time.getTimeStamp();
         for (int i = 0; i < threadNum; i++) {
             if (HOLD.get() == 1) {
