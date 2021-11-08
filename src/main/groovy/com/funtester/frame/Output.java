@@ -39,6 +39,10 @@ public class Output extends Constant {
         logger.info(text);
     }
 
+    public static void output(byte[] bytes) {
+        logger.info(new String(bytes));
+    }
+
     /**
      * 输出，针对各种不同情况做兼容
      * <p>
