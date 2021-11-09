@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 
 /**
- * 并发类，用于启动压力脚本
+ * 动态压测模型的启动类
  */
 public class FunConcurrent extends SourceCode {
 
@@ -48,7 +48,7 @@ public class FunConcurrent extends SourceCode {
      */
     public void start() {
         if (controller == null) controller = new FunTester();
-        new Thread(controller).start();
+        new Thread(controller, "接收器").start();
         threads.forEach(f -> addTask(f));
     }
 
