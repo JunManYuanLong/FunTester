@@ -2,8 +2,6 @@ package com.funtester.frame.thread;
 
 import com.funtester.base.constaint.FixedThread;
 import com.funtester.base.interfaces.IMySqlBasic;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
 
@@ -13,8 +11,6 @@ import java.sql.SQLException;
 public class QuerySqlThread extends FixedThread {
 
     private static final long serialVersionUID = 879371247008746883L;
-
-    private static Logger logger = LogManager.getLogger(QuerySqlThread.class);
 
     String sql;
 

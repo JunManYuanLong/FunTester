@@ -17,7 +17,7 @@ import org.apache.logging.log4j.Logger;
  * @param <F> 闭包参数传递使用,Groovy脚本会有一些兼容问题,部分对象需要tostring获取参数值
  */
 @Deprecated
-public abstract class ThreadLimitTimesCount<F> extends ThreadBase<F> {
+public abstract class ThreadLimitTimesCount<F> extends FixedThread<F> {
 
     private static final long serialVersionUID = -4617192188292407063L;
 
