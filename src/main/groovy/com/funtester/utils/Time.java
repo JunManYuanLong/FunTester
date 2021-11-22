@@ -46,19 +46,11 @@ public class Time {
         }
     };
 
-    /**
-     * 获取calendar类对象，默认UTC时间
-     *
-     * @return
-     */
-    private static ThreadLocal<Calendar> calendar = new ThreadLocal() {
-        @Override
-        protected Calendar initialValue() {
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(new Date());
-            return calendar;
-        }
-    };
+    public static Calendar calendarInit() {
+        Calendar instance = Calendar.getInstance();
+        instance.setTime(new Date());
+        return instance;
+    }
 
     /**
      * 获取时间戳，13位long类型
@@ -126,7 +118,7 @@ public class Time {
      * @return
      */
     public static int getWeeksNum() {
-        return calendar.get().get(Calendar.WEEK_OF_YEAR);
+        return calendarInit().get(Calendar.WEEK_OF_YEAR);
     }
 
     /**
@@ -135,7 +127,7 @@ public class Time {
      * @return
      */
     public static int getMonth() {
-        return calendar.get().get(Calendar.MONTH) + 1;
+        return calendarInit().get(Calendar.MONTH) + 1;
     }
 
     /**
@@ -144,7 +136,7 @@ public class Time {
      * @return
      */
     public static int getDay() {
-        return calendar.get().get(Calendar.DAY_OF_MONTH);
+        return calendarInit().get(Calendar.DAY_OF_MONTH);
     }
 
     /**
@@ -153,19 +145,19 @@ public class Time {
      * @return
      */
     public static int getYear() {
-        return calendar.get().get(Calendar.YEAR);
+        return calendarInit().get(Calendar.YEAR);
     }
 
     public static int getHour() {
-        return calendar.get().get(Calendar.HOUR_OF_DAY);
+        return calendarInit().get(Calendar.HOUR_OF_DAY);
     }
 
     public static int getMinute() {
-        return calendar.get().get(Calendar.MINUTE);
+        return calendarInit().get(Calendar.MINUTE);
     }
 
     public static int getSecond() {
-        return calendar.get().get(Calendar.SECOND);
+        return calendarInit().get(Calendar.SECOND);
     }
 
     /**
@@ -197,7 +189,7 @@ public class Time {
      * @return 返回时间戳，毫秒
      */
     public static long getTimeStamp(String time) {
-        time = time.replaceAll("\\D*", Constant.EMPTY).substring(0,14);
+        time = time.replaceAll("\\D*", Constant.EMPTY).substring(0, 14);
         try {
             return NUM_FORMAT.get().parse(time).getTime();
         } catch (ParseException e) {
