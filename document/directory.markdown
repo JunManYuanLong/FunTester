@@ -1,4 +1,4 @@
-# 总目录
+# 0总目录
 
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
@@ -40,7 +40,6 @@
 - [多项目登录互踢测试用例](https://mp.weixin.qq.com/s/Nn_CUy_j7j6bUwHSkO0pCQ)
 - [httpclient使用HTTP代理实践](https://mp.weixin.qq.com/s/24IJwJ1TJWHdfj0PzSjmvw)
 - [HTTP异步连接池和多线程实践](https://mp.weixin.qq.com/s/8M348LuHakBe4GAEnnDPxw)
-- [IntelliJ中基于文本的HTTP客户端](https://mp.weixin.qq.com/s/-9qi_lLVVfxQKEFmcRYFtA)
 - [socket接口开发和测试初探](https://mp.weixin.qq.com/s/uhmkbrMp91PP1pQjlEofOQ)
 - [IntelliJ中基于文本的HTTP客户端](https://mp.weixin.qq.com/s/-9qi_lLVVfxQKEFmcRYFtA)
 - [基于WebSocket的client封装](https://mp.weixin.qq.com/s/1lZvsuGEa6hiRHOgOT-Kmg)
@@ -55,8 +54,10 @@
 - [基于Socket.IO的白板点阵坐标传输接口测试实践](https://mp.weixin.qq.com/s/pDAx4jwYvcRcdld5cKLAUw)
 - [插上NIO翅膀，FunTester飞上天](https://mp.weixin.qq.com/s/xnprWjuQWn16tO09JquXiA)
 - [Java NIO在接口自动化中应用](https://mp.weixin.qq.com/s/o6zBzAfJkB5SQafLD4m1cg)
+- [线程池处理批量接口请求实践](https://mp.weixin.qq.com/s/iHpqTWn4v77vSp_IuMib4A)
+- [Go WebSocket开发与测试实践【/net/websocket】](https://mp.weixin.qq.com/s/Yj4vD5AYVWcTlmsbSrxHng)
 
-## 接口测试视频
+# 接口测试视频
 
 - [FunTester测试框架视频讲解（序）](https://mp.weixin.qq.com/s/CJrHAAniDMyr5oDXYHpPcQ)
 - [获取HTTP请求对象--测试框架视频讲解](https://mp.weixin.qq.com/s/hG89sGf96GcPb2hGnludsw)
@@ -74,6 +75,14 @@
 - [性能框架多线程基类和执行类--视频讲解](https://mp.weixin.qq.com/s/8Dh-5XfvX8Fm4IqmzbtY6Q)
 - [定时和定量压测模式实现--视频讲解](https://mp.weixin.qq.com/s/l_4wCjVM1fAVRHgEPrcrwg)
 - [基于HTTP请求的多线程实现类--视频讲解](https://mp.weixin.qq.com/s/8SG1xtzq8ArY84Bxm_SNow)
+
+# 其他视频
+
+- [动态压测模型动态增减功能演示](https://mp.weixin.qq.com/s/82QtYBPteNjRykneYsU4GA)
+- [Automa基础功能演示](https://mp.weixin.qq.com/s/NlUuiMzNSMl_saM0KoeNNQ)
+- [DelayQueue基础功能演示](https://mp.weixin.qq.com/s/2nNkVn0unFUrNY5-Jqj4yQ)
+- [ThreadLocal类基础功能演示](https://mp.weixin.qq.com/s/0ZGoiwZAtH2_tar7A3qeow)
+- [Groovy相比Java语法简洁性](https://mp.weixin.qq.com/s/euFggxcZweOJW3mYsu_5CQ)
 
 # 单元&白盒
 
@@ -183,10 +192,11 @@
 - [单机12万QPS——FunTester复仇记](https://mp.weixin.qq.com/s/4IBaEpj3TEHY_2ZdGOON0g)
 - [分布式请求放大器实现](https://mp.weixin.qq.com/s/JAzVyP2u9WicNXvVamBGYQ)
 - [FunTester框架Redis压测预备](https://mp.weixin.qq.com/s/S58_UD2byWP3UNCZlp5c-w)
-- [FunTester测试框架Redis性能测试实践](https://mp.weixin.qq.com/s/ReuB40bb8S3AvBTD3qHpAQ)
+- [FunTester框架Redis性能测试实践](https://mp.weixin.qq.com/s/ReuB40bb8S3AvBTD3qHpAQ)
 - [FunTester框架Redis性能测试之list操作](https://mp.weixin.qq.com/s/WBjPdpc4RNZ-rUXhS9qdSg)
 - [全链路压测流量模型](https://mp.weixin.qq.com/s/nSJKvRgrh87LJjDQRBUtdw)
 - [FunTester框架Redis性能测试之map&INCR](https://mp.weixin.qq.com/s/SJtD4mxOUCSfcSTfhbA5Jw)
+- [量化模拟线上流量实践](https://mp.weixin.qq.com/s/hLkTLcDWhisb-0uVsVvVZA)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -259,6 +269,12 @@
 - [getInteger还是getIntValue，这是一个问题](https://mp.weixin.qq.com/s/1GrgVEU6GEezmcSxOxGqZQ)
 - [Java测试框架九大法宝](https://mp.weixin.qq.com/s/PKK9NJm5UBU2HUFnNV9ysw)
 - [Springboot通过@WebFilter日志双份打印BUG分享](https://mp.weixin.qq.com/s/xPvB8Q-Dl8d8TMNJRJplZA)
+- [Java、Groovy、Python和Golang如何把方法当作参数](https://mp.weixin.qq.com/s/meEIKy0lQsVeI3bMCrkldw)
+- [Java自定义异步功能实践](https://mp.weixin.qq.com/s/Dw4Gtwuivid0bm61pFwEiQ)
+- [利用守护线程隐式关闭线程池](https://mp.weixin.qq.com/s/z1d0BuvovcLg91yzJiWiTw)
+- [Java线程安全ReentrantLock](https://mp.weixin.qq.com/s/aWauJ_uk6b8z5Ob90L1urw)
+- [LevelDB Java&Go实践](https://mp.weixin.qq.com/s/-IlML_QyWMAMTCJAG0EoSA)
+- [复杂JSON结构创建语法](https://mp.weixin.qq.com/s/n7NH5oVn4oCQk2aFax2BnQ)
 
 ## Groovy
 
@@ -297,6 +313,10 @@
 - [反射执行Groovy类方法NoSuchMethodException解答](https://mp.weixin.qq.com/s/N0taBoB27CUXQ0vidK_55Q)
 - [Groovy反射invokeMethod传参实践](https://mp.weixin.qq.com/s/ltQqLg6_8V-WxsUh1ZslAQ)
 - [Groovy参数默认值在接口测试中应用](https://mp.weixin.qq.com/s/xmnmWHd_u0gBc4BxplYPuA)
+- [Groovy入门常用语法](https://mp.weixin.qq.com/s/lIeHPxvcDWQYOs0Y_NZ5jQ)
+- [Java、Groovy、Python和Golang如何把方法当作参数](https://mp.weixin.qq.com/s/meEIKy0lQsVeI3bMCrkldw)
+- [Groovy动态添加方法和属性及Spock单测](https://mp.weixin.qq.com/s/OHmm9vTNrtQo571HxIUPuw)
+- [给JSONObject添加自定义遍历方法](https://mp.weixin.qq.com/s/tsgvdFwDegP47s_MQK68Ug)
 
 ## Python
 
@@ -305,6 +325,16 @@
 - [python用递归筛选法求N以内的孪生质数（孪生素数）](https://mp.weixin.qq.com/s/rVY2pTl8So11WCvA9GrFbA)
 - [利用python wxpy和requests写一个自动应答微信机器人实例](https://mp.weixin.qq.com/s/Fni2kX5BRjdqOQ-glCLjRg)
 - [Python版Socket.IO接口测试脚本](https://mp.weixin.qq.com/s/oXBP6Sx3yPqlmvV9uCUScw)
+- [Java、Groovy、Python和Golang如何把方法当作参数](https://mp.weixin.qq.com/s/meEIKy0lQsVeI3bMCrkldw)
+
+## Golang
+
+- [Golang语言HTTP客户端实践](https://mp.weixin.qq.com/s/e8kjdeI6WzMhNYnC9X2oRg)
+- [Java、Groovy、Python和Golang如何把方法当作参数](https://mp.weixin.qq.com/s/meEIKy0lQsVeI3bMCrkldw)
+- [Golang fasthttp实践](https://mp.weixin.qq.com/s/9otWDl2mSGEo9fboyToNnw)
+- [Go语言HTTPServer开发的六种实现](https://mp.weixin.qq.com/s/Fy_Q-tAnSDwuQMzoE9ZkVw)
+- [Go WebSocket开发与测试实践【/net/websocket】](https://mp.weixin.qq.com/s/Yj4vD5AYVWcTlmsbSrxHng)
+- [LevelDB Java&Go实践](https://mp.weixin.qq.com/s/-IlML_QyWMAMTCJAG0EoSA)
 
 
 ## FunTester笔记
@@ -340,6 +370,9 @@
 - [变怪OR变菜【FunTester居家日记】](https://mp.weixin.qq.com/s/wN6EGqrxUbrnmVybgJhR4Q)
 - [Jira API的踩坑记](https://mp.weixin.qq.com/s/Mw9AzcK8tlceXEgaKqLVeg)
 - [FunTester抄代码之路](https://mp.weixin.qq.com/s/aY9njB17FIGq8wuLL7ICeg)
+- [动态模型之增压暂停【FunTester测试框架】](https://mp.weixin.qq.com/s/HRLhZ98dI9yxYEmCIEd6Xg)
+- [DCS_FunTester分布式性能测试框架分享](https://mp.weixin.qq.com/s/oQMZuLbt6-SWSNLhTDltFQ)
+- [动态模型之动态增减【FunTester测试框架】](https://mp.weixin.qq.com/s/nSILD4EsnvQElua6Z109Ow)
 
 > **FunTester**，[腾讯云年度作者](https://mp.weixin.qq.com/s/oeTeJZs6h4jJJMRyUunurw)、[Boss直聘签约作者](https://mp.weixin.qq.com/s/CjwFBoS9sew6R74mM9QO4g)，[GDevOps官方合作媒体](https://mp.weixin.qq.com/s/OnwvRqrgXq_pGp8eOXOTgw)，非著名测试开发er。
 
@@ -643,13 +676,11 @@
 - [自动化测试框架指南](https://mp.weixin.qq.com/s/hMC28BJxmDkvYPPdDvrXAA)
 - [建立测试自动化策略【译】](https://mp.weixin.qq.com/s/exvq_wgoXedjpNv1t24vhw)
 - [浏览器测试的三大挑战及解决方案【译】](https://mp.weixin.qq.com/s/jeEQ2FoLmN1zHXGwkKP4mg)
+- [持续测试、持续集成、持续交付、持续部署和DevOps](https://mp.weixin.qq.com/s/M-Dc4dSJ4veZwgiIaMDybA)
+- [实现连续测试，要做的事情【译】](https://mp.weixin.qq.com/s/AFw-YYb3RJ7H7EZxv7cVjg)
+- [测试编排必要性](https://mp.weixin.qq.com/s/geJEGWR6ZPn2f6WGwHt8iw)
+- [代码覆盖率VS测试覆盖率](https://mp.weixin.qq.com/s/mrm7oVPu8wYRH4Z3iVEpkA)
 
-## 大咖风采
-
-- [Tcloud 云测平台--集大成者](https://mp.weixin.qq.com/s/29sEO39_NyDiJr-kY5ufdw)
-- [Android App 测试工具及知识大集合](https://mp.weixin.qq.com/s/Xk9rCW8whXOTAQuCfhZqTg)
-- [Android App常规测试内容](https://mp.weixin.qq.com/s/tweeoS5wTqK3k7R2TVuDXA)
-- [JVM的对象和堆](https://mp.weixin.qq.com/s/iNDpTz3gBK3By_bvUnrWOA)
 
 # UI自动化
 
@@ -729,6 +760,7 @@
 - [Selenium4前线快报](https://mp.weixin.qq.com/s/pjfD7c0k0U7hM0a2DbzOow)
 - [Selenium4 Alpha-7升级体验](https://mp.weixin.qq.com/s/XC0EwYhuN1zwHCuQS8oEGg)
 - [Selenium 4以后，再不相见的API](https://mp.weixin.qq.com/s/vJcGC3vdpoVCTj5uloMIIw)
+- [Selenium修改HTTP请求头三种方式](https://mp.weixin.qq.com/s/zce9EiJijOp219V5QzCjZA)
 
 ## APP性能
 
@@ -778,6 +810,11 @@
 - [五一学习心得](https://mp.weixin.qq.com/s/N2w3M1mwMJSMBA-EzccoCg)
 - [想点大事--法律是种思维方式](https://mp.weixin.qq.com/s/b0cCAleJPAQDX7c6jgD87Q)
 - [把工作讲给家人听](https://mp.weixin.qq.com/s/CEH-FPPQU1b_UPz1oU0N3A)
+- [敬畏用户](https://mp.weixin.qq.com/s/3b-K2x4knvzaw6O2y--LmA)
+- [从错误中学习](https://mp.weixin.qq.com/s/FUBpKxrr8RSc31_9gDHrNQ)
+- [JSON必知必会【PDF+视频教程】](https://mp.weixin.qq.com/s/gJPUTHUW0WVUe6FUyZMqjQ)
+- [把选择题变成问答题](https://mp.weixin.qq.com/s/eUybsDHxFkCq7OE0fidb7w)
+- [无代码Web UI自动化工具Automa初体验](https://mp.weixin.qq.com/s/Bo7sPU8_iPqBIuNqVRW2Wg)
 
 ## 社区风采
 
@@ -785,6 +822,7 @@
 - [Linux/Mac简单又强大的基础工具（一）](https://mp.weixin.qq.com/s/zk3MCiy01Z_JRyTvU1oDgg)
 - [《漫画算法》读书心得（一）](https://mp.weixin.qq.com/s/eSB6TuDhT_0YO1VWb_wicA)
 - [Jmeter基于webscoket测试后台服务接口实战](https://mp.weixin.qq.com/s/yWwl1R-yaDWRpMQXtx_ebA)
+- [Tcloud 云测平台--集大成者](https://mp.weixin.qq.com/s/29sEO39_NyDiJr-kY5ufdw)
 - [FunTester分享会第二期视频回顾](https://mp.weixin.qq.com/s/sZ7WW1twRrTRH2ym59DnHw)
 - [Tester专用名词：测试方案&测试计划&测试报告](https://mp.weixin.qq.com/s/w2IMNIl2qd5adxv4g6p9YA)
 - [初遇Postman，SayHi的三种方式](https://mp.weixin.qq.com/s/-UFIJ0ECPvm8LmiufNBwIg)
@@ -798,3 +836,8 @@
 - [140道面试题目（UI、Linux、MySQL、API、安全）](https://mp.weixin.qq.com/s/TNI0g_ldTY_t5oWfVgAvXg)
 - [卷王本卷](https://mp.weixin.qq.com/s/tsmOEC9VHu6TPYfuyKEGyg)
 - [Postman进阶](https://mp.weixin.qq.com/s/97zmzMhmbwanNmUMlFR84g)
+- [Java正则学习笔记](https://mp.weixin.qq.com/s/54OeEbFSgPdGyjx3_gAI8w)
+- [大厂三面都问什么](https://mp.weixin.qq.com/s/qqb6WXgsrkK5x9H7y8TlvQ)
+- [分享一份Fiddler学习包](https://mp.weixin.qq.com/s/3J6hKKqt9GTlo4Z9SiJiLw)
+- [腾讯子公司三轮面试经历](https://mp.weixin.qq.com/s/c_nw30diunkROiub3xpQmg)
+- [性能瓶颈调优【粉丝投稿】](https://mp.weixin.qq.com/s/GS2scJtLCYIKVs8pOBOCNg)
