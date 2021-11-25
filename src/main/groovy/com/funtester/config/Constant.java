@@ -39,10 +39,6 @@ public class Constant {
 
     public static final String CONNECTOR = "_";
 
-    public static final String QUOTE_DOUBLE = "\"";
-
-    public static final String QUOTE_SINGLE = "\'";
-
     private static final String[] PERCENT = {SPACE_1, "▁", "▂", "▃", "▄", "▅", "▅", "▇", "█"};
 
     /**
@@ -81,8 +77,6 @@ public class Constant {
      * 默认控制台输入标记
      */
     public static String INTPUT_KEY = "FunTester";
-
-    public static final String RESPONSE_CODE = "code";
 
     public static final String RESPONSE_CONTENT = "content";
 
@@ -222,6 +216,15 @@ public class Constant {
         return PARTS[i % 9];
     }
 
+    public static String FunTester = "\n" +
+            "  ###### #     #  #    # ####### ######  #####  ####### ######  #####  \n" +
+            "  #      #     #  ##   #    #    #       #   #     #    #       #    # \n" +
+            "  #      #     #  # #  #    #    #       #         #    #       #    # \n" +
+            "  ####   #     #  # #  #    #    ####    #####     #    ####    #####  \n" +
+            "  #      #     #  #  # #    #    #            #    #    #       #   #   \n" +
+            "  #      #     #  #   ##    #    #       #    #    #    #       #    #  \n" +
+            "  #       #####   #    #    #    ######  #####     #    ######  #     # \n";
+
     /**
      * 创建日志文件夹和数据存储文件夹
      */
@@ -241,6 +244,7 @@ public class Constant {
 //            if (Time.getTimeStamp() - x.lastModified() > 3 * DAY) x.delete();
 //        });
         logger.info("当前用户：{}，工作目录：{},系统编码格式:{},系统{}版本:{}", COMPUTER_USER_NAME, WORK_SPACE, SYS_ENCODING, SYS_NAME, SYS_VERSION);
+        logger.info(FunTester);
     }
 
 }

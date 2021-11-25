@@ -291,8 +291,14 @@ public class FunLibrary extends SourceCode {
         if (!HEADER_HANDLE) return null;
         Header[] allHeaders = response.getAllHeaders();
         JSONObject hs = new JSONObject();
+        JSONObject cookie = new JSONObject();
         for (int i = 0; i < allHeaders.length; i++) {
             Header header = allHeaders[i];
+            if (header.getName().equals(HttpClientConstant.SET_COOKIE)) {
+                String[] split = header.getValue().split("=", 2);
+                cookie.put(split[0], split[1]);
+                continue;
+            }
             hs.compute(header.getName(), (x, y) -> {
                 if (y == null) {
                     return header.getValue();
@@ -301,6 +307,7 @@ public class FunLibrary extends SourceCode {
                 }
             });
         }
+        if (!cookie.isEmpty()) hs.put(HttpClientConstant.COOKIE, cookie);
         return hs;
     }
 
@@ -310,7 +317,7 @@ public class FunLibrary extends SourceCode {
      * @param content
      * @return
      */
-    private static JSONObject getJsonResponse(String content, JSONObject cookies) {
+    private static JSONObject getJsonResponse(String content, JSONObject headers) {
         JSONObject jsonObject = new JSONObject();
         try {
             if (StringUtils.isBlank(content)) ParamException.fail("响应为空!");
@@ -321,7 +328,7 @@ public class FunLibrary extends SourceCode {
             }};
             logger.warn("响应体非json格式，已经自动转换成json格式！");
         } finally {
-            if (cookies != null && !cookies.isEmpty()) jsonObject.put(HttpClientConstant.COOKIE, cookies);
+            if (headers != null && !headers.isEmpty()) jsonObject.put(HttpClientConstant.HEADERS, headers);
             return jsonObject;
         }
     }

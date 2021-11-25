@@ -105,6 +105,10 @@ public class HttpClientConstant {
      */
     public static String COOKIE = "cookie";
 
+    public static String HEADERS = "Headers";
+
+    public static String SET_COOKIE = "Set-Cookie";
+
     /**
      * SSL版本
      */
