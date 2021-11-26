@@ -106,12 +106,7 @@ public class RedisBase {
      * @return
      */
     public Long incr(String key) {
-        try (Jedis jedis = getJedis()) {
-            return jedis.incr(key);
-        } catch (Exception e) {
-            logger.error("setex key:{} value:{} error", key, e);
-            return null;
-        }
+        return incr(key, 1);
     }
 
     /**
@@ -130,17 +125,14 @@ public class RedisBase {
         }
     }
 
-    /**将key对应的value 减 1
+    /**
+     * 将key对应的value 减 1
+     *
      * @param key
      * @return
      */
     public Long decr(String key) {
-        try (Jedis jedis = getJedis()) {
-            return jedis.decr(key);
-        } catch (Exception e) {
-            logger.error("setex key:{} value:{} error", key, e);
-            return null;
-        }
+        return decr(key, 1);
     }
 
     /**
