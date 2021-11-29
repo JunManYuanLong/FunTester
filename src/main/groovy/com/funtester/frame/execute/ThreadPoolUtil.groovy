@@ -107,7 +107,7 @@ class ThreadPoolUtil {
                         Thread newThread(Runnable runnable) {
                             Thread thread = new Thread(runnable);
                             def increment = threadNum.getAndIncrement()
-                            thread.setName("FT-" + StringUtil.right(Constant.EMPTY + increment, 3));
+                            thread.setName("F-" + StringUtil.right(Constant.EMPTY + increment, 3));
                             return thread;
                         }
                     }
