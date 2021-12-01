@@ -64,8 +64,8 @@ class ThreadPoolUtil {
      * @param size
      * @return
      */
-    static ThreadPoolExecutor createFixedPool(int size = 10) {
-        return createPool(size, size);
+    static ThreadPoolExecutor createFixedPool(int size = 10, String name = "P") {
+        return createPool(size, size, HttpClientConstant.THREAD_ALIVE_TIME, new LinkedBlockingQueue<Runnable>(Constant.MAX_WAIT_TASK), getFactory(name));
     }
 
     /**
@@ -85,7 +85,7 @@ class ThreadPoolUtil {
         if (funPool == null) {
             synchronized (ThreadPoolUtil.class) {
                 if (funPool == null) {
-                    funPool = createFixedPool(Constant.POOL_SIZE);
+                    funPool = createFixedPool(Constant.POOL_SIZE,"F");
                     daemon()
                 }
             }
@@ -97,7 +97,7 @@ class ThreadPoolUtil {
      * 自定义{@link ThreadFactory}对象
      * @return
      */
-    static ThreadFactory getFactory() {
+    static ThreadFactory getFactory(String name = "F") {
         if (FunFactory == null) {
             synchronized (ThreadPoolUtil.class) {
                 if (FunFactory == null) {
@@ -107,7 +107,7 @@ class ThreadPoolUtil {
                         Thread newThread(Runnable runnable) {
                             Thread thread = new Thread(runnable);
                             def increment = threadNum.getAndIncrement()
-                            thread.setName("F-" + StringUtil.right(Constant.EMPTY + increment, 2));
+                            thread.setName(name + "-" + StringUtil.right(Constant.EMPTY + increment, 2));
                             return thread;
                         }
                     }
@@ -144,7 +144,7 @@ class ThreadPoolUtil {
             }
         })
         thread.setDaemon(true)
-        thread.setName("FT-D")
+        thread.setName("Deamon")
         thread.start()
         logger.info("守护线程:{}开启!", thread.getName())
     }
