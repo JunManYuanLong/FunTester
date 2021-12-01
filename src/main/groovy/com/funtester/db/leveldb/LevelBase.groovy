@@ -17,7 +17,14 @@ class LevelBase extends SourceCode {
 
     static Options options = new Options()
 
-    static LevelBase FunBase = new LevelBase(DEFAULT_STRING)
+    static LevelBase FunBase
+
+    static def Instance() {
+        if (FunBase == null) {
+            FunBase = new LevelBase(DEFAULT_STRING)
+        }
+        FunBase
+    }
 
     DB db
 
