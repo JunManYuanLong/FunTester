@@ -17,6 +17,8 @@ class LevelBase extends SourceCode {
 
     static Options options = new Options()
 
+    static LevelBase FunBase = new LevelBase(DEFAULT_STRING)
+
     DB db
 
     /**
