@@ -1,5 +1,6 @@
 package com.funtester.config;
 
+import com.funtester.frame.Output;
 import org.apache.http.Consts;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -242,7 +243,7 @@ public class Constant {
 //            if (Time.getTimeStamp() - x.lastModified() > 3 * DAY) x.delete();
 //        });
         logger.info("当前用户：{}，工作目录：{},系统编码格式:{},系统{}版本:{}", COMPUTER_USER_NAME, WORK_SPACE, SYS_ENCODING, SYS_NAME, SYS_VERSION);
-        logger.info(FunTester);
+        logger.info(Output.rgb(FunTester));
     }
 
 }

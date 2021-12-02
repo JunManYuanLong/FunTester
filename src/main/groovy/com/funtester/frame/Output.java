@@ -11,11 +11,16 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.fusesource.jansi.Ansi;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+import static com.funtester.frame.SourceCode.random;
+import static org.fusesource.jansi.Ansi.ansi;
 
 @SuppressWarnings("all")
 public class Output extends Constant {
@@ -318,5 +323,59 @@ public class Output extends Constant {
 
     }
 
+
+    public static String rgb2(String str) {
+        return Stream.of(ArrayUtils.toObject(str.toCharArray())).map(f -> color(random(Stream.of(Ansi.Color.values()).filter(v -> v != Ansi.Color.BLACK).collect(Collectors.toList())), f)).collect(Collectors.joining());
+    }
+
+    public static String rgb(String str) {
+        char[] array = str.toCharArray();
+        List<Ansi.Color> collect = Stream.of(Ansi.Color.values()).filter(v -> v != Ansi.Color.BLACK).collect(Collectors.toList());
+        Ansi ansi = ansi();
+        for (int i = 0; i < array.length; i++) {
+            ansi.fg(random(collect)).a(array[i]);
+        }
+        return ansi.reset().toString();
+    }
+
+    public static String color(Ansi.Color color, Object o) {
+        return ansi().fg(color).a(o.toString()).reset().toString();
+    }
+
+    public static void black(String str) {
+        System.out.println(ansi().fgBlack().a(str));
+    }
+
+    public static void blue(Object o) {
+        output(color(Ansi.Color.BLUE, o));
+    }
+
+    public static void red(Object o) {
+        output(color(Ansi.Color.RED, o));
+    }
+
+    public static void green(Object o) {
+        output(color(Ansi.Color.GREEN, o));
+    }
+
+    public static void yellow(Object o) {
+        output(color(Ansi.Color.YELLOW, o));
+    }
+
+    public static void white(Object o) {
+        output(color(Ansi.Color.WHITE, o));
+    }
+
+    public static void black(Object o) {
+        output(color(Ansi.Color.BLACK, o));
+    }
+
+    public static void gyan(Object o) {
+        output(color(Ansi.Color.CYAN, o));
+    }
+
+    public static void magenta(Object o) {
+        output(color(Ansi.Color.MAGENTA, o));
+    }
 
 }
