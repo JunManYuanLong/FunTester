@@ -107,6 +107,10 @@ dependencies {
     //    compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
         compile group: 'org.java-websocket', name: 'Java-WebSocket', version: '1.5.1'
     //    compile group: 'io.socket', name: 'socket.io-client', version: '1.0.0'
+
+    // https://mvnrepository.com/artifact/org.fusesource.jansi/jansi
+    implementation group: 'org.fusesource.jansi', name: 'jansi', version: '2.4.0'
+
 }
 
 //已失效,后期需要借助插件shadow完成
