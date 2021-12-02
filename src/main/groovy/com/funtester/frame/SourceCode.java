@@ -142,8 +142,8 @@ public class SourceCode extends Output {
      * @param time 次数
      * @return
      */
-    public static String getManyString(String text, int time) {
-        return IntStream.range(0, time).mapToObj(x -> text).collect(Collectors.joining());
+    public static String getManyString(String text, int times) {
+        return IntStream.range(0, times).mapToObj(x -> text).collect(Collectors.joining());
     }
 
     /**
@@ -241,7 +241,7 @@ public class SourceCode extends Output {
      */
     public static boolean changeStringToBoolean(String text) {
         logger.debug("需要转化成的文本：{}", text);
-        if (text == null || !Regex.isMatch(text.toLowerCase(), "false|ture")) return false;
+        if (text == null || !Regex.isMatch(text.toLowerCase(), "false|true")) return false;
         return text.equalsIgnoreCase("true");
     }
 
@@ -363,7 +363,7 @@ public class SourceCode extends Output {
      * @param <F>
      * @return
      */
-    public static <F extends Number> F random(F... fs) {
+    public static <F> F random(F... fs) {
         return fs[getRandomInt(fs.length) - 1];
     }
 
@@ -385,7 +385,7 @@ public class SourceCode extends Output {
      * @param <F>
      * @return
      */
-    public static <F extends Object> F random(List<F> list) {
+    public static <F> F random(List<F> list) {
         if (list == null || list.isEmpty()) ParamException.fail("数组不能为空!");
         return list.get(getRandomInt(list.size()) - 1);
     }
