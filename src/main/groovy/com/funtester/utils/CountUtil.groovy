@@ -1,10 +1,11 @@
 package com.funtester.utils
 
+import com.funtester.base.bean.AbstractBean
+import com.funtester.frame.SourceCode
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
 import java.util.stream.Collectors
-
 /**
  * 统计出现次数相关类
  */
@@ -40,7 +41,7 @@ class CountUtil {
      * @return
      */
     static def count(List list, def str) {
-        list.count {s -> s.toString().equals(str.toString())}
+        list.count {s -> (s.toString() == str.toString())}
     }
 
     /**
@@ -55,4 +56,40 @@ class CountUtil {
             logger.info("元素：${it.key}，次数：${it.value}")
         }
     }
+
+
+    static def index(List<Number> c) {
+        if (c == null || c.size() == 0) return
+        c.sort()
+        int size = c.size()
+        double min = c.first()
+        double max = c.last()
+        double p99 = c.get(size * 0.99 as Integer)
+        double p95 = c.get(size * 0.95 as Integer)
+        double avg = SourceCode.changeStringToDouble(SourceCode.formatNumber(c.average(), "#.###"))
+        def mid = c.get(size / 2 as Integer)
+        new FunIndex(avg: avg, mid: mid, min: min, max: max, p99: p99, p95: p95)
+    }
+
+
+    static class FunIndex extends AbstractBean {
+
+        Double avg
+
+        Double mid
+
+        Double min
+
+        Double max
+
+        Double p99
+
+        Double p95
+
+        @Override
+        public String toString() {
+            "平均值:$avg ,最大值$max ,最小值:$min ,中位数:$mid "
+        }
+    }
+
 }
