@@ -227,6 +227,7 @@ public class RWUtil extends Constant {
      * @param text 写入的内容，如果file存在，续写
      */
     public static void writeText(File file, String text) {
+        if (StringUtils.isBlank(text)) return;
         logger.debug("写入文件名：{}", file);
         if (!file.exists())
             try {
@@ -236,10 +237,11 @@ public class RWUtil extends Constant {
             }
         try {
             FileWriter fileWriter = new FileWriter(file, true);
-            BufferedWriter bw1 = new BufferedWriter(fileWriter);
-            bw1.write(text);// 将内容写到文件中
-            bw1.flush();// 强制输出缓冲区内容
-            bw1.close();// 关闭流
+            BufferedWriter bw = new BufferedWriter(fileWriter);
+            bw.write(text);// 将内容写到文件中
+            bw.newLine();
+            bw.flush();// 强制输出缓冲区内容
+            bw.close();// 关闭流
         } catch (IOException e) {
             logger.warn("写入文件失败！", e);
         }
