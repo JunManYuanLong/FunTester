@@ -33,7 +33,7 @@ public class RWUtil extends Constant {
         if (StringUtils.isEmpty(filePath) || !new File(filePath).exists() || new File(filePath).isDirectory())
             ParamException.fail("配置文件信息错误!" + filePath);
         logger.debug("读取文件名：{}", filePath);
-        List<String> lines = readTxtFileByLine(filePath);
+        List<String> lines = readTxtByLine(filePath);
         JSONObject info = new JSONObject();
         lines.forEach(line -> {
             String[] split = line.split("=", 2);
@@ -51,7 +51,7 @@ public class RWUtil extends Constant {
         if (StringUtils.isEmpty(filePath) || !new File(filePath).exists() || new File(filePath).isDirectory())
             ParamException.fail("配置文件信息错误!" + filePath);
         logger.debug("读取文件名：{}", filePath);
-        List<String> lines = readTxtFileByLine(filePath, filter, false);
+        List<String> lines = readTxtByLine(filePath, filter, false);
         JSONObject info = new JSONObject();
         lines.forEach(line -> {
             String[] split = line.split("=", 2);
@@ -95,8 +95,8 @@ public class RWUtil extends Constant {
      * @param filePath 文件路径
      * @return 返回list数组
      */
-    public static List<String> readTxtFileByLine(String filePath) {
-        return readTxtFileByLine(filePath, Constant.EMPTY, true);
+    public static List<String> readTxtByLine(String filePath) {
+        return readTxtByLine(filePath, Constant.EMPTY, true);
     }
 
     /**
@@ -108,7 +108,7 @@ public class RWUtil extends Constant {
      * @param key      是否包含
      * @return 返回list数组
      */
-    public static List<String> readTxtFileByLine(String filePath, String content, boolean key) {
+    public static List<String> readTxtByLine(String filePath, String content, boolean key) {
         if (StringUtils.isEmpty(filePath) || !new File(filePath).exists() || new File(filePath).isDirectory())
             ParamException.fail("文件信息错误!" + filePath);
         logger.debug("读取文件名：{}", filePath);
@@ -138,8 +138,8 @@ public class RWUtil extends Constant {
      * @param filePath
      * @return
      */
-    public static List<Integer> readTxtFileByNumLine(String filePath) {
-        return readTxtFileByLine(filePath, Constant.EMPTY, true).stream().map(x -> SourceCode.changeStringToInt(x)).collect(Collectors.toList());
+    public static List<Integer> readTxtByNumLine(String filePath) {
+        return readTxtByLine(filePath, Constant.EMPTY, true).stream().map(x -> SourceCode.changeStringToInt(x)).collect(Collectors.toList());
     }
 
     /**
@@ -148,8 +148,8 @@ public class RWUtil extends Constant {
      * @param filePath
      * @return
      */
-    public static List<Double> readTxtFileByDoubleLine(String filePath) {
-        return readTxtFileByLine(filePath, Constant.EMPTY, true).stream().map(x -> SourceCode.changeStringToDouble(x)).collect(Collectors.toList());
+    public static List<Double> readTxtByDoubleLine(String filePath) {
+        return readTxtByLine(filePath, Constant.EMPTY, true).stream().map(x -> SourceCode.changeStringToDouble(x)).collect(Collectors.toList());
     }
 
 
