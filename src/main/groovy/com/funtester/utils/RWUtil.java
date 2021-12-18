@@ -14,6 +14,7 @@ import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -42,7 +43,9 @@ public class RWUtil extends Constant {
         return info;
     }
 
-    /**读取返回,过滤包含filter的文本
+    /**
+     * 读取返回,过滤包含filter的文本
+     *
      * @param filePath
      * @param filter
      * @return
@@ -109,6 +112,22 @@ public class RWUtil extends Constant {
      * @return 返回list数组
      */
     public static List<String> readTxtByLine(String filePath, String content, boolean key) {
+        return readTxtByLine(filePath, new Function<String, String>() {
+            @Override
+            public String apply(String s) {
+                return s.contains(content) == key ? s : null;
+            }
+        });
+    }
+
+    /**
+     * 通过闭包传入方法读取超大文件部分内容
+     *
+     * @param filePath
+     * @param function
+     * @return
+     */
+    public static List<String> readTxtByLine(String filePath, Function<String, String> function) {
         if (StringUtils.isEmpty(filePath) || !new File(filePath).exists() || new File(filePath).isDirectory())
             ParamException.fail("文件信息错误!" + filePath);
         logger.debug("读取文件名：{}", filePath);
@@ -120,8 +139,8 @@ public class RWUtil extends Constant {
                  BufferedReader bufferedReader = new BufferedReader(read, 3 * 1024 * 1024);) {
                 String line = null;
                 while ((line = bufferedReader.readLine()) != null) {
-                    if (line.contains(content) == key)
-                        lines.add(line);
+                    String apply = function.apply(line);
+                    if (StringUtils.isNotBlank(apply)) lines.add(apply);
                 }
             } catch (Exception e) {
                 logger.warn("读取文件内容出错", e);
@@ -235,13 +254,11 @@ public class RWUtil extends Constant {
             } catch (IOException e) {
                 logger.error("文件创建失败！", e);
             }
-        try {
-            FileWriter fileWriter = new FileWriter(file, true);
-            BufferedWriter bw = new BufferedWriter(fileWriter);
+        try (FileWriter fileWriter = new FileWriter(file, true);
+             BufferedWriter bw = new BufferedWriter(fileWriter);) {
             bw.write(text);// 将内容写到文件中
             bw.newLine();
             bw.flush();// 强制输出缓冲区内容
-            bw.close();// 关闭流
         } catch (IOException e) {
             logger.warn("写入文件失败！", e);
         }
