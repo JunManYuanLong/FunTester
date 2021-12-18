@@ -85,7 +85,7 @@ class ThreadPoolUtil {
         if (funPool == null) {
             synchronized (ThreadPoolUtil.class) {
                 if (funPool == null) {
-                    funPool = createFixedPool(Constant.POOL_SIZE,"F");
+                    funPool = createFixedPool(Constant.POOL_SIZE, "F");
                     daemon()
                 }
             }
@@ -159,7 +159,8 @@ class ThreadPoolUtil {
         def threads = new Thread[count]
         group.enumerate(threads)
         for (i in 0..<count) {
-            if (threads[i].getName() == "main")
+            def thread = threads[i]
+            if (thread != null && thread.getName() == "main")
                 return true
         }
         false
