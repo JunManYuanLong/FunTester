@@ -101,6 +101,8 @@ dependencies {
     testCompile group: 'org.spockframework', name: 'spock-core', version: '2.0-groovy-3.0'
     // https://mvnrepository.com/artifact/org.iq80.leveldb/leveldb
     implementation group: 'org.iq80.leveldb', name: 'leveldb', version: '0.12'
+    // https://mvnrepository.com/artifact/com.lmax/disruptor
+    implementation group: 'com.lmax', name: 'disruptor', version: '3.4.2'
 
     //    compile group: 'com.alibaba', name: 'dubbo', version: '2.5.3'
     //    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
