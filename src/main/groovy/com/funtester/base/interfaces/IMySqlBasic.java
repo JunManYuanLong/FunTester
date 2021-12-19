@@ -15,28 +15,11 @@ public interface IMySqlBasic {
     ResultSet executeQuerySql(String sql);
 
     /**
-     * 执行查询sql
-     *
-     * @param database
-     * @param sql
-     * @return
-     */
-    ResultSet executeQuerySql(String database, String sql);
-
-    /**
      * 执行修改sql
      *
      * @param sql
      */
     void executeUpdateSql(String sql);
-
-    /**
-     * 执行查询sql
-     *
-     * @param database
-     * @param sql
-     */
-    void executeUpdateSql(String database, String sql);
 
     /**
      * 关闭数据库连接

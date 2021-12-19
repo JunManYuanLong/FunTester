@@ -68,18 +68,6 @@ public class FunMySql extends SqlBase implements IMySqlBasic {
      */
     @Override
     public void executeUpdateSql(String sql) {
-        executeUpdateSql(EMPTY, sql);
-    }
-
-    /**
-     * 执行sql语句，非query语句，并不关闭连接
-     *
-     * @param database
-     * @param sql
-     */
-    @Override
-    public void executeUpdateSql(String database, String sql) {
-        getConnection(database);
         SqlBase.executeUpdateSql(connection, statement, sql);
     }
 
@@ -92,12 +80,6 @@ public class FunMySql extends SqlBase implements IMySqlBasic {
     @Override
     public ResultSet executeQuerySql(String sql) {
         return SqlBase.executeQuerySql(connection, statement, sql);
-    }
-
-    @Override
-    public ResultSet executeQuerySql(String database, String sql) {
-        getConnection(database);
-        return executeQuerySql(sql);
     }
 
     /**
