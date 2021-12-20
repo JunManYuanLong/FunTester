@@ -61,7 +61,7 @@ public class RequestFile extends FunLibrary {
     private void getInfo() {
         String filePath = Constant.WORK_SPACE + this.name;
         logger.info("配置文件地址：" + filePath);
-        this.info = RWUtil.readTxtByJson(filePath);
+        this.info = RWUtil.readByJson(filePath);
     }
 
     /**
