@@ -245,7 +245,7 @@ public class FixedQpsConcurrent extends SourceCode {
      * @param name 线程数
      */
     public PerformanceResultBean countQPS(int name, String desc, long start, long end, int executeNum, int errorNum) {
-        List<String> strings = RWUtil.readTxtByLine(Constant.DATA_Path + StatisticsUtil.getFileName(name, desc));
+        List<String> strings = RWUtil.readByLine(Constant.DATA_Path + StatisticsUtil.getFileName(name, desc));
         int size = strings.size();
         List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
         int sum = data.stream().mapToInt(x -> x).sum();

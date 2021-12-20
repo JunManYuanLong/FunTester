@@ -189,7 +189,7 @@ public class HoldConcurrent extends SourceCode {
      * @param name 线程数
      */
     public PerformanceResultBean countQPS(int name, String desc, String start, String end) {
-        List<String> strings = RWUtil.readTxtByLine(Constant.DATA_Path + StatisticsUtil.getFileName(name, desc));
+        List<String> strings = RWUtil.readByLine(Constant.DATA_Path + StatisticsUtil.getFileName(name, desc));
         int size = strings.size() == 0 ? 1 : strings.size();
         List<Integer> data = strings.stream().map(x -> changeStringToInt(x)).collect(toList());
         int sum = data.stream().mapToInt(x -> x).sum();

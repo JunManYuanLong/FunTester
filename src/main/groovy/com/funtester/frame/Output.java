@@ -49,7 +49,7 @@ public class Output extends Constant {
      *
      * @param text
      */
-    public static void outputRGB(String text) {
+    public static void outRGB(String text) {
         logger.info(rgb(text));
     }
 
