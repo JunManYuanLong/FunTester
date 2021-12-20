@@ -30,11 +30,11 @@ public class RWUtil extends Constant {
      * @param filePath
      * @return
      */
-    public static JSONObject readTxtByJson(String filePath) {
+    public static JSONObject readByJson(String filePath) {
         if (StringUtils.isEmpty(filePath) || !new File(filePath).exists() || new File(filePath).isDirectory())
             ParamException.fail("配置文件信息错误!" + filePath);
         logger.debug("读取文件名：{}", filePath);
-        List<String> lines = readTxtByLine(filePath);
+        List<String> lines = readByLine(filePath);
         JSONObject info = new JSONObject();
         lines.forEach(line -> {
             String[] split = line.split("=", 2);
@@ -50,11 +50,11 @@ public class RWUtil extends Constant {
      * @param filter
      * @return
      */
-    public static JSONObject readTxtByJson(String filePath, String filter) {
+    public static JSONObject readByJson(String filePath, String filter) {
         if (StringUtils.isEmpty(filePath) || !new File(filePath).exists() || new File(filePath).isDirectory())
             ParamException.fail("配置文件信息错误!" + filePath);
         logger.debug("读取文件名：{}", filePath);
-        List<String> lines = readTxtByLine(filePath, filter, false);
+        List<String> lines = readByLine(filePath, filter, false);
         JSONObject info = new JSONObject();
         lines.forEach(line -> {
             String[] split = line.split("=", 2);
@@ -69,7 +69,7 @@ public class RWUtil extends Constant {
      * @param filePath
      * @return
      */
-    public static String readTxtByString(String filePath) {
+    public static String readByString(String filePath) {
         if (StringUtils.isEmpty(filePath) || !new File(filePath).exists() || new File(filePath).isDirectory())
             ParamException.fail("配置文件信息错误!" + filePath);
         logger.debug("读取文件名：{}", filePath);
@@ -98,8 +98,8 @@ public class RWUtil extends Constant {
      * @param filePath 文件路径
      * @return 返回list数组
      */
-    public static List<String> readTxtByLine(String filePath) {
-        return readTxtByLine(filePath, Constant.EMPTY, true);
+    public static List<String> readByLine(String filePath) {
+        return readByLine(filePath, Constant.EMPTY, true);
     }
 
     /**
@@ -111,8 +111,8 @@ public class RWUtil extends Constant {
      * @param key      是否包含
      * @return 返回list数组
      */
-    public static List<String> readTxtByLine(String filePath, String content, boolean key) {
-        return readTxtByLine(filePath, new Function<String, String>() {
+    public static List<String> readByLine(String filePath, String content, boolean key) {
+        return readByLine(filePath, new Function<String, String>() {
             @Override
             public String apply(String s) {
                 return s.contains(content) == key ? s : null;
@@ -127,7 +127,7 @@ public class RWUtil extends Constant {
      * @param function
      * @return
      */
-    public static List<String> readTxtByLine(String filePath, Function<String, String> function) {
+    public static List<String> readByLine(String filePath, Function<String, String> function) {
         if (StringUtils.isEmpty(filePath) || !new File(filePath).exists() || new File(filePath).isDirectory())
             ParamException.fail("文件信息错误!" + filePath);
         logger.debug("读取文件名：{}", filePath);
@@ -157,8 +157,8 @@ public class RWUtil extends Constant {
      * @param filePath
      * @return
      */
-    public static List<Integer> readTxtByNumLine(String filePath) {
-        return readTxtByLine(filePath, Constant.EMPTY, true).stream().map(x -> SourceCode.changeStringToInt(x)).collect(Collectors.toList());
+    public static List<Integer> readByNumLine(String filePath) {
+        return readByLine(filePath, Constant.EMPTY, true).stream().map(x -> SourceCode.changeStringToInt(x)).collect(Collectors.toList());
     }
 
     /**
@@ -167,8 +167,8 @@ public class RWUtil extends Constant {
      * @param filePath
      * @return
      */
-    public static List<Double> readTxtByDoubleLine(String filePath) {
-        return readTxtByLine(filePath, Constant.EMPTY, true).stream().map(x -> SourceCode.changeStringToDouble(x)).collect(Collectors.toList());
+    public static List<Double> readByDoubleLine(String filePath) {
+        return readByLine(filePath, Constant.EMPTY, true).stream().map(x -> SourceCode.changeStringToDouble(x)).collect(Collectors.toList());
     }
 
 
