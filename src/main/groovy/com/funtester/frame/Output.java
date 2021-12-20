@@ -44,6 +44,15 @@ public class Output extends Constant {
         logger.info(text);
     }
 
+    /**
+     * 随机彩色输出
+     *
+     * @param text
+     */
+    public static void outputRGB(String text) {
+        logger.info(rgb(text));
+    }
+
     public static void output(byte[] bytes) {
         logger.info(new String(bytes));
     }
