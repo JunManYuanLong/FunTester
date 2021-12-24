@@ -2,15 +2,14 @@ package com.funtester.frame.execute
 
 import com.funtester.config.Constant
 import com.funtester.config.HttpClientConstant
+import com.funtester.frame.Output
 import com.funtester.frame.SourceCode
-import com.funtester.httpclient.FunLibrary
 import com.funtester.utils.StringUtil
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
 import java.util.concurrent.*
 import java.util.concurrent.atomic.AtomicInteger
-
 /**
  * Java线程池Demo
  */
@@ -122,7 +121,7 @@ class ThreadPoolUtil {
      */
     static void shutFun() {
         if (getFunPool().isShutdown()) return
-        logger.warn("异步线程池关闭!")
+        logger.warn(Output.rgb("异步线程池关闭!"))
         getFunPool().shutdown()
     }
 
@@ -136,17 +135,16 @@ class ThreadPoolUtil {
 
             @Override
             void run() {
+                logger.info(Output.rgb("守护线程开启!"))
                 while (checkMain()) {
                     SourceCode.sleep(1.0)
                 }
                 ThreadPoolUtil.shutFun()
-                FunLibrary.testOver()
             }
         })
         thread.setDaemon(true)
         thread.setName("Deamon")
         thread.start()
-        logger.info("守护线程:{}开启!", thread.getName())
     }
 
     /**
