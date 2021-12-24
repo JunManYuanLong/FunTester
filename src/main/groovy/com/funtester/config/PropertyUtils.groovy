@@ -43,7 +43,7 @@ class PropertyUtils extends SourceCode {
     static Property getLocalProperties(String filePath) {
         logger.debug("读取配置文件：{}", filePath)
         try {
-            new Property(RWUtil.readTxtByJson(filePath, FILTER))
+            new Property(RWUtil.readByJson(filePath, FILTER))
         } catch (Exception e) {
             FailException.fail(e)
         }

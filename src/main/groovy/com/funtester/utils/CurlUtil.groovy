@@ -22,7 +22,7 @@ class CurlUtil {
      * @return
      */
     static List<HttpRequestBase> getRequests(String path) {
-        def fileinfo = RWUtil.readTxtFileByLine(path.contains(Constant.OR) ? path : Constant.LONG_Path + path).stream().map {it.trim()}
+        def fileinfo = RWUtil.readByLine(path.contains(Constant.OR) ? path : Constant.LONG_Path + path).stream().map {it.trim()}
         List<HttpRequestBase> requests = []
         def base = new CurlRequestBase()
         fileinfo.each {
