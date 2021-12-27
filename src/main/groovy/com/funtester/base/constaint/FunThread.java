@@ -1,5 +1,6 @@
 package com.funtester.base.constaint;
 
+import com.funtester.base.exception.FailException;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -75,7 +76,10 @@ public abstract class FunThread<F> extends ThreadBase {
      * @return
      */
     @Override
-    public abstract FunThread clone();
+    public FunThread clone(){
+        FailException.fail("必需重写clone()方法");
+        return null;
+    }
 
     /**
      * 线程终止,用于动态调节并发压力
