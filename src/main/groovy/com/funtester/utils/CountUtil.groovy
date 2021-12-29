@@ -88,7 +88,7 @@ class CountUtil {
 
         @Override
         public String toString() {
-            "平均值:$avg ,最大值$max ,最小值:$min ,中位数:$mid "
+            "平均值:$avg ,最大值$max ,最小值:$min ,中位数:$mid p99:$p99 p95:$p95"
         }
     }
 
