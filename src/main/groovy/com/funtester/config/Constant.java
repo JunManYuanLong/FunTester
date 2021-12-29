@@ -55,7 +55,7 @@ public class Constant {
     /**
      * 默认线程池的大小
      */
-    public static int POOL_SIZE = 16;
+    public static int POOL_SIZE = 32;
 
     /**
      * 线程池最大等待队列长度
