@@ -87,7 +87,7 @@ public class Output extends Constant {
     }
 
     /**
-     * 如遇到重复元素,会导致技术不准确(已经解决了)
+     * 如遇到重复元素,会导致计数不准确(已经解决了)
      *
      * @param list
      */
