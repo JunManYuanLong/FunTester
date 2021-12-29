@@ -69,6 +69,17 @@ public class SourceCode extends Output {
     }
 
     /**
+     * 自定义等待,间隔0.5s
+     *
+     * @param f
+     */
+    public static void waitFor(Supplier<Boolean> f) {
+        while (!f.get()) {
+            sleep(0.5);
+        }
+    }
+
+    /**
      * 获取屏幕输入内容
      * <p>如何执行close方法，只能用一次</p>
      *
