@@ -69,13 +69,23 @@ public class SourceCode extends Output {
     }
 
     /**
-     * 自定义等待,间隔0.5s
+     * 自定义等待,默认间隔0.5s
      *
-     * @param f
+     * @param f 判断条件
      */
     public static void waitFor(Supplier<Boolean> f) {
+        waitFor(f, 0.2);
+    }
+
+    /**
+     * 自定义等待功能,自定义时间
+     *
+     * @param f      判断条件
+     * @param second 描述
+     */
+    public static void waitFor(Supplier<Boolean> f, double second) {
         while (!f.get()) {
-            sleep(0.5);
+            sleep(second);
         }
     }
 
