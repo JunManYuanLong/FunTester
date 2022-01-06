@@ -1,6 +1,7 @@
 package com.funtester.base.bean
 
 import com.funtester.db.mysql.MySqlTest
+import com.funtester.frame.SourceCode
 import com.funtester.frame.Output
 import com.funtester.utils.DecodeEncode
 
@@ -89,7 +90,7 @@ class PerformanceResultBean extends AbstractBean implements Serializable {
         this.failRate = failRate
         this.executeTotal = executeTotal
         this.table = DecodeEncode.zipBase64(table)
-        this.deviation = com.funtester.frame.SourceCode.getPercent(Math.abs(qps - qps2) * 100 / Math.max(qps, qps2))
+        this.deviation = SourceCode.getPercent(Math.abs(qps - qps2) * 100 / Math.max(qps, qps2))
         Output.output(this.toJson())
         Output.output(table)
         MySqlTest.savePerformanceBean(this)
