@@ -529,13 +529,7 @@ public class SourceCode extends Output {
      * @param f
      */
     public static void fun(Supplier f) {
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                f.get();
-            }
-        };
-        ThreadPoolUtil.executeSync(runnable);
+        fun(f, null);
     }
 
     /**
@@ -545,16 +539,17 @@ public class SourceCode extends Output {
      * @param phaser
      */
     public static void fun(Supplier f, Phaser phaser) {
+        if (ThreadPoolUtil.getFunPool().getActiveCount() > POOL_SIZE - 3) logger.warn("异步线程池快满了");
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 try {
-                    phaser.register();
+                    if (phaser != null) phaser.register();
                     f.get();
                 } catch (Exception e) {
                     logger.warn("执行异步方法时发生错误!", e);
                 } finally {
-                    phaser.arriveAndDeregister();
+                    if (phaser != null) phaser.arriveAndDeregister();
                 }
 
             }
