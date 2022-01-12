@@ -3,6 +3,7 @@ package com.funtester.httpclient;
 import com.funtester.base.exception.FailException;
 import com.funtester.config.Constant;
 import com.funtester.config.HttpClientConstant;
+import com.funtester.frame.SourceCode;
 import com.funtester.utils.Regex;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.*;
@@ -15,12 +16,15 @@ import org.apache.http.config.ConnectionConfig;
 import org.apache.http.config.MessageConstraints;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
+import org.apache.http.conn.DnsResolver;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.impl.conn.SystemDefaultDnsResolver;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import org.apache.http.impl.nio.client.HttpAsyncClients;
 import org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager;
@@ -39,12 +43,15 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import java.io.IOException;
 import java.io.InterruptedIOException;
+import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.nio.charset.CodingErrorAction;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -58,6 +65,11 @@ public class ClientManage {
      * ssl验证
      */
     private static SSLContext sslContext = createIgnoreVerifySSL();
+
+    /**
+     * 本地DNS解析
+     */
+    private static DnsResolver dnsResolver = getDnsResolver();
 
     /**
      * 请求超时控制器
@@ -97,8 +109,8 @@ public class ClientManage {
     private static PoolingHttpClientConnectionManager getPool() {
         // 采用绕过验证的方式处理https请求
         // 设置协议http和https对应的处理socket链接工厂的对象
-        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create().register("http", PlainConnectionSocketFactory.INSTANCE).register("https", new SSLConnectionSocketFactory(sslContext)).build();
-        PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
+        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create().register("http", PlainConnectionSocketFactory.INSTANCE).register("https", new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE)).build();
+        PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry, dnsResolver);
         // 消息约束
         MessageConstraints messageConstraints = MessageConstraints.custom().setMaxHeaderCount(HttpClientConstant.MAX_HEADER_COUNT).setMaxLineLength(HttpClientConstant.MAX_LINE_LENGTH).build();
         // 连接设置
@@ -130,6 +142,35 @@ public class ClientManage {
         connManager.setDefaultMaxPerRoute(HttpClientConstant.MAX_PER_ROUTE_CONNECTION);
         return connManager;
     }
+
+    public static List<InetAddress> ips = getAddress();
+
+    private static List<InetAddress> getAddress() {
+        try {
+
+            return Arrays.asList(
+                    InetAddress.getByName("127.0.0.1")
+            );
+        } catch (Exception e) {
+
+            FailException.fail("DNS IP解析失败!");
+        }
+        return null;
+    }
+
+    private static DnsResolver getDnsResolver() {
+        return new SystemDefaultDnsResolver() {
+            @Override
+            public InetAddress[] resolve(final String host) throws UnknownHostException {
+                if (host.equalsIgnoreCase("www.funtester.com")) {
+                    return new InetAddress[]{SourceCode.random(ips)};
+                } else {
+                    return super.resolve(host);
+                }
+            }
+        };
+    }
+
 
     /**
      * 获取SSL套接字对象 重点重点：设置tls协议的版本
