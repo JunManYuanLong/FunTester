@@ -36,7 +36,7 @@ class ReplayThread<F> extends FixedThread implements EventHandler<FunEvent>, Wor
     }
 
 
-    private static class FunEvent {
+    static class FunEvent<F> {
 
         F event
 
