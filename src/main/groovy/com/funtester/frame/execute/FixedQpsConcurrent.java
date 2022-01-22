@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.util.stream.Collectors.toList;
@@ -25,7 +27,6 @@ import static java.util.stream.Collectors.toList;
 /**
  * 并发类，用于启动压力脚本
  */
-@Deprecated
 public class FixedQpsConcurrent extends SourceCode {
 
     private static Logger logger = LogManager.getLogger(FixedQpsConcurrent.class);
@@ -117,7 +118,6 @@ public class FixedQpsConcurrent extends SourceCode {
         this.desc = StatisticsUtil.getFileName(desc);
         if (executorService == null)
             executorService = ThreadPoolUtil.createCachePool(HttpClientConstant.THREADPOOL_MAX);
-
     }
 
     private FixedQpsConcurrent() {
@@ -135,51 +135,36 @@ public class FixedQpsConcurrent extends SourceCode {
         executeThread = qps / Constant.QPS_PER_THREAD + 1;
         interval = 1_000_000_000 / qps;//此处单位1s=1000ms,1ms=1000000ns
         if (RUNUP_TIME > 0) {
-            if (qps > 1000) {
-                double v = RUNUP_TIME / executeThread;
-                CountDownLatch countDownLatch = new CountDownLatch(executeThread);
-                for (int i = 0; i < executeThread; i++) {
-                    sleep(v);
-                    new FunTester(countDownLatch).start();
-                }
-                sleep(1.0);
-                needAbord = true;
-                try {
-                    countDownLatch.await();
-                } catch (InterruptedException e) {
-                    logger.error("软启动停止异常: {}", e);
-                }
-            } else {
-                int runupTotal = qps * PREFIX_RUN;//计算总的请求量
-                double diffTime = 2 * (Constant.RUNUP_TIME / PREFIX_RUN * interval - interval);//计算最大时间间隔和最小时间间隔差值
-                double piece = diffTime / runupTotal;//计算每一次请求时间增量
-                for (int i = runupTotal; i > 0; i--) {
-                    executorService.execute(threads.get(limit-- % queueLength).clone());
-                    sleep((long) (interval + i * piece));
-                }
+            int runupTotal = qps * PREFIX_RUN;//计算总的请求量
+            double diffTime = 2 * (Constant.RUNUP_TIME / PREFIX_RUN * interval - interval);//计算最大时间间隔和最小时间间隔差值
+            double piece = diffTime / runupTotal;//计算每一次请求时间增量
+            for (int i = runupTotal; i > 0; i--) {
+                executorService.execute(threads.get(limit-- % queueLength).clone());
+                sleep((long) (interval + i * piece));
             }
             sleep(1.0);
-            needAbord = false;
             allTimes = new Vector<>();
             marks = new Vector<>();
             executeTimes.set(0);
             errorTimes.set(0);
         }
         logger.info("=========预热完成,开始测试!=========");
-        Progress progress = new Progress(threads, StatisticsUtil.getTrueName(desc), executeTimes);
-        new Thread(ThreadBase.progress,"progress").start();
+        ThreadBase.progress = new Progress(threads, StatisticsUtil.getTrueName(desc), executeTimes);
+        new Thread(ThreadBase.progress, "progress").start();
         startTime = Time.getTimeStamp();
         CountDownLatch countDownLatch = new CountDownLatch(executeThread);
         for (int i = 0; i < executeThread; i++) {
             new FunTester(countDownLatch).start();
         }
         endTime = Time.getTimeStamp();
-        progress.stop();
-        GCThread.stop();
         try {
             countDownLatch.await();
+            ThreadBase.progress.stop();
+            GCThread.stop();
+            executorService.shutdown();
+            executorService.awaitTermination(HttpClientConstant.WAIT_TERMINATION_TIMEOUT, TimeUnit.SECONDS);//此方法需要在shutdown方法执行之后执行
         } catch (InterruptedException e) {
-            logger.error("等待任务结束失败", e);
+            logger.error("线程池等待任务结束失败!", e);
         }
         logger.info("总计执行 {} ，共用时：{} s,执行总数:{},错误数:{}!", baseThread.isTimesMode ? baseThread.limit + "次任务" : "秒", Time.getTimeDiffer(startTime, endTime), formatLong(executeTimes), errorTimes);
         return over();
@@ -198,24 +183,22 @@ public class FixedQpsConcurrent extends SourceCode {
 
         boolean isTimesMode = baseThread.isTimesMode;
 
-        /**
-         * 计算每个线程所需要限制变量,时间 or 次数
-         */
-        int limit = isTimesMode ? baseThread.limit / executeThread : baseThread.limit;
+        int limit = baseThread.limit / executeThread;
 
-        /**
-         * 计算执行间隔,根据1/QPS结果,乘以线程数.
-         */
         long nanosec = interval * executeThread;
 
         @Override
         public void run() {
             try {
                 while (true) {
-                    executorService.execute(threads.get(limit-- % queueLength).clone());
-                    if (ThreadBase.needAbort() || (isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > baseThread.limit))
-                        break;
-                    SourceCode.sleep(nanosec);
+                    try {
+                        executorService.execute(threads.get(limit-- % queueLength).clone());
+                        executeTimes.getAndIncrement();
+                        if (needAbord || (isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > limit)) break;
+                        SourceCode.sleep(nanosec);
+                    } catch (RejectedExecutionException e) {
+                        logger.warn("线程池已满,任务被丢弃", e.getCause());
+                    }
                 }
             } catch (Exception e) {
                 logger.warn("任务发生器执行发生错误了!", e);
