@@ -64,7 +64,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
     private boolean isTimesMode;
 
     /**
-     * 用于区分固定QPS请求模型,这里不计算固定QPS模型中的实时QPS,直接使用执行总数除以执行时间获取
+     * 用于区分固定QPS请求模型,这里不计算固定QPS模型中的实时QPS
      */
     private boolean canCount;
 
@@ -150,10 +150,6 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
             this.canCount = false;
             this.isTimesMode = fix.isTimesMode;
             this.limit = fix.limit;
-        } else if (base instanceof HoldThread) {
-            this.isTimesMode = base.isTimesMode;
-            this.limit = base.limit;
-            this.canCount = true;
         } else {
             ParamException.fail("创建进度条对象失败!");
         }
@@ -164,7 +160,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
         double pro = 0;
         while (st) {
             sleep(HttpClientConstant.LOOP_INTERVAL);
-            pro = isTimesMode ? base.executeNum == 0 ? FixedQpsConcurrent.executeTimes.get() * 1.0 / limit : base.executeNum * 1.0 / limit : (Time.getTimeStamp() - startTime) * 1.0 / limit;
+            pro = isTimesMode ? base.executeNum == 0 ? excuteNum.get() * 1.0 / limit : base.executeNum * 1.0 / limit : (Time.getTimeStamp() - startTime) * 1.0 / limit;
             if (pro > 0.95) break;
             if (st) {
                 runInfo = String.format("%s进度:%s  %s ,当前QPS: %d", taskDesc, getManyString(ONE, (int) (pro * LENGTH)), getPercent(pro * 100), getQPS());
@@ -189,9 +185,9 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
                 times.add(costs.get(size - 1));
                 times.add(costs.get(size - 2));
             }
-            qps = times.isEmpty() ? 0 : (int) (1000 * threadNum / (times.stream().collect(Collectors.summarizingInt(x -> x)).getAverage())) + 1;
+            qps = times.isEmpty() ? 0 : (int) (1000 * threadNum / (times.stream().collect(Collectors.summarizingInt(x -> x)).getAverage()));
         } else {
-            qps = excuteNum.get() / (int) (Time.getTimeStamp() - startTime);
+            qps = excuteNum.get() / (int) ((Time.getTimeStamp() - startTime) / 1000);
         }
         qs.add(qps);
         return qps;
