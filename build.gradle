@@ -84,11 +84,11 @@ dependencies {
     //    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.8.0'
     //    compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
     //    compile group: 'com.sun.jna', name: 'jna', version: '3.0.9'
-    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.62'
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.76'
     //    compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.9.0'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.12.1'
-    //    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.12.1'
+//    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.17.1'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
     //    compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.0'
     //    compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.0'
@@ -97,7 +97,6 @@ dependencies {
     compile group: 'redis.clients', name: 'jedis', version: '3.0.1'
     //处理报错Failed to load class "org.slf4j.impl.StaticLoggerBinder
     testCompile group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.32'
-
     testCompile group: 'org.spockframework', name: 'spock-core', version: '2.0-groovy-3.0'
     // https://mvnrepository.com/artifact/org.iq80.leveldb/leveldb
     implementation group: 'org.iq80.leveldb', name: 'leveldb', version: '0.12'
@@ -112,7 +111,8 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.fusesource.jansi/jansi
     implementation group: 'org.fusesource.jansi', name: 'jansi', version: '2.4.0'
-
+    implementation 'com.aliyun.oss:aliyun-sdk-oss:3.8.0'
+    implementation 'com.aliyun.openservices:aliyun-log:0.6.42'
 }
 
 //已失效,后期需要借助插件shadow完成
