@@ -388,7 +388,7 @@ public class FunLibrary extends SourceCode {
         } catch (Exception e) {
             FunRequest funRequest = FunRequest.initFromRequest(request);
             funRequest.setResponse(res);
-            logger.warn("获取请求相应失败！请求内容:{}", funRequest.toString(), e);
+            logger.warn("请求失败 {} ,内容:{} ", e.getMessage(), funRequest.toString());
         }
         return res;
     }

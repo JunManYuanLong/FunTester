@@ -23,6 +23,7 @@ import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.InMemoryDnsResolver;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.impl.conn.SystemDefaultDnsResolver;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
@@ -62,6 +63,11 @@ public class ClientManage {
     private static Logger logger = LogManager.getLogger(ClientManage.class);
 
     /**
+     * 需要解析自定义域名的IP集合
+     */
+    public static List<InetAddress> ips = getAddress();
+
+    /**
      * ssl验证
      */
     private static SSLContext sslContext = createIgnoreVerifySSL();
@@ -69,7 +75,7 @@ public class ClientManage {
     /**
      * 本地DNS解析
      */
-    private static DnsResolver dnsResolver = getDnsResolver();
+    private static DnsResolver dnsResolver = getDnsResolver2();
 
     /**
      * 请求超时控制器
@@ -102,7 +108,7 @@ public class ClientManage {
     public static CloseableHttpAsyncClient httpAsyncClient = getCloseableHttpAsyncClient();
 
     /**
-     * 获取连接池
+     * 获取连接池管理器
      *
      * @return
      */
@@ -143,13 +149,12 @@ public class ClientManage {
         return connManager;
     }
 
-    public static List<InetAddress> ips = getAddress();
-
     private static List<InetAddress> getAddress() {
         try {
 
             return Arrays.asList(
-                    InetAddress.getByName("127.0.0.1")
+                    InetAddress.getByName("127.0.0.1"),
+                    InetAddress.getByName("0.0.0.0")
             );
         } catch (Exception e) {
 
@@ -158,12 +163,20 @@ public class ClientManage {
         return null;
     }
 
+    /**
+     * 重写Java自定义DNS解析器,负载均衡
+     *
+     * @return
+     */
     private static DnsResolver getDnsResolver() {
         return new SystemDefaultDnsResolver() {
             @Override
             public InetAddress[] resolve(final String host) throws UnknownHostException {
-                if (host.equalsIgnoreCase("www.funtester.com")) {
-                    return new InetAddress[]{SourceCode.random(ips)};
+                if (host.equalsIgnoreCase("fun.tester")) {
+                    InetAddress random = SourceCode.random(ips);
+                    logger.warn(random);
+//                    return new InetAddress[]{random};
+                    return new InetAddress[]{InetAddress.getByName("127.0.0.1")};
                 } else {
                     return super.resolve(host);
                 }
@@ -171,6 +184,44 @@ public class ClientManage {
         };
     }
 
+    /**
+     * 重写Java自定义DNS解析器,非负载均衡
+     *
+     * @return
+     */
+    private static DnsResolver getDnsResolver2() {
+        InMemoryDnsResolver dnsResolver = new InMemoryDnsResolver();
+
+        try {
+            InetAddress random = SourceCode.random(ips);
+            logger.warn(random);
+//            dnsResolver.add("fun.tester",  new InetAddress[]{random});
+            dnsResolver.add("fun.tester", InetAddress.getByName("0.0.0.0"));
+            dnsResolver.add("fun.tester", InetAddress.getByName("127.0.0.1"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return dnsResolver;
+    }
+
+    /**
+     * 自定义本地DNS解析器实现
+     *
+     * @return
+     */
+    private static DnsResolver getDnsResolver3() {
+        return new DnsResolver() {
+            @Override
+            public InetAddress[] resolve(final String host) throws UnknownHostException {
+                if (host.equalsIgnoreCase("fun.tester")) {
+                    return new InetAddress[]{InetAddress.getByName("127.0.0.1")};
+                } else {
+                    return InetAddress.getAllByName(host);
+                }
+            }
+        };
+    }
 
     /**
      * 获取SSL套接字对象 重点重点：设置tls协议的版本
