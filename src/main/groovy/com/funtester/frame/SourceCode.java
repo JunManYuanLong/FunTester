@@ -160,7 +160,7 @@ public class SourceCode extends Output {
      * 获取text复制拼接的string
      *
      * @param text
-     * @param time 次数
+     * @param times 次数
      * @return
      */
     public static String getManyString(String text, int times) {
@@ -555,6 +555,30 @@ public class SourceCode extends Output {
             }
         };
         ThreadPoolUtil.executeSync(runnable);
+    }
+
+    /**
+     * 获取方法的执行时间
+     *
+     * @param f
+     */
+    public static void time(Supplier f) {
+        time(f, 1);
+    }
+
+    /**
+     * 获取方法的执行时间
+     *
+     * @param f     执行方法
+     * @param times 执行次数
+     */
+    public static void time(Supplier f, int times) {
+        long start = Time.getTimeStamp();
+        for (int i = 0; i < times; i++) {
+            f.get();
+        }
+        long end = Time.getTimeStamp();
+        output("执行耗时:" + formatLong(end - start) + " s");
     }
 
     /**
