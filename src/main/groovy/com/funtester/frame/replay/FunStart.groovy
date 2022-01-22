@@ -6,9 +6,21 @@ import org.apache.logging.log4j.Logger
 
 import java.util.concurrent.atomic.AtomicInteger
 
+/**
+ * 计数器
+ */
 class FunStart extends SourceCode implements Runnable {
 
     private static final Logger logger = LogManager.getLogger(FunStart.class);
+
+    FunStart(int start, int max, int rate, int interval, int time, String name) {
+        this.name = name
+        this.start = start
+        this.max = max
+        this.rate = rate
+        this.interval = interval
+        this.time = time
+    }
 
     String name
 
