@@ -23,7 +23,6 @@ import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.InMemoryDnsResolver;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.impl.conn.SystemDefaultDnsResolver;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
@@ -75,7 +74,7 @@ public class ClientManage {
     /**
      * 本地DNS解析
      */
-    private static DnsResolver dnsResolver = getDnsResolver2();
+    private static DnsResolver dnsResolver = getDnsResolver();
 
     /**
      * 请求超时控制器
@@ -149,6 +148,11 @@ public class ClientManage {
         return connManager;
     }
 
+    /**
+     * 初始化DNS配置IP
+     *
+     * @return
+     */
     private static List<InetAddress> getAddress() {
         try {
 
@@ -157,7 +161,6 @@ public class ClientManage {
                     InetAddress.getByName("0.0.0.0")
             );
         } catch (Exception e) {
-
             FailException.fail("DNS IP解析失败!");
         }
         return null;
@@ -174,50 +177,10 @@ public class ClientManage {
             public InetAddress[] resolve(final String host) throws UnknownHostException {
                 if (host.equalsIgnoreCase("fun.tester")) {
                     InetAddress random = SourceCode.random(ips);
-                    logger.warn(random);
-//                    return new InetAddress[]{random};
-                    return new InetAddress[]{InetAddress.getByName("127.0.0.1")};
+                    logger.info(random);
+                    return new InetAddress[]{random};
                 } else {
                     return super.resolve(host);
-                }
-            }
-        };
-    }
-
-    /**
-     * 重写Java自定义DNS解析器,非负载均衡
-     *
-     * @return
-     */
-    private static DnsResolver getDnsResolver2() {
-        InMemoryDnsResolver dnsResolver = new InMemoryDnsResolver();
-
-        try {
-            InetAddress random = SourceCode.random(ips);
-            logger.warn(random);
-//            dnsResolver.add("fun.tester",  new InetAddress[]{random});
-            dnsResolver.add("fun.tester", InetAddress.getByName("0.0.0.0"));
-            dnsResolver.add("fun.tester", InetAddress.getByName("127.0.0.1"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return dnsResolver;
-    }
-
-    /**
-     * 自定义本地DNS解析器实现
-     *
-     * @return
-     */
-    private static DnsResolver getDnsResolver3() {
-        return new DnsResolver() {
-            @Override
-            public InetAddress[] resolve(final String host) throws UnknownHostException {
-                if (host.equalsIgnoreCase("fun.tester")) {
-                    return new InetAddress[]{InetAddress.getByName("127.0.0.1")};
-                } else {
-                    return InetAddress.getAllByName(host);
                 }
             }
         };
