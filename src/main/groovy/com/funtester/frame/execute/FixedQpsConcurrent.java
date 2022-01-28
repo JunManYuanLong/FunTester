@@ -16,10 +16,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.util.stream.Collectors.toList;
@@ -87,7 +84,7 @@ public class FixedQpsConcurrent extends SourceCode {
     /**
      * 线程池
      */
-    ExecutorService executorService;
+    ThreadPoolExecutor executor;
 
     /**
      * @param thread 线程任务
@@ -116,8 +113,8 @@ public class FixedQpsConcurrent extends SourceCode {
      */
     private FixedQpsConcurrent(String desc) {
         this.desc = StatisticsUtil.getFileName(desc);
-        if (executorService == null)
-            executorService = ThreadPoolUtil.createCachePool(HttpClientConstant.THREADPOOL_MAX);
+        if (executor == null)
+            executor = ThreadPoolUtil.createCachePool(HttpClientConstant.THREADPOOL_MAX);
     }
 
     private FixedQpsConcurrent() {
@@ -139,7 +136,8 @@ public class FixedQpsConcurrent extends SourceCode {
             double diffTime = 2 * (Constant.RUNUP_TIME / PREFIX_RUN * interval - interval);//计算最大时间间隔和最小时间间隔差值
             double piece = diffTime / runupTotal;//计算每一次请求时间增量
             for (int i = runupTotal; i > 0; i--) {
-                executorService.execute(threads.get(limit-- % queueLength).clone());
+                if (executor.getActiveCount() + 5 > HttpClientConstant.THREADPOOL_MAX) continue;//避免出发线程池拒绝策略
+                this.executor.execute(threads.get(limit-- % queueLength).clone());
                 sleep((long) (interval + i * piece));
             }
             sleep(1.0);
@@ -161,8 +159,8 @@ public class FixedQpsConcurrent extends SourceCode {
             countDownLatch.await();
             ThreadBase.progress.stop();
             GCThread.stop();
-            executorService.shutdown();
-            executorService.awaitTermination(HttpClientConstant.WAIT_TERMINATION_TIMEOUT, TimeUnit.SECONDS);//此方法需要在shutdown方法执行之后执行
+            executor.shutdown();
+            executor.awaitTermination(HttpClientConstant.WAIT_TERMINATION_TIMEOUT, TimeUnit.SECONDS);//此方法需要在shutdown方法执行之后执行
         } catch (InterruptedException e) {
             logger.error("线程池等待任务结束失败!", e);
         }
@@ -192,7 +190,7 @@ public class FixedQpsConcurrent extends SourceCode {
             try {
                 while (true) {
                     try {
-                        executorService.execute(threads.get(limit-- % queueLength).clone());
+                        executor.execute(threads.get(limit-- % queueLength).clone());
                         executeTimes.getAndIncrement();
                         if (needAbord || (isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > limit)) break;
                         SourceCode.sleep(nanosec);
