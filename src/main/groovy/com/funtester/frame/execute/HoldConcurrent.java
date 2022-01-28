@@ -23,7 +23,6 @@ import static java.util.stream.Collectors.toList;
 /**
  * 并发类，用于启动压力脚本
  */
-@Deprecated
 public class HoldConcurrent extends SourceCode {
 
     private static Logger logger = LogManager.getLogger(HoldConcurrent.class);
