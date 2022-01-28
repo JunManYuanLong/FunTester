@@ -578,7 +578,22 @@ public class SourceCode extends Output {
             f.get();
         }
         long end = Time.getTimeStamp();
-        output("执行耗时:" + formatLong(end - start) + " s");
+        logger.info("执行{}次耗时:{}", times, formatLong(end - start) + " s");
+    }
+
+    /**
+     * 获取方法的执行时间
+     *
+     * @param f     执行方法
+     * @param times 执行次数
+     */
+    public static void time(Supplier f, int times, String name) {
+        long start = Time.getTimeStamp();
+        for (int i = 0; i < times; i++) {
+            f.get();
+        }
+        long end = Time.getTimeStamp();
+        logger.info("{}执行{}次耗时:{}", name, times, formatLong(end - start) + " s");
     }
 
     /**
