@@ -37,11 +37,10 @@ class EventConcurrent<F> extends SourceCode {
     }
 
     def check() {
-        if (fs.getStart() % grid + fs.getRate() % grid != 0) logger.warn("参数不匹配,必须是 $grid 的整数倍")
+        if (fs.getStart() % grid + fs.getRate() % grid != 0) logger.warn("QPS参数不匹配,必须是 $grid 的整数倍")
     }
 
     public void init() {
-        //todo:三种模型枚举类
         disruptor = new Disruptor<EventThread.FunEvent>(
                 EventThread.FunEvent::new,
                 16 * 16,
@@ -52,9 +51,6 @@ class EventConcurrent<F> extends SourceCode {
         ringBuffer = disruptor.getRingBuffer()
         def consumers = []
         2.times {consumers << new EventThread<F>(random(ts))}
-        fun {
-            new FunConcurrent(consumers).start()
-        }
         disruptor.handleEventsWithWorkerPool(consumers as EventThread<F>[])
         disruptor.start()
         fs.start()
