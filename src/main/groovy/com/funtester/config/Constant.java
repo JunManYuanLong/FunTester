@@ -58,6 +58,11 @@ public class Constant {
     public static int POOL_SIZE = 32;
 
     /**
+     * Event模型中默认消费者数量
+     */
+    public static int CONCUMER_SIZE = 2000;
+
+    /**
      * 线程池最大等待队列长度
      */
     public static final int MAX_WAIT_TASK = 10_0000;
@@ -77,7 +82,7 @@ public class Constant {
     /**
      * 默认控制台输入标记
      */
-    public static String INTPUT_KEY = "FunTester";
+    public static String INTPUT_KEY = "F";
 
     public static final String RESPONSE_CONTENT = "content";
 

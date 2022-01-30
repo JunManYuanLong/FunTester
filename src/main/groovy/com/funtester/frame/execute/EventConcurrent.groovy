@@ -1,17 +1,18 @@
 package com.funtester.frame.execute
 
-import com.funtester.base.constaint.FunThread
+
 import com.funtester.base.exception.FailException
 import com.funtester.config.Constant
 import com.funtester.frame.SourceCode
-import com.funtester.frame.replay.EventThread
-import com.funtester.frame.replay.FunStart
-import com.funtester.utils.StringUtil
+import com.funtester.frame.event.EventThread
+import com.funtester.frame.event.FunStart
 import com.lmax.disruptor.RingBuffer
 import com.lmax.disruptor.YieldingWaitStrategy
 import com.lmax.disruptor.dsl.Disruptor
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+
+import java.util.stream.Collectors
 
 class EventConcurrent<F> extends SourceCode {
 
@@ -33,49 +34,42 @@ class EventConcurrent<F> extends SourceCode {
         this.fs = fs
         this.ts = ts
         check()
-        init()
+        start()
     }
 
     def check() {
-        if (fs.getStart() % grid + fs.getRate() % grid != 0) logger.warn("QPS参数不匹配,必须是 $grid 的整数倍")
+        if (fs.getStart() % grid + fs.getStep() % grid != 0) logger.warn("QPS参数不匹配,必须是 $grid 的整数倍")
     }
 
-    public void init() {
+    public void start() {
         disruptor = new Disruptor<EventThread.FunEvent>(
                 EventThread.FunEvent::new,
                 16 * 16,
-                ThreadPoolUtil.getFactory("D"),
+                ThreadPoolUtil.getFactory("E"),
                 com.lmax.disruptor.dsl.ProducerType.MULTI,
                 new YieldingWaitStrategy()
         );
         ringBuffer = disruptor.getRingBuffer()
-        def consumers = []
-        2.times {consumers << new EventThread<F>(random(ts))}
+        def consumers = range(CONCUMER_SIZE).mapToObj(f -> new EventThread<F>(random(ts))).collect(Collectors.toList())
         disruptor.handleEventsWithWorkerPool(consumers as EventThread<F>[])
         disruptor.start()
         fs.start()
     }
 
-    public static void main(String[] args) {
-        def start = new FunStart(1, 20, 1, 1, 1000, "FunTester")
-        def ss = {String x ->
-            {
-                if (x != null) output(x)
-            }
-        }
-        def concurrent = new EventConcurrent<String>(start, [ss])
-        concurrent.send({
-            StringUtil.getString(10)
-        })
-        FunThread.stop()
 
-    }
-
-
+    /**
+     * 中止
+     * @return
+     */
     def stop() {
         fs.stop()
+        if (disruptor != null) disruptor.shutdown()
     }
 
+    /**
+     * 结束所有的,只中止生产者
+     * @return
+     */
     static def stopAll() {
         key = false
     }
