@@ -223,6 +223,18 @@ public class SourceCode extends Output {
     }
 
     /**
+     * 格式化int数字,用于补充0的场景
+     *
+     * @param number
+     * @param length
+     * @return
+     */
+    public static String formatInt(int number, int length) {
+        String s = number + EMPTY;
+        return s.length() >= length ? s : getManyString("0", length - s.length()) + s;
+    }
+
+    /**
      * 把string类型转化为int
      *
      * @param text 需要转化的文本
@@ -578,7 +590,7 @@ public class SourceCode extends Output {
             f.get();
         }
         long end = Time.getTimeStamp();
-        logger.info("执行{}次耗时:{}", times, formatLong(end - start) + " s");
+        logger.info("执行{}次耗时:{}", times, formatLong(end - start) + " ms");
     }
 
     /**
@@ -593,7 +605,7 @@ public class SourceCode extends Output {
             f.get();
         }
         long end = Time.getTimeStamp();
-        logger.info("{}执行{}次耗时:{}", name, times, formatLong(end - start) + " s");
+        logger.info("{}执行{}次耗时:{}", name, times, formatLong(end - start) + " ms");
     }
 
     /**
