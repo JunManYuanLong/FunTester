@@ -1,4 +1,4 @@
-package com.funtester.frame.event
+package com.funtester.base.event
 
 import com.funtester.frame.SourceCode
 import org.apache.logging.log4j.LogManager
@@ -75,7 +75,7 @@ class FunStart extends SourceCode implements Runnable {
             if (getMark() - st > time) break
             sleep(interval as double)
             count += step
-            total.addAndGet(count)
+            total.addAndGet(count > max ? max : count)
         }
         stop()
     }
@@ -96,6 +96,15 @@ class FunStart extends SourceCode implements Runnable {
      */
     def getQps() {
         total.getAndSet(0)
+    }
+
+    /**
+     * 提高最大QPS,用于动态模型压测
+     * @param qps
+     * @return
+     */
+    def add(int qps) {
+        max += qps
     }
 
     /**
