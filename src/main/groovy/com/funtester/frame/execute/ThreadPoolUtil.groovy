@@ -73,7 +73,7 @@ class ThreadPoolUtil {
      * @return
      */
     static ThreadPoolExecutor createCachePool(int max = 256) {
-        return createPool(0, max, 3, new SynchronousQueue<Runnable>())
+        return createPool(0, max, HttpClientConstant.ALIVE_TIME, new SynchronousQueue<Runnable>())
     }
 
     /**

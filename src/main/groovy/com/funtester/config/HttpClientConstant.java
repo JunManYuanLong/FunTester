@@ -125,6 +125,11 @@ public class HttpClientConstant {
     public static int THREAD_ALIVE_TIME = 5;
 
     /**
+     * 线程最大空闲时间
+     */
+    public static int ALIVE_TIME = 30;
+
+    /**
      * 线程池核心线程数
      */
     public static int THREADPOOL_CORE = 200;
