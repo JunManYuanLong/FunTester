@@ -2,7 +2,7 @@ package com.funtester.frame.execute;
 
 import com.funtester.base.constaint.FunThread;
 import com.funtester.base.interfaces.IFunController;
-import com.funtester.config.HttpClientConstant;
+import com.funtester.config.Constant;
 import com.funtester.frame.SourceCode;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,7 +35,7 @@ public class FunConcurrent extends SourceCode {
      */
     public FunConcurrent(List<FunThread> threads) {
         this.threads = threads;
-        executorService = ThreadPoolUtil.createCachePool(HttpClientConstant.THREADPOOL_MAX);
+        executorService = ThreadPoolUtil.createCachePool(Constant.THREADPOOL_MAX);
     }
 
     private FunConcurrent() {

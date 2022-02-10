@@ -114,34 +114,4 @@ public class HttpClientConstant {
      */
     public static String SSL_VERSION = getProperty("ssl_v");
 
-    /**
-     * 通用循环间隔时间,单位s,使用double防止Groovy脚本出错
-     */
-    public static double LOOP_INTERVAL = 3.0;
-
-    /**
-     * 线程池,线程最大空闲时间
-     */
-    public static int THREAD_ALIVE_TIME = 5;
-
-    /**
-     * 线程最大空闲时间
-     */
-    public static int ALIVE_TIME = 30;
-
-    /**
-     * 线程池核心线程数
-     */
-    public static int THREADPOOL_CORE = 200;
-
-    /**
-     * 线程池最大线程数
-     */
-    public static int THREADPOOL_MAX = 5000;
-
-    /**
-     * 关闭线程池最大等待时间
-     */
-    public static int WAIT_TERMINATION_TIMEOUT = 10;
-
 }

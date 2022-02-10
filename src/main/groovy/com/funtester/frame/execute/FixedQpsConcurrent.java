@@ -4,10 +4,10 @@ import com.funtester.base.bean.PerformanceResultBean;
 import com.funtester.base.constaint.FixedQps;
 import com.funtester.base.constaint.ThreadBase;
 import com.funtester.config.Constant;
-import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.Save;
 import com.funtester.frame.SourceCode;
 import com.funtester.httpclient.GCThread;
+import com.funtester.utils.CountUtil;
 import com.funtester.utils.RWUtil;
 import com.funtester.utils.Time;
 import org.apache.logging.log4j.LogManager;
@@ -16,7 +16,10 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
-import java.util.concurrent.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.util.stream.Collectors.toList;
@@ -114,7 +117,7 @@ public class FixedQpsConcurrent extends SourceCode {
     private FixedQpsConcurrent(String desc) {
         this.desc = StatisticsUtil.getFileName(desc);
         if (executor == null)
-            executor = ThreadPoolUtil.createCachePool(HttpClientConstant.THREADPOOL_MAX);
+            executor = ThreadPoolUtil.createCachePool(Constant.THREADPOOL_MAX);
     }
 
     private FixedQpsConcurrent() {
@@ -136,7 +139,7 @@ public class FixedQpsConcurrent extends SourceCode {
             double diffTime = 2 * (Constant.RUNUP_TIME / PREFIX_RUN * interval - interval);//计算最大时间间隔和最小时间间隔差值
             double piece = diffTime / runupTotal;//计算每一次请求时间增量
             for (int i = runupTotal; i > 0; i--) {
-                if (executor.getActiveCount() + 5 > HttpClientConstant.THREADPOOL_MAX) continue;//避免出发线程池拒绝策略
+                if (executor.getActiveCount() + 5 > Constant.THREADPOOL_MAX) continue;//避免出发线程池拒绝策略
                 this.executor.execute(threads.get(limit-- % queueLength).clone());
                 sleep((long) (interval + i * piece));
             }
@@ -160,7 +163,7 @@ public class FixedQpsConcurrent extends SourceCode {
             ThreadBase.progress.stop();
             GCThread.stop();
             executor.shutdown();
-            executor.awaitTermination(HttpClientConstant.WAIT_TERMINATION_TIMEOUT, TimeUnit.SECONDS);//此方法需要在shutdown方法执行之后执行
+            executor.awaitTermination(Constant.WAIT_TERMINATION_TIMEOUT, TimeUnit.SECONDS);//此方法需要在shutdown方法执行之后执行
         } catch (InterruptedException e) {
             logger.error("线程池等待任务结束失败!", e);
         }
@@ -233,7 +236,7 @@ public class FixedQpsConcurrent extends SourceCode {
         String statistics = StatisticsUtil.statistics(data, desc, name);
         double qps = executeNum * 1000.0 / (end - start);
         int qps2 = baseThread.qps;
-        return new PerformanceResultBean(desc, Time.getTimeByTimestamp(start), Time.getTimeByTimestamp(end), name, size, sum / size, qps, qps2, getPercent(executeNum, errorNum), 0, executeNum, statistics);
+        return new PerformanceResultBean(desc, Time.getTimeByTimestamp(start), Time.getTimeByTimestamp(end), name, size, sum / size, qps, qps2, getPercent(executeNum, errorNum), 0, executeNum, statistics, CountUtil.index(data).toString());
     }
 
 

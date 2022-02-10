@@ -3,17 +3,14 @@ package com.funtester.base.event
 import com.funtester.frame.SourceCode
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
-
-import java.util.concurrent.atomic.AtomicInteger
-
 /**
  * 计数器
  */
-class FunStart extends SourceCode implements Runnable {
+class FunCount extends SourceCode implements Runnable {
 
-    private static final Logger logger = LogManager.getLogger(FunStart.class);
+    private static final Logger logger = LogManager.getLogger(FunCount.class);
 
-    FunStart(int start, int max, int step, int interval, int time, String name) {
+    FunCount(int start, int max, int step, int interval, int time, String name) {
         this.name = name
         this.start = start
         this.max = max
@@ -58,11 +55,6 @@ class FunStart extends SourceCode implements Runnable {
     int count
 
     /**
-     * 当前可提供event保有量
-     */
-    AtomicInteger total = new AtomicInteger(0)
-
-    /**
      * 结束标志
      */
     boolean status = true
@@ -75,7 +67,6 @@ class FunStart extends SourceCode implements Runnable {
             if (getMark() - st > time) break
             sleep(interval as double)
             count += step
-            total.addAndGet(count > max ? max : count)
         }
         stop()
     }
@@ -86,16 +77,15 @@ class FunStart extends SourceCode implements Runnable {
      */
     def stop() {
         status = false
-        total.getAndSet(TEST_ERROR_CODE)
         output("启动器结束了")
     }
 
     /**
      * 获取event保有量
-     * @return
+     * @return int有助于times语法使用
      */
-    def getQps() {
-        total.getAndSet(0)
+    int getQps() {
+        count
     }
 
     /**

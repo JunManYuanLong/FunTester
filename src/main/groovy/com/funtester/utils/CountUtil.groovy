@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
 import java.util.stream.Collectors
+
 /**
  * 统计出现次数相关类
  */
@@ -57,18 +58,23 @@ class CountUtil {
         }
     }
 
-
-    static def index(List<Number> c) {
+    /**
+     * 统计list各分位数据
+     * @param c
+     * @return
+     */
+    static def index(List<? extends Number> c) {
         if (c == null || c.size() == 0) return
         c.sort()
         int size = c.size()
         double min = c.first()
         double max = c.last()
         double p99 = c.get(size * 0.99 as Integer)
+        double p999 = c.get(size * 0.999 as Integer)
         double p95 = c.get(size * 0.95 as Integer)
         double avg = SourceCode.changeStringToDouble(SourceCode.formatNumber(c.average(), "#.###"))
         def mid = c.get(size / 2 as Integer)
-        new FunIndex(avg: avg, mid: mid, min: min, max: max, p99: p99, p95: p95)
+        new FunIndex(avg: avg, mid: mid, min: min, max: max, p99: p99, p999: p999, p95: p95)
     }
 
 
@@ -84,10 +90,12 @@ class CountUtil {
 
         Double p99
 
+        Double p999
+
         Double p95
 
         @Override
-        public String toString() {
+        String toString() {
             "平均值:$avg ,最大值$max ,最小值:$min ,中位数:$mid p99:$p99 p95:$p95"
         }
     }

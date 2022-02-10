@@ -1,17 +1,17 @@
 package com.funtester.frame.execute
 
-
-import com.funtester.base.exception.FailException
-import com.funtester.config.Constant
-import com.funtester.frame.SourceCode
 import com.funtester.base.event.EventThread
-import com.funtester.base.event.FunStart
+import com.funtester.base.event.FunCount
+import com.funtester.base.exception.FailException
+import com.funtester.frame.SourceCode
 import com.lmax.disruptor.RingBuffer
-import com.lmax.disruptor.YieldingWaitStrategy
+import com.lmax.disruptor.TimeoutBlockingWaitStrategy
 import com.lmax.disruptor.dsl.Disruptor
+import com.lmax.disruptor.dsl.ProducerType
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
+import java.util.concurrent.TimeUnit
 import java.util.stream.Collectors
 
 class EventConcurrent<F> extends SourceCode {
@@ -26,11 +26,13 @@ class EventConcurrent<F> extends SourceCode {
 
     RingBuffer<EventThread.FunEvent<F>> ringBuffer
 
-    FunStart fs
+    FunCount fs
 
-    List<Closure> ts
+    List<EventThread<F>> ts
 
-    EventConcurrent(FunStart fs, List<EventThread<F>> ts) {
+    int count = 0
+
+    EventConcurrent(FunCount fs, List<EventThread<F>> ts) {
         this.fs = fs
         this.ts = ts
         check()
@@ -51,16 +53,16 @@ class EventConcurrent<F> extends SourceCode {
      *         TimeoutBlockingWaitStrategy	加锁，有超时限制	CPU资源紧缺，吞吐量和延迟并不重要的场景
      *         YieldingWaitStrategy	自旋 + yield + 自旋	性能和CPU资源之间有很好的折中。延迟比较均匀
      */
-    public void start() {
+    void start() {
         disruptor = new Disruptor<EventThread.FunEvent>(
                 EventThread.FunEvent::new,
-                16 * 16,
+                RINGBUFFER_SIZE,
                 ThreadPoolUtil.getFactory("E"),
-                com.lmax.disruptor.dsl.ProducerType.MULTI,
-                new YieldingWaitStrategy()
+                ProducerType.MULTI,
+                new TimeoutBlockingWaitStrategy(1000, TimeUnit.MILLISECONDS)
         );
         ringBuffer = disruptor.getRingBuffer()
-        def consumers = range(CONCUMER_SIZE).mapToObj(f -> new EventThread<F>(random(ts))).collect(Collectors.toList())
+        def consumers = range(CONCUMER_SIZE).mapToObj(f -> ts.get(count++ % ts.size())).collect(Collectors.toList())
         disruptor.handleEventsWithWorkerPool(consumers as EventThread<F>[])
         disruptor.start()
         fs.start()
@@ -90,21 +92,19 @@ class EventConcurrent<F> extends SourceCode {
      */
     def send(Closure<F> produce) {
         if (produce() == null) FailException.fail("生产者类型错误")
-        if (ThreadPoolUtil.getFunPool().activeCount > Constant.POOL_SIZE - 5) {
+        if (ThreadPoolUtil.getFunPool().activeCount > POOL_SIZE - 5) {
             logger.warn("生产者线程繁忙,丢弃改任务")
             return
         }
         while (key) {
             sleep(1.0)
             def qps = fs.getQps()
+            logger.info("当前QPS:{}",qps)
             if (qps == 0) continue
             if (qps < 0) break
             fun {
-                grid.times {
-                    sleep(1.0 / grid)
-                    (qps / grid).times {
-                        send(produce())
-                    }
+                qps.times {
+                    send(produce())
                 }
             }
 

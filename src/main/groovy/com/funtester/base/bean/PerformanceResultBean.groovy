@@ -1,10 +1,9 @@
 package com.funtester.base.bean
 
-import com.funtester.db.mysql.MySqlTest
-import com.funtester.frame.SourceCode
-import com.funtester.frame.Output
-import com.funtester.utils.DecodeEncode
 
+import com.funtester.frame.Output
+import com.funtester.frame.SourceCode
+import com.funtester.utils.DecodeEncode
 /**
  * 性能测试结果集
  */
@@ -16,6 +15,10 @@ class PerformanceResultBean extends AbstractBean implements Serializable {
      * 测试用例描述
      */
     String mark
+    /**
+     * 统计各分位数据
+     */
+    String index
 
     /**
      * 开始时间
@@ -77,7 +80,7 @@ class PerformanceResultBean extends AbstractBean implements Serializable {
      */
     int executeTotal
 
-    PerformanceResultBean(String mark, String startTime, String endTime, int threads, int total, int rt, double qps, double qps2, double errorRate, double failRate, int executeTotal, String table) {
+    PerformanceResultBean(String mark, String startTime, String endTime, int threads, int total, int rt, double qps, double qps2, double errorRate, double failRate, int executeTotal, String table,String index) {
         this.mark = mark
         this.startTime = startTime
         this.endTime = endTime
@@ -89,11 +92,11 @@ class PerformanceResultBean extends AbstractBean implements Serializable {
         this.errorRate = errorRate
         this.failRate = failRate
         this.executeTotal = executeTotal
+        this.index = index
         this.table = DecodeEncode.zipBase64(table)
         this.deviation = SourceCode.getPercent(Math.abs(qps - qps2) * 100 / Math.max(qps, qps2))
         Output.output(this.toJson())
         Output.output(table)
-        MySqlTest.savePerformanceBean(this)
     }
 
     PerformanceResultBean() {

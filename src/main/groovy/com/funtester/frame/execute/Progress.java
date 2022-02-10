@@ -2,7 +2,7 @@ package com.funtester.frame.execute;
 
 import com.funtester.base.constaint.*;
 import com.funtester.base.exception.ParamException;
-import com.funtester.config.HttpClientConstant;
+import com.funtester.config.Constant;
 import com.funtester.frame.SourceCode;
 import com.funtester.utils.StringUtil;
 import com.funtester.utils.Time;
@@ -159,7 +159,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
     public void run() {
         double pro = 0;
         while (st) {
-            sleep(HttpClientConstant.LOOP_INTERVAL);
+            sleep(Constant.LOOP_INTERVAL);
             pro = isTimesMode ? base.executeNum == 0 ? excuteNum.get() * 1.0 / limit : base.executeNum * 1.0 / limit : (Time.getTimeStamp() - startTime) * 1.0 / limit;
             if (pro > 0.95) break;
             if (st) {

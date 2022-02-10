@@ -1,7 +1,6 @@
 package com.funtester.frame.execute
 
 import com.funtester.config.Constant
-import com.funtester.config.HttpClientConstant
 import com.funtester.frame.Output
 import com.funtester.frame.SourceCode
 import com.funtester.utils.StringUtil
@@ -53,7 +52,7 @@ class ThreadPoolUtil {
      * @param liveTime 空闲时间
      * @return
      */
-    static ThreadPoolExecutor createPool(int core = HttpClientConstant.THREADPOOL_CORE, int max = HttpClientConstant.THREADPOOL_MAX, int liveTime = HttpClientConstant.THREAD_ALIVE_TIME, BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(Constant.MAX_WAIT_TASK), ThreadFactory factory = getFactory(), RejectedExecutionHandler rejectedExecutionHandler = new ThreadPoolExecutor.AbortPolicy()) {
+    static ThreadPoolExecutor createPool(int core = Constant.THREADPOOL_CORE, int max = Constant.THREADPOOL_MAX, int liveTime = Constant.THREAD_ALIVE_TIME, BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(Constant.MAX_WAIT_TASK), ThreadFactory factory = getFactory(), RejectedExecutionHandler rejectedExecutionHandler = new ThreadPoolExecutor.AbortPolicy()) {
         return new ThreadPoolExecutor(core, max, liveTime, TimeUnit.SECONDS, workQueue, factory, rejectedExecutionHandler);
     }
 
@@ -64,7 +63,7 @@ class ThreadPoolUtil {
      * @return
      */
     static ThreadPoolExecutor createFixedPool(int size = 10, String name = "P") {
-        return createPool(size, size, HttpClientConstant.THREAD_ALIVE_TIME, new LinkedBlockingQueue<Runnable>(Constant.MAX_WAIT_TASK), getFactory(name));
+        return createPool(size, size, Constant.THREAD_ALIVE_TIME, new LinkedBlockingQueue<Runnable>(Constant.MAX_WAIT_TASK), getFactory(name));
     }
 
     /**
@@ -73,7 +72,7 @@ class ThreadPoolUtil {
      * @return
      */
     static ThreadPoolExecutor createCachePool(int max = 256) {
-        return createPool(0, max, HttpClientConstant.ALIVE_TIME, new SynchronousQueue<Runnable>())
+        return createPool(0, max, Constant.ALIVE_TIME, new SynchronousQueue<Runnable>())
     }
 
     /**

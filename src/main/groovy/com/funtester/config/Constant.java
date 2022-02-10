@@ -63,6 +63,11 @@ public class Constant {
     public static int CONCUMER_SIZE = 2000;
 
     /**
+     * ringbuffer大小
+     */
+    public static int RINGBUFFER_SIZE = 256 * 256;
+
+    /**
      * 线程池最大等待队列长度
      */
     public static final int MAX_WAIT_TASK = 10_0000;
@@ -190,6 +195,36 @@ public class Constant {
      * 固定QPS启动之前运行的次数控制时间,总次数会等于QPS*该时间
      */
     public static int PREFIX_RUN = 10;
+
+    /**
+     * 通用循环间隔时间,单位s,使用double防止Groovy脚本出错
+     */
+    public static double LOOP_INTERVAL = 3.0;
+
+    /**
+     * 线程池,线程最大空闲时间
+     */
+    public static int THREAD_ALIVE_TIME = 5;
+
+    /**
+     * 线程最大空闲时间
+     */
+    public static int ALIVE_TIME = 30;
+
+    /**
+     * 线程池核心线程数
+     */
+    public static int THREADPOOL_CORE = 200;
+
+    /**
+     * 线程池最大线程数
+     */
+    public static int THREADPOOL_MAX = 5000;
+
+    /**
+     * 关闭线程池最大等待时间
+     */
+    public static int WAIT_TERMINATION_TIMEOUT = 10;
 
     /**
      * 本机用户名，程序初始化会赋值

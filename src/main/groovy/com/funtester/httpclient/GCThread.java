@@ -1,6 +1,6 @@
 package com.funtester.httpclient;
 
-import com.funtester.config.HttpClientConstant;
+import com.funtester.config.Constant;
 
 import static com.funtester.frame.SourceCode.sleep;
 
@@ -43,7 +43,7 @@ public class GCThread implements Runnable {
     @Override
     public void run() {
         while (FLAG) {
-            sleep(HttpClientConstant.LOOP_INTERVAL);
+            sleep(Constant.LOOP_INTERVAL);
             ClientManage.recyclingConnection();
         }
     }

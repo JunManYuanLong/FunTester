@@ -7,8 +7,9 @@ import com.funtester.base.exception.FailException;
 import com.funtester.config.Constant;
 import com.funtester.frame.Save;
 import com.funtester.frame.SourceCode;
-import com.funtester.utils.Time;
+import com.funtester.utils.CountUtil;
 import com.funtester.utils.RWUtil;
+import com.funtester.utils.Time;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -206,7 +207,7 @@ public class Concurrent extends SourceCode {
         int rt = sum / size;
         double qps = 1000.0 * name / (rt == 0 ? 1 : rt);
         double qps2 = (executeTotal + errorTotal) * 1000.0 / (endTime - startTime);
-        return new PerformanceResultBean(desc, start, end, name, size, rt, qps, qps2, getPercent(executeTotal, errorTotal), getPercent(threadNum, failTotal), executeTotal, statistics);
+        return new PerformanceResultBean(desc, start, end, name, size, rt, qps, qps2, getPercent(executeTotal, errorTotal), getPercent(threadNum, failTotal), executeTotal, statistics,CountUtil.index(data).toString());
     }
 
 

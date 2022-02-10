@@ -46,6 +46,11 @@ public class Time {
         }
     };
 
+    /**
+     * 获取calendar类对象，默认UTC时间
+     *
+     * @return
+     */
     public static Calendar calendarInit() {
         Calendar instance = Calendar.getInstance();
         instance.setTime(new Date());
