@@ -78,6 +78,9 @@ class CountUtil {
     }
 
 
+    /**
+     * 统计结果
+     */
     static class FunIndex extends AbstractBean {
 
         Double avg

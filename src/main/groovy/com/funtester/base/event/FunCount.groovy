@@ -10,7 +10,16 @@ class FunCount extends SourceCode implements Runnable {
 
     private static final Logger logger = LogManager.getLogger(FunCount.class);
 
-    FunCount(int start, int max, int step, int interval, int time, String name) {
+    /**
+     * 性能测试计数器构造方法
+     * @param start 初始值
+     * @param step 步长
+     * @param interval 间隔
+     * @param time 测试时间
+     * @param max 最大值
+     * @param name 名称
+     */
+    FunCount(int start, int step, int interval, int time, int max, String name) {
         this.name = name
         this.start = start
         this.max = max
