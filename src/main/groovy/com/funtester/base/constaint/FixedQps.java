@@ -30,8 +30,8 @@ public abstract class FixedQps<F> extends ThreadBase<F> {
             long s = Time.getTimeStamp();
             doing();
             long e = Time.getTimeStamp();
-            int diff = (int) (e - s);
-            FixedQpsConcurrent.allTimes.add(diff);
+            short diff = (short) (int) (e - s);
+            if (COUNT && FixedQpsConcurrent.executeTimes.get() > 1000) FixedQpsConcurrent.allTimes.add(diff);
         } catch (Exception e) {
             FixedQpsConcurrent.errorTimes.getAndIncrement();
             logger.warn("执行任务失败！", e);

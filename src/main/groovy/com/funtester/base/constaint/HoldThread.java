@@ -40,7 +40,7 @@ public abstract class HoldThread<F> extends ThreadBase<F> {
                     doing();
                     long et = Time.getTimeStamp();
                     short diff = (short) (et - s);
-                    costs.add(diff);
+                    count(diff);
                 } catch (Exception e) {
                     logger.warn("执行任务失败！", e);
                     errorNum++;

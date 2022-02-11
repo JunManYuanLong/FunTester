@@ -7,6 +7,11 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Vector;
 
+/**
+ * 适用于动态模型实现
+ *
+ * @param <F>
+ */
 public abstract class FunThread<F> extends ThreadBase {
 
     private static final long serialVersionUID = 7878297575504772944L;
@@ -76,7 +81,7 @@ public abstract class FunThread<F> extends ThreadBase {
      * @return
      */
     @Override
-    public FunThread clone(){
+    public FunThread clone() {
         FailException.fail("必需重写clone()方法");
         return null;
     }

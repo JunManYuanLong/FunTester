@@ -51,7 +51,7 @@ public abstract class ThreadLimitTimeCount<F> extends FixedThread<F> {
                     long et = Time.getTimeStamp();
                     executeNum++;
                     short diff = (short) (et - s);
-                    costs.add(diff);
+                    count(diff);
 //                    if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
 //                        marks.add(diff + CONNECTOR + threadmark + CONNECTOR + Time.getNow());
                     if ((et - ss) > limit || ThreadBase.needAbort()) break;

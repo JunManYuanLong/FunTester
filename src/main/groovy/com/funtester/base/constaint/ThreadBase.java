@@ -27,6 +27,11 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
     private static AtomicBoolean ABORT = new AtomicBoolean(true);
 
     /**
+     * 是否记录响应时间,默认否
+     */
+    public static boolean COUNT = false;
+
+    /**
      * 用于记录当前执行状态信息
      */
     public static Progress progress;
@@ -119,6 +124,15 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
         stop();
         if (countDownLatch != null)
             countDownLatch.countDown();
+    }
+
+    /**
+     * 记录响应时间
+     *
+     * @param cost
+     */
+    public void count(Short cost) {
+        if (COUNT && executeNum > 100) costs.add(cost);
     }
 
     /**

@@ -47,7 +47,7 @@ public class FixedQpsConcurrent extends SourceCode {
     /**
      * 用于记录所有请求时间
      */
-    public static Vector<Integer> allTimes = new Vector<>();
+    public static Vector<Short> allTimes = new Vector<>();
 
     /**
      * 开始时间
