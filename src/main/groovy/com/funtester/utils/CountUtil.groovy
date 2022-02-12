@@ -63,7 +63,7 @@ class CountUtil {
      * @param c
      * @return
      */
-    static def index(List<? extends Number> c) {
+    static FunIndex index(List<? extends Number> c) {
         if (c == null || c.size() == 0) return
         c.sort()
         int size = c.size()

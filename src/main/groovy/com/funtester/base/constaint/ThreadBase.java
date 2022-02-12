@@ -4,10 +4,13 @@ import com.funtester.base.interfaces.MarkThread;
 import com.funtester.frame.SourceCode;
 import com.funtester.frame.execute.Progress;
 import com.funtester.httpclient.FunLibrary;
+import com.funtester.utils.CountUtil;
+import com.funtester.utils.Time;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
@@ -30,6 +33,16 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
      * 是否记录响应时间,默认否
      */
     public static boolean COUNT = false;
+
+    /**
+     * 拦截请求响应时间
+     */
+    public static boolean INTERCEPT = false;
+
+    /**
+     * 用于存放拦截的请求响应时间
+     */
+    public static List<Short> interceptCosts = new ArrayList<>();
 
     /**
      * 用于记录当前执行状态信息
@@ -129,10 +142,11 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
     /**
      * 记录响应时间
      *
-     * @param cost
+     * @param s 开始时间
      */
-    public void count(Short cost) {
-        if (COUNT && executeNum > 100) costs.add(cost);
+    public void count(long s) {
+        if (COUNT && executeNum > 100) costs.add((short) (Time.getTimeStamp() - s));
+        if (INTERCEPT) interceptCosts.add((short) (Time.getTimeStamp() - s));
     }
 
     /**
@@ -204,5 +218,26 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
         return ABORT.get();
     }
 
+
+    public static void startIntercept() {
+        INTERCEPT = true;
+    }
+
+    public static void stopIntercept() {
+        INTERCEPT = false;
+    }
+
+    /**
+     * 统计RT,清空{@link ThreadBase#interceptCosts}
+     *
+     * @return
+     */
+    public static CountUtil.FunIndex count() {
+        stopIntercept();
+        sleep(1.0);
+        CountUtil.FunIndex index = CountUtil.index(interceptCosts);
+        interceptCosts = new Vector<>();
+        return index;
+    }
 
 }

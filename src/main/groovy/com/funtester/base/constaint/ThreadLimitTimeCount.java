@@ -48,13 +48,11 @@ public abstract class ThreadLimitTimeCount<F> extends FixedThread<F> {
                     threadmark = mark == null ? EMPTY : this.mark.mark(this);
                     long s = Time.getTimeStamp();
                     doing();
-                    long et = Time.getTimeStamp();
+                    count(s);
                     executeNum++;
-                    short diff = (short) (et - s);
-                    count(diff);
 //                    if (diff > HttpClientConstant.MAX_ACCEPT_TIME)
 //                        marks.add(diff + CONNECTOR + threadmark + CONNECTOR + Time.getNow());
-                    if ((et - ss) > limit || ThreadBase.needAbort()) break;
+                    if ((Time.getTimeStamp() - ss) > limit || ThreadBase.needAbort()) break;
                 } catch (Exception e) {
                     logger.warn("执行任务失败！", e);
 //                    logger.warn("执行失败对象的标记:{}", threadmark);

@@ -561,7 +561,11 @@ public class SourceCode extends Output {
                 } catch (Exception e) {
                     logger.warn("执行异步方法时发生错误!", e);
                 } finally {
-                    if (phaser != null) phaser.arriveAndDeregister();
+                    if (phaser != null) {
+                        logger.info("异步任务完成 {}",phaser.getArrivedParties());
+                        phaser.arrive();
+                    }
+
                 }
 
             }

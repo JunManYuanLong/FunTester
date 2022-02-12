@@ -75,7 +75,7 @@ class FunCount extends SourceCode implements Runnable {
         while (status) {
             if (getMark() - st > time) break
             sleep(interval as double)
-            count += step
+            count = count >= max ? max : count + step
         }
         stop()
     }
