@@ -562,7 +562,7 @@ public class SourceCode extends Output {
                     logger.warn("执行异步方法时发生错误!", e);
                 } finally {
                     if (phaser != null) {
-                        logger.info("异步任务完成 {}",phaser.getArrivedParties());
+                        logger.info("异步任务完成 {}", phaser.getArrivedParties());
                         phaser.arrive();
                     }
 
@@ -610,6 +610,13 @@ public class SourceCode extends Output {
         }
         long end = Time.getTimeStamp();
         logger.info("{}执行{}次耗时:{}", name, times, formatLong(end - start) + " ms");
+    }
+
+    public static void time(Supplier f, String name) {
+        long start = Time.getTimeStamp();
+        f.get();
+        long end = Time.getTimeStamp();
+        logger.info("{}执行耗时:{}", name, formatLong(end - start) + " ms");
     }
 
     /**

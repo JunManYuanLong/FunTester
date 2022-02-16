@@ -27,9 +27,17 @@ public class Output extends Constant {
 
     private static Logger logger = LogManager.getLogger(Output.class);
 
-    private static final String UP = "~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~";
+    private static final String UP = rgb("~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~");
 
-    private static final String DOWN = "~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~";
+    private static final String DOWN = rgb("~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~");
+
+    public static String Pre = "    ";
+
+    public static String F = "➤";
+
+    public static String J = SPACE_1 + F + SPACE_1;
+
+    public static String Q = F + SPACE_1 + F + SPACE_1;
 
     public static void output(AbstractBean bean) {
         output(bean.toJson());
@@ -188,17 +196,18 @@ public class Output extends Constant {
         output(SourceCode.parse(o));
     }
 
+
     public static void outputJsonStr(String jsonStr) {
         jsonStr = jsonStr.replaceAll("\\\\/", OR);
         int level = 0;// 用户标记层级
-        StringBuffer jsonResultStr = new StringBuffer("＞  ");// 新建stringbuffer对象，用户接收转化好的string字符串
+        StringBuffer jsonResultStr = new StringBuffer(Pre);// 新建stringbuffer对象，用户接收转化好的string字符串
         int length = jsonStr.length();
         for (int i = 0; i < length; i++) {// 循环遍历每一个字符
             char piece = jsonStr.charAt(i);// 获取当前字符
             // 如果上一个字符是断行，则在本行开始按照level数值添加标记符，排除第一行
             if ('\n' == jsonResultStr.charAt(jsonResultStr.length() - 1)) {
-                jsonResultStr.append(StringUtil.getSerialEmoji(level) + " . ");
-                IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(". . "));//没有采用sourcecode的getmanystring
+                jsonResultStr.append(rgb(StringUtil.getSerialEmoji(level) + J));
+                IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(rgb(Q)));//没有采用sourcecode的getmanystring
             }
             char last = i == 0 ? '{' : jsonStr.charAt(i - 1);
             char next = i < length - 1 ? jsonStr.charAt(i + 1) : '}';
@@ -219,8 +228,8 @@ public class Output extends Constant {
 //                    jsonResultStr.append(LINE);
                     jsonResultStr.append(("\"0123456789le]}{[,".contains(last + EMPTY) && "}],".contains(next + EMPTY) ? LINE : EMPTY));
                     if (next != ']') level--;//解决jsonarray:[{
-                    jsonResultStr.append(level == 0 ? "" : StringUtil.getSerialEmoji(level) + " . ");
-                    IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(". . "));//没有采用sourcecode的getmanystring
+                    jsonResultStr.append(level == 0 ? "" : rgb(StringUtil.getSerialEmoji(level) + J));
+                    IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(rgb(Q)));//没有采用sourcecode的getmanystring
                     jsonResultStr.append(piece);
                     break;
                 default:
@@ -228,7 +237,7 @@ public class Output extends Constant {
                     break;
             }
         }
-        output(LINE + UP + " JSON " + UP + LINE + jsonResultStr.toString().replaceAll(LINE, LINE + "＞  ") + LINE + DOWN + " JSON " + DOWN);
+        output(LINE + UP + " JSON " + UP + LINE + jsonResultStr.toString().replaceAll(LINE, LINE + Pre) + LINE + DOWN + " JSON " + DOWN);
     }
 
     public static void show(Map map) {
