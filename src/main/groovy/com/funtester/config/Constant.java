@@ -40,12 +40,12 @@ public class Constant {
 
     public static final String CONNECTOR = "_";
 
-    private static final String[] PERCENT = {SPACE_1, "▁", "▂", "▃", "▄", "▅", "▅", "▇", "█"};
+    private static final String[] PERCENT = {SPACE_1, "▁", "▂", "▃", "▄", "▅", "▅", "▇", "█" };
 
     /**
      * 此处前七处等高,第八个元素不等高,不能正常使用
      */
-    private static final String[] PARTS = {SPACE_1, "▏", "▎", "▍", "▌", "▋", "▊", "▉", "█"};
+    private static final String[] PARTS = {SPACE_1, "▏", "▎", "▍", "▌", "▋", "▊", "▉", "█" };
 
     /**
      * 统计性能数据的分桶数
@@ -60,7 +60,7 @@ public class Constant {
     /**
      * Event模型中默认消费者数量
      */
-    public static int CONCUMER_SIZE = 2000;
+    public static int CONSUMER_SIZE = 1024;
 
     /**
      * ringbuffer大小
