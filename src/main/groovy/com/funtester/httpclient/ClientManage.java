@@ -252,7 +252,7 @@ public class ClientManage {
                     logger.warn("请求失败接口URI:{}", uriRequest.getURI().toString());
                 }
                 if (exception instanceof NoHttpResponseException) {
-                    return false;
+                    return true;
                 } else if (exception instanceof InterruptedIOException) {
                     return true;
                 } else if (exception instanceof UnknownHostException) {
