@@ -1,6 +1,5 @@
 package com.funtester.base.event
 
-import com.funtester.frame.SourceCode
 import com.lmax.disruptor.EventHandler
 import com.lmax.disruptor.WorkHandler
 
@@ -20,17 +19,11 @@ class EventThread<F> implements EventHandler<FunEvent<F>>, WorkHandler<FunEvent<
     Closure exec
 
     /**
-     * 消费者名称,默认递增
-     */
-    String name
-
-    /**
      * 构造方法,传入闭包,不考虑Java的兼容性
      * @param closure
      */
     EventThread(Closure closure) {
         this.exec = closure
-        name = "C-${SourceCode.formatInt(index.getAndIncrement(), 4)}"
     }
 
     /**
@@ -40,7 +33,11 @@ class EventThread<F> implements EventHandler<FunEvent<F>>, WorkHandler<FunEvent<
      */
     @Override
     void onEvent(FunEvent<F> event) throws Exception {
-        exec(event.getEvent())
+        try {
+            exec(event.getEvent())
+        } catch (e) {
+
+        }
     }
 
     /**
@@ -52,7 +49,11 @@ class EventThread<F> implements EventHandler<FunEvent<F>>, WorkHandler<FunEvent<
      */
     @Override
     void onEvent(FunEvent<F> event, long sequence, boolean endOfBatch) throws Exception {
-        exec(event.getEvent())
+        try {
+            exec(event.getEvent())
+        } catch (e) {
+
+        }
     }
 
 

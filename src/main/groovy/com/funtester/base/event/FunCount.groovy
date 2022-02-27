@@ -3,6 +3,7 @@ package com.funtester.base.event
 import com.funtester.frame.SourceCode
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+
 /**
  * 计数器
  */
@@ -75,7 +76,7 @@ class FunCount extends SourceCode implements Runnable {
         while (status) {
             if (getMark() - st > time) break
             sleep(interval as double)
-            count = count >= max ? max : count + step
+            count = count + step >= max ? max : count + step
         }
         stop()
     }
@@ -86,6 +87,7 @@ class FunCount extends SourceCode implements Runnable {
      */
     def stop() {
         status = false
+        count = TEST_ERROR_CODE
         output("启动器结束了")
     }
 

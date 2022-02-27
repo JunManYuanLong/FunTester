@@ -212,6 +212,7 @@ public class FixedQpsConcurrent extends SourceCode {
 
     private PerformanceResultBean over() {
         needAbord = true;
+        if (!ThreadBase.COUNT) return null;
         Save.saveIntegerList(allTimes, DATA_Path.replace(LONG_Path, EMPTY) + StatisticsUtil.getFileName(queueLength, desc));
         Save.saveStringListSync(marks, MARK_Path.replace(LONG_Path, EMPTY) + desc);
         allTimes = new Vector<>();
