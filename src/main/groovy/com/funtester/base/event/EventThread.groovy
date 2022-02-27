@@ -2,16 +2,11 @@ package com.funtester.base.event
 
 import com.lmax.disruptor.EventHandler
 import com.lmax.disruptor.WorkHandler
-
-import java.util.concurrent.atomic.AtomicInteger
-
 /**
  * 基于消息实现的多线程,Disruptor消费者
  * @param <F>
  */
 class EventThread<F> implements EventHandler<FunEvent<F>>, WorkHandler<FunEvent<F>> {
-
-    static AtomicInteger index = new AtomicInteger(0)
 
     /**
      * 实际执行方法,用于消费消息的方法

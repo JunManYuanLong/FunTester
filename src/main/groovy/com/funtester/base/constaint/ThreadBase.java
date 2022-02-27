@@ -218,7 +218,6 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
         return ABORT.get();
     }
 
-
     public static void startIntercept() {
         INTERCEPT = true;
     }
