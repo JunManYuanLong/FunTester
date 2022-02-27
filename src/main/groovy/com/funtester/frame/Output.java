@@ -31,7 +31,7 @@ public class Output extends Constant {
 
     private static final String DOWN = rgb("~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~");
 
-    public static String Pre = "    ";
+    public static String Pre = color(Ansi.Color.YELLOW, "♨ ♨ ") ;
 
     public static String F = "➤";
 
