@@ -183,6 +183,7 @@ public class Concurrent extends SourceCode {
     }
 
     private PerformanceResultBean over() {
+        if (!ThreadBase.COUNT) return null;
         Save.saveIntegerList(allTimes, DATA_Path.replace(LONG_Path, EMPTY) + StatisticsUtil.getFileName(threadNum, desc));
         Save.saveStringListSync(Concurrent.requestMark, MARK_Path.replace(LONG_Path, EMPTY) + desc);
         allTimes = new Vector<>();
