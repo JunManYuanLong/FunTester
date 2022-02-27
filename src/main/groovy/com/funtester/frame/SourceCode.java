@@ -620,6 +620,19 @@ public class SourceCode extends Output {
     }
 
     /**
+     * 取消方法执行过程中的异常显示
+     *
+     * @param f
+     */
+    public static void noError(Supplier f) {
+        try {
+            f.get();
+        } catch (Exception e) {
+
+        }
+    }
+
+    /**
      * 通用的终止运行的方法,用于脚本调试等场景
      */
     public static void fail() {
