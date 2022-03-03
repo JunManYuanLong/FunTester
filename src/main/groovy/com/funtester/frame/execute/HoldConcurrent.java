@@ -18,6 +18,7 @@ import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Phaser;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.LongAdder;
 
 import static java.util.stream.Collectors.toList;
 
@@ -34,11 +35,17 @@ public class HoldConcurrent extends SourceCode {
     public static AtomicInteger HOLD = new AtomicInteger(0);
 
     /**
+     * 统计请求次数
+     */
+    public static LongAdder executeNum = new LongAdder();
+
+    /**
      * 开始时间
      */
     private long startTime;
 
     /**
+     * `
      * 结束时间
      */
     private long endTime;
@@ -62,11 +69,6 @@ public class HoldConcurrent extends SourceCode {
      * 执行失败总数
      */
     private int errorTotal;
-
-    /**
-     * 任务执行失败总数
-     */
-    private int failTotal;
 
     /**
      * 执行总数
@@ -133,7 +135,7 @@ public class HoldConcurrent extends SourceCode {
         funtester.start();
         ThreadBase.progress = new Progress(threads, StatisticsUtil.getTrueName(desc));
         ThreadBase.progress.threadNum = 0;
-        new Thread(ThreadBase.progress,"progress").start();
+        new Thread(ThreadBase.progress, "progress").start();
         startTime = Time.getTimeStamp();
         for (int i = 0; i < threadNum; i++) {
             if (HOLD.get() == 1) {
@@ -151,13 +153,12 @@ public class HoldConcurrent extends SourceCode {
         executorService.shutdown();
         ThreadBase.progress.stop();
         threads.forEach(x -> {
-            if (x.status()) failTotal++;
             errorTotal += x.errorNum;
             executeTotal += x.executeNum;
         });
         endTime = Time.getTimeStamp();
         HOLD.set(0);
-        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{},失败数:{}", threadNum, Time.getTimeDiffer(startTime, endTime), formatLong(executeTotal), errorTotal, failTotal);
+        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{}", threadNum, Time.getTimeDiffer(startTime, endTime), formatLong(executeTotal), errorTotal);
         return over();
     }
 
@@ -197,7 +198,7 @@ public class HoldConcurrent extends SourceCode {
         int rt = sum / size;
         double qps = 1000.0 * name / (rt == 0 ? 1 : rt);
         double qps2 = (executeTotal + errorTotal) * 1000.0 / (endTime - startTime);
-        return new PerformanceResultBean(desc, start, end, name, size, rt, qps, qps2, getPercent(executeTotal, errorTotal), getPercent(threadNum, failTotal), executeTotal, statistics, CountUtil.index(data).toString());
+        return new PerformanceResultBean(desc, start, end, name, size, rt, qps, qps2, getPercent(executeTotal, errorTotal), executeTotal, statistics, CountUtil.index(data).toString());
     }
 
 

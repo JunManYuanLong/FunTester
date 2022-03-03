@@ -7,7 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * 为了适应OK项目,新增类,后续{@link ThreadLimitTimeCount}和{@link ThreadLimitTimesCount}将会在某个时刻被弃用,会一直保留兼容旧用例
+ * 为了适应OK项目,新增类
  */
 public abstract class FixedThread<F> extends ThreadBase<F> {
 

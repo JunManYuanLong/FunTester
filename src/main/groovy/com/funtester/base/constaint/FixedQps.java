@@ -12,6 +12,15 @@ public abstract class FixedQps<F> extends ThreadBase<F> {
 
     public int qps;
 
+    /**
+     * 此处的limit指的是总的QPS限制量
+     *
+     * @param f
+     * @param limit
+     * @param qps
+     * @param markThread
+     * @param isTimesMode
+     */
     public FixedQps(F f, int limit, int qps, MarkThread markThread, boolean isTimesMode) {
         this.limit = limit;
         this.qps = qps;
@@ -29,13 +38,17 @@ public abstract class FixedQps<F> extends ThreadBase<F> {
         try {
             long s = Time.getTimeStamp();
             doing();
-            long e = Time.getTimeStamp();
-            short diff = (short) (e - s);
-            if (COUNT && FixedQpsConcurrent.executeTimes.get() > 1000) FixedQpsConcurrent.allTimes.add(diff);
+            count(s);
         } catch (Exception e) {
-            FixedQpsConcurrent.errorTimes.getAndIncrement();
+            FixedQpsConcurrent.errorTimes.increment();
             logger.warn("执行任务失败！", e);
         }
+    }
+
+    @Override
+    public void count(long s) {
+        if (COUNT) FixedQpsConcurrent.allTimes.add((short) (Time.getTimeStamp() - s));
+        if (INTERCEPT) interceptCosts.add((short) (Time.getTimeStamp() - s));
     }
 
 }

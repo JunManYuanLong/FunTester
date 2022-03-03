@@ -80,7 +80,7 @@ class PerformanceResultBean extends AbstractBean implements Serializable {
      */
     int executeTotal
 
-    PerformanceResultBean(String mark, String startTime, String endTime, int threads, int total, int rt, double qps, double qps2, double errorRate, double failRate, int executeTotal, String table,String index) {
+    PerformanceResultBean(String mark, String startTime, String endTime, int threads, int total, int rt, double qps, double qps2, double errorRate, int executeTotal, String table,String index) {
         this.mark = mark
         this.startTime = startTime
         this.endTime = endTime
@@ -90,7 +90,6 @@ class PerformanceResultBean extends AbstractBean implements Serializable {
         this.qps = qps
         this.qps2 = qps2
         this.errorRate = errorRate
-        this.failRate = failRate
         this.executeTotal = executeTotal
         this.index = index
         this.table = DecodeEncode.zipBase64(table)

@@ -55,7 +55,7 @@ public class Constant {
     /**
      * 默认线程池的大小
      */
-    public static int POOL_SIZE = 32;
+    public static int POOL_SIZE = 8;
 
     /**
      * Event模型中默认消费者数量

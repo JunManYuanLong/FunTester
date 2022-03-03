@@ -20,7 +20,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.LongAdder;
 
 import static java.util.stream.Collectors.toList;
 
@@ -33,9 +33,9 @@ public class FixedQpsConcurrent extends SourceCode {
 
     public static boolean needAbord = false;
 
-    public static AtomicInteger executeTimes = new AtomicInteger(0);
+    public static LongAdder executeTimes = new LongAdder();
 
-    public static AtomicInteger errorTimes = new AtomicInteger(0);
+    public static LongAdder errorTimes = new LongAdder();
 
     public static Vector<String> marks = new Vector<>();
 
@@ -146,8 +146,8 @@ public class FixedQpsConcurrent extends SourceCode {
             sleep(1.0);
             allTimes = new Vector<>();
             marks = new Vector<>();
-            executeTimes.set(0);
-            errorTimes.set(0);
+            executeTimes.reset();
+            errorTimes.reset();
         }
         logger.info("=========预热完成,开始测试!=========");
         ThreadBase.progress = new Progress(threads, StatisticsUtil.getTrueName(desc), executeTimes);
@@ -194,7 +194,7 @@ public class FixedQpsConcurrent extends SourceCode {
                 while (true) {
                     try {
                         executor.execute(threads.get(limit-- % queueLength).clone());
-                        executeTimes.getAndIncrement();
+                        executeTimes.increment();
                         if (needAbord || (isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > limit)) break;
                         SourceCode.sleep(nanosec);
                     } catch (RejectedExecutionException e) {
@@ -217,8 +217,8 @@ public class FixedQpsConcurrent extends SourceCode {
         Save.saveStringListSync(marks, MARK_Path.replace(LONG_Path, EMPTY) + desc);
         allTimes = new Vector<>();
         marks = new Vector<>();
-        int executeNum = executeTimes.getAndSet(0);
-        int errorNum = errorTimes.getAndSet(0);
+        int executeNum = (int) executeTimes.sumThenReset();
+        int errorNum =(int) errorTimes.sumThenReset();
         return countQPS(queueLength, desc, startTime, endTime, executeNum, errorNum);
     }
 
@@ -237,7 +237,7 @@ public class FixedQpsConcurrent extends SourceCode {
         String statistics = StatisticsUtil.statistics(data, desc, name);
         double qps = executeNum * 1000.0 / (end - start);
         int qps2 = baseThread.qps;
-        return new PerformanceResultBean(desc, Time.getTimeByTimestamp(start), Time.getTimeByTimestamp(end), name, size, sum / size, qps, qps2, getPercent(executeNum, errorNum), 0, executeNum, statistics, CountUtil.index(data).toString());
+        return new PerformanceResultBean(desc, Time.getTimeByTimestamp(start), Time.getTimeByTimestamp(end), name, size, sum / size, qps, qps2, getPercent(executeNum, errorNum), executeNum, statistics, CountUtil.index(data).toString());
     }
 
 

@@ -38,6 +38,11 @@ public class FunConcurrent extends SourceCode {
         executorService = ThreadPoolUtil.createCachePool(Constant.THREADPOOL_MAX);
     }
 
+    public FunConcurrent(FunThread thread) {
+        this.threads.add(thread);
+        executorService = ThreadPoolUtil.createCachePool(Constant.THREADPOOL_MAX);
+    }
+
     private FunConcurrent() {
 
     }

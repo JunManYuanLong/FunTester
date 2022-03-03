@@ -2,7 +2,6 @@ package com.funtester.frame.execute;
 
 import com.funtester.base.constaint.*;
 import com.funtester.base.exception.ParamException;
-import com.funtester.config.Constant;
 import com.funtester.frame.SourceCode;
 import com.funtester.utils.StringUtil;
 import com.funtester.utils.Time;
@@ -11,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.LongAdder;
 import java.util.stream.Collectors;
 
 /**
@@ -74,9 +73,9 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
     private F base;
 
     /**
-     * 在固定QPS模式中使用
+     * 统计请求量
      */
-    private AtomicInteger excuteNum;
+    private LongAdder excuteNum;
 
     /**
      * 限制条件
@@ -99,6 +98,11 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
     public String runInfo;
 
     /**
+     * 记录上一次请求总量
+     */
+    private int last;
+
+    /**
      * 固定线程模型
      *
      * @param threads
@@ -119,7 +123,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
      * @param desc
      * @param excuteNum
      */
-    public Progress(final List<F> threads, String desc, final AtomicInteger excuteNum) {
+    public Progress(final List<F> threads, String desc, final LongAdder excuteNum) {
         this.threads = threads;
         this.threadNum = threads.size();
         this.taskDesc = desc;
@@ -132,15 +136,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
      * 初始化对象,对istimesMode和limit赋值
      */
     private void init() {
-        if (base instanceof ThreadLimitTimeCount) {
-            this.isTimesMode = false;
-            this.canCount = true;
-            this.limit = ((ThreadLimitTimeCount) base).limit;
-        } else if (base instanceof ThreadLimitTimesCount) {
-            this.isTimesMode = true;
-            this.canCount = true;
-            this.limit = ((ThreadLimitTimesCount) base).limit;
-        } else if (base instanceof FixedThread) {
+        if (base instanceof FixedThread) {
             FixedThread limitThread = (FixedThread) this.base;
             this.isTimesMode = limitThread.isTimesMode;
             this.limit = limitThread.limit;
@@ -159,8 +155,8 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
     public void run() {
         double pro = 0;
         while (st) {
-            sleep(Constant.LOOP_INTERVAL);
-            pro = isTimesMode ? base.executeNum == 0 ? excuteNum.get() * 1.0 / limit : base.executeNum * 1.0 / limit : (Time.getTimeStamp() - startTime) * 1.0 / limit;
+            sleep(LOOP_INTERVAL);
+            pro = isTimesMode ? base.executeNum == 0 ? excuteNum.sum() * 1.0 / limit : base.executeNum * 1.0 / limit : (Time.getTimeStamp() - startTime) * 1.0 / limit;
             if (pro > 0.95) break;
             if (st) {
                 runInfo = String.format("%s进度:%s  %s ,当前QPS: %d", taskDesc, getManyString(ONE, (int) (pro * LENGTH)), getPercent(pro * 100), getQPS());
@@ -177,17 +173,11 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
     private int getQPS() {
         int qps = 0;
         if (canCount) {
-            List<Short> times = new ArrayList<>();
-            for (int i = 0; i < threadNum; i++) {
-                List<Short> costs = threads.get(i).costs;
-                int size = costs.size();
-                if (size < 3) continue;
-                times.add(costs.get(size - 1));
-                times.add(costs.get(size - 2));
-            }
-            qps = times.isEmpty() ? 0 : (int) (1000 * threadNum / (times.stream().collect(Collectors.summarizingInt(x -> x)).getAverage()));
+            int sum = threads.stream().mapToInt(f -> f.executeNum).sum();
+            qps = (sum - last) / (int) LOOP_INTERVAL;
+            last = sum;
         } else {
-            qps = excuteNum.get() / (int) ((Time.getTimeStamp() - startTime) / 1000);
+            qps = excuteNum.intValue() / (int) ((Time.getTimeStamp() - startTime) / 1000);
         }
         qs.add(qps);
         return qps;

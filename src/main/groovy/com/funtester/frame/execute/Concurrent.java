@@ -58,12 +58,6 @@ public class Concurrent extends SourceCode {
      * 执行失败总数
      */
     private int errorTotal;
-
-    /**
-     * 任务执行失败总数
-     */
-    private int failTotal;
-
     /**
      * 执行总数
      */
@@ -159,11 +153,10 @@ public class Concurrent extends SourceCode {
         endTime = Time.getTimeStamp();
         ThreadBase.progress.stop();
         threads.forEach(x -> {
-            if (x.status()) failTotal++;
             errorTotal += x.errorNum;
             executeTotal += x.executeNum;
         });
-        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{},失败数:{}", threadNum, Time.getTimeDiffer(startTime, endTime), formatLong(executeTotal), errorTotal, failTotal);
+        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{}", threadNum, Time.getTimeDiffer(startTime, endTime), formatLong(executeTotal), errorTotal);
         return over();
     }
 
@@ -208,7 +201,7 @@ public class Concurrent extends SourceCode {
         int rt = sum / size;
         double qps = 1000.0 * name / (rt == 0 ? 1 : rt);
         double qps2 = (executeTotal + errorTotal) * 1000.0 / (endTime - startTime);
-        return new PerformanceResultBean(desc, start, end, name, size, rt, qps, qps2, getPercent(executeTotal, errorTotal), getPercent(threadNum, failTotal), executeTotal, statistics,CountUtil.index(data).toString());
+        return new PerformanceResultBean(desc, start, end, name, size, rt, qps, qps2, getPercent(executeTotal, errorTotal), executeTotal, statistics,CountUtil.index(data).toString());
     }
 
 
