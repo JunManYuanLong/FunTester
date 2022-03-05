@@ -1,6 +1,7 @@
 package com.funtester.frame.execute;
 
 import com.funtester.base.constaint.FunThread;
+import com.funtester.base.constaint.ThreadBase;
 import com.funtester.base.interfaces.IFunController;
 import com.funtester.config.Constant;
 import com.funtester.frame.SourceCode;
@@ -8,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
@@ -33,14 +35,14 @@ public class FunConcurrent extends SourceCode {
     /**
      * @param threads 线程组
      */
-    public FunConcurrent(List<FunThread> threads) {
-        this.threads = threads;
+    public FunConcurrent(List<FunThread> threads, String name) {
+        this.threads.addAll(threads);
         executorService = ThreadPoolUtil.createCachePool(Constant.THREADPOOL_MAX);
+        ThreadBase.progress = new Progress(threads, name);
     }
 
-    public FunConcurrent(FunThread thread) {
-        this.threads.add(thread);
-        executorService = ThreadPoolUtil.createCachePool(Constant.THREADPOOL_MAX);
+    public FunConcurrent(FunThread thread, String name) {
+        this(Arrays.asList(thread), name);
     }
 
     private FunConcurrent() {
@@ -57,12 +59,20 @@ public class FunConcurrent extends SourceCode {
         threads.forEach(f -> addTask(f));
     }
 
+    /**
+     * 向动态模型中添加任务
+     *
+     * @param thread
+     */
     public static void addTask(FunThread thread) {
         boolean b = FunThread.addThread(thread);
         logger.info("任务{}添加{}", thread.threadName, b ? "成功" : "失败");
         if (b) executorService.execute(thread);
     }
 
+    /**
+     * 添加任务,默认随机现有任务
+     */
     public static void addTask() {
         FunThread thread = FunThread.getRandom();
         addTask(thread.clone());
@@ -110,12 +120,12 @@ public class FunConcurrent extends SourceCode {
 
         @Override
         public void add() {
-            addTask();
+            range(THREAD_STEP).forEach(f -> addTask());
         }
 
         @Override
         public void reduce() {
-            removeTask();
+            range(THREAD_STEP).forEach(f -> removeTask());
         }
 
         @Override

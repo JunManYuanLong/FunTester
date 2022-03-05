@@ -38,11 +38,6 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
     private List<F> threads;
 
     /**
-     * 线程数,用于计算实时QPS
-     */
-    public int threadNum;
-
-    /**
      * 进度条的长度
      */
     private static final int LENGTH = 67;
@@ -110,7 +105,6 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
      */
     public Progress(final List<F> threads, String desc) {
         this.threads = threads;
-        this.threadNum = threads.size();
         this.taskDesc = desc;
         this.base = threads.get(0);
         init();
@@ -125,7 +119,6 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
      */
     public Progress(final List<F> threads, String desc, final LongAdder excuteNum) {
         this.threads = threads;
-        this.threadNum = threads.size();
         this.taskDesc = desc;
         this.excuteNum = excuteNum;
         this.base = threads.get(0);
@@ -136,19 +129,15 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
      * 初始化对象,对istimesMode和limit赋值
      */
     private void init() {
-        if (base instanceof FixedThread) {
-            FixedThread limitThread = (FixedThread) this.base;
-            this.isTimesMode = limitThread.isTimesMode;
-            this.limit = limitThread.limit;
+        if (base instanceof FixedThread || base instanceof FunThread) {
             this.canCount = true;
         } else if (base instanceof FixedQps) {
-            FixedQps fix = (FixedQps) base;
             this.canCount = false;
-            this.isTimesMode = fix.isTimesMode;
-            this.limit = fix.limit;
         } else {
             ParamException.fail("创建进度条对象失败!");
         }
+        this.limit = base.limit;
+        this.isTimesMode = base.isTimesMode;
     }
 
     @Override
@@ -177,7 +166,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
             qps = (sum - last) / (int) LOOP_INTERVAL;
             last = sum;
         } else {
-            qps = excuteNum.intValue() / (int) ((Time.getTimeStamp() - startTime) / 1000);
+            qps = excuteNum.intValue() / (int) ((Time.getTimeStamp() - startTime) / 1000) / (int) LOOP_INTERVAL;
         }
         qs.add(qps);
         return qps;

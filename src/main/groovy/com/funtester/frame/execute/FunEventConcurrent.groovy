@@ -20,8 +20,6 @@ class FunEventConcurrent<F> extends SourceCode {
 
     FunCount funcount
 
-    int count = 0
-
     Closure produce
 
     FunEventConcurrent(FunCount fs, Closure closure) {
@@ -67,7 +65,7 @@ class FunEventConcurrent<F> extends SourceCode {
     def stop() {
         key = false
         funcount.stop()
-        logger.info("Disruptor关闭了!")
+        logger.info("FunEvent压测关闭了!")
     }
 
 }

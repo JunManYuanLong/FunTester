@@ -58,6 +58,7 @@ public class Concurrent extends SourceCode {
      * 执行失败总数
      */
     private int errorTotal;
+
     /**
      * 执行总数
      */
@@ -118,6 +119,8 @@ public class Concurrent extends SourceCode {
      * 默认取list中thread对象,丢入线程池,完成多线程执行,如果没有threadname,name默认采用desc+线程数作为threadname,去除末尾的日期
      */
     public PerformanceResultBean start() {
+        ThreadBase.progress = new Progress(threads, StatisticsUtil.getTrueName(desc));
+        new Thread(ThreadBase.progress, "progress").start();
         if (RUNUP_TIME > 0) {
             for (int i = 0; i < threadNum; i++) {
                 ThreadBase thread = threads.get(i);
@@ -140,8 +143,6 @@ public class Concurrent extends SourceCode {
         }
         logger.info("=========预热完成,开始测试!=========");
         countDownLatch = new CountDownLatch(threadNum);
-        ThreadBase.progress = new Progress(threads, StatisticsUtil.getTrueName(desc));
-        new Thread(ThreadBase.progress,"progress").start();
         startTime = Time.getTimeStamp();
         for (int i = 0; i < threadNum; i++) {
             ThreadBase thread = threads.get(i);
@@ -201,7 +202,7 @@ public class Concurrent extends SourceCode {
         int rt = sum / size;
         double qps = 1000.0 * name / (rt == 0 ? 1 : rt);
         double qps2 = (executeTotal + errorTotal) * 1000.0 / (endTime - startTime);
-        return new PerformanceResultBean(desc, start, end, name, size, rt, qps, qps2, getPercent(executeTotal, errorTotal), executeTotal, statistics,CountUtil.index(data).toString());
+        return new PerformanceResultBean(desc, start, end, name, size, rt, qps, qps2, getPercent(executeTotal, errorTotal), executeTotal, statistics, CountUtil.index(data).toString());
     }
 
 

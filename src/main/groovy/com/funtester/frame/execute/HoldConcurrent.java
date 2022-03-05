@@ -134,7 +134,6 @@ public class HoldConcurrent extends SourceCode {
         Thread funtester = new Thread(new FunTester());
         funtester.start();
         ThreadBase.progress = new Progress(threads, StatisticsUtil.getTrueName(desc));
-        ThreadBase.progress.threadNum = 0;
         new Thread(ThreadBase.progress, "progress").start();
         startTime = Time.getTimeStamp();
         for (int i = 0; i < threadNum; i++) {
@@ -146,7 +145,6 @@ public class HoldConcurrent extends SourceCode {
             if (StringUtils.isBlank(thread.threadName)) thread.threadName = StatisticsUtil.getTrueName(desc) + i;
             sleep(RUNUP_TIME / threadNum);
             executorService.execute(thread);
-            ThreadBase.progress.threadNum = i + 1;
             logger.info("已经启动了 {} 个线程!", i + 1);
         }
         phaser.arriveAndAwaitAdvance();

@@ -14,7 +14,7 @@ import java.util.Vector;
  */
 public abstract class FunThread<F> extends ThreadBase {
 
-    private static final long serialVersionUID = 7878297575504772944L;
+    private static final long serialVersionUID = 787897575504772944L;
 
     private static final Logger logger = LogManager.getLogger();
 
@@ -45,6 +45,7 @@ public abstract class FunThread<F> extends ThreadBase {
         before();
         while (!BREAK_KEY) {
             try {
+                executeNum++;
                 doing();
             } catch (Exception e) {
                 logger.warn("执行任务失败！", e);

@@ -145,7 +145,7 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
      * @param s 开始时间
      */
     public void count(long s) {
-        if (COUNT) costs.add((short) (Time.getTimeStamp() - s));
+        if (COUNT && executeNum > 100) costs.add((short) (Time.getTimeStamp() - s));
         if (INTERCEPT) interceptCosts.add((short) (Time.getTimeStamp() - s));
     }
 

@@ -31,6 +31,8 @@ public class Constant {
 
     public static final String PART = "|";
 
+    public static final String EQUAL = "=";
+
     /**
      * 正则表达式中用到的{@link Constant#PART}
      */
@@ -40,12 +42,12 @@ public class Constant {
 
     public static final String CONNECTOR = "_";
 
-    private static final String[] PERCENT = {SPACE_1, "▁", "▂", "▃", "▄", "▅", "▅", "▇", "█" };
+    private static final String[] PERCENT = {SPACE_1, "▁", "▂", "▃", "▄", "▅", "▅", "▇", "█"};
 
     /**
      * 此处前七处等高,第八个元素不等高,不能正常使用
      */
-    private static final String[] PARTS = {SPACE_1, "▏", "▎", "▍", "▌", "▋", "▊", "▉", "█" };
+    private static final String[] PARTS = {SPACE_1, "▏", "▎", "▍", "▌", "▋", "▊", "▉", "█"};
 
     /**
      * 统计性能数据的分桶数
@@ -56,6 +58,16 @@ public class Constant {
      * 默认线程池的大小
      */
     public static int POOL_SIZE = 8;
+
+    /**
+     * 动态模型中线程增长步长
+     */
+    public static int THREAD_STEP = 1;
+
+    /**
+     * 动态模型中,QPS增长步长
+     */
+    public static int QPS_STEP = 100;
 
     /**
      * Event模型中默认消费者数量
