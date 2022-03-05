@@ -92,7 +92,7 @@ public class Save {
      */
     public static void saveJson(JSONObject data, String name) {
         StringBuffer buffer = new StringBuffer();
-        data.keySet().forEach(x -> buffer.append(LINE + x.toString() + PART + data.getString(x.toString())));
+        data.keySet().forEach(x -> buffer.append(LINE + x.toString() + EQUAL + data.getString(x.toString())));
         /*处理\n\t(LINE)*/
         if (buffer.length() > 2) info(name, buffer.substring(2));
     }

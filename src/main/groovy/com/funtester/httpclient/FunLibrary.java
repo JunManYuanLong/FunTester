@@ -295,7 +295,7 @@ public class FunLibrary extends SourceCode {
         for (int i = 0; i < allHeaders.length; i++) {
             Header header = allHeaders[i];
             if (header.getName().equals(HttpClientConstant.SET_COOKIE)) {
-                String[] split = header.getValue().split("=", 2);
+                String[] split = header.getValue().split(EQUAL, 2);
                 cookie.put(split[0], split[1]);
                 continue;
             }
@@ -445,7 +445,7 @@ public class FunLibrary extends SourceCode {
      * @return 返回拼接参数后的地址
      */
     public static String changeJsonToArguments(JSONObject argument) {
-        return argument == null || argument.isEmpty() ? EMPTY : argument.keySet().stream().filter(x -> argument.get(x) != null).map(x -> x.toString() + "=" + DecodeEncode.urlEncoderText(argument.getString(x.toString()))).collect(Collectors.joining("&", UNKNOW, EMPTY)).toString();
+        return argument == null || argument.isEmpty() ? EMPTY : argument.keySet().stream().filter(x -> argument.get(x) != null).map(x -> x.toString() + EQUAL + DecodeEncode.urlEncoderText(argument.getString(x.toString()))).collect(Collectors.joining("&", UNKNOW, EMPTY)).toString();
     }
 
     /**
@@ -455,7 +455,7 @@ public class FunLibrary extends SourceCode {
      * @return
      */
     public static Header getCookies(JSONObject cookies) {
-        return getHeader(HttpClientConstant.COOKIE, cookies.keySet().stream().map(x -> x.toString() + "=" + cookies.get(x).toString()).collect(Collectors.joining(";")).toString());
+        return getHeader(HttpClientConstant.COOKIE, cookies.keySet().stream().map(x -> x.toString() + EQUAL + cookies.get(x).toString()).collect(Collectors.joining(";")).toString());
     }
 
     /**

@@ -140,7 +140,7 @@ public class SourceCode extends Output {
      */
     public static JSONObject getJson(String... content) {
         if (StringUtils.isAnyEmpty(content)) ParamException.fail("转换成json格式参数错误!");
-        return changeArraysToJson(content, "=");
+        return changeArraysToJson(content, EQUAL);
     }
 
     /**

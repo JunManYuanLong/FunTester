@@ -37,7 +37,7 @@ public class RWUtil extends Constant {
         List<String> lines = readByLine(filePath);
         JSONObject info = new JSONObject();
         lines.forEach(line -> {
-            String[] split = line.split("=", 2);
+            String[] split = line.split(EQUAL, 2);
             info.put(split[0], split[1]);
         });
         return info;
@@ -57,7 +57,7 @@ public class RWUtil extends Constant {
         List<String> lines = readByLine(filePath, filter, false);
         JSONObject info = new JSONObject();
         lines.forEach(line -> {
-            String[] split = line.split("=", 2);
+            String[] split = line.split(EQUAL, 2);
             info.put(split[0], split[1]);
         });
         return info;
