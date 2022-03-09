@@ -5,6 +5,7 @@ import com.funtester.base.constaint.ThreadBase;
 import com.funtester.base.interfaces.IFunController;
 import com.funtester.config.Constant;
 import com.funtester.frame.SourceCode;
+import com.funtester.utils.Regex;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -113,6 +114,7 @@ public class FunConcurrent extends SourceCode {
                         key = false;
                         break;
                     default:
+                        if (Regex.isMatch(input, "F\\d+")) THREAD_STEP = changeStringToInt(input.substring(1));
                         break;
                 }
             }
