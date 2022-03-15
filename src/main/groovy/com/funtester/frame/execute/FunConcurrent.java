@@ -122,12 +122,18 @@ public class FunConcurrent extends SourceCode {
 
         @Override
         public void add() {
-            range(THREAD_STEP).forEach(f -> addTask());
+            range(THREAD_STEP).forEach(f -> {
+                sleep(0.1);
+                addTask();
+            });
         }
 
         @Override
         public void reduce() {
-            range(THREAD_STEP).forEach(f -> removeTask());
+            range(THREAD_STEP).forEach(f -> {
+                sleep(0.1);
+                removeTask();
+            });
         }
 
         @Override
