@@ -5,7 +5,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.List;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
 /**
  * 适用于动态模型实现
@@ -91,6 +93,14 @@ public abstract class FunThread<F> extends ThreadBase {
     public FunThread clone() {
         FailException.fail("必需重写clone()方法");
         return null;
+    }
+
+    public static int size() {
+        return threads.size();
+    }
+
+    public static List<String> info() {
+        return threads.stream().map(f -> f.threadName).collect(Collectors.toList());
     }
 
     /**

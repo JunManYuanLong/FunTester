@@ -126,6 +126,8 @@ public class FunConcurrent extends SourceCode {
                 sleep(0.1);
                 addTask();
             });
+            sleep(0.5);
+            logger.info("当前任务总量: {}", FunThread.size());
         }
 
         @Override
@@ -134,6 +136,8 @@ public class FunConcurrent extends SourceCode {
                 sleep(0.1);
                 removeTask();
             });
+            sleep(0.5);
+            logger.info("当前任务总量: {}", FunThread.size());
         }
 
         @Override
