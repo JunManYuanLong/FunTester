@@ -29,7 +29,7 @@ public class FunConcurrent extends SourceCode {
     /**
      * 线程池
      */
-    public static ExecutorService executorService;
+    public static ExecutorService executor;
 
     public static IFunController controller;
 
@@ -38,7 +38,6 @@ public class FunConcurrent extends SourceCode {
      */
     public FunConcurrent(List<FunThread> threads, String name) {
         this.threads.addAll(threads);
-        executorService = ThreadPoolUtil.createCachePool(Constant.THREADPOOL_MAX);
         ThreadBase.progress = new Progress(threads, name);
     }
 
@@ -55,6 +54,7 @@ public class FunConcurrent extends SourceCode {
      * 默认取list中thread对象,丢入线程池,完成多线程执行,如果没有threadname,name默认采用desc+线程数作为threadname,去除末尾的日期
      */
     public void start() {
+        if (executor == null) executor = ThreadPoolUtil.createCachePool(Constant.THREADPOOL_MAX);
         if (controller == null) controller = new FunTester();
         new Thread(controller, "接收器").start();
         threads.forEach(f -> addTask(f));
@@ -68,7 +68,7 @@ public class FunConcurrent extends SourceCode {
     public static void addTask(FunThread thread) {
         boolean b = FunThread.addThread(thread);
         logger.info("任务{}添加{}", thread.threadName, b ? "成功" : "失败");
-        if (b) executorService.execute(thread);
+        if (b) executor.execute(thread);
     }
 
     /**
@@ -139,7 +139,6 @@ public class FunConcurrent extends SourceCode {
         @Override
         public void over() {
             logger.info("动态结束任务!");
-            FunThread.stop();
         }
 
     }

@@ -70,6 +70,11 @@ public class Constant {
     public static int QPS_STEP = 100;
 
     /**
+     * 默认最大QPS
+     */
+    public static int MAX_QPS = 100000;
+
+    /**
      * Event模型中默认消费者数量
      */
     public static int CONSUMER_SIZE = 1024;

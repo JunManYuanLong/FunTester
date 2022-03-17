@@ -75,7 +75,7 @@ class FunCount implements Runnable {
         count = this.start
         while (status) {
             if (SourceCode.getMark() - st > time) break
-            sleep(interval as double)
+            SourceCode.sleep(interval as double)
             count = count + step >= max ? max : count + step
         }
         stop()
@@ -100,12 +100,12 @@ class FunCount implements Runnable {
     }
 
     /**
-     * 提高最大QPS,用于动态模型压测
+     * 提高当前最大QPS,用于动态模型压测
      * @param qps
      * @return
      */
     def add(int qps) {
-        max += qps
+        count += qps
     }
 
     /**
@@ -116,7 +116,7 @@ class FunCount implements Runnable {
         def thread = new Thread(this)
         thread.setName(name)
         thread.start()
-        logger.info("异步计数器 $name 启动了!")
+        logger.info("异步计数器 $name 结束了!")
     }
 
 }

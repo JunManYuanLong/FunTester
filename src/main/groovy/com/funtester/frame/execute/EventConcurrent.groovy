@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger
 
 import java.util.stream.Collectors
 
+@Deprecated
 class EventConcurrent<F> extends SourceCode {
 
     private static final Logger logger = LogManager.getLogger(EventConcurrent.class);

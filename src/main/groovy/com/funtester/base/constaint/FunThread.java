@@ -35,6 +35,12 @@ public abstract class FunThread<F> extends ThreadBase {
         this.f = f;
     }
 
+    public FunThread(String name) {
+        this.isTimesMode = true;
+        this.threadName = name;
+        this.limit = Integer.MAX_VALUE;
+    }
+
     protected FunThread() {
         super();
     }
