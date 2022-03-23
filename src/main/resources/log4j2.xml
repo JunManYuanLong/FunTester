@@ -8,7 +8,7 @@
         <!--这个输出控制台的配置-->
         <console name="Console" target="SYSTEM_OUT">
             <!--输出日志的格式-->
-            <PatternLayout pattern="%-4p-> %d{HH:mm:ss.SSS} %t %m%n"/>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %t %m%n"/>
             <!--            <PatternLayout pattern="[%-4p] %d - %t %L:%M %m %n"/>-->
             <!--            <PatternLayout pattern="%d %-4p (%F:%L) - %m%n"/>-->
         </console>
