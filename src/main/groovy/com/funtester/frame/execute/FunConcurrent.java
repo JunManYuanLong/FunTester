@@ -114,7 +114,7 @@ public class FunConcurrent extends SourceCode {
                         key = false;
                         break;
                     default:
-                        if (Regex.isMatch(input, "F\\d+")) THREAD_STEP = changeStringToInt(input.substring(1));
+                        if (Regex.isMatch(input, "(F|f)\\d+")) THREAD_STEP = changeStringToInt(input.substring(1));
                         break;
                 }
             }
@@ -127,7 +127,7 @@ public class FunConcurrent extends SourceCode {
                 addTask();
             });
             sleep(0.5);
-            logger.info("当前任务总量: {}", FunThread.size());
+            logger.info("当前任务总量: {}", FunThread.aliveSize());
         }
 
         @Override
@@ -137,12 +137,13 @@ public class FunConcurrent extends SourceCode {
                 removeTask();
             });
             sleep(0.5);
-            logger.info("当前任务总量: {}", FunThread.size());
+            logger.info("当前任务总量: {}", FunThread.aliveSize());
         }
 
         @Override
         public void over() {
             logger.info("动态结束任务!");
+            FunThread.stop();
         }
 
     }
