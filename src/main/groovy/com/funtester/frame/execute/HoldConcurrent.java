@@ -18,7 +18,6 @@ import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Phaser;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.LongAdder;
 
 import static java.util.stream.Collectors.toList;
 
@@ -33,11 +32,6 @@ public class HoldConcurrent extends SourceCode {
      * 用来标记状态
      */
     public static AtomicInteger HOLD = new AtomicInteger(0);
-
-    /**
-     * 统计请求次数
-     */
-    public static LongAdder executeNum = new LongAdder();
 
     /**
      * 开始时间

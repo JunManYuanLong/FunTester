@@ -6,6 +6,8 @@ import com.funtester.frame.execute.Progress;
 import com.funtester.httpclient.FunLibrary;
 import com.funtester.utils.CountUtil;
 import com.funtester.utils.Time;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,6 +25,8 @@ import java.util.stream.Collectors;
 public abstract class ThreadBase<F> extends SourceCode implements Runnable, Serializable {
 
     private static final long serialVersionUID = -1282879464717720145L;
+
+    private static final Logger logger = LogManager.getLogger(ThreadBase.class);
 
     /**
      * 全局的时间终止开关,true表示终止,false表示不终止.程序运行中是false,结束运行是true,保障只有一个程序在运行
@@ -42,7 +46,7 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
     /**
      * 用于存放拦截的请求响应时间
      */
-    public static List<Short> interceptCosts = new ArrayList<>();
+    public static Vector<Short> interceptCosts = new Vector<>();
 
     /**
      * 用于记录当前执行状态信息
@@ -149,6 +153,22 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
         if (INTERCEPT) interceptCosts.add((short) (Time.getTimeStamp() - s));
     }
 
+
+    /**
+     * 取样器
+     *
+     * @param time
+     */
+    public static void statistic(int time) {
+        INTERCEPT = true;
+        sleep(time);
+        INTERCEPT = false;
+        CountUtil.FunIndex index = CountUtil.index(interceptCosts);
+        logger.info("当前QPS:{}", interceptCosts.size() / time);
+        logger.info("当前RT:{}", index.toString());
+        interceptCosts = new Vector<>();
+    }
+
     /**
      * 设置计数器
      *
@@ -224,19 +244,6 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
 
     public static void stopIntercept() {
         INTERCEPT = false;
-    }
-
-    /**
-     * 统计RT,清空{@link ThreadBase#interceptCosts}
-     *
-     * @return
-     */
-    public static CountUtil.FunIndex count() {
-        stopIntercept();
-        sleep(1.0);
-        CountUtil.FunIndex index = CountUtil.index(interceptCosts);
-        interceptCosts = new Vector<>();
-        return index;
     }
 
 }

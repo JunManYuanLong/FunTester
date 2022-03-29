@@ -117,33 +117,30 @@ public class FunConcurrent extends SourceCode {
                         if (Regex.isMatch(input, "(F|f)\\d+")) THREAD_STEP = changeStringToInt(input.substring(1));
                         break;
                 }
+                FunThread.printInfo();
             }
         }
 
         @Override
         public void add() {
             range(THREAD_STEP).forEach(f -> {
-                sleep(0.1);
                 addTask();
+                sleep(0.5);
             });
-            sleep(0.5);
-            logger.info("当前任务总量: {}", FunThread.aliveSize());
         }
 
         @Override
         public void reduce() {
             range(THREAD_STEP).forEach(f -> {
-                sleep(0.1);
                 removeTask();
+                sleep(0.5);
             });
-            sleep(0.5);
-            logger.info("当前任务总量: {}", FunThread.aliveSize());
         }
 
         @Override
         public void over() {
-            logger.info("动态结束任务!");
             FunThread.stop();
+            logger.info("动态结束任务!");
         }
 
     }

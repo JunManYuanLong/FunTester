@@ -156,4 +156,14 @@ public abstract class FunThread<F> extends ThreadBase {
         return threads.size();
     }
 
+    /**
+     * 获取实时当然任务池信息
+     */
+    public static synchronized void printInfo() {
+        long s = threads.stream().collect(Collectors.summarizingInt(f -> f.executeNum)).getSum();
+        sleep(1);
+        long e = threads.stream().collect(Collectors.summarizingInt(f -> f.executeNum)).getSum();
+        logger.info("当前任务数:{} QPS:{}", aliveSize(), e - s);
+    }
+
 }
