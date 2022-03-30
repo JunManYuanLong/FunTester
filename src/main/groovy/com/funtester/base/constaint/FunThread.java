@@ -152,14 +152,14 @@ public abstract class FunThread<F> extends ThreadBase {
         return random(threads);
     }
 
-    public static synchronized int aliveSize() {
+    public static int aliveSize() {
         return threads.size();
     }
 
     /**
      * 获取实时当然任务池信息
      */
-    public static synchronized void printInfo() {
+    public static void printInfo() {
         long s = threads.stream().collect(Collectors.summarizingInt(f -> f.executeNum)).getSum();
         sleep(1);
         long e = threads.stream().collect(Collectors.summarizingInt(f -> f.executeNum)).getSum();
