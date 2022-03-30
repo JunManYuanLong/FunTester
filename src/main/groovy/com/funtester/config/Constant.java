@@ -219,11 +219,6 @@ public class Constant {
     public static double LOOP_INTERVAL = 3.0;
 
     /**
-     * 线程池,线程最大空闲时间
-     */
-    public static int THREAD_ALIVE_TIME = 5;
-
-    /**
      * 线程最大空闲时间
      */
     public static int ALIVE_TIME = 30;

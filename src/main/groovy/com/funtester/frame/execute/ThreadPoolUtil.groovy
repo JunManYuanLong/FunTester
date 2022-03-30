@@ -52,7 +52,7 @@ class ThreadPoolUtil {
      * @param liveTime 空闲时间
      * @return
      */
-    static ThreadPoolExecutor createPool(int core = Constant.THREADPOOL_CORE, int max = Constant.THREADPOOL_MAX, int liveTime = Constant.THREAD_ALIVE_TIME, BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(Constant.MAX_WAIT_TASK), ThreadFactory factory = getFactory(), RejectedExecutionHandler rejectedExecutionHandler = new ThreadPoolExecutor.AbortPolicy()) {
+    static ThreadPoolExecutor createPool(int core = Constant.THREADPOOL_CORE, int max = Constant.THREADPOOL_MAX, int liveTime = Constant.ALIVE_TIME, BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(Constant.MAX_WAIT_TASK), ThreadFactory factory = getFactory(), RejectedExecutionHandler rejectedExecutionHandler = new ThreadPoolExecutor.AbortPolicy()) {
         return new ThreadPoolExecutor(core, max, liveTime, TimeUnit.SECONDS, workQueue, factory, rejectedExecutionHandler);
     }
 
@@ -63,7 +63,7 @@ class ThreadPoolUtil {
      * @return
      */
     static ThreadPoolExecutor createFixedPool(int size = 10, String name = "P") {
-        return createPool(size, size, Constant.THREAD_ALIVE_TIME, new LinkedBlockingQueue<Runnable>(Constant.MAX_WAIT_TASK), getFactory(name));
+        return createPool(size, size, Constant.ALIVE_TIME, new LinkedBlockingQueue<Runnable>(Constant.MAX_WAIT_TASK), getFactory(name));
     }
 
     /**
