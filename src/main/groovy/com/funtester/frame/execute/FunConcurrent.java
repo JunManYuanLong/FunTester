@@ -75,7 +75,7 @@ public class FunConcurrent extends SourceCode {
      * 添加任务,默认随机现有任务
      */
     public static void addTask() {
-        FunThread thread = FunThread.getRandom();
+        FunThread thread = FunThread.getRandomThread();
         addTask(thread.clone());
     }
 
@@ -90,7 +90,7 @@ public class FunConcurrent extends SourceCode {
     }
 
     public static void removeTask() {
-        FunThread thread = FunThread.getRandom();
+        FunThread thread = FunThread.getRandomThread();
         removeTask(thread);
     }
 

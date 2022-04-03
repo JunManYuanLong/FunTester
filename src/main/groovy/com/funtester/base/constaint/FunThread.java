@@ -143,12 +143,22 @@ public abstract class FunThread<F> extends ThreadBase {
         return null;
     }
 
+    /**
+     * 删除线程,根据名字
+     *
+     * @param name
+     */
     public static synchronized void remoreThread(String name) {
         FunThread funThread = find(name);
         if (funThread == null) remoreThread(funThread);
     }
 
-    public static synchronized FunThread getRandom() {
+    /**
+     * 随机获取一个活跃线程
+     *
+     * @return
+     */
+    public static synchronized FunThread getRandomThread() {
         return random(threads);
     }
 
