@@ -219,6 +219,11 @@ public class Constant {
     public static double LOOP_INTERVAL = 3.0;
 
     /**
+     * 单次步长增长间隔
+     */
+    public static double STEP_INTERVAL = 0.2;
+
+    /**
      * 线程最大空闲时间
      */
     public static int ALIVE_TIME = 30;

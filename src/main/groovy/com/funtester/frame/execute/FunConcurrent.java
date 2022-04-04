@@ -125,7 +125,7 @@ public class FunConcurrent extends SourceCode {
         public void add() {
             range(THREAD_STEP).forEach(f -> {
                 addTask();
-                sleep(1.0);
+                sleep(STEP_INTERVAL);
             });
         }
 
@@ -133,7 +133,7 @@ public class FunConcurrent extends SourceCode {
         public void reduce() {
             range(THREAD_STEP).forEach(f -> {
                 removeTask();
-                sleep(1.0);
+                sleep(STEP_INTERVAL);
             });
         }
 
