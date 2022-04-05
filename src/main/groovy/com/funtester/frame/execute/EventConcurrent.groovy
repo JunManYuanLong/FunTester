@@ -11,6 +11,7 @@ import com.lmax.disruptor.dsl.ProducerType
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
+import java.util.concurrent.atomic.LongAdder
 import java.util.stream.Collectors
 
 @Deprecated
@@ -102,18 +103,17 @@ class EventConcurrent<F> extends SourceCode {
             logger.warn("生产者线程繁忙,丢弃改任务")
             return
         }
-        def index = -fs.getStart() - 1
+        LongAdder index = new LongAdder()
         while (key) {
             def qps = fs.getQps()
-            logger.info("当前设计QPS:{},实际QPS:{}", qps, disruptor.getCursor() - index)
-            if (qps == 0) continue
+            logger.info("当前设计QPS:{},实际QPS:{}", qps, index.sumThenReset())
             if (qps < 0) break
             fun {
                 qps.times {
                     send(produce())
+                    index.increment()
                 }
             }
-            index = disruptor.getCursor()
             sleep(1.0)
         }
         stop()

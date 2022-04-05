@@ -1,18 +1,22 @@
 package com.funtester.frame.execute
 
+
 import com.funtester.config.Constant
 import com.funtester.frame.Output
 import com.funtester.frame.SourceCode
 import com.funtester.utils.StringUtil
+import com.funtester.utils.Time
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
 import java.util.concurrent.*
 import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.LongAdder
+
 /**
  * Java线程池Demo
  */
-class ThreadPoolUtil {
+class ThreadPoolUtil extends Constant {
 
     private static final Logger logger = LogManager.getLogger(ThreadPoolUtil.class);
 
@@ -20,9 +24,6 @@ class ThreadPoolUtil {
 
 
     private static volatile ExecutorService funPool;
-
-    private static volatile ThreadFactory FunFactory;
-
 
     /**
      * 异步执行任务
@@ -54,6 +55,15 @@ class ThreadPoolUtil {
      */
     static ThreadPoolExecutor createPool(int core = Constant.THREADPOOL_CORE, int max = Constant.THREADPOOL_MAX, int liveTime = Constant.ALIVE_TIME, BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(Constant.MAX_WAIT_TASK), ThreadFactory factory = getFactory(), RejectedExecutionHandler rejectedExecutionHandler = new ThreadPoolExecutor.AbortPolicy()) {
         return new ThreadPoolExecutor(core, max, liveTime, TimeUnit.SECONDS, workQueue, factory, rejectedExecutionHandler);
+    }
+
+    /**
+     * 获取QPS模型的
+     * @param name
+     * @return
+     */
+    static ThreadPoolExecutor createQpsPool(String name) {
+        createPool(LUCKY_NUM + 1, THREADPOOL_MAX, ALIVE_TIME, new LinkedBlockingQueue<Runnable>(LUCKY_NUM + COUNT_INTERVAL), ThreadPoolUtil.getFactory(name))
     }
 
     /**
@@ -96,23 +106,57 @@ class ThreadPoolUtil {
      * @return
      */
     static ThreadFactory getFactory(String name = "F") {
-        if (FunFactory == null) {
-            synchronized (ThreadPoolUtil.class) {
-                if (FunFactory == null) {
-                    FunFactory = new ThreadFactory() {
+        return new ThreadFactory() {
 
-                        @Override
-                        Thread newThread(Runnable runnable) {
-                            Thread thread = new Thread(runnable);
-                            def increment = threadNum.getAndIncrement()
-                            thread.setName(name + "-" + StringUtil.right(Constant.EMPTY + increment, 2));
-                            return thread;
-                        }
-                    }
-                }
+            int num = 1
+
+            @Override
+            Thread newThread(Runnable runnable) {
+                Thread thread = new Thread(runnable);
+                thread.setName(name + "-" + StringUtil.right(Constant.EMPTY + num++, 2));
+                return thread;
             }
         }
-        return FunFactory
+    }
+
+    /**
+     * 在QPS模型中执行QPS
+     * @param executor
+     * @param qps
+     * @param produce
+     * @param total
+     */
+    static void executeTask(ThreadPoolExecutor executor, int qps, Closure produce, LongAdder total) {
+        if (qps < 1) return
+        ThreadPoolUtil.executeSync {
+            LUCKY_NUM.times {
+                executor.execute(new Runnable() {
+
+                    @Override
+                    void run() {
+                        (qps / LUCKY_NUM).times {
+                            produce()
+                            total.increment()
+                        }
+                    }
+                })
+
+            }
+            executor.execute(new Runnable() {
+
+                @Override
+                void run() {
+                    (qps % LUCKY_NUM).times {
+                        produce()
+                        total.increment()
+                    }
+                }
+            })
+        }
+        SourceCode.sleep(1.0)
+        if (Time.getSecond() % COUNT_INTERVAL == 0) {
+            logger.info("当前设计QPS:{},实际QPS:{} 活跃线程数:{} ", qps, total.sumThenReset() / COUNT_INTERVAL as int, executor.getActiveCount())
+        }
     }
 
     /**

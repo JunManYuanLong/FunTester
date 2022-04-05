@@ -111,7 +111,6 @@ public class FunConcurrent extends SourceCode {
                         break;
                     case "*":
                         over();
-                        key = false;
                         break;
                     default:
                         if (Regex.isMatch(input, "(F|f)\\d+")) THREAD_STEP = changeStringToInt(input.substring(1));
@@ -139,6 +138,7 @@ public class FunConcurrent extends SourceCode {
 
         @Override
         public void over() {
+            key = false;
             FunThread.stop();
             logger.info("动态结束任务!");
         }

@@ -67,12 +67,22 @@ public class Constant {
     /**
      * 动态模型中,QPS增长步长
      */
-    public static int QPS_STEP = 100;
+    public static int QPS_STEP = 1;
+
+    /**
+     *
+     */
+    public static int COUNT_INTERVAL = 5;
+
+    /**
+     * 幸运数字
+     */
+    public static int LUCKY_NUM = 8;
 
     /**
      * 默认最大QPS
      */
-    public static int MAX_QPS = 100000;
+    public static int MAX_QPS = 10000;
 
     /**
      * Event模型中默认消费者数量
@@ -226,7 +236,7 @@ public class Constant {
     /**
      * 线程最大空闲时间
      */
-    public static int ALIVE_TIME = 30;
+    public static int ALIVE_TIME = LUCKY_NUM;
 
     /**
      * 线程池核心线程数
@@ -236,7 +246,7 @@ public class Constant {
     /**
      * 线程池最大线程数
      */
-    public static int THREADPOOL_MAX = 5000;
+    public static int THREADPOOL_MAX = 3600;
 
     /**
      * 关闭线程池最大等待时间
