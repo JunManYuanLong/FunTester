@@ -2,11 +2,11 @@ package com.funtester.utils.message;
 
 import com.funtester.base.bean.RequestInfo;
 import com.funtester.base.interfaces.IMessage;
-import com.funtester.httpclient.FunLibrary;
+import com.funtester.httpclient.FunHttp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class AlertOver extends FunLibrary implements IMessage {
+public class AlertOver extends FunHttp implements IMessage {
 
     private static Logger logger = LogManager.getLogger(AlertOver.class);
 

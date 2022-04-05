@@ -2,7 +2,7 @@ package com.funtester.utils.request;
 
 import com.funtester.config.Constant;
 import com.funtester.config.RequestType;
-import com.funtester.httpclient.FunLibrary;
+import com.funtester.httpclient.FunHttp;
 import com.funtester.utils.RWUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.client.methods.HttpRequestBase;
@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger;
  * <p>从当前路径下获取后缀为.log的文件，以文件名为准读取文件内容</p>
  */
 @Deprecated
-public class RequestFile extends FunLibrary {
+public class RequestFile extends FunHttp {
 
     private static Logger logger = LogManager.getLogger(RequestFile.class);
 

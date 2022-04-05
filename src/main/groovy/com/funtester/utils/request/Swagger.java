@@ -3,7 +3,7 @@ package com.funtester.utils.request;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.funtester.config.RequestType;
-import com.funtester.httpclient.FunLibrary;
+import com.funtester.httpclient.FunHttp;
 import com.funtester.utils.Regex;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.Set;
 /**
  * swagger文档解析类
  */
-public class Swagger extends FunLibrary {
+public class Swagger extends FunHttp {
 
     /**
      * 关键字，用于url前

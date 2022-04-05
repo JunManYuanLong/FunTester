@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject
 import com.funtester.config.Constant
 import com.funtester.config.RequestType
 import com.funtester.frame.SourceCode
-import com.funtester.httpclient.FunLibrary
+import com.funtester.httpclient.FunHttp
 import com.funtester.httpclient.FunRequest
 import org.apache.http.Header
 import org.apache.http.client.methods.HttpRequestBase
@@ -33,7 +33,7 @@ class CurlUtil {
                 base.url = value.substring(value.indexOf('h'), value.lastIndexOf("'"))
             } else if (it.startsWith("-H")) {
                 def split = it.split(" ", 2)[1].split(": ")
-                base.headers << FunLibrary.getHeader(split[0].substring(1), split[1].substring(0, split[1].lastIndexOf("'")))
+                base.headers << FunHttp.getHeader(split[0].substring(1), split[1].substring(0, split[1].lastIndexOf("'")))
             } else if (it.startsWith("--data-raw")) {
                 base.params = SourceCode.getJson(it.substring(it.indexOf("'") + 1, it.lastIndexOf("'")).split("&"))
                 base.type = RequestType.POST
