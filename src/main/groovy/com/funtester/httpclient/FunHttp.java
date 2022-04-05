@@ -38,9 +38,9 @@ import java.util.stream.Collectors;
 /**
  * 请求相关类，采用统一的静态方法，在登录后台管理页面是自动化设置cookie，其他公参由各自的base类实现header
  */
-public class FunLibrary extends SourceCode {
+public class FunHttp extends SourceCode {
 
-    private static Logger logger = LogManager.getLogger(FunLibrary.class);
+    private static Logger logger = LogManager.getLogger(FunHttp.class);
 
     /**
      * 打印日志的key

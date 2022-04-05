@@ -4,7 +4,7 @@ package com.funtester.config;
 import org.apache.http.Header;
 
 import static com.funtester.config.Constant.DEFAULT_CHARSET;
-import static com.funtester.httpclient.FunLibrary.getHeader;
+import static com.funtester.httpclient.FunHttp.getHeader;
 
 /**
  *

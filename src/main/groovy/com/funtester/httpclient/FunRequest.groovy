@@ -199,7 +199,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
      * @return
      */
     FunRequest addHeader(Object key, Object value) {
-        headers << FunLibrary.getHeader(key.toString(), value.toString())
+        headers << FunHttp.getHeader(key.toString(), value.toString())
         this
     }
 
@@ -232,7 +232,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
      * @return
      */
     FunRequest addCookies(JSONObject cookies) {
-        headers << FunLibrary.getCookies(cookies)
+        headers << FunHttp.getCookies(cookies)
         this
     }
 
@@ -243,7 +243,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
 
     FunRequest addHeaders(JSONObject headers) {
         headers.each {x ->
-            this.headers.add(FunLibrary.getHeader(x.getKey().toString(), x.getValue().toString()))
+            this.headers.add(FunHttp.getHeader(x.getKey().toString(), x.getValue().toString()))
         }
         this
     }
@@ -269,7 +269,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
      * @return
      */
     JSONObject getResponse() {
-        response = response.isEmpty() ? FunLibrary.getHttpResponse(request == null ? getRequest() : request) : response
+        response = response.isEmpty() ? FunHttp.getHttpResponse(request == null ? getRequest() : request) : response
         response
     }
 
@@ -285,19 +285,19 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
             uri = host + path
         switch (requestType) {
             case RequestType.GET:
-                request = FunLibrary.getHttpGet(uri, args)
+                request = FunHttp.getHttpGet(uri, args)
                 break
             case RequestType.POST:
-                request = !params.isEmpty() ? FunLibrary.getHttpPost(uri + FunLibrary.changeJsonToArguments(args), params) : !json.isEmpty() ? FunLibrary.getHttpPost(uri + FunLibrary.changeJsonToArguments(args), json.toString()) : FunLibrary.getHttpPost(uri + FunLibrary.changeJsonToArguments(args))
+                request = !params.isEmpty() ? FunHttp.getHttpPost(uri + FunHttp.changeJsonToArguments(args), params) : !json.isEmpty() ? FunHttp.getHttpPost(uri + FunHttp.changeJsonToArguments(args), json.toString()) : FunHttp.getHttpPost(uri + FunHttp.changeJsonToArguments(args))
                 break
             case RequestType.PUT:
-                request = !params.isEmpty() ? FunLibrary.getHttpPut(uri + FunLibrary.changeJsonToArguments(args), params) : !json.isEmpty() ? FunLibrary.getHttpPut(uri + FunLibrary.changeJsonToArguments(args), json.toString()) : FunLibrary.getHttpPut(uri + FunLibrary.changeJsonToArguments(args))
+                request = !params.isEmpty() ? FunHttp.getHttpPut(uri + FunHttp.changeJsonToArguments(args), params) : !json.isEmpty() ? FunHttp.getHttpPut(uri + FunHttp.changeJsonToArguments(args), json.toString()) : FunHttp.getHttpPut(uri + FunHttp.changeJsonToArguments(args))
                 break
             case RequestType.DELETE:
-                request = FunLibrary.getHttpDelete(uri)
+                request = FunHttp.getHttpDelete(uri)
                 break
             case RequestType.PATCH:
-                request = FunLibrary.getHttpPatch(uri, params)
+                request = FunHttp.getHttpPatch(uri, params)
             default:
                 break
         }
@@ -340,7 +340,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
                 ", host='" + host + '\'' +
                 ", path='" + path + '\'' +
                 ", uri='" + uri + '\'' +
-                ", headers=" + FunLibrary.header2Json(headers).toString() +
+                ", headers=" + FunHttp.header2Json(headers).toString() +
                 ", args=" + args.toString() +
                 ", params=" + params.toString() +
                 ", json=" + json.toString() +
@@ -438,7 +438,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
             } else {
                 Header type = entity.getContentType()
                 String value = type == null ? EMPTY : type.getValue()
-                String content = FunLibrary.getContent(entity)
+                String content = FunHttp.getContent(entity)
                 if (value.equalsIgnoreCase(HttpClientConstant.ContentType_TEXT.getValue()) || value.equalsIgnoreCase(HttpClientConstant.ContentType_JSON.getValue())) {
                     request = isPost().setUri(uri).addHeaders(headers).addJson(JSONObject.parseObject(content))
                 } else if (value.equalsIgnoreCase(HttpClientConstant.ContentType_FORM.getValue())) {
@@ -447,7 +447,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
             }
         } else if (requestType == RequestType.PUT) {
             HttpPut put = (HttpPut) base
-            String content = FunLibrary.getContent(put.getEntity())
+            String content = FunHttp.getContent(put.getEntity())
             request = isPut().setUri(uri).addHeaders(headers).setJson(JSONObject.parseObject(content))
         } else if (requestType == RequestType.DELETE) {
             request = isDelete().setUri(uri)
