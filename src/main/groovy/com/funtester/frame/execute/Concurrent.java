@@ -106,7 +106,7 @@ public class Concurrent extends SourceCode {
     private Concurrent(int threadNum, String desc) {
         this.threadNum = threadNum;
         this.desc = StatisticsUtil.getFileName(desc);
-        executorService = ThreadPoolUtil.createFixedPool(threadNum);
+        executorService = ThreadPoolUtil.createFixedPool(threadNum,"FixThread");
         countDownLatch = new CountDownLatch(threadNum);
     }
 

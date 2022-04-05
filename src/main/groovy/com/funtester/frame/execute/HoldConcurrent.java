@@ -113,7 +113,7 @@ public class HoldConcurrent extends SourceCode {
         this.threadNum = threadNum;
         this.desc = StatisticsUtil.getFileName(desc);
         phaser = new Phaser(1);
-        executorService = ThreadPoolUtil.createFixedPool(threadNum);
+        executorService = ThreadPoolUtil.createFixedPool(threadNum, "Hold");
     }
 
     private HoldConcurrent() {

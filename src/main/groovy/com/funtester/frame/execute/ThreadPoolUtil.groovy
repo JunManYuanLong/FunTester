@@ -81,8 +81,8 @@ class ThreadPoolUtil extends Constant {
      * {@link java.util.concurrent.SynchronousQueue}写入操作等待拉取操作.实际容量为0的队列
      * @return
      */
-    static ThreadPoolExecutor createCachePool(int max = 256) {
-        return createPool(0, max, Constant.ALIVE_TIME, new SynchronousQueue<Runnable>())
+    static ThreadPoolExecutor createCachePool(int max = 256,String name = "Cache") {
+        return createPool(0, max, Constant.ALIVE_TIME, new SynchronousQueue<Runnable>(),getFactory(name))
     }
 
     /**
