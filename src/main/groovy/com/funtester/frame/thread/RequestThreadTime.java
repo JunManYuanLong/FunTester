@@ -2,7 +2,7 @@ package com.funtester.frame.thread;
 
 import com.funtester.base.constaint.ThreadLimitTimeCount;
 import com.funtester.base.interfaces.MarkThread;
-import com.funtester.httpclient.FunLibrary;
+import com.funtester.httpclient.FunHttp;
 import com.funtester.httpclient.FunRequest;
 import com.funtester.httpclient.GCThread;
 import org.apache.http.client.methods.HttpRequestBase;
@@ -49,7 +49,7 @@ public class RequestThreadTime extends ThreadLimitTimeCount<HttpRequestBase> {
 
     @Override
     protected void doing() throws Exception {
-        FunLibrary.executeSimlple(f);
+        FunHttp.executeSimlple(f);
     }
 
 
