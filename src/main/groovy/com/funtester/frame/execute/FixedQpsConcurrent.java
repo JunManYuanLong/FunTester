@@ -27,6 +27,7 @@ import static java.util.stream.Collectors.toList;
 /**
  * 并发类，用于启动压力脚本
  */
+@Deprecated
 public class FixedQpsConcurrent extends SourceCode {
 
     private static Logger logger = LogManager.getLogger(FixedQpsConcurrent.class);
@@ -117,7 +118,7 @@ public class FixedQpsConcurrent extends SourceCode {
     private FixedQpsConcurrent(String desc) {
         this.desc = StatisticsUtil.getFileName(desc);
         if (executor == null)
-            executor = ThreadPoolUtil.createCachePool(Constant.THREADPOOL_MAX,"FixQPS");
+            executor = ThreadPoolUtil.createCachePool(Constant.THREADPOOL_MAX, "FixQPS");
     }
 
     private FixedQpsConcurrent() {
@@ -218,7 +219,7 @@ public class FixedQpsConcurrent extends SourceCode {
         allTimes = new Vector<>();
         marks = new Vector<>();
         int executeNum = (int) executeTimes.sumThenReset();
-        int errorNum =(int) errorTimes.sumThenReset();
+        int errorNum = (int) errorTimes.sumThenReset();
         return countQPS(queueLength, desc, startTime, endTime, executeNum, errorNum);
     }
 

@@ -1,7 +1,6 @@
 package com.funtester.frame.execute;
 
 import com.funtester.base.constaint.FunThread;
-import com.funtester.base.constaint.ThreadBase;
 import com.funtester.base.interfaces.IFunController;
 import com.funtester.config.Constant;
 import com.funtester.frame.SourceCode;
@@ -13,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
+import java.util.function.Supplier;
 
 /**
  * 动态压测模型的启动类
@@ -38,12 +38,27 @@ public class FunConcurrent extends SourceCode {
      */
     public FunConcurrent(List<FunThread> threads, String name) {
         this.threads.addAll(threads);
-        ThreadBase.progress = new Progress(threads, name);
     }
 
     public FunConcurrent(FunThread thread, String name) {
         this(Arrays.asList(thread), name);
     }
+
+    public FunConcurrent(Supplier func, String name) {
+        this(new FunThread() {
+            @Override
+            protected void doing() throws Exception {
+                func.get();
+            }
+
+            @Override
+            public FunThread clone() {
+                return this;
+            }
+
+        }, name);
+    }
+
 
     private FunConcurrent() {
 
