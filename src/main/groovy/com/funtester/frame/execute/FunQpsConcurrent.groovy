@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.LongAdder
 /**
  * 动态压测模型的启动类
  */
-public class FunQpsConcurrent extends SourceCode {
+class FunQpsConcurrent extends SourceCode {
 
     private static Logger logger = LogManager.getLogger(FunQpsConcurrent.class);
 

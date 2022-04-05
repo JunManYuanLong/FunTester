@@ -70,7 +70,7 @@ public class Constant {
     public static int QPS_STEP = 1;
 
     /**
-     *
+     * 性能测试中统计输出间隔
      */
     public static int COUNT_INTERVAL = 5;
 
@@ -78,11 +78,6 @@ public class Constant {
      * 幸运数字
      */
     public static int LUCKY_NUM = 8;
-
-    /**
-     * 默认最大QPS
-     */
-    public static int MAX_QPS = 10000;
 
     /**
      * Event模型中默认消费者数量
