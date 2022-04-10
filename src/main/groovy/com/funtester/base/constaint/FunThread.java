@@ -58,6 +58,7 @@ public abstract class FunThread<F> extends ThreadBase {
                 logger.warn("执行任务失败！", e);
             }
         }
+        remoreThread(this);
     }
 
     /**
