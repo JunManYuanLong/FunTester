@@ -149,7 +149,7 @@ public class RWUtil extends Constant {
             } catch (Exception e) {
                 logger.warn("读取文件内容出错", e);
             }
-        } else {\
+        } else {
             logger.warn("找不到指定的文件：{}", filePath);
         }
         return lines;
