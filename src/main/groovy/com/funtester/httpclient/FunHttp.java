@@ -455,7 +455,7 @@ public class FunHttp extends SourceCode {
      * @return
      */
     public static Header getCookies(JSONObject cookies) {
-        return getHeader(HttpClientConstant.COOKIE, cookies.keySet().stream().map(x -> x.toString() + EQUAL + cookies.get(x).toString()).collect(Collectors.joining(";")).toString());
+        return getHeader(HttpClientConstant.COOKIE, cookies == null || cookies.isEmpty() ? EMPTY : cookies.keySet().stream().map(x -> x.toString() + EQUAL + cookies.get(x).toString()).collect(Collectors.joining(";")).toString());
     }
 
     /**
