@@ -137,15 +137,19 @@ public class RWUtil extends Constant {
             try (FileInputStream fileInputStream = new FileInputStream(file);
                  InputStreamReader read = new InputStreamReader(fileInputStream, DEFAULT_CHARSET);
                  BufferedReader bufferedReader = new BufferedReader(read, 3 * 1024 * 1024);) {
+                String keyStr = SourceCode.getManyString(Constant.DEFAULT_STRING, LUCKY_NUM);
                 String line = null;
                 while ((line = bufferedReader.readLine()) != null) {
                     String apply = function.apply(line);
-                    if (StringUtils.isNotBlank(apply)) lines.add(apply);
+                    if (StringUtils.isNotBlank(apply)) {
+                        if (apply.equals(keyStr)) break;
+                        lines.add(apply);
+                    }
                 }
             } catch (Exception e) {
                 logger.warn("读取文件内容出错", e);
             }
-        } else {
+        } else {\
             logger.warn("找不到指定的文件：{}", filePath);
         }
         return lines;
