@@ -58,7 +58,7 @@ public abstract class FunThread<F> extends ThreadBase {
                 logger.warn("执行任务失败！", e);
             }
         }
-        remoreThread(this);
+        after();
     }
 
     /**
@@ -71,6 +71,7 @@ public abstract class FunThread<F> extends ThreadBase {
      * 动态模型正常不会结束
      */
     protected void after() {
+        remoreThread(this);
     }
 
 
