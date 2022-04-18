@@ -32,14 +32,12 @@ public abstract class FunThread<F> extends ThreadBase {
     public FunThread(F f, String name) {
         this.isTimesMode = true;
         this.threadName = name;
-        this.limit = Integer.MAX_VALUE;
         this.f = f;
     }
 
     public FunThread(String name) {
         this.isTimesMode = true;
         this.threadName = name;
-        this.limit = Integer.MAX_VALUE;
     }
 
     protected FunThread() {
@@ -49,16 +47,21 @@ public abstract class FunThread<F> extends ThreadBase {
 
     @Override
     public void run() {
-        before();
-        while (!BREAK_KEY) {
-            try {
-                executeNum++;
-                doing();
-            } catch (Exception e) {
-                logger.warn("执行任务失败！", e);
+        try {
+            before();
+            while (!BREAK_KEY) {
+                try {
+                    executeNum++;
+                    doing();
+                } catch (Exception e) {
+                    logger.warn("执行任务失败！", e);
+                }
             }
+        } catch (Exception e) {
+            logger.warn("线程被意外终止", e);
+        } finally {
+            after();
         }
-        after();
     }
 
     /**
