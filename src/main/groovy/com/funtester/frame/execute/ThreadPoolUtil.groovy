@@ -81,8 +81,8 @@ class ThreadPoolUtil extends Constant {
      * {@link java.util.concurrent.SynchronousQueue}写入操作等待拉取操作.实际容量为0的队列
      * @return
      */
-    static ThreadPoolExecutor createCachePool(int max = 256,String name = "Cache") {
-        return createPool(0, max, Constant.ALIVE_TIME, new SynchronousQueue<Runnable>(),getFactory(name))
+    static ThreadPoolExecutor createCachePool(int max = 256, String name = "Cache") {
+        return createPool(0, max, Constant.ALIVE_TIME, new SynchronousQueue<Runnable>(), getFactory(name))
     }
 
     /**
@@ -122,11 +122,12 @@ class ThreadPoolUtil extends Constant {
     /**
      * 在QPS模型中执行QPS
      * @param executor
-     * @param qps
+     * @param qps 每秒的QPS
      * @param produce
      * @param total
      */
     static void executeTask(ThreadPoolExecutor executor, int qps, Closure produce, LongAdder total) {
+        SourceCode.sleep(1.0)
         if (qps < 1) return
         ThreadPoolUtil.executeSync {
             LUCKY_NUM.times {
@@ -153,7 +154,6 @@ class ThreadPoolUtil extends Constant {
                 }
             })
         }
-        SourceCode.sleep(1.0)
         if (Time.getSecond() % COUNT_INTERVAL == 0) {
             logger.info("当前设计QPS:{},实际QPS:{} 活跃线程数:{} ", qps, total.sumThenReset() / COUNT_INTERVAL as int, executor.getActiveCount())
         }
