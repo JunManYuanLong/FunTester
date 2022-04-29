@@ -116,6 +116,7 @@ dependencies {
     implementation 'io.grpc:grpc-netty-shaded:1.39.0'
     implementation 'io.grpc:grpc-protobuf:1.39.0'
     implementation 'io.grpc:grpc-stub:1.39.0'
+    implementation 'org.apache.commons:commons-pool2:2.4.2'
     compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
 }
 
