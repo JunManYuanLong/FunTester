@@ -8,7 +8,7 @@ class HelloFactory extends BasePooledObjectFactory<HelloClient> {
 
     private String host = "127.0.0.1";
 
-    private int port = 50051;
+    private int port = 12345;
 
     @Override
     public HelloClient create() throws Exception {

@@ -58,7 +58,7 @@ class HelloPool {
         return () -> {
             HelloClient client = borrowObject();
             try {
-                workCallBack.callback(client);
+                workCallBack.execute(client);
             } finally {
                 /** 将连接对象返回给连接池 */
                 objectPool.returnObject(client);
