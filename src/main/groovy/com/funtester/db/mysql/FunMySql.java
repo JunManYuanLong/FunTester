@@ -92,8 +92,9 @@ public class FunMySql extends SqlBase implements IMySqlBasic {
 
     @Override
     public void getConnection(String database) {
-        connection = SqlBase.getConnection(SqlConstant.FUN_SQL_URL.replace("ip", url).replace("database", database), user, password);
-        statement = SqlBase.getStatement(connection);
+        if (connection == null)
+            connection = SqlBase.getConnection(SqlConstant.FUN_SQL_URL.replace("ip", url).replace("database", database), user, password);
+        if (statement == null) statement = SqlBase.getStatement(connection);
     }
 
 }
