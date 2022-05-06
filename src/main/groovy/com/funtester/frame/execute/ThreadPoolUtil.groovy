@@ -183,6 +183,7 @@ class ThreadPoolUtil extends Constant {
                 while (checkMain()) {
                     SourceCode.sleep(1.0)
                 }
+                waitFunIdle()
                 ThreadPoolUtil.shutFun()
             }
         })
