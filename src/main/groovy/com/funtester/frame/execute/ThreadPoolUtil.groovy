@@ -209,6 +209,16 @@ class ThreadPoolUtil extends Constant {
     }
 
     /**
+     * 等待异步线程池空闲
+     */
+    static void waitFunIdle() {
+        if (funPool == null) return
+        SourceCode.waitFor {
+            funPool.getQueue().size() == 0 && funPool.getActiveCount() == 0
+        }
+    }
+
+    /**
      * 保留方法,备用
      */
     static void getAllThread() {
