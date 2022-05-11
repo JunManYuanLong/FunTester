@@ -1,10 +1,10 @@
 package com.funtester.base.interfaces
 
+import org.apache.commons.pool2.PooledObject
+
 interface IPooled {
 
-    IPooled newInstance()
-
-    IPooled reInit()
+    PooledObject<IPooled> reInit()
 
     void destory()
 

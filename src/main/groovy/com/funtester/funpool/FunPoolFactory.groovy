@@ -1,4 +1,4 @@
-package funpool
+package com.funtester.funpool
 
 import com.funtester.base.interfaces.IPooled
 import org.apache.commons.pool2.BasePooledObjectFactory
