@@ -7,7 +7,7 @@ import org.apache.commons.pool2.PooledObject
 /**
  * 可池化工厂类
  */
-abstract class FunPoolFactory extends BasePooledObjectFactory<IPooled> {
+abstract class SimplePoolFactory extends BasePooledObjectFactory<IPooled> {
 
     abstract IPooled init()
 

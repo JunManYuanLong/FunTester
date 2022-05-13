@@ -1,21 +1,22 @@
 package com.funtester.funpool
 
 import com.funtester.base.interfaces.IPooled
+import org.apache.commons.pool2.impl.GenericKeyedObjectPool
 import org.apache.commons.pool2.impl.GenericObjectPool
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig
 
-class FunPool {
+class KeyPool {
 
-    FunPool(FunPoolFactory factory) {
+    KeyPool(KeyPoolFactory factory) {
         this.factory = factory
         this.pool = init()
     }
 
     private GenericObjectPool<IPooled> pool = init();
 
-    private FunPoolFactory factory
+    private KeyPoolFactory<String> factory
 
-    private GenericObjectPool<IPooled> init() {
+    private GenericKeyedObjectPool<String, IPooled> init() {
         // 连接池的配置
         GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
         // 池中的最大连接数
@@ -33,7 +34,7 @@ class FunPool {
         // 连接耗尽时是否阻塞,默认为true
         poolConfig.setBlockWhenExhausted(true);
         // 连接池创建
-        return new GenericObjectPool<>(factory, poolConfig);
+        return new GenericKeyedObjectPool<String, IPooled>(factory, poolConfig);
     }
 
     /**
