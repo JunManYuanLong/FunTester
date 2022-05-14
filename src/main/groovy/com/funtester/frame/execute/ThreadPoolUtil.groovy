@@ -214,9 +214,11 @@ class ThreadPoolUtil extends Constant {
      */
     static void waitFunIdle() {
         if (funPool == null) return
-        SourceCode.waitFor {
-            funPool.getQueue().size() == 0 && funPool.getActiveCount() == 0
-        }
+        SourceCode.time({
+            SourceCode.waitFor {
+                funPool.getQueue().size() == 0 && funPool.getActiveCount() == 0
+            }
+        }, 1, "异步线程池等待")
     }
 
     /**
