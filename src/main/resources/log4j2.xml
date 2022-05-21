@@ -18,19 +18,19 @@
         <!--        </File>-->
         <!-- 这个会打印出所有的info及以下级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
         <RollingFile name="RollingFileInfo"
-                     fileName="log/info.log"
-                     filePattern="log/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
+                     fileName="${sys:user.home}/logs/funtester/info.log"
+                     filePattern="${sys:user.home}/logs/funtester/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
             <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
             <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="%d{dd HH:mm:ss} %t %-4level %l - %m%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
-                <SizeBasedTriggeringPolicy size="8 MB"/>
+                <SizeBasedTriggeringPolicy size="32 MB"/>
             </Policies>
             <!--            <CronTriggeringPolicy schedule="* * * * * ?"/>-->
             <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
             <DefaultRolloverStrategy max="10">
-                <Delete basePath="log/$${date:yyyy-MM}/" maxDepth="2">
+                <Delete basePath="${sys:user.home}/logs/funtester/$${date:yyyy-MM}/" maxDepth="2">
                     <IfFileName glob="info*.log"/>
                     <!--!Note: 这里的age必须和filePattern协调, 后者是精确到HH, 这里就要写成xH, xd就不起作用
                     另外, 数字最好>2, 否则可能造成删除的时候, 最近的文件还处于被占用状态,导致删除不成功!-->
@@ -41,17 +41,17 @@
         </RollingFile>
 
 
-        <RollingFile name="RollingFileWarn" fileName="log/warn.log"
-                     filePattern="log/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="RollingFileWarn" fileName="${sys:user.home}/logs/funtester/warn.log"
+                     filePattern="${sys:user.home}/logs/funtester/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log">
             <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="%d{dd HH:mm:ss} %t %-4level %l - %m%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
-                <SizeBasedTriggeringPolicy size="5 MB"/>
+                <SizeBasedTriggeringPolicy size="8 MB"/>
             </Policies>
             <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
             <DefaultRolloverStrategy max="10">
-                <Delete basePath="log/$${date:yyyy-MM}/" maxDepth="2">
+                <Delete basePath="${sys:user.home}/logs/funtester/$${date:yyyy-MM}/" maxDepth="2">
                     <IfFileName glob="warn*.log"/>
                     <!--!Note: 这里的age必须和filePattern协调, 后者是精确到HH, 这里就要写成xH, xd就不起作用
                     另外, 数字最好>2, 否则可能造成删除的时候, 最近的文件还处于被占用状态,导致删除不成功!-->
