@@ -31,32 +31,13 @@ class FunConcurrent extends SourceCode {
     /**
      * @param threads 线程组
      */
-    FunConcurrent(List<FunThread> threads, String name) {
+    FunConcurrent(List<FunThread> threads) {
         this.threads.addAll(threads)
     }
 
-    FunConcurrent(FunThread thread, String name) {
-        this(Arrays.asList(thread), name)
+    FunConcurrent(FunThread thread) {
+        this(Arrays.asList(thread))
     }
-
-    FunConcurrent(Closure func, String name) {
-        this(new FunThread() {
-
-            static final long serialVersionUID = 387248927492794729L
-
-            @Override
-            protected void doing() throws Exception {
-                func()
-            }
-
-            @Override
-            FunThread clone() {
-                return this
-            }
-
-        }, name)
-    }
-
 
     private FunConcurrent() {
 
