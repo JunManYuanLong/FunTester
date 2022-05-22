@@ -551,7 +551,6 @@ public class SourceCode extends Output {
      * @param phaser
      */
     public static void fun(Supplier f, Phaser phaser) {
-        if (ThreadPoolUtil.getFunPool().getActiveCount() > POOL_SIZE - 3) logger.warn("异步线程池快满了");
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
