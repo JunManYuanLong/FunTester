@@ -70,7 +70,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
     /**
      * 统计请求量
      */
-    private LongAdder excuteNum;
+    private LongAdder excuteAdder;
 
     /**
      * 限制条件
@@ -120,7 +120,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
     public Progress(final List<F> threads, String desc, final LongAdder excuteNum) {
         this.threads = threads;
         this.taskDesc = desc;
-        this.excuteNum = excuteNum;
+        this.excuteAdder = excuteNum;
         this.base = threads.get(0);
         init();
     }
@@ -145,7 +145,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
         double pro = 0;
         while (st) {
             sleep(LOOP_INTERVAL);
-            pro = isTimesMode ? base.executeNum == 0 ? excuteNum.sum() * 1.0 / limit : base.executeNum * 1.0 / limit : (Time.getTimeStamp() - startTime) * 1.0 / limit;
+            pro = isTimesMode ? base.executeNum == 0 ? excuteAdder.sum() * 1.0 / limit : base.executeNum * 1.0 / limit : (Time.getTimeStamp() - startTime) * 1.0 / limit;
             if (pro > 0.95) break;
             if (st) {
                 runInfo = String.format("%s进度:%s  %s ,当前QPS: %d", taskDesc, getManyString(ONE, (int) (pro * LENGTH)), getPercent(pro * 100), getQPS());
@@ -166,7 +166,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
             qps = (sum - last) / (int) LOOP_INTERVAL;
             last = sum;
         } else {
-            qps = excuteNum.intValue() / (int) ((Time.getTimeStamp() - startTime) / 1000) / (int) LOOP_INTERVAL;
+            qps = excuteAdder.intValue() / (int) ((Time.getTimeStamp() - startTime) / 1000) / (int) LOOP_INTERVAL;
         }
         qs.add(qps);
         return qps;
