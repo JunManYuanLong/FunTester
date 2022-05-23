@@ -279,7 +279,7 @@ public class Constant {
         return PARTS[i % 9];
     }
 
-    public static String FunTester = "\n" +
+    private static String FunTester = "\n" +
             "  ###### #     #  #    # ####### ######  #####  ####### ######  #####\n" +
             "  #      #     #  ##   #    #    #       #         #    #       #    #\n" +
             "  ####   #     #  # #  #    #    ####    #####     #    ####    #####\n" +
@@ -290,13 +290,13 @@ public class Constant {
      * 创建日志文件夹和数据存储文件夹
      */
     static {
-        new File(LOG_Path).mkdir();
+//        new File(LOG_Path).mkdir();
         new File(LONG_Path).mkdir();
-        File file = new File(REQUEST_Path);
-        File mark = new File(MARK_Path);
+//        File file = new File(REQUEST_Path);
+//        File mark = new File(MARK_Path);
         File data = new File(DATA_Path);
-        file.mkdir();
-        mark.mkdir();
+//        file.mkdir();
+//        mark.mkdir();
         data.mkdir();
 //        List<String> allFile = FileUtil.getAllFile(DATA_Path);
 //        allFile.addAll(FileUtil.getAllFile(MARK_Path));
