@@ -1,9 +1,16 @@
 package com.funtester.db.redis;
 
+import com.funtester.config.Constant;
+import com.funtester.utils.Join;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.StreamEntryID;
+import redis.clients.jedis.params.XAddParams;
+import redis.clients.jedis.params.XReadParams;
+import redis.clients.jedis.params.XTrimParams;
+import redis.clients.jedis.resps.StreamEntry;
 
 import java.util.*;
 
@@ -668,6 +675,75 @@ public class RedisBase {
             return jedis.append(key, content);
         } catch (Exception e) {
             logger.error("append key:{} ,content:{},error", key, content, e);
+            return null;
+        }
+    }
+
+
+    /**
+     * 添加stream key内容
+     *
+     * @param key
+     * @param xAddParams
+     * @param msg
+     * @return
+     */
+    public StreamEntryID xadd(String key, XAddParams xAddParams, Map<String, String> msg) {
+        try (Jedis jedis = getJedis()) {
+            return jedis.xadd(key, xAddParams, msg);
+        } catch (Exception e) {
+            logger.error("stream key:{} xadd error", key, e);
+            return null;
+        }
+    }
+
+    /**
+     * 修剪stream ,实质是创建stream内存,可通过xadd方法设置maxleng实现,但是xadd性能不够好
+     *
+     * @param key
+     * @param xTrimParams
+     * @return
+     */
+    public long trim(String key, XTrimParams xTrimParams) {
+        try (Jedis jedis = getJedis()) {
+            return jedis.xtrim(key, xTrimParams);
+        } catch (Exception e) {
+            logger.error("stream key:{} trim error", key, e);
+            return Constant.TEST_ERROR_CODE;
+        }
+    }
+
+    /**
+     * 读取stream消息
+     * 通过xReadParams中的count和block来控制读取数量和阻塞时间
+     * 常用{@link StreamEntryID#LAST_ENTRY}获取改时间点之后的消息,默认会获取历史信息,从最开始获取
+     *
+     * @param xReadParams
+     * @param entry
+     * @return
+     */
+    public List<Map.Entry<String, List<StreamEntry>>> xread(XReadParams xReadParams, Map<String, StreamEntryID> entry) {
+        try (Jedis jedis = getJedis()) {
+            return jedis.xread(xReadParams, entry);
+        } catch (Exception e) {
+            logger.error("stream key:{} xread error", Join.join(entry.keySet(), Constant.COMMA), e);
+            return null;
+        }
+    }
+
+    /**
+     * 获取某个返回内的消息列表
+     *
+     * @param key
+     * @param start {@link redis.clients.jedis.StreamEntryID},time-sequence
+     * @param end   {@link redis.clients.jedis.StreamEntryID},time-sequence
+     * @return
+     */
+    public List<StreamEntry> xrange(String key, String start, String end) {
+        try (Jedis jedis = getJedis()) {
+            return jedis.xrange(key, start, end);
+        } catch (Exception e) {
+            logger.error("stream key:{} trim error", key, e);
             return null;
         }
     }
