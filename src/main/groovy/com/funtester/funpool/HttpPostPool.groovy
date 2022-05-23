@@ -11,6 +11,8 @@ import org.apache.http.client.methods.HttpPost
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
+import java.time.Duration
+
 class HttpPostPool extends PoolConstant {
 
     private static final Logger logger = LogManager.getLogger(HttpPostPool.class);
@@ -22,8 +24,8 @@ class HttpPostPool extends PoolConstant {
         poolConfig.setMaxTotal(MAX);
         poolConfig.setMinIdle(MIN_IDLE);
         poolConfig.setMaxIdle(MAX_IDLE);
-        poolConfig.setMaxWaitMillis(MAX_WAIT_TIME);
-        poolConfig.setMinEvictableIdleTimeMillis(MAX_IDLE_TIME);
+        poolConfig.setMaxWait(Duration.ofMillis(MAX_WAIT_TIME))
+        poolConfig.setMinEvictableIdleTime(Duration.ofMillis(MAX_IDLE_TIME))
         pool = new GenericObjectPool<>(new FunTester(), poolConfig);
     }
 

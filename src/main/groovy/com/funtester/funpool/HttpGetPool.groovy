@@ -11,6 +11,8 @@ import org.apache.http.client.methods.HttpGet
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
+import java.time.Duration
+
 class HttpGetPool extends PoolConstant {
 
     private static final Logger logger = LogManager.getLogger(HttpGetPool.class);
@@ -19,12 +21,12 @@ class HttpGetPool extends PoolConstant {
 
     static def init() {
         GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
-        poolConfig.setMaxTotal(MAX);
-        poolConfig.setMinIdle(MIN_IDLE);
-        poolConfig.setMaxIdle(MAX_IDLE);
-        poolConfig.setMaxWaitMillis(MAX_WAIT_TIME);
-        poolConfig.setMinEvictableIdleTimeMillis(MAX_IDLE_TIME);
-        pool = new GenericObjectPool<>(new FunTester(), poolConfig);
+        poolConfig.setMaxTotal(MAX)
+        poolConfig.setMinIdle(MIN_IDLE)
+        poolConfig.setMaxIdle(MAX_IDLE)
+        poolConfig.setMaxWait(Duration.ofMillis(MAX_WAIT_TIME))
+        poolConfig.setMinEvictableIdleTime(Duration.ofMillis(MAX_IDLE_TIME))
+        pool = new GenericObjectPool<>(new FunTester(), poolConfig)
     }
 
 
