@@ -749,6 +749,23 @@ public class RedisBase {
     }
 
     /**
+     * 反向获取消息列表，ID 从大到小
+     *
+     * @param key
+     * @param start
+     * @param end
+     * @return
+     */
+    public List<StreamEntry> xrevrange(String key, String start, String end) {
+        try (Jedis jedis = getJedis()) {
+            return jedis.xrevrange(key, start, end);
+        } catch (Exception e) {
+            logger.error("stream key:{} trim error", key, e);
+            return null;
+        }
+    }
+
+    /**
      * 关闭连接池
      */
     public void close() {
