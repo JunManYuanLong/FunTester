@@ -86,7 +86,7 @@ dependencies {
     //    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.8.0'
     //    compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
     //    compile group: 'com.sun.jna', name: 'jna', version: '3.0.9'
-    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.76'
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.83'
     //    compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.9.0'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.1'
