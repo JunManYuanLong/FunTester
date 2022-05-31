@@ -7,6 +7,7 @@ import static com.funtester.frame.SourceCode.range
 import static com.funtester.frame.SourceCode.changeStringToInt
 
 import java.util.stream.Collectors
+
 /**
  * 处理各种字符串的工具类
  */
@@ -123,6 +124,18 @@ class StringUtil {
         if (i <= 0) return "零零零"
         def num = (i + EMPTY).collect {x -> capeChineses[changeStringToInt(x)]}.join()
         num.length() > 2 ? num : getManyString(capeChineses[0] + EMPTY, 3 - num.length()) + num
+    }
+
+    /**
+     * 将int类型转化成string
+     * @param i
+     * @param length
+     * @return
+     */
+    static String getNumber(int i, length) {
+        if (i <= 0) return getManyString(i as String, length)
+        def num = i as String
+        num.length() >= length ? num : getManyString("0", length - num.length()) + num
     }
 
     /**
