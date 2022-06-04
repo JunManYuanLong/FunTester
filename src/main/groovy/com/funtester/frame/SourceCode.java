@@ -274,8 +274,7 @@ public class SourceCode extends Output {
      */
     public static boolean changeStringToBoolean(String text) {
         logger.debug("需要转化成的文本：{}", text);
-        if (text == null || !Regex.isMatch(text.toLowerCase(), "false|true")) return false;
-        return text.equalsIgnoreCase("true");
+        return ((text != null) && text.equalsIgnoreCase("true"));
     }
 
     /**
