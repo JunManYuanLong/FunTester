@@ -106,7 +106,7 @@ public class Concurrent extends SourceCode {
     private Concurrent(int threadNum, String desc) {
         this.threadNum = threadNum;
         this.desc = StatisticsUtil.getFileName(desc);
-        executorService = ThreadPoolUtil.createFixedPool(threadNum,"FixThread");
+        executorService = ThreadPoolUtil.createFixedPool(threadNum, "Fix");
         countDownLatch = new CountDownLatch(threadNum);
     }
 
@@ -157,7 +157,7 @@ public class Concurrent extends SourceCode {
             errorTotal += x.errorNum;
             executeTotal += x.executeNum;
         });
-        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{}", threadNum, Time.getTimeDiffer(startTime, endTime), formatLong(executeTotal), errorTotal);
+        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{},QPS:{}", threadNum, Time.getTimeDiffer(startTime, endTime), formatLong(executeTotal), errorTotal, (int)(executeTotal / Time.getTimeDiffer(startTime, endTime)));
         return over();
     }
 
