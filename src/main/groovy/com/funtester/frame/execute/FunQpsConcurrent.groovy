@@ -15,7 +15,6 @@ import java.util.concurrent.atomic.LongAdder
 class FunQpsConcurrent extends SourceCode {
 
     private static Logger logger = LogManager.getLogger(FunQpsConcurrent.class);
-
     static ThreadPoolExecutor executor
 
     static int count_interval = 5
