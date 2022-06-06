@@ -1,6 +1,7 @@
 package com.funtester.frame.execute
 
 import com.funtester.base.interfaces.IFunController
+import com.funtester.config.Constant
 import com.funtester.frame.SourceCode
 import com.funtester.utils.Regex
 import org.apache.logging.log4j.LogManager
@@ -38,7 +39,7 @@ class FunQpsConcurrent extends SourceCode {
     }
 
     void start() {
-        if (executor == null) executor = ThreadPoolUtil.createQpsPool("Q")
+        if (executor == null) executor = ThreadPoolUtil.createCachePool(Constant.THREADPOOL_MAX, "Q")
         if (controller == null) controller = new FunTester();
         new Thread(controller, "接收器").start();
         while (key) {

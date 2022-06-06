@@ -1,6 +1,7 @@
 package com.funtester.frame.execute
 
 import com.funtester.base.event.FunCount
+import com.funtester.config.Constant
 import com.funtester.frame.SourceCode
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
@@ -30,7 +31,7 @@ class FunEventConcurrent extends SourceCode {
     }
 
     void start() {
-        if (executor == null) executor = ThreadPoolUtil.createQpsPool("E")
+        if (executor == null) executor = ThreadPoolUtil.createCachePool(Constant.THREADPOOL_MAX, "E")
         funcount.start()
         while (key) {
             ThreadPoolUtil.executeTask(executor, funcount.getQps(), produce, total)
