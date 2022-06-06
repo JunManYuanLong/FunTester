@@ -80,8 +80,14 @@ public class Constant {
     public static int LUCKY_NUM = 8;
 
     /**
+     * QPS模型中每个任务QPS
+     */
+    public static int TIMES_PER_TASK = 200;
+
+    /**
      * Event模型中默认消费者数量
      */
+    @Deprecated
     public static int CONSUMER_SIZE = 1024;
 
     /**

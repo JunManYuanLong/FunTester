@@ -129,7 +129,7 @@ class ThreadPoolUtil extends Constant {
     static void executeTask(ThreadPoolExecutor executor, int qps, Closure produce, LongAdder total) {
         SourceCode.sleep(1.0)
         if (qps < 1) return
-        if (qps > LUCKY_NUM * 500) LUCKY_NUM = qps / 500 as Integer
+        if (qps > LUCKY_NUM * TIMES_PER_TASK) LUCKY_NUM = qps / TIMES_PER_TASK as Integer
         ThreadPoolUtil.executeSync {
             LUCKY_NUM.times {
                 executor.execute(new Runnable() {
