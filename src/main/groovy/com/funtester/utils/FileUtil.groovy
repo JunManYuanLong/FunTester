@@ -5,8 +5,7 @@ import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
 /**
- * 文件读写类,与{@link RWUtil}有功能上的重合,原因在与Java和Groovy的不兼容问题.
- */
+ * 文件读写类,与{@link RWUtil}有功能上的重合,原因在与Java和Groovy的不兼容问题.*/
 class FileUtil extends Constant {
 
     private static Logger logger = LogManager.getLogger(FileUtil.class)
@@ -78,6 +77,29 @@ class FileUtil extends Constant {
             list.add(path1)
         }
         return list
+    }
+
+    /**
+     *  搜索目录,是否存在改文件
+     * @param path
+     * @param name
+     * @return
+     */
+    static String find(String path, String name) {
+        File file = new File(path)
+        if (file.isFile() && file.getName() == name) return file.getAbsolutePath()
+        File[] files = file.listFiles()
+        int length = files.length
+        for (int i = 0; i < length; i++) {
+            File file1 = files[i]
+            if (file1.isDirectory()) {
+                def res = find(file1.getAbsolutePath(), name)
+                if (res != EMPTY) return res
+            }
+            String path1 = file1.getAbsolutePath()
+            if (file1.getName() == name) return file1.getAbsolutePath()
+        }
+        return EMPTY
     }
 
     /**
