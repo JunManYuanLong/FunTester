@@ -175,7 +175,8 @@ public abstract class FunThread<F> extends ThreadBase {
         long s = threads.stream().collect(Collectors.summarizingInt(f -> f.executeNum)).getSum();
         sleep(1);
         long e = threads.stream().collect(Collectors.summarizingInt(f -> f.executeNum)).getSum();
-        logger.info("当前任务数:{} QPS:{}", aliveSize(), e - s);
+        long l = e - s;
+        logger.info("当前任务数:{} QPS:{} 单任务效率:{}", aliveSize(), l, l / aliveSize());
     }
 
 }

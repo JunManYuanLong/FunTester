@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger
 
 import java.util.concurrent.ExecutorService
 /**
- * 动态压测模型的启动类
+ * 动态压测模型的启动类,基于线程的动态模型
  */
 class FunConcurrent extends SourceCode {
 
