@@ -58,10 +58,27 @@ public class RedisPool extends SourceCode {
 
     /**
      * 初始化连接池
+     *
+     * @param host
+     * @param port
+     * @return
      */
     public static JedisPool getPool(String host, int port) {
         logger.info("redis连接池IP：{}，端口：{}，超时设置：{}", host, port, TIMEOUT);
         return new JedisPool(config, host, port, TIMEOUT);
+    }
+
+    /**
+     * 初始化连接池,附带密码
+     *
+     * @param host
+     * @param port
+     * @param password
+     * @return
+     */
+    public static JedisPool getPool(String host, int port, String password) {
+        logger.info("redis连接池IP：{}，端口：{}，超时设置：{}", host, port, TIMEOUT);
+        return new JedisPool(config, host, port, TIMEOUT, password);
     }
 
     /**

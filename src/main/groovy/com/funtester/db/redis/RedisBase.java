@@ -2,6 +2,7 @@ package com.funtester.db.redis;
 
 import com.funtester.config.Constant;
 import com.funtester.utils.Join;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import redis.clients.jedis.Jedis;
@@ -43,6 +44,13 @@ public class RedisBase {
         pool = RedisPool.getPool(host, port);
     }
 
+    public RedisBase(String host, int port, String auth) {
+        this.host = host;
+        this.port = port;
+        this.auth = auth;
+        pool = StringUtils.isBlank(auth) ? RedisPool.getPool(host, port) : RedisPool.getPool(host, port, auth);
+    }
+
     /**
      * 获取jedis操作对象，回收资源方法close，3.0以后废弃了其他方法，默认连接第一个数据库
      * 默认使用0个index
@@ -52,7 +60,6 @@ public class RedisBase {
     public Jedis getJedis() {
         Jedis resource = pool.getResource();
         resource.select(index);
-        if (auth != null) resource.auth(auth);
         return resource;
     }
 
