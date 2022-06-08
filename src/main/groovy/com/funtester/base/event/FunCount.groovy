@@ -116,7 +116,7 @@ class FunCount implements Runnable {
         def thread = new Thread(this)
         thread.setName(name)
         thread.start()
-        logger.info("异步计数器 $name 结束了!")
+        logger.info("异步计数器 $name 启动了!")
     }
 
 }
