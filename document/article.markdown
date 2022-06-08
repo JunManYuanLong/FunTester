@@ -1,8 +1,6 @@
 # 总目录
 
 
-- [FunTester原创大赏](https://mp.weixin.qq.com/s/1UFooul_azwH8k0dylDv3A)  ``2022-01-28``
-
 # 接口测试
 
 ## 接口功能测试
@@ -58,8 +56,9 @@
 - [Go语言自定义DNS解析器实践](https://mp.weixin.qq.com/s/nvglgC4CsvPx6XE9rgSUOw)  ``2022-02-17``
 - [Go自定义DNS解析器负载均衡实践](https://mp.weixin.qq.com/s/MOLQxpvakVPfsNul-nxqNg)  ``2022-02-24``
 - [Jira API的六种传参方式](https://mp.weixin.qq.com/s/_sZPSHO_eWNut2wK7NaONQ)  ``2022-03-22 ``
-
-
+- [Grpc服务开发和接口测试初探【Java】](https://mp.weixin.qq.com/s/7HZpgbcDFuOnbPyVY5PfvQ)  `` 2022-04-20``
+- [gRPC服务开发和接口测试初探【Go】](https://mp.weixin.qq.com/s/csvLLZ19jPb8FNA6TxVrbw)  ``2022-05-07``
+- [gRPC三种客户端类型实践【Java版】](https://mp.weixin.qq.com/s/2YQ2CTUpWWfatViPBCc0Zw)  ``2022-05-11``
 
 # 单元&白盒
 
@@ -189,6 +188,10 @@
 - [Go语言使用gorm对MySQL进行性能测试](https://mp.weixin.qq.com/s/DmpdUJvDS1lZsfPBQSnGkw)  ``2022-03-13``
 - [性能测试中Disruptor框架ExceptionHandler使用分享](https://mp.weixin.qq.com/s/EhyQyw5-fQcQG4r2kDiD3A)  ``2022-03-16``
 - [性能测试中的LongAdder](https://mp.weixin.qq.com/s/0V8_nrDC8BElYPwb2JlJ2A)  ``2022-03-28``
+- [从Groovy到Java性能](https://mp.weixin.qq.com/s/VlDZh8_gbsqS56Tq37DEiw)  ``2022-04-01``
+- [性能测试中QPS取样器和RT取样器](https://mp.weixin.qq.com/s/uEHpMxUfg-yecZuSpvg8WQ)  ``2022-04-25``
+- [通用池化框架GenericObjectPool性能测试](https://mp.weixin.qq.com/s/CtLB0D5hAi24OVudvXJpow)  ``2022-06-02``
+- [通用池化框架GenericKeyedObjectPool性能测试](https://mp.weixin.qq.com/s/DrmjtSBLFxduauj0ss-mWw)  `` 2022-06-07``
 
 # 语言合集
 
@@ -266,6 +269,9 @@
 - [利用闭包实现自定义等待方法](https://mp.weixin.qq.com/s/cSQ99bPVBbpnJnjyD4r6CQ)  ``2022-01-06``
 - [Java自定义DNS解析器负载均衡实现](https://mp.weixin.qq.com/s/DnP3cufgyLgEnjdECMJlOA)  ``2022-02-10``
 - [性能测试中Disruptor框架shutdown失效的问题分享](https://mp.weixin.qq.com/s/otpkkK5IMgpmG9UXeqIRPg)  ``2022-03-02``
+- [从Groovy到Java性能](https://mp.weixin.qq.com/s/VlDZh8_gbsqS56Tq37DEiw)  ``2022-04-01``
+- [通用池化框架commons-pool2实践](https://mp.weixin.qq.com/s/2KHub-CdkA4hPM4ing9ZKg) ``2022-05-12``
+- [通用池化框架实践之GenericKeyedObjectPool](https://mp.weixin.qq.com/s/es0Me6J8F8jHvhjSAq5yzg)  ``2022-05-23``
 
 ## Groovy
 
@@ -310,6 +316,8 @@
 - [给JSONObject添加自定义遍历方法](https://mp.weixin.qq.com/s/tsgvdFwDegP47s_MQK68Ug)  ``2021-10-28``
 - [Groovy热更新Java实践](https://mp.weixin.qq.com/s/QZn2dmBDdsNxkgQPRukBtw)  ``2021-12-01``
 - [利用闭包实现自定义等待方法](https://mp.weixin.qq.com/s/cSQ99bPVBbpnJnjyD4r6CQ)  ``2022-01-06``
+- [从Groovy到Java性能](https://mp.weixin.qq.com/s/VlDZh8_gbsqS56Tq37DEiw)  ``2022-04-01``
+- [Groovy踩坑记之方法调用八层认识](https://mp.weixin.qq.com/s/cokuY4AxFXfTb5U49H30vg)  ``2022-04-13``
 
 ## Python
 
@@ -335,6 +343,7 @@
 - [Go语言自定义DNS解析器实践](https://mp.weixin.qq.com/s/nvglgC4CsvPx6XE9rgSUOw)  ``2022-02-17``
 - [Go自定义DNS解析器负载均衡实践](https://mp.weixin.qq.com/s/MOLQxpvakVPfsNul-nxqNg)  ``2022-02-24``
 - [Go语言使用gorm对MySQL进行性能测试](https://mp.weixin.qq.com/s/DmpdUJvDS1lZsfPBQSnGkw)  ``2022-03-13``
+- [gRPC服务开发和接口测试初探【Go】](https://mp.weixin.qq.com/s/csvLLZ19jPb8FNA6TxVrbw)  ``2022-05-07``
 
 ## FunTester笔记
 
@@ -664,7 +673,9 @@
 - [代码覆盖率VS测试覆盖率](https://mp.weixin.qq.com/s/mrm7oVPu8wYRH4Z3iVEpkA)  ``2021-11-12``
 - [单元测试再出发](https://mp.weixin.qq.com/s/98IiKbxy-MfJ1T5kN9bwoQ)  ``2021-11-26``
 - [如何开始移动网站测试](https://mp.weixin.qq.com/s/KQLIr5B8OrBhb6YeK-4g1w)  ``2021-12-21``
-- [自动化测试指南](https://mp.weixin.qq.com/s/Uwel0C2NxRZlmpQSFtWesA)  ``2022年03月04日``
+- [自动化测试指南](https://mp.weixin.qq.com/s/Uwel0C2NxRZlmpQSFtWesA)  ``2022-03-04``
+- [所谓测试报告](https://mp.weixin.qq.com/s/LrXgs1mNUpgsru_hPQ2sNg)  ``2022-05-20``
+- [国际化和本地化测试](https://mp.weixin.qq.com/s/BSAuHr6JGZk4lDulFnU9hw)  ``2022-05-31``
 
 # UI自动化
 
@@ -745,6 +756,7 @@
 - [Selenium4 Alpha-7升级体验](https://mp.weixin.qq.com/s/XC0EwYhuN1zwHCuQS8oEGg)  ``2021-07-16``
 - [Selenium 4以后，再不相见的API](https://mp.weixin.qq.com/s/vJcGC3vdpoVCTj5uloMIIw)  ``2021-08-04``
 - [Selenium修改HTTP请求头三种方式](https://mp.weixin.qq.com/s/zce9EiJijOp219V5QzCjZA)  ``2021-11-15``
+- [Selenium自动化应该避免的测试场景](https://mp.weixin.qq.com/s/jOyKjJG4onmeIaRImlSBjw)  ``2022-04-28``
 
 ## APP性能
 
@@ -809,6 +821,8 @@
 - [如何学习Java【FunTester分享会第三期回顾】](https://mp.weixin.qq.com/s/ksXySWR5Lk3SrpiuSn_M1w)  ``2021-07-08``
 - [「程序员35岁被淘汰」已经22岁了](https://mp.weixin.qq.com/s/jPLL3yeL-LAPifwmV9_0aw)  ``2022-01-08``
 - [如何突破职业瓶颈](https://mp.weixin.qq.com/s/A07I_Kn7FlEPG2wSKk8zOg)  ``2022-01-13``
+- [坚持做正确的事情](https://mp.weixin.qq.com/s/FnuseXqOApMPcaL7uzHybA)  ``2022-04-22``
+- [红利、辛苦钱、利润和工资【读书笔记】](https://mp.weixin.qq.com/s/6FxetG9OcjL7T8RT55DKWg)  ``2022-06-04``
 
 ## 社区风采
 
@@ -834,6 +848,8 @@
 - [2022年度计划手册模板](https://mp.weixin.qq.com/s/9irCVAQ10PhyAY0wPxG2WQ)  ``2022-01-05``
 - [基于爬虫的测试自动化经验分享](https://mp.weixin.qq.com/s/0Wxia5svKnDQoalzZvnFVg)  ``2022-03-17``
 - [学习编程是最好的复利方式](https://mp.weixin.qq.com/s/GQHlaOT2PDtwu2tns4VaXg)  `` 2022-03-30``
+- [逃离过度努力陷阱](https://mp.weixin.qq.com/s/x4mrGilxzzXY-68fF2eqrA)  ``2022-04-11``
+- [动态压测模型让工作更轻松](https://mp.weixin.qq.com/s/qYlgZfukyVqoEj8nMVC0gA)  ``2022-04-12``
 
 # 视频专区
 
@@ -858,7 +874,13 @@
 
 ## Groovy专题
 
-- [https://mp.weixin.qq.com/s/aQXfRt70eAIJa3-URyfq7w](Groovy%E7%AE%80%E4%BB%8B)  ``2022-03-23``
+- [Groovy简介](https://mp.weixin.qq.com/s/aQXfRt70eAIJa3-URyfq7w)  ``2022-03-23``
+- [Groovy环境及基础语法](https://mp.weixin.qq.com/s/pIqU5nw04kdeUwByhMS8EQ)  ``2022-04-07``
+- [Groovy Gstring演示](https://mp.weixin.qq.com/s/H_kAvTo45rhxflgHUf2SgA)  `` 2022-04-15``
+- [Groovy as关键字演示](https://mp.weixin.qq.com/s/MsGymlR0EQb-9n7Zy5WjPQ)  `` 2022-04-27``
+- [Groovy遍历实践](https://mp.weixin.qq.com/s/1ti37WDNlurou2ZCOHoC6Q)  `` 2022-05-10``
+- [Groovy正则表达式](https://mp.weixin.qq.com/s/yR0WOp_uZSjYrJOyNcsVuw)  ``2022-05-16``
+- [Groovy闭包实践](https://mp.weixin.qq.com/s/-NsuEkkbEleCbz00v7-sKg)  `` 2022-05-17``
 
 ## 其他视频
 
@@ -883,6 +905,8 @@
 - [Java自定义DNS解析器实践](https://mp.weixin.qq.com/s/rQm99V_P5GEHNSBFRta0ZA)  ``2022-02-06``
 - [Java自定义DNS解析器负载均衡实践视频版](https://mp.weixin.qq.com/s/JqkzaVZNo3noGdzshMuSzQ)  ``2022-02-11``
 - [Go语言HTTP自定义DNS解析与负载均衡实现视频版](https://mp.weixin.qq.com/s/S6Y_xQr5MNttg1BAyOzwBQ)  ``2022-03-01``
+- [gRPC测试开发实践【Java视频版】](https://mp.weixin.qq.com/s/pChC_bmm6IWQecWSYFKGjg)  `` 2022-05-06``
+- [通用池化框架commons-pool2基础实践](https://mp.weixin.qq.com/s/yOo7AAdSVHN4cxY4jKc5-w)  `` 2022-05-27``
 
 ## arthas诊断工具
 
