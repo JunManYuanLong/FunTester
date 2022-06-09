@@ -725,7 +725,7 @@ public class RedisBase {
      * 通过xReadParams中的count和block来控制读取数量和阻塞时间
      * 常用{@link StreamEntryID#LAST_ENTRY}获取改时间点之后的消息,默认会获取历史信息,从最开始获取
      *
-     * @param xReadParams
+     * @param xReadParams Map<String, StreamEntryID> entry = ["fun": new StreamEntryID()]
      * @param entry
      * @return
      */
