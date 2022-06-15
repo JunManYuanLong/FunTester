@@ -19,8 +19,6 @@ class FunEventConcurrent extends SourceCode {
 
     LongAdder total = new LongAdder()
 
-    boolean key = true
-
     FunCount funcount
 
     Closure produce
@@ -33,7 +31,7 @@ class FunEventConcurrent extends SourceCode {
     void start() {
         if (executor == null) executor = ThreadPoolUtil.createCachePool(Constant.THREADPOOL_MAX, "E")
         funcount.start()
-        while (key) {
+        while (funcount.status) {
             ThreadPoolUtil.executeTask(executor, funcount.getQps(), produce, total)
         }
         stop()
@@ -44,8 +42,6 @@ class FunEventConcurrent extends SourceCode {
      * @return
      */
     def stop() {
-        key = false
-        funcount.stop()
         executor.shutdown()
         logger.info("FunEvent压测关闭了!")
     }
