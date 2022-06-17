@@ -532,6 +532,15 @@ public class SourceCode extends Output {
         return JSON.parseObject(o);
     }
 
+    /**
+     * 处理Groovy脚本情况下无法修改线程池大小的问题
+     *
+     * @param i
+     */
+    public static void setMax(int i) {
+        ThreadPoolUtil.getFunPool().setCorePoolSize(i);
+        ThreadPoolUtil.getFunPool().setMaximumPoolSize(i);
+    }
 
     /**
      * 异步执行某个代码块
@@ -626,7 +635,7 @@ public class SourceCode extends Output {
         try {
             f.get();
         } catch (Exception e) {
-
+            logger.warn("noError error: {}", e.getMessage());
         }
     }
 
