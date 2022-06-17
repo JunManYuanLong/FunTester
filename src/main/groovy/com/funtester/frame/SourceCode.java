@@ -537,7 +537,7 @@ public class SourceCode extends Output {
      *
      * @param i
      */
-    public static void setMax(int i) {
+    public static void setPoolMax(int i) {
         ThreadPoolUtil.getFunPool().setCorePoolSize(i);
         ThreadPoolUtil.getFunPool().setMaximumPoolSize(i);
     }
