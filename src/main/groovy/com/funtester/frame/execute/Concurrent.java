@@ -157,7 +157,8 @@ public class Concurrent extends SourceCode {
             errorTotal += x.errorNum;
             executeTotal += x.executeNum;
         });
-        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{},QPS:{}", threadNum, Time.getTimeDiffer(startTime, endTime), formatLong(executeTotal), errorTotal, (int)(executeTotal / Time.getTimeDiffer(startTime, endTime)));
+        int qps = (int) (executeTotal / Time.getTimeDiffer(startTime, endTime));
+        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{},QPS:{},单线程效率:{}", threadNum, Time.getTimeDiffer(startTime, endTime), formatLong(executeTotal), errorTotal, qps, qps / threadNum);
         return over();
     }
 
