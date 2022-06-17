@@ -18,17 +18,15 @@ class FunQpsConcurrent extends SourceCode {
     private static Logger logger = LogManager.getLogger(FunQpsConcurrent.class);
     static ThreadPoolExecutor executor
 
-    static int count_interval = 5
-
     public static IFunController controller;
 
     LongAdder total = new LongAdder()
 
-    static boolean key = true
+    public static boolean key = true
 
-    Closure produce
+    public Closure produce
 
-    int qps = 1
+    public int qps = 1
 
     private FunQpsConcurrent() {
 
