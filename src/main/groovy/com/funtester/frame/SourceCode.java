@@ -8,6 +8,7 @@ import com.funtester.base.exception.ParamException;
 import com.funtester.frame.execute.ThreadPoolUtil;
 import com.funtester.utils.Regex;
 import com.funtester.utils.Time;
+import groovy.lang.Closure;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -19,6 +20,7 @@ import java.util.*;
 import java.util.concurrent.Phaser;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -548,7 +550,7 @@ public class SourceCode extends Output {
      *
      * @param f
      */
-    public static void fun(Supplier f) {
+    public static void fun(Closure f) {
         fun(f, null);
     }
 
@@ -558,13 +560,13 @@ public class SourceCode extends Output {
      * @param f
      * @param phaser
      */
-    public static void fun(Supplier f, Phaser phaser) {
+    public static void fun(Closure f, Phaser phaser) {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 try {
                     if (phaser != null) phaser.register();
-                    f.get();
+                    f.call();
                 } catch (Exception e) {
                     logger.warn("执行异步方法时发生错误!", e);
                 } finally {
@@ -580,12 +582,36 @@ public class SourceCode extends Output {
         ThreadPoolUtil.executeSync(runnable);
     }
 
+    static Vector<Integer> ones = new Vector<>();
+
+    static ReentrantLock lock = new ReentrantLock();
+
+    /**
+     * 线程安全单次执行,仿照Go语言的once方法
+     *
+     * @param v
+     */
+    public static void once(Closure v) {
+        try {
+            lock.lock();
+            int code = v.hashCode();
+            if (!ones.contains(code)) {
+                ones.add(code);
+                v.call();
+            }
+        } catch (Exception e) {
+            logger.warn("once执行方法失败", e);
+        } finally {
+            lock.unlock();
+        }
+    }
+
     /**
      * 获取方法的执行时间
      *
      * @param f
      */
-    public static void time(Supplier f) {
+    public static void time(Closure f) {
         time(f, 1);
     }
 
@@ -595,10 +621,10 @@ public class SourceCode extends Output {
      * @param f     执行方法
      * @param times 执行次数
      */
-    public static void time(Supplier f, int times) {
+    public static void time(Closure f, int times) {
         long start = Time.getTimeStamp();
         for (int i = 0; i < times; i++) {
-            f.get();
+            f.call();
         }
         long end = Time.getTimeStamp();
         logger.info("执行{}次耗时:{}", times, formatLong(end - start) + " ms");
@@ -610,10 +636,10 @@ public class SourceCode extends Output {
      * @param f     执行方法
      * @param times 执行次数
      */
-    public static void time(Supplier f, int times, String name) {
+    public static void time(Closure f, int times, String name) {
         long start = Time.getTimeStamp();
         for (int i = 0; i < times; i++) {
-            f.get();
+            f.call();
         }
         long end = Time.getTimeStamp();
         logger.info("{}执行{}次耗时:{}", name, times, formatLong(end - start) + " ms");
