@@ -2,7 +2,7 @@ package com.funtester.config
 
 class PoolConstant {
 
-    public static int MAX = 100_000;
+    public static int MAX = 200;
 
     public static int MAX_IDLE = 88;
 
