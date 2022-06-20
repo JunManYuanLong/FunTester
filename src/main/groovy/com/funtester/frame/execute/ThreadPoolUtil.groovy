@@ -159,7 +159,7 @@ class ThreadPoolUtil extends Constant {
             int real = total.sumThenReset() / COUNT_INTERVAL as int
             def active = executor.getActiveCount()
             def count = active == 0 ? 1 : active
-            logger.info("当前设计QPS:{},实际QPS:{} 活跃线程数:{} 单进程效率:{}", qps, real, active, real / count as int)
+            logger.info("当前设计QPS:{},实际QPS:{} 活跃线程数:{} 单线程效率:{}", qps, real, active, real / count as int)
         }
     }
 
