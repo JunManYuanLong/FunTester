@@ -126,6 +126,7 @@ class FunConcurrent extends SourceCode {
         void reduce() {
             THREAD_STEP.times {
                 removeTask()
+                if (FunThread.size() < 1) over()
                 sleep(STEP_INTERVAL)
             }
         }

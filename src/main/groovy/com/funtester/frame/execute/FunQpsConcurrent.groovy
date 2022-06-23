@@ -1,5 +1,6 @@
 package com.funtester.frame.execute
 
+
 import com.funtester.base.interfaces.IFunController
 import com.funtester.config.Constant
 import com.funtester.frame.SourceCode
@@ -9,7 +10,6 @@ import org.apache.logging.log4j.Logger
 
 import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.atomic.LongAdder
-
 /**
  * 动态压测模型的启动类
  */
@@ -90,6 +90,7 @@ class FunQpsConcurrent extends SourceCode {
         @Override
         public void reduce() {
             qps -= QPS_STEP
+            if (qps < 1) over()
         }
 
         @Override
