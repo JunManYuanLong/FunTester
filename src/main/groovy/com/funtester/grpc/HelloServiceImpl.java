@@ -18,7 +18,7 @@ public class HelloServiceImpl extends HelloServiceGrpc.HelloServiceImplBase {
         HelloResponse response = HelloResponse.newBuilder()
                 .setMsg("你好 " + request.getName()+ Time.getDate())
                 .build();
-        SourceCode.sleep(1.5);
+        SourceCode.sleep(1.0);
         logger.info("用户{}来了",request.getName());
         responseObserver.onNext(response);
         responseObserver.onCompleted();
