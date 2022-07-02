@@ -561,11 +561,11 @@ public class SourceCode extends Output {
      * @param phaser
      */
     public static void fun(Closure f, Phaser phaser) {
+        if (phaser != null) phaser.register();
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 try {
-                    if (phaser != null) phaser.register();
                     f.call();
                 } catch (Exception e) {
                     logger.warn("执行异步方法时发生错误!", e);
