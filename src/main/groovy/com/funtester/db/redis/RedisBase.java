@@ -721,6 +721,37 @@ public class RedisBase {
     }
 
     /**
+     * 获取流包含的元素数量，即消息长度
+     *
+     * @param key
+     * @return
+     */
+    public long xlen(String key) {
+        try (Jedis jedis = getJedis()) {
+            return jedis.xlen(key);
+        } catch (Exception e) {
+            logger.error("stream key:{} xlen error", key, e);
+            return Constant.TEST_ERROR_CODE;
+        }
+    }
+
+    /**
+     * 删除消息
+     *
+     * @param key
+     * @param ids
+     * @return
+     */
+    public long xdel(String key, StreamEntryID... ids) {
+        try (Jedis jedis = getJedis()) {
+            return jedis.xdel(key, ids);
+        } catch (Exception e) {
+            logger.error("stream key:{} xdel error", key, e);
+            return Constant.TEST_ERROR_CODE;
+        }
+    }
+
+    /**
      * 读取stream消息
      * 通过xReadParams中的count和block来控制读取数量和阻塞时间
      * 常用{@link StreamEntryID#LAST_ENTRY}获取改时间点之后的消息,默认会获取历史信息,从最开始获取
