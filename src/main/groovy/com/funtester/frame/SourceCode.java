@@ -9,7 +9,6 @@ import com.funtester.frame.execute.ThreadPoolUtil;
 import com.funtester.utils.Regex;
 import com.funtester.utils.Time;
 import groovy.lang.Closure;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,6 +19,7 @@ import java.util.*;
 import java.util.concurrent.Phaser;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -402,14 +402,15 @@ public class SourceCode extends Output {
     }
 
     /**
-     * 随机选择某一个字符串
+     * 随机选择某一个值
      *
+     * @param index
      * @param fs
+     * @param <F>
      * @return
      */
-    public static String random(String... fs) {
-        if (ArrayUtils.isEmpty(fs)) ParamException.fail("数组不能为空!");
-        return fs[getRandomInt(fs.length) - 1];
+    public static <F> F random(AtomicInteger index, F... fs) {
+        return fs[index.getAndIncrement() % fs.length];
     }
 
     /**
@@ -422,6 +423,19 @@ public class SourceCode extends Output {
     public static <F> F random(List<F> list) {
         if (list == null || list.isEmpty()) ParamException.fail("数组不能为空!");
         return list.get(getRandomInt(list.size()) - 1);
+    }
+
+    /**
+     * 随机选择某个对象
+     *
+     * @param list
+     * @param index 自增索引
+     * @param <F>
+     * @return
+     */
+    public static <F> F random(List<F> list, AtomicInteger index) {
+        if (list == null || list.isEmpty()) ParamException.fail("数组不能为空!");
+        return list.get(index.getAndIncrement() % list.size());
     }
 
     /**
