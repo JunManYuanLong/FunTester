@@ -7,7 +7,7 @@ import java.util.function.Supplier
 /**
  * 处理Java与Groovy不兼容的问题
  **/
-class GToJ {
+class JToG {
 
     static Closure toClosure(Supplier supplier) {
         return {
