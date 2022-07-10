@@ -10,6 +10,9 @@ import org.apache.commons.pool2.impl.GenericObjectPool
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+
+import java.sql.ResultSet
+
 /**
  * 自定义MySQL连接池对象
  */
@@ -105,7 +108,7 @@ class MysqlPool extends PoolConstant {
      * @param sql
      * @return
      */
-    def query(def sql) {
+    ResultSet query(def sql) {
         def driver = borrow()
         try {
             return driver.executeQuerySql(sql)
