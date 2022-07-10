@@ -1,6 +1,6 @@
 package com.funtester.db.mysql
 
-import com.alibaba.fastjson.JSONObject
+
 import com.funtester.config.PoolConstant
 import com.funtester.db.mysql.FunMySql
 import org.apache.commons.pool2.BasePooledObjectFactory
@@ -10,7 +10,6 @@ import org.apache.commons.pool2.impl.GenericObjectPool
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
-
 /**
  * 自定义MySQL连接池对象
  */
@@ -66,13 +65,13 @@ class MysqlPool extends PoolConstant {
      * 借出对象
      * @return
      */
-    def borrow() {
+    FunMySql borrow() {
         try {
             return pool.borrowObject()
         } catch (e) {
-            logger.warn("获取${JSONObject.class} 失败", e)
+            logger.warn("获取${FunMySql.class} 失败", e)
         } finally {
-            new JSONObject()
+            new FunMySql(url, database, user, password)
         }
     }
 

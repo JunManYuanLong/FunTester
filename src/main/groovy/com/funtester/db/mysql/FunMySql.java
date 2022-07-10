@@ -2,6 +2,8 @@ package com.funtester.db.mysql;
 
 import com.funtester.base.interfaces.IMySqlBasic;
 import com.funtester.config.SqlConstant;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,8 +15,10 @@ import java.sql.Statement;
  */
 public class FunMySql extends SqlBase implements IMySqlBasic {
 
+    private static final Logger logger = LogManager.getLogger(FunMySql.class);
+
     /**
-     *  {@link SqlConstant#FUN_SQL_URL}会替换IP到URL
+     * {@link SqlConstant#FUN_SQL_URL}会替换IP到URL
      */
     String url;
 
@@ -95,6 +99,7 @@ public class FunMySql extends SqlBase implements IMySqlBasic {
         if (connection == null)
             connection = SqlBase.getConnection(SqlConstant.FUN_SQL_URL.replace("ip", url).replace("database", database), user, password);
         if (statement == null) statement = SqlBase.getStatement(connection);
+        logger.info("连接成功,url:{}!", url);
     }
 
 }
