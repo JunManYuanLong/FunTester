@@ -145,6 +145,15 @@ public class Time {
     }
 
     /**
+     * 获取当前是当周第几天
+     *
+     * @return
+     */
+    public static int getDayOfWeek() {
+        return calendarInit().get(Calendar.DAY_OF_WEEK);
+    }
+
+    /**
      * 获取年份
      *
      * @return
