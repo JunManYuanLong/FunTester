@@ -576,24 +576,16 @@ public class SourceCode extends Output {
      */
     public static void fun(Closure f, Phaser phaser) {
         if (phaser != null) phaser.register();
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    f.call();
-                } catch (Exception e) {
-                    logger.warn("执行异步方法时发生错误!", e);
-                } finally {
-                    if (phaser != null) {
-                        logger.info("异步任务完成 {}", phaser.getArrivedParties());
-                        phaser.arrive();
-                    }
-
+        ThreadPoolUtil.executeSync(() -> {
+            try {
+                f.call();
+            } finally {
+                if (phaser != null) {
+                    logger.info("异步任务完成 {}", phaser.getArrivedParties());
+                    phaser.arrive();
                 }
-
             }
-        };
-        ThreadPoolUtil.executeSync(runnable);
+        });
     }
 
     static Vector<Integer> ones = new Vector<>();
@@ -601,7 +593,7 @@ public class SourceCode extends Output {
     static ReentrantLock lock = new ReentrantLock();
 
     /**
-     * 线程安全单次执行,仿照Go语言的once方法
+     * 线程安全单次执行,仿照Go语言的once方法,这里不支持匿名闭包
      *
      * @param v
      */
