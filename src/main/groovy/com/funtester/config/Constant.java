@@ -300,10 +300,10 @@ public class Constant {
         new File(LONG_Path).mkdir();
 //        File file = new File(REQUEST_Path);
 //        File mark = new File(MARK_Path);
-        File data = new File(DATA_Path);
+//        File data = new File(DATA_Path);
 //        file.mkdir();
 //        mark.mkdir();
-        data.mkdir();
+//        data.mkdir();
 //        List<String> allFile = FileUtil.getAllFile(DATA_Path);
 //        allFile.addAll(FileUtil.getAllFile(MARK_Path));
 //        allFile.addAll(FileUtil.getAllFile(REQUEST_Path));
