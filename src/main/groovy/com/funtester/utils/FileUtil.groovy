@@ -87,6 +87,7 @@ class FileUtil extends Constant {
      */
     static String find(String path, String name) {
         File file = new File(path)
+        if (file.exists()) return EMPTY
         if (file.isFile() && file.getName() == name) return file.getAbsolutePath()
         File[] files = file.listFiles()
         int length = files.length

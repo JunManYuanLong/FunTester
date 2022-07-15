@@ -14,6 +14,7 @@ import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -153,6 +154,34 @@ public class RWUtil extends Constant {
             logger.warn("找不到指定的文件：{}", filePath);
         }
         return lines;
+    }
+
+    /**
+     * 使用闭包读取文件,适用于流式读取文件
+     *
+     * @param filePath
+     * @param consumer
+     */
+    public static void readFile(String filePath, Consumer<String> consumer) {
+        if (StringUtils.isEmpty(filePath) || !new File(filePath).exists() || new File(filePath).isDirectory())
+            ParamException.fail("文件信息错误!" + filePath);
+        logger.debug("读取文件名：{}", filePath);
+        File file = new File(filePath);
+        if (file.isFile() && file.exists()) { // 判断文件是否存在
+            try (FileInputStream fileInputStream = new FileInputStream(file);
+                 InputStreamReader read = new InputStreamReader(fileInputStream, DEFAULT_CHARSET);
+                 BufferedReader bufferedReader = new BufferedReader(read, 3 * 1024 * 1024);) {
+                String keyStr = SourceCode.getManyString(Constant.DEFAULT_STRING, LUCKY_NUM);
+                String line = null;
+                while ((line = bufferedReader.readLine()) != null) {
+                    consumer.accept(line);
+                }
+            } catch (Exception e) {
+                logger.warn("读取文件内容出错", e);
+            }
+        } else {
+            logger.warn("找不到指定的文件：{}", filePath);
+        }
     }
 
     /**
