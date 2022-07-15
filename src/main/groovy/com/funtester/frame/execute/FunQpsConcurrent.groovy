@@ -64,6 +64,7 @@ class FunQpsConcurrent extends SourceCode {
     private class FunTester implements IFunController {
 
         boolean inputKey = true;
+
         /**
          * 控制
          */
@@ -90,7 +91,11 @@ class FunQpsConcurrent extends SourceCode {
                         if (Regex.isMatch(input, "(F|f)\\d+")) QPS_STEP = changeStringToInt(input.substring(1));
                         if (Regex.isMatch(input, "(T|t)\\d+(D|d)\\d+")) {
                             def split = (input - "T" - "t").split(/(d|D)/)
-                            auto(split[0] as int, split[1] as int)
+                            autoTarget(split[0] as int, split[1] as int)
+                        }
+                        if (Regex.isMatch(input, "(A|a)\\d+(D|d)\\d+")) {
+                            def split = (input - "A" - "a").split(/(d|D)/)
+                            autoAdd(split[0] as int, split[1] as int)
                         }
                         break;
                 }
@@ -98,12 +103,12 @@ class FunQpsConcurrent extends SourceCode {
         }
 
         /**
-         * 自动控制递增功能
+         * 自动控制递增功能,以目标值计算
          * @param target 目标QPS
          * @param duration 持续时间
          * @return
          */
-        def auto(int target, duration) {
+        def autoTarget(int target, duration) {
             fun {
                 for (i in 0..<duration) {
                     if (autoKey) break
@@ -111,6 +116,25 @@ class FunQpsConcurrent extends SourceCode {
                     sleep(1.0)
                 }
                 if (!autoKey) qps = target
+                autoKey = false
+            }
+        }
+
+        /**
+         * 自动控制递增功能,以增加值计算
+         * @param sum
+         * @param duration
+         * @return
+         */
+        def autoAdd(int sum, duration) {
+            fun {
+                int q = qps
+                for (i in 0..<duration) {
+                    if (autoKey) break
+                    qps += sum / duration
+                    sleep(1.0)
+                }
+                if (!autoKey) qps = q + sum
                 autoKey = false
             }
         }
