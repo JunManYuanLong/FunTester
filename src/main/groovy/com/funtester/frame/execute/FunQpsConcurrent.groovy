@@ -64,6 +64,10 @@ class FunQpsConcurrent extends SourceCode {
     private class FunTester implements IFunController {
 
         boolean inputKey = true;
+        /**
+         * 控制
+         */
+        boolean autoKey = false
 
         @Override
         public void run() {
@@ -79,10 +83,35 @@ class FunQpsConcurrent extends SourceCode {
                     case "*":
                         over();
                         break;
+                    case "/":
+                        autoKey = true
+                        break;
                     default:
                         if (Regex.isMatch(input, "(F|f)\\d+")) QPS_STEP = changeStringToInt(input.substring(1));
+                        if (Regex.isMatch(input, "(T|t)\\d+(D|d)\\d+")) {
+                            def split = (input - "T" - "t").split(/(d|D)/)
+                            auto(split[0] as int, split[1] as int)
+                        }
                         break;
                 }
+            }
+        }
+
+        /**
+         * 自动控制递增功能
+         * @param target 目标QPS
+         * @param duration 持续时间
+         * @return
+         */
+        def auto(int target, duration) {
+            fun {
+                for (i in 0..<duration) {
+                    if (autoKey) break
+                    qps += (target - qps) / duration
+                    sleep(1.0)
+                }
+                if (!autoKey) qps = target
+                autoKey = false
             }
         }
 
