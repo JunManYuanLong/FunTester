@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger
 
 import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.atomic.LongAdder
+
 /**
  * 动态压测模型的启动类
  */
@@ -24,16 +25,19 @@ class FunQpsConcurrent extends SourceCode {
 
     public static boolean key = true
 
-    public Closure produce
+    Closure produce
 
-    public int qps = 1
+    String name
+
+    int qps = 1
 
     private FunQpsConcurrent() {
 
     }
 
-    FunQpsConcurrent(Closure closure) {
+    FunQpsConcurrent(Closure closure, def name = DEFAULT_STRING) {
         this.produce = closure
+        this.name = name
     }
 
     void start() {
@@ -41,7 +45,7 @@ class FunQpsConcurrent extends SourceCode {
         if (controller == null) controller = new FunTester();
         new Thread(controller, "接收器").start();
         while (key) {
-            ThreadPoolUtil.executeTask(executor, qps, produce, total)
+            ThreadPoolUtil.executeTask(executor, qps, produce, total, name)
         }
         stop()
     }

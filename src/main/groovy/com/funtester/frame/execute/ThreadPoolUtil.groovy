@@ -126,7 +126,7 @@ class ThreadPoolUtil extends Constant {
      * @param produce
      * @param total
      */
-    static void executeTask(ThreadPoolExecutor executor, int qps, Closure produce, LongAdder total) {
+    static void executeTask(ThreadPoolExecutor executor, int qps, Closure produce, LongAdder total, String name) {
         SourceCode.sleep(1.0)
         if (qps < 1) return
         if (qps > LUCKY_NUM * TIMES_PER_TASK) LUCKY_NUM = qps / TIMES_PER_TASK as Integer
@@ -159,7 +159,7 @@ class ThreadPoolUtil extends Constant {
             int real = total.sumThenReset() / COUNT_INTERVAL as int
             def active = executor.getActiveCount()
             def count = active == 0 ? 1 : active
-            logger.info("当前设计QPS:{},实际QPS:{} 活跃线程数:{} 单线程效率:{}", qps, real, active, real / count as int)
+            logger.info("{} 设计QPS:{},实际QPS:{} 活跃线程数:{} 单线程效率:{}", name, qps, real, active, real / count as int)
         }
     }
 

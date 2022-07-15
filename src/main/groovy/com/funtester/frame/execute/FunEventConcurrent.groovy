@@ -23,16 +23,19 @@ class FunEventConcurrent extends SourceCode {
 
     Closure produce
 
+    String name
+
     FunEventConcurrent(Closure closure, FunCount funCount) {
         this.funcount = funCount
         this.produce = closure
+        this.name = funcount.name
     }
 
     void start() {
         if (executor == null) executor = ThreadPoolUtil.createCachePool(Constant.THREADPOOL_MAX, "E")
         funcount.start()
         while (funcount.status) {
-            ThreadPoolUtil.executeTask(executor, funcount.getQps(), produce, total)
+            ThreadPoolUtil.executeTask(executor, funcount.getQps(), produce, total, name)
         }
         stop()
     }
