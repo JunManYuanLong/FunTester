@@ -93,7 +93,7 @@ class FunQpsConcurrent extends SourceCode {
                             def split = (input - "T" - "t").split(/(d|D)/)
                             autoTarget(split[0] as int, split[1] as int)
                         }
-                        if (Regex.isMatch(input, "(A|a)\\d+(D|d)\\d+")) {
+                        if (Regex.isMatch(input, "(A|a)-{0,1}\\d+(D|d)\\d+")) {
                             def split = (input - "A" - "a").split(/(d|D)/)
                             autoAdd(split[0] as int, split[1] as int)
                         }
