@@ -132,6 +132,7 @@ class FunQpsConcurrent extends SourceCode {
                 for (i in 0..<duration) {
                     if (autoKey) break
                     qps += sum / duration
+                    if (qps < 0) break
                     sleep(1.0)
                 }
                 if (!autoKey) qps = q + sum
@@ -147,7 +148,7 @@ class FunQpsConcurrent extends SourceCode {
         @Override
         public void reduce() {
             qps -= QPS_STEP
-            if (qps < 1) over()
+            if (qps < 0) over()
         }
 
         @Override
