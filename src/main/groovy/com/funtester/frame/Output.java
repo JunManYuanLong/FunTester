@@ -188,6 +188,15 @@ public class Output extends Constant {
     }
 
     /**
+     * 输出map,默认使用JSON形式
+     *
+     * @param map
+     */
+    public static void output(Map map) {
+        output(JSONObject.parseObject(JSON.toJSONString(map)));
+    }
+
+    /**
      * 以JSON格式输出
      *
      * @param o
@@ -325,7 +334,7 @@ public class Output extends Constant {
          * @return
          */
         public String getCel(int colum, String content) {
-            return (colum == 0 ? LINE + PART : PART) + StringUtil.center(content, rowLength.get(colum)) + (rowLength.size() - colum == 1 ? EMPTY : EMPTY);
+            return (colum == 0 ? LINE + PART : PART) + StringUtil.center(content, rowLength.get(colum)) + (rowLength.size() - colum == 1 ? EMPTY + PART : EMPTY);
         }
 
         /**
