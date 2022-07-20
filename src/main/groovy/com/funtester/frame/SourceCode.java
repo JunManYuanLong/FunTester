@@ -209,7 +209,18 @@ public class SourceCode extends Output {
      * @return
      */
     public static String formatDouble(Number number) {
-        return formatNumber(number, "#.##");
+        return formatNumber(number, 2);
+    }
+
+    /**
+     * 格式化数字格式,保留两位有效数字,使用去尾法
+     *
+     * @param number
+     * @param length
+     * @return
+     */
+    public static String formatNumber(Number number, int length) {
+        return formatNumber(number, "#." + getManyString("#", length));
     }
 
     /**
@@ -510,6 +521,17 @@ public class SourceCode extends Output {
      */
     public static double getRandomDouble() {
         return ThreadLocalRandom.current().nextDouble();
+    }
+
+    /**
+     * 获取随机数，获取(0-1] 的数字,可选小数位数,不会是0
+     *
+     * @param i
+     * @return
+     */
+    public static double getRandomDouble(int i) {
+        int pow = (int) Math.pow(10, i);
+        return (getRandomInt(pow) * 1.0) / pow;
     }
 
     /**
