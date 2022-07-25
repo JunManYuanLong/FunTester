@@ -10,8 +10,37 @@ public class ArgsUtil extends SourceCode {
 
     String[] all;
 
+    JSONObject params = new JSONObject();
+
     public ArgsUtil(String[] args) {
         all = (String[]) args.clone();
+        toJson();
+    }
+
+    /**
+     * 兼容成对参数
+     *
+     * @return
+     */
+    public JSONObject toJson() {
+        JSONObject params = new JSONObject();
+        if (all.length % 2 == 1) return params;
+        for (int i = 0; i < all.length; i += 2) {
+            String key = all[i];
+            String value = all[i + 1];
+            params.put(key, value);
+        }
+        return params;
+    }
+
+    /**
+     * 获取成对参数值
+     *
+     * @param key
+     * @return
+     */
+    public String getValue(String key) {
+        return params.getString(key);
     }
 
     /**
