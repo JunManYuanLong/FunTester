@@ -347,7 +347,6 @@ public class SourceCode extends Output {
      * @param time 单位s
      */
     public static void sleep(double time) {
-        if (time > 100) FailException.fail("休眠时间过长,请更换其他方式!");
         try {
             Thread.sleep((long) (time * 1000));
         } catch (InterruptedException e) {
@@ -376,7 +375,17 @@ public class SourceCode extends Output {
      * @return 随机数
      */
     public static int getRandomInt(int num) {
-        return ThreadLocalRandom.current().nextInt(num) + 1;
+        return getRandomIntZero(num) + 1;
+    }
+
+    /**
+     * 获取随机数,范围0 ~ num-1
+     *
+     * @param num
+     * @return
+     */
+    public static int getRandomIntZero(int num) {
+        return ThreadLocalRandom.current().nextInt(num);
     }
 
     /**
@@ -409,7 +418,7 @@ public class SourceCode extends Output {
      * @return
      */
     public static <F> F random(F... fs) {
-        return fs[getRandomInt(fs.length) - 1];
+        return fs[getRandomIntZero(fs.length)];
     }
 
     /**
@@ -433,7 +442,7 @@ public class SourceCode extends Output {
      */
     public static <F> F random(List<F> list) {
         if (list == null || list.isEmpty()) ParamException.fail("数组不能为空!");
-        return list.get(getRandomInt(list.size()) - 1);
+        return list.get(getRandomIntZero(list.size()));
     }
 
     /**

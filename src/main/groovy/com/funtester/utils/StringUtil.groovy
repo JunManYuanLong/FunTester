@@ -1,13 +1,9 @@
 package com.funtester.utils
 
-import static com.funtester.config.Constant.EMPTY
-import static com.funtester.frame.SourceCode.getRandomInt
-import static com.funtester.frame.SourceCode.getManyString
-import static com.funtester.frame.SourceCode.range
-import static com.funtester.frame.SourceCode.changeStringToInt
-
 import java.util.stream.Collectors
 
+import static com.funtester.config.Constant.EMPTY
+import static com.funtester.frame.SourceCode.*
 /**
  * 处理各种字符串的工具类
  */
@@ -54,7 +50,7 @@ class StringUtil {
      * @return
      */
     static char getChar() {
-        chars[getRandomInt(62) - 1]
+        chars[getRandomIntZero(61)]
     }
 
     /**
@@ -63,7 +59,7 @@ class StringUtil {
      * @return
      */
     static char getWord() {
-        chars[getRandomInt(52) + 9];
+        chars[getRandomIntZero(52) + 10];
     }
 
     /**
@@ -164,9 +160,8 @@ class StringUtil {
      * @return
      */
     static String getEmojis() {
-        EMOJIS[getRandomInt(EMOJIS.length - 1)];
+        random(EMOJIS);
     }
-
 
     /**
      * 返回一个居中的字符串
