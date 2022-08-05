@@ -116,7 +116,7 @@ public class RWUtil extends Constant {
         return readByLine(filePath, new Function<String, String>() {
             @Override
             public String apply(String s) {
-                return s.contains(content) == key ? s : null;
+                return s.startsWith(content) == key ? s : null;
             }
         });
     }
