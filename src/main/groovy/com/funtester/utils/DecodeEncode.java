@@ -6,11 +6,15 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
+import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
@@ -22,7 +26,7 @@ import java.util.zip.InflaterOutputStream;
 /**
  * 编码格式转码解码类
  */
-public class DecodeEncode extends Constant{
+public class DecodeEncode extends Constant {
 
     private static Logger logger = LogManager.getLogger(DecodeEncode.class);
 
@@ -262,6 +266,37 @@ public class DecodeEncode extends Constant{
     public static String unicodeToStringX(String str) {
         str = str.replaceAll("\\\\x", "%");
         return urlDecoderText(str, DEFAULT_CHARSET);
+    }
+
+    /**
+     * 加密
+     *
+     * @param key
+     * @param input
+     * @return
+     * @throws GeneralSecurityException
+     */
+    public static String encrypt(String key, String input) throws GeneralSecurityException, UnsupportedEncodingException {
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+        SecretKey keySpec = new SecretKeySpec(key.getBytes(DEFAULT_CHARSET.name()), "AES");
+        cipher.init(Cipher.ENCRYPT_MODE, keySpec);
+        byte[] bytes = cipher.doFinal(input.getBytes(DEFAULT_CHARSET.name()));
+        return base64Encode(bytes);
+    }
+
+    /**
+     * 解密
+     *
+     * @param key
+     * @param input
+     * @return
+     * @throws GeneralSecurityException
+     */
+    public static String decrypt(String key, String input) throws GeneralSecurityException, UnsupportedEncodingException {
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+        SecretKey keySpec = new SecretKeySpec(key.getBytes(DEFAULT_CHARSET.name()), "AES");
+        cipher.init(Cipher.DECRYPT_MODE, keySpec);
+        return new String(cipher.doFinal(DecodeEncode.base64Byte(input)), DEFAULT_CHARSET.name());
     }
 
 

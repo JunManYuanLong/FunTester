@@ -104,6 +104,28 @@ class FileUtil extends Constant {
     }
 
     /**
+     * 获取所有文件列表,并根据最后编辑时间排序
+     * @param path
+     * @param name
+     * @param order 正序
+     * @return
+     */
+    static List<String> findAll(String path, String name, boolean order = true) {
+        def file = getAllFile(path)
+        def list = file.stream().findAll {it.contains(name)} as List<String>
+        list.sort(new Comparator<String>() {
+
+            @Override
+            int compare(String o1, String o2) {
+                def file1 = new File(o1)
+                def file2 = new File(o2)
+                return order ? file1.lastModified() - file2.lastModified() : file2.lastModified() - file1.lastModified()
+            }
+        })
+        list
+    }
+
+    /**
      * 处理下载网络图片的时候明文件的问题
      * @param name
      * @return
