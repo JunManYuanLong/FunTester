@@ -276,12 +276,17 @@ public class DecodeEncode extends Constant {
      * @return
      * @throws GeneralSecurityException
      */
-    public static String encrypt(String key, String input) throws GeneralSecurityException, UnsupportedEncodingException {
-        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        SecretKey keySpec = new SecretKeySpec(key.getBytes(DEFAULT_CHARSET.name()), "AES");
-        cipher.init(Cipher.ENCRYPT_MODE, keySpec);
-        byte[] bytes = cipher.doFinal(input.getBytes(DEFAULT_CHARSET.name()));
-        return base64Encode(bytes);
+    public static String encrypt(String key, String input) {
+        try {
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+            SecretKey keySpec = new SecretKeySpec(key.getBytes(DEFAULT_CHARSET.name()), "AES");
+            cipher.init(Cipher.ENCRYPT_MODE, keySpec);
+            byte[] bytes = cipher.doFinal(input.getBytes(DEFAULT_CHARSET.name()));
+            return base64Encode(bytes);
+        } catch (GeneralSecurityException | UnsupportedEncodingException e) {
+            logger.warn("加密失败", e);
+            return EMPTY;
+        }
     }
 
     /**
@@ -292,12 +297,16 @@ public class DecodeEncode extends Constant {
      * @return
      * @throws GeneralSecurityException
      */
-    public static String decrypt(String key, String input) throws GeneralSecurityException, UnsupportedEncodingException {
-        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        SecretKey keySpec = new SecretKeySpec(key.getBytes(DEFAULT_CHARSET.name()), "AES");
-        cipher.init(Cipher.DECRYPT_MODE, keySpec);
-        return new String(cipher.doFinal(DecodeEncode.base64Byte(input)), DEFAULT_CHARSET.name());
+    public static String decrypt(String key, String input) {
+        try {
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+            SecretKey keySpec = new SecretKeySpec(key.getBytes(DEFAULT_CHARSET.name()), "AES");
+            cipher.init(Cipher.DECRYPT_MODE, keySpec);
+            return new String(cipher.doFinal(DecodeEncode.base64Byte(input)), DEFAULT_CHARSET.name());
+        } catch (GeneralSecurityException | UnsupportedEncodingException e) {
+            logger.warn("解密失败!", e);
+            return EMPTY;
+        }
     }
-
 
 }
