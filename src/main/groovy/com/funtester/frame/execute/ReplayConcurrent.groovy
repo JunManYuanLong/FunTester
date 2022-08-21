@@ -3,6 +3,7 @@ package com.funtester.frame.execute
 import com.funtester.base.bean.AbstractBean
 import com.funtester.frame.SourceCode
 import com.funtester.utils.LogUtil
+import com.funtester.utils.RWUtil
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
@@ -23,7 +24,7 @@ class ReplayConcurrent extends SourceCode {
 
     static boolean key = true
 
-    static int MAX_LENGTH = 10000
+    static int MAX_LENGTH = 800000
 
     int threadNum = 2
 
@@ -50,13 +51,13 @@ class ReplayConcurrent extends SourceCode {
     }
 
     void start() {
-        if (executor == null) executor = ThreadPoolUtil.createCachePool(Constant.THREADPOOL_MAX, "R")
-        time ({
-            RWUtil.readFile(DataUtils.getLog(fileName), {
+        if (executor == null) executor = ThreadPoolUtil.createCachePool(THREADPOOL_MAX, "R")
+        time({
+            RWUtil.readFile(fileName, {
                 def delay = new ReplayLog(it)
                 if (delay.getTimestamp() != 0) logDelayQueue.add(delay)
             })
-        } , 1 , "读取日志$fileName")
+        }, 1, "读取日志$fileName")
         logs = logDelayQueue.toList()
         def timestamp = logs.get(0).getTimestamp()
         logDelayQueue.clear()
@@ -66,8 +67,8 @@ class ReplayConcurrent extends SourceCode {
         AtomicInteger diff = new AtomicInteger()
         threadNum.times {
             fun {
-                if (index.get() % LogSize == 0) diff.set(getMark() - timestamp)
                 while (key) {
+                    if (index.get() % LogSize == 0) diff.set(getMark() - timestamp)
                     if (index.get() % MAX_LENGTH == 0) size.set(logDelayQueue.size())
                     if (size.get() > MAX_LENGTH) {
                         sleep(1.0)
