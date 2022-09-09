@@ -333,7 +333,6 @@ public class SourceCode extends Output {
      * @param second 秒，可以是小数
      */
     public static void sleep(int second) {
-        if (second > 100) FailException.fail("休眠时间过长,请更换其他方式!");
         try {
             Thread.sleep(second * 1000);
         } catch (InterruptedException e) {
@@ -359,7 +358,7 @@ public class SourceCode extends Output {
      *
      * @param nanosec
      */
-    public static void sleep(long nanosec) {
+    public static void sleepNano(long nanosec) {
         if (nanosec < 1_000_000) return;
         try {
             TimeUnit.NANOSECONDS.sleep(nanosec);
@@ -442,6 +441,7 @@ public class SourceCode extends Output {
      */
     public static <F> F random(List<F> list) {
         if (list == null || list.isEmpty()) ParamException.fail("数组不能为空!");
+        if (list.size() ==1) return list.get(0);
         return list.get(getRandomIntZero(list.size()));
     }
 
