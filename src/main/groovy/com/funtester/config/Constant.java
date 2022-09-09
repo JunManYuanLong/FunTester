@@ -119,6 +119,8 @@ public class Constant {
 
     public static final String RESPONSE_CONTENT = "content";
 
+    public static final String EXCEPTION = "exception";
+
     public static final int TEST_ERROR_CODE = -2;
 
     public static final long DEFAULT_LONG = 0L;

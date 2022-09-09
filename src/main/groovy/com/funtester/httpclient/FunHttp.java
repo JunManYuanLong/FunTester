@@ -386,6 +386,7 @@ public class FunHttp extends SourceCode {
             if (LOG_KEY)
                 logger.info("请求uri：{} , 耗时：{} ms , HTTPcode: {}", request.getURI(), Time.getTimeStamp() - start, status, res);
         } catch (Exception e) {
+            res.put(EXCEPTION, e.getMessage());
             FunRequest funRequest = FunRequest.initFromRequest(request);
             funRequest.setResponse(res);
             logger.warn("请求失败 {} ,内容:{} ", e.getMessage(), funRequest.toString());
