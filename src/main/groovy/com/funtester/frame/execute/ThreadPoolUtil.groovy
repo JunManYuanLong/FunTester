@@ -1,6 +1,7 @@
 package com.funtester.frame.execute
 
-
+import com.funtester.base.constaint.FunThread
+import com.funtester.base.constaint.ThreadBase
 import com.funtester.config.Constant
 import com.funtester.frame.Output
 import com.funtester.frame.SourceCode
@@ -164,11 +165,10 @@ class ThreadPoolUtil extends Constant {
     }
 
     /**
-     * 关闭异步线程池,不然会停不下来
-     */
+     * 关闭异步线程池,不然会停不下来*/
     static void shutFun() {
         if (getFunPool().isShutdown()) return
-        logger.warn(Output.rgb("异步线程池关闭!"))
+        logger.info(Output.rgb("异步线程池关闭!"))
         getFunPool().shutdown()
     }
 
@@ -206,15 +206,13 @@ class ThreadPoolUtil extends Constant {
         group.enumerate(threads)
         for (i in 0..<count) {
             def thread = threads[i]
-            if (thread != null && thread.getName() == "main")
-                return true
+            if (thread != null && thread.getName() == "main") return true
         }
         false
     }
 
     /**
-     * 等待异步线程池空闲
-     */
+     * 等待异步线程池空闲*/
     static void waitFunIdle() {
         if (funPool == null) return
         SourceCode.time({
@@ -225,8 +223,7 @@ class ThreadPoolUtil extends Constant {
     }
 
     /**
-     * 保留方法,备用
-     */
+     * 保留方法,备用*/
     static void getAllThread() {
         ThreadGroup group = Thread.currentThread().getThreadGroup();
         ThreadGroup topGroup = group;
@@ -249,4 +246,13 @@ class ThreadPoolUtil extends Constant {
         }
     }
 
+    /**
+     * 关闭所有性能测试任务
+     * @return
+     */
+    static def stopAllThread() {
+        FunQpsConcurrent.key = false
+        FunThread.stop()
+        ThreadBase.stop()
+    }
 }
