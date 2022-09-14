@@ -113,7 +113,7 @@ class ReplayConcurrent extends SourceCode {
      */
     def stop() {
         key = false
-        executor.shutdown()
+        if (executor != null || !executor.isShutdown()) executor.shutdown()
         logger.info("replay压测关闭了!")
     }
 

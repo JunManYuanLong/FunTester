@@ -251,8 +251,10 @@ class ThreadPoolUtil extends Constant {
      * @return
      */
     static def stopAllThread() {
-        FunQpsConcurrent.key = false
+        FunQpsConcurrent.stop()
+        FunConcurrent.stop()
         FunThread.stop()
         ThreadBase.stop()
     }
+
 }

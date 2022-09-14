@@ -9,12 +9,15 @@ import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
 import java.util.concurrent.ExecutorService
+
 /**
  * 动态压测模型的启动类,基于线程的动态模型
  */
 class FunConcurrent extends SourceCode {
 
     private static Logger logger = LogManager.getLogger(FunConcurrent.class)
+
+    static boolean key = true
 
     /**
      * 任务集
@@ -55,6 +58,16 @@ class FunConcurrent extends SourceCode {
     }
 
     /**
+     * 终止
+     * @return
+     */
+    static def stop() {
+        key = false
+        if (executor != null || !executor.isShutdown()) executor.shutdown()
+        logger.info("funconcurrent test over ")
+    }
+
+    /**
      * 向动态模型中添加任务
      *
      * @param thread
@@ -89,8 +102,6 @@ class FunConcurrent extends SourceCode {
     }
 
     private static class FunTester implements IFunController {
-
-        boolean key = true
 
         @Override
         void run() {
@@ -133,7 +144,7 @@ class FunConcurrent extends SourceCode {
 
         @Override
         void over() {
-            key = false
+            stop()
             FunThread.stop()
             logger.info("动态结束任务!")
         }

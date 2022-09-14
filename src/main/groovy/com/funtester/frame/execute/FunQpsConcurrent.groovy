@@ -17,6 +17,7 @@ import java.util.concurrent.atomic.LongAdder
 class FunQpsConcurrent extends SourceCode {
 
     private static Logger logger = LogManager.getLogger(FunQpsConcurrent.class);
+
     static ThreadPoolExecutor executor
 
     public static IFunController controller;
@@ -52,18 +53,16 @@ class FunQpsConcurrent extends SourceCode {
 
 
     /**
-     * 中止
+     * 终止
      * @return
      */
-    def stop() {
+    static def stop() {
         key = false
-        executor.shutdown()
-        logger.info("FunQPS压测关闭了!")
+        if (executor != null || !executor.isShutdown()) executor.shutdown()
+        logger.info("FunQPS test over!")
     }
 
     private class FunTester implements IFunController {
-
-        boolean inputKey = true;
 
         /**
          * 控制
@@ -72,7 +71,7 @@ class FunQpsConcurrent extends SourceCode {
 
         @Override
         public void run() {
-            while (inputKey) {
+            while (key) {
                 String input = getInput();
                 switch (input) {
                     case "+":
@@ -153,8 +152,7 @@ class FunQpsConcurrent extends SourceCode {
 
         @Override
         public void over() {
-            inputKey = false
-            key = false
+            stop()
             logger.info("动态结束任务!");
         }
 
