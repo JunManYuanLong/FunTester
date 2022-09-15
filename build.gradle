@@ -120,7 +120,10 @@ dependencies {
     compile 'io.grpc:grpc-protobuf:1.39.0'
     compile 'io.grpc:grpc-stub:1.39.0'
 //    compile 'org.apache.commons:commons-pool2:2.11.1'
-    compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
+//    compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
+    // https://mvnrepository.com/artifact/net.openhft/chronicle-queue
+    compile group: 'net.openhft', name: 'chronicle-queue', version: '5.22.24'
+
 }
 
 //已失效,后期需要借助插件shadow完成
