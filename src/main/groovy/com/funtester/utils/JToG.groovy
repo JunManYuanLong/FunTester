@@ -1,9 +1,10 @@
 package com.funtester.utils
 
+
+import java.util.function.Consumer
 import java.util.function.Function
 import java.util.function.Predicate
 import java.util.function.Supplier
-
 /**
  * 处理Java与Groovy不兼容的问题
  **/
@@ -16,13 +17,20 @@ class JToG {
     }
 
     static Closure toClosure(Function function) {
-        return {def t -> function.apply(t)
+        return {
+            def t -> function.apply(t)
         }
     }
 
     static Closure toClosure(Predicate predicate) {
-        return {def t -> predicate.test(t)
+        return {
+            def t -> predicate.test(t)
         }
     }
 
+    static Closure toClusure(Consumer consumer) {
+        return {
+            def t -> consumer.accept(t)
+        }
+    }
 }
