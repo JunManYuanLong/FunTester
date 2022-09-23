@@ -58,7 +58,7 @@ class FunQpsConcurrent extends SourceCode {
      */
     static def stop() {
         key = false
-        if (executor != null || !executor.isShutdown()) executor.shutdown()
+        if (executor != null && !executor.isShutdown()) executor.shutdown()
         logger.info("FunQPS test over!")
     }
 
