@@ -101,7 +101,7 @@ public class Output extends Constant {
      */
     public static void output(List list) {
         AtomicInteger integer = new AtomicInteger(1);
-        list.forEach(x -> output("第" + integer.getAndIncrement() + "个：" + x.toString()));
+        list.forEach(x -> output("第" + integer.getAndIncrement() + "个:" + x.toString()));
     }
 
     public static void output(Iterator its) {
