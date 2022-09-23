@@ -24,7 +24,7 @@ class ThreadPoolUtil extends Constant {
     private static AtomicInteger threadNum = new AtomicInteger(1)
 
 
-    private static volatile ExecutorService funPool;
+    private static volatile ExecutorService asyncPool;
 
     /**
      * 异步执行任务
@@ -32,6 +32,24 @@ class ThreadPoolUtil extends Constant {
      */
     static void executeSync(Runnable runnable) {
         getFunPool().execute(runnable)
+    }
+
+    /**
+     * 异步执行任务,{@link java.util.concurrent.Future}形式
+     * @param callable
+     * @return
+     */
+    static def syncRes(Callable callable) {
+        getFunPool().submit(callable)
+    }
+
+    /**
+     * 异步执行任务,{@link java.util.concurrent.Future}形式
+     * @param callable
+     * @return
+     */
+    static def syncRes(Runnable callable) {
+        getFunPool().submit(callable)
     }
 
     /**
@@ -91,15 +109,15 @@ class ThreadPoolUtil extends Constant {
      * @return
      */
     static ThreadPoolExecutor getFunPool() {
-        if (funPool == null) {
+        if (asyncPool == null) {
             synchronized (ThreadPoolUtil.class) {
-                if (funPool == null) {
-                    funPool = createFixedPool(Constant.POOL_SIZE, "F");
+                if (asyncPool == null) {
+                    asyncPool = createFixedPool(Constant.POOL_SIZE, "F");
                     daemon()
                 }
             }
         }
-        return funPool
+        return asyncPool
     }
 
     /**
@@ -214,7 +232,7 @@ class ThreadPoolUtil extends Constant {
     /**
      * 等待异步线程池空闲*/
     static void waitFunIdle() {
-        if (funPool == null) return
+        if (asyncPool == null) return
         SourceCode.time({
             SourceCode.waitFor {
                 funPool.getQueue().size() == 0 && funPool.getActiveCount() == 0

@@ -16,9 +16,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.*;
 import java.text.DecimalFormat;
 import java.util.*;
-import java.util.concurrent.Phaser;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Supplier;
@@ -441,7 +439,7 @@ public class SourceCode extends Output {
      */
     public static <F> F random(List<F> list) {
         if (list == null || list.isEmpty()) ParamException.fail("数组不能为空!");
-        if (list.size() ==1) return list.get(0);
+        if (list.size() == 1) return list.get(0);
         return list.get(getRandomIntZero(list.size()));
     }
 
@@ -597,6 +595,17 @@ public class SourceCode extends Output {
      */
     public static void fun(Closure f) {
         fun(f, null);
+    }
+
+    /**
+     * 异步执行,{@link Future}形式
+     *
+     * @param callable
+     * @param <T>
+     * @return
+     */
+    public static <T> Future<T> funny(Callable<T> callable) {
+        return ThreadPoolUtil.getFunPool().submit(callable);
     }
 
     /**
