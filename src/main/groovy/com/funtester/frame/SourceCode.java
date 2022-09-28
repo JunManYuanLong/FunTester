@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.funtester.base.exception.FailException;
 import com.funtester.base.exception.ParamException;
 import com.funtester.frame.execute.ThreadPoolUtil;
+import com.funtester.utils.JToG;
 import com.funtester.utils.Regex;
 import com.funtester.utils.Time;
 import groovy.lang.Closure;
@@ -18,7 +19,6 @@ import java.text.DecimalFormat;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -588,6 +588,15 @@ public class SourceCode extends Output {
     }
 
     /**
+     * 设置异步执行任务最大QPS
+     *
+     * @param i
+     */
+    public static void setMaxQps(int i) {
+        ThreadPoolUtil.setSemaphore(new Semaphore(i));
+    }
+
+    /**
      * 异步执行某个代码块
      * Java调用需要return,Groovy也不需要,语法兼容
      *
@@ -628,29 +637,49 @@ public class SourceCode extends Output {
         });
     }
 
-    static Vector<Integer> ones = new Vector<>();
-
-    static ReentrantLock lock = new ReentrantLock();
-
     /**
-     * 线程安全单次执行,仿照Go语言的once方法,这里不支持匿名闭包
+     * 已固定QPS,异步执行,默认16,调整方法{@link SourceCode#setMaxQps(int)}
      *
-     * @param v
+     * @param f
      */
-    public static void once(Closure v) {
-        try {
-            lock.lock();
-            int code = v.hashCode();
-            if (!ones.contains(code)) {
-                ones.add(code);
-                v.call();
-            }
-        } catch (Exception e) {
-            logger.warn("once执行方法失败", e);
-        } finally {
-            lock.unlock();
-        }
+    public static void funQ(Closure f) {
+        if (!ThreadPoolUtil.acquire()) return;
+        fun(JToG.toClosure(() -> {
+            sleep(1.0);
+            fun(JToG.toClosure(() -> {
+                f.call();
+                ThreadPoolUtil.release();
+                return null;
+            }));
+            return null;
+        }));
     }
+
+
+//用的太少了
+//    static Vector<Integer> ones = new Vector<>();
+//
+//    static ReentrantLock lock = new ReentrantLock();
+//
+//    /**
+//     * 线程安全单次执行,仿照Go语言的once方法,这里不支持匿名闭包
+//     *
+//     * @param v
+//     */
+//    public static void once(Closure v) {
+//        try {
+//            lock.lock();
+//            int code = v.hashCode();
+//            if (!ones.contains(code)) {
+//                ones.add(code);
+//                v.call();
+//            }
+//        } catch (Exception e) {
+//            logger.warn("once执行方法失败", e);
+//        } finally {
+//            lock.unlock();
+//        }
+//    }
 
     /**
      * 获取方法的执行时间

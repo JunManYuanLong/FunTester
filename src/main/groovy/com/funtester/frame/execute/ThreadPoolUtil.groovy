@@ -23,8 +23,33 @@ class ThreadPoolUtil extends Constant {
 
     private static AtomicInteger threadNum = new AtomicInteger(1)
 
-
+    /**
+     * 全局异步线程池
+     */
     private static volatile ExecutorService asyncPool;
+
+    /**
+     * 全局流量控制
+     */
+    static Semaphore semaphore = new Semaphore(16)
+
+    static long AcquireTimeout = 8888
+
+    /**
+     * 获取许可
+     * @return
+     */
+    static boolean acquire() {
+        semaphore.tryAcquire(AcquireTimeout, TimeUnit.MILLISECONDS)
+    }
+
+    /**
+     * 释放许可
+     * @return
+     */
+    static def release() {
+        semaphore.release()
+    }
 
     /**
      * 异步执行任务
