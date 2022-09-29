@@ -26,7 +26,7 @@ class ThreadPoolUtil extends Constant {
     /**
      * 全局异步线程池
      */
-    private static volatile ExecutorService asyncPool;
+    private static volatile ThreadPoolExecutor asyncPool;
 
     /**
      * 全局流量控制
@@ -260,7 +260,7 @@ class ThreadPoolUtil extends Constant {
         if (asyncPool == null) return
         SourceCode.time({
             SourceCode.waitFor {
-                funPool.getQueue().size() == 0 && funPool.getActiveCount() == 0
+                asyncPool.getQueue().size() == 0 && asyncPool.getActiveCount() == 0
             }
         }, 1, "异步线程池等待")
     }
