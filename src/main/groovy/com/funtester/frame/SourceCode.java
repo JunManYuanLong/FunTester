@@ -642,7 +642,7 @@ public class SourceCode extends Output {
      *
      * @param f
      */
-    public static void funQ(Closure f) {
+    public static void funner(Closure f) {
         if (!ThreadPoolUtil.acquire()) return;
         fun(JToG.toClosure(() -> {
             sleep(1.0);
