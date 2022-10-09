@@ -1,6 +1,7 @@
 package com.funtester.db.leveldb
 
 import com.funtester.frame.SourceCode
+import com.funtester.utils.Regex
 import org.iq80.leveldb.DB
 import org.iq80.leveldb.DBIterator
 import org.iq80.leveldb.Options
@@ -155,6 +156,20 @@ class LevelBase extends SourceCode {
             keys << next.key
         }
         return keys
+    }
+
+    /**
+     * 获取所有key
+     * @return
+     */
+    def keys(def regex) {
+        def keys = []
+        DBIterator iterator = db.iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<byte[], byte[]> next = iterator.next();
+            keys << next.key
+        }
+        return keys.findAll {Regex.isMatch(it, regex)}
     }
 
     /**
