@@ -57,9 +57,11 @@ class FunQpsConcurrent extends SourceCode {
      * @return
      */
     static def stop() {
-        key = false
-        if (executor != null && !executor.isShutdown()) executor.shutdown()
-        logger.info("FunQPS test over!")
+        if (key) {
+            key = false
+            if (executor != null && !executor.isShutdown()) executor.shutdown()
+            logger.info("FunQPS test over!")
+        }
     }
 
     private class FunTester implements IFunController {
