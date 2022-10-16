@@ -209,6 +209,20 @@ public class FunHttp extends SourceCode {
         return new HttpDelete(url);
     }
 
+    /**
+     * 获取{@link HttpDeleteByBody}对象,delete请求携带body参数
+     *
+     * @param url
+     * @param params
+     * @return
+     */
+    public static HttpDeleteByBody getHttpDelete(String url, JSONObject params) {
+        HttpDeleteByBody httpDeleteWithBody = new HttpDeleteByBody(url);
+        httpDeleteWithBody.setEntity(new StringEntity(params.toString(), DEFAULT_CHARSET.toString()));
+        httpDeleteWithBody.addHeader(HttpClientConstant.ContentType_JSON);
+        return httpDeleteWithBody;
+    }
+
 
     /**
      * 获取{@link HttpPatch}对象
@@ -326,7 +340,6 @@ public class FunHttp extends SourceCode {
             jsonObject = new JSONObject() {{
                 put(RESPONSE_CONTENT, content);
             }};
-            logger.warn("响应体非json格式，已经自动转换成json格式！");
         } finally {
             if (headers != null && !headers.isEmpty()) jsonObject.put(HttpClientConstant.HEADERS, headers);
             return jsonObject;
