@@ -225,11 +225,12 @@ class ThreadPoolUtil extends Constant {
 
             @Override
             void run() {
-                logger.info(Output.rgb("守护线程开启!"))
-                while (checkMain()) {
-                    SourceCode.sleep(1.0)
+                SourceCode.noError {
+                    while (checkMain()) {
+                        SourceCode.sleep(1.0)
+                    }
+                    waitFunIdle()
                 }
-                waitFunIdle()
                 ThreadPoolUtil.shutFun()
             }
         })
@@ -262,7 +263,7 @@ class ThreadPoolUtil extends Constant {
             SourceCode.waitFor {
                 asyncPool.getQueue().size() == 0 && asyncPool.getActiveCount() == 0
             }
-        }, 1, "异步线程池等待")
+        }, "异步线程池等待")
     }
 
     /**
