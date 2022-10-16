@@ -98,7 +98,7 @@ public class Constant {
     /**
      * 线程池最大等待队列长度
      */
-    public static final int MAX_WAIT_TASK = 100_0000;
+    public static final int MAX_WAIT_TASK = 10_0000;
 
     /**
      * 统计数据中的数量限制,小于该限制无法绘图
