@@ -1,6 +1,7 @@
 package com.funtester.base.exception;
 
 import com.funtester.config.Constant;
+import groovy.lang.GString;
 
 /**
  * 自定义异常基类
@@ -19,6 +20,10 @@ public class FailException extends RuntimeException {
 
     public static void fail(String message) {
         throw new FailException(message);
+    }
+
+    public static void fail(GString message) {
+        throw new FailException(message.toString());
     }
 
     /**
