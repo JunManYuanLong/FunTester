@@ -686,8 +686,8 @@ public class SourceCode extends Output {
      *
      * @param f
      */
-    public static void time(Closure f) {
-        time(f, 1);
+    public static long time(Closure f) {
+        return time(f, 1);
     }
 
     /**
@@ -696,13 +696,14 @@ public class SourceCode extends Output {
      * @param f     执行方法
      * @param times 执行次数
      */
-    public static void time(Closure f, int times) {
+    public static long time(Closure f, int times) {
         long start = Time.getTimeStamp();
         for (int i = 0; i < times; i++) {
             f.call();
         }
         long end = Time.getTimeStamp();
         logger.info("执行{}次耗时:{}", times, formatLong(end - start) + " ms");
+        return end - start;
     }
 
     /**
@@ -710,14 +711,14 @@ public class SourceCode extends Output {
      *
      * @param f     执行方法
      * @param times 执行次数
+     * @param name
      */
-    public static void time(Closure f, int times, String name) {
+    public static long time(Closure f, String name) {
         long start = Time.getTimeStamp();
-        for (int i = 0; i < times; i++) {
-            f.call();
-        }
+        f.call();
         long end = Time.getTimeStamp();
-        logger.info("{}执行{}次耗时:{}", name, times, formatLong(end - start) + " ms");
+        logger.info("{}执行耗时:{}", name, formatLong(end - start) + " ms");
+        return end - start;
     }
 
     public static void time(Supplier f, String name) {
