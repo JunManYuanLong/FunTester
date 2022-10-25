@@ -57,7 +57,7 @@ class ReplayConcurrent extends SourceCode {
                 def delay = new ReplayLog(it)
                 if (delay.getTimestamp() != 0) logDelayQueue.add(delay)
             })
-        }, 1, "读取日志$fileName")
+        }, "读取日志$fileName")
         logs = logDelayQueue.toList()
         def timestamp = logs.get(0).getTimestamp()
         logDelayQueue.clear()
