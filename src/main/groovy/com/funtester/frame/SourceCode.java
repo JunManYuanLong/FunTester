@@ -653,7 +653,7 @@ public class SourceCode extends Output {
             if (ThreadPoolUtil.acquire()) {
                 sleep(1.0);
                 ThreadPoolUtil.executeCacheSync(() -> {
-                    noError(() -> f.call());
+                    noError(JToG.toClosure(() -> f.call()));
                     ThreadPoolUtil.release();
                 });
             }
@@ -727,7 +727,6 @@ public class SourceCode extends Output {
      * 获取方法的执行时间
      *
      * @param f     执行方法
-     * @param times 执行次数
      * @param name
      */
     public static long time(Closure f, String name) {
@@ -738,21 +737,14 @@ public class SourceCode extends Output {
         return end - start;
     }
 
-    public static void time(Supplier f, String name) {
-        long start = Time.getTimeStamp();
-        f.get();
-        long end = Time.getTimeStamp();
-        logger.info("{}执行耗时:{}", name, formatLong(end - start) + " ms");
-    }
-
     /**
      * 取消方法执行过程中的异常显示
      *
-     * @param f
+     * @param closure
      */
-    public static void noError(Supplier f) {
+    public static void noError(Closure closure) {
         try {
-            f.get();
+            closure.call();
         } catch (Exception e) {
             logger.warn("noError error: {}", e.getMessage());
         }

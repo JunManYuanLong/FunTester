@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger
 import java.util.concurrent.atomic.LongAdder
 
 /**
- * Java线程池Demo*/
+ * Java线程池工具类*/
 @Log4j2
 class ThreadPoolUtil extends Constant {
 
@@ -26,6 +26,8 @@ class ThreadPoolUtil extends Constant {
      * 全局异步线程池*/
     private static volatile ThreadPoolExecutor asyncPool;
 
+    /**
+     * 异步任务缓存线程池*/
     private static volatile ThreadPoolExecutor asyncCachePool;
 
     /**
@@ -165,6 +167,10 @@ class ThreadPoolUtil extends Constant {
         return asyncPool
     }
 
+    /**
+     * 获取异步缓存线程池
+     * @return
+     */
     static ThreadPoolExecutor getCachePool() {
         if (asyncCachePool == null) {
             synchronized (ThreadPoolUtil.class) {
