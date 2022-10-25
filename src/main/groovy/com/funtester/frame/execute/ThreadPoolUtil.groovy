@@ -7,31 +7,30 @@ import com.funtester.frame.Output
 import com.funtester.frame.SourceCode
 import com.funtester.utils.StringUtil
 import com.funtester.utils.Time
-import org.apache.logging.log4j.LogManager
-import org.apache.logging.log4j.Logger
+import groovy.util.logging.Log4j2
 
 import java.util.concurrent.*
 import java.util.concurrent.atomic.AtomicInteger
 import java.util.concurrent.atomic.LongAdder
 
 /**
- * Java线程池Demo
- */
+ * Java线程池Demo*/
+@Log4j2
 class ThreadPoolUtil extends Constant {
-
-    private static final Logger logger = LogManager.getLogger(ThreadPoolUtil.class);
 
     private static AtomicInteger threadNum = new AtomicInteger(1)
 
-    /**
-     * 全局异步线程池
-     */
-    private static volatile ThreadPoolExecutor asyncPool;
+    private static LinkedBlockingQueue<Closure> asyncQueue = new LinkedBlockingQueue<Closure>()
 
     /**
-     * 全局流量控制
-     */
-    static Semaphore semaphore = new Semaphore(16)
+     * 全局异步线程池*/
+    private static volatile ThreadPoolExecutor asyncPool;
+
+    private static volatile ThreadPoolExecutor asyncCachePool;
+
+    /**
+     * 全局流量控制*/
+    static Semaphore semaphore = new Semaphore(ASYNC_QPS)
 
     static long AcquireTimeout = 8888
 
@@ -57,6 +56,27 @@ class ThreadPoolUtil extends Constant {
      */
     static void executeSync(Runnable runnable) {
         getFunPool().execute(runnable)
+    }
+
+    static def addQPSTask(Closure closure) {
+        asyncQueue.offer(closure)
+    }
+
+    /**
+     * 使用缓存线程池执行任务,适配第一种方式{@link com.funtester.frame.SourceCode#funner(groovy.lang.Closure)}
+     * @param runnable
+     */
+    static def executeCacheSync(Runnable runnable) {
+        getCachePool().execute(runnable)
+    }
+
+    /**
+     * 使用缓存线程池执行任务,适配第二种方式{@link com.funtester.frame.SourceCode#funer(groovy.lang.Closure)}
+     * @return
+     */
+    static def executeCacheSync() {
+        def poll = asyncQueue.poll()
+        if (poll != null) executeCacheSync({poll()})
     }
 
     /**
@@ -125,8 +145,8 @@ class ThreadPoolUtil extends Constant {
      * {@link java.util.concurrent.SynchronousQueue}写入操作等待拉取操作.实际容量为0的队列
      * @return
      */
-    static ThreadPoolExecutor createCachePool(int max = 256, String name = "Cache") {
-        return createPool(0, max, Constant.ALIVE_TIME, new SynchronousQueue<Runnable>(), getFactory(name))
+    static ThreadPoolExecutor createCachePool(int max = 256, String name = "C", int aliveTime = Constant.ALIVE_TIME) {
+        return createPool(0, max, aliveTime, new SynchronousQueue<Runnable>(), getFactory(name))
     }
 
     /**
@@ -143,6 +163,17 @@ class ThreadPoolUtil extends Constant {
             }
         }
         return asyncPool
+    }
+
+    static ThreadPoolExecutor getCachePool() {
+        if (asyncCachePool == null) {
+            synchronized (ThreadPoolUtil.class) {
+                if (asyncCachePool == null) {
+                    asyncCachePool = createCachePool(256, "C", 3)
+                }
+            }
+        }
+        return asyncCachePool
     }
 
     /**
@@ -209,10 +240,14 @@ class ThreadPoolUtil extends Constant {
 
     /**
      * 关闭异步线程池,不然会停不下来*/
-    static void shutFun() {
-        if (getFunPool().isShutdown()) return
-        logger.info(Output.rgb("异步线程池关闭!"))
-        getFunPool().shutdown()
+    static void shutPool() {
+        if (!getFunPool().isShutdown()) {
+            log.info(Output.rgb("异步线程池关闭!"))
+            getFunPool().shutdown()
+        }
+        if (cachePool != null && !cachePool.isShutdown()) {
+            cachePool.shutdown()
+        }
     }
 
 
@@ -228,10 +263,11 @@ class ThreadPoolUtil extends Constant {
                 SourceCode.noError {
                     while (checkMain()) {
                         SourceCode.sleep(1.0)
+                        ASYNC_QPS.times {executeCacheSync()}
                     }
-                    waitFunIdle()
+                    waitAsyncIdle()
                 }
-                ThreadPoolUtil.shutFun()
+                ThreadPoolUtil.shutPool()
             }
         })
         thread.setDaemon(true)
@@ -256,18 +292,21 @@ class ThreadPoolUtil extends Constant {
     }
 
     /**
-     * 等待异步线程池空闲*/
-    static void waitFunIdle() {
+     * 等待异步线程池空闲
+     */
+    static void waitAsyncIdle() {
         if (asyncPool == null) return
         SourceCode.time({
             SourceCode.waitFor {
-                asyncPool.getQueue().size() == 0 && asyncPool.getActiveCount() == 0
+                ((int) (ASYNC_QPS / 5) + 1).times {executeCacheSync()}
+                asyncPool.getQueue().size() == 0 && asyncPool.getActiveCount() == 0 && asyncQueue.size() == 0
             }
         }, "异步线程池等待")
     }
 
     /**
-     * 保留方法,备用*/
+     * 保留方法,备用
+     */
     static void getAllThread() {
         ThreadGroup group = Thread.currentThread().getThreadGroup();
         ThreadGroup topGroup = group;

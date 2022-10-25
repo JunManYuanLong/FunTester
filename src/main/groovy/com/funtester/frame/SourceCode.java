@@ -13,8 +13,13 @@ import groovy.lang.Closure;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
+import org.apache.logging.log4j.core.config.ConfigurationSource;
+import org.apache.logging.log4j.core.config.Configurator;
+import org.apache.logging.log4j.core.config.xml.XmlConfiguration;
 
 import java.io.*;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.*;
 import java.util.concurrent.*;
@@ -593,6 +598,7 @@ public class SourceCode extends Output {
      * @param i
      */
     public static void setMaxQps(int i) {
+        ASYNC_QPS = i;
         ThreadPoolUtil.setSemaphore(new Semaphore(i));
     }
 
@@ -638,23 +644,34 @@ public class SourceCode extends Output {
     }
 
     /**
-     * 已固定QPS,异步执行,默认16,调整方法{@link SourceCode#setMaxQps(int)}
+     * 以固定QPS,异步执行,默认16,调整方法{@link SourceCode#setMaxQps(int)}
      *
      * @param f
      */
     public static void funner(Closure f) {
-        if (!ThreadPoolUtil.acquire()) return;
+        ThreadPoolUtil.executeCacheSync(() -> {
+            if (ThreadPoolUtil.acquire()) {
+                sleep(1.0);
+                ThreadPoolUtil.executeCacheSync(() -> {
+                    noError(() -> f.call());
+                    ThreadPoolUtil.release();
+                });
+            }
+        });
+    }
+
+    /**
+     * 以固定QPS,异步执行,默认16,调整方法{@link SourceCode#setMaxQps(int)}
+     * 改种方式在main线程结束后会以QPS /5 +5执行等待任务
+     *
+     * @param f
+     */
+    public static void funer(Closure f) {
         fun(JToG.toClosure(() -> {
-            sleep(1.0);
-            fun(JToG.toClosure(() -> {
-                f.call();
-                ThreadPoolUtil.release();
-                return null;
-            }));
+            ThreadPoolUtil.addQPSTask(f);
             return null;
         }));
     }
-
 
 //用的太少了
 //    static Vector<Integer> ones = new Vector<>();
@@ -775,5 +792,23 @@ public class SourceCode extends Output {
         return null;
     }
 
+    /**
+     * 初始化日志
+     * 这里可以通过{@link System#setProperty(java.lang.String, java.lang.String)}设置系统变量,然后xml引用达到指定不同的日志文件
+     *
+     * @param path
+     */
+    public static void initLog(String path) {
+        String log4jPropertiesPath = "file:" + path;
+        try {
+            URL url = new URL(log4jPropertiesPath);
+            ConfigurationSource source = new ConfigurationSource(url.openStream(), url);
+            LoggerContext context = Configurator.initialize(null, source);
+            XmlConfiguration xmlConfig = new XmlConfiguration(context, source);
+            context.start(xmlConfig);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
