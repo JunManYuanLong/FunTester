@@ -60,6 +60,12 @@ class ThreadPoolUtil extends Constant {
         getFunPool().execute(runnable)
     }
 
+    /**
+     * 添加异步固定QPS的任务
+     * {@link java.util.concurrent.LinkedBlockingQueue#offer(java.lang.Object)}是非阻塞,返回Boolean值
+     * @param closure
+     * @return
+     */
     static def addQPSTask(Closure closure) {
         asyncQueue.offer(closure)
     }
@@ -240,7 +246,7 @@ class ThreadPoolUtil extends Constant {
             int real = total.sumThenReset() / COUNT_INTERVAL as int
             def active = executor.getActiveCount()
             def count = active == 0 ? 1 : active
-            logger.info("{} 设计QPS:{},实际QPS:{} 活跃线程数:{} 单线程效率:{}", name, qps, real, active, real / count as int)
+            log.info("{} 设计QPS:{},实际QPS:{} 活跃线程数:{} 单线程效率:{}", name, qps, real, active, real / count as int)
         }
     }
 

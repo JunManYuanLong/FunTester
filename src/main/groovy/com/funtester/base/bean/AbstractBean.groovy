@@ -45,12 +45,8 @@ abstract class AbstractBean extends Constant{
         initFrom(JSON.toJSONString(str))
     }
 
-    def copyFrom(AbstractBean source) {
-        JSON.parseObject(JSON.toJSONString(source), source.class)
-    }
-
-    def copyTo(AbstractBean target) {
-        JSON.parseObject(JSON.toJSONString(this, target.class))
+    static <T> T copyFrom(AbstractBean source ,Class<T> clazz) {
+        JSON.parseObject(JSON.toJSONString(source), clazz)
     }
 
     /**
