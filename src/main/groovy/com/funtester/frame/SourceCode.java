@@ -726,7 +726,7 @@ public class SourceCode extends Output {
     /**
      * 获取方法的执行时间
      *
-     * @param f     执行方法
+     * @param f    执行方法
      * @param name
      */
     public static long time(Closure f, String name) {
@@ -754,6 +754,16 @@ public class SourceCode extends Output {
      * 通用的终止运行的方法,用于脚本调试等场景
      */
     public static void fail() {
+        throw new FailException();
+    }
+
+    /**
+     * 执行完闭包,抛异常
+     *
+     * @param closure
+     */
+    public static void fail(Closure closure) {
+        closure.call();
         throw new FailException();
     }
 
