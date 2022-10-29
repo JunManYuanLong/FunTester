@@ -3,7 +3,6 @@ package com.funtester.frame.execute
 import com.funtester.base.constaint.FunThread
 import com.funtester.base.constaint.ThreadBase
 import com.funtester.config.Constant
-import com.funtester.frame.Output
 import com.funtester.frame.SourceCode
 import com.funtester.utils.StringUtil
 import com.funtester.utils.Time
@@ -12,7 +11,6 @@ import groovy.util.logging.Log4j2
 import java.util.concurrent.*
 import java.util.concurrent.atomic.AtomicInteger
 import java.util.concurrent.atomic.LongAdder
-
 /**
  * Java线程池工具类*/
 @Log4j2
@@ -254,11 +252,10 @@ class ThreadPoolUtil extends Constant {
      * 关闭异步线程池,不然会停不下来*/
     static void shutPool() {
         if (!getFunPool().isShutdown()) {
-            log.info(Output.rgb("异步线程池关闭!"))
             getFunPool().shutdown()
         }
-        if (cachePool != null && !cachePool.isShutdown()) {
-            cachePool.shutdown()
+        if (asyncCachePool != null && !asyncCachePool.isShutdown()) {
+            asyncCachePool.shutdown()
         }
     }
 
