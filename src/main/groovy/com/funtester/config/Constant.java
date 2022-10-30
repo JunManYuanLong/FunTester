@@ -87,7 +87,7 @@ public class Constant {
     /**
      * QPS模型中每个任务QPS
      */
-    public static int TIMES_PER_TASK = 200;
+    public static int TIMES_PER_TASK = 64;
 
     /**
      * Event模型中默认消费者数量
