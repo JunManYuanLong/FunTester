@@ -11,6 +11,7 @@ import groovy.util.logging.Log4j2
 import java.util.concurrent.*
 import java.util.concurrent.atomic.AtomicInteger
 import java.util.concurrent.atomic.LongAdder
+
 /**
  * Java线程池工具类*/
 @Log4j2
@@ -251,8 +252,8 @@ class ThreadPoolUtil extends Constant {
     /**
      * 关闭异步线程池,不然会停不下来*/
     static void shutPool() {
-        if (!getFunPool().isShutdown()) {
-            getFunPool().shutdown()
+        if (asyncPool != null && !asyncPool.isShutdown()) {
+            asyncPool.shutdown()
         }
         if (asyncCachePool != null && !asyncCachePool.isShutdown()) {
             asyncCachePool.shutdown()
@@ -304,13 +305,15 @@ class ThreadPoolUtil extends Constant {
      * 等待异步线程池空闲
      */
     static void waitAsyncIdle() {
-        if (asyncPool == null) return
-        SourceCode.time({
+        if (asyncPool != null) {
             SourceCode.waitFor {
-                ((int) (ASYNC_QPS / 5) + 1).times {executeCacheSync()}
-                asyncPool.getQueue().size() == 0 && asyncPool.getActiveCount() == 0 && asyncQueue.size() == 0
+                asyncPool.getQueue().size() == 0 && asyncPool.getActiveCount() == 0
             }
-        }, "异步线程池等待")
+        }
+        SourceCode.waitFor {
+            ((int) (ASYNC_QPS / 5) + 1).times {executeCacheSync()}
+            asyncQueue.size() == 0
+        }
     }
 
     /**
