@@ -60,6 +60,10 @@
 - [Grpc服务开发和接口测试初探【Java】](https://mp.weixin.qq.com/s/7HZpgbcDFuOnbPyVY5PfvQ)  `` 2022-04-20``
 - [gRPC服务开发和接口测试初探【Go】](https://mp.weixin.qq.com/s/csvLLZ19jPb8FNA6TxVrbw)  ``2022-05-07``
 - [gRPC三种客户端类型实践【Java版】](https://mp.weixin.qq.com/s/2YQ2CTUpWWfatViPBCc0Zw)  ``2022-05-11``
+- [Redis stream Java API实践](https://mp.weixin.qq.com/s/Zel-lC9euYVdHYDh0HeWtw)  `` 2022-06-10``
+- [自定义MySQL连接池](https://mp.weixin.qq.com/s/3VYzupjP8URkOYakidNOrg)  ``2022-06-27``
+- [jdbc自带MySQL连接池实践](https://mp.weixin.qq.com/s/MPJ70yFPibm9g8tncXVRhg)  ``2022-07-18``
+- [当我遇到10亿参数组合](https://mp.weixin.qq.com/s/A-6l3qe8lohKSB79F2UAvg)  ``2022-10-24``
 
 # 单元&白盒
 
@@ -91,6 +95,7 @@
 - [SpotBugs注解SuppressWarnings在Java&Groovy中的应用](https://mp.weixin.qq.com/s/R0JoqmAqhUbRSjIJ61h_tg)  ``2020-11-27``
 - [Spock框架Mock对象、方法经验总结](https://mp.weixin.qq.com/s/7qXVcbARH60bfIQYfIj1wA)  ``2022-01-18``
 - [Spock框架Mock静态资源经验汇总](https://mp.weixin.qq.com/s/cmpxABuE_aZXXtgj55lo6A)  ``2022-01-20``
+- [JUnit VS TestNG](https://mp.weixin.qq.com/s/2TnT225IK8pGGiRbC_KqJw)  ``2022-06-21``
 
 ## 性能测试
 
@@ -192,7 +197,24 @@
 - [从Groovy到Java性能](https://mp.weixin.qq.com/s/VlDZh8_gbsqS56Tq37DEiw)  ``2022-04-01``
 - [性能测试中QPS取样器和RT取样器](https://mp.weixin.qq.com/s/uEHpMxUfg-yecZuSpvg8WQ)  ``2022-04-25``
 - [通用池化框架GenericObjectPool性能测试](https://mp.weixin.qq.com/s/CtLB0D5hAi24OVudvXJpow)  ``2022-06-02``
-- [通用池化框架GenericKeyedObjectPool性能测试](https://mp.weixin.qq.com/s/DrmjtSBLFxduauj0ss-mWw)  `` 2022-06-07``
+- [通用池化框架GenericKeyedObjectPool性能测试](https://mp.weixin.qq.com/s/DrmjtSBLFxduauj0ss-mWw)  ``2022-06-07``
+- [ConcurrentHashMap性能测试](https://mp.weixin.qq.com/s/8IzSlUeb3mdVS62RkWN-Ow)  ``2022-06-14``
+- [HTTP接口性能测试中池化实践](https://mp.weixin.qq.com/s/VJVCgg-Anhl4quvcVYK5NQ)  ``2022-06-17``
+- [gRPC三种Java客户端性能测试实践](https://mp.weixin.qq.com/s/cffcaQN2jLrj5e5B1mz1xQ)  ``2022-07-05``
+- [Redis stream性能测试实践【Java版】](https://mp.weixin.qq.com/s/2LusI_2zlfFf3mdKWG-qtA)  ``2022-07-08``
+- [性能测试中的随机数性能问题探索](https://mp.weixin.qq.com/s/8PvGeU-LtgqpgwB--698ww)  ``2022-07-12 ``
+- [延迟队列DelayQueue性能测试](https://mp.weixin.qq.com/s/tV2veWb57fcn4vGTaarLag)  `` 2022-07-27``
+- [动态模型中嵌入静态模型实践](https://mp.weixin.qq.com/s/QkTp-BjsNt6AHDB5VfNbIg)  ``2022-08-01 ``
+- [动态接口比例性能测试实践](https://mp.weixin.qq.com/s/LQGoYrwAwKLYPn1RX4hA2g)  ``2022-08-03``
+- [Redis API——List功能实践与性能测试【Go版】](https://mp.weixin.qq.com/s/r1aHmAL7DDaapkdWTRWoDA)  ``2022-08-15``
+- [基于时间戳的日志回放引擎](https://mp.weixin.qq.com/s/cdvlYc5W0sI72VTqlRtIjA)  ``2022-08-22``
+- [i++需要多少QPS才能测出BUG](https://mp.weixin.qq.com/s/JCEy_QXAznwR2tYBzeZCeA)  ``2022-09-05``
+- [Java 序列化10倍性能优化对比测试](https://mp.weixin.qq.com/s/zRaZ61iNJv6DyGFud6RhtA)  ``2022-09-09``
+- [亿级日志队列回放性能测试初探](https://mp.weixin.qq.com/s/LW5yYYbn0OCWow0q6-hYQg)  ``2022-09-15``
+- [10 亿条日志回放chronicle性能测试](https://mp.weixin.qq.com/s/_9ssHXAeyaQR4a84w0pAog)  ``2022-09-19``
+- [Redis API——Set功能实践与性能测试【Go版】](https://mp.weixin.qq.com/s/AMKgTERIiALCa-kT0YuF5A)  ``2022-09-21``
+- [固定QPS异步任务功能初探](https://mp.weixin.qq.com/s/T7XGKaUOUJD49Csa1Eu-Wg)  ``2022-10-19``
+- [当我遇到10亿参数组合](https://mp.weixin.qq.com/s/A-6l3qe8lohKSB79F2UAvg)  ``2022-10-24``
 
 # 语言合集
 
@@ -273,7 +295,13 @@
 - [从Groovy到Java性能](https://mp.weixin.qq.com/s/VlDZh8_gbsqS56Tq37DEiw)  ``2022-04-01``
 - [通用池化框架commons-pool2实践](https://mp.weixin.qq.com/s/2KHub-CdkA4hPM4ing9ZKg) ``2022-05-12``
 - [通用池化框架实践之GenericKeyedObjectPool](https://mp.weixin.qq.com/s/es0Me6J8F8jHvhjSAq5yzg)  ``2022-05-23``
-
+- [Java自定义Once方法保障单次执行](https://mp.weixin.qq.com/s/bes-L1JZ-bIEx-L8AAQrhw)  ``2022-06-22``
+- [i++需要多少QPS才能测出BUG](https://mp.weixin.qq.com/s/JCEy_QXAznwR2tYBzeZCeA)  ``2022-09-05``
+- [Java 序列化10倍性能优化对比测试](https://mp.weixin.qq.com/s/zRaZ61iNJv6DyGFud6RhtA)  ``2022-09-09``
+- [Groovy closure 与Java function转换](https://mp.weixin.qq.com/s/N0RJAC5UQ8yjXaN-8kVNsw)  ``2022-09-28``
+- [固定QPS异步任务功能初探](https://mp.weixin.qq.com/s/T7XGKaUOUJD49Csa1Eu-Wg)  ``2022-10-19``
+- [固定QPS异步任务功能再探](https://mp.weixin.qq.com/s/Lm1r_x9aOYSf2uSbIh37sA)  ``2022-11-04``
+  
 ## Groovy
 
 - [java和groovy混合编程时提示找不到符合错误解决办法](https://mp.weixin.qq.com/s/dLC2W7nIi5zCuK6JTkiA-w)  ``2019-08-12``
@@ -319,6 +347,9 @@
 - [利用闭包实现自定义等待方法](https://mp.weixin.qq.com/s/cSQ99bPVBbpnJnjyD4r6CQ)  ``2022-01-06``
 - [从Groovy到Java性能](https://mp.weixin.qq.com/s/VlDZh8_gbsqS56Tq37DEiw)  ``2022-04-01``
 - [Groovy踩坑记之方法调用八层认识](https://mp.weixin.qq.com/s/cokuY4AxFXfTb5U49H30vg)  ``2022-04-13``
+- [Groovy语境下的Map](https://mp.weixin.qq.com/s/ynrYG6hRiAnsaP-ZKZq2_w)  ``2022-08-16``
+- [Groovy closure 与Java function转换](https://mp.weixin.qq.com/s/N0RJAC5UQ8yjXaN-8kVNsw)  ``2022-09-28``
+- [Groovy Swagger @requestBody 加载超时 一键搞定](https://mp.weixin.qq.com/s/mt8dzwCBvZMkWzvrglvuIA)  ``2022-10-27``
 
 ## Python
 
@@ -345,6 +376,9 @@
 - [Go自定义DNS解析器负载均衡实践](https://mp.weixin.qq.com/s/MOLQxpvakVPfsNul-nxqNg)  ``2022-02-24``
 - [Go语言使用gorm对MySQL进行性能测试](https://mp.weixin.qq.com/s/DmpdUJvDS1lZsfPBQSnGkw)  ``2022-03-13``
 - [gRPC服务开发和接口测试初探【Go】](https://mp.weixin.qq.com/s/csvLLZ19jPb8FNA6TxVrbw)  ``2022-05-07``
+- [Go语言Redis API基本功能实践](https://mp.weixin.qq.com/s/9EgEVVlFNP-91hYiD-peKw)  ``2022-06-23``
+- [Redis API——List功能实践与性能测试【Go版】](https://mp.weixin.qq.com/s/r1aHmAL7DDaapkdWTRWoDA)  ``2022-08-15``
+- [Redis API——Set功能实践与性能测试【Go版】](https://mp.weixin.qq.com/s/AMKgTERIiALCa-kT0YuF5A)  ``2022-09-21``
 
 ## FunTester笔记
 
@@ -405,6 +439,7 @@
 - [重放浏览器多个请求性能测试实践](https://mp.weixin.qq.com/s/Hm1Kpp1PMrZ5rYFW8l2GlA)  ``2021-01-29``
 - [重放浏览器请求多链路性能测试实践](https://mp.weixin.qq.com/s/9YSBLAyHVw8Z6IfK-nJTpQ)  ``2021-02-04``
 - [Socket接口固定QPS性能测试实践](https://mp.weixin.qq.com/s/I9-14L8THxvtX1NJY0KPfw)  ``2021-02-20``
+- [当我遇到10亿参数组合](https://mp.weixin.qq.com/s/A-6l3qe8lohKSB79F2UAvg)  ``2022-10-24``
 
 ## BUG集锦
 
@@ -677,6 +712,13 @@
 - [自动化测试指南](https://mp.weixin.qq.com/s/Uwel0C2NxRZlmpQSFtWesA)  ``2022-03-04``
 - [所谓测试报告](https://mp.weixin.qq.com/s/LrXgs1mNUpgsru_hPQ2sNg)  ``2022-05-20``
 - [国际化和本地化测试](https://mp.weixin.qq.com/s/BSAuHr6JGZk4lDulFnU9hw)  ``2022-05-31``
+- [软件测试的三个沟通技巧](https://mp.weixin.qq.com/s/aoPNN7M5S9v0wN6m4oTz6Q)  ``2022-06-28``
+- [敏捷 ? DevOps ?](https://mp.weixin.qq.com/s/j2mzyHDXGfA2oFoMSc1PIg)  `` 2022-07-22``
+- [应对自动化测试9大挑战](https://mp.weixin.qq.com/s/TW61Yzc9Oj5iHYFHuGyfBA)  ``2022-08-24``
+- [从手动测试到自动化测试（上）](https://mp.weixin.qq.com/s/zcouE06eNEt-AVUFnFjRIg)  `` 2022-10-10``
+- [从手动测试到自动化测试（下）](https://mp.weixin.qq.com/s/AlWnAsvrsE6JqSp4qPjUGQ)  ``2022-10-11``
+- [无脚本自动化测试](https://mp.weixin.qq.com/s/iNIlldvQSUu1TxAUphMV-w)  ``2022-11-10``
+- [移动应用的手动测试策略](https://mp.weixin.qq.com/s/2FRGeFxCqPZaIHTu7jjiIQ)  `` 2022-11-16``
 
 # UI自动化
 
@@ -758,6 +800,7 @@
 - [Selenium 4以后，再不相见的API](https://mp.weixin.qq.com/s/vJcGC3vdpoVCTj5uloMIIw)  ``2021-08-04``
 - [Selenium修改HTTP请求头三种方式](https://mp.weixin.qq.com/s/zce9EiJijOp219V5QzCjZA)  ``2021-11-15``
 - [Selenium自动化应该避免的测试场景](https://mp.weixin.qq.com/s/jOyKjJG4onmeIaRImlSBjw)  ``2022-04-28``
+- [Selenium 中的 JUnit 注解](https://mp.weixin.qq.com/s/b6gGMvlGdwa-w25EgVA6jA)  ``2022-08-30``
 
 ## APP性能
 
@@ -824,9 +867,6 @@
 - [如何突破职业瓶颈](https://mp.weixin.qq.com/s/A07I_Kn7FlEPG2wSKk8zOg)  ``2022-01-13``
 - [坚持做正确的事情](https://mp.weixin.qq.com/s/FnuseXqOApMPcaL7uzHybA)  ``2022-04-22``
 - [红利、辛苦钱、利润和工资【读书笔记】](https://mp.weixin.qq.com/s/6FxetG9OcjL7T8RT55DKWg)  ``2022-06-04``
-
-## 社区风采
-
 - [Linux文件系统和vim命令](https://mp.weixin.qq.com/s/xzModz-upKv5CbAjtWOxpw)  ``2021-04-16``
 - [Linux/Mac简单又强大的基础工具（一）](https://mp.weixin.qq.com/s/zk3MCiy01Z_JRyTvU1oDgg)  ``2021-04-21``
 - [《漫画算法》读书心得（一）](https://mp.weixin.qq.com/s/eSB6TuDhT_0YO1VWb_wicA)  ``2021-06-11``
@@ -851,6 +891,9 @@
 - [学习编程是最好的复利方式](https://mp.weixin.qq.com/s/GQHlaOT2PDtwu2tns4VaXg)  `` 2022-03-30``
 - [逃离过度努力陷阱](https://mp.weixin.qq.com/s/x4mrGilxzzXY-68fF2eqrA)  ``2022-04-11``
 - [动态压测模型让工作更轻松](https://mp.weixin.qq.com/s/qYlgZfukyVqoEj8nMVC0gA)  ``2022-04-12``
+- [读书，为了遇见更好的自己](https://mp.weixin.qq.com/s/NcJ0eGhSjqeSlP2ghy5qbQ)  `` 2022-07-01``
+- [视频是主动学习吗？](https://mp.weixin.qq.com/s/PGMNrW76_DNsTZ8bv02mUQ)  ``2022-08-09``
+- [要相信自己可以解决问题](https://mp.weixin.qq.com/s/UZMxaYviHIWnrTue50aNuA)  ``2022-08-17``
 
 # 视频专区
 
@@ -882,6 +925,11 @@
 - [Groovy遍历实践](https://mp.weixin.qq.com/s/1ti37WDNlurou2ZCOHoC6Q)  `` 2022-05-10``
 - [Groovy正则表达式](https://mp.weixin.qq.com/s/yR0WOp_uZSjYrJOyNcsVuw)  ``2022-05-16``
 - [Groovy闭包实践](https://mp.weixin.qq.com/s/-NsuEkkbEleCbz00v7-sKg)  `` 2022-05-17``
+- [Groovy速成上](https://mp.weixin.qq.com/s/inAqq9uai1E2fiz8_ZQulA)  `` 2022-07-25``
+- [Groovy速成下](https://mp.weixin.qq.com/s/yEK5ierGbk58lzBVpUxJZw)  `` 2022-07-25``
+- [Groovy性能测试中应用-上](https://mp.weixin.qq.com/s/mPf_s4XGs3yVFND18IIWFA)  ``2022-08-10``
+- [Groovy性能测试中应用-下](https://mp.weixin.qq.com/s/7HXDjdOmhQU8SCb_VTDJ4A)  ``2022-08-10``
+- [Groovy相比Java语法简洁性](https://mp.weixin.qq.com/s/euFggxcZweOJW3mYsu_5CQ)  ``2021-11-21``
 
 ## 其他视频
 
@@ -889,7 +937,6 @@
 - [Automa基础功能演示](https://mp.weixin.qq.com/s/NlUuiMzNSMl_saM0KoeNNQ)  ``2021-11-06``
 - [DelayQueue基础功能演示](https://mp.weixin.qq.com/s/2nNkVn0unFUrNY5-Jqj4yQ)  ``2021-11-09``
 - [ThreadLocal类基础功能演示](https://mp.weixin.qq.com/s/0ZGoiwZAtH2_tar7A3qeow)  ``2021-11-14``
-- [Groovy相比Java语法简洁性](https://mp.weixin.qq.com/s/euFggxcZweOJW3mYsu_5CQ)  ``2021-11-21``
 - [如何在JMeter中操作Redis](https://mp.weixin.qq.com/s/2N6CffZ_UyhFIX7ooe_NEg)  ``2021-11-24``
 - [使用Groovy metaclass进行Java热更新演示](https://mp.weixin.qq.com/s/25FXzDQ4TGUQ0PzUMRcwAQ)  ``2021-11-25``
 - [控制台彩色输出](https://mp.weixin.qq.com/s/OALk-1iuRJDYL8JwlXckcQ)  ``2021-12-04``
@@ -908,6 +955,13 @@
 - [Go语言HTTP自定义DNS解析与负载均衡实现视频版](https://mp.weixin.qq.com/s/S6Y_xQr5MNttg1BAyOzwBQ)  ``2022-03-01``
 - [gRPC测试开发实践【Java视频版】](https://mp.weixin.qq.com/s/pChC_bmm6IWQecWSYFKGjg)  `` 2022-05-06``
 - [通用池化框架commons-pool2基础实践](https://mp.weixin.qq.com/s/yOo7AAdSVHN4cxY4jKc5-w)  `` 2022-05-27``
+- [gRPC三种客户端性能测试实践【视频版】](https://mp.weixin.qq.com/s/HrJ0iVneq3xX7vVcFCFxXA)  ``2022-07-13``
+- [自定义MySQL连接池实践](https://mp.weixin.qq.com/s/MGZmukv6fdoQI9JAMnYmbw)  `` 2022-07-20``
+- [基于时间戳日志回放引擎实现](https://mp.weixin.qq.com/s/Aoh8L703-XViN4jV_TyzPQ)  ``2022-08-25``
+- [i++需要多少 QPS 才能测出 BUG](https://mp.weixin.qq.com/s/LX7fK77swVgNVeTUDo4Meg)  ``2022-09-14``
+- [10 亿条日志回放chronicle性能测试](https://mp.weixin.qq.com/s/_9ssHXAeyaQR4a84w0pAog)  ``2022-09-19``
+- [固定QPS异步任务实现第一版](https://mp.weixin.qq.com/s/cedQlSN2Cj5rnMD6I90kuw)  ``2022-10-26``
+- [固定QPS异步任务再探](https://mp.weixin.qq.com/s/gxj7l0_oRHvJ4da-aGiJOg)  ``2022-11-17``
 
 ## arthas诊断工具
 
