@@ -5,7 +5,6 @@ import com.funtester.base.constaint.ThreadBase
 import com.funtester.config.Constant
 import com.funtester.frame.SourceCode
 import com.funtester.utils.StringUtil
-import com.funtester.utils.Time
 import groovy.util.logging.Log4j2
 
 import java.util.concurrent.*
@@ -241,7 +240,7 @@ class ThreadPoolUtil extends Constant {
                 }
             })
         }
-        if (Time.getSecond() % COUNT_INTERVAL == 0) {
+        if (SourceCode.getMark() % COUNT_INTERVAL == 0) {
             int real = total.sumThenReset() / COUNT_INTERVAL as int
             def active = executor.getActiveCount()
             def count = active == 0 ? 1 : active
