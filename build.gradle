@@ -16,7 +16,7 @@ buildscript {
     gradle.taskGraph.whenReady {
         tasks.each {task ->
             if (task.name.toLowerCase().contains("test")) {
-//                task.enabled = false
+                //                task.enabled = false
             }
         }
     }
@@ -96,7 +96,7 @@ dependencies {
     //    compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.0'
     //这只是其实一种方式,增加Groovy支持,如果不添加无法打包
     compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '3.0.8'
-//    compile group: 'redis.clients', name: 'jedis', version: '3.0.1'
+    //    compile group: 'redis.clients', name: 'jedis', version: '3.0.1'
     // https://mvnrepository.com/artifact/redis.clients/jedis
     compile group: 'redis.clients', name: 'jedis', version: '4.2.3'
 
@@ -112,7 +112,7 @@ dependencies {
     //    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
     //    compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
         compile group: 'org.java-websocket', name: 'Java-WebSocket', version: '1.5.1'
-    //    compile group: 'io.socket', name: 'socket.io-client', version: '1.0.0'
+        compile group: 'io.socket', name: 'socket.io-client', version: '1.0.0'
 
     // https://mvnrepository.com/artifact/org.fusesource.jansi/jansi
     compile group: 'org.fusesource.jansi', name: 'jansi', version: '2.4.0'
@@ -123,6 +123,9 @@ dependencies {
 //    compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
     // https://mvnrepository.com/artifact/net.openhft/chronicle-queue
     compile group: 'net.openhft', name: 'chronicle-queue', version: '5.22.24'
+    compile group: 'io.netty', name: 'netty-all', version: '4.1.85.Final'
+    // https://mvnrepository.com/artifact/org.elasticsearch.client/elasticsearch-rest-high-level-client
+    compile group: 'org.elasticsearch.client', name: 'elasticsearch-rest-high-level-client', version: '6.7.0'
 
 }
 
