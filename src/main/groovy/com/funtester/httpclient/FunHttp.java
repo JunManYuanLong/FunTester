@@ -88,6 +88,19 @@ public class FunHttp extends SourceCode {
         return getHttpGet(uri);
     }
 
+    /**获取{@link HttpGet},body携带请求参数,ES查询使用
+     * @param url
+     * @param params
+     * @return
+     */
+    public static HttpGetByBody getHttpGetWithBody(String url, JSONObject params) {
+        HttpGetByBody httpGetByBody = new HttpGetByBody(url);
+        if (params == null || params.isEmpty()) return httpGetByBody;
+        httpGetByBody.setEntity(new StringEntity(params.toString(), DEFAULT_CHARSET.toString()));
+        httpGetByBody.addHeader(HttpClientConstant.ContentType_JSON);
+        return httpGetByBody;
+    }
+
     /**
      * 方法已重载，获取{@link HttpGet}对象
      * <p>方法重载，主要区别参数，会自动进行urlencode操作</p>
