@@ -125,7 +125,7 @@ dependencies {
     compile group: 'net.openhft', name: 'chronicle-queue', version: '5.22.24'
     compile group: 'io.netty', name: 'netty-all', version: '4.1.85.Final'
     // https://mvnrepository.com/artifact/org.elasticsearch.client/elasticsearch-rest-high-level-client
-    compile group: 'org.elasticsearch.client', name: 'elasticsearch-rest-high-level-client', version: '6.5.4'
+    compile group: 'org.elasticsearch.client', name: 'elasticsearch-rest-high-level-client', version: '6.7.0'
 
 }
 
