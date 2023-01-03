@@ -81,7 +81,7 @@ class ThreadPoolUtil extends Constant {
      * @return
      */
     static def executeCacheSync() {
-        def poll = asyncQueue.poll()
+        def poll = asyncQueue.poll(1, TimeUnit.SECONDS)
         if (poll != null) executeCacheSync({poll()})
     }
 
