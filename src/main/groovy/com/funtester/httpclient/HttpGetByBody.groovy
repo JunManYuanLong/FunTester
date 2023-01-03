@@ -5,7 +5,7 @@ import org.apache.http.client.methods.HttpEntityEnclosingRequestBase
 import javax.annotation.concurrent.NotThreadSafe
 
 /**
- * HttpDelete请求携带body参数
+ * HttpGet请求携带body参数
  */
 @NotThreadSafe
 class HttpGetByBody extends HttpEntityEnclosingRequestBase {
