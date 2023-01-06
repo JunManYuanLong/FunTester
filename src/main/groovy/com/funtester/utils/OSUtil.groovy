@@ -25,11 +25,11 @@ class OSUtil extends SourceCode {
     }
 
     /**
-     * 获取当前线程CPU使用率
-     * 已乘以100
+     * 获取当前线程CPU使用率,最大100
+     * 已乘以100,已经除以了系统最大进程数
      * @return
      */
-    static double getProcessCpu() {
+    static double getCpuUsage() {
         long totalTime = 0
         for (long id : threadBean.getAllThreadIds()) {
             totalTime += threadBean.getThreadCpuTime(id)
