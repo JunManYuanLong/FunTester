@@ -39,7 +39,8 @@ class OSUtil extends SourceCode {
         long totalPassedTime = curtime - lastSysTime
         lastSysTime = curtime
         lastUserTime = totalTime
-        return (((double) usedTime) / totalPassedTime / osMxBean.getAvailableProcessors()) * 100
+        def d = (((double) usedTime) / totalPassedTime / osMxBean.getAvailableProcessors()) * 100
+        return d > 100 ? 8 : d
     }
 
 }
