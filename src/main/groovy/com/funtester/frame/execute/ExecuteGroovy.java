@@ -81,7 +81,6 @@ public class ExecuteGroovy extends SourceCode {
             groovyObject.invokeMethod(name, args);
         } catch (IOException | ReflectiveOperationException e) {
             logger.warn("执行 {} 失败!", path, e);
-            fail();
         }
         return null;
     }
@@ -105,7 +104,6 @@ public class ExecuteGroovy extends SourceCode {
             script = groovyShell.parse(new File(path));
         } catch (IOException e) {
             logger.warn("执行 {} 失败!", path, e);
-            fail();
         }
         return script.invokeMethod(name, args);
     }
@@ -118,7 +116,6 @@ public class ExecuteGroovy extends SourceCode {
             return groovyObject.invokeMethod(name, args);
         } catch (ReflectiveOperationException | CompilationFailedException e) {
             logger.warn("执行 {} 失败!", content, e);
-            fail();
         }
         return null;
     }
@@ -162,7 +159,6 @@ public class ExecuteGroovy extends SourceCode {
             return groovyShell.evaluate(new File(filepath));
         } catch (IOException e) {
             logger.warn("执行 {} 失败!", filepath, e);
-            fail();
         }
         return null;
     }

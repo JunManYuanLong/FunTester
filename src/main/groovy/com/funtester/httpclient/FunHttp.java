@@ -373,7 +373,6 @@ public class FunHttp extends SourceCode {
             EntityUtils.consume(entity);// 消耗响应实体，并关闭相关资源占用
         } catch (Exception e) {
             logger.warn("解析响应实体异常！", e);
-            fail();
         }
         return content;
     }
