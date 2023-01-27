@@ -1,5 +1,7 @@
 package com.funtester.base.constaint;
 
+import com.funtester.frame.SourceCode;
+import com.funtester.utils.OSUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -176,7 +178,7 @@ public abstract class FunThread<F> extends ThreadBase {
         sleep(3);
         long e = threads.stream().collect(Collectors.summarizingInt(f -> f.executeNum)).getSum();
         long l = (e - s) / 3;
-        logger.info("当前任务数:{} QPS:{} 单任务效率:{}", aliveSize(), l, l / aliveSize());
+        logger.info("当前任务数:{} QPS:{} 单任务效率:{} CPU使用率:{}", aliveSize(), l, l / aliveSize(), SourceCode.getPercent(OSUtil.getCpuUsage()));
     }
 
 }

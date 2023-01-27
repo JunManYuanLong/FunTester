@@ -4,6 +4,7 @@ import com.funtester.base.constaint.FunThread
 import com.funtester.base.constaint.ThreadBase
 import com.funtester.config.Constant
 import com.funtester.frame.SourceCode
+import com.funtester.utils.OSUtil
 import com.funtester.utils.StringUtil
 import groovy.util.logging.Log4j2
 
@@ -244,7 +245,7 @@ class ThreadPoolUtil extends Constant {
             int real = total.sumThenReset() / COUNT_INTERVAL as int
             def active = executor.getActiveCount()
             def count = active == 0 ? 1 : active
-            log.info("{} 设计QPS:{},实际QPS:{} 活跃线程数:{} 单线程效率:{}", name, qps, real, active, real / count as int)
+            log.info("{} 设计QPS:{},实际QPS:{} 活跃线程数:{} 单线程效率:{} CPU使用率:{}", name, qps, real, active, real / count as int, SourceCode.getPercent(OSUtil.getCpuUsage()))
         }
     }
 
