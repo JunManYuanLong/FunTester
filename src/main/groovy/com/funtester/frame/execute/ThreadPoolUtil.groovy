@@ -9,6 +9,7 @@ import com.funtester.utils.StringUtil
 import groovy.util.logging.Log4j2
 
 import java.util.concurrent.*
+import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
 import java.util.concurrent.atomic.LongAdder
 
@@ -181,6 +182,7 @@ class ThreadPoolUtil extends Constant {
             synchronized (ThreadPoolUtil.class) {
                 if (asyncCachePool == null) {
                     asyncCachePool = createCachePool(256, "C", 3)
+                    daemon()
                 }
             }
         }
@@ -260,12 +262,15 @@ class ThreadPoolUtil extends Constant {
         }
     }
 
+    static AtomicBoolean DaemonState = new AtomicBoolean(false)
 
     /**
      * 执行daemon线程,保障main方法结束后关闭线程池
      * @return
      */
     static boolean daemon() {
+        def set = DaemonState.getAndSet(true)
+        if (set) return
         def thread = new Thread(new Runnable() {
 
             @Override
