@@ -33,7 +33,7 @@ class OSUtil extends SourceCode {
      * 已乘以100,已经除以了系统最大进程数
      * @return
      */
-    static double getCpuUsage() {
+    static double getCpuUsage(boolean avg = true) {
         long totalTime = 0
         for (long id : threadBean.getAllThreadIds()) {
             totalTime += threadBean.getThreadCpuTime(id)
@@ -43,7 +43,7 @@ class OSUtil extends SourceCode {
         long totalPassedTime = curtime - lastSysTime
         lastSysTime = curtime
         lastUserTime = totalTime
-        def d = (((double) usedTime) / totalPassedTime / getAvailableProcessors()) * 100
+        def d = avg ? (((double) usedTime) / totalPassedTime / getAvailableProcessors()) * 100 : (((double) usedTime) / totalPassedTime) * 100
         return d > 100 ? 8.88 : d
     }
 
