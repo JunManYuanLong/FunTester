@@ -129,7 +129,7 @@ public class SourceCode extends Output {
         JSONObject args = new JSONObject();
         Arrays.stream(objects).forEach(x -> {
             String[] split = x.toString().split(regex, 2);
-            args.put(split[0], isInteger(split[1]) ? changeStringToInt(split[1]) : isDouble(split[1]) ? changeStringToDouble(split[1]) : split[1]);
+            args.put(split[0], split[1]);
         });
         return args;
     }
@@ -323,7 +323,7 @@ public class SourceCode extends Output {
     }
 
     public static boolean isInteger(String str) {
-        return isNumber(str) && !str.contains(".") && str.length() < 11;
+        return isNumber(str) && changeStringToInt(str) != TEST_ERROR_CODE;
     }
 
     public static boolean isDouble(String str) {
