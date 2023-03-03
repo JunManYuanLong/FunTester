@@ -286,7 +286,7 @@ class ThreadPoolUtil extends Constant {
             }
         })
         thread.setDaemon(true)
-        thread.setName("Deamon")
+        thread.setName("Daemon")
         thread.start()
     }
 
