@@ -583,6 +583,18 @@ public class SourceCode extends Output {
     }
 
     /**
+     * 将字符串转成Java对象
+     *
+     * @param o
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public static <T> T parse(String o, Class<T> clazz) {
+        return JSON.toJavaObject(parse(o), clazz);
+    }
+
+    /**
      * 处理Groovy脚本情况下无法修改线程池大小的问题
      *
      * @param i
