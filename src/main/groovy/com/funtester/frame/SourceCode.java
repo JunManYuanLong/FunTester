@@ -594,6 +594,10 @@ public class SourceCode extends Output {
         return JSON.toJavaObject(parse(o), clazz);
     }
 
+    public static <T> T parse(Object o, Class<T> clazz) {
+        return JSON.toJavaObject(parse(o), clazz);
+    }
+
     /**
      * 处理Groovy脚本情况下无法修改线程池大小的问题
      *
