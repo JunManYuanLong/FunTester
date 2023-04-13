@@ -762,7 +762,7 @@ public class SourceCode extends Output {
         try {
             closure.call();
         } catch (Exception e) {
-            logger.warn("noError error: {}", e.getMessage());
+            logger.warn("noError error", e);
         }
     }
 
