@@ -130,7 +130,7 @@ dependencies {
     // https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core
     compile group: 'org.openjdk.jmh', name: 'jmh-core', version: '1.36'
     compile group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: '2.9.3'
-
+    compile group: 'org.apache.kafka', name: 'kafka-clients', version: '3.4.0'
 }
 
 //已失效,后期需要借助插件shadow完成
