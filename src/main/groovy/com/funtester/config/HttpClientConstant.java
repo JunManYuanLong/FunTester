@@ -76,6 +76,8 @@ public class HttpClientConstant {
 
     public static Header ContentType_FORM = getHeader("Content-Type", "application/x-www-form-urlencoded; charset=" + DEFAULT_CHARSET.toString());
 
+    public static Header ContentType_FORM_DATA = getHeader("Content-Type", "multipart/form-data");
+
     public static Header ContentType_TEXT = getHeader("Content-Type", "text/plain; charset=" + DEFAULT_CHARSET.toString());
 
     public static Header X_Requested_KWith = getHeader("X-Requested-With", "XMLHttpRequest");

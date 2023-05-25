@@ -8,7 +8,7 @@
         <!--这个输出控制台的配置-->
         <console name="Console" target="SYSTEM_OUT">
             <!--输出日志的格式-->
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} %t %m%n"/>
+            <PatternLayout pattern="%d{HH:mm:ss SSS} %t %m%n"/>
             <!--            <PatternLayout pattern="[%-4p] %d - %t %L:%M %m %n"/>-->
             <!--            <PatternLayout pattern="%d %-4p (%F:%L) - %m%n"/>-->
         </console>
@@ -17,56 +17,56 @@
         <!--            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>-->
         <!--        </File>-->
         <!-- 这个会打印出所有的info及以下级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
-<!--        <RollingFile name="RollingFileInfo"-->
-<!--                     fileName="${sys:user.home}/logs/funtester/info.log"-->
-<!--                     filePattern="${sys:user.home}/logs/funtester/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">-->
-<!--            &lt;!&ndash;控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）&ndash;&gt;-->
-<!--            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>-->
-<!--            <PatternLayout pattern="%d{dd HH:mm:ss} %t %-4level %l - %m%n"/>-->
-<!--            <Policies>-->
-<!--                <TimeBasedTriggeringPolicy/>-->
-<!--                <SizeBasedTriggeringPolicy size="32 MB"/>-->
-<!--            </Policies>-->
-<!--            &lt;!&ndash;            <CronTriggeringPolicy schedule="* * * * * ?"/>&ndash;&gt;-->
-<!--            &lt;!&ndash; DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 &ndash;&gt;-->
-<!--            <DefaultRolloverStrategy max="10">-->
-<!--                <Delete basePath="${sys:user.home}/logs/funtester/$${date:yyyy-MM}/" maxDepth="2">-->
-<!--                    <IfFileName glob="info*.log"/>-->
-<!--                    &lt;!&ndash;!Note: 这里的age必须和filePattern协调, 后者是精确到HH, 这里就要写成xH, xd就不起作用-->
-<!--                    另外, 数字最好>2, 否则可能造成删除的时候, 最近的文件还处于被占用状态,导致删除不成功!&ndash;&gt;-->
-<!--                    &lt;!&ndash;7天&ndash;&gt;-->
-<!--                    <IfLastModified age="3d"/>-->
-<!--                </Delete>-->
-<!--            </DefaultRolloverStrategy>-->
-<!--        </RollingFile>-->
+        <RollingFile name="RollingFileInfo"
+                     fileName="/Users/oker/meili/kaiqiang.fan@okg.com/115/Documents/logs/funtester/info.log"
+                     filePattern="/Users/oker/meili/kaiqiang.fan@okg.com/115/Documents/logs/funtester/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
+            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{dd HH:mm:ss} %t %-4level %l - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="32 MB"/>
+            </Policies>
+            <!--            <CronTriggeringPolicy schedule="* * * * * ?"/>-->
+            <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
+            <DefaultRolloverStrategy max="10">
+                <Delete basePath="/Users/oker/meili/kaiqiang.fan@okg.com/115/Documents/logs/funtester/$${date:yyyy-MM}/" maxDepth="2">
+                    <IfFileName glob="info*.log"/>
+                    <!--!Note: 这里的age必须和filePattern协调, 后者是精确到HH, 这里就要写成xH, xd就不起作用
+                    另外, 数字最好>2, 否则可能造成删除的时候, 最近的文件还处于被占用状态,导致删除不成功!-->
+                    <!--7天-->
+                    <IfLastModified age="3d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
 
 
-<!--        <RollingFile name="RollingFileWarn" fileName="${sys:user.home}/logs/funtester/warn.log"-->
-<!--                     filePattern="${sys:user.home}/logs/funtester/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log">-->
-<!--            <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>-->
-<!--            <PatternLayout pattern="%d{dd HH:mm:ss} %t %-4level %l - %m%n"/>-->
-<!--            <Policies>-->
-<!--                <TimeBasedTriggeringPolicy/>-->
-<!--                <SizeBasedTriggeringPolicy size="8 MB"/>-->
-<!--            </Policies>-->
-<!--            &lt;!&ndash; DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 &ndash;&gt;-->
-<!--            <DefaultRolloverStrategy max="10">-->
-<!--                <Delete basePath="${sys:user.home}/logs/funtester/$${date:yyyy-MM}/" maxDepth="2">-->
-<!--                    <IfFileName glob="warn*.log"/>-->
-<!--                    &lt;!&ndash;!Note: 这里的age必须和filePattern协调, 后者是精确到HH, 这里就要写成xH, xd就不起作用-->
-<!--                    另外, 数字最好>2, 否则可能造成删除的时候, 最近的文件还处于被占用状态,导致删除不成功!&ndash;&gt;-->
-<!--                    &lt;!&ndash;7天&ndash;&gt;-->
-<!--                    <IfLastModified age="3d"/>-->
-<!--                </Delete>-->
-<!--            </DefaultRolloverStrategy>-->
-<!--        </RollingFile>-->
+        <RollingFile name="RollingFileWarn" fileName="/Users/oker/meili/kaiqiang.fan@okg.com/115/Documents/logs/funtester/warn.log"
+                     filePattern="/Users/oker/meili/kaiqiang.fan@okg.com/115/Documents/logs/funtester/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log">
+            <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{dd HH:mm:ss} %t %-4level %l - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="8 MB"/>
+            </Policies>
+            <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
+            <DefaultRolloverStrategy max="10">
+                <Delete basePath="/Users/oker/meili/kaiqiang.fan@okg.com/115/Documents/logs/funtester/$${date:yyyy-MM}/" maxDepth="2">
+                    <IfFileName glob="warn*.log"/>
+                    <!--!Note: 这里的age必须和filePattern协调, 后者是精确到HH, 这里就要写成xH, xd就不起作用
+                    另外, 数字最好>2, 否则可能造成删除的时候, 最近的文件还处于被占用状态,导致删除不成功!-->
+                    <!--7天-->
+                    <IfLastModified age="3d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
     </appenders>
     <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
     <loggers>
         <root level="info">
             <appender-ref ref="Console"/>
-<!--            <appender-ref ref="RollingFileInfo"/>-->
-<!--            <appender-ref ref="RollingFileWarn"/>-->
+            <appender-ref ref="RollingFileInfo"/>
+            <appender-ref ref="RollingFileWarn"/>
         </root>
     </loggers>
     <!--    异步日志记录的配置-->

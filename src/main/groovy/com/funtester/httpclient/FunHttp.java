@@ -3,6 +3,7 @@ package com.funtester.httpclient;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import com.funtester.base.exception.FailException;
 import com.funtester.base.exception.ParamException;
 import com.funtester.base.interfaces.IBase;
 import com.funtester.config.Constant;
@@ -166,9 +167,11 @@ public class FunHttp extends SourceCode {
      * @return
      */
     public static HttpPost getHttpPost(String url, JSONObject params, File file) {
+        if (file == null || !file.exists() || file.isDirectory())
+            FailException.fail("file is not exists or file is directory");
         HttpPost httpPost = getHttpPost(url);
         if (params != null && !params.isEmpty()) setMultipartEntityEntity(httpPost, params, file);
-        httpPost.addHeader(HttpClientConstant.ContentType_FORM);
+//        httpPost.addHeader(HttpClientConstant.ContentType_FORM);//会自动处理
         return httpPost;
     }
 
