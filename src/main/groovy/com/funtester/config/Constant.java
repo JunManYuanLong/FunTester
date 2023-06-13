@@ -59,6 +59,10 @@ public class Constant {
      */
     public static int POOL_SIZE = 8;
 
+    public static int POOL_MAX = 128;
+
+    public static int MAX_ACCEPT_WAIT_TASK = 100;
+
     /**
      * 动态模型中线程增长步长
      */
@@ -244,7 +248,7 @@ public class Constant {
     /**
      * 线程最大空闲时间
      */
-    public static int ALIVE_TIME = LUCKY_NUM;
+    public static int ALIVE_TIME = 30;
 
     /**
      * 线程池核心线程数
