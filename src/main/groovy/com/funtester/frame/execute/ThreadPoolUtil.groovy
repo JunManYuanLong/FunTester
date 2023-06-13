@@ -37,6 +37,11 @@ class ThreadPoolUtil extends Constant {
     static long AcquireTimeout = 8888
 
     /**
+     * 动态线程池标记
+     */
+    static int poolMark
+
+    /**
      * 获取许可
      * @return
      */
@@ -83,7 +88,7 @@ class ThreadPoolUtil extends Constant {
      * @return
      */
     static def executeCacheSync() {
-        def poll = asyncQueue.poll(1, TimeUnit.SECONDS)
+        def poll = asyncQueue.poll(1, TimeUnit.MILLISECONDS)
         if (poll != null) executeCacheSync({poll()})
     }
 
@@ -125,7 +130,7 @@ class ThreadPoolUtil extends Constant {
      * @param liveTime 空闲时间
      * @return
      */
-    static ThreadPoolExecutor createPool(int core = Constant.THREADPOOL_CORE, int max = Constant.THREADPOOL_MAX, int liveTime = Constant.ALIVE_TIME, BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(Constant.MAX_WAIT_TASK), ThreadFactory factory = getFactory(), RejectedExecutionHandler rejectedExecutionHandler = new ThreadPoolExecutor.AbortPolicy()) {
+    static ThreadPoolExecutor createPool(int core = THREADPOOL_CORE, int max = THREADPOOL_MAX, int liveTime = ALIVE_TIME, BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(MAX_WAIT_TASK), ThreadFactory factory = getFactory(), RejectedExecutionHandler rejectedExecutionHandler = new ThreadPoolExecutor.AbortPolicy()) {
         return new ThreadPoolExecutor(core, max, liveTime, TimeUnit.SECONDS, workQueue, factory, rejectedExecutionHandler);
     }
 
@@ -145,7 +150,7 @@ class ThreadPoolUtil extends Constant {
      * @return
      */
     static ThreadPoolExecutor createFixedPool(int size = 10, String name = "P") {
-        return createPool(size, size, Constant.ALIVE_TIME, new LinkedBlockingQueue<Runnable>(Constant.MAX_WAIT_TASK), getFactory(name));
+        return createPool(size, size, ALIVE_TIME, new LinkedBlockingQueue<Runnable>(MAX_WAIT_TASK), getFactory(name));
     }
 
     /**
@@ -153,8 +158,20 @@ class ThreadPoolUtil extends Constant {
      * {@link java.util.concurrent.SynchronousQueue}写入操作等待拉取操作.实际容量为0的队列
      * @return
      */
-    static ThreadPoolExecutor createCachePool(int max = 256, String name = "C", int aliveTime = Constant.ALIVE_TIME) {
+    static ThreadPoolExecutor createCachePool(int max = 256, String name = "C", int aliveTime = ALIVE_TIME) {
         return createPool(0, max, aliveTime, new SynchronousQueue<Runnable>(), getFactory(name))
+    }
+
+    /**
+     * 获取一个自定义线程池,用于动态调整线程池活跃线程数
+     * @param core
+     * @param max
+     * @param name
+     * @param aliveTime
+     * @return
+     */
+    static ThreadPoolExecutor createFunPool(int core, int max, String name = "F", int aliveTime = ALIVE_TIME) {
+        return createPool(core, max, aliveTime, new LinkedBlockingQueue<Runnable>(MAX_WAIT_TASK), getFactory(name))
     }
 
     /**
@@ -165,7 +182,7 @@ class ThreadPoolUtil extends Constant {
         if (asyncPool == null) {
             synchronized (ThreadPoolUtil.class) {
                 if (asyncPool == null) {
-                    asyncPool = createFixedPool(Constant.POOL_SIZE, "F");
+                    asyncPool = createFunPool(POOL_SIZE, POOL_MAX, "F");
                     daemon()
                 }
             }
@@ -181,7 +198,7 @@ class ThreadPoolUtil extends Constant {
         if (asyncCachePool == null) {
             synchronized (ThreadPoolUtil.class) {
                 if (asyncCachePool == null) {
-                    asyncCachePool = createCachePool(256, "C", 3)
+                    asyncCachePool = createCachePool(POOL_MAX, "C", 3)
                     daemon()
                 }
             }
@@ -201,7 +218,7 @@ class ThreadPoolUtil extends Constant {
             @Override
             Thread newThread(Runnable runnable) {
                 Thread thread = new Thread(runnable);
-                thread.setName(name + "-" + StringUtil.right(Constant.EMPTY + num++, 2));
+                thread.setName(name + "-" + StringUtil.right(EMPTY + num++, 2));
                 return thread;
             }
         }
@@ -278,7 +295,22 @@ class ThreadPoolUtil extends Constant {
                 SourceCode.noError {
                     while (checkMain()) {
                         SourceCode.sleep(1.0)
+                        def pool = getFunPool()
+                        if (SourceCode.getMark() - poolMark > 5) {
+                            poolMark = SourceCode.getMark()
+                            def size = pool.getQueue().size()
+                            def corePoolSize = pool.getCorePoolSize()
+                            if (size > MAX_ACCEPT_WAIT_TASK && corePoolSize < POOL_MAX) {
+                                pool.setCorePoolSize(corePoolSize + 1)
+                                log.info("线程池自增" + pool.getCorePoolSize())
+                            }
+                            if (size == 0 && corePoolSize > POOL_SIZE) {
+                                pool.setCorePoolSize(corePoolSize - 1)
+                                log.info("线程池自减" + pool.getCorePoolSize())
+                            }
+                        }
                         ASYNC_QPS.times {executeCacheSync()}
+
                     }
                     waitAsyncIdle()
                 }

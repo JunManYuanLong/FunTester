@@ -74,7 +74,7 @@ public class HttpClientConstant {
 
     public static Header ContentType_JSON = getHeader("Content-Type", "application/json; charset=" + DEFAULT_CHARSET.toString());
 
-    public static Header ContentType_FORM = getHeader("Content-Type", "application/x-www-form-urlencoded; charset=" + DEFAULT_CHARSET.toString());
+    public static Header ContentType_FORM = getHeader("Content-Type", "application/x-www-form-urlencoded; charset=" + DEFAULT_CHARSET);
 
     public static Header ContentType_FORM_DATA = getHeader("Content-Type", "multipart/form-data");
 
