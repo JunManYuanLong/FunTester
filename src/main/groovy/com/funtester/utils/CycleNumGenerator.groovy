@@ -32,4 +32,7 @@ class CycleNumGenerator {
         values.get(count)
     }
 
+    String getStrNum() {
+        DoubleUtil.toString(getNum())
+    }
 }

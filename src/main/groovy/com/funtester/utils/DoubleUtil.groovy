@@ -94,4 +94,15 @@ class DoubleUtil {
         BigDecimal one = new BigDecimal("1");
         return b.divide(one, scale, RoundingMode.HALF_UP).doubleValue();
     }
+
+    /**
+     * double 转string
+     * @param d
+     * @return
+     */
+    static def toString(def d) {
+        new BigDecimal(d as String).toPlainString()
+    }
+
+
 }
