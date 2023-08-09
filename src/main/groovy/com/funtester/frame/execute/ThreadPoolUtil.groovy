@@ -379,6 +379,15 @@ class ThreadPoolUtil extends Constant {
     }
 
     /**
+     * 添加ShutdownHook
+     * @param closure
+     * @return
+     */
+    static def addHook(Closure closure) {
+        Runtime.getRuntime().addShutdownHook(new Thread(closure))
+    }
+
+    /**
      * 关闭所有性能测试任务
      * @return
      */
