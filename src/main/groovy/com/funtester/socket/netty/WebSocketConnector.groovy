@@ -18,14 +18,22 @@ import io.netty.handler.codec.http.websocketx.WebSocketVersion
 import io.netty.handler.stream.ChunkedWriteHandler
 import io.netty.util.concurrent.GlobalEventExecutor
 
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.locks.ReentrantLock
+
 @Log4j2
 class WebSocketConnector {
-//class WebSocketConnector extends SimpleChannelInboundHandler<Object> {
 
     static Bootstrap bootstrap = new Bootstrap()
 
+    static ReentrantLock createLock = new ReentrantLock()
+
     // 事件循环线程池
-    static EventLoopGroup group = new NioEventLoopGroup(128, ThreadPoolUtil.getFactory("N"))
+    static EventLoopGroup group = new NioEventLoopGroup(ThreadPoolUtil.getFactory("N"))
+
+    static {
+        bootstrap.group(group).channel(NioSocketChannel.class)
+    }
 
     /**
      * 用于记录和管理所有客户端的channel
@@ -50,14 +58,11 @@ class WebSocketConnector {
     int port = 12345
 
     /**
-     * 路径
-     */
-    String path = "/test"
-
-    /**
      * 网络通道
      */
     Channel channel
+
+    WebSocketIoHandler handler
 
     /**
      * WebSocket协议类型的模拟客户端连接器构造方法
@@ -70,136 +75,51 @@ class WebSocketConnector {
         this.host = host
         String URL = prefix + this.host + ":" + this.port + "/test";
         uri = new URI(URL);
+        handler = new WebSocketIoHandler(WebSocketClientHandshakerFactory.newHandshaker(uri, WebSocketVersion.V13, null, true, new DefaultHttpHeaders()));
+        bootstrap.option(ChannelOption.TCP_NODELAY, true)
+                .option(ChannelOption.SO_KEEPALIVE, true)
+                .handler(new ChannelInitializer<SocketChannel>() {
 
+                    @Override
+                    protected void initChannel(SocketChannel ch) throws Exception {
+                        ChannelPipeline pipeline = ch.pipeline()
+                        // 添加一个http的编解码器
+                        pipeline.addLast(new HttpClientCodec())
+                        // 添加一个用于支持大数据流的支持
+                        pipeline.addLast(new ChunkedWriteHandler())
+                        // 添加一个聚合器，这个聚合器主要是将HttpMessage聚合成FullHttpRequest/Response
+                        pipeline.addLast(new HttpObjectAggregator(1024 * 1024))
+                        pipeline.addLast(handler)
+                    }
+                })
     }
 
 
-    void doConnect() {
+    void connect() {
         try {
-            String URL = prefix + this.host + ":" + this.port + path;
-            URI uri = new URI(URL);
-            final WebSocketIoHandler handler = new WebSocketIoHandler(WebSocketClientHandshakerFactory.newHandshaker(uri, WebSocketVersion.V13, null, true, new DefaultHttpHeaders()));
-            bootstrap.group(group).channel(NioSocketChannel.class)
-                    .option(ChannelOption.TCP_NODELAY, true)
-                    .option(ChannelOption.SO_BACKLOG, 128)
-                    .option(ChannelOption.SO_KEEPALIVE, true)
-                    .handler(new ChannelInitializer<SocketChannel>() {
-
-                        @Override
-                        protected void initChannel(SocketChannel ch) throws Exception {
-                            ChannelPipeline pipeline = ch.pipeline()
-                            // 添加一个http的编解码器
-                            pipeline.addLast(new HttpClientCodec())
-                            // 添加一个用于支持大数据流的支持
-                            pipeline.addLast(new ChunkedWriteHandler())
-                            // 添加一个聚合器，这个聚合器主要是将HttpMessage聚合成FullHttpRequest/Response
-                            pipeline.addLast(new HttpObjectAggregator(1024 * 64))
-                            pipeline.addLast(handler)
-                        }
-                    })
-            try {
-                synchronized (bootstrap) {
+            def lock = createLock.tryLock(10, TimeUnit.SECONDS)
+            if (lock) {
+                try {
                     final ChannelFuture future = bootstrap.connect(this.host, this.port).sync()
                     this.channel = future.channel()
                     clients.add(channel)
+                } catch (e) {
+                    log.error("创建channel失败", e)
+                } finally {
+                    createLock.unlock()
                 }
-            } catch (Exception e) {
-                log.error("连接服务失败", e)
+            } else {
+                log.error("创建channel失败,获取锁超时")
             }
-            handler.handshakeFuture().get()
-            log.info(324)
         } catch (Exception e) {
             log.error("连接服务失败", e)
+        } finally {
+            this.handshakeFuture = handler.handshakeFuture()
         }
     }
 
-    void disConnect() {
+    void close() {
         this.channel.close()
     }
 
-//    @Override
-//    void handlerAdded(ChannelHandlerContext ctx) {
-//        handshakeFuture = ctx.newPromise()
-//    }
-//
-//    @Override
-//    void channelActive(ChannelHandlerContext ctx) {
-//        handShaker.handshake(ctx.channel());
-//    }
-//
-//    @Override
-//    void channelInactive(ChannelHandlerContext ctx) {
-//        ctx.close()
-//        try {
-//            super.channelInactive(ctx)
-//        } catch (Exception e) {
-//            log.error("channelInactive 异常.", e)
-//        }
-//        log.warn("WebSocket链路与服务器连接已断开.")
-//    }
-//
-//    @Override
-//    void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
-//        println 3
-//        Channel ch = ctx.channel()
-//        if (!handShaker.isHandshakeComplete()) {
-//            try {
-//                handShaker.finishHandshake(ch, (FullHttpResponse) msg)
-//                handshakeFuture.setSuccess()
-//                log.info("WebSocket握手成功，可以传输数据了.")
-//                // 数据一定要封装成WebSocketFrame才能发达
-//                String data = "Hello"
-//                WebSocketFrame frame = new TextWebSocketFrame(data)
-//                ch.writeAndFlush(frame)
-//            } catch (WebSocketHandshakeException e) {
-//                log.warn("WebSocket Client failed to connect", e)
-//                handshakeFuture.setFailure(e)
-//            }
-//            return
-//        }
-//
-//        if (msg instanceof FullHttpResponse) {
-//            FullHttpResponse response = (FullHttpResponse) msg
-//            throw new IllegalStateException(
-//                    "Unexpected FullHttpResponse (getStatus=" + response.status() +
-//                            ", content=" + response.content().toString(CharsetUtil.UTF_8) + ')')
-//        }
-//
-//        WebSocketFrame frame = (WebSocketFrame) msg
-//        if (frame instanceof TextWebSocketFrame) {
-//            TextWebSocketFrame textFrame = (TextWebSocketFrame) frame
-//            String s = textFrame.text()
-//            log.info("WebSocket Client received message: " + s)
-//        } else if (frame instanceof PongWebSocketFrame) {
-//            log.info("WebSocket Client received pong")
-//        } else if (frame instanceof CloseWebSocketFrame) {
-//            log.info("WebSocket Client received closing")
-//            ch.close()
-//        }
-//    }
-//
-//    @Override
-//    void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-//        log.error("WebSocket链路由于发生异常,与服务器连接已断开.", cause)
-//        if (!handshakeFuture.isDone()) {
-//            handshakeFuture.setFailure(cause)
-//        }
-//        ctx.close()
-//        super.exceptionCaught(ctx, cause)
-//    }
-//
-//    @Override
-//    void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-//        if (evt instanceof IdleStateEvent) {
-//            IdleStateEvent event = (IdleStateEvent) evt
-//            // 如果写通道处于空闲状态,就发送心跳命令
-//            if (IdleState.WRITER_IDLE == event.state() || IdleState.READER_IDLE == event.state()) {
-//                // 发送心跳数据
-//                def channel = ctx.channel()
-//                channel.writeAndFlush(new TextWebSocketFrame("dsf"))
-//            }
-//        } else {
-//            super.userEventTriggered(ctx, evt)
-//        }
-//    }
 }
