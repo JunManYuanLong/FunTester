@@ -196,6 +196,17 @@ public class SourceCode extends Output {
     }
 
     /**
+     * 将16进制的数字转成10进制
+     *
+     * @param hexadecimal
+     * @return
+     */
+    public static int toDecimal(String hexadecimal) {
+        if (!hexadecimal.startsWith("0x")) FailException.fail("错误的数字格式");
+        return Integer.parseInt(hexadecimal.substring(2), 16);
+    }
+
+    /**
      * 格式化数字格式，使用千分号
      *
      * @param number
