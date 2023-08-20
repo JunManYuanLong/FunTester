@@ -8,7 +8,6 @@ import io.netty.handler.codec.http.FullHttpResponse
 import io.netty.handler.codec.http.websocketx.*
 import io.netty.handler.timeout.IdleState
 import io.netty.handler.timeout.IdleStateEvent
-import io.netty.util.CharsetUtil
 import io.netty.util.concurrent.GlobalEventExecutor
 /**
  * WebSocket协议类型的模拟客户端IO处理器类
@@ -56,17 +55,11 @@ class WebSocketIoHandler extends SimpleChannelInboundHandler<Object> {
 
     @Override
     void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
-        println 322423547
         Channel ch = ctx.channel()
         if (!handShaker.isHandshakeComplete()) {
             try {
                 handShaker.finishHandshake(ch, (FullHttpResponse) msg)
                 handshakeFuture.setSuccess()
-                log.info("WebSocket握手成功，可以传输数据了.")
-                // 数据一定要封装成WebSocketFrame才能发达
-                String data = "Hello"
-                WebSocketFrame frame = new TextWebSocketFrame(data)
-                ch.writeAndFlush(frame)
             } catch (WebSocketHandshakeException e) {
                 log.warn("WebSocket Client failed to connect",e)
                 handshakeFuture.setFailure(e)
@@ -74,22 +67,12 @@ class WebSocketIoHandler extends SimpleChannelInboundHandler<Object> {
             return
         }
 
-        if (msg instanceof FullHttpResponse) {
-            FullHttpResponse response = (FullHttpResponse) msg
-            throw new IllegalStateException(
-                    "Unexpected FullHttpResponse (getStatus=" + response.status() +
-                            ", content=" + response.content().toString(CharsetUtil.UTF_8) + ')')
-        }
-
         WebSocketFrame frame = (WebSocketFrame) msg
         if (frame instanceof TextWebSocketFrame) {
             TextWebSocketFrame textFrame = (TextWebSocketFrame) frame
             String s = textFrame.text()
-            log.info("WebSocket Client received message: " + s)
-        } else if (frame instanceof PongWebSocketFrame) {
-            log.info("WebSocket Client received pong")
         } else if (frame instanceof CloseWebSocketFrame) {
-            log.info("WebSocket Client received closing")
+            log.info("WebSocket Client closing")
             ch.close()
         }
     }
