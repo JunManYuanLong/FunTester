@@ -310,7 +310,6 @@ class ThreadPoolUtil extends Constant {
                             }
                         }
                         ASYNC_QPS.times {executeCacheSync()}
-
                     }
                     waitAsyncIdle()
                 }
