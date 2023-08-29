@@ -8,6 +8,8 @@ import com.funtester.utils.OSUtil
 import com.funtester.utils.StringUtil
 import groovy.util.logging.Log4j2
 
+import java.lang.management.ManagementFactory
+import java.lang.management.RuntimeMXBean
 import java.util.concurrent.*
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
@@ -288,7 +290,7 @@ class ThreadPoolUtil extends Constant {
     static boolean daemon() {
         def set = DaemonState.getAndSet(true)
         if (set) return
-        def thread = new Thread(new Runnable() {
+        new Thread(new Runnable() {
 
             @Override
             void run() {
@@ -315,9 +317,17 @@ class ThreadPoolUtil extends Constant {
                 }
                 ThreadPoolUtil.shutPool()
             }
-        })
-        thread.setName("Funny")
-        thread.start()
+        }, "Funny").start()
+    }
+
+    static {
+        addShutdownHook {
+            if (asyncPool != null) {
+                print "finished: " + getFunPool().getCompletedTaskCount() + " task"
+            }
+            RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean()
+            print(" uptime:" + runtimeMXBean.getUptime() + " s")
+        }
     }
 
     /**
