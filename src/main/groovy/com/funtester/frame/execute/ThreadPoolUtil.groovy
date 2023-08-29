@@ -317,8 +317,7 @@ class ThreadPoolUtil extends Constant {
                 ThreadPoolUtil.shutPool()
             }
         })
-        thread.setDaemon(true)
-        thread.setName("Daemon")
+        thread.setName("Funny")
         thread.start()
     }
 
