@@ -326,7 +326,7 @@ class ThreadPoolUtil extends Constant {
                 print "finished: " + getFunPool().getCompletedTaskCount() + " task"
             }
             RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean()
-            print(" uptime:" + runtimeMXBean.getUptime() + " s")
+            print(" uptime:" + runtimeMXBean.getUptime() / 1000 + " s")
         }
     }
 
