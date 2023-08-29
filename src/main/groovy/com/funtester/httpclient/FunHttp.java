@@ -89,7 +89,9 @@ public class FunHttp extends SourceCode {
         return getHttpGet(uri);
     }
 
-    /**获取{@link HttpGet},body携带请求参数,ES查询使用
+    /**
+     * 获取{@link HttpGet},body携带请求参数,ES查询使用
+     *
      * @param url
      * @param params
      * @return
@@ -657,13 +659,20 @@ public class FunHttp extends SourceCode {
     /**
      * 结束测试，关闭连接池
      */
-    public static void testOver() {
-        try {
-            ClientManage.httpsClient.close();
-            ClientManage.httpAsyncClient.close();
-        } catch (Exception e) {
-            logger.warn("连接池关闭失败！", e);
-        }
+    static {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            try {
+                ClientManage.httpsClient.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                ClientManage.httpAsyncClient.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }));
+
     }
 
     /**
