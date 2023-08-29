@@ -1,8 +1,7 @@
 package com.funtester.utils;
 
+import com.funtester.base.exception.FailException;
 import com.funtester.config.Constant;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,8 +12,6 @@ import java.util.Date;
  * 时间相关功能工具类
  */
 public class Time {
-
-    private static Logger logger = LogManager.getLogger(Time.class);
 
     /**
      * 默认的日志显示格式
@@ -207,7 +204,7 @@ public class Time {
         try {
             return NUM_FORMAT.get().parse(time).getTime();
         } catch (ParseException e) {
-            logger.warn("时间格式错误！", e);
+            FailException.fail(e);
         }
         return Constant.DEFAULT_LONG;
     }
