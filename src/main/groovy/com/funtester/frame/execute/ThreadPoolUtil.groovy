@@ -91,7 +91,7 @@ class ThreadPoolUtil extends Constant {
      * @return
      */
     static def executeCacheSync() {
-        def poll = asyncQueue.poll(1, TimeUnit.MILLISECONDS)
+        def poll = asyncQueue.poll(100, TimeUnit.MILLISECONDS)
         if (poll != null) executeCacheSync({poll()})
     }
 
@@ -297,7 +297,7 @@ class ThreadPoolUtil extends Constant {
             void run() {
                 SourceCode.noError {
                     while (checkMain()) {
-                        SourceCode.sleep(1.0)
+                        SourceCode.sleep(0.3)
                         def pool = getFunPool()
                         if (SourceCode.getMark() - poolMark > 5) {
                             poolMark = SourceCode.getMark()
