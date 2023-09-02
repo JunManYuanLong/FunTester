@@ -19,6 +19,8 @@ import org.apache.logging.log4j.core.config.Configurator;
 import org.apache.logging.log4j.core.config.xml.XmlConfiguration;
 
 import java.io.*;
+import java.lang.management.ManagementFactory;
+import java.lang.management.RuntimeMXBean;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.*;
@@ -32,6 +34,15 @@ import java.util.stream.IntStream;
 public class SourceCode extends Output {
 
     private static Logger logger = LogManager.getLogger(SourceCode.class);
+
+    static {
+        Runtime.getRuntime().addShutdownHook(new Thread(()->{
+            System.out.print(Time.getDate().substring(11));
+            RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean();
+            System.out.println(" uptime:" + runtimeMXBean.getUptime() / 1000 + " s");
+        }));
+        closeScanner();
+    }
 
     private static Scanner scanner;
 

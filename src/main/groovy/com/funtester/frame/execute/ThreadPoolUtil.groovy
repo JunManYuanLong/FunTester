@@ -9,13 +9,10 @@ import com.funtester.utils.StringUtil
 import com.funtester.utils.Time
 import groovy.util.logging.Log4j2
 
-import java.lang.management.ManagementFactory
-import java.lang.management.RuntimeMXBean
 import java.util.concurrent.*
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
 import java.util.concurrent.atomic.LongAdder
-
 /**
  * Java线程池工具类*/
 @Log4j2
@@ -325,10 +322,8 @@ class ThreadPoolUtil extends Constant {
         addShutdownHook {
             print(Time.getDate().substring(11))
             if (asyncPool != null) {
-                print "finished: " + getFunPool().getCompletedTaskCount() + " task"
+                println "finished: " + getFunPool().getCompletedTaskCount() + " task"
             }
-            RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean()
-            print(" uptime:" + runtimeMXBean.getUptime() / 1000 + " s")
         }
     }
 
