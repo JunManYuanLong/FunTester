@@ -1,14 +1,14 @@
 package com.funtester.base.interfaces;
 
 import com.alibaba.fastjson.JSONObject;
-import com.funtester.socket.ScoketIOFunClient;
+import com.funtester.socket.SocketIOFunClient;
 import com.funtester.socket.WebSocketFunClient;
 
 import java.util.List;
 
 /**
  * 对于基类base拓展Socket功能,暂时分成WebSocket和Socket.IO
- * {@link ScoketIOFunClient}
+ * {@link SocketIOFunClient}
  * {@link WebSocketFunClient}
  */
 public interface ISocketClient {

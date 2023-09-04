@@ -18,11 +18,11 @@ import java.util.*;
 /**
  * 基于Socket.IO的Client封装对象
  */
-public class ScoketIOFunClient extends SourceCode implements Serializable {
+public class SocketIOFunClient extends SourceCode implements Serializable {
 
     private static final long serialVersionUID = -7229704711068396512L;
 
-    private static Logger logger = LogManager.getLogger(ScoketIOFunClient.class);
+    private static Logger logger = LogManager.getLogger(SocketIOFunClient.class);
 
     public static ThreadLocal<IO.Options> options = new ThreadLocal() {
 
@@ -49,7 +49,7 @@ public class ScoketIOFunClient extends SourceCode implements Serializable {
     /**
      * 所有的客户端
      */
-    public static Vector<ScoketIOFunClient> clients = new Vector<>();
+    public static Vector<SocketIOFunClient> clients = new Vector<>();
 
     /**
      * 记录的消息
@@ -77,7 +77,7 @@ public class ScoketIOFunClient extends SourceCode implements Serializable {
     public Set<String> events = new HashSet<>();
 
 
-    private ScoketIOFunClient(String url, Socket socket) {
+    private SocketIOFunClient(String url, Socket socket) {
         this.url = url;
         this.socket = socket;
         clients.add(this);
@@ -90,11 +90,11 @@ public class ScoketIOFunClient extends SourceCode implements Serializable {
      * @param cname
      * @return
      */
-    public static ScoketIOFunClient getInstance(String url, String cname) {
+    public static SocketIOFunClient getInstance(String url, String cname) {
         logger.info("Socket 连接: {},客户端名称: {}", url, cname);
-        ScoketIOFunClient client = null;
+        SocketIOFunClient client = null;
         try {
-            client = new ScoketIOFunClient(url, IO.socket(url, options.get()));
+            client = new SocketIOFunClient(url, IO.socket(url, options.get()));
             client.setCname(cname);
         } catch (URISyntaxException e) {
             FailException.fail(e);
@@ -202,7 +202,7 @@ public class ScoketIOFunClient extends SourceCode implements Serializable {
      * @return
      */
     @Override
-    public ScoketIOFunClient clone() {
+    public SocketIOFunClient clone() {
         return getInstance(this.url, this.cname + StringUtil.getString(4));
     }
 
