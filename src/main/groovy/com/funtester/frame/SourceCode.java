@@ -36,10 +36,10 @@ public class SourceCode extends Output {
     private static Logger logger = LogManager.getLogger(SourceCode.class);
 
     static {
-        Runtime.getRuntime().addShutdownHook(new Thread(()->{
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             System.out.print(Time.getDate().substring(11));
             RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean();
-            System.out.println(" uptime:" + runtimeMXBean.getUptime() / 1000 + " s");
+            System.out.println(" uptime:" + Time.convert((int) runtimeMXBean.getUptime() / 1000));
         }));
         closeScanner();
     }
