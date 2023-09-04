@@ -253,5 +253,18 @@ public class Time {
         return getNow(DEFAULT_FORMAT.get());
     }
 
+    /**
+     * 将时间s转换成hms形式
+     *
+     * @param time
+     * @return
+     */
+    public static String convert(int time) {
+        int second = time % 60;
+        int ms = time / 60;
+        int minute = ms % 60;
+        int hour = ms / 60;
+        return (hour > 0 ? hour + " h," : "") + (minute > 0 ? minute + " m," : "") + second + " s";
+    }
 
 }
