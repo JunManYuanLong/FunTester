@@ -229,14 +229,14 @@ public class Output extends Constant {
                 case '[':
                     // 如果字符是{或者[，则断行，level加1
                     jsonResultStr.append(piece + (":[{,".contains(last + EMPTY) && ",[{}]\"0123456789le".contains(next + EMPTY) ? LINE : EMPTY));
-                    if (last != '[') level++;//解决jsonarray:[{
+                    level++;
                     break;
                 case '}':
                 case ']':
                     // 如果是}或者]，则断行，level减1
 //                    jsonResultStr.append(LINE);
                     jsonResultStr.append(("\"0123456789le]}{[,".contains(last + EMPTY) && "}],".contains(next + EMPTY) ? LINE : EMPTY));
-                    if (next != ']') level--;//解决jsonarray:[{
+                    level--;
                     jsonResultStr.append(level == 0 ? "" : StringUtil.getSerialEmoji(level) + J);
                     IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(Q));//没有采用sourcecode的getmanystring
                     jsonResultStr.append(piece);
