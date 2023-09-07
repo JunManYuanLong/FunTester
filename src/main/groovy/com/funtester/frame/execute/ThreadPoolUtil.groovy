@@ -322,7 +322,7 @@ class ThreadPoolUtil extends Constant {
         addShutdownHook {
             print(Time.getDate().substring(11))
             if (asyncPool != null) {
-                println "finished: " + getFunPool().getCompletedTaskCount() + " task"
+                println " shutdown msg: finished: " + getFunPool().getCompletedTaskCount() + " task"
             }
         }
     }
