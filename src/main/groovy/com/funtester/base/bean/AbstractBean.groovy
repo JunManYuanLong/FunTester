@@ -39,7 +39,7 @@ abstract class AbstractBean extends Constant{
 
     /**
      * 从json字符串中初始化bean
-     * @param str
+     * @param str json字符串
      * @return
      */
     def initFrom(String str) {
@@ -48,7 +48,7 @@ abstract class AbstractBean extends Constant{
 
     /**
      * 从json字符串中初始化bean
-     * @param str
+     * @param str json字符串
      * @return
      */
     def initFrom(Object str) {
@@ -57,8 +57,8 @@ abstract class AbstractBean extends Constant{
 
     /**
      * 从bean中初始化bean
-     * @param source
-     * @param clazz
+     * @param source 源bean
+     * @param clazz  目标bean的class
      * @return
      */
     static <T> T copyFrom(AbstractBean source ,Class<T> clazz) {
