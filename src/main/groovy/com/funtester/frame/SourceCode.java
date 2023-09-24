@@ -31,6 +31,9 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 
+/**
+ * 通用方法类
+ */
 public class SourceCode extends Output {
 
     private static Logger logger = LogManager.getLogger(SourceCode.class);
@@ -162,8 +165,8 @@ public class SourceCode extends Output {
     /**
      * 获取一个简单的JSON对象
      *
-     * @param key
-     * @param value
+     * @param key  键
+     * @param value 值
      * @return
      */
     public static JSONObject getSimpleJson(String key, Object value) {
@@ -175,7 +178,7 @@ public class SourceCode extends Output {
     /**
      * 获取text复制拼接的string
      *
-     * @param text
+     * @param text 文本
      * @param times 次数
      * @return
      */
@@ -209,7 +212,7 @@ public class SourceCode extends Output {
     /**
      * 将16进制的数字转成10进制
      *
-     * @param hexadecimal
+     * @param hexadecimal 16进制数字
      * @return
      */
     public static int toDecimal(String hexadecimal) {
@@ -240,8 +243,8 @@ public class SourceCode extends Output {
     /**
      * 格式化数字格式,保留两位有效数字,使用去尾法
      *
-     * @param number
-     * @param length
+     * @param number 数字
+     * @param length 保留小数位数
      * @return
      */
     public static String formatNumber(Number number, int length) {
@@ -251,8 +254,8 @@ public class SourceCode extends Output {
     /**
      * 格式化数字格式
      *
-     * @param number
-     * @param pattern
+     * @param number 数字
+     * @param pattern 格式
      * @return
      */
     public static String formatNumber(Number number, String pattern) {
@@ -263,8 +266,8 @@ public class SourceCode extends Output {
     /**
      * 格式化int数字,用于补充0的场景
      *
-     * @param number
-     * @param length
+     * @param number 数字
+     * @param length 长度
      * @return
      */
     public static String formatInt(int number, int length) {
@@ -307,7 +310,7 @@ public class SourceCode extends Output {
     /**
      * 将string转换成boolean，失败返回null，待修改
      *
-     * @param text
+     * @param text 需要转化的文本
      * @return
      */
     public static boolean changeStringToBoolean(String text) {
@@ -318,7 +321,7 @@ public class SourceCode extends Output {
     /**
      * string转化为double
      *
-     * @param text
+     * @param text 需要转化的文本
      * @return
      */
     public static double changeStringToDouble(String text) {
@@ -437,8 +440,8 @@ public class SourceCode extends Output {
     /**
      * 随机选择某一个值
      *
-     * @param fs
-     * @param <F>
+     * @param fs 任意类型
+     * @param <F> 任意类型
      * @return
      */
     public static <F> F random(F... fs) {
@@ -449,8 +452,8 @@ public class SourceCode extends Output {
      * 随机选择某一个值
      *
      * @param index
-     * @param fs
-     * @param <F>
+     * @param fs   任意类型
+     * @param <F> 任意类型
      * @return
      */
     public static <F> F random(AtomicInteger index, F... fs) {
@@ -460,8 +463,8 @@ public class SourceCode extends Output {
     /**
      * 随机选择某一个对象
      *
-     * @param list
-     * @param <F>
+     * @param list 对象集合
+     * @param <F> 任意类型
      * @return
      */
     public static <F> F random(List<F> list) {
@@ -473,9 +476,9 @@ public class SourceCode extends Output {
     /**
      * 随机选择某个对象
      *
-     * @param list
+     * @param list 对象集合
      * @param index 自增索引
-     * @param <F>
+     * @param <F>   任意类型
      * @return
      */
     public static <F> F random(List<F> list, AtomicInteger index) {
@@ -487,8 +490,8 @@ public class SourceCode extends Output {
      * 根据不同的概率随机出一个对象集合
      * 消耗CPU多
      *
-     * @param count
-     * @param <F>
+     * @param count 概率集合
+     * @param <F>  任意类型
      * @return
      */
     public static <F> List[] randomCpu(Map<F, Integer> count) {
@@ -518,8 +521,8 @@ public class SourceCode extends Output {
      * 根据不同的概率随机出一个对象集合
      * 消耗内存多
      *
-     * @param count
-     * @param <F>
+     * @param count 概率集合
+     * @param <F> 任意类型
      * @return
      */
     public static <F> List<F> randomMem(Map<F, Integer> count) {
@@ -571,8 +574,8 @@ public class SourceCode extends Output {
     /**
      * 获取一个intsteam
      *
-     * @param start
-     * @param end
+     * @param start 开始
+     * @param end  结束,不包含end
      * @return
      */
     public static IntStream range(int start, int end) {
@@ -582,7 +585,7 @@ public class SourceCode extends Output {
     /**
      * 获取一个intsteam，默认从0开始,num为止,不包含num
      *
-     * @param num
+     * @param num 结束
      * @return
      */
     public static IntStream range(int num) {
@@ -593,13 +596,18 @@ public class SourceCode extends Output {
     /**
      * 将对象转换成JSON
      *
-     * @param o
+     * @param o 对象
      * @return
      */
     public static JSONObject parse(Object o) {
         return parse(JSON.toJSONString(o));
     }
 
+    /**
+     * 将字符串转成JSON对象
+     * @param o 字符串
+     * @return
+     */
     public static JSONObject parse(String o) {
         return JSON.parseObject(o);
     }
@@ -607,15 +615,22 @@ public class SourceCode extends Output {
     /**
      * 将字符串转成Java对象
      *
-     * @param o
-     * @param clazz
-     * @param <T>
+     * @param o    字符串
+     * @param clazz 类型
+     * @param <T>  泛型
      * @return
      */
     public static <T> T parse(String o, Class<T> clazz) {
         return JSON.toJavaObject(parse(o), clazz);
     }
 
+    /**
+     * 将对象转成Java对象
+     * @param o 对象
+     * @param clazz 类型
+     * @return
+     * @param <T>
+     */
     public static <T> T parse(Object o, Class<T> clazz) {
         return JSON.toJavaObject(parse(o), clazz);
     }
@@ -623,7 +638,7 @@ public class SourceCode extends Output {
     /**
      * 处理Groovy脚本情况下无法修改线程池大小的问题
      *
-     * @param i
+     * @param i 线程池大小
      */
     public static void setPoolMax(int i) {
         ThreadPoolUtil.getFunPool().setCorePoolSize(i);
@@ -633,7 +648,7 @@ public class SourceCode extends Output {
     /**
      * 设置异步执行任务最大QPS
      *
-     * @param i
+     * @param i QPS
      */
     public static void setMaxQps(int i) {
         ASYNC_QPS = i;
@@ -653,8 +668,8 @@ public class SourceCode extends Output {
     /**
      * 异步执行,{@link Future}形式
      *
-     * @param callable
-     * @param <T>
+     * @param callable 代码块
+     * @param <T>     返回值类型
      * @return
      */
     public static <T> Future<T> funny(Callable<T> callable) {
@@ -664,8 +679,8 @@ public class SourceCode extends Output {
     /**
      * 异步执行代码块,使用{@link Phaser}进行多线程同步
      *
-     * @param f
-     * @param phaser
+     * @param f     代码块
+     * @param phaser 同步器
      */
     public static void fun(Closure f, Phaser phaser) {
         if (phaser != null) phaser.register();
@@ -702,7 +717,7 @@ public class SourceCode extends Output {
      * 以固定QPS,异步执行,默认16,调整方法{@link SourceCode#setMaxQps(int)}
      * 改种方式在main线程结束后会以QPS /5 +5执行等待任务
      *
-     * @param f
+     * @param f 代码块
      */
     public static void funer(Closure f) {
         fun(JToG.toClosure(() -> {
@@ -739,7 +754,7 @@ public class SourceCode extends Output {
     /**
      * 获取方法的执行时间
      *
-     * @param f
+     * @param f 执行方法
      */
     public static long time(Closure f) {
         return time(f, 1);
@@ -765,7 +780,7 @@ public class SourceCode extends Output {
      * 获取方法的执行时间
      *
      * @param f    执行方法
-     * @param name
+     * @param name 方法名
      */
     public static long time(Closure f, String name) {
         long start = Time.getTimeStamp();
@@ -778,7 +793,7 @@ public class SourceCode extends Output {
     /**
      * 取消方法执行过程中的异常显示
      *
-     * @param closure
+     * @param closure 代码块
      */
     public static void noError(Closure closure) {
         try {
