@@ -6,6 +6,9 @@ import com.funtester.frame.SourceCode;
 
 import java.io.File;
 
+/**
+ * 命令行参数工具类
+ */
 public class ArgsUtil extends SourceCode {
 
     String[] all;
