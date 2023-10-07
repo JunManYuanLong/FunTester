@@ -43,6 +43,8 @@ class WebSocketConnector {
 
     int port
 
+    String path
+
     /**
      * 网络通道
      */
@@ -57,15 +59,15 @@ class WebSocketConnector {
      * @param serverSocketPort
      * @param group
      */
-    WebSocketConnector(String host, int port) {
+    WebSocketConnector(String host, int port, String path, Closure closure = null) {
         this.host = host
         this.port = port
-        String URL = this.host + ":" + this.port + "/test"
+        this.path = path
+        String URL = this.host + ":" + this.port + path
         URI uri = new URI(URL)
         handler = new WebSocketIoHandler(WebSocketClientHandshakerFactory.newHandshaker(uri, WebSocketVersion.V13, null, true, new DefaultHttpHeaders()))
+        if (closure != null) handler.closure = closure
         bootstrap.option(ChannelOption.TCP_NODELAY, true)
-                .option(ChannelOption.SO_TIMEOUT, true)
-                .option(ChannelOption.SO_BROADCAST, true)
                 .option(ChannelOption.SO_KEEPALIVE, true)
                 .handler(new ChannelInitializer<SocketChannel>() {
 
@@ -103,14 +105,14 @@ class WebSocketConnector {
     /**
      * 发送文本消息
      */
-    void sendText(String msg) {
+    ChannelFuture sendText(String msg) {
         channel.writeAndFlush(new TextWebSocketFrame(msg))
     }
 
     /**
      * 发送ping消息
      */
-    void ping() {
+    ChannelFuture ping() {
         channel.writeAndFlush(new PingWebSocketFrame())
     }
 
@@ -118,7 +120,7 @@ class WebSocketConnector {
      * 关闭
      */
     void close() {
-        this.channel.close()
+        group.shutdownGracefully()
     }
 
 }

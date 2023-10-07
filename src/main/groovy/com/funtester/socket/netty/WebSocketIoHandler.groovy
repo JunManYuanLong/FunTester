@@ -9,6 +9,7 @@ import io.netty.handler.codec.http.websocketx.*
 import io.netty.handler.timeout.IdleState
 import io.netty.handler.timeout.IdleStateEvent
 import io.netty.util.concurrent.GlobalEventExecutor
+
 /**
  * WebSocket协议类型的模拟客户端IO处理器类
  */
@@ -21,6 +22,8 @@ class WebSocketIoHandler extends SimpleChannelInboundHandler<Object> {
     private ChannelGroup clients = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE)
 
     private final WebSocketClientHandshaker handShaker
+
+    Closure closure
 
     private ChannelPromise handshakeFuture
 
@@ -61,7 +64,7 @@ class WebSocketIoHandler extends SimpleChannelInboundHandler<Object> {
                 handShaker.finishHandshake(ch, (FullHttpResponse) msg)
                 handshakeFuture.setSuccess()
             } catch (WebSocketHandshakeException e) {
-                log.warn("WebSocket Client failed to connect",e)
+                log.warn("WebSocket Client failed to connect", e)
                 handshakeFuture.setFailure(e)
             }
             return
@@ -69,8 +72,10 @@ class WebSocketIoHandler extends SimpleChannelInboundHandler<Object> {
 
         WebSocketFrame frame = (WebSocketFrame) msg
         if (frame instanceof TextWebSocketFrame) {
-            TextWebSocketFrame textFrame = (TextWebSocketFrame) frame
-            String s = textFrame.text()
+            if (closure != null) {
+                TextWebSocketFrame textFrame = (TextWebSocketFrame) frame
+                closure(textFrame.text())
+            }
         } else if (frame instanceof CloseWebSocketFrame) {
             log.info("WebSocket Client closing")
             ch.close()
