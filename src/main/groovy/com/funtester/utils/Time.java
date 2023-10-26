@@ -267,4 +267,12 @@ public class Time {
         return (hour > 0 ? hour + " h," : "") + (minute > 0 ? minute + " m," : "") + second + " s";
     }
 
+    /**
+     * 获取今天零点的时间戳
+     * @return
+     */
+    public static long getZeroTimestamp() {
+        long timeStamp = getTimeStamp();
+        return timeStamp - timeStamp % Constant.DAY - Calendar.getInstance().getTimeZone().getRawOffset();
+    }
 }
