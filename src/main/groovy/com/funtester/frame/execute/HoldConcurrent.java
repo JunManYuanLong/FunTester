@@ -7,7 +7,7 @@ import com.funtester.frame.Save;
 import com.funtester.frame.SourceCode;
 import com.funtester.utils.CountUtil;
 import com.funtester.utils.RWUtil;
-import com.funtester.utils.Time;
+import com.funtester.utils.TimeUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -129,7 +129,7 @@ public class HoldConcurrent extends SourceCode {
         funtester.start();
         ThreadBase.progress = new Progress(threads, StatisticsUtil.getTrueName(desc));
         new Thread(ThreadBase.progress, "progress").start();
-        startTime = Time.getTimeStamp();
+        startTime = TimeUtil.getTimeStamp();
         for (int i = 0; i < threadNum; i++) {
             if (HOLD.get() == 1) {
                 threadNum = i;
@@ -148,9 +148,9 @@ public class HoldConcurrent extends SourceCode {
             errorTotal += x.errorNum;
             executeTotal += x.executeNum;
         });
-        endTime = Time.getTimeStamp();
+        endTime = TimeUtil.getTimeStamp();
         HOLD.set(0);
-        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{}", threadNum, Time.getTimeDiffer(startTime, endTime), formatLong(executeTotal), errorTotal);
+        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{}", threadNum, TimeUtil.getTimeDiffer(startTime, endTime), formatLong(executeTotal), errorTotal);
         return over();
     }
 
@@ -170,7 +170,7 @@ public class HoldConcurrent extends SourceCode {
         Save.saveStringListSync(HoldConcurrent.requestMark, MARK_Path.replace(LONG_Path, EMPTY) + desc);
         allTimes = new Vector<>();
         requestMark = new Vector<>();
-        return countQPS(threadNum, desc, Time.getTimeByTimestamp(startTime), Time.getTimeByTimestamp(endTime));
+        return countQPS(threadNum, desc, TimeUtil.getTimeByTimestamp(startTime), TimeUtil.getTimeByTimestamp(endTime));
     }
 
 
@@ -202,7 +202,7 @@ public class HoldConcurrent extends SourceCode {
      * @return
      */
     public PerformanceResultBean countQPS(int name, String desc) {
-        return countQPS(name, desc, Time.getDate(), Time.getDate());
+        return countQPS(name, desc, TimeUtil.getDate(), TimeUtil.getDate());
     }
 
 

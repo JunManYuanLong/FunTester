@@ -6,7 +6,7 @@ import com.funtester.config.Constant
 import com.funtester.frame.SourceCode
 import com.funtester.utils.OSUtil
 import com.funtester.utils.StringUtil
-import com.funtester.utils.Time
+import com.funtester.utils.TimeUtil
 import groovy.util.logging.Log4j2
 
 import java.util.concurrent.*
@@ -320,7 +320,7 @@ class ThreadPoolUtil extends Constant {
 
     static {
         addShutdownHook {
-            print(Time.getDate().substring(11))
+            print(TimeUtil.getDate().substring(11))
             if (asyncPool != null) {
                 println "finished: " + getFunPool().getCompletedTaskCount() + " task"
             }

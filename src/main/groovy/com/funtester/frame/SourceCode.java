@@ -8,7 +8,7 @@ import com.funtester.base.exception.ParamException;
 import com.funtester.frame.execute.ThreadPoolUtil;
 import com.funtester.utils.JToG;
 import com.funtester.utils.Regex;
-import com.funtester.utils.Time;
+import com.funtester.utils.TimeUtil;
 import groovy.lang.Closure;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -40,9 +40,9 @@ public class SourceCode extends Output {
 
     static {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            System.out.print(Time.getDate().substring(11));
+            System.out.print(TimeUtil.getDate().substring(11));
             RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean();
-            System.out.println(" uptime:" + Time.convert((int) runtimeMXBean.getUptime() / 1000));
+            System.out.println(" uptime:" + TimeUtil.convert((int) runtimeMXBean.getUptime() / 1000));
         }));
         closeScanner();
     }
@@ -55,7 +55,7 @@ public class SourceCode extends Output {
      * @return
      */
     public static int getMark() {
-        return (int) (Time.getTimeStamp() / 1000);
+        return (int) (TimeUtil.getTimeStamp() / 1000);
     }
 
     /**
@@ -75,15 +75,15 @@ public class SourceCode extends Output {
      */
     public static void waitForKey(Object key) {
         logger.warn("请输入“{}”继续运行！", key.toString());
-        long start = Time.getTimeStamp();
+        long start = TimeUtil.getTimeStamp();
         scanner = scanner == null ? new Scanner(System.in, DEFAULT_CHARSET.name()) : scanner;
         while (scanner.hasNext()) {
             String next = scanner.next();
             if (next.equalsIgnoreCase(key.toString())) break;
             logger.warn("输入：{}错误！", next);
         }
-        long end = Time.getTimeStamp();
-        double timeDiffer = Time.getTimeDiffer(start, end);
+        long end = TimeUtil.getTimeStamp();
+        double timeDiffer = TimeUtil.getTimeDiffer(start, end);
         logger.info("本次共等待：" + timeDiffer + "秒！");
     }
 
@@ -767,11 +767,11 @@ public class SourceCode extends Output {
      * @param times 执行次数
      */
     public static long time(Closure f, int times) {
-        long start = Time.getTimeStamp();
+        long start = TimeUtil.getTimeStamp();
         for (int i = 0; i < times; i++) {
             f.call();
         }
-        long end = Time.getTimeStamp();
+        long end = TimeUtil.getTimeStamp();
         logger.info("执行{}次耗时:{}", times, formatLong(end - start) + " ms");
         return end - start;
     }
@@ -783,9 +783,9 @@ public class SourceCode extends Output {
      * @param name 方法名
      */
     public static long time(Closure f, String name) {
-        long start = Time.getTimeStamp();
+        long start = TimeUtil.getTimeStamp();
         f.call();
-        long end = Time.getTimeStamp();
+        long end = TimeUtil.getTimeStamp();
         logger.info("{}执行耗时:{}", name, formatLong(end - start) + " ms");
         return end - start;
     }

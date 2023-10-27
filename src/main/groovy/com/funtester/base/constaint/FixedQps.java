@@ -2,7 +2,7 @@ package com.funtester.base.constaint;
 
 import com.funtester.base.interfaces.MarkThread;
 import com.funtester.frame.execute.FixedQpsConcurrent;
-import com.funtester.utils.Time;
+import com.funtester.utils.TimeUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -36,7 +36,7 @@ public abstract class FixedQps<F> extends ThreadBase<F> {
     @Override
     public void run() {
         try {
-            long s = Time.getTimeStamp();
+            long s = TimeUtil.getTimeStamp();
             doing();
             count(s);
         } catch (Exception e) {
@@ -47,8 +47,8 @@ public abstract class FixedQps<F> extends ThreadBase<F> {
 
     @Override
     public void count(long s) {
-        if (COUNT) FixedQpsConcurrent.allTimes.add((short) (Time.getTimeStamp() - s));
-        if (INTERCEPT) interceptCosts.add((short) (Time.getTimeStamp() - s));
+        if (COUNT) FixedQpsConcurrent.allTimes.add((short) (TimeUtil.getTimeStamp() - s));
+        if (INTERCEPT) interceptCosts.add((short) (TimeUtil.getTimeStamp() - s));
     }
 
 }

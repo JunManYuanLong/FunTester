@@ -11,7 +11,7 @@ import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.SourceCode;
 import com.funtester.utils.DecodeEncode;
 import com.funtester.utils.Regex;
-import com.funtester.utils.Time;
+import com.funtester.utils.TimeUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.*;
 import org.apache.http.client.config.RequestConfig;
@@ -409,12 +409,12 @@ public class FunHttp extends SourceCode {
     public static JSONObject getHttpResponse(HttpRequestBase request) {
         JSONObject res = new JSONObject();
         long start = 0l;
-        if (LOG_KEY) start = Time.getTimeStamp();
+        if (LOG_KEY) start = TimeUtil.getTimeStamp();
         try (CloseableHttpResponse response = ClientManage.httpsClient.execute(request)) {
             res.putAll(getJsonResponse(getContent(response.getEntity()), afterResponse(response)));
             int status = getStatus(response, res);
             if (LOG_KEY)
-                logger.info("请求uri：{} , 耗时：{} ms , HTTPcode: {}", request.getURI(), Time.getTimeStamp() - start, status, res);
+                logger.info("请求uri：{} , 耗时：{} ms , HTTPcode: {}", request.getURI(), TimeUtil.getTimeStamp() - start, status, res);
         } catch (Exception e) {
             res.put(EXCEPTION, e.getMessage());
             FunRequest funRequest = FunRequest.initFromRequest(request);

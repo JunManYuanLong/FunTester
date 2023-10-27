@@ -2,7 +2,7 @@ package com.funtester.base.constaint;
 
 import com.funtester.frame.execute.HoldConcurrent;
 import com.funtester.httpclient.GCThread;
-import com.funtester.utils.Time;
+import com.funtester.utils.TimeUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -32,22 +32,22 @@ public abstract class HoldThread<F> extends ThreadBase<F> {
     public void run() {
         try {
             before();
-            long ss = Time.getTimeStamp();
+            long ss = TimeUtil.getTimeStamp();
             while (true) {
                 try {
                     executeNum++;
-                    long s = Time.getTimeStamp();
+                    long s = TimeUtil.getTimeStamp();
                     doing();
                     count(s);
                 } catch (Exception e) {
                     logger.warn("执行任务失败！", e);
                     errorNum++;
                 } finally {
-                    if ((isTimesMode ? executeNum >= limit : (Time.getTimeStamp() - ss) >= limit) || ThreadBase.needAbort() || status())
+                    if ((isTimesMode ? executeNum >= limit : (TimeUtil.getTimeStamp() - ss) >= limit) || ThreadBase.needAbort() || status())
                         break;
                 }
             }
-            long ee = Time.getTimeStamp();
+            long ee = TimeUtil.getTimeStamp();
             if ((ee - ss) / 1000 > RUNUP_TIME + 3)
                 logger.info("线程:{},执行次数：{}，错误次数: {},总耗时：{} s", threadName, executeNum, errorNum, (ee - ss) / 1000.0);
             HoldConcurrent.allTimes.addAll(costs);

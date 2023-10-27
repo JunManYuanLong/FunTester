@@ -74,7 +74,7 @@ class TimeWatch implements Serializable {
      */
     def reset() {
         startNano = SourceCode.getNanoMark()
-        startMillis = Time.getTimeStamp()
+        startMillis = TimeUtil.getTimeStamp()
         this
     }
 
@@ -102,7 +102,7 @@ class TimeWatch implements Serializable {
      */
     def getMarkTime() {
         if (marks.containsKey(name)) {
-            def diff = Time.getTimeStamp() - marks.get(name).getStartMillis()
+            def diff = TimeUtil.getTimeStamp() - marks.get(name).getStartMillis()
             logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ms", name, name, formatLong(diff))
         } else {
             logger.warn("没有默认标记！")
@@ -130,7 +130,7 @@ class TimeWatch implements Serializable {
      */
     def getMarkTime(String name) {
         if (marks.containsKey(name)) {
-            def diff = Time.getTimeStamp() - marks.get(name).getStartMillis()
+            def diff = TimeUtil.getTimeStamp() - marks.get(name).getStartMillis()
             logger.info(LINE + "观察者：{}的标记：{}记录时间：{} ms", name, name, formatLong(diff))
         } else {
             logger.warn("没有{}标记！", name)
@@ -157,7 +157,7 @@ class TimeWatch implements Serializable {
      * @return
      */
     def getTime() {
-        def diff = Time.getTimeStamp() - startMillis
+        def diff = TimeUtil.getTimeStamp() - startMillis
         logger.info(LINE + "观察者：{}，记录时间：{} ms", getName(), formatLong(diff))
         diff
     }
@@ -268,7 +268,7 @@ class TimeWatch implements Serializable {
 
         def reset() {
             this.startNano = getNanoMark()
-            this.startMillis = Time.getTimeStamp()
+            this.startMillis = TimeUtil.getTimeStamp()
         }
     }
 }

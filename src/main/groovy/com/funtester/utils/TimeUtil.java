@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * 时间相关功能工具类
  */
-public class Time {
+public class TimeUtil {
 
     /**
      * 默认的日志显示格式
@@ -272,7 +272,7 @@ public class Time {
      * @return
      */
     public static long getZeroTimestamp() {
-        Calendar cal = Time.calendarInit();
+        Calendar cal = TimeUtil.calendarInit();
         cal.set(Calendar.HOUR_OF_DAY, 0);
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0);

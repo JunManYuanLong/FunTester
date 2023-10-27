@@ -4,7 +4,7 @@ import com.funtester.frame.SourceCode;
 import com.funtester.fungrpc.HelloRequest;
 import com.funtester.fungrpc.HelloResponse;
 import com.funtester.fungrpc.HelloServiceGrpc;
-import com.funtester.utils.Time;
+import com.funtester.utils.TimeUtil;
 import io.grpc.stub.StreamObserver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,7 +16,7 @@ public class HelloServiceImpl extends HelloServiceGrpc.HelloServiceImplBase {
     @Override
     public void executeHi(HelloRequest request, StreamObserver<HelloResponse> responseObserver) {
         HelloResponse response = HelloResponse.newBuilder()
-                .setMsg("你好 " + request.getName()+ Time.getDate())
+                .setMsg("你好 " + request.getName()+ TimeUtil.getDate())
                 .build();
         SourceCode.sleep(1.0);
         logger.info("用户{}来了",request.getName());

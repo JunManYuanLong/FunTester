@@ -2,7 +2,7 @@ package com.funtester.frame.execute;
 
 import com.funtester.config.Constant;
 import com.funtester.utils.StringUtil;
-import com.funtester.utils.Time;
+import com.funtester.utils.TimeUtil;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -159,7 +159,7 @@ public class StatisticsUtil extends Constant {
      * @return
      */
     public static String getFileName(String desc) {
-        return desc + Time.markDate();
+        return desc + TimeUtil.markDate();
     }
 
     /**

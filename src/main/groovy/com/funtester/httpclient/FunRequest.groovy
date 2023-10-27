@@ -9,7 +9,7 @@ import com.funtester.config.HttpClientConstant
 import com.funtester.config.RequestType
 import com.funtester.frame.Save
 import com.funtester.frame.SourceCode
-import com.funtester.utils.Time
+import com.funtester.utils.TimeUtil
 import org.apache.commons.lang3.StringUtils
 import org.apache.http.Header
 import org.apache.http.HttpEntity
@@ -506,7 +506,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
     static void save(HttpRequestBase base, JSONObject response) {
         FunRequest request = initFromRequest(base)
         request.setResponse(response)
-        Save.info("/request/" + Time.getDate().substring(8) + SPACE_1 + request.getUri().replace(OR, CONNECTOR).replaceAll("https*:_+", EMPTY), request.toString())
+        Save.info("/request/" + TimeUtil.getDate().substring(8) + SPACE_1 + request.getUri().replace(OR, CONNECTOR).replaceAll("https*:_+", EMPTY), request.toString())
     }
 
 

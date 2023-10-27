@@ -9,7 +9,7 @@ import com.funtester.frame.SourceCode;
 import com.funtester.httpclient.GCThread;
 import com.funtester.utils.CountUtil;
 import com.funtester.utils.RWUtil;
-import com.funtester.utils.Time;
+import com.funtester.utils.TimeUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -153,12 +153,12 @@ public class FixedQpsConcurrent extends SourceCode {
         logger.info("=========预热完成,开始测试!=========");
         ThreadBase.progress = new Progress(threads, StatisticsUtil.getTrueName(desc), executeTimes);
         new Thread(ThreadBase.progress, "progress").start();
-        startTime = Time.getTimeStamp();
+        startTime = TimeUtil.getTimeStamp();
         CountDownLatch countDownLatch = new CountDownLatch(executeThread);
         for (int i = 0; i < executeThread; i++) {
             new FunTester(countDownLatch).start();
         }
-        endTime = Time.getTimeStamp();
+        endTime = TimeUtil.getTimeStamp();
         try {
             countDownLatch.await();
             ThreadBase.progress.stop();
@@ -168,7 +168,7 @@ public class FixedQpsConcurrent extends SourceCode {
         } catch (InterruptedException e) {
             logger.error("线程池等待任务结束失败!", e);
         }
-        logger.info("总计执行 {} ，共用时：{} s,执行总数:{},错误数:{}!", baseThread.isTimesMode ? baseThread.limit + "次任务" : "秒", Time.getTimeDiffer(startTime, endTime), formatLong(executeTimes), errorTimes);
+        logger.info("总计执行 {} ，共用时：{} s,执行总数:{},错误数:{}!", baseThread.isTimesMode ? baseThread.limit + "次任务" : "秒", TimeUtil.getTimeDiffer(startTime, endTime), formatLong(executeTimes), errorTimes);
         return over();
     }
 
@@ -196,7 +196,7 @@ public class FixedQpsConcurrent extends SourceCode {
                     try {
                         executor.execute(threads.get(limit-- % queueLength).clone());
                         executeTimes.increment();
-                        if (needAbord || (isTimesMode ? limit < 1 : Time.getTimeStamp() - startTime > limit)) break;
+                        if (needAbord || (isTimesMode ? limit < 1 : TimeUtil.getTimeStamp() - startTime > limit)) break;
                         SourceCode.sleep(nanosec);
                     } catch (RejectedExecutionException e) {
                         logger.warn("线程池已满,任务被丢弃", e.getCause());
@@ -238,7 +238,7 @@ public class FixedQpsConcurrent extends SourceCode {
         String statistics = StatisticsUtil.statistics(data, desc, name);
         double qps = executeNum * 1000.0 / (end - start);
         int qps2 = baseThread.qps;
-        return new PerformanceResultBean(desc, Time.getTimeByTimestamp(start), Time.getTimeByTimestamp(end), name, size, sum / size, qps, qps2, getPercent(executeNum, errorNum), executeNum, statistics, CountUtil.index(data).toString());
+        return new PerformanceResultBean(desc, TimeUtil.getTimeByTimestamp(start), TimeUtil.getTimeByTimestamp(end), name, size, sum / size, qps, qps2, getPercent(executeNum, errorNum), executeNum, statistics, CountUtil.index(data).toString());
     }
 
 

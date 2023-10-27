@@ -5,7 +5,7 @@ import com.funtester.frame.SourceCode;
 import com.funtester.frame.execute.Progress;
 import com.funtester.httpclient.FunHttp;
 import com.funtester.utils.CountUtil;
-import com.funtester.utils.Time;
+import com.funtester.utils.TimeUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -149,8 +149,8 @@ public abstract class ThreadBase<F> extends SourceCode implements Runnable, Seri
      * @param s 开始时间
      */
     public void count(long s) {
-        if (COUNT && executeNum > 100) costs.add((short) (Time.getTimeStamp() - s));
-        if (INTERCEPT) interceptCosts.add((short) (Time.getTimeStamp() - s));
+        if (COUNT && executeNum > 100) costs.add((short) (TimeUtil.getTimeStamp() - s));
+        if (INTERCEPT) interceptCosts.add((short) (TimeUtil.getTimeStamp() - s));
     }
 
 
