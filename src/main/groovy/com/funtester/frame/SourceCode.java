@@ -689,8 +689,23 @@ public class SourceCode extends Output {
                 f.call();
             } finally {
                 if (phaser != null) {
-                    logger.info("异步任务完成 {}", phaser.getArrivedParties());
                     phaser.arrive();
+                    logger.info("异步任务完成 {}", phaser.getArrivedParties());
+                }
+            }
+        });
+    }
+
+
+    public static void fun(Closure f, Phaser phaser, boolean log) {
+        if (phaser != null) phaser.register();
+        ThreadPoolUtil.executeSync(() -> {
+            try {
+                f.call();
+            } finally {
+                if (phaser != null) {
+                    phaser.arrive();
+                    if (log) logger.info("异步任务完成 {}", phaser.getArrivedParties());
                 }
             }
         });
