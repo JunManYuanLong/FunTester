@@ -14,12 +14,22 @@ import java.util.Date;
 public class TimeUtil {
 
     /**
-     * 默认的日志显示格式
+     * 默认的日期显示格式
      */
     private static ThreadLocal<SimpleDateFormat> DEFAULT_FORMAT = new ThreadLocal() {
         @Override
         protected SimpleDateFormat initialValue() {
             return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        }
+    };
+
+    /**
+     * ISO_8601显示格式
+     */
+    public static ThreadLocal<SimpleDateFormat> ISO_8601_FORMAT = new ThreadLocal() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         }
     };
 
@@ -30,6 +40,16 @@ public class TimeUtil {
         @Override
         protected SimpleDateFormat initialValue() {
             return new SimpleDateFormat("yyyyMMddHHmmss");
+        }
+    };
+
+    /**
+     * 纯数字的日期格式
+     */
+    private static ThreadLocal<SimpleDateFormat> NUM_MILL_FORMAT = new ThreadLocal() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyyMMddHHmmssSSS");
         }
     };
 
@@ -251,6 +271,15 @@ public class TimeUtil {
      */
     public static String getDate() {
         return getNow(DEFAULT_FORMAT.get());
+    }
+
+    /**
+     * 获取当前时间,返回数字格式的毫秒时间
+     *
+     * @return
+     */
+    public static String getDateByMills() {
+        return getNow(NUM_MILL_FORMAT.get());
     }
 
     /**

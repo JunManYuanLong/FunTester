@@ -49,7 +49,6 @@ import java.net.UnknownHostException;
 import java.nio.charset.CodingErrorAction;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
-import java.security.cert.CertificateException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -202,12 +201,12 @@ public class ClientManage {
         X509TrustManager trustManager = new X509TrustManager() {
             @Override
             public void checkClientTrusted(java.security.cert.X509Certificate[] paramArrayOfX509Certificate,
-                                           String paramString) throws CertificateException {
+                                           String paramString) {
             }
 
             @Override
             public void checkServerTrusted(java.security.cert.X509Certificate[] paramArrayOfX509Certificate,
-                                           String paramString) throws CertificateException {
+                                           String paramString) {
             }
 
             @Override

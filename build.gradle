@@ -80,8 +80,8 @@ dependencies {
     compile files('/Users/oker/IdeaProjects/fun_grpc/target/fun_grpc-1.0-SNAPSHOT.jar')
 //    只有compilek可以被打包到jar包中
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
-    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.5'
-    compile group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.5'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+    compile group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.13'
     compile group: 'org.apache.httpcomponents', name: 'httpasyncclient', version: '4.1.4'
     //    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.8.0'
     //    compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
