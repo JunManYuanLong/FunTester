@@ -2,24 +2,15 @@ package com.funtester.socket.netty
 
 import groovy.util.logging.Log4j2
 import io.netty.channel.*
-import io.netty.channel.group.ChannelGroup
-import io.netty.channel.group.DefaultChannelGroup
 import io.netty.handler.codec.http.FullHttpResponse
 import io.netty.handler.codec.http.websocketx.*
 import io.netty.handler.timeout.IdleState
 import io.netty.handler.timeout.IdleStateEvent
-import io.netty.util.concurrent.GlobalEventExecutor
-
 /**
  * WebSocket协议类型的模拟客户端IO处理器类
  */
 @Log4j2
 class WebSocketIoHandler extends SimpleChannelInboundHandler<Object> {
-
-    /**
-     * 用于记录和管理所有客户端的channel
-     */
-    private ChannelGroup clients = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE)
 
     private final WebSocketClientHandshaker handShaker
 
@@ -89,7 +80,6 @@ class WebSocketIoHandler extends SimpleChannelInboundHandler<Object> {
             handshakeFuture.setFailure(cause)
         }
         ctx.close()
-        super.exceptionCaught(ctx, cause)
     }
 
     @Override

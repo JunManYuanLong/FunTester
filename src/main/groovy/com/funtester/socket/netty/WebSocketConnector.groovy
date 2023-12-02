@@ -35,7 +35,6 @@ class WebSocketConnector {
      */
     static ChannelGroup clients = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE)
 
-    WebSocketClientHandshaker handShaker
 
     ChannelPromise handshakeFuture
 
