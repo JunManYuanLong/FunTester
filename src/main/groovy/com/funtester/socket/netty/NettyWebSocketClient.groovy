@@ -17,7 +17,7 @@ import io.netty.handler.stream.ChunkedWriteHandler
 import io.netty.util.concurrent.GlobalEventExecutor
 
 @Log4j2
-class WebSocketConnector {
+class NettyWebSocketClient {
 
     static Bootstrap bootstrap = new Bootstrap()
 
@@ -27,7 +27,10 @@ class WebSocketConnector {
     static EventLoopGroup group = new NioEventLoopGroup(ThreadPoolUtil.getFactory("N"))
 
     static {
-        bootstrap.group(group).channel(NioSocketChannel.class)
+        bootstrap.group(group)
+                .channel(NioSocketChannel.class)
+                .option(ChannelOption.TCP_NODELAY, true)
+                .option(ChannelOption.SO_KEEPALIVE, true)
     }
 
     /**
@@ -38,11 +41,7 @@ class WebSocketConnector {
 
     ChannelPromise handshakeFuture
 
-    String host
-
-    int port
-
-    String path
+    URI uri
 
     /**
      * 网络通道
@@ -58,27 +57,21 @@ class WebSocketConnector {
      * @param serverSocketPort
      * @param group
      */
-    WebSocketConnector(String host, int port, String path, Closure closure = null) {
-        this.host = host
-        this.port = port
-        this.path = path
-        String URL = this.host + ":" + this.port + path
-        URI uri = new URI(URL)
+    NettyWebSocketClient(String url, Closure closure = null) {
+        this.uri = new URI(URL)
         handler = new WebSocketIoHandler(WebSocketClientHandshakerFactory.newHandshaker(uri, WebSocketVersion.V13, null, true, new DefaultHttpHeaders()))
         if (closure != null) handler.closure = closure
-        bootstrap.option(ChannelOption.TCP_NODELAY, true)
-                .option(ChannelOption.SO_KEEPALIVE, true)
-                .handler(new ChannelInitializer<SocketChannel>() {
+        bootstrap.handler(new ChannelInitializer<SocketChannel>() {
 
-                    @Override
-                    protected void initChannel(SocketChannel ch) throws Exception {
-                        ChannelPipeline pipeline = ch.pipeline()
-                        pipeline.addLast(new HttpClientCodec())
-                        pipeline.addLast(new ChunkedWriteHandler())
-                        pipeline.addLast(new HttpObjectAggregator(1024 * 1024))
-                        pipeline.addLast(handler)
-                    }
-                })
+            @Override
+            protected void initChannel(SocketChannel ch) throws Exception {
+                ChannelPipeline pipeline = ch.pipeline()
+                pipeline.addLast(new HttpClientCodec())
+                pipeline.addLast(new ChunkedWriteHandler())
+                pipeline.addLast(new HttpObjectAggregator(1024 * 1024))
+                pipeline.addLast(handler)
+            }
+        })
     }
 
 
@@ -88,7 +81,7 @@ class WebSocketConnector {
     void connect() {
         try {
             try {
-                ChannelFuture future = bootstrap.connect(this.host - "ws://" - "wss://", this.port).sync()
+                ChannelFuture future = bootstrap.connect(uri.getHost(), uri.getPort()).sync()
                 this.channel = future.channel()
                 clients.add(channel)
             } catch (e) {
