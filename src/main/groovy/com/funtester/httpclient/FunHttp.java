@@ -10,21 +10,22 @@ import com.funtester.config.Constant;
 import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.SourceCode;
 import com.funtester.utils.DecodeEncode;
-import com.funtester.utils.Regex;
 import com.funtester.utils.TimeUtil;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.*;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.*;
-import org.apache.http.concurrent.FutureCallback;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.apache.http.entity.mime.content.StringBody;
-import org.apache.http.message.BasicHeader;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
+import org.apache.hc.client5.http.async.methods.SimpleHttpRequest;
+import org.apache.hc.client5.http.async.methods.SimpleHttpResponse;
+import org.apache.hc.client5.http.classic.methods.*;
+import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
+import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
+import org.apache.hc.client5.http.entity.mime.StringBody;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.core5.concurrent.FutureCallback;
+import org.apache.hc.core5.http.*;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.http.io.entity.StringEntity;
+import org.apache.hc.core5.http.message.BasicClassicHttpRequest;
+import org.apache.hc.core5.http.message.BasicHeader;
+import org.apache.hc.core5.http.message.BasicNameValuePair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -59,7 +60,8 @@ public class FunHttp extends SourceCode {
     public static final FutureCallback<HttpResponse> logCallback = new FutureCallback<HttpResponse>() {
         @Override
         public void completed(HttpResponse httpResponse) {
-            HttpEntity entity = httpResponse.getEntity();
+            ClassicHttpResponse response = (ClassicHttpResponse) httpResponse;
+            HttpEntity entity = response.getEntity();
             String content = getContent(entity);
             logger.info("响应结果:{}", content);
         }
@@ -96,12 +98,12 @@ public class FunHttp extends SourceCode {
      * @param params
      * @return
      */
-    public static HttpGetByBody getHttpGetWithBody(String url, JSONObject params) {
-        HttpGetByBody httpGetByBody = new HttpGetByBody(url);
-        if (params == null || params.isEmpty()) return httpGetByBody;
-        httpGetByBody.setEntity(new StringEntity(params.toString(), DEFAULT_CHARSET.toString()));
-        httpGetByBody.addHeader(HttpClientConstant.ContentType_JSON);
-        return httpGetByBody;
+    public static HttpGet getHttpGetWithBody(String url, JSONObject params) {
+        HttpGet httpGe = new HttpGet(url);
+        if (params == null || params.isEmpty()) return httpGe;
+        httpGe.setEntity(new StringEntity(params.toString(), DEFAULT_CHARSET));
+        httpGe.addHeader(HttpClientConstant.ContentType_JSON);
+        return httpGe;
     }
 
     /**
@@ -154,7 +156,7 @@ public class FunHttp extends SourceCode {
     public static HttpPost getHttpPost(String url, String params) {
         HttpPost httpPost = getHttpPost(url);
         if (StringUtils.isNotBlank(params))
-            httpPost.setEntity(new StringEntity(params, DEFAULT_CHARSET.toString()));
+            httpPost.setEntity(new StringEntity(params, DEFAULT_CHARSET));
         httpPost.addHeader(HttpClientConstant.ContentType_JSON);
         return httpPost;
     }
@@ -173,7 +175,7 @@ public class FunHttp extends SourceCode {
             FailException.fail("file is not exists or file is directory");
         HttpPost httpPost = getHttpPost(url);
         if (params != null && !params.isEmpty()) setMultipartEntityEntity(httpPost, params, file);
-//        httpPost.addHeader(HttpClientConstant.ContentType_FORM);//会自动处理
+        httpPost.addHeader(HttpClientConstant.ContentType_FORM);//会自动处理
         return httpPost;
     }
 
@@ -187,7 +189,7 @@ public class FunHttp extends SourceCode {
     public static HttpPut getHttpPut(String url, String params) {
         HttpPut httpPut = getHttpPut(url);
         if (StringUtils.isNotBlank(params))
-            httpPut.setEntity(new StringEntity(params, DEFAULT_CHARSET.toString()));
+            httpPut.setEntity(new StringEntity(params, DEFAULT_CHARSET));
         httpPut.addHeader(HttpClientConstant.ContentType_JSON);
         return httpPut;
     }
@@ -228,17 +230,17 @@ public class FunHttp extends SourceCode {
     }
 
     /**
-     * 获取{@link HttpDeleteByBody}对象,delete请求携带body参数
+     * 获取{@link HttpDelete}对象,delete请求携带body参数
      *
      * @param url
      * @param params
      * @return
      */
-    public static HttpDeleteByBody getHttpDelete(String url, JSONObject params) {
-        HttpDeleteByBody httpDeleteWithBody = new HttpDeleteByBody(url);
-        httpDeleteWithBody.setEntity(new StringEntity(params.toString(), DEFAULT_CHARSET.toString()));
-        httpDeleteWithBody.addHeader(HttpClientConstant.ContentType_JSON);
-        return httpDeleteWithBody;
+    public static HttpDelete getHttpDelete(String url, JSONObject params) {
+        HttpDelete httpDelete = getHttpDelete(url);
+        httpDelete.setEntity(new StringEntity(params.toString(), DEFAULT_CHARSET));
+        httpDelete.addHeader(HttpClientConstant.ContentType_JSON);
+        return httpDelete;
     }
 
 
@@ -262,7 +264,7 @@ public class FunHttp extends SourceCode {
     public static HttpPatch getHttpPatch(String url, JSONObject params) {
         HttpPatch httpPatch = getHttpPatch(url);
         if (params != null && !params.isEmpty())
-            httpPatch.setEntity(new StringEntity(params.toString(), DEFAULT_CHARSET.toString()));
+            httpPatch.setEntity(new StringEntity(params.toString(), DEFAULT_CHARSET));
         httpPatch.addHeader(HttpClientConstant.ContentType_JSON);
         return httpPatch;
     }
@@ -274,7 +276,7 @@ public class FunHttp extends SourceCode {
      * @param request
      * @param params  参数
      */
-    private static void setFormHttpEntity(HttpEntityEnclosingRequestBase request, JSONObject params) {
+    private static void setFormHttpEntity(BasicClassicHttpRequest request, JSONObject params) {
         List<NameValuePair> formparams = new ArrayList<NameValuePair>();
         params.keySet().forEach(x -> formparams.add(new BasicNameValuePair(x, params.getString(x))));
         UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, DEFAULT_CHARSET);
@@ -288,7 +290,7 @@ public class FunHttp extends SourceCode {
      * @param params  请求参数
      * @param file    文件
      */
-    private static void setMultipartEntityEntity(HttpEntityEnclosingRequestBase request, JSONObject params, File file) {
+    private static void setMultipartEntityEntity(BasicClassicHttpRequest request, JSONObject params, File file) {
         logger.debug("上传文件名：{}", file.getAbsolutePath());
         String fileName = file.getName();
         InputStream inputStream = null;
@@ -305,7 +307,7 @@ public class FunHttp extends SourceCode {
             if (value.equalsIgnoreCase(HttpClientConstant.FILE_UPLOAD_KEY)) {
                 builder.addBinaryBody(key, inputStream, ContentType.create(HttpClientConstant.CONTENTTYPE_MULTIPART_FORM), fileName);// 设置流参数
             } else {
-                StringBody body = new StringBody(value, ContentType.create(HttpClientConstant.CONTENTTYPE_TEXT, DEFAULT_CHARSET));// 设置普通参数
+                 StringBody body = new StringBody(value, ContentType.create("text/plain", DEFAULT_CHARSET));// 设置普通参数
                 builder.addPart(key, body);
             }
         }
@@ -321,7 +323,7 @@ public class FunHttp extends SourceCode {
      */
     private static JSONObject afterResponse(CloseableHttpResponse response) {
         if (!HEADER_HANDLE) return null;
-        Header[] allHeaders = response.getAllHeaders();
+        Header[] allHeaders = response.getHeaders();
         JSONObject hs = new JSONObject();
         JSONObject cookie = new JSONObject();
         for (int i = 0; i < allHeaders.length; i++) {
@@ -390,7 +392,7 @@ public class FunHttp extends SourceCode {
      * @return
      */
     public static int getStatus(CloseableHttpResponse response, JSONObject res) {
-        int status = response.getStatusLine().getStatusCode();
+        int status = response.getCode();
 //        if (status == HttpStatus.SC_MOVED_TEMPORARILY) {
 //            res.put("location", response.getFirstHeader("Location").getValue());
 //        }
@@ -406,7 +408,7 @@ public class FunHttp extends SourceCode {
      * @param request 请求对象
      * @return 返回json类型的对象
      */
-    public static JSONObject getHttpResponse(HttpRequestBase request) {
+    public static JSONObject getHttpResponse(HttpUriRequestBase request) {
         JSONObject res = new JSONObject();
         long start = 0l;
         if (LOG_KEY) start = TimeUtil.getTimeStamp();
@@ -414,7 +416,7 @@ public class FunHttp extends SourceCode {
             res.putAll(getJsonResponse(getContent(response.getEntity()), afterResponse(response)));
             int status = getStatus(response, res);
             if (LOG_KEY)
-                logger.info("请求uri：{} , 耗时：{} ms , HTTPcode: {}", request.getURI(), TimeUtil.getTimeStamp() - start, status, res);
+                logger.info("请求uri：{} , 耗时：{} ms , HTTPcode: {}", request.getRequestUri(), TimeUtil.getTimeStamp() - start, status, res);
         } catch (Exception e) {
             res.put(EXCEPTION, e.getMessage());
             FunRequest funRequest = FunRequest.initFromRequest(request);
@@ -432,7 +434,7 @@ public class FunHttp extends SourceCode {
      * @return string类型的response
      */
     @Deprecated
-    private static String parseResponeEntityByChar(HttpResponse response) {
+    private static String parseResponeEntityByChar(HttpEntityContainer response) {
         StringBuffer buffer = new StringBuffer();// 创建并实例化stringbuffer，存放响应信息
         try (InputStream input = response.getEntity().getContent(); InputStreamReader reader = new InputStreamReader(input, DEFAULT_CHARSET)) {
             char[] buff = new char[1024];// 创建并实例化字符数组
@@ -454,7 +456,7 @@ public class FunHttp extends SourceCode {
      * @param file
      */
     @Deprecated
-    private static void parseResponeByFile(HttpResponse response, File file) {
+    private static void parseResponeByFile(HttpEntityContainer response, File file) {
         int bytesum = 0;// 这个用来统计需要写入byte数组的长度
         int byteread = 0;// 这个用来接收read()方法的返回值，表示读取内容的长度
         try (InputStream inputStream = response.getEntity().getContent(); FileOutputStream fileOutputStream = new FileOutputStream(file);) {
@@ -517,7 +519,7 @@ public class FunHttp extends SourceCode {
      *
      * @param request
      */
-    public static String executeSimlple(HttpRequestBase request) throws IOException {
+    public static String executeSimlple(HttpUriRequestBase request) throws IOException {
         CloseableHttpResponse response = ClientManage.httpsClient.execute(request);
         return getContent(response.getEntity());
     }
@@ -529,51 +531,51 @@ public class FunHttp extends SourceCode {
      * @param request
      * @throws IOException
      */
-    public static void executeOnly(HttpRequestBase request) throws IOException {
+    public static void executeOnly(HttpUriRequestBase request) throws IOException {
         CloseableHttpResponse response = ClientManage.httpsClient.execute(request);
         EntityUtils.consume(response.getEntity());// 消耗响应实体，并关闭相关资源占用
     }
 
-    /**
-     * 设置代理请求
-     *
-     * @param request
-     * @param adress
-     */
-    public static void setProxy(HttpRequestBase request, String adress) {
-        request.setConfig(getProxyConfig(adress));
-    }
+//    /**
+//     * 设置代理请求
+//     *
+//     * @param request
+//     * @param adress
+//     */
+//    public static void setProxy(HttpUriRequestBase request, String adress) {
+//        request.setConfig(getProxyConfig(adress));
+//    }
 
-    /**
-     * 设置代理请求
-     *
-     * @param request
-     * @param ip
-     * @param port
-     */
-    public static void setProxy(HttpRequestBase request, String ip, int port) {
-        setProxy(request, ip + ":" + port);
-    }
+//    /**
+//     * 设置代理请求
+//     *
+//     * @param request
+//     * @param ip
+//     * @param port
+//     */
+//    public static void setProxy(HttpUriRequestBase request, String ip, int port) {
+//        setProxy(request, ip + ":" + port);
+//    }
 
-    /**
-     * 通过IP和端口获取代理配置对象
-     *
-     * @param adress
-     * @return
-     */
-    public static RequestConfig getProxyConfig(String adress) {
-        if (StringUtils.isBlank(adress) || !Regex.isMatch(adress, Constant.HOST_REGEX))
-            ParamException.fail("adress格式错误:" + adress);
-        String[] split = adress.split(":", 2);
-        return ClientManage.getProxyRequestConfig(split[0], changeStringToInt(split[1]));
-    }
+//    /**
+//     * 通过IP和端口获取代理配置对象
+//     *
+//     * @param adress
+//     * @return
+//     */
+//    public static RequestConfig getProxyConfig(String adress) {
+//        if (StringUtils.isBlank(adress) || !Regex.isMatch(adress, Constant.HOST_REGEX))
+//            ParamException.fail("adress格式错误:" + adress);
+//        String[] split = adress.split(":", 2);
+//        return ClientManage.getProxyRequestConfig(split[0], changeStringToInt(split[1]));
+//    }
 
     /**
      * 异步发送请求
      *
      * @param request
      */
-    public static Future<HttpResponse> executeSync(HttpRequestBase request) {
+    public static Future<SimpleHttpResponse> executeSync(SimpleHttpRequest request) {
         return executeSync(request, null);
     }
 
@@ -585,11 +587,12 @@ public class FunHttp extends SourceCode {
      * @throws ExecutionException
      * @throws InterruptedException
      */
-    public static JSONObject executeSyncWithResponse(HttpRequestBase request) {
-        Future<HttpResponse> execute = executeSync(request, null);
+    public static JSONObject executeSyncWithResponse(SimpleHttpRequest request) {
+        Future<SimpleHttpResponse> execute = executeSync(request, null);
         try {
-            HttpResponse response = execute.get();
-            String content = getContent(response.getEntity());
+            SimpleHttpResponse response = execute.get();
+
+            String content = response.getBodyText();
             return getJsonResponse(content, null);
         } catch (Exception e) {
             logger.error("异步请求获取响应失败!", e);
@@ -602,7 +605,7 @@ public class FunHttp extends SourceCode {
      *
      * @param request
      */
-    public static Future executeSyncWithLog(HttpRequestBase request) {
+    public static Future executeSyncWithLog(SimpleHttpRequest request) {
         return executeSync(request, logCallback);
     }
 
@@ -612,7 +615,7 @@ public class FunHttp extends SourceCode {
      * @param request
      * @param response
      */
-    public static Future executeSyncWithResponse(HttpRequestBase request, JSONObject response) {
+    public static Future executeSyncWithResponse(SimpleHttpRequest request, JSONObject response) {
         return executeSync(request, new FunTester(response));
     }
 
@@ -622,14 +625,14 @@ public class FunHttp extends SourceCode {
      * @param request
      * @param callback
      */
-    public static Future<HttpResponse> executeSync(HttpRequestBase request, FutureCallback callback) {
+    public static Future<SimpleHttpResponse> executeSync(SimpleHttpRequest request, FutureCallback callback) {
         return ClientManage.httpAsyncClient.execute(request, callback);
     }
 
     /**
      * 异步请求,异步解析响应的FutureCallback实现类
      */
-    private static class FunTester implements FutureCallback<HttpResponse> {
+    private static class FunTester implements FutureCallback<SimpleHttpResponse> {
 
         public FunTester(JSONObject response) {
             this.response = response;
@@ -638,9 +641,8 @@ public class FunHttp extends SourceCode {
         JSONObject response;
 
         @Override
-        public void completed(HttpResponse result) {
-            HttpEntity entity = result.getEntity();
-            String content = getContent(entity);
+        public void completed(SimpleHttpResponse result) {
+            String content = result.getBodyText();
             response = JSON.parseObject(content);
         }
 
@@ -683,11 +685,7 @@ public class FunHttp extends SourceCode {
      * @param retrytimes
      */
     public synchronized static void init(int timeout, int accepttime, int retrytimes) {
-        ClientManage.init(timeout, accepttime, retrytimes, null, 0);
-    }
-
-    public synchronized static void init(int timeout, int accepttime, int retrytimes, String ip, int port) {
-        ClientManage.init(timeout, accepttime, retrytimes, ip, port);
+        ClientManage.init(timeout, accepttime, retrytimes);
     }
 
 

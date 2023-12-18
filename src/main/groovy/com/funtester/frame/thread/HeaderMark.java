@@ -5,7 +5,7 @@ import com.funtester.base.exception.ParamException;
 import com.funtester.base.interfaces.MarkRequest;
 import com.funtester.frame.SourceCode;
 import com.funtester.utils.StringUtil;
-import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
 
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -43,7 +43,7 @@ public class HeaderMark extends SourceCode implements MarkRequest, Cloneable, Se
      * @return
      */
     @Override
-    public String mark(HttpRequestBase base) {
+    public String mark(HttpUriRequestBase base) {
         base.removeHeaders(headerName);
         String value = m + num++;
         base.addHeader(headerName, value);

@@ -1,6 +1,6 @@
 package com.funtester.base.exception;
 
-import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
 
 /**
  * 用于处理请求异常
@@ -13,7 +13,7 @@ public class RequestException extends FailException {
         super();
     }
 
-    private RequestException(HttpRequestBase request) {
+    private RequestException(HttpUriRequestBase request) {
         super(request.toString());
     }
 
@@ -21,7 +21,7 @@ public class RequestException extends FailException {
         super(message);
     }
 
-    public static void fail(HttpRequestBase base) {
+    public static void fail(HttpUriRequestBase base) {
         throw new RequestException(base);
     }
 

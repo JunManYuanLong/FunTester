@@ -5,14 +5,14 @@ import com.funtester.base.interfaces.MarkThread;
 import com.funtester.httpclient.FunHttp;
 import com.funtester.httpclient.FunRequest;
 import com.funtester.httpclient.GCThread;
-import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
  * http请求多线程类
  */
-public class RequestThreadTimes extends ThreadLimitTimesCount<HttpRequestBase> {
+public class RequestThreadTimes extends ThreadLimitTimesCount<HttpUriRequestBase> {
 
     private static final long serialVersionUID = 84690314667174004L;
 
@@ -24,7 +24,7 @@ public class RequestThreadTimes extends ThreadLimitTimesCount<HttpRequestBase> {
      * @param request 被执行的请求
      * @param times   每个线程运行的次数
      */
-    public RequestThreadTimes(HttpRequestBase request, int times) {
+    public RequestThreadTimes(HttpUriRequestBase request, int times) {
         super(request, times, null);
     }
 
@@ -35,7 +35,7 @@ public class RequestThreadTimes extends ThreadLimitTimesCount<HttpRequestBase> {
      * @param times
      * @param mark
      */
-    public RequestThreadTimes(HttpRequestBase request, int times, MarkThread mark) {
+    public RequestThreadTimes(HttpUriRequestBase request, int times, MarkThread mark) {
         super(request, times, mark);
     }
 

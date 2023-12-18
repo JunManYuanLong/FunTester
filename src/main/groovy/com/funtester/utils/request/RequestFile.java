@@ -1,11 +1,11 @@
 package com.funtester.utils.request;
 
+import com.alibaba.fastjson.JSONObject;
 import com.funtester.config.Constant;
 import com.funtester.config.RequestType;
 import com.funtester.httpclient.FunHttp;
 import com.funtester.utils.RWUtil;
-import com.alibaba.fastjson.JSONObject;
-import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -77,8 +77,8 @@ public class RequestFile extends FunHttp {
      *
      * @return
      */
-    public HttpRequestBase getRequest() {
-        HttpRequestBase requestBase;
+    public HttpUriRequestBase getRequest() {
+        HttpUriRequestBase requestBase;
         switch (this.requestType) {
             case GET:
                 requestBase = getHttpGet(this.url, this.params);

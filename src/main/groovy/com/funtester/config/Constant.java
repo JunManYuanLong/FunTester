@@ -1,12 +1,12 @@
 package com.funtester.config;
 
 import com.funtester.frame.Output;
-import org.apache.http.Consts;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 /**
@@ -148,7 +148,7 @@ public class Constant {
     /**
      * UTF-8字符编码格式
      */
-    public static final Charset UTF_8 = Consts.UTF_8;
+    public static final Charset UTF_8 = StandardCharsets.UTF_8;
 
     /**
      * gb2312编码格式
