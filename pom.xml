@@ -98,6 +98,12 @@
             <groupId>org.java-websocket</groupId>
             <artifactId>Java-WebSocket</artifactId>
             <version>1.5.1</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.iq80.leveldb</groupId>
@@ -196,7 +202,12 @@
             <version>1.7.36</version>
             <scope>test</scope>
         </dependency>
-
+<!--        <dependency>-->
+<!--            　　<groupId>org.slf4j</groupId>-->
+<!--            　　<artifactId>slf4j-simple</artifactId>-->
+<!--            　　<version>1.7.36</version>-->
+<!--            　　<scope>compile</scope>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
@@ -206,6 +217,12 @@
             <groupId>net.openhft</groupId>
             <artifactId>chronicle-queue</artifactId>
             <version>5.22.24</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
     </dependencies>
