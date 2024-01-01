@@ -285,7 +285,7 @@ class ThreadPoolUtil extends Constant {
      * 执行daemon线程,保障main方法结束后关闭线程池
      * @return
      */
-    static boolean daemon() {
+    static def daemon() {
         def set = DaemonState.getAndSet(true)
         if (set) return
         new Thread(new Runnable() {
