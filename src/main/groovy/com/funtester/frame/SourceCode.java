@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.funtester.base.exception.FailException;
 import com.funtester.base.exception.ParamException;
 import com.funtester.frame.execute.ThreadPoolUtil;
+import com.funtester.frame.execute.VirtualThreadTool;
 import com.funtester.utils.JToG;
 import com.funtester.utils.Regex;
 import com.funtester.utils.TimeUtil;
@@ -165,7 +166,7 @@ public class SourceCode extends Output {
     /**
      * 获取一个简单的JSON对象
      *
-     * @param key  键
+     * @param key   键
      * @param value 值
      * @return
      */
@@ -178,7 +179,7 @@ public class SourceCode extends Output {
     /**
      * 获取text复制拼接的string
      *
-     * @param text 文本
+     * @param text  文本
      * @param times 次数
      * @return
      */
@@ -254,7 +255,7 @@ public class SourceCode extends Output {
     /**
      * 格式化数字格式
      *
-     * @param number 数字
+     * @param number  数字
      * @param pattern 格式
      * @return
      */
@@ -440,7 +441,7 @@ public class SourceCode extends Output {
     /**
      * 随机选择某一个值
      *
-     * @param fs 任意类型
+     * @param fs  任意类型
      * @param <F> 任意类型
      * @return
      */
@@ -452,8 +453,8 @@ public class SourceCode extends Output {
      * 随机选择某一个值
      *
      * @param index
-     * @param fs   任意类型
-     * @param <F> 任意类型
+     * @param fs    任意类型
+     * @param <F>   任意类型
      * @return
      */
     public static <F> F random(AtomicInteger index, F... fs) {
@@ -464,7 +465,7 @@ public class SourceCode extends Output {
      * 随机选择某一个对象
      *
      * @param list 对象集合
-     * @param <F> 任意类型
+     * @param <F>  任意类型
      * @return
      */
     public static <F> F random(List<F> list) {
@@ -476,7 +477,7 @@ public class SourceCode extends Output {
     /**
      * 随机选择某个对象
      *
-     * @param list 对象集合
+     * @param list  对象集合
      * @param index 自增索引
      * @param <F>   任意类型
      * @return
@@ -491,7 +492,7 @@ public class SourceCode extends Output {
      * 消耗CPU多
      *
      * @param count 概率集合
-     * @param <F>  任意类型
+     * @param <F>   任意类型
      * @return
      */
     public static <F> List[] randomCpu(Map<F, Integer> count) {
@@ -522,7 +523,7 @@ public class SourceCode extends Output {
      * 消耗内存多
      *
      * @param count 概率集合
-     * @param <F> 任意类型
+     * @param <F>   任意类型
      * @return
      */
     public static <F> List<F> randomMem(Map<F, Integer> count) {
@@ -575,7 +576,7 @@ public class SourceCode extends Output {
      * 获取一个intsteam
      *
      * @param start 开始
-     * @param end  结束,不包含end
+     * @param end   结束,不包含end
      * @return
      */
     public static IntStream range(int start, int end) {
@@ -605,6 +606,7 @@ public class SourceCode extends Output {
 
     /**
      * 将字符串转成JSON对象
+     *
      * @param o 字符串
      * @return
      */
@@ -615,9 +617,9 @@ public class SourceCode extends Output {
     /**
      * 将字符串转成Java对象
      *
-     * @param o    字符串
+     * @param o     字符串
      * @param clazz 类型
-     * @param <T>  泛型
+     * @param <T>   泛型
      * @return
      */
     public static <T> T parse(String o, Class<T> clazz) {
@@ -626,10 +628,11 @@ public class SourceCode extends Output {
 
     /**
      * 将对象转成Java对象
-     * @param o 对象
+     *
+     * @param o     对象
      * @param clazz 类型
-     * @return
      * @param <T>
+     * @return
      */
     public static <T> T parse(Object o, Class<T> clazz) {
         return JSON.toJavaObject(parse(o), clazz);
@@ -666,10 +669,19 @@ public class SourceCode extends Output {
     }
 
     /**
+     * 使用虚拟线程执行异步任务
+     *
+     * @param f 代码块
+     */
+    public static void fv(Closure f) {
+        VirtualThreadTool.add(f);
+    }
+
+    /**
      * 异步执行,{@link Future}形式
      *
      * @param callable 代码块
-     * @param <T>     返回值类型
+     * @param <T>      返回值类型
      * @return
      */
     public static <T> Future<T> funny(Callable<T> callable) {
@@ -679,7 +691,7 @@ public class SourceCode extends Output {
     /**
      * 异步执行代码块,使用{@link Phaser}进行多线程同步
      *
-     * @param f     代码块
+     * @param f      代码块
      * @param phaser 同步器
      */
     public static void fun(Closure f, Phaser phaser) {
