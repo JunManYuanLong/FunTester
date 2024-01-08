@@ -644,8 +644,14 @@ public class SourceCode extends Output {
      * @param i 线程池大小
      */
     public static void setPoolMax(int i) {
-        ThreadPoolUtil.getFunPool().setCorePoolSize(i);
-        ThreadPoolUtil.getFunPool().setMaximumPoolSize(i);
+        int maximumPoolSize = ThreadPoolUtil.getFunPool().getMaximumPoolSize();
+        if (i > maximumPoolSize) {
+            ThreadPoolUtil.getFunPool().setMaximumPoolSize(i);
+            ThreadPoolUtil.getFunPool().setCorePoolSize(i);
+        } else {
+            ThreadPoolUtil.getFunPool().setCorePoolSize(i);
+            ThreadPoolUtil.getFunPool().setMaximumPoolSize(i);
+        }
     }
 
     /**
