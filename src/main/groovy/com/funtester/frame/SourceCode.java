@@ -727,8 +727,8 @@ public class SourceCode extends Output {
                 f.call();
             } finally {
                 if (phaser != null) {
-                    logger.info("async task {}", phaser.queryTaskNum());
                     phaser.done();
+                    logger.info("async task {}", phaser.queryTaskNum());
                 }
             }
         });
