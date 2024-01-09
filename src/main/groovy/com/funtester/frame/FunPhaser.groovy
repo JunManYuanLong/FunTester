@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger
  * 自定义同步类,避免{@link java.util.concurrent.Phaser}的不足,总数量受限于65535
  * 用于多线程任务同步,任务完成后,调用{@link #done()}方法,任务总数减少,当任务总数为0时,调用{@link #await()}方法,等待所有任务完成
  */
-class FunPhaser extends SourceCode {
+class FunPhaser {
 
     /**
      * 任务总数索引,用于标记任务完成状态
