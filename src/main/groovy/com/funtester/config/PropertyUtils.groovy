@@ -1,6 +1,6 @@
 package com.funtester.config
 
-import com.alibaba.fastjson.JSONObject
+import com.alibaba.fastjson2.JSONObject
 import com.funtester.base.exception.FailException
 import com.funtester.utils.RWUtil
 import com.funtester.frame.SourceCode

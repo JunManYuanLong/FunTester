@@ -1,6 +1,6 @@
 package com.funtester.socket;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.funtester.base.bean.AbstractBean;
 import com.funtester.base.exception.FailException;
 import com.funtester.base.exception.ParamException;

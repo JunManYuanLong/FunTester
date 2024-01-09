@@ -1,6 +1,6 @@
 package com.funtester.funpool
 
-import com.alibaba.fastjson.JSONObject
+import com.alibaba.fastjson2.JSONObject
 import com.funtester.config.PoolConstant
 import org.apache.commons.pool2.BasePooledObjectFactory
 import org.apache.commons.pool2.PooledObject

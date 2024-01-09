@@ -1,6 +1,6 @@
 package com.funtester.base.interfaces;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.funtester.socket.SocketIOFunClient;
 import com.funtester.socket.WebSocketFunClient;
 

@@ -1,6 +1,6 @@
 package com.funtester.base.exception;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.funtester.httpclient.FunRequest;
 import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
 

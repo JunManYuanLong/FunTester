@@ -121,10 +121,16 @@
             <artifactId>groovy</artifactId>
             <version>5.0.0-alpha-3</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba</groupId>-->
+<!--            <artifactId>fastjson</artifactId>-->
+<!--            <version>2.0.34</version>-->
+<!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>2.0.34</version>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+            <version>2.0.45</version>
         </dependency>
         <dependency>
             <groupId>org.fusesource.jansi</groupId>

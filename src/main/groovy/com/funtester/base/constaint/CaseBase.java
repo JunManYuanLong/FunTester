@@ -1,6 +1,6 @@
 package com.funtester.base.constaint;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.funtester.db.mysql.MySqlTest;
 import com.funtester.frame.SourceCode;
 

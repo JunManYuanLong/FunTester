@@ -1,6 +1,6 @@
 package com.funtester.base.bean
 
-import com.alibaba.fastjson.JSONObject
+import com.alibaba.fastjson2.JSONObject
 import com.funtester.base.interfaces.ReturnCode
 import com.funtester.config.Constant
 

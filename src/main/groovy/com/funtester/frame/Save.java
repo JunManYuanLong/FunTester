@@ -2,7 +2,7 @@ package com.funtester.frame;
 
 import com.funtester.base.exception.FailException;
 import com.funtester.utils.RWUtil;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

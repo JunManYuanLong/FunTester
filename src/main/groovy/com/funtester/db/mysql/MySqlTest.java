@@ -1,6 +1,6 @@
 package com.funtester.db.mysql;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.funtester.base.bean.PerformanceResultBean;
 import com.funtester.base.bean.RecordBean;
 import com.funtester.base.bean.RequestInfo;
