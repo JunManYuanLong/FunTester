@@ -714,6 +714,25 @@ public class SourceCode extends Output {
         });
     }
 
+    /**
+     * 使用自定义同步器{@link FunPhaser}进行多线程同步
+     *
+     * @param f      代码块
+     * @param phaser 同步器
+     */
+    public static void fun(Closure f, FunPhaser phaser) {
+        if (phaser != null) phaser.register();
+        ThreadPoolUtil.executeSync(() -> {
+            try {
+                f.call();
+            } finally {
+                if (phaser != null) {
+                    logger.info("async task {}", phaser.queryTaskNum());
+                    phaser.done();
+                }
+            }
+        });
+    }
 
     public static void fun(Closure f, Phaser phaser, boolean log) {
         if (phaser != null) phaser.register();
