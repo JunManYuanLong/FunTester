@@ -671,7 +671,7 @@ public class SourceCode extends Output {
      * @param f
      */
     public static void fun(Closure f) {
-        fun(f, null);
+        fun(f, (Phaser) null);
     }
 
     /**
