@@ -27,9 +27,9 @@ public class Output extends Constant {
 
     private static Logger logger = LogManager.getLogger(Output.class);
 
-    private static final String UP = rgb("~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~");
+    private static final String UP = LINE + rgb("~ + ~ + ~ + ~ + ~ + ~ + JSON ~ + ~ + ~ + ~ + ~ + ~ +") + LINE;
 
-    private static final String DOWN = rgb("~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~~☢~");
+    private static final String DOWN = UP.substring(0, UP.length() - 1);
 
     public static String Pre = "♨ ♨ ";
 
@@ -209,7 +209,7 @@ public class Output extends Constant {
     public static void outputJsonStr(String jsonStr) {
         jsonStr = jsonStr.replaceAll("\\\\/", OR);
         int level = 0;// 用户标记层级
-        StringBuffer jsonResultStr = new StringBuffer(Pre);// 新建stringbuffer对象，用户接收转化好的string字符串
+        StringBuilder jsonResultStr = new StringBuilder(Pre);// 新建stringbuffer对象，用户接收转化好的string字符串
         int length = jsonStr.length();
         for (int i = 0; i < length; i++) {// 循环遍历每一个字符
             char piece = jsonStr.charAt(i);// 获取当前字符
@@ -229,14 +229,14 @@ public class Output extends Constant {
                 case '[':
                     // 如果字符是{或者[，则断行，level加1
                     jsonResultStr.append(piece + (":[{,".contains(last + EMPTY) && ",[{}]\"0123456789le".contains(next + EMPTY) ? LINE : EMPTY));
-                    if (last != '[') level++;//解决jsonarray:[{
+                    level++;//解决jsonarray:[{
                     break;
                 case '}':
                 case ']':
                     // 如果是}或者]，则断行，level减1
 //                    jsonResultStr.append(LINE);
                     jsonResultStr.append(("\"0123456789le]}{[,".contains(last + EMPTY) && "}],".contains(next + EMPTY) ? LINE : EMPTY));
-                    if (next != ']') level--;//解决jsonarray:[{
+                    level--;//解决jsonarray:[{
                     jsonResultStr.append(level == 0 ? "" : StringUtil.getSerialEmoji(level) + J);
                     IntStream.range(0, level - 1).forEach(x -> jsonResultStr.append(Q));//没有采用sourcecode的getmanystring
                     jsonResultStr.append(piece);
@@ -246,7 +246,7 @@ public class Output extends Constant {
                     break;
             }
         }
-        output(LINE + UP + " JSON " + UP + LINE + jsonResultStr.toString().replaceAll(LINE, LINE + Pre) + LINE + DOWN + " JSON " + DOWN);
+        output(UP + jsonResultStr.toString().replaceAll(LINE, LINE + Pre) + DOWN);
     }
 
     public static void show(Map map) {
