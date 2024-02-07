@@ -94,7 +94,7 @@ public class SourceCode extends Output {
      * @param f 判断条件
      */
     public static void waitFor(Supplier<Boolean> f) {
-        waitFor(f, 0.2);
+        waitFor(f, 0.2, 100);
     }
 
     /**
@@ -103,10 +103,24 @@ public class SourceCode extends Output {
      * @param f      判断条件
      * @param second 描述
      */
-    public static void waitFor(Supplier<Boolean> f, double second) {
+    public static void waitFor(Supplier<Boolean> f, double second, int timeout) {
+        int start = getMark();
         while (!f.get()) {
+            if (getMark() - start > timeout) {
+                break;
+            }
             sleep(second);
         }
+    }
+
+    /**
+     * 自定义等待功能,自定义超时时间
+     *
+     * @param f       判断条件
+     * @param timeout 超时时间,单位s
+     */
+    public static void waitFor(Supplier<Boolean> f, int timeout) {
+        waitFor(f, 0.2, timeout);
     }
 
     /**
