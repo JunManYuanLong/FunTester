@@ -50,6 +50,15 @@ class FunPhaser {
     }
 
     /**
+     * 等待所有任务完成,超时时间,单位:秒
+     * @param timeout 超时时间,单位:秒
+     * @return
+     */
+    def await(int timeout) {
+        waitFor({index.get() == 0}, timeout)
+    }
+
+    /**
      * 获取任务完成总数
      * @return
      */
