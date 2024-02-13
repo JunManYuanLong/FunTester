@@ -2,7 +2,7 @@ package com.funtester.es
 
 import com.funtester.frame.SourceCode
 import groovy.util.logging.Log4j2
-import org.apache.http.HttpHost
+import org.apache.hc.core5.http.HttpHost
 import org.elasticsearch.action.delete.DeleteRequest
 import org.elasticsearch.action.get.GetRequest
 import org.elasticsearch.action.get.GetResponse

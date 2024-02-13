@@ -1,13 +1,13 @@
 package com.funtester.utils
 
-import com.alibaba.fastjson.JSONObject
+import com.alibaba.fastjson2.JSONObject
 import com.funtester.config.Constant
 import com.funtester.config.RequestType
 import com.funtester.frame.SourceCode
 import com.funtester.httpclient.FunHttp
 import com.funtester.httpclient.FunRequest
-import org.apache.http.Header
-import org.apache.http.client.methods.HttpRequestBase
+import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase
+import org.apache.hc.core5.http.Header
 
 /**
  * 通过将浏览器中复制的curl文本信息转化成HTTPrequestbase对象工具类
@@ -21,9 +21,9 @@ class CurlUtil {
      * @param path
      * @return
      */
-    static List<HttpRequestBase> getRequests(String path) {
+    static List<HttpUriRequestBase> getRequests(String path) {
         def fileinfo = RWUtil.readByLine(path.contains(Constant.OR) ? path : Constant.LONG_Path + path).stream().map {it.trim()}
-        List<HttpRequestBase> requests = []
+        List<HttpUriRequestBase> requests = []
         def base = new CurlRequestBase()
         fileinfo.each {
             if (it.startsWith("curl")) {
@@ -52,7 +52,7 @@ class CurlUtil {
      * @param base
      * @return
      */
-    static HttpRequestBase getRequest(CurlRequestBase base) {
+    static HttpUriRequestBase getRequest(CurlRequestBase base) {
         if (filterWords.any {
             base.url.contains(it)
         }) return

@@ -4,7 +4,7 @@ import com.funtester.base.constaint.ThreadBase
 import com.funtester.base.exception.ParamException
 import com.funtester.base.interfaces.MarkRequest
 import com.funtester.frame.SourceCode
-import org.apache.http.client.methods.HttpRequestBase
+import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase
 
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -40,7 +40,7 @@ class FixedQpsHeaderMark extends SourceCode implements MarkRequest, Cloneable, S
      * @return
      */
     @Override
-    String mark(HttpRequestBase base) {
+    String mark(HttpUriRequestBase base) {
         base.removeHeaders(headerName);
         String value = 8 + EMPTY + num.getAndIncrement();
         base.addHeader(headerName, value);

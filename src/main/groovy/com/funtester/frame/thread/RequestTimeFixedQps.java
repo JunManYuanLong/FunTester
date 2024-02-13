@@ -4,11 +4,11 @@ import com.funtester.base.constaint.FixedQps;
 import com.funtester.base.interfaces.MarkRequest;
 import com.funtester.httpclient.FunHttp;
 import com.funtester.httpclient.GCThread;
-import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class RequestTimeFixedQps extends FixedQps<HttpRequestBase> {
+public class RequestTimeFixedQps extends FixedQps<HttpUriRequestBase> {
 
     private static final long serialVersionUID = -64206522585960792L;
 
@@ -18,7 +18,7 @@ public class RequestTimeFixedQps extends FixedQps<HttpRequestBase> {
 
     }
 
-    public RequestTimeFixedQps(int qps, int time, MarkRequest markRequest, HttpRequestBase request) {
+    public RequestTimeFixedQps(int qps, int time, MarkRequest markRequest, HttpUriRequestBase request) {
         super(request, time, qps, markRequest, false);
     }
 

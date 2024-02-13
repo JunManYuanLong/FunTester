@@ -1,6 +1,6 @@
 package com.funtester.base.exception;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 
 /**
  * 处理项目中的登录异常

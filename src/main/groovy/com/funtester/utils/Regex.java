@@ -69,6 +69,18 @@ public class Regex extends SourceCode {
     }
 
     /**
+     * 查找并替换文本
+     * @param text
+     * @param regex
+     * @param target
+     * @return
+     */
+    public static String replaceAll(String text, String regex, String target) {
+        regexAll(text, regex).forEach(s -> text.replace(s, target));
+        return text;
+    }
+
+    /**
      * 获取第一个匹配对象
      *
      * @param text

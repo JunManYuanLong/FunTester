@@ -2,38 +2,31 @@ package com.funtester.httpclient;
 
 import com.funtester.base.exception.FailException;
 import com.funtester.config.Constant;
-import com.funtester.config.HttpClientConstant;
 import com.funtester.frame.SourceCode;
-import com.funtester.utils.Regex;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.*;
-import org.apache.http.client.HttpRequestRetryHandler;
-import org.apache.http.client.config.CookieSpecs;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.config.ConnectionConfig;
-import org.apache.http.config.MessageConstraints;
-import org.apache.http.config.Registry;
-import org.apache.http.config.RegistryBuilder;
-import org.apache.http.conn.DnsResolver;
-import org.apache.http.conn.socket.ConnectionSocketFactory;
-import org.apache.http.conn.socket.PlainConnectionSocketFactory;
-import org.apache.http.conn.ssl.NoopHostnameVerifier;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.impl.conn.SystemDefaultDnsResolver;
-import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
-import org.apache.http.impl.nio.client.HttpAsyncClients;
-import org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager;
-import org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor;
-import org.apache.http.impl.nio.reactor.IOReactorConfig;
-import org.apache.http.nio.reactor.ConnectingIOReactor;
-import org.apache.http.nio.reactor.IOReactorException;
-import org.apache.http.protocol.HttpContext;
-import org.apache.http.protocol.HttpCoreContext;
+import org.apache.hc.client5.http.DnsResolver;
+import org.apache.hc.client5.http.HttpRequestRetryStrategy;
+import org.apache.hc.client5.http.SystemDefaultDnsResolver;
+import org.apache.hc.client5.http.classic.methods.HttpUriRequest;
+import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
+import org.apache.hc.client5.http.config.ConnectionConfig;
+import org.apache.hc.client5.http.config.RequestConfig;
+import org.apache.hc.client5.http.impl.async.CloseableHttpAsyncClient;
+import org.apache.hc.client5.http.impl.async.HttpAsyncClients;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
+import org.apache.hc.client5.http.impl.nio.PoolingAsyncClientConnectionManager;
+import org.apache.hc.client5.http.impl.nio.PoolingAsyncClientConnectionManagerBuilder;
+import org.apache.hc.client5.http.protocol.HttpClientContext;
+import org.apache.hc.client5.http.ssl.NoopHostnameVerifier;
+import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
+import org.apache.hc.core5.http.*;
+import org.apache.hc.core5.http.nio.ssl.BasicClientTlsStrategy;
+import org.apache.hc.core5.http.protocol.HttpContext;
+import org.apache.hc.core5.http.protocol.HttpCoreContext;
+import org.apache.hc.core5.util.TimeValue;
+import org.apache.hc.core5.util.Timeout;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -46,13 +39,13 @@ import java.io.InterruptedIOException;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
-import java.nio.charset.CodingErrorAction;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
-import java.security.cert.CertificateException;
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+
+import static com.funtester.config.HttpClientConstant.*;
 
 /**
  * 连接池管理类
@@ -84,7 +77,7 @@ public class ClientManage {
     /**
      * 请求重试管理器
      */
-    private static HttpRequestRetryHandler httpRequestRetryHandler = getHttpRequestRetryHandler();
+    private static HttpRequestRetryStrategy httpRequestRetryHandler = getHttpRequestRetryHandler();
 
     /**
      * 连接池
@@ -94,7 +87,7 @@ public class ClientManage {
     /**
      * 异步连接池
      */
-    private static PoolingNHttpClientConnectionManager NconnManager = getNPool();
+    private static PoolingAsyncClientConnectionManager NconnManager = getNPool();
 
     /**
      * httpclient对象
@@ -106,23 +99,25 @@ public class ClientManage {
      */
     public static CloseableHttpAsyncClient httpAsyncClient = getCloseableHttpAsyncClient();
 
+
+    static ConnectionConfig connectionConfig = ConnectionConfig.custom()// 设置连接配置
+            .setConnectTimeout(Timeout.of(Duration.ofMillis(CONNECT_TIMEOUT))) // 设置连接超时
+            .setSocketTimeout(Timeout.of(Duration.ofMillis(SOCKET_TIMEOUT))) // 设置 socket 超时
+            .build();
+
     /**
      * 获取连接池管理器
      *
      * @return
      */
     private static PoolingHttpClientConnectionManager getPool() {
-        // 采用绕过验证的方式处理https请求
-        // 设置协议http和https对应的处理socket链接工厂的对象
-        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create().register("http", PlainConnectionSocketFactory.INSTANCE).register("https", new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE)).build();
-        PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry, dnsResolver);
-        // 消息约束
-        MessageConstraints messageConstraints = MessageConstraints.custom().setMaxHeaderCount(HttpClientConstant.MAX_HEADER_COUNT).setMaxLineLength(HttpClientConstant.MAX_LINE_LENGTH).build();
-        // 连接设置
-        ConnectionConfig connectionConfig = ConnectionConfig.custom().setMalformedInputAction(CodingErrorAction.IGNORE).setUnmappableInputAction(CodingErrorAction.IGNORE).setCharset(Constant.DEFAULT_CHARSET).setMessageConstraints(messageConstraints).build();
+        PoolingHttpClientConnectionManager connManager = PoolingHttpClientConnectionManagerBuilder.create()
+                .setSSLSocketFactory(new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE))
+                .setDnsResolver(dnsResolver)
+                .build();
         connManager.setDefaultConnectionConfig(connectionConfig);
-        connManager.setMaxTotal(HttpClientConstant.MAX_TOTAL_CONNECTION);
-        connManager.setDefaultMaxPerRoute(HttpClientConstant.MAX_PER_ROUTE_CONNECTION);
+        connManager.setMaxTotal(MAX_TOTAL_CONNECTION);
+        connManager.setDefaultMaxPerRoute(MAX_PER_ROUTE_CONNECTION);
         return connManager;
     }
 
@@ -131,21 +126,15 @@ public class ClientManage {
      *
      * @return
      */
-    private static PoolingNHttpClientConnectionManager getNPool() {
-        IOReactorConfig ioReactorConfig = IOReactorConfig.custom().setIoThreadCount(Runtime.getRuntime().availableProcessors()).setConnectTimeout(HttpClientConstant.CONNECT_REQUEST_TIMEOUT).setSoTimeout(HttpClientConstant.SOCKET_TIMEOUT).build();
-        ConnectingIOReactor ioReactor = null;
-        try {
-            ioReactor = new DefaultConnectingIOReactor(ioReactorConfig);
-        } catch (IOReactorException e) {
-            logger.error("创建连接响应器失败!", e);
-        }
-        MessageConstraints messageConstraints = MessageConstraints.custom().setMaxHeaderCount(HttpClientConstant.MAX_HEADER_COUNT).setMaxLineLength(HttpClientConstant.MAX_LINE_LENGTH).build();
-        PoolingNHttpClientConnectionManager connManager = new PoolingNHttpClientConnectionManager(ioReactor);
-        ConnectionConfig connectionConfig = ConnectionConfig.custom().setMalformedInputAction(CodingErrorAction.IGNORE).setUnmappableInputAction(CodingErrorAction.IGNORE).setCharset(Constant.DEFAULT_CHARSET).setMessageConstraints(messageConstraints).build();
-        connManager.setDefaultConnectionConfig(connectionConfig);
-        connManager.setMaxTotal(HttpClientConstant.MAX_TOTAL_CONNECTION);
-        connManager.setDefaultMaxPerRoute(HttpClientConstant.MAX_PER_ROUTE_CONNECTION);
-        return connManager;
+    private static PoolingAsyncClientConnectionManager getNPool() {
+        PoolingAsyncClientConnectionManager connectionManager = PoolingAsyncClientConnectionManagerBuilder.create()
+                .setTlsStrategy(new BasicClientTlsStrategy(sslContext))
+                .setDnsResolver(dnsResolver)
+                .build();
+        connectionManager.setDefaultMaxPerRoute(MAX_TOTAL_CONNECTION); // 设置每个路由的最大连接数
+        connectionManager.setMaxTotal(MAX_TOTAL_CONNECTION); // 设置最大总连接数
+        connectionManager.setDefaultConnectionConfig(connectionConfig);// 设置默认连接配置
+        return connectionManager;
     }
 
     /**
@@ -189,12 +178,12 @@ public class ClientManage {
     /**
      * 获取SSL套接字对象 重点重点：设置tls协议的版本
      *
-     * @return
+     * @return SSLContext
      */
     private static SSLContext createIgnoreVerifySSL() {
         SSLContext sslContext = null;// 创建套接字对象
         try {
-            sslContext = SSLContext.getInstance(HttpClientConstant.SSL_VERSION);// 指定TLS版本
+            sslContext = SSLContext.getInstance(SSL_VERSION);// 指定TLS版本
         } catch (NoSuchAlgorithmException e) {
             FailException.fail("创建套接字失败！" + e.getMessage());
         }
@@ -202,12 +191,12 @@ public class ClientManage {
         X509TrustManager trustManager = new X509TrustManager() {
             @Override
             public void checkClientTrusted(java.security.cert.X509Certificate[] paramArrayOfX509Certificate,
-                                           String paramString) throws CertificateException {
+                                           String paramString) {
             }
 
             @Override
             public void checkServerTrusted(java.security.cert.X509Certificate[] paramArrayOfX509Certificate,
-                                           String paramString) throws CertificateException {
+                                           String paramString) {
             }
 
             @Override
@@ -226,30 +215,42 @@ public class ClientManage {
     /**
      * 获取重试控制器
      *
-     * @return
+     * @return HttpRequestRetryStrategy
      */
-    private static HttpRequestRetryHandler getHttpRequestRetryHandler() {
-        return new HttpRequestRetryHandler() {
-            public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
-                boolean log = log(exception, executionCount, context);
-                if (log) logger.warn("请求发生重试! 次数: {}", executionCount);
+    private static HttpRequestRetryStrategy getHttpRequestRetryHandler() {
+        return new HttpRequestRetryStrategy() {
+            @Override
+            public boolean retryRequest(HttpRequest httpRequest, IOException e, int i, HttpContext httpContext) {
+                boolean log = log(e, i, httpContext);
+                if (log) logger.warn("请求发生重试! 次数: {}", i);
                 return log;
             }
 
+            @Override
+            public boolean retryRequest(HttpResponse httpResponse, int i, HttpContext httpContext) {
+                // 根据响应进行重试
+                return false;
+            }
+
+            @Override
+            public TimeValue getRetryInterval(HttpResponse httpResponse, int i, HttpContext httpContext) {
+                return null;
+            }
+
             /**绕一圈,记录重试信息,避免错误日志影响观感
-             * @param exception
-             * @param executionCount
-             * @param context
+             * @param exception 异常
+             * @param executionCount 重试次数
+             * @param context 上下文
              * @return
              */
             private boolean log(IOException exception, int executionCount, HttpContext context) {
-                if (executionCount + 1 > HttpClientConstant.TRY_TIMES) return false;
+                if (executionCount + 1 > TRY_TIMES) return false;
                 logger.warn("请求发生错误:{}", exception.getMessage());
                 HttpClientContext clientContext = HttpClientContext.adapt(context);
                 final Object request = clientContext.getAttribute(HttpCoreContext.HTTP_REQUEST);
                 if (request instanceof HttpUriRequest) {
-                    HttpUriRequest uriRequest = (HttpUriRequest) request;
-                    logger.warn("请求失败接口URI:{}", uriRequest.getURI().toString());
+                    HttpUriRequest uriRequest = (HttpUriRequestBase) request;
+                    logger.warn("请求失败接口URI:{}", uriRequest.getRequestUri());
                 }
                 if (exception instanceof NoHttpResponseException) {
                     return true;
@@ -265,7 +266,7 @@ public class ClientManage {
                     logger.warn("未记录的请求异常:{}", exception.getClass().getName());
                 }
                 // 如果请求是幂等的，则不重试,HttpEntityEnclosingRequest类以及子类都是非幂等性的
-                if (!(request instanceof HttpEntityEnclosingRequest)) {
+                if (!(request instanceof HttpEntityContainer)) {
                     return false;
                 }
                 return true;
@@ -279,10 +280,14 @@ public class ClientManage {
      * 增加默认的请求控制器，和请求配置，连接控制器，取消了cookiestore，单独解析响应set-cookie和发送请求的header，适配多用户同时在线的情况
      * </p>
      *
-     * @return
+     * @return CloseableHttpClient
      */
     private static CloseableHttpAsyncClient getCloseableHttpAsyncClient() {
-        return HttpAsyncClients.custom().setConnectionManager(NconnManager).setSSLHostnameVerifier(SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER).setSSLContext(sslContext).build();
+        return HttpAsyncClients.custom()
+                .setConnectionManager(NconnManager)
+                .setDefaultRequestConfig(requestConfig)
+                .disableCookieManagement()
+                .build();
     }
 
     /**
@@ -291,10 +296,15 @@ public class ClientManage {
      * 增加默认的请求控制器，和请求配置，连接控制器，取消了cookiestore，单独解析响应set-cookie和发送请求的header，适配多用户同时在线的情况
      * </p>
      *
-     * @return
+     * @return CloseableHttpClient
      */
     private static CloseableHttpClient getCloseableHttpsClients() {
-        return HttpClients.custom().setConnectionManager(connManager).setRetryHandler(httpRequestRetryHandler).setDefaultRequestConfig(requestConfig).build();
+        return HttpClients.custom()
+                .setConnectionManager(connManager)
+                .setRetryStrategy(httpRequestRetryHandler)
+                .setDefaultRequestConfig(requestConfig)
+                .disableCookieManagement() // 取消cookiestore
+                .build();
     }
 
     /**
@@ -308,7 +318,7 @@ public class ClientManage {
      * @return
      */
     private static RequestConfig getRequestConfig() {
-        return RequestConfig.custom().setConnectionRequestTimeout(HttpClientConstant.CONNECT_REQUEST_TIMEOUT).setConnectTimeout(HttpClientConstant.CONNECT_TIMEOUT).setSocketTimeout(HttpClientConstant.SOCKET_TIMEOUT).setCookieSpec(CookieSpecs.IGNORE_COOKIES).setRedirectsEnabled(false).build();
+        return RequestConfig.custom().setConnectionRequestTimeout(Timeout.ofMilliseconds(CONNECT_REQUEST_TIMEOUT)).setCookieSpec("ignoreCookies").setRedirectsEnabled(false).build();
     }
 
     /**
@@ -319,7 +329,10 @@ public class ClientManage {
      * @return
      */
     public static RequestConfig getProxyRequestConfig(String ip, int port) {
-        return RequestConfig.custom().setConnectionRequestTimeout(HttpClientConstant.CONNECT_REQUEST_TIMEOUT).setConnectTimeout(HttpClientConstant.CONNECT_TIMEOUT).setSocketTimeout(HttpClientConstant.SOCKET_TIMEOUT).setCookieSpec(CookieSpecs.IGNORE_COOKIES).setRedirectsEnabled(false).setProxy(new HttpHost(ip, port)).build();
+        return RequestConfig.custom()
+                .setConnectionRequestTimeout(Timeout.ofMilliseconds(CONNECT_TIMEOUT))
+                .setCookieSpec("ignoreCookies").setRedirectsEnabled(false)
+                .setProxy(new HttpHost(ip, port)).build();
     }
 
     /**
@@ -330,9 +343,10 @@ public class ClientManage {
     public static HttpRequestInterceptor getHttpRequestInterceptor() {
         return new HttpRequestInterceptor() {
             @Override
-            public void process(HttpRequest httpRequest, HttpContext httpContext) throws HttpException, IOException {
+            public void process(HttpRequest httpRequest, EntityDetails entityDetails, HttpContext httpContext) throws HttpException, IOException {
                 logger.debug("请求拦截器成功!");
             }
+
         };
     }
 
@@ -345,7 +359,7 @@ public class ClientManage {
     public static HttpResponseInterceptor getHttpResponseInterceptor() {
         return new HttpResponseInterceptor() {
             @Override
-            public void process(HttpResponse httpResponse, HttpContext httpContext) throws HttpException, IOException {
+            public void process(HttpResponse httpResponse, EntityDetails entityDetails, HttpContext httpContext)  {
                 logger.debug("响应拦截器成功!");
             }
         };
@@ -355,16 +369,15 @@ public class ClientManage {
      * 回收资源方法，关闭过期连接，关闭超时连接，用于另起线程回收连接池连接
      */
     public static void recyclingConnection() {
-        connManager.closeExpiredConnections();
-        connManager.closeIdleConnections(HttpClientConstant.IDLE_TIMEOUT, TimeUnit.SECONDS);
+        connManager.closeExpired();
+        connManager.closeIdle(TimeValue.ofSeconds(IDLE_TIMEOUT));
     }
 
     /**
      * 启动异步请求客户端
      */
-    public static synchronized void startAsync() {
-        if (!httpAsyncClient.isRunning())
-            httpAsyncClient.start();
+    public static void startAsync() {
+        httpAsyncClient.start();
     }
 
     /**
@@ -377,16 +390,13 @@ public class ClientManage {
      * @param timeout
      * @param accepttime
      * @param retrytimes
-     * @param ip
-     * @param port
      */
-    public static void init(int timeout, int accepttime, int retrytimes, String ip, int port) {
-        HttpClientConstant.CONNECT_REQUEST_TIMEOUT = timeout * 1000;
-        HttpClientConstant.CONNECT_TIMEOUT = timeout * 1000;
-        HttpClientConstant.SOCKET_TIMEOUT = timeout * 1000;
-        HttpClientConstant.MAX_ACCEPT_TIME = accepttime * 1000;
-        HttpClientConstant.TRY_TIMES = retrytimes < 1 ? Constant.TEST_ERROR_CODE : retrytimes;
-        requestConfig = StringUtils.isNoneBlank(ip) && Regex.isMatch(ip + ":" + port, Constant.HOST_REGEX) ? getProxyRequestConfig(ip, port) : getRequestConfig();
+    public static void init(int timeout, int accepttime, int retrytimes) {
+        CONNECT_REQUEST_TIMEOUT = timeout * 1000;
+        CONNECT_TIMEOUT = timeout * 1000;
+        SOCKET_TIMEOUT = timeout * 1000;
+        MAX_ACCEPT_TIME = accepttime * 1000;
+        TRY_TIMES = retrytimes < 1 ? Constant.TEST_ERROR_CODE : retrytimes;
         httpsClient = getCloseableHttpsClients();
         httpRequestRetryHandler = getHttpRequestRetryHandler();
     }

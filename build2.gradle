@@ -78,10 +78,10 @@ sourceSets {
 }
 dependencies {
     compile files('/Users/oker/IdeaProjects/fun_grpc/target/fun_grpc-1.0-SNAPSHOT.jar')
-//    只有compilek可以被打包到jar包中
+    //    只有compilek可以被打包到jar包中
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
-    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.5'
-    compile group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.5'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+    compile group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.13'
     compile group: 'org.apache.httpcomponents', name: 'httpasyncclient', version: '4.1.4'
     //    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.8.0'
     //    compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
@@ -90,7 +90,7 @@ dependencies {
     //    compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.9.0'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.1'
-//    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.17.1'
+    //    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.17.1'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
     //    compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.0'
     //    compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.0'
@@ -109,18 +109,20 @@ dependencies {
     compile group: 'com.lmax', name: 'disruptor', version: '3.4.2'
 
     //    compile group: 'com.alibaba', name: 'dubbo', version: '2.5.3'
-        compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
-        compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
-        compile group: 'org.java-websocket', name: 'Java-WebSocket', version: '1.5.1'
-        compile group: 'io.socket', name: 'socket.io-client', version: '1.0.0'
+    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0' {
+        exclude group: 'org.ow2.asm', module: 'asm'
+    }
+    compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
+    compile group: 'org.java-websocket', name: 'Java-WebSocket', version: '1.5.1'
+    compile group: 'io.socket', name: 'socket.io-client', version: '1.0.0'
 
     // https://mvnrepository.com/artifact/org.fusesource.jansi/jansi
     compile group: 'org.fusesource.jansi', name: 'jansi', version: '2.4.0'
     compile 'io.grpc:grpc-netty-shaded:1.39.0'
     compile 'io.grpc:grpc-protobuf:1.39.0'
     compile 'io.grpc:grpc-stub:1.39.0'
-//    compile 'org.apache.commons:commons-pool2:2.11.1'
-//    compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
+    //    compile 'org.apache.commons:commons-pool2:2.11.1'
+    //    compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
     // https://mvnrepository.com/artifact/net.openhft/chronicle-queue
     compile group: 'net.openhft', name: 'chronicle-queue', version: '5.22.24'
     compile group: 'io.netty', name: 'netty-all', version: '4.1.85.Final'

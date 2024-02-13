@@ -1,22 +1,22 @@
 package com.funtester.httpclient
 
-import com.alibaba.fastjson.JSON
-import com.alibaba.fastjson.JSONArray
-import com.alibaba.fastjson.JSONObject
+import com.alibaba.fastjson2.JSON
+import com.alibaba.fastjson2.JSONArray
+import com.alibaba.fastjson2.JSONObject
 import com.funtester.base.bean.RequestInfo
 import com.funtester.base.exception.RequestException
 import com.funtester.config.HttpClientConstant
 import com.funtester.config.RequestType
 import com.funtester.frame.Save
 import com.funtester.frame.SourceCode
-import com.funtester.utils.Time
+import com.funtester.utils.TimeUtil
 import org.apache.commons.lang3.StringUtils
-import org.apache.http.Header
-import org.apache.http.HttpEntity
-import org.apache.http.client.methods.HttpPost
-import org.apache.http.client.methods.HttpPut
-import org.apache.http.client.methods.HttpRequestBase
-import org.apache.http.client.methods.RequestBuilder
+import org.apache.hc.client5.http.classic.methods.HttpPost
+import org.apache.hc.client5.http.classic.methods.HttpPut
+import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase
+import org.apache.hc.client5.http.entity.mime.Header
+import org.apache.hc.core5.http.ContentType
+import org.apache.hc.core5.http.HttpEntity
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
@@ -37,7 +37,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
     /**
      * 请求对象
      */
-    HttpRequestBase request
+    HttpUriRequestBase request
 
     /**
      * host地址
@@ -279,7 +279,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
      *
      * @return
      */
-    HttpRequestBase getRequest() {
+    HttpUriRequestBase getRequest() {
         if (request != null) request
         if (StringUtils.isEmpty(uri))
             uri = host + path
@@ -413,7 +413,7 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
      * @param requestBase
      * @return
      */
-    static String reqToCurl(HttpRequestBase requestBase) {
+    static String reqToCurl(HttpUriRequestBase requestBase) {
         initFromRequest(requestBase).toCurl()
     }
 
@@ -422,12 +422,12 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
      * @param base
      * @return
      */
-    static FunRequest initFromRequest(HttpRequestBase base) {
+    static FunRequest initFromRequest(HttpUriRequestBase base) {
         FunRequest request = null
         String method = base.getMethod()
-        String uri = base.getURI().toString()
+        String uri = base.getRequestUri().toString()
         RequestType requestType = RequestType.getInstance(method)
-        List<Header> headers = Arrays.asList(base.getAllHeaders())
+        List<Header> headers = Arrays.asList(base.getHeaders())
         if (requestType == requestType.GET) {
             request = isGet().setUri(uri).addHeaders(headers)
         } else if (requestType == RequestType.POST) {
@@ -436,12 +436,11 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
             if (entity == null) {
                 request = isPost().setUri(uri).addHeader(headers)
             } else {
-                Header type = entity.getContentType()
-                String value = type == null ? EMPTY : type.getValue()
+                String type = entity.getContentType()
                 String content = FunHttp.getContent(entity)
-                if (value.equalsIgnoreCase(HttpClientConstant.ContentType_TEXT.getValue()) || value.equalsIgnoreCase(HttpClientConstant.ContentType_JSON.getValue())) {
+                if (type.equalsIgnoreCase(ContentType.TEXT_PLAIN.getMimeType()) || type.equalsIgnoreCase(ContentType.APPLICATION_JSON.getMimeType())) {
                     request = isPost().setUri(uri).addHeaders(headers).addJson(JSONObject.parseObject(content))
-                } else if (value.equalsIgnoreCase(HttpClientConstant.ContentType_FORM.getValue())) {
+                } else if (type.equalsIgnoreCase(ContentType.MULTIPART_FORM_DATA.getMimeType())) {
                     request = isPost().setUri(uri).addHeaders(headers).addParams(getJson(content.split("&")))
                 }
             }
@@ -485,16 +484,16 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
         request
     }
 
-    static HttpRequestBase doCopy(HttpRequestBase base) {
-        (HttpRequestBase) RequestBuilder.copy(base).build()
-    }
+//    static HttpUriRequestBase doCopy(HttpUriRequestBase base) {
+//        (HttpUriRequestBase) RequestBuilder.copy(base).build()
+//    }
 
     /**
      * 拷贝HttpRequestBase对象
      * @param base
      * @return
      */
-    static HttpRequestBase cloneRequest(HttpRequestBase base) {
+    static HttpUriRequestBase cloneRequest(HttpUriRequestBase base) {
         initFromRequest(base).getRequest()
     }
 
@@ -503,10 +502,10 @@ class FunRequest extends SourceCode implements Serializable, Cloneable {
      * @param base
      * @param response
      */
-    static void save(HttpRequestBase base, JSONObject response) {
+    static void save(HttpUriRequestBase base, JSONObject response) {
         FunRequest request = initFromRequest(base)
         request.setResponse(response)
-        Save.info("/request/" + Time.getDate().substring(8) + SPACE_1 + request.getUri().replace(OR, CONNECTOR).replaceAll("https*:_+", EMPTY), request.toString())
+        Save.info("/request/" + TimeUtil.getDate().substring(8) + SPACE_1 + request.getUri().replace(OR, CONNECTOR).replaceAll("https*:_+", EMPTY), request.toString())
     }
 
 

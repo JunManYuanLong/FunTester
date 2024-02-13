@@ -25,11 +25,6 @@ public class SqlBase extends SourceCode {
     public static Connection getConnection(String url, String user, String passowrd) {
         logger.debug("连接数据库url：{}，user：{}，password：{}", url, user, passowrd);
         try {
-            Class.forName(SqlConstant.DRIVE);
-        } catch (ClassNotFoundException e) {
-            logger.warn("加载驱动程序失败！", e);
-        }
-        try {
             return DriverManager.getConnection(url, user, passowrd);
         } catch (SQLException e) {
             logger.warn("数据库连接失败！", e);

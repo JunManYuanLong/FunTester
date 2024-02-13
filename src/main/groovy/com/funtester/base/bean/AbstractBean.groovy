@@ -1,14 +1,14 @@
 package com.funtester.base.bean
 
-import com.alibaba.fastjson.JSON
-import com.alibaba.fastjson.JSONObject
+import com.alibaba.fastjson2.JSON
+import com.alibaba.fastjson2.JSONObject
 import com.funtester.config.Constant
 import com.funtester.frame.Save
 import com.funtester.frame.SourceCode
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 /**
- * bean的基类
+ * bean的基类，提供了一些基本的方法
  */
 abstract class AbstractBean extends Constant{
 
@@ -37,14 +37,30 @@ abstract class AbstractBean extends Constant{
         logger.warn(this.getClass().toString() + "：" + this.toString());
     }
 
+    /**
+     * 从json字符串中初始化bean
+     * @param str json字符串
+     * @return
+     */
     def initFrom(String str) {
         JSONObject.parseObject(str, this.getClass())
     }
 
+    /**
+     * 从json字符串中初始化bean
+     * @param str json字符串
+     * @return
+     */
     def initFrom(Object str) {
         initFrom(JSON.toJSONString(str))
     }
 
+    /**
+     * 从bean中初始化bean
+     * @param source 源bean
+     * @param clazz  目标bean的class
+     * @return
+     */
     static <T> T copyFrom(AbstractBean source ,Class<T> clazz) {
         JSON.parseObject(JSON.toJSONString(source), clazz)
     }
@@ -58,6 +74,10 @@ abstract class AbstractBean extends Constant{
         JSONObject.toJSONString(this)
     }
 
+    /**
+     * 克隆bean
+     * @return
+     */
     @Override
     protected Object clone() {
         initFrom(this)

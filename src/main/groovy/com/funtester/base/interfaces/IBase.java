@@ -1,10 +1,10 @@
 package com.funtester.base.interfaces;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.funtester.base.bean.RequestInfo;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
 
 import java.io.File;
 
@@ -68,7 +68,7 @@ public interface IBase {
      * @param request
      * @return
      */
-    JSONObject getResponse(HttpRequestBase request);
+    JSONObject getResponse(HttpUriRequestBase request);
 
     /**
      * 获取响应
@@ -141,7 +141,7 @@ public interface IBase {
     /**
      * 设置header
      */
-    void setHeaders(HttpRequestBase request);
+    void setHeaders(HttpUriRequestBase request);
 
     /**
      * 处理响应结果
@@ -170,14 +170,14 @@ public interface IBase {
      * 记录请求,已经改成了由项目框架自己实现记录最后请求的功能,FunTester不再提供该功能
      * 获取{@link IBase#getRequest()}
      */
-    void recordRequest(HttpRequestBase base);
+    void recordRequest(HttpUriRequestBase base);
 
     /**
      * 获取请求,用于并发
      *
      * @return
      */
-    HttpRequestBase getRequest();
+    HttpUriRequestBase getRequest();
 
     /**
      * 输出JSON格式的响应结果,用于统一屏蔽打印或者不打印响应内容
@@ -192,6 +192,6 @@ public interface IBase {
      *
      * @param request
      */
-    public void printHeader(HttpRequestBase request);
+    public void printHeader(HttpUriRequestBase request);
 
 }

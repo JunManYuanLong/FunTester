@@ -3,11 +3,11 @@ package com.funtester.config
 
 import com.funtester.base.exception.ParamException
 import org.apache.commons.lang3.StringUtils
-import org.apache.http.client.methods.HttpDelete
-import org.apache.http.client.methods.HttpGet
-import org.apache.http.client.methods.HttpPatch
-import org.apache.http.client.methods.HttpPost
-import org.apache.http.client.methods.HttpPut
+import org.apache.hc.client5.http.classic.methods.HttpDelete
+import org.apache.hc.client5.http.classic.methods.HttpGet
+import org.apache.hc.client5.http.classic.methods.HttpPatch
+import org.apache.hc.client5.http.classic.methods.HttpPost
+import org.apache.hc.client5.http.classic.methods.HttpPut
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 

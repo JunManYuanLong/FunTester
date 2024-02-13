@@ -1,6 +1,6 @@
 package com.funtester.db.redis;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.funtester.frame.SourceCode;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

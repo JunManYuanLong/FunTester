@@ -2,25 +2,19 @@ package com.funtester.socket.netty
 
 import groovy.util.logging.Log4j2
 import io.netty.channel.*
-import io.netty.channel.group.ChannelGroup
-import io.netty.channel.group.DefaultChannelGroup
 import io.netty.handler.codec.http.FullHttpResponse
 import io.netty.handler.codec.http.websocketx.*
 import io.netty.handler.timeout.IdleState
 import io.netty.handler.timeout.IdleStateEvent
-import io.netty.util.concurrent.GlobalEventExecutor
 /**
  * WebSocket协议类型的模拟客户端IO处理器类
  */
 @Log4j2
 class WebSocketIoHandler extends SimpleChannelInboundHandler<Object> {
 
-    /**
-     * 用于记录和管理所有客户端的channel
-     */
-    private ChannelGroup clients = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE)
-
     private final WebSocketClientHandshaker handShaker
+
+    Closure closure
 
     private ChannelPromise handshakeFuture
 
@@ -61,7 +55,7 @@ class WebSocketIoHandler extends SimpleChannelInboundHandler<Object> {
                 handShaker.finishHandshake(ch, (FullHttpResponse) msg)
                 handshakeFuture.setSuccess()
             } catch (WebSocketHandshakeException e) {
-                log.warn("WebSocket Client failed to connect",e)
+                log.warn("WebSocket Client failed to connect", e)
                 handshakeFuture.setFailure(e)
             }
             return
@@ -69,8 +63,10 @@ class WebSocketIoHandler extends SimpleChannelInboundHandler<Object> {
 
         WebSocketFrame frame = (WebSocketFrame) msg
         if (frame instanceof TextWebSocketFrame) {
-            TextWebSocketFrame textFrame = (TextWebSocketFrame) frame
-            String s = textFrame.text()
+            if (closure != null) {
+                TextWebSocketFrame textFrame = (TextWebSocketFrame) frame
+                closure(textFrame.text())
+            }
         } else if (frame instanceof CloseWebSocketFrame) {
             log.info("WebSocket Client closing")
             ch.close()
@@ -84,7 +80,6 @@ class WebSocketIoHandler extends SimpleChannelInboundHandler<Object> {
             handshakeFuture.setFailure(cause)
         }
         ctx.close()
-        super.exceptionCaught(ctx, cause)
     }
 
     @Override

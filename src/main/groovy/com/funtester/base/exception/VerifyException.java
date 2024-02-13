@@ -1,8 +1,8 @@
 package com.funtester.base.exception;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.funtester.httpclient.FunRequest;
-import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
 
 /**
  * 用于处理验证过程中的异常
@@ -15,7 +15,7 @@ public class VerifyException extends FailException {
         super();
     }
 
-    private VerifyException(HttpRequestBase request) {
+    private VerifyException(HttpUriRequestBase request) {
         super(request.toString());
     }
 
@@ -32,7 +32,7 @@ public class VerifyException extends FailException {
         fail(message.toJSONString());
     }
 
-    public static void fail(HttpRequestBase request) {
+    public static void fail(HttpUriRequestBase request) {
         fail(FunRequest.initFromRequest(request).toString());
     }
 

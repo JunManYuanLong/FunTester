@@ -1,6 +1,6 @@
 package com.funtester.frame.execute;
 
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import com.funtester.base.exception.FailException;
 import com.funtester.config.Constant;
 import com.funtester.frame.SourceCode;

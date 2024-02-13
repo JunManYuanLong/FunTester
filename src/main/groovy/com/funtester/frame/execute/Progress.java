@@ -4,7 +4,7 @@ import com.funtester.base.constaint.*;
 import com.funtester.base.exception.ParamException;
 import com.funtester.frame.SourceCode;
 import com.funtester.utils.StringUtil;
-import com.funtester.utils.Time;
+import com.funtester.utils.TimeUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -80,7 +80,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
     /**
      * 非精确时间,误差可以忽略
      */
-    private long startTime = Time.getTimeStamp();
+    private long startTime = TimeUtil.getTimeStamp();
 
     /**
      * 描述
@@ -145,7 +145,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
         double pro = 0;
         while (st) {
             sleep(LOOP_INTERVAL);
-            pro = isTimesMode ? base.executeNum == 0 ? excuteAdder.sum() * 1.0 / limit : base.executeNum * 1.0 / limit : (Time.getTimeStamp() - startTime) * 1.0 / limit;
+            pro = isTimesMode ? base.executeNum == 0 ? excuteAdder.sum() * 1.0 / limit : base.executeNum * 1.0 / limit : (TimeUtil.getTimeStamp() - startTime) * 1.0 / limit;
             if (pro > 0.95) break;
             if (st) {
                 runInfo = String.format("%s进度:%s  %s ,当前QPS: %d", taskDesc, getManyString(ONE, (int) (pro * LENGTH)), getPercent(pro * 100), getQPS());
@@ -166,7 +166,7 @@ public class Progress<F extends ThreadBase> extends SourceCode implements Runnab
             qps = (sum - last) / (int) LOOP_INTERVAL;
             last = sum;
         } else {
-            qps = excuteAdder.intValue() / (int) ((Time.getTimeStamp() - startTime) / 1000) / (int) LOOP_INTERVAL;
+            qps = excuteAdder.intValue() / (int) ((TimeUtil.getTimeStamp() - startTime) / 1000) / (int) LOOP_INTERVAL;
         }
         qs.add(qps);
         return qps;

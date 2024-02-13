@@ -1,6 +1,6 @@
 package com.funtester.utils.request;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.funtester.config.RequestType;
 import com.funtester.frame.SourceCode;
 import com.funtester.utils.Regex;

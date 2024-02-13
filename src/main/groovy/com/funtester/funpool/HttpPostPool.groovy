@@ -7,7 +7,7 @@ import org.apache.commons.pool2.PooledObject
 import org.apache.commons.pool2.impl.DefaultPooledObject
 import org.apache.commons.pool2.impl.GenericObjectPool
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig
-import org.apache.http.client.methods.HttpPost
+import org.apache.hc.client5.http.classic.methods.HttpPost
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 

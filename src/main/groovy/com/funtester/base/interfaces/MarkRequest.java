@@ -1,6 +1,6 @@
 package com.funtester.base.interfaces;
 
-import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
 
 /**
  * 专门用来标记HTTP请求的接口
@@ -13,7 +13,7 @@ public interface MarkRequest extends MarkThread {
      * @param requestBase
      * @return
      */
-    public String mark(HttpRequestBase requestBase);
+    public String mark(HttpUriRequestBase requestBase);
 
 
 }

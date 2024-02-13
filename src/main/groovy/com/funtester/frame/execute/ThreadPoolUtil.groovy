@@ -6,7 +6,7 @@ import com.funtester.config.Constant
 import com.funtester.frame.SourceCode
 import com.funtester.utils.OSUtil
 import com.funtester.utils.StringUtil
-import com.funtester.utils.Time
+import com.funtester.utils.TimeUtil
 import groovy.util.logging.Log4j2
 
 import java.util.concurrent.*
@@ -123,7 +123,7 @@ class ThreadPoolUtil extends Constant {
      * ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常。
      * ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常。
      * ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
-     * ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
+     * ThreadPoolExecutor.CallerRunsPolicy：由调用main线程处理该任务
      * 当workqueue满了之后,线程池会创建新的
      * @param core 核心线程数
      * @param max 最大线程数
@@ -285,7 +285,7 @@ class ThreadPoolUtil extends Constant {
      * 执行daemon线程,保障main方法结束后关闭线程池
      * @return
      */
-    static boolean daemon() {
+    static def daemon() {
         def set = DaemonState.getAndSet(true)
         if (set) return
         new Thread(new Runnable() {
@@ -320,9 +320,9 @@ class ThreadPoolUtil extends Constant {
 
     static {
         addShutdownHook {
-            print(Time.getDate().substring(11))
+            print(TimeUtil.getDate().substring(11))
             if (asyncPool != null) {
-                println " shutdown msg: finished: " + getFunPool().getCompletedTaskCount() + " task"
+                println " finished: " + getFunPool().getCompletedTaskCount() + " task"
             }
         }
     }

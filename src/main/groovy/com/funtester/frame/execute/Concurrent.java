@@ -9,7 +9,7 @@ import com.funtester.frame.Save;
 import com.funtester.frame.SourceCode;
 import com.funtester.utils.CountUtil;
 import com.funtester.utils.RWUtil;
-import com.funtester.utils.Time;
+import com.funtester.utils.TimeUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -143,7 +143,7 @@ public class Concurrent extends SourceCode {
         }
         logger.info("=========预热完成,开始测试!=========");
         countDownLatch = new CountDownLatch(threadNum);
-        startTime = Time.getTimeStamp();
+        startTime = TimeUtil.getTimeStamp();
         for (int i = 0; i < threadNum; i++) {
             ThreadBase thread = threads.get(i);
             if (StringUtils.isBlank(thread.threadName)) thread.threadName = StatisticsUtil.getTrueName(desc) + i;
@@ -151,14 +151,14 @@ public class Concurrent extends SourceCode {
             executorService.execute(thread);
         }
         shutdownService(executorService, countDownLatch);
-        endTime = Time.getTimeStamp();
+        endTime = TimeUtil.getTimeStamp();
         ThreadBase.progress.stop();
         threads.forEach(x -> {
             errorTotal += x.errorNum;
             executeTotal += x.executeNum;
         });
-        int qps = (int) (executeTotal / Time.getTimeDiffer(startTime, endTime));
-        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{},QPS:{},单线程效率:{}", threadNum, Time.getTimeDiffer(startTime, endTime), formatLong(executeTotal), errorTotal, qps, qps / threadNum);
+        int qps = (int) (executeTotal / TimeUtil.getTimeDiffer(startTime, endTime));
+        logger.info("总计{}个线程，共用时：{} s,执行总数:{},错误数:{},QPS:{},单线程效率:{}", threadNum, TimeUtil.getTimeDiffer(startTime, endTime), formatLong(executeTotal), errorTotal, qps, qps / threadNum);
         return over();
     }
 
@@ -183,7 +183,7 @@ public class Concurrent extends SourceCode {
         Save.saveStringListSync(Concurrent.requestMark, MARK_Path.replace(LONG_Path, EMPTY) + desc);
         allTimes = new Vector<>();
         requestMark = new Vector<>();
-        return countQPS(threadNum, desc, Time.getTimeByTimestamp(startTime), Time.getTimeByTimestamp(endTime));
+        return countQPS(threadNum, desc, TimeUtil.getTimeByTimestamp(startTime), TimeUtil.getTimeByTimestamp(endTime));
     }
 
 
@@ -215,7 +215,7 @@ public class Concurrent extends SourceCode {
      * @return
      */
     public PerformanceResultBean countQPS(int name, String desc) {
-        return countQPS(name, desc, Time.getDate(), Time.getDate());
+        return countQPS(name, desc, TimeUtil.getDate(), TimeUtil.getDate());
     }
 
 

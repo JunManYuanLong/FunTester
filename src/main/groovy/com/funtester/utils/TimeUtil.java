@@ -11,15 +11,25 @@ import java.util.Date;
 /**
  * 时间相关功能工具类
  */
-public class Time {
+public class TimeUtil {
 
     /**
-     * 默认的日志显示格式
+     * 默认的日期显示格式
      */
     private static ThreadLocal<SimpleDateFormat> DEFAULT_FORMAT = new ThreadLocal() {
         @Override
         protected SimpleDateFormat initialValue() {
             return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        }
+    };
+
+    /**
+     * ISO_8601显示格式
+     */
+    public static ThreadLocal<SimpleDateFormat> ISO_8601_FORMAT = new ThreadLocal() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         }
     };
 
@@ -30,6 +40,16 @@ public class Time {
         @Override
         protected SimpleDateFormat initialValue() {
             return new SimpleDateFormat("yyyyMMddHHmmss");
+        }
+    };
+
+    /**
+     * 纯数字的日期格式
+     */
+    private static ThreadLocal<SimpleDateFormat> NUM_MILL_FORMAT = new ThreadLocal() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyyMMddHHmmssSSS");
         }
     };
 
@@ -254,6 +274,15 @@ public class Time {
     }
 
     /**
+     * 获取当前时间,返回数字格式的毫秒时间
+     *
+     * @return
+     */
+    public static String getDateByMills() {
+        return getNow(NUM_MILL_FORMAT.get());
+    }
+
+    /**
      * 将时间s转换成hms形式
      *
      * @param time
@@ -265,6 +294,19 @@ public class Time {
         int minute = ms % 60;
         int hour = ms / 60;
         return (hour > 0 ? hour + " h," : "") + (minute > 0 ? minute + " m," : "") + second + " s";
+    }
+
+    /**
+     * 获取今天零点的时间戳
+     * @return
+     */
+    public static long getZeroTimestamp() {
+        Calendar cal = TimeUtil.calendarInit();
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTimeInMillis();
     }
 
 }

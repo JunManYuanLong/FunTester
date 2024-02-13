@@ -1,6 +1,6 @@
 package com.funtester.utils
 
-import com.alibaba.fastjson.JSONObject
+import com.alibaba.fastjson2.JSONObject
 import com.funtester.base.exception.ParamException
 import com.funtester.config.Constant
 import com.funtester.frame.JsonVerify

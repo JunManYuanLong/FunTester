@@ -1,14 +1,14 @@
 package com.funtester.base.bean
 
-import com.alibaba.fastjson.JSONObject
+import com.alibaba.fastjson2.JSONObject
 import com.funtester.base.interfaces.MarkRequest
 import com.funtester.config.Constant
 import com.funtester.config.RequestType
-import org.apache.http.Header
-import org.apache.http.HttpEntity
-import org.apache.http.client.methods.HttpEntityEnclosingRequestBase
-import org.apache.http.client.methods.HttpRequestBase
-import org.apache.http.util.EntityUtils
+import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase
+import org.apache.hc.core5.http.Header
+import org.apache.hc.core5.http.HttpEntity
+import org.apache.hc.core5.http.HttpEntityContainer
+import org.apache.hc.core5.http.io.entity.EntityUtils
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
@@ -73,14 +73,14 @@ class RequestInfo extends AbstractBean implements Serializable {
     /**
      * 存一下
      */
-    HttpRequestBase request
+    HttpUriRequestBase request
 
     /**
      * 通过request获取请求的相关信息，并输出部分信息
      *
      * @param request
      */
-    RequestInfo(HttpRequestBase request) {
+    RequestInfo(HttpUriRequestBase request) {
         this.request = request
         getRequestInfo()
     }
@@ -110,7 +110,7 @@ class RequestInfo extends AbstractBean implements Serializable {
         } else if (method == RequestType.PATCH) {
             getPostRequestParams(request)
         }
-        List<Header> list = Arrays.asList(request.getAllHeaders())
+        List<Header> list = Arrays.asList(request.getHeaders())
         headers = new JSONObject() {
 
             {
@@ -136,7 +136,7 @@ class RequestInfo extends AbstractBean implements Serializable {
      *
      * @param request
      */
-    private void getPostRequestParams(HttpEntityEnclosingRequestBase request) {
+    private void getPostRequestParams(HttpEntityContainer request) {
         HttpEntity entity = request.getEntity()
         // 获取实体
         if (entity == null) return
