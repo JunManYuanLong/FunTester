@@ -64,7 +64,7 @@ class CountUtil {
      * @return
      */
     static FunIndex index(List<? extends Number> c) {
-        if (c == null || c.size() == 0) return
+        if (c == null || c.size() == 0) return new FunIndex()
         c.sort()
         int size = c.size()
         double min = c.first()
