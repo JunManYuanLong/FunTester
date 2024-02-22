@@ -83,6 +83,8 @@ class CountUtil {
      */
     static class FunIndex extends AbstractBean {
 
+        String title
+
         Double avg
 
         Double mid
@@ -96,6 +98,11 @@ class CountUtil {
         Double p999
 
         Double p95
+
+        FunIndex setTitle(String title) {
+            this.title = title
+            this
+        }
 
         @Override
         String toString() {
