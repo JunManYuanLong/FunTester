@@ -57,7 +57,7 @@ public class Constant {
     /**
      * 默认线程池的大小
      */
-    public static int POOL_SIZE = 8;
+    public static int POOL_SIZE = 16;
 
     public static int POOL_MAX = 128;
 

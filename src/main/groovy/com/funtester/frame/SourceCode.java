@@ -685,7 +685,7 @@ public class SourceCode extends Output {
      * @param f
      */
     public static void fun(Closure f) {
-        fun(f, (Phaser) null);
+        fun(f, null, true);
     }
 
     /**
@@ -698,68 +698,64 @@ public class SourceCode extends Output {
     }
 
     /**
-     * 异步执行,{@link Future}形式
-     *
-     * @param callable 代码块
-     * @param <T>      返回值类型
-     * @return
-     */
-    public static <T> Future<T> funny(Callable<T> callable) {
-        return ThreadPoolUtil.getFunPool().submit(callable);
-    }
-
-    /**
-     * 异步执行代码块,使用{@link Phaser}进行多线程同步
-     *
-     * @param f      代码块
-     * @param phaser 同步器
-     */
-    public static void fun(Closure f, Phaser phaser) {
-        if (phaser != null) phaser.register();
-        ThreadPoolUtil.executeSync(() -> {
-            try {
-                f.call();
-            } finally {
-                if (phaser != null) {
-                    phaser.arrive();
-                    logger.info("异步任务完成 {}", phaser.getArrivedParties());
-                }
-            }
-        });
-    }
-
-    /**
      * 使用自定义同步器{@link FunPhaser}进行多线程同步
      *
      * @param f      代码块
      * @param phaser 同步器
      */
     public static void fun(Closure f, FunPhaser phaser) {
+        fun(f, phaser, true);
+    }
+
+    /**
+     * 使用自定义同步器{@link FunPhaser}进行多线程同步
+     *
+     * @param f
+     * @param phaser
+     * @param log
+     */
+    public static void fun(Closure f, FunPhaser phaser, boolean log) {
         if (phaser != null) phaser.register();
         ThreadPoolUtil.executeSync(() -> {
             try {
+                ThreadPoolUtil.executePriority();
                 f.call();
             } finally {
                 if (phaser != null) {
                     phaser.done();
-                    logger.info("async task {}", phaser.queryTaskNum());
+                    if (log) logger.info("async task {}", phaser.queryTaskNum());
                 }
             }
         });
     }
 
-    public static void fun(Closure f, Phaser phaser, boolean log) {
+    /**
+     * 提交高优任务
+     *
+     * @param f
+     * @param phaser
+     * @param log
+     */
+    public static void funny(Closure f, FunPhaser phaser, boolean log) {
         if (phaser != null) phaser.register();
-        ThreadPoolUtil.executeSync(() -> {
+        ThreadPoolUtil.executeSyncPriority(() -> {
             try {
                 f.call();
             } finally {
                 if (phaser != null) {
-                    phaser.arrive();
-                    if (log) logger.info("异步任务完成 {}", phaser.getArrivedParties());
+                    phaser.done();
+                    if (log) logger.info("priority async task {}", phaser.queryTaskNum());
                 }
             }
         });
+    }
+
+    public static void funny(Closure f) {
+        funny(f, null, true);
+    }
+
+    public static void funny(Closure f, FunPhaser phaser) {
+        funny(f, phaser, true);
     }
 
     /**
@@ -791,31 +787,6 @@ public class SourceCode extends Output {
             return null;
         }));
     }
-
-//用的太少了
-//    static Vector<Integer> ones = new Vector<>();
-//
-//    static ReentrantLock lock = new ReentrantLock();
-//
-//    /**
-//     * 线程安全单次执行,仿照Go语言的once方法,这里不支持匿名闭包
-//     *
-//     * @param v
-//     */
-//    public static void once(Closure v) {
-//        try {
-//            lock.lock();
-//            int code = v.hashCode();
-//            if (!ones.contains(code)) {
-//                ones.add(code);
-//                v.call();
-//            }
-//        } catch (Exception e) {
-//            logger.warn("once执行方法失败", e);
-//        } finally {
-//            lock.unlock();
-//        }
-//    }
 
     /**
      * 获取方法的执行时间

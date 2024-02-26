@@ -46,7 +46,7 @@ class FunPhaser {
      * @return
      */
     def await() {
-        waitFor {index.get() == 0}
+        SourceCode.waitFor {index.get() == 0}
     }
 
     /**
@@ -55,7 +55,7 @@ class FunPhaser {
      * @return
      */
     def await(int timeout) {
-        waitFor({index.get() == 0}, timeout)
+        SourceCode.waitFor({index.get() == 0}, timeout)
     }
 
     /**
