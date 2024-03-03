@@ -97,6 +97,7 @@ class ThreadPoolUtil extends Constant {
      * @param runnable
      */
     static void executeSyncPriority(Runnable runnable) {
+        if (priorityPool == null) getFunPool()
         priorityPool.execute(runnable)
     }
 

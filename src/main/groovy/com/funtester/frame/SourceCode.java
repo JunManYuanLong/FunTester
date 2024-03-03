@@ -844,7 +844,8 @@ public class SourceCode extends Output {
      * 通用的终止运行的方法,用于脚本调试等场景
      */
     public static void fail() {
-        throw new FailException();
+        output("Active Termination !");
+        Thread.currentThread().interrupt();
     }
 
     /**
