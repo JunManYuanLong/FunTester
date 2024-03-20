@@ -98,7 +98,9 @@ class ThreadPoolUtil extends Constant {
      */
     static void executeSyncPriority(Runnable runnable) {
         if (priorityPool == null) getFunPool()
-        priorityPool.execute(runnable)
+        def queue = getFunPool().getQueue()
+        if (queue.isEmpty()) executeSync(runnable)
+        else priorityPool.execute(runnable)
     }
 
     /**
