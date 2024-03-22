@@ -41,9 +41,8 @@ public class SourceCode extends Output {
 
     static {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            System.out.print(TimeUtil.getDate().substring(11));
             RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean();
-            System.out.println(" uptime:" + TimeUtil.convert((int) runtimeMXBean.getUptime() / 1000));
+            logger.info("uptime:" + TimeUtil.convert((int) runtimeMXBean.getUptime() / 1000));
         }));
         closeScanner();
     }
