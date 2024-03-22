@@ -10,7 +10,6 @@ import com.funtester.utils.DecodeEncode
 class PerformanceResultBean extends AbstractBean implements Serializable {
 
     private static final long serialVersionUID = -1595942562342357L;
-
     /**
      * 测试用例描述
      */
